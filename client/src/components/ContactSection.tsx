@@ -92,31 +92,69 @@ const ContactSection = () => {
       <div className="absolute top-0 right-0 w-2 h-full bg-[#ce2b37]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl font-heading font-semibold italian-text-gradient mb-4">
-            {t('contact.title')}
+        <div className="text-center mb-16 animate-fade-in relative">
+          {/* Decorazioni */}
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#009246] opacity-30 rounded-full"></div>
+          <div className="absolute -top-10 left-1/3 w-32 h-32 bg-[#00924615] rounded-full filter blur-xl animate-pulse opacity-30"></div>
+          <div className="absolute -top-10 right-1/3 w-32 h-32 bg-[#ce2b3715] rounded-full filter blur-xl animate-pulse opacity-30" style={{ animationDuration: '7s' }}></div>
+          
+          {/* Titolo */}
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 relative inline-flex">
+            <span className="text-[#009246]">Get in </span>
+            <span className="relative pl-2">
+              Touch
+              <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
+            </span>
           </h2>
-          <p className="text-neutral-600 max-w-3xl mx-auto">
+          
+          <p className="text-neutral-700 max-w-2xl mx-auto text-lg font-light">
             {t('contact.subtitle')}
           </p>
+          
+          {/* Badge decorativo */}
+          <div className="max-w-xs mx-auto mt-8 mb-4 flex items-center justify-center">
+            <span className="h-px w-12 bg-neutral-200"></span>
+            <div className="mx-4 px-4 py-1 rounded-full border border-neutral-200 text-xs text-neutral-500 font-medium">
+              {t('contact.contactInfo')} 
+            </div>
+            <span className="h-px w-12 bg-neutral-200"></span>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <div className="shadow-lg rounded-lg p-8 bg-white border-t-4 italian-gradient">
+            <div className="shadow-xl rounded-lg p-8 bg-white border border-neutral-100 relative overflow-hidden">
+              {/* Accenti decorativi */}
+              <div className="absolute top-0 left-0 w-1 h-8 bg-[#009246]"></div>
+              <div className="absolute top-0 right-0 w-1 h-8 bg-[#ce2b37]"></div>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#00924608] rounded-full"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#ce2b3708] rounded-full"></div>
+              
+              <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
+                <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#009246]">
+                  {t('contact.form.title') || 'Contact Form'}
+                </span>
+              </h3>
+              
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
                       name="name"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('contact.form.name')} *</FormLabel>
+                        <FormItem className="transition-all duration-300 group">
+                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                            {t('contact.form.name')} <span className="text-[#ce2b37]">*</span>
+                          </FormLabel>
                           <FormControl>
-                            <Input className="border-neutral-300 focus:border-primary" {...field} />
+                            <Input 
+                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              placeholder="John Doe"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -124,12 +162,18 @@ const ContactSection = () => {
                       control={form.control}
                       name="company"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('contact.form.company')}</FormLabel>
+                        <FormItem className="transition-all duration-300 group">
+                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                            {t('contact.form.company')}
+                          </FormLabel>
                           <FormControl>
-                            <Input className="border-neutral-300 focus:border-primary" {...field} />
+                            <Input 
+                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              placeholder="Your Company"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -140,12 +184,19 @@ const ContactSection = () => {
                       control={form.control}
                       name="email"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('contact.form.email')} *</FormLabel>
+                        <FormItem className="transition-all duration-300 group">
+                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                            {t('contact.form.email')} <span className="text-[#ce2b37]">*</span>
+                          </FormLabel>
                           <FormControl>
-                            <Input className="border-neutral-300 focus:border-primary" type="email" {...field} />
+                            <Input 
+                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              type="email" 
+                              placeholder="your.email@example.com"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -153,12 +204,19 @@ const ContactSection = () => {
                       control={form.control}
                       name="phone"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('contact.form.phone')}</FormLabel>
+                        <FormItem className="transition-all duration-300 group">
+                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                            {t('contact.form.phone')}
+                          </FormLabel>
                           <FormControl>
-                            <Input className="border-neutral-300 focus:border-primary" type="tel" {...field} />
+                            <Input 
+                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              type="tel" 
+                              placeholder="+1 (234) 567-8910"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -168,14 +226,16 @@ const ContactSection = () => {
                     control={form.control}
                     name="service"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.service')} *</FormLabel>
+                      <FormItem className="transition-all duration-300 group">
+                        <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                          {t('contact.form.service')} <span className="text-[#ce2b37]">*</span>
+                        </FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger className="border-neutral-300 focus:border-primary">
+                            <SelectTrigger className="border-neutral-200 focus:border-primary shadow-sm rounded-md">
                               <SelectValue placeholder={t('contact.form.servicePlaceholder')} />
                             </SelectTrigger>
                           </FormControl>
@@ -189,7 +249,7 @@ const ContactSection = () => {
                             <SelectItem value="altro">{t('contact.form.services.other')}</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage />
+                        <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                       </FormItem>
                     )}
                   />
@@ -198,12 +258,19 @@ const ContactSection = () => {
                     control={form.control}
                     name="message"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.message')} *</FormLabel>
+                      <FormItem className="transition-all duration-300 group">
+                        <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                          {t('contact.form.message')} <span className="text-[#ce2b37]">*</span>
+                        </FormLabel>
                         <FormControl>
-                          <Textarea className="border-neutral-300 focus:border-primary" rows={5} {...field} />
+                          <Textarea 
+                            className="border-neutral-200 focus:border-primary shadow-sm rounded-md min-h-[120px]" 
+                            rows={5} 
+                            placeholder="How can we help you? Please provide details about your request..."
+                            {...field} 
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                       </FormItem>
                     )}
                   />
@@ -212,30 +279,35 @@ const ContactSection = () => {
                     control={form.control}
                     name="privacy"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 bg-neutral-50 rounded-md border border-neutral-100">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
                             onCheckedChange={field.onChange}
+                            className="border-neutral-300 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm text-neutral-600">
-                            {t('contact.form.privacyConsent')} <a href="#" className="text-primary hover:text-secondary transition-colors">{t('contact.form.privacyPolicy')}</a>.
+                          <FormLabel className="text-sm text-neutral-600 font-normal">
+                            {t('contact.form.privacyConsent')} <a href="#" className="text-primary font-medium hover:text-[#ce2b37] transition-colors underline">{t('contact.form.privacyPolicy')}</a>.
                           </FormLabel>
-                          <FormMessage />
+                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
                         </div>
                       </FormItem>
                     )}
                   />
                   
-                  <div>
+                  <div className="pt-4">
                     <button 
                       type="submit" 
-                      className="italian-gradient hover:opacity-90 text-white font-medium py-3 px-8 rounded-md transition duration-300 disabled:opacity-70 animate-pulse-scale"
+                      className="relative overflow-hidden group px-8 py-3.5 rounded-md bg-[#009246] text-white font-medium shadow-md hover:shadow-lg transition duration-300 disabled:opacity-70"
                       disabled={isPending}
                     >
-                      {isPending ? t('contact.form.sending') : t('contact.form.send')}
+                      <span className="absolute inset-0 w-0 bg-[#ce2b37] transition-all duration-300 ease-out group-hover:w-full"></span>
+                      <span className="relative flex items-center justify-center gap-2">
+                        {isPending ? t('contact.form.sending') : t('contact.form.send')}
+                        <i className="fas fa-paper-plane text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+                      </span>
                     </button>
                   </div>
                 </form>
@@ -244,89 +316,110 @@ const ContactSection = () => {
           </div>
           
           <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <div className="bg-white p-8 rounded-lg h-full shadow-lg border-t-4 italian-gradient">
+            <div className="bg-white p-8 rounded-lg h-full shadow-xl border border-neutral-100 relative overflow-hidden">
+              {/* Accenti decorativi */}
+              <div className="absolute top-0 left-0 w-1 h-8 bg-[#ce2b37]"></div>
+              <div className="absolute top-0 right-0 w-1 h-8 bg-[#009246]"></div>
+              <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#00924608] rounded-full"></div>
+              
+              {/* Immagine dell'ufficio in posizione superiore */}
+              <div className="mb-8 overflow-hidden rounded-lg shadow-md group relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt={t('contact.info.officeImageAlt')}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-white text-sm font-medium">{t('contact.info.officeLocation') || 'Our Headquarters'}</p>
+                </div>
+              </div>
+              
               <div className="mb-8">
-                <h3 className="text-xl font-heading font-medium italian-text-gradient mb-6">
-                  {t('contact.info.title')}
+                <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
+                  <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#ce2b37]">
+                    {t('contact.info.title')}
+                  </span>
                 </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start group">
-                    <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
+                
+                <div className="space-y-5">
+                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
                         <i className="fas fa-map-marker-alt"></i>
-                      </span>
+                      </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-medium text-neutral-800">{t('contact.info.address.title')}</h4>
-                      <p className="text-neutral-600">{t('contact.info.address.value')}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.address.title')}</h4>
+                      <p className="text-neutral-600 mt-1">{t('contact.info.address.value')}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start group">
-                    <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
+                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
                         <i className="fas fa-phone-alt"></i>
-                      </span>
+                      </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-medium text-neutral-800">{t('contact.info.phone.title')}</h4>
-                      <p className="text-neutral-600">{t('contact.info.phone.value')}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.phone.title')}</h4>
+                      <p className="text-neutral-600 mt-1">
+                        <a href={`tel:${t('contact.info.phone.value')}`} className="hover:text-[#009246] transition-colors">
+                          {t('contact.info.phone.value')}
+                        </a>
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start group">
-                    <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
+                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
                         <i className="fas fa-envelope"></i>
-                      </span>
+                      </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-medium text-neutral-800">{t('contact.info.email.title')}</h4>
-                      <p className="text-neutral-600">{t('contact.info.email.value')}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.email.title')}</h4>
+                      <p className="text-neutral-600 mt-1">
+                        <a href={`mailto:${t('contact.info.email.value')}`} className="hover:text-[#009246] transition-colors">
+                          {t('contact.info.email.value')}
+                        </a>
+                      </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start group">
-                    <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
+                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
                         <i className="fas fa-clock"></i>
-                      </span>
+                      </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-medium text-neutral-800">{t('contact.info.hours.title')}</h4>
-                      <p className="text-neutral-600">{t('contact.info.hours.value')}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.hours.title')}</h4>
+                      <p className="text-neutral-600 mt-1">{t('contact.info.hours.value')}</p>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="mb-8">
-                <h3 className="text-xl font-heading font-medium italian-text-gradient mb-4">
-                  {t('contact.social.title')}
+              <div>
+                <h3 className="text-lg font-heading font-semibold mb-4 relative inline-flex items-center">
+                  <i className="fas fa-share-alt text-[#ce2b37] mr-2"></i>
+                  <span>{t('contact.social.title')}</span>
                 </h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
+                
+                <div className="flex space-x-3">
+                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
+                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#1DA1F2] hover:text-white transition-all duration-300">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
+                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#4267B2] hover:text-white transition-all duration-300">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
+                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300">
                     <i className="fab fa-instagram"></i>
                   </a>
-                </div>
-              </div>
-              
-              <div className="mt-8 animate-float">
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img 
-                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt={t('contact.info.officeImageAlt')}
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
-                  />
                 </div>
               </div>
             </div>
