@@ -289,3 +289,38 @@
 .animate-slide-down {
   animation: slideDown 1.2s ease-out forwards;
 }
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 15s linear infinite;
+}
+
+@keyframes gradientX {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-gradient-x {
+  animation: gradientX 2s ease-in-out infinite alternate;
+}
+
+.italic-text-gradient {
+  font-style: italic;
+  background: linear-gradient(90deg, #009246, #ce2b37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
