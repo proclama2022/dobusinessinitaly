@@ -7,65 +7,158 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-800 text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-br from-[#212529] to-[#343a40] text-white pt-16 pb-8 relative overflow-hidden">
+      {/* Elementi decorativi con la bandiera italiana */}
+      <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1 bg-[#009246]"></div>
+      <div className="absolute bottom-0 left-1/3 w-1/3 h-1 bg-white"></div>
+      <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-[#ce2b37]"></div>
+      
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <h3 className="text-xl font-heading font-medium mb-4">DoBusinessNew</h3>
+          <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
+              <span className="relative italic">
+                DoBusinessNew
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+              </span>
+            </h3>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
             <div className="flex space-x-4">
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white transition-colors">
+              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
           </div>
           
-          <div>
-            <h3 className="text-xl font-heading font-medium mb-4">{t('footer.quickLinks')}</h3>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
+              <span className="relative">
+                {t('footer.quickLinks')}
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+              </span>
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-neutral-400 hover:text-white transition-colors">{t('navigation.home')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('navigation.services')}</Link></li>
-              <li><Link href="/about" className="text-neutral-400 hover:text-white transition-colors">{t('navigation.about')}</Link></li>
-              <li><Link href="/blog" className="text-neutral-400 hover:text-white transition-colors">{t('navigation.blog')}</Link></li>
-              <li><Link href="/contact" className="text-neutral-400 hover:text-white transition-colors">{t('navigation.contact')}</Link></li>
+              <li>
+                <Link href="/" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('navigation.home')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('navigation.services')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('navigation.about')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('navigation.blog')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('navigation.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-heading font-medium mb-4">{t('footer.services')}</h3>
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
+              <span className="relative">
+                {t('footer.services')}
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+              </span>
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.formation.title')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.accounting.title')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.tax.title')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.planning.title')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.payroll.title')}</Link></li>
-              <li><Link href="/services" className="text-neutral-400 hover:text-white transition-colors">{t('services.items.legal.title')}</Link></li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.formation.title')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.accounting.title')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.tax.title')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.planning.title')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.payroll.title')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  {t('services.items.legal.title')}
+                </Link>
+              </li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-heading font-medium mb-4">{t('footer.contact')}</h3>
+          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
+              <span className="relative">
+                {t('footer.contact')}
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+              </span>
+            </h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <i className="fas fa-map-marker-alt mt-1 mr-3 text-neutral-400"></i>
-                <span className="text-neutral-400">{t('contact.info.address.value')}</span>
+              <li className="flex items-start group">
+                <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
+                  <i className="fas fa-map-marker-alt text-neutral-300"></i>
+                </div>
+                <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
+                  {t('contact.info.address.value')}
+                </span>
               </li>
-              <li className="flex items-start">
-                <i className="fas fa-phone-alt mt-1 mr-3 text-neutral-400"></i>
-                <span className="text-neutral-400">{t('contact.info.phone.value')}</span>
+              <li className="flex items-start group">
+                <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
+                  <i className="fas fa-phone-alt text-neutral-300"></i>
+                </div>
+                <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
+                  {t('contact.info.phone.value')}
+                </span>
               </li>
-              <li className="flex items-start">
-                <i className="fas fa-envelope mt-1 mr-3 text-neutral-400"></i>
-                <span className="text-neutral-400">{t('contact.info.email.value')}</span>
+              <li className="flex items-start group">
+                <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
+                  <i className="fas fa-envelope text-neutral-300"></i>
+                </div>
+                <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
+                  {t('contact.info.email.value')}
+                </span>
               </li>
             </ul>
           </div>
@@ -75,9 +168,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-neutral-400 text-sm">© {currentYear} DoBusinessNew. {t('footer.copyright')}</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors">{t('footer.privacy')}</a>
-              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors">{t('footer.terms')}</a>
-              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors">{t('footer.cookies')}</a>
+              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.privacy')}</a>
+              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.terms')}</a>
+              <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.cookies')}</a>
             </div>
           </div>
         </div>

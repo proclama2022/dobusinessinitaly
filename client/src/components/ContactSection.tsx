@@ -84,10 +84,16 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-semibold text-neutral-800 mb-4">
+    <section id="contact" className="py-16 bg-white relative overflow-hidden">
+      {/* Elementi decorativi con la bandiera italiana */}
+      <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
+      <div className="absolute bottom-0 inset-x-0 h-2 italian-gradient"></div>
+      <div className="absolute top-0 left-0 w-2 h-full bg-[#009246]"></div>
+      <div className="absolute top-0 right-0 w-2 h-full bg-[#ce2b37]"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-3xl font-heading font-semibold italian-text-gradient mb-4">
             {t('contact.title')}
           </h2>
           <p className="text-neutral-600 max-w-3xl mx-auto">
@@ -96,155 +102,157 @@ const ContactSection = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div className="shadow-lg rounded-lg p-8 bg-white border-t-4 italian-gradient">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.name')} *</FormLabel>
+                          <FormControl>
+                            <Input className="border-neutral-300 focus:border-primary" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.company')}</FormLabel>
+                          <FormControl>
+                            <Input className="border-neutral-300 focus:border-primary" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.email')} *</FormLabel>
+                          <FormControl>
+                            <Input className="border-neutral-300 focus:border-primary" type="email" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.form.phone')}</FormLabel>
+                          <FormControl>
+                            <Input className="border-neutral-300 focus:border-primary" type="tel" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
                   <FormField
                     control={form.control}
-                    name="name"
+                    name="service"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>{t('contact.form.name')} *</FormLabel>
+                        <FormLabel>{t('contact.form.service')} *</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="border-neutral-300 focus:border-primary">
+                              <SelectValue placeholder={t('contact.form.servicePlaceholder')} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="costituzione">{t('contact.form.services.formation')}</SelectItem>
+                            <SelectItem value="contabilita">{t('contact.form.services.accounting')}</SelectItem>
+                            <SelectItem value="fiscale">{t('contact.form.services.tax')}</SelectItem>
+                            <SelectItem value="planning">{t('contact.form.services.planning')}</SelectItem>
+                            <SelectItem value="payroll">{t('contact.form.services.payroll')}</SelectItem>
+                            <SelectItem value="legale">{t('contact.form.services.legal')}</SelectItem>
+                            <SelectItem value="altro">{t('contact.form.services.other')}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.form.message')} *</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Textarea className="border-neutral-300 focus:border-primary" rows={5} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                  
                   <FormField
                     control={form.control}
-                    name="company"
+                    name="privacy"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.company')}</FormLabel>
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                         <FormControl>
-                          <Input {...field} />
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm text-neutral-600">
+                            {t('contact.form.privacyConsent')} <a href="#" className="text-primary hover:text-secondary transition-colors">{t('contact.form.privacyPolicy')}</a>.
+                          </FormLabel>
+                          <FormMessage />
+                        </div>
                       </FormItem>
                     )}
                   />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.email')} *</FormLabel>
-                        <FormControl>
-                          <Input type="email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t('contact.form.phone')}</FormLabel>
-                        <FormControl>
-                          <Input type="tel" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                
-                <FormField
-                  control={form.control}
-                  name="service"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t('contact.form.service')} *</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder={t('contact.form.servicePlaceholder')} />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="costituzione">{t('contact.form.services.formation')}</SelectItem>
-                          <SelectItem value="contabilita">{t('contact.form.services.accounting')}</SelectItem>
-                          <SelectItem value="fiscale">{t('contact.form.services.tax')}</SelectItem>
-                          <SelectItem value="planning">{t('contact.form.services.planning')}</SelectItem>
-                          <SelectItem value="payroll">{t('contact.form.services.payroll')}</SelectItem>
-                          <SelectItem value="legale">{t('contact.form.services.legal')}</SelectItem>
-                          <SelectItem value="altro">{t('contact.form.services.other')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t('contact.form.message')} *</FormLabel>
-                      <FormControl>
-                        <Textarea rows={5} {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="privacy"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm text-neutral-600">
-                          {t('contact.form.privacyConsent')} <a href="#" className="text-primary hover:underline">{t('contact.form.privacyPolicy')}</a>.
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
-                    </FormItem>
-                  )}
-                />
-                
-                <div>
-                  <button 
-                    type="submit" 
-                    className="btn-primary disabled:opacity-70"
-                    disabled={isPending}
-                  >
-                    {isPending ? t('contact.form.sending') : t('contact.form.send')}
-                  </button>
-                </div>
-              </form>
-            </Form>
+                  
+                  <div>
+                    <button 
+                      type="submit" 
+                      className="italian-gradient hover:opacity-90 text-white font-medium py-3 px-8 rounded-md transition duration-300 disabled:opacity-70 animate-pulse-scale"
+                      disabled={isPending}
+                    >
+                      {isPending ? t('contact.form.sending') : t('contact.form.send')}
+                    </button>
+                  </div>
+                </form>
+              </Form>
+            </div>
           </div>
           
-          <div>
-            <div className="bg-neutral-100 p-8 rounded-lg h-full">
+          <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-white p-8 rounded-lg h-full shadow-lg border-t-4 italian-gradient">
               <div className="mb-8">
-                <h3 className="text-xl font-heading font-medium text-neutral-800 mb-4">
+                <h3 className="text-xl font-heading font-medium italian-text-gradient mb-6">
                   {t('contact.info.title')}
                 </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
+                <div className="space-y-6">
+                  <div className="flex items-start group">
                     <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
                         <i className="fas fa-map-marker-alt"></i>
                       </span>
                     </div>
@@ -254,9 +262,9 @@ const ContactSection = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
+                  <div className="flex items-start group">
                     <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
                         <i className="fas fa-phone-alt"></i>
                       </span>
                     </div>
@@ -266,9 +274,9 @@ const ContactSection = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
+                  <div className="flex items-start group">
                     <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
                         <i className="fas fa-envelope"></i>
                       </span>
                     </div>
@@ -278,9 +286,9 @@ const ContactSection = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
+                  <div className="flex items-start group">
                     <div className="flex-shrink-0 mt-1">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-full italian-gradient text-white transition-transform group-hover:scale-110">
                         <i className="fas fa-clock"></i>
                       </span>
                     </div>
@@ -292,32 +300,34 @@ const ContactSection = () => {
                 </div>
               </div>
               
-              <div>
-                <h3 className="text-xl font-heading font-medium text-neutral-800 mb-4">
+              <div className="mb-8">
+                <h3 className="text-xl font-heading font-medium italian-text-gradient mb-4">
                   {t('contact.social.title')}
                 </h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors">
+                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors">
+                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors">
+                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors">
+                  <a href="#" className="w-10 h-10 rounded-full italian-gradient text-white flex items-center justify-center hover:opacity-90 transition-all hover:scale-110">
                     <i className="fab fa-instagram"></i>
                   </a>
                 </div>
               </div>
               
-              <div className="mt-8">
-                <img 
-                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                  alt={t('contact.info.officeImageAlt')}
-                  className="w-full h-48 object-cover rounded-md shadow"
-                />
+              <div className="mt-8 animate-float">
+                <div className="overflow-hidden rounded-lg shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt={t('contact.info.officeImageAlt')}
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
             </div>
           </div>
