@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
   --background: 0 0% 100%;
@@ -15,21 +15,26 @@
   --card-foreground: 224 71.4% 4.1%;
   --border: 220 13% 91%;
   --input: 220 13% 91%;
-  --primary: 210 100% 35%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 43 78% 58%; /* #f8c12c */
-  --secondary-foreground: 0 0% 9%;
+  --primary: 142 43% 35%; /* Verde italiano */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 79% 48%; /* Rosso italiano */
+  --secondary-foreground: 0 0% 100%;
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 210 100% 35%;
+  --ring: 142 43% 35%;
   --radius: 0.5rem;
 
-  --primary-light: 210 92% 45%; /* #2a7cc7 */
-  --primary-dark: 210 100% 29%; /* #004494 */
-  --secondary-light: 43 100% 68%; /* #ffd15c */
-  --secondary-dark: 43 100% 45%; /* #e5a900 */
+  --primary-light: 142 43% 45%; /* Verde più chiaro */
+  --primary-dark: 142 43% 25%; /* Verde più scuro */
+  --secondary-light: 0 79% 58%; /* Rosso più chiaro */
+  --secondary-dark: 0 79% 38%; /* Rosso più scuro */
+  
+  /* Italian flag colors */
+  --italian-green: 142 43% 35%;
+  --italian-white: 0 0% 100%;
+  --italian-red: 0 79% 48%;
 
   --neutral-100: 210 33% 96%; /* #f5f7fa */
   --neutral-200: 210 16% 93%; /* #e9ecef */
@@ -53,15 +58,15 @@
   --card-foreground: 210 40% 98%;
   --border: 215 27.9% 16.9%;
   --input: 215 27.9% 16.9%;
-  --primary: 210 100% 35%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 43 78% 58%;
-  --secondary-foreground: 0 0% 9%;
+  --primary: 142 43% 35%; /* Verde italiano */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 79% 48%; /* Rosso italiano */
+  --secondary-foreground: 0 0% 100%;
   --accent: 215 27.9% 16.9%;
   --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 216 34% 17%;
+  --ring: 142 43% 35%;
   --radius: 0.5rem;
 }
 
@@ -105,4 +110,58 @@
 
 .testimonial-slide.active {
   @apply opacity-100 static;
+}
+
+/* Gradiente e animazioni italiane */
+.italian-gradient {
+  @apply bg-gradient-to-r from-[#009246] via-white to-[#ce2b37];
+}
+
+.italian-text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#009246] via-neutral-800 to-[#ce2b37];
+}
+
+.italian-border-gradient {
+  @apply border-2 border-transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(to right, white, white), 
+                    linear-gradient(to right, #009246, white, #ce2b37);
+}
+
+/* Animazioni */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-pulse-scale {
+  animation: pulseScale 2s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

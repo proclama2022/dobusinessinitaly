@@ -6,9 +6,11 @@ type StatItemProps = {
   suffix: string;
   title: string;
   description: string;
+  index: number;
+  icon: string;
 };
 
-const StatItem = ({ value, suffix, title, description }: StatItemProps) => {
+const StatItem = ({ value, suffix, title, description, index, icon }: StatItemProps) => {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLSpanElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -51,12 +53,25 @@ const StatItem = ({ value, suffix, title, description }: StatItemProps) => {
     window.requestAnimationFrame(step);
   };
 
+  // Colore in base all'indice, alternando i colori della bandiera italiana
+  const getBackgroundColor = () => {
+    if (index % 3 === 0) return 'from-[#009246]/10 to-[#009246]/5'; // Verde
+    if (index % 3 === 1) return 'from-neutral-100 to-white'; // Bianco
+    return 'from-[#ce2b37]/10 to-[#ce2b37]/5'; // Rosso
+  };
+
   return (
-    <div className="bg-neutral-100 p-6 rounded-lg text-center transition-transform hover:scale-105">
-      <div className="text-primary text-4xl font-bold mb-2">
+    <div 
+      className={`bg-gradient-to-br ${getBackgroundColor()} p-6 rounded-lg text-center shadow-md animate-float`}
+      style={{ animationDelay: `${index * 0.2}s` }}
+    >
+      <div className="w-16 h-16 mx-auto mb-4 rounded-full italian-gradient flex items-center justify-center">
+        <i className={`${icon} text-white text-2xl`}></i>
+      </div>
+      <div className="italian-text-gradient text-4xl font-bold mb-2">
         <span ref={countRef}>{count}</span>{suffix}
       </div>
-      <h3 className="text-lg font-heading font-medium text-neutral-700">{title}</h3>
+      <h3 className="text-lg font-heading font-medium text-neutral-800">{title}</h3>
       <p className="text-neutral-600 text-sm mt-2">{description}</p>
     </div>
   );
@@ -64,39 +79,56 @@ const StatItem = ({ value, suffix, title, description }: StatItemProps) => {
 
 const StatsSection = () => {
   const { t } = useTranslation();
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const stats = [
     {
       value: 150,
       suffix: '+',
       title: t('stats.clients.title'),
-      description: t('stats.clients.description')
+      description: t('stats.clients.description'),
+      icon: 'fas fa-globe-europe'
     },
     {
       value: 25,
       suffix: '+',
       title: t('stats.experience.title'),
-      description: t('stats.experience.description')
+      description: t('stats.experience.description'),
+      icon: 'fas fa-calendar-check'
     },
     {
       value: 12,
       suffix: '+',
       title: t('stats.professionals.title'),
-      description: t('stats.professionals.description')
+      description: t('stats.professionals.description'),
+      icon: 'fas fa-user-tie'
     },
     {
       value: 20,
       suffix: 'M+',
       title: t('stats.volume.title'),
-      description: t('stats.volume.description')
+      description: t('stats.volume.description'),
+      icon: 'fas fa-euro-sign'
     }
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white relative overflow-hidden">
+      {/* Linee decorative tricolore italiano */}
+      <div className="absolute inset-x-0 top-0 h-1 italian-gradient opacity-90"></div>
+      <div className="absolute inset-x-0 bottom-0 h-1 italian-gradient opacity-90"></div>
+      
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-semibold text-neutral-800 mb-4">
+        <div className={`text-center mb-12 ${isLoaded ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="italian-text-gradient text-3xl font-heading font-semibold mb-4">
             {t('stats.title')}
           </h2>
           <p className="text-neutral-600 max-w-3xl mx-auto">
@@ -112,6 +144,8 @@ const StatsSection = () => {
               suffix={stat.suffix}
               title={stat.title}
               description={stat.description}
+              index={index}
+              icon={stat.icon}
             />
           ))}
         </div>
