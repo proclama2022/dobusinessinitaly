@@ -1,0 +1,236 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Accounting Expertise For Your Global Business",
+    "subtitle": "We assist foreign companies and investors in successfully managing their business in Italy, providing excellence in tax and commercial consulting.",
+    "contactButton": "Contact Us",
+    "servicesButton": "Discover Our Services",
+    "backgroundAlt": "Professional accounting office"
+  },
+  "stats": {
+    "title": "Our Experience in Numbers",
+    "subtitle": "Numbers don't lie: our proven track record in successfully supporting international clients.",
+    "clients": {
+      "title": "International Clients",
+      "description": "Companies from around the world have chosen our services"
+    },
+    "experience": {
+      "title": "Years of Experience",
+      "description": "Serving national and international clients"
+    },
+    "professionals": {
+      "title": "Professionals",
+      "description": "A multilingual team of accountants and tax experts"
+    },
+    "volume": {
+      "title": "Euro Managed",
+      "description": "Annual turnover of our assisted clients"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "ctaButton": "Talk to an Expert",
+    "mainImageAlt": "Business meeting international clients",
+    "smallImageAlt": "Accounting charts",
+    "features": {
+      "international": {
+        "title": "International Expertise",
+        "description": "We understand the challenges foreign companies face in Italy. Our multilingual team provides assistance in English, French, German, and Spanish."
+      },
+      "excellence": {
+        "title": "Professional Excellence",
+        "description": "Certified professionals with years of experience in international accounting and tax consulting. Constant updates on regulations."
+      },
+      "approach": {
+        "title": "Personalized Approach",
+        "description": "Each client receives tailored solutions for their specific needs. We are your strategic partner, not just service providers."
+      },
+      "reliability": {
+        "title": "Timeliness and Reliability",
+        "description": "We respond quickly to your requests, respecting deadlines and commitments. You can count on us for every aspect of your business in Italy."
+      }
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer a wide range of professional services to support your business activities in Italy.",
+    "items": {
+      "formation": {
+        "title": "Company Formation in Italy",
+        "description": "Complete assistance for the establishment of capital and partnership companies in Italy, including all bureaucratic and tax requirements.",
+        "link": "More information"
+      },
+      "accounting": {
+        "title": "Accounting and Financial Statements",
+        "description": "Complete management of company accounting, preparation of financial statements and periodic tax requirements.",
+        "link": "More information"
+      },
+      "tax": {
+        "title": "International Tax Consulting",
+        "description": "Advice on double taxation treaties, tax residence, transfer pricing and international tax optimization.",
+        "link": "More information"
+      },
+      "planning": {
+        "title": "Business Planning",
+        "description": "Market analysis, business plans, strategic planning and advice on accessing funding and investments in Italy.",
+        "link": "More information"
+      },
+      "payroll": {
+        "title": "Payroll and HR Management",
+        "description": "Personnel administration, payroll processing, advice on employment contracts and Italian labor regulations.",
+        "link": "More information"
+      },
+      "legal": {
+        "title": "Legal Support",
+        "description": "Legal assistance in commercial matters, contracts, regulatory compliance and representation with Italian authorities.",
+        "link": "More information"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials from Our Clients",
+    "subtitle": "Here's what our international clients have to say about us.",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "goToSlide": "Go to slide",
+    "items": [
+      {
+        "quote": "We've been working with DoBusinessNew since we decided to expand into Italy three years ago. Their expertise in international taxation and ability to explain complex concepts clearly has allowed us to navigate the Italian system with confidence. Highly recommended.",
+        "name": "Robert Johnson",
+        "position": "CFO, TechGrowth GmbH - Germany"
+      },
+      {
+        "quote": "The DoBusinessNew team was instrumental in setting up our Italian branch. Their multilingual assistance and deep knowledge of local regulations greatly simplified the process. We continue to rely on them for all tax and accounting matters.",
+        "name": "Sophie Martin",
+        "position": "Operations Director, Lumière Design - France"
+      },
+      {
+        "quote": "As a foreign investor in the Italian real estate market, I needed reliable tax and legal advice. DoBusinessNew offered impeccable service, giving me the peace of mind to focus on investments. Their responsiveness is extraordinary.",
+        "name": "James Wilson",
+        "position": "CEO, Wilson Properties - United Kingdom"
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog and Updates",
+    "subtitle": "Latest articles and news from the Italian fiscal and commercial world.",
+    "viewAll": "All articles",
+    "readMore": "Read article",
+    "posts": [
+      {
+        "date": "May 12, 2023",
+        "category": "International Taxation",
+        "title": "New Tax Regime for Expatriates in Italy: Opportunities for Foreign Managers",
+        "excerpt": "Analysis of recent changes to the tax regime dedicated to impatriate workers and opportunities for foreign managers and professionals."
+      },
+      {
+        "date": "April 28, 2023",
+        "category": "Investments",
+        "title": "Investing in the Italian Real Estate Market: Guide for Foreign Investors",
+        "excerpt": "A comprehensive overview of the opportunities, procedures and tax implications for foreign investors in the Italian real estate sector."
+      },
+      {
+        "date": "April 15, 2023",
+        "category": "Legislation",
+        "title": "E-commerce in Italy: Legal and Tax Requirements for Foreign Operators",
+        "excerpt": "A detailed analysis of regulatory and tax obligations for foreign companies wishing to sell online in the Italian market."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Subscribe to Our Newsletter",
+    "subtitle": "Stay updated on the latest tax and commercial news relevant to your business in Italy. Receive practical advice and opportunities directly in your inbox.",
+    "placeholder": "Your email address",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "privacy": "We respect your privacy. You can unsubscribe at any time.",
+    "success": {
+      "title": "Successfully subscribed",
+      "message": "Thank you for subscribing to our newsletter!"
+    },
+    "error": {
+      "title": "Subscription error",
+      "message": "There was an error subscribing to the newsletter. Please try again."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions about our services or would like a consultation? Fill out the contact form and our team will get back to you as soon as possible.",
+    "form": {
+      "name": "Full Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Service of Interest",
+      "servicePlaceholder": "Select a service",
+      "services": {
+        "formation": "Company Formation in Italy",
+        "accounting": "Accounting and Financial Statements",
+        "tax": "International Tax Consulting",
+        "planning": "Business Planning",
+        "payroll": "Payroll and HR Management",
+        "legal": "Legal Support",
+        "other": "Other"
+      },
+      "message": "Your Message",
+      "privacyConsent": "I consent to the processing of my personal data in accordance with the",
+      "privacyPolicy": "Privacy Policy",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailInvalid": "Please enter a valid email address",
+        "serviceRequired": "Please select a service",
+        "messageLength": "Message must be at least 10 characters long",
+        "privacyRequired": "You must accept the privacy policy"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "title": "Address",
+        "value": "Via Roma 123, 20121 Milan, Italy"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+39 02 1234 5678"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@dobusinessnew.it"
+      },
+      "hours": {
+        "title": "Opening Hours",
+        "value": "Monday - Friday: 9:00 - 18:00"
+      },
+      "officeImageAlt": "Our office"
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "success": {
+      "title": "Message sent",
+      "message": "Thank you for contacting us! We will respond as soon as possible."
+    },
+    "error": {
+      "title": "Message not sent",
+      "message": "There was an error sending your message. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "Experts in tax and commercial consulting for international companies and investors in Italy.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "cookies": "Cookie Policy"
+  }
+}

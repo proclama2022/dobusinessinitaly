@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 224 71.4% 4.1%;
+  --muted: 220 14.3% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71.4% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 71.4% 4.1%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --primary: 210 100% 35%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 43 78% 58%; /* #f8c12c */
+  --secondary-foreground: 0 0% 9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 210 100% 35%;
+  --radius: 0.5rem;
+
+  --primary-light: 210 92% 45%; /* #2a7cc7 */
+  --primary-dark: 210 100% 29%; /* #004494 */
+  --secondary-light: 43 100% 68%; /* #ffd15c */
+  --secondary-dark: 43 100% 45%; /* #e5a900 */
+
+  --neutral-100: 210 33% 96%; /* #f5f7fa */
+  --neutral-200: 210 16% 93%; /* #e9ecef */
+  --neutral-300: 210 14% 89%; /* #dee2e6 */
+  --neutral-400: 210 14% 83%; /* #ced4da */
+  --neutral-500: 210 11% 71%; /* #adb5bd */
+  --neutral-600: 208 7% 46%; /* #6c757d */
+  --neutral-700: 210 9% 31%; /* #495057 */
+  --neutral-800: 215 9% 23%; /* #343a40 */
+  --neutral-900: 210 11% 15%; /* #212529 */
+}
+
+.dark {
+  --background: 224 71.4% 4.1%;
+  --foreground: 210 40% 98%;
+  --muted: 215 27.9% 16.9%;
+  --muted-foreground: 217.9 10.6% 64.9%;
+  --popover: 224 71.4% 4.1%;
+  --popover-foreground: 210 40% 98%;
+  --card: 224 71.4% 4.1%;
+  --card-foreground: 210 40% 98%;
+  --border: 215 27.9% 16.9%;
+  --input: 215 27.9% 16.9%;
+  --primary: 210 100% 35%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 43 78% 58%;
+  --secondary-foreground: 0 0% 9%;
+  --accent: 215 27.9% 16.9%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 216 34% 17%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#f5f7fa] text-neutral-800 font-[Open_Sans];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[Montserrat] font-semibold;
+  }
+}
+
+.section-padding {
+  @apply py-16;
+}
+
+.container-custom {
+  @apply container mx-auto px-4;
+}
+
+.btn-primary {
+  @apply inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded-md transition duration-300;
+}
+
+.btn-secondary {
+  @apply inline-block bg-secondary hover:bg-secondary-light text-neutral-900 font-medium py-3 px-6 rounded-md transition duration-300;
+}
+
+.btn-outline {
+  @apply inline-block bg-white hover:bg-neutral-100 text-primary font-medium py-3 px-6 rounded-md transition duration-300;
+}
+
+.testimonial-slide {
+  @apply opacity-0 transition-opacity duration-500 absolute inset-0;
+}
+
+.testimonial-slide.active {
+  @apply opacity-100 static;
+}

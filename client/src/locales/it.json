@@ -1,0 +1,236 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Servizi",
+    "about": "Chi Siamo",
+    "blog": "Blog",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "title": "Expertise Contabile Per il Tuo Business Globale",
+    "subtitle": "Assistiamo aziende e investitori stranieri nel gestire con successo il loro business in Italia, fornendo consulenza fiscale e commerciale d'eccellenza.",
+    "contactButton": "Contattaci",
+    "servicesButton": "Scopri i Nostri Servizi",
+    "backgroundAlt": "Ufficio professionale di commercialisti"
+  },
+  "stats": {
+    "title": "La Nostra Esperienza in Numeri",
+    "subtitle": "I numeri parlano chiaro: la nostra comprovata esperienza nel supportare clienti internazionali con successo.",
+    "clients": {
+      "title": "Clienti Internazionali",
+      "description": "Aziende da tutto il mondo hanno scelto i nostri servizi"
+    },
+    "experience": {
+      "title": "Anni di Esperienza",
+      "description": "Al servizio di clienti nazionali e internazionali"
+    },
+    "professionals": {
+      "title": "Professionisti",
+      "description": "Un team multilingue di commercialisti ed esperti fiscali"
+    },
+    "volume": {
+      "title": "Euro Gestiti",
+      "description": "Volume d'affari annuo dei nostri clienti assistiti"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Perché Scegliere Noi",
+    "ctaButton": "Parla con un Esperto",
+    "mainImageAlt": "Riunione d'affari con clienti internazionali",
+    "smallImageAlt": "Grafici contabili",
+    "features": {
+      "international": {
+        "title": "Competenza Internazionale",
+        "description": "Conosciamo le sfide delle aziende straniere in Italia. Il nostro team multilingue fornisce assistenza in inglese, francese, tedesco e spagnolo."
+      },
+      "excellence": {
+        "title": "Eccellenza Professionale",
+        "description": "Professionisti certificati con esperienza pluriennale nella consulenza contabile e fiscale internazionale. Aggiornamento costante sulle normative."
+      },
+      "approach": {
+        "title": "Approccio Personalizzato",
+        "description": "Ogni cliente riceve soluzioni su misura per le proprie esigenze specifiche. Siamo il vostro partner strategico, non semplici fornitori di servizi."
+      },
+      "reliability": {
+        "title": "Tempestività e Affidabilità",
+        "description": "Rispondiamo rapidamente alle vostre richieste, rispettando scadenze e impegni. Potete contare su di noi per ogni aspetto del vostro business in Italia."
+      }
+    }
+  },
+  "services": {
+    "title": "I Nostri Servizi",
+    "subtitle": "Offriamo un'ampia gamma di servizi professionali per supportare le vostre attività commerciali in Italia.",
+    "items": {
+      "formation": {
+        "title": "Costituzione Società in Italia",
+        "description": "Assistenza completa per l'apertura di società di capitali e di persone in Italia, inclusi tutti gli adempimenti burocratici e fiscali.",
+        "link": "Maggiori informazioni"
+      },
+      "accounting": {
+        "title": "Contabilità e Bilancio",
+        "description": "Gestione completa della contabilità aziendale, redazione del bilancio d'esercizio e degli adempimenti fiscali periodici.",
+        "link": "Maggiori informazioni"
+      },
+      "tax": {
+        "title": "Consulenza Fiscale Internazionale",
+        "description": "Consulenza su trattati contro le doppie imposizioni, residenza fiscale, transfer pricing e ottimizzazione fiscale internazionale.",
+        "link": "Maggiori informazioni"
+      },
+      "planning": {
+        "title": "Business Planning",
+        "description": "Analisi di mercato, business plan, pianificazione strategica e consulenza per l'accesso a finanziamenti e investimenti in Italia.",
+        "link": "Maggiori informazioni"
+      },
+      "payroll": {
+        "title": "Gestione Payroll e HR",
+        "description": "Amministrazione del personale, elaborazione buste paga, consulenza su contratti di lavoro e normative italiane sul lavoro.",
+        "link": "Maggiori informazioni"
+      },
+      "legal": {
+        "title": "Supporto Legale",
+        "description": "Assistenza legale in materia commerciale, contrattualistica, compliance normativa e rappresentanza presso autorità italiane.",
+        "link": "Maggiori informazioni"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimonianze dei Nostri Clienti",
+    "subtitle": "Ecco cosa dicono di noi i nostri clienti internazionali.",
+    "previous": "Testimonianza precedente",
+    "next": "Testimonianza successiva",
+    "goToSlide": "Vai alla testimonianza",
+    "items": [
+      {
+        "quote": "Lavoriamo con DoBusinessNew da quando abbiamo deciso di espanderci in Italia tre anni fa. La loro competenza in materia fiscale internazionale e la capacità di spiegare concetti complessi in modo chiaro ci ha permesso di navigare con sicurezza nel sistema italiano. Altamente raccomandati.",
+        "name": "Robert Johnson",
+        "position": "CFO, TechGrowth GmbH - Germania"
+      },
+      {
+        "quote": "Il team di DoBusinessNew è stato fondamentale nella costituzione della nostra filiale italiana. La loro assistenza multilingue e la profonda conoscenza delle normative locali hanno semplificato enormemente il processo. Continuiamo ad affidarci a loro per tutte le questioni fiscali e contabili.",
+        "name": "Sophie Martin",
+        "position": "Direttore Operativo, Lumière Design - Francia"
+      },
+      {
+        "quote": "Come investitore straniero nel mercato immobiliare italiano, avevo bisogno di una consulenza fiscale e legale affidabile. DoBusinessNew mi ha offerto un servizio impeccabile, dandomi la tranquillità necessaria per concentrarmi sugli investimenti. La loro reattività è straordinaria.",
+        "name": "James Wilson",
+        "position": "CEO, Wilson Properties - Regno Unito"
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog e Aggiornamenti",
+    "subtitle": "Ultimi articoli e novità dal mondo fiscale e commerciale italiano.",
+    "viewAll": "Tutti gli articoli",
+    "readMore": "Leggi l'articolo",
+    "posts": [
+      {
+        "date": "12 Maggio 2023",
+        "category": "Fiscalità Internazionale",
+        "title": "Novità sul Regime Fiscale per Espatriati in Italia: Opportunità per Manager Stranieri",
+        "excerpt": "Analisi delle recenti modifiche al regime fiscale dedicato ai lavoratori impatriati e le opportunità per manager e professionisti stranieri."
+      },
+      {
+        "date": "28 Aprile 2023",
+        "category": "Investimenti",
+        "title": "Investire nel Mercato Immobiliare Italiano: Guida per Investitori Esteri",
+        "excerpt": "Una panoramica completa sulle opportunità, procedure e implicazioni fiscali per gli investitori stranieri nel settore immobiliare italiano."
+      },
+      {
+        "date": "15 Aprile 2023",
+        "category": "Legislazione",
+        "title": "E-commerce in Italia: Requisiti Legali e Fiscali per Operatori Stranieri",
+        "excerpt": "Un'analisi dettagliata degli obblighi normativi e fiscali per le aziende estere che vogliono vendere online nel mercato italiano."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Iscriviti alla Nostra Newsletter",
+    "subtitle": "Rimani aggiornato sulle ultime novità fiscali e commerciali rilevanti per il tuo business in Italia. Ricevi consigli pratici e opportunità direttamente nella tua casella di posta.",
+    "placeholder": "Il tuo indirizzo email",
+    "subscribe": "Iscriviti",
+    "subscribing": "Iscrizione in corso...",
+    "privacy": "Ci impegniamo a rispettare la tua privacy. Puoi annullare l'iscrizione in qualsiasi momento.",
+    "success": {
+      "title": "Iscrizione completata",
+      "message": "Grazie per esserti iscritto alla nostra newsletter!"
+    },
+    "error": {
+      "title": "Errore iscrizione",
+      "message": "Si è verificato un errore durante l'iscrizione alla newsletter. Riprova."
+    }
+  },
+  "contact": {
+    "title": "Contattaci",
+    "subtitle": "Hai domande sui nostri servizi o desideri una consulenza? Compila il modulo di contatto e il nostro team ti risponderà al più presto.",
+    "form": {
+      "name": "Nome e Cognome",
+      "company": "Azienda",
+      "email": "Email",
+      "phone": "Telefono",
+      "service": "Servizio di Interesse",
+      "servicePlaceholder": "Seleziona un servizio",
+      "services": {
+        "formation": "Costituzione Società in Italia",
+        "accounting": "Contabilità e Bilancio",
+        "tax": "Consulenza Fiscale Internazionale",
+        "planning": "Business Planning",
+        "payroll": "Gestione Payroll e HR",
+        "legal": "Supporto Legale",
+        "other": "Altro"
+      },
+      "message": "Il Tuo Messaggio",
+      "privacyConsent": "Acconsento al trattamento dei miei dati personali in conformità con la",
+      "privacyPolicy": "Privacy Policy",
+      "send": "Invia Messaggio",
+      "sending": "Invio in corso...",
+      "validation": {
+        "nameRequired": "Il nome è obbligatorio",
+        "emailInvalid": "Inserisci un indirizzo email valido",
+        "serviceRequired": "Seleziona un servizio",
+        "messageLength": "Il messaggio deve contenere almeno 10 caratteri",
+        "privacyRequired": "Devi accettare la privacy policy"
+      }
+    },
+    "info": {
+      "title": "Informazioni di Contatto",
+      "address": {
+        "title": "Indirizzo",
+        "value": "Via Roma 123, 20121 Milano, Italia"
+      },
+      "phone": {
+        "title": "Telefono",
+        "value": "+39 02 1234 5678"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@dobusinessnew.it"
+      },
+      "hours": {
+        "title": "Orari di Apertura",
+        "value": "Lunedì - Venerdì: 9:00 - 18:00"
+      },
+      "officeImageAlt": "Il nostro ufficio"
+    },
+    "social": {
+      "title": "Seguici"
+    },
+    "success": {
+      "title": "Messaggio inviato",
+      "message": "Grazie per averci contattato! Ti risponderemo al più presto."
+    },
+    "error": {
+      "title": "Messaggio non inviato",
+      "message": "Si è verificato un errore durante l'invio del messaggio. Riprova."
+    }
+  },
+  "footer": {
+    "tagline": "Esperti in consulenza fiscale e commerciale per aziende e investitori internazionali in Italia.",
+    "quickLinks": "Link Rapidi",
+    "services": "Servizi",
+    "contact": "Contatti",
+    "copyright": "Tutti i diritti riservati.",
+    "privacy": "Privacy Policy",
+    "terms": "Termini e Condizioni",
+    "cookies": "Cookie Policy"
+  }
+}
