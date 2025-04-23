@@ -118,24 +118,24 @@ const Blog = () => {
   const blogPosts = [
     {
       imgSrc: 'https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: t('blog.posts.0.date'),
-      category: t('blog.posts.0.category'),
-      title: t('blog.posts.0.title'),
-      excerpt: t('blog.posts.0.excerpt')
+      date: '15 Aprile 2023',
+      category: 'Fiscalità',
+      title: 'Agevolazioni Fiscali per Startup e PMI: Guida 2023',
+      excerpt: 'Le principali novità sulle agevolazioni fiscali destinate a startup e PMI innovative, con focus sulle deduzioni per gli investimenti in R&S.'
     },
     {
       imgSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: t('blog.posts.1.date'),
-      category: t('blog.posts.1.category'),
-      title: t('blog.posts.1.title'),
-      excerpt: t('blog.posts.1.excerpt')
+      date: '10 Aprile 2023',
+      category: 'Internazionalizzazione',
+      title: 'Espandersi all\'Estero: Strategie per le Aziende Italiane',
+      excerpt: 'Analisi delle opportunità e dei rischi per le aziende italiane che desiderano internazionalizzare il proprio business nell\'attuale contesto economico.'
     },
     {
       imgSrc: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: t('blog.posts.2.date'),
-      category: t('blog.posts.2.category'),
-      title: t('blog.posts.2.title'),
-      excerpt: t('blog.posts.2.excerpt')
+      date: '5 Aprile 2023',
+      category: 'Compliance',
+      title: 'Il nuovo Decreto Fiscale: Implicazioni per le Imprese',
+      excerpt: 'Tutte le novità contenute nel recente decreto fiscale e le implicazioni pratiche per imprenditori e manager delle PMI italiane.'
     },
     {
       imgSrc: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -185,7 +185,7 @@ const Blog = () => {
             {/* Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-6 animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
-              {t('blog.badge') || 'Insights & News'}
+              {'Insights & News'}
             </div>
             
             {/* Titolo principale */}
@@ -199,7 +199,7 @@ const Blog = () => {
             
             {/* Sottotitolo */}
             <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              {t('blog.subtitle') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
+              {'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
             </p>
             
             {/* Barra di ricerca blog */}
