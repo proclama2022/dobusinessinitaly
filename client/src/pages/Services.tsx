@@ -16,17 +16,7 @@ const Services = () => {
 
   return (
     <>
-      <div className="bg-primary py-24">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center">
-            {t('services.title')}
-          </h1>
-          <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
-            {t('services.subtitle')}
-          </p>
-        </div>
-      </div>
-      
+      {/* Utilizziamo direttamente ServicesSection che ora ha un header migliorato */}
       <ServicesSection />
       
       <div className="py-16 bg-neutral-100">
