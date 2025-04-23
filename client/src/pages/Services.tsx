@@ -21,9 +21,9 @@ const ServiceFeature = ({
   icon: string;
 }) => {
   return (
-    <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center mb-24`}>
+    <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 lg:gap-12 items-center mb-16`}>
       {/* Contenitore immagine con effetti */}
-      <div className="w-full lg:w-1/2 relative group overflow-hidden rounded-xl shadow-lg">
+      <div className="w-full lg:w-1/2 relative group overflow-hidden rounded-lg shadow-md">
         {/* Overlay con gradiente italiano al hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
         
@@ -31,8 +31,13 @@ const ServiceFeature = ({
         <img 
           src={imageSrc} 
           alt={imageAlt} 
-          className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-700"
         />
+        
+        {/* Badge con categoria nel corner */}
+        <div className="absolute top-3 right-3 px-3 py-1 bg-white/90 text-xs font-medium text-[#009246] rounded-full shadow-sm">
+          <i className={`${icon} mr-1`}></i> {title.split(" ")[0]}
+        </div>
         
         {/* Bordi decorativi */}
         <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
@@ -42,28 +47,28 @@ const ServiceFeature = ({
       {/* Contenuto testuale */}
       <div className="w-full lg:w-1/2 animate-slide-up">
         <div className="relative">
-          {/* Icona grande di sfondo con effetto di blur */}
-          <div className="absolute -top-6 -left-6 text-[100px] text-[#00924610] opacity-40">
+          {/* Icona di sfondo con effetto di blur */}
+          <div className="absolute -top-4 -left-4 text-[80px] text-[#00924610] opacity-40">
             <i className={icon}></i>
           </div>
           
           {/* Header con sottolineatura animata */}
-          <h3 className="text-2xl md:text-3xl font-heading font-bold mb-6 relative inline-block">
+          <h3 className="text-xl md:text-2xl font-heading font-bold mb-4 relative inline-block group">
             <span className="relative z-10">{title}</span>
             <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
           </h3>
           
           {/* Descrizione del servizio */}
-          <p className="text-neutral-700 leading-relaxed mb-6 relative z-10">
+          <p className="text-neutral-700 leading-relaxed mb-5 relative z-10 text-sm md:text-base">
             {description}
           </p>
           
           {/* Pulsante Contact Us con effetto hover */}
-          <Link href="/contact" className="group relative inline-flex items-center px-6 py-3 overflow-hidden rounded-md bg-neutral-100 text-neutral-800 transition-all duration-300">
+          <Link href="/contact" className="group relative inline-flex items-center px-5 py-2 text-sm overflow-hidden rounded-md bg-neutral-100 text-neutral-800 transition-all duration-300">
             <span className="absolute left-0 top-0 bottom-0 w-0 bg-[#009246] transition-all duration-300 ease-out group-hover:w-full"></span>
             <span className="relative flex items-center gap-2 font-medium group-hover:text-white transition-all duration-300 ease-out">
-              Richiedi una consulenza
-              <i className="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+              Richiedi informazioni
+              <i className="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
             </span>
           </Link>
         </div>
@@ -82,18 +87,18 @@ const Services = () => {
     document.title = `${t('services.title')} - DoBusinessNew`;
   }, [t]);
 
-  // Definizione dei servizi con dati reali basati su Proclama
+  // Definizione dei servizi con descrizioni più concise
   const serviceFeatures = [
     {
       title: "Commercialista e consulente del lavoro",
-      description: "In quasi trenta anni di attività professionale abbiamo approfondito tutti i temi ricorrenti e ordinari: costituzione e gestione fiscale, contabile e del lavoro di società di capitali. Ci occupiamo di operazioni straordinarie, quali fusioni, scissioni, trasformazioni, cessioni e conferimenti di azienda, aumenti di capitale e riorganizzazioni di gruppi societari.",
+      description: "Gestione fiscale e contabile per società di capitali con esperienza in operazioni straordinarie: fusioni, scissioni, trasformazioni, conferimenti di azienda e riorganizzazioni di gruppi societari.",
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/businessman-accountant-pressing-calculator-and-mak-2021-09-03-06-37-28-utc-2048x1365.jpg",
       imageAlt: "Commercialista e consulente del lavoro",
       icon: "fas fa-calculator"
     },
     {
       title: "Startup e PMI innovative",
-      description: "Abbiamo esperienza nella costituzione di startup e PMI innovative, nella verifica dei requisiti e consulenza, negli aumenti di capitale, nell'assistenza per operazioni di finanza specialistica, crowdfunding, e investimenti di fondi. Offriamo supporto completo agli imprenditori innovativi che vogliono trasformare le loro idee in business di successo.",
+      description: "Costituzione e assistenza alle startup e PMI innovative con supporto per finanziamenti, crowdfunding e investimenti. Trasformiamo le tue idee in business di successo con competenza ed efficienza.",
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg",
       imageAlt: "Startup e PMI innovative",
       icon: "fas fa-rocket",
@@ -101,24 +106,24 @@ const Services = () => {
     },
     {
       title: "Finanza agevolata e crediti di imposta",
-      description: "Ci occupiamo di Transizione digitale 4.0, bonus sud, fondi regionali, Voucher MISE e tutte le misure di agevolazione nazionali, regionali e comunitarie. Il nostro team di esperti è in grado di identificare le migliori opportunità di finanziamento e supportare le aziende in tutte le fasi del processo di richiesta e rendicontazione.",
+      description: "Accesso a Transizione 4.0, bonus regionali e misure di agevolazione nazionali e comunitarie. Identifichiamo le migliori opportunità di finanziamento per la tua azienda.",
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/finance-2021-08-30-04-48-36-utc-2048x1365.jpg",
       imageAlt: "Finanza agevolata e crediti di imposta",
       icon: "fas fa-file-invoice-dollar"
     },
     {
       title: "Ecommerce e web agency",
-      description: "Offriamo consulenza sulla gestione della fiscalità e delle problematiche specifiche degli ecommerce e delle web agency. Ci occupiamo del sistema OSS e IOSS e della gestione dei rapporti con gli altri stati europei ed extraeuropei, aree nelle quali abbiamo maturato un'esperienza ultradecennale al servizio delle imprese digitali.",
+      description: "Gestione fiscale specializzata per ecommerce e web agency, con esperienza nei sistemi OSS/IOSS e nelle relazioni con stati europei ed extraeuropei.",
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/e-commerce-and-electronic-banking-concept-man-usi-2021-12-14-19-50-10-utc-2048x1365.jpg",
       imageAlt: "Ecommerce e web agency",
       icon: "fas fa-shopping-cart",
       isReversed: true
     },
     {
-      title: "Business process management & business intelligence",
-      description: "Forniamo servizi di gestione dei processi aziendali, business intelligence e supporto alle attività di consulenza strategica all'imprenditore. Il nostro approccio innovativo e aziendale ci contraddistingue nel rapporto con i clienti, permettendoci di offrire soluzioni su misura per ottimizzare le performance e promuovere la crescita del business.",
+      title: "Business intelligence",
+      description: "Ottimizzazione dei processi aziendali e supporto strategico con soluzioni personalizzate per migliorare performance e crescita del business.",
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-hand-robot-handshake-artificial-intellig-2021-10-13-21-43-17-utc-2048x1366.jpg",
-      imageAlt: "Business process management & business intelligence",
+      imageAlt: "Business intelligence",
       icon: "fas fa-cogs"
     }
   ];
@@ -159,7 +164,7 @@ const Services = () => {
             
             {/* Sottotitolo con introduzione */}
             <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              {t('services.longDescription') || 'DoBusinessNew è una società tra professionisti con un focus specifico sull\'innovazione, la digitalizzazione e la qualità dei servizi. Oltre ad attività di consulenza "classica" la nostra mission è fornire ai nostri clienti un ampio pacchetto di servizi aggiuntivi focalizzati sullo sviluppo del business, sull\'innovazione e la crescita.'}
+              {t('services.longDescription') || 'Offriamo consulenza avanzata con focus su innovazione, digitalizzazione e qualità. La nostra mission è supportare i clienti nello sviluppo del business, nell\'innovazione e nella crescita.'}
             </p>
             
             {/* Call to action */}
@@ -194,7 +199,7 @@ const Services = () => {
           </div>
           
           {/* Elenco dei servizi con alternanza immagine/testo */}
-          <div className="space-y-16">
+          <div className="space-y-12">
             {serviceFeatures.map((service, index) => (
               <ServiceFeature
                 key={index}
