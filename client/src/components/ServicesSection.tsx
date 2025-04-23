@@ -122,10 +122,10 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
+    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-neutral-50">
       {/* Elementi decorativi con la bandiera italiana */}
-      <div className="absolute top-0 left-0 w-2 h-full bg-[#009246]"></div>
-      <div className="absolute top-0 right-0 w-2 h-full bg-[#ce2b37]"></div>
+      <div className="absolute top-0 left-0 w-1 h-full bg-[#009246]"></div>
+      <div className="absolute top-0 right-0 w-1 h-full bg-[#ce2b37]"></div>
       
       {/* Pattern decorativo sullo sfondo */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -133,25 +133,27 @@ const ServicesSection = () => {
       ></div>
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20 relative">
+        <div className="text-center mb-16 relative">
           {/* Decorazioni animate dell'header */}
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 opacity-10 bg-[#009246] rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
           <div className="absolute -top-10 left-1/3 -translate-x-1/2 w-32 h-32 opacity-10 bg-[#ce2b37] rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDuration: '7s' }}></div>
           <div className="absolute -top-10 right-1/3 translate-x-1/2 w-32 h-32 opacity-10 bg-[#009246] rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDuration: '4s' }}></div>
           
           {/* Titolo con effetti */}
-          <div className="relative inline-block animate-fade-in mb-2">
+          <div className="relative inline-block animate-fade-in">
             <span className="absolute -top-8 -left-8 w-6 h-6 opacity-20 bg-[#009246] animate-ping"></span>
             <span className="absolute -bottom-8 -right-8 w-6 h-6 opacity-20 bg-[#ce2b37] animate-ping" style={{ animationDuration: '3s' }}></span>
             
-            <h2 className="text-5xl font-heading font-bold mb-6 relative">
+            <h2 className="text-5xl font-heading font-bold mb-4 relative inline-flex items-center">
               <span className="text-[#009246]">Our </span>
-              <span className="relative">
+              <span className="relative pl-2">
                 Services
                 <span className="absolute -bottom-2 left-0 right-0 h-1.5 italian-gradient"></span>
               </span>
             </h2>
           </div>
+          
+          <div className="h-1 w-24 italian-gradient mx-auto mb-6"></div>
           
           <p className="text-neutral-600 max-w-3xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '0.3s' }}>
             {t('services.subtitle')}
