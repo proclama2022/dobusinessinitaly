@@ -289,5 +289,49 @@
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions Générales",
     "cookies": "Politique de Cookies"
+  },
+  "about": {
+    "badge": "Notre entreprise",
+    "title": "À Propos",
+    "titlePrefix": "À",
+    "titleMain": "Propos",
+    "longDescription": "Une réalité jeune et dynamique qui vise à renverser le paradigme traditionnel du cabinet professionnel. Les compétences, la méritocratie et l'égalité des chances sont notre mission.",
+    "contactButton": "Contactez-nous",
+    "teamButton": "Notre équipe",
+    "paradigmTitle": "Un nouveau paradigme professionnel",
+    "paradigmDescription1": "Une réalité jeune et dynamique qui vise à renverser le paradigme traditionnel du cabinet professionnel, basé sur la figure centrale du dominus. Les compétences, la méritocratie et l'égalité des chances sont notre mission.",
+    "paradigmDescription2": "Agrégation, spécialisation, numérisation et organisation sont les piliers à la base de notre culture professionnelle.",
+    "diversityQuote": "Plus de 50% des associés, collaborateurs et partenaires ont moins de 40 ans et sont des femmes. Un mélange de nouvelles compétences professionnelles et d'expérience consolidée dans le secteur du conseil, à la disposition de nos clients.",
+    "teamImage": "Notre équipe",
+    "stats": {
+      "partners": "Associés",
+      "employees": "Employés",
+      "collaborators": "Collaborateurs",
+      "womenPercentage": "Femmes dans l'équipe"
+    },
+    "teamSection": {
+      "badge": "Notre équipe",
+      "titlePrefix": "Nos",
+      "titleMain": "personnes",
+      "description": "Professionnels hautement qualifiés avec de l'expérience et de l'expertise dans leurs domaines respectifs.",
+      "roles": {
+        "founder": "Fondateur",
+        "ceo": "PDG",
+        "founderCeo": "Fondateur & PDG",
+        "partner": "Associé"
+      },
+      "specialties": {
+        "accountant": "Expert-comptable et commissaire aux comptes, spécialisé dans la fiscalité pour e-commerce, agences web, startups et PME innovantes",
+        "consultant": "Expert-comptable et commissaire aux comptes, spécialisé dans le conseil en entreprise et en gestion, l'organisation d'entreprise, la finance subventionnée",
+        "labor": "Consultant en droit du travail",
+        "digital": "Expert-comptable et commissaire aux comptes, spécialisé dans les startups et les PME innovantes, la numérisation des processus d'entreprise",
+        "itAccounting": "Expert-comptable et commissaire aux comptes, spécialisé dans les états financiers et la fiscalité des entreprises informatiques",
+        "laborSpecialist": "Expert-comptable spécialisé dans le conseil en droit du travail"
+      }
+    },
+    "valuesSection": {
+      "title": "Nos valeurs",
+      "description": "Professionnels hautement qualifiés avec des expériences multidisciplinaires pour des solutions intégrées."
+    }
   }
 }

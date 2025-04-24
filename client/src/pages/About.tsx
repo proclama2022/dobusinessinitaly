@@ -192,9 +192,9 @@ const About = () => {
             
             {/* Titolo principale */}
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">Chi </span>
+              <span className="text-[#009246]">{t('about.titlePrefix')} </span>
               <span className="relative">
-                Siamo
+                {t('about.titleMain')}
                 <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
               </span>
             </h1>
@@ -207,10 +207,10 @@ const About = () => {
             {/* Call to action */}
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <Link href="/contact" className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                Contattaci
+                {t('about.contactButton')}
               </Link>
               <a href="#team" className="px-6 py-3 rounded-md bg-white text-neutral-800 font-medium border border-neutral-200 hover:border-neutral-300 transition-all shadow-sm hover:shadow flex items-center gap-2">
-                Il nostro team
+                {t('about.teamButton')}
                 <i className="fas fa-arrow-down text-sm"></i>
               </a>
             </div>
@@ -226,17 +226,17 @@ const About = () => {
             <div className="animate-fade-in">
               <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
                 <span className="relative">
-                  Un nuovo paradigma professionale
+                  {t('about.paradigmTitle')}
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
                 </span>
               </h2>
               
               <p className="text-neutral-700 mb-6 text-lg leading-relaxed">
-                Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale, basato sulla figura centrale del dominus. Competenze, meritocrazia, pari opportunità sono la nostra mission.
+                {t('about.paradigmDescription1')}
               </p>
               
               <p className="text-neutral-700 mb-8 leading-relaxed">
-                Aggregazione, specializzazione, digitalizzazione, organizzazione sono i pilastri alla base della nostra cultura professionale.
+                {t('about.paradigmDescription2')}
               </p>
               
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">

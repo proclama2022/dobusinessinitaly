@@ -289,5 +289,49 @@
     "privacy": "Privacy Policy",
     "terms": "Termini e Condizioni",
     "cookies": "Cookie Policy"
+  },
+  "about": {
+    "badge": "La nostra azienda",
+    "title": "Chi Siamo",
+    "titlePrefix": "Chi",
+    "titleMain": "Siamo",
+    "longDescription": "Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale. Competenze, meritocrazia, pari opportunità sono la nostra mission.",
+    "contactButton": "Contattaci",
+    "teamButton": "Il nostro team",
+    "paradigmTitle": "Un nuovo paradigma professionale",
+    "paradigmDescription1": "Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale, basato sulla figura centrale del dominus. Competenze, meritocrazia, pari opportunità sono la nostra mission.",
+    "paradigmDescription2": "Aggregazione, specializzazione, digitalizzazione, organizzazione sono i pilastri alla base della nostra cultura professionale.",
+    "diversityQuote": "Oltre il 50% dei soci, collaboratori e partner ha meno di 40 anni ed è di sesso femminile. Un mix di nuove competenze professionali e esperienza consolidata nel settore della consulenza, a disposizione dei nostri clienti.",
+    "teamImage": "Il nostro team",
+    "stats": {
+      "partners": "Soci",
+      "employees": "Dipendenti",
+      "collaborators": "Collaboratori",
+      "womenPercentage": "Donne nel team"
+    },
+    "teamSection": {
+      "badge": "Il nostro team",
+      "titlePrefix": "Le",
+      "titleMain": "nostre persone",
+      "description": "Professionisti altamente qualificati con esperienza e competenza nei rispettivi settori.",
+      "roles": {
+        "founder": "Founder",
+        "ceo": "CEO",
+        "founderCeo": "Founder & CEO",
+        "partner": "Socio"
+      },
+      "specialties": {
+        "accountant": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
+        "consultant": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
+        "labor": "Consulente del lavoro",
+        "digital": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
+        "itAccounting": "Dottore commercialista e revisore legale, specializzato in bilancio e fiscalità di società IT",
+        "laborSpecialist": "Dottore commercialista specializzato in consulenza del lavoro"
+      }
+    },
+    "valuesSection": {
+      "title": "I nostri valori",
+      "description": "Professionisti altamente qualificati con esperienze multidisciplinari per soluzioni integrate."
+    }
   }
 }

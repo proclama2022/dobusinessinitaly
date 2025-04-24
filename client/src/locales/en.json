@@ -289,5 +289,49 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
     "cookies": "Cookie Policy"
+  },
+  "about": {
+    "badge": "Our company",
+    "title": "About Us",
+    "titlePrefix": "About",
+    "titleMain": "Us",
+    "longDescription": "A young and dynamic reality that aims to subvert the traditional professional firm paradigm. Skills, meritocracy, and equal opportunities are our mission.",
+    "contactButton": "Contact Us",
+    "teamButton": "Our team",
+    "paradigmTitle": "A new professional paradigm",
+    "paradigmDescription1": "A young and dynamic reality that aims to subvert the traditional professional firm paradigm, based on the central figure of the dominus. Skills, meritocracy, and equal opportunities are our mission.",
+    "paradigmDescription2": "Aggregation, specialization, digitalization, and organization are the pillars at the base of our professional culture.",
+    "diversityQuote": "Over 50% of partners, collaborators, and staff are under 40 years old and female. A mix of new professional skills and consolidated experience in the consulting sector, available to our clients.",
+    "teamImage": "Our team",
+    "stats": {
+      "partners": "Partners",
+      "employees": "Employees",
+      "collaborators": "Collaborators",
+      "womenPercentage": "Women in team"
+    },
+    "teamSection": {
+      "badge": "Our team",
+      "titlePrefix": "Our",
+      "titleMain": "people",
+      "description": "Highly qualified professionals with experience and expertise in their respective fields.",
+      "roles": {
+        "founder": "Founder",
+        "ceo": "CEO",
+        "founderCeo": "Founder & CEO",
+        "partner": "Partner"
+      },
+      "specialties": {
+        "accountant": "Chartered accountant and statutory auditor, specialized in taxation for e-commerce, web agencies, startups and innovative SMEs",
+        "consultant": "Chartered accountant and statutory auditor, specialized in business and management consulting, business organization, subsidized finance",
+        "labor": "Labor consultant",
+        "digital": "Chartered accountant and statutory auditor, specialized in startups and innovative SMEs, digitalization of business processes",
+        "itAccounting": "Chartered accountant and statutory auditor, specialized in financial statements and taxation of IT companies",
+        "laborSpecialist": "Chartered accountant specialized in labor consulting"
+      }
+    },
+    "valuesSection": {
+      "title": "Our values",
+      "description": "Highly qualified professionals with multidisciplinary experiences for integrated solutions."
+    }
   }
 }
