@@ -250,10 +250,10 @@ const Services = () => {
                 <i className="fas fa-globe text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {'Esperienza internazionale'}
+                {t('services.whyUs.reasons.international.title')}
               </h3>
               <p className="text-neutral-600">
-                {'Supportiamo clienti in tutta Europa con un team multilingue che comprende le dinamiche dei mercati internazionali.'}
+                {t('services.whyUs.reasons.international.description')}
               </p>
             </div>
             
@@ -262,10 +262,10 @@ const Services = () => {
                 <i className="fas fa-certificate text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {'Qualità certificata'}
+                {t('services.whyUs.reasons.quality.title')}
               </h3>
               <p className="text-neutral-600">
-                {'Rispettiamo i più alti standard professionali con procedure certificate e continuo aggiornamento del nostro team.'}
+                {t('services.whyUs.reasons.quality.description')}
               </p>
             </div>
             
@@ -274,10 +274,10 @@ const Services = () => {
                 <i className="fas fa-handshake text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {'Approccio personalizzato'}
+                {t('services.whyUs.reasons.custom.title')}
               </h3>
               <p className="text-neutral-600">
-                {'Ogni cliente è unico: sviluppiamo soluzioni su misura basate su esigenze specifiche e obiettivi di business.'}
+                {t('services.whyUs.reasons.custom.description')}
               </p>
             </div>
             
@@ -286,10 +286,10 @@ const Services = () => {
                 <i className="fas fa-bolt text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {'Affidabilità e rapidità'}
+                {t('services.whyUs.reasons.speed.title')}
               </h3>
               <p className="text-neutral-600">
-                {'Rispondiamo tempestivamente alle richieste dei clienti e garantiamo consulenza puntuale anche nelle situazioni di maggiore urgenza.'}
+                {t('services.whyUs.reasons.speed.description')}
               </p>
             </div>
           </div>
