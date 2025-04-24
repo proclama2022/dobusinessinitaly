@@ -20,6 +20,7 @@ const ServiceFeature = ({
   isReversed?: boolean;
   icon: string;
 }) => {
+  const { t } = useTranslation();
   return (
     <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 lg:gap-12 items-center mb-16`}>
       {/* Contenitore immagine con effetti */}
@@ -67,7 +68,7 @@ const ServiceFeature = ({
           <Link href="/contact" className="group relative inline-flex items-center px-5 py-2 text-sm overflow-hidden rounded-md bg-neutral-100 text-neutral-800 transition-all duration-300">
             <span className="absolute left-0 top-0 bottom-0 w-0 bg-[#009246] transition-all duration-300 ease-out group-hover:w-full"></span>
             <span className="relative flex items-center gap-2 font-medium group-hover:text-white transition-all duration-300 ease-out">
-              Richiedi informazioni
+              {t('services.cta.requestInfo')}
               <i className="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
             </span>
           </Link>
@@ -90,40 +91,40 @@ const Services = () => {
   // Definizione dei servizi con descrizioni più concise
   const serviceFeatures = [
     {
-      title: "Commercialista e consulente del lavoro",
-      description: "Gestione fiscale e contabile per società di capitali con esperienza in operazioni straordinarie: fusioni, scissioni, trasformazioni, conferimenti di azienda e riorganizzazioni di gruppi societari.",
+      title: t('services.features.accountant.title'),
+      description: t('services.features.accountant.description'),
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/businessman-accountant-pressing-calculator-and-mak-2021-09-03-06-37-28-utc-2048x1365.jpg",
-      imageAlt: "Commercialista e consulente del lavoro",
+      imageAlt: t('services.features.accountant.title'),
       icon: "fas fa-calculator"
     },
     {
-      title: "Startup e PMI innovative",
-      description: "Costituzione e assistenza alle startup e PMI innovative con supporto per finanziamenti, crowdfunding e investimenti. Trasformiamo le tue idee in business di successo con competenza ed efficienza.",
+      title: t('services.features.startup.title'),
+      description: t('services.features.startup.description'),
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg",
-      imageAlt: "Startup e PMI innovative",
+      imageAlt: t('services.features.startup.title'),
       icon: "fas fa-rocket",
       isReversed: true
     },
     {
-      title: "Finanza agevolata e crediti di imposta",
-      description: "Accesso a Transizione 4.0, bonus regionali e misure di agevolazione nazionali e comunitarie. Identifichiamo le migliori opportunità di finanziamento per la tua azienda.",
+      title: t('services.features.finance.title'),
+      description: t('services.features.finance.description'),
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/finance-2021-08-30-04-48-36-utc-2048x1365.jpg",
-      imageAlt: "Finanza agevolata e crediti di imposta",
+      imageAlt: t('services.features.finance.title'),
       icon: "fas fa-file-invoice-dollar"
     },
     {
-      title: "Ecommerce e web agency",
-      description: "Gestione fiscale specializzata per ecommerce e web agency, con esperienza nei sistemi OSS/IOSS e nelle relazioni con stati europei ed extraeuropei.",
+      title: t('services.features.ecommerce.title'),
+      description: t('services.features.ecommerce.description'),
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/e-commerce-and-electronic-banking-concept-man-usi-2021-12-14-19-50-10-utc-2048x1365.jpg",
-      imageAlt: "Ecommerce e web agency",
+      imageAlt: t('services.features.ecommerce.title'),
       icon: "fas fa-shopping-cart",
       isReversed: true
     },
     {
-      title: "Business intelligence",
-      description: "Ottimizzazione dei processi aziendali e supporto strategico con soluzioni personalizzate per migliorare performance e crescita del business.",
+      title: t('services.features.business.title'),
+      description: t('services.features.business.description'),
       imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-hand-robot-handshake-artificial-intellig-2021-10-13-21-43-17-utc-2048x1366.jpg",
-      imageAlt: "Business intelligence",
+      imageAlt: t('services.features.business.title'),
       icon: "fas fa-cogs"
     }
   ];
