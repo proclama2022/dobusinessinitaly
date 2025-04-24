@@ -155,9 +155,9 @@ const Services = () => {
             
             {/* Titolo principale con stile italiano */}
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">Our </span>
+              <span className="text-[#009246]">I nostri </span>
               <span className="relative">
-                Services
+                Servizi
                 <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
               </span>
             </h1>
@@ -274,10 +274,10 @@ const Services = () => {
                 <i className="fas fa-handshake text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {t('whyChooseUs.features.approach.title')}
+                {'Approccio personalizzato'}
               </h3>
               <p className="text-neutral-600">
-                {t('whyChooseUs.features.approach.description')}
+                {'Ogni cliente è unico: sviluppiamo soluzioni su misura basate su esigenze specifiche e obiettivi di business.'}
               </p>
             </div>
             
@@ -286,10 +286,10 @@ const Services = () => {
                 <i className="fas fa-bolt text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {t('whyChooseUs.features.reliability.title')}
+                {'Affidabilità e rapidità'}
               </h3>
               <p className="text-neutral-600">
-                {t('whyChooseUs.features.reliability.description')}
+                {'Rispondiamo tempestivamente alle richieste dei clienti e garantiamo consulenza puntuale anche nelle situazioni di maggiore urgenza.'}
               </p>
             </div>
           </div>
