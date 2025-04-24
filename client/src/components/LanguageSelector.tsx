@@ -14,7 +14,8 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   
   const languages = [
     { code: 'it', name: 'Italiano', flag: 'https://flagcdn.com/w20/it.png' },
-    { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' }
+    { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
+    { code: 'fr', name: 'Français', flag: 'https://flagcdn.com/w20/fr.png' }
   ];
 
   const getCurrentLanguageInfo = () => {
