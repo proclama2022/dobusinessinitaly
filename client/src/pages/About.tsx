@@ -159,10 +159,10 @@ const About = () => {
 
   // Dati delle statistiche
   const stats = [
-    { number: "6", label: "Soci", icon: "fas fa-user-tie" },
-    { number: "6", label: "Dipendenti", icon: "fas fa-users" },
-    { number: "20+", label: "Collaboratori", icon: "fas fa-handshake" },
-    { number: "50%", label: "Donne nel team", icon: "fas fa-venus" }
+    { number: "6", label: t('about.stats.partners'), icon: "fas fa-user-tie" },
+    { number: "6", label: t('about.stats.employees'), icon: "fas fa-users" },
+    { number: "20+", label: t('about.stats.collaborators'), icon: "fas fa-handshake" },
+    { number: "50%", label: t('about.stats.womenPercentage'), icon: "fas fa-venus" }
   ];
 
   return (
@@ -251,7 +251,7 @@ const About = () => {
               </div>
               
               <p className="text-neutral-700 italic border-l-4 border-[#009246] pl-4 py-2 bg-neutral-50">
-                Oltre il 50% dei soci, collaboratori e partner ha meno di 40 anni ed è di sesso femminile. Un mix di nuove competenze professionali e esperienza consolidata nel settore della consulenza, a disposizione dei nostri clienti.
+                {t('about.diversityQuote')}
               </p>
             </div>
             
@@ -260,7 +260,7 @@ const About = () => {
               <div className="rounded-xl overflow-hidden shadow-xl border border-neutral-100 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
                 <img 
                   src="https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg" 
-                  alt="Il nostro team" 
+                  alt={t('about.teamImage')} 
                   className="w-full h-auto"
                 />
               </div>
@@ -282,19 +282,19 @@ const About = () => {
           <div className="text-center mb-16 relative">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#ce2b3715] text-[#ce2b37] text-sm font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-[#ce2b37] mr-2"></span>
-              Il nostro team
+              {t('about.teamSection.badge')}
             </div>
             
             <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-              <span className="text-[#ce2b37]">Le </span>
+              <span className="text-[#ce2b37]">{t('about.teamSection.titlePrefix')} </span>
               <span className="relative pl-2">
-                nostre persone
+                {t('about.teamSection.titleMain')}
                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246]"></span>
               </span>
             </h2>
             
             <p className="text-neutral-600 max-w-2xl mx-auto">
-              Professionisti altamente qualificati con esperienza e competenza nei rispettivi settori.
+              {t('about.teamSection.description')}
             </p>
             
             {/* Elemento decorativo */}
@@ -332,9 +332,8 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-heading font-bold mb-8 relative inline-flex">
-              <span className="text-[#009246]">I nostri </span>
+              <span className="text-[#009246]">{t('about.valuesSection.title')} </span>
               <span className="relative pl-2">
-                valori
                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#ce2b37]"></span>
               </span>
             </h2>
@@ -345,7 +344,7 @@ const About = () => {
                   <i className="fas fa-users"></i>
                 </div>
                 <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#009246] transition-colors">Competenze</h3>
-                <p className="text-neutral-600 text-sm">Professionisti altamente qualificati con esperienze multidisciplinari per soluzioni integrate.</p>
+                <p className="text-neutral-600 text-sm">{t('about.valuesSection.description')}</p>
               </div>
               
               <div className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group">
