@@ -17,10 +17,10 @@ const Contact = () => {
       <div className="bg-primary py-24">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center">
-            {t('contact.title')}
+            {'Contattaci'}
           </h1>
           <p className="text-white/80 text-center mt-4 max-w-2xl mx-auto">
-            {t('contact.subtitle')}
+            {'Hai domande? Siamo qui per aiutarti. Contattaci tramite il modulo o utilizzando i nostri recapiti diretti.'}
           </p>
         </div>
       </div>
@@ -31,7 +31,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading font-semibold text-neutral-800 mb-4">
-              {t('contact.info.address.title')}
+              {'La nostra sede'}
             </h2>
           </div>
           
