@@ -108,14 +108,14 @@ const ContactSection = () => {
           </h2>
           
           <p className="text-neutral-700 max-w-2xl mx-auto text-lg font-light">
-            {'Hai domande sui nostri servizi o desideri una consulenza? Compila il modulo di contatto e il nostro team ti risponderà al più presto.'}
+            {t('contact.subtitle')}
           </p>
           
           {/* Badge decorativo */}
           <div className="max-w-xs mx-auto mt-8 mb-4 flex items-center justify-center">
             <span className="h-px w-12 bg-neutral-200"></span>
             <div className="mx-4 px-4 py-1 rounded-full border border-neutral-200 text-xs text-neutral-500 font-medium">
-              {'Contattaci'} 
+              {t('contact.contactInfo')} 
             </div>
             <span className="h-px w-12 bg-neutral-200"></span>
           </div>
@@ -132,7 +132,7 @@ const ContactSection = () => {
               
               <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
                 <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#009246]">
-                  {'Modulo di Contatto'}
+                  {t('contact.form.title')}
                 </span>
               </h3>
               
@@ -326,19 +326,19 @@ const ContactSection = () => {
               <div className="mb-8 overflow-hidden rounded-lg shadow-md group relative">
                 <img 
                   src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                  alt={'Ufficio principale di DoBusinessNew'}
+                  alt={t('contact.info.officeImageAlt')}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-medium">{'Sede centrale di Milano'}</p>
+                  <p className="text-white text-sm font-medium">{t('contact.info.address.value')}</p>
                 </div>
               </div>
               
               <div className="mb-8">
                 <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
                   <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#ce2b37]">
-                    {'Informazioni di Contatto'}
+                    {t('contact.info.title')}
                   </span>
                 </h3>
                 
@@ -350,8 +350,8 @@ const ContactSection = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-semibold text-neutral-800">{'Indirizzo'}</h4>
-                      <p className="text-neutral-600 mt-1">{'Via Dante 12, 20121 Milano, Italia'}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.address.label')}</h4>
+                      <p className="text-neutral-600 mt-1">{t('contact.info.address.value')}</p>
                     </div>
                   </div>
                   
@@ -362,10 +362,10 @@ const ContactSection = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-semibold text-neutral-800">{'Telefono'}</h4>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.phone.label')}</h4>
                       <p className="text-neutral-600 mt-1">
                         <a href="tel:+390245678901" className="hover:text-[#009246] transition-colors">
-                          {'+39 02 4567 8901'}
+                          {t('contact.info.phone.value')}
                         </a>
                       </p>
                     </div>
