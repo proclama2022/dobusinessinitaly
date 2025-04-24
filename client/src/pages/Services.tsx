@@ -150,30 +150,30 @@ const Services = () => {
             {/* Badge identificativo */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-6 animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
-              {'I nostri servizi professionali'}
+              {t('services.subtitle')}
             </div>
             
             {/* Titolo principale con stile italiano */}
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">I nostri </span>
+              <span className="text-[#009246]">{t('services.titlePrefix')} </span>
               <span className="relative">
-                Servizi
+                {t('services.titleMain')}
                 <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
               </span>
             </h1>
             
             {/* Sottotitolo con introduzione */}
             <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              {'Offriamo consulenza avanzata con focus su innovazione, digitalizzazione e qualità. La nostra mission è supportare i clienti nello sviluppo del business, nell\'innovazione e nella crescita.'}
+              {t('services.description')}
             </p>
             
             {/* Call to action */}
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <Link href="/contact" className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                Richiedi una consulenza
+                {t('services.cta.requestConsultation')}
               </Link>
               <a href="#services-list" className="px-6 py-3 rounded-md bg-white text-neutral-800 font-medium border border-neutral-200 hover:border-neutral-300 transition-all shadow-sm hover:shadow flex items-center gap-2">
-                Scopri i servizi
+                {t('services.cta.discoverServices')}
                 <i className="fas fa-arrow-down text-sm"></i>
               </a>
             </div>
@@ -187,14 +187,14 @@ const Services = () => {
           {/* Header della sezione */}
           <div className="text-center mb-16">
             <h2 className="text-3xl font-heading font-bold mb-4 relative inline-flex">
-              <span className="text-[#009246]">Cosa </span>
+              <span className="text-[#009246]">{t('services.whatPrefix')} </span>
               <span className="relative pl-2">
-                facciamo
+                {t('services.whatMain')}
                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#ce2b37]"></span>
               </span>
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto">
-              {'Offriamo una vasta gamma di servizi professionali per supportare la tua attività in Italia e nel mondo. Il nostro team di esperti è pronto ad assisterti in ogni fase del tuo business.'}
+              {t('services.whatDescription')}
             </p>
           </div>
           
@@ -227,19 +227,19 @@ const Services = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#ce2b3715] text-[#ce2b37] text-sm font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-[#ce2b37] mr-2"></span>
-              {'I nostri vantaggi'}
+              {t('services.whyUs.subtitle')}
             </div>
             
             <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-              <span className="text-[#ce2b37]">Perché </span>
+              <span className="text-[#ce2b37]">{t('services.whyUs.titlePrefix')} </span>
               <span className="relative pl-2">
-                sceglierci
+                {t('services.whyUs.titleMain')}
                 <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246]"></span>
               </span>
             </h2>
             
             <p className="text-neutral-600 max-w-2xl mx-auto">
-              {'Le ragioni per cui i nostri clienti ci scelgono e continuano a fidarsi di noi per la gestione delle loro attività'}
+              {t('services.whyUs.description')}
             </p>
           </div>
           
