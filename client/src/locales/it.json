@@ -150,29 +150,14 @@
       }
     }
   },
-  "testimonials": {
-    "title": "Testimonianze dei Nostri Clienti",
-    "subtitle": "Ecco cosa dicono di noi i nostri clienti internazionali.",
-    "previous": "Testimonianza precedente",
-    "next": "Testimonianza successiva",
-    "goToSlide": "Vai alla testimonianza",
-    "items": [
-      {
-        "quote": "Lavoriamo con DoBusinessNew da quando abbiamo deciso di espanderci in Italia tre anni fa. La loro competenza in materia fiscale internazionale e la capacità di spiegare concetti complessi in modo chiaro ci ha permesso di navigare con sicurezza nel sistema italiano. Altamente raccomandati.",
-        "name": "Robert Johnson",
-        "position": "CFO, TechGrowth GmbH - Germania"
-      },
-      {
-        "quote": "Il team di DoBusinessNew è stato fondamentale nella costituzione della nostra filiale italiana. La loro assistenza multilingue e la profonda conoscenza delle normative locali hanno semplificato enormemente il processo. Continuiamo ad affidarci a loro per tutte le questioni fiscali e contabili.",
-        "name": "Sophie Martin",
-        "position": "Direttore Operativo, Lumière Design - Francia"
-      },
-      {
-        "quote": "Come investitore straniero nel mercato immobiliare italiano, avevo bisogno di una consulenza fiscale e legale affidabile. DoBusinessNew mi ha offerto un servizio impeccabile, dandomi la tranquillità necessaria per concentrarmi sugli investimenti. La loro reattività è straordinaria.",
-        "name": "James Wilson",
-        "position": "CEO, Wilson Properties - Regno Unito"
-      }
-    ]
+  "media": {
+    "title": "Parlano di Noi",
+    "subtitle": "Scopri cosa dicono di DoBusinessNew la stampa e i media specializzati nel settore economico-finanziario.",
+    "typeArticle": "Articolo",
+    "typeProfile": "Profilo",
+    "typeMention": "Menzione",
+    "readMore": "Leggi l'articolo completo",
+    "seeAll": "Vedi tutte le menzioni"
   },
   "blog": {
     "title": "Blog e Aggiornamenti",

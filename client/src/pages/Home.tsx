@@ -2,7 +2,7 @@ import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import ServicesSection from '@/components/ServicesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
+import MediaCoverageSection from '@/components/MediaCoverageSection';
 import BlogSection from '@/components/BlogSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import ContactSection from '@/components/ContactSection';
@@ -22,7 +22,7 @@ const Home = () => {
       <StatsSection />
       <WhyChooseUs />
       <ServicesSection />
-      <TestimonialsSection />
+      <MediaCoverageSection />
       <BlogSection />
       <NewsletterSection />
       <ContactSection />

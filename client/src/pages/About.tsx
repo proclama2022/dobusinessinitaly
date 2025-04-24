@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'wouter';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
+import MediaCoverageSection from '@/components/MediaCoverageSection';
 import NewsletterSection from '@/components/NewsletterSection';
 
 // Componente per la card del membro del team
