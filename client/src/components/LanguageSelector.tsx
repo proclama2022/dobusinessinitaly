@@ -1,16 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useLocation } from 'wouter';
+import { useLanguagePrefix } from '@/hooks/use-language-prefix';
 
 type LanguageSelectorProps = {
   isMobile?: boolean;
 };
 
 const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
-  const { i18n } = useTranslation();
+  const { currentLanguage, changeLanguage } = useLanguagePrefix();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  const currentLanguage = i18n.language;
   
   const languages = [
     { code: 'it', name: 'Italiano', flag: 'https://flagcdn.com/w20/it.png' },
@@ -24,8 +23,9 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
     return languages.find(lang => lang.code === currentLanguage) || languages[0];
   };
 
-  const changeLanguage = (langCode: string) => {
-    i18n.changeLanguage(langCode);
+  const handleLanguageChange = (langCode: string) => {
+    // Utilizza la funzione dal hook per cambiare lingua e aggiornare l'URL
+    changeLanguage(langCode);
     setDropdownOpen(false);
   };
 
@@ -49,7 +49,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
           <button
             key={lang.code}
             className={`flex items-center text-neutral-700 hover:text-primary ${currentLanguage === lang.code ? 'font-semibold' : ''}`}
-            onClick={() => changeLanguage(lang.code)}
+            onClick={() => handleLanguageChange(lang.code)}
           >
             <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" />
             <span>{lang.name}</span>
@@ -80,7 +80,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
               <button
                 key={lang.code}
                 className="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 flex items-center"
-                onClick={() => changeLanguage(lang.code)}
+                onClick={() => handleLanguageChange(lang.code)}
               >
                 <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" />
                 {lang.code.toUpperCase()}
