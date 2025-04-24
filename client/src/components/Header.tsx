@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
-import { useLanguagePrefix } from '@/hooks/use-language-prefix';
+import { useLocalizedPath } from './LocalizedRouter';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
   const { t } = useTranslation();
-  const { getLocalizedPath, pathWithoutLanguage } = useLanguagePrefix();
+  const { path, getLocalizedPath } = useLocalizedPath();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   // Verifica se il link è attivo in base al percorso attuale senza prefisso linguistico
-  const isActiveLink = (path: string) => {
+  const isActiveLink = (routePath: string) => {
     // Confronta il percorso senza il prefisso linguistico
-    return path === '/' ? pathWithoutLanguage === '/' : pathWithoutLanguage === path;
+    return routePath === '/' ? path === '/' : path === routePath;
   };
 
   const navigationLinks = [

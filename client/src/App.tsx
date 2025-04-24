@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation, Router as WouterRouter } from "wouter";
+import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,50 +12,63 @@ import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { LocalizedRoute } from "@/components/LocalizedRoute";
-import { useLanguagePrefix, supportedLanguages } from "@/hooks/use-language-prefix";
+import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 
-// Componente per gestire il reindirizzamento alla home localizzata
-function RedirectToLocalizedHome() {
-  const [location, setLocation] = useLocation();
-  const { currentLanguage } = useLanguagePrefix();
-  
-  useEffect(() => {
-    setLocation(`/${currentLanguage}`);
-  }, [currentLanguage, setLocation]);
-  
-  return null;
-}
+// Lingue supportate dall'applicazione
+export const supportedLanguages = ['it', 'en', 'fr', 'de', 'es'];
 
-function AppRouter() {
-  // Utilizziamo l'hook personalizzato per gestire i prefissi linguistici
-  useLanguagePrefix();
+function Router() {
+  const { i18n } = useTranslation();
+  
+  // Imposta la lingua dal pathname all'avvio dell'app
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const langPrefix = pathname.split('/')[1];
+    
+    if (supportedLanguages.includes(langPrefix)) {
+      i18n.changeLanguage(langPrefix);
+    }
+  }, [i18n]);
   
   return (
     <>
       <Header />
       <main>
         <Switch>
-          {/* Rotte principali con supporto per prefissi linguistici */}
-          <Route path="/" component={RedirectToLocalizedHome} />
-          <LocalizedRoute path="/" component={Home} />
-          <LocalizedRoute path="/services" component={Services} />
-          <LocalizedRoute path="/about" component={About} />
-          <LocalizedRoute path="/blog" component={Blog} />
-          
-          {/* Rotta per i singoli post del blog con supporto linguistico */}
+          {/* Home per ogni lingua */}
           {supportedLanguages.map(lang => (
-            <Route key={`blog-${lang}`} path={`/${lang}/blog/:slug`} component={BlogPost} />
+            <Route key={`home-${lang}`} path={`/${lang}`} component={Home} />
+          ))}
+          <Route path="/" component={Home} />
+          
+          {/* Percorsi localizzati per le pagine */}
+          {supportedLanguages.map(lang => (
+            <Route key={`services-${lang}`} path={`/${lang}/services`} component={Services} />
+          ))}
+          <Route path="/services" component={Services} />
+          
+          {supportedLanguages.map(lang => (
+            <Route key={`about-${lang}`} path={`/${lang}/about`} component={About} />
+          ))}
+          <Route path="/about" component={About} />
+          
+          {supportedLanguages.map(lang => (
+            <Route key={`blog-${lang}`} path={`/${lang}/blog`} component={Blog} />
+          ))}
+          <Route path="/blog" component={Blog} />
+          
+          {supportedLanguages.map(lang => (
+            <Route key={`blog-post-${lang}`} path={`/${lang}/blog/:slug`} component={BlogPost} />
           ))}
           <Route path="/blog/:slug" component={BlogPost} />
           
-          <LocalizedRoute path="/contact" component={Contact} />
-          
-          {/* Pagina 404 con supporto per prefissi linguistici */}
           {supportedLanguages.map(lang => (
-            <Route key={`notfound-${lang}`} path={`/${lang}/:any*`} component={NotFound} />
+            <Route key={`contact-${lang}`} path={`/${lang}/contact`} component={Contact} />
           ))}
+          <Route path="/contact" component={Contact} />
+          
+          {/* Pagina non trovata */}
           <Route component={NotFound} />
         </Switch>
       </main>
@@ -69,7 +82,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <AppRouter />
+        <Router />
       </TooltipProvider>
     </QueryClientProvider>
   );

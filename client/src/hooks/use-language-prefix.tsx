@@ -47,12 +47,11 @@ export function useLanguagePrefix() {
     }
   }, [lang, i18n]);
   
-  // Se l'URL non contiene un prefisso linguistico, aggiungilo
+  // Se l'URL non contiene un prefisso linguistico o se siamo alla root, aggiungilo
   useEffect(() => {
-    if (!lang && location !== '/') {
-      setLocation(`/${i18n.language}${location === '/' ? '' : location}`);
-    } else if (location === '/') {
-      setLocation(`/${i18n.language}`);
+    if (!lang) {
+      const newPath = location === '/' ? `/${i18n.language}` : `/${i18n.language}${location}`;
+      setLocation(newPath);
     }
   }, [location, lang, i18n.language, setLocation]);
   
