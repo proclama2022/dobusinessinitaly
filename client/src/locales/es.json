@@ -1,0 +1,322 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Expertise Contable Para Tu Negocio Global",
+    "subtitle": "Ayudamos a empresas e inversores extranjeros a gestionar con éxito su negocio en Italia, ofreciendo asesoramiento fiscal y comercial de excelencia.",
+    "contactButton": "Contáctanos",
+    "servicesButton": "Descubre Nuestros Servicios",
+    "backgroundAlt": "Oficina profesional de contadores"
+  },
+  "stats": {
+    "title": "Nuestra Experiencia en Números",
+    "subtitle": "Los números hablan claro: nuestra experiencia comprobada en el apoyo a clientes internacionales con éxito.",
+    "clients": {
+      "title": "Clientes Internacionales",
+      "description": "Empresas de todo el mundo han elegido nuestros servicios"
+    },
+    "experience": {
+      "title": "Años de Experiencia",
+      "description": "Al servicio de clientes nacionales e internacionales"
+    },
+    "professionals": {
+      "title": "Profesionales",
+      "description": "Un equipo multilingüe de contadores y expertos fiscales"
+    },
+    "volume": {
+      "title": "Euros Gestionados",
+      "description": "Volumen de negocios anual de nuestros clientes asistidos"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Por Qué Elegirnos",
+    "ctaButton": "Habla con un Experto",
+    "mainImageAlt": "Reunión de negocios con clientes internacionales",
+    "smallImageAlt": "Gráficos contables",
+    "features": {
+      "international": {
+        "title": "Competencia Internacional",
+        "description": "Conocemos los desafíos de las empresas extranjeras en Italia. Nuestro equipo multilingüe ofrece asistencia en inglés, francés, alemán y español."
+      },
+      "excellence": {
+        "title": "Excelencia Profesional",
+        "description": "Profesionales certificados con años de experiencia en consultoría contable y fiscal internacional. Actualización constante sobre normativas."
+      },
+      "approach": {
+        "title": "Enfoque Personalizado",
+        "description": "Cada cliente recibe soluciones a medida para sus necesidades específicas. Somos tu socio estratégico, no simples proveedores de servicios."
+      },
+      "reliability": {
+        "title": "Puntualidad y Fiabilidad",
+        "description": "Respondemos rápidamente a tus solicitudes, respetando plazos y compromisos. Puedes contar con nosotros para cada aspecto de tu negocio en Italia."
+      }
+    }
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Ofrecemos una amplia gama de servicios profesionales para apoyar tus actividades comerciales en Italia.",
+    "titlePrefix": "Nuestros",
+    "titleMain": "Servicios",
+    "description": "Ofrecemos soluciones profesionales a medida para las necesidades específicas de empresas e inversores internacionales que operan en Italia.",
+    "whatPrefix": "Qué",
+    "whatMain": "Ofrecemos",
+    "whatDescription": "Descubre nuestra gama completa de servicios de asesoramiento fiscal y comercial para clientes internacionales en Italia.",
+    "cta": {
+      "requestConsultation": "Solicitar Consulta",
+      "discoverServices": "Descubrir Servicios",
+      "requestInfo": "Solicitar Información"
+    },
+    "whyUs": {
+      "subtitle": "Por qué elegirnos",
+      "titlePrefix": "Por qué",
+      "titleMain": "Elegirnos",
+      "description": "Lo que nos distingue como socio ideal para tu actividad en Italia",
+      "reasons": {
+        "international": {
+          "title": "Competencia Internacional",
+          "description": "Equipo multilingüe con experiencia en problemáticas fiscales típicas de empresas extranjeras en Italia."
+        },
+        "quality": {
+          "title": "Calidad Certificada",
+          "description": "Profesionales certificados con formación continua para garantizar el máximo nivel de competencia."
+        },
+        "custom": {
+          "title": "Soluciones Personalizadas",
+          "description": "Enfoque a medida para las necesidades específicas de tu negocio internacional."
+        },
+        "speed": {
+          "title": "Reactividad",
+          "description": "Respuestas rápidas y respeto de los plazos para apoyarte de manera oportuna y eficaz."
+        }
+      }
+    },
+    "features": {
+      "accountant": {
+        "title": "Contador y consultor laboral",
+        "description": "Gestión fiscal y contable para sociedades de capital con experiencia en operaciones extraordinarias: fusiones, escisiones, transformaciones, aportaciones de empresa y reorganizaciones de grupos societarios."
+      },
+      "startup": {
+        "title": "Startups y PYMES innovadoras",
+        "description": "Constitución y asistencia a startups y PYMES innovadoras con apoyo para financiación, crowdfunding e inversiones. Transformamos tus ideas en negocios exitosos con competencia y eficiencia."
+      },
+      "finance": {
+        "title": "Financiación facilitada y créditos fiscales",
+        "description": "Acceso a Transición 4.0, bonificaciones regionales y medidas de incentivo nacionales y comunitarias. Identificamos las mejores oportunidades de financiación para tu empresa."
+      },
+      "ecommerce": {
+        "title": "Comercio electrónico y agencia web",
+        "description": "Gestión fiscal especializada para comercio electrónico y agencias web, con experiencia en sistemas OSS/IOSS y en relaciones con estados europeos y extraeuropeos."
+      },
+      "business": {
+        "title": "Inteligencia empresarial",
+        "description": "Optimización de procesos empresariales y apoyo estratégico con soluciones personalizadas para mejorar el rendimiento y el crecimiento del negocio."
+      }
+    },
+    "items": {
+      "formation": {
+        "title": "Constitución de Sociedades en Italia",
+        "description": "Asistencia completa para la apertura de sociedades de capital y de personas en Italia, incluidos todos los trámites burocráticos y fiscales.",
+        "link": "Más información"
+      },
+      "accounting": {
+        "title": "Contabilidad y Balance",
+        "description": "Gestión completa de la contabilidad empresarial, redacción del balance del ejercicio y de las obligaciones fiscales periódicas.",
+        "link": "Más información"
+      },
+      "tax": {
+        "title": "Asesoramiento Fiscal Internacional",
+        "description": "Asesoramiento sobre tratados contra la doble imposición, residencia fiscal, precios de transferencia y optimización fiscal internacional.",
+        "link": "Más información"
+      },
+      "planning": {
+        "title": "Planificación de Negocios",
+        "description": "Análisis de mercado, plan de negocio, planificación estratégica y asesoramiento para el acceso a financiación e inversiones en Italia.",
+        "link": "Más información"
+      },
+      "payroll": {
+        "title": "Gestión de Nóminas y RRHH",
+        "description": "Administración del personal, elaboración de nóminas, asesoramiento sobre contratos de trabajo y normativas italianas sobre trabajo.",
+        "link": "Más información"
+      },
+      "legal": {
+        "title": "Apoyo Legal",
+        "description": "Asistencia legal en materia comercial, contratos, cumplimiento normativo y representación ante autoridades italianas.",
+        "link": "Más información"
+      }
+    }
+  },
+  "media": {
+    "title": "Hablan de Nosotros",
+    "subtitle": "Descubre lo que dicen de DoBusinessNew la prensa y los medios especializados en el sector económico-financiero.",
+    "typeArticle": "Artículo",
+    "typeProfile": "Perfil",
+    "typeMention": "Mención",
+    "readMore": "Leer el artículo completo",
+    "seeAll": "Ver todas las menciones"
+  },
+  "blog": {
+    "title": "Blog y Actualizaciones",
+    "subtitle": "Últimos artículos y novedades del mundo fiscal y comercial italiano.",
+    "viewAll": "Todos los artículos",
+    "readMore": "Leer el artículo",
+    "posts": [
+      {
+        "date": "12 Mayo 2023",
+        "category": "Fiscalidad Internacional",
+        "title": "Novedades sobre el Régimen Fiscal para Expatriados en Italia: Oportunidades para Directivos Extranjeros",
+        "excerpt": "Análisis de las recientes modificaciones al régimen fiscal dedicado a los trabajadores impatriados y las oportunidades para directivos y profesionales extranjeros."
+      },
+      {
+        "date": "28 Abril 2023",
+        "category": "Inversiones",
+        "title": "Invertir en el Mercado Inmobiliario Italiano: Guía para Inversores Extranjeros",
+        "excerpt": "Una visión completa sobre las oportunidades, procedimientos e implicaciones fiscales para los inversores extranjeros en el sector inmobiliario italiano."
+      },
+      {
+        "date": "15 Abril 2023",
+        "category": "Legislación",
+        "title": "Comercio Electrónico en Italia: Requisitos Legales y Fiscales para Operadores Extranjeros",
+        "excerpt": "Un análisis detallado de las obligaciones normativas y fiscales para las empresas extranjeras que quieren vender online en el mercado italiano."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Suscríbete a Nuestro Boletín",
+    "subtitle": "Mantente actualizado sobre las últimas novedades fiscales y comerciales relevantes para tu negocio en Italia. Recibe consejos prácticos y oportunidades directamente en tu bandeja de entrada.",
+    "placeholder": "Tu dirección de correo electrónico",
+    "subscribe": "Suscríbete",
+    "subscribing": "Suscribiendo...",
+    "privacy": "Nos comprometemos a respetar tu privacidad. Puedes cancelar la suscripción en cualquier momento.",
+    "success": {
+      "title": "Suscripción completada",
+      "message": "¡Gracias por suscribirte a nuestro boletín!"
+    },
+    "error": {
+      "title": "Error de suscripción",
+      "message": "Se ha producido un error durante la suscripción al boletín. Inténtalo de nuevo."
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas sobre nuestros servicios o deseas una consulta? Rellena el formulario de contacto y nuestro equipo te responderá lo antes posible.",
+    "form": {
+      "name": "Nombre y Apellido",
+      "company": "Empresa",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "service": "Servicio de Interés",
+      "servicePlaceholder": "Selecciona un servicio",
+      "services": {
+        "formation": "Constitución de Sociedades en Italia",
+        "accounting": "Contabilidad y Balance",
+        "tax": "Asesoramiento Fiscal Internacional",
+        "planning": "Planificación de Negocios",
+        "payroll": "Gestión de Nóminas y RRHH",
+        "legal": "Apoyo Legal",
+        "other": "Otro"
+      },
+      "message": "Tu Mensaje",
+      "privacyConsent": "Acepto el tratamiento de mis datos personales de conformidad con la",
+      "privacyPolicy": "Política de Privacidad",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "validation": {
+        "nameRequired": "El nombre es obligatorio",
+        "emailInvalid": "Introduce una dirección de correo electrónico válida",
+        "serviceRequired": "Selecciona un servicio",
+        "messageLength": "El mensaje debe contener al menos 10 caracteres",
+        "privacyRequired": "Debes aceptar la política de privacidad"
+      }
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "address": {
+        "title": "Dirección",
+        "value": "Via Roma 123, 20121 Milán, Italia"
+      },
+      "phone": {
+        "title": "Teléfono",
+        "value": "+39 02 1234 5678"
+      },
+      "email": {
+        "title": "Correo electrónico",
+        "value": "info@dobusinessnew.it"
+      },
+      "hours": {
+        "title": "Horario de Apertura",
+        "value": "Lunes - Viernes: 9:00 - 18:00"
+      },
+      "officeImageAlt": "Nuestra oficina"
+    },
+    "social": {
+      "title": "Síguenos"
+    },
+    "success": {
+      "title": "Mensaje enviado",
+      "message": "¡Gracias por contactarnos! Te responderemos lo antes posible."
+    },
+    "error": {
+      "title": "Mensaje no enviado",
+      "message": "Se ha producido un error durante el envío del mensaje. Inténtalo de nuevo."
+    }
+  },
+  "footer": {
+    "tagline": "Expertos en asesoramiento fiscal y comercial para empresas e inversores internacionales en Italia.",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "copyright": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "cookies": "Política de Cookies"
+  },
+  "about": {
+    "badge": "Nuestra empresa",
+    "title": "Nosotros",
+    "titlePrefix": "Sobre",
+    "titleMain": "Nosotros",
+    "longDescription": "Una realidad joven y dinámica que quiere subvertir el paradigma del estudio profesional tradicional. Competencias, meritocracia, igualdad de oportunidades son nuestra misión.",
+    "contactButton": "Contáctanos",
+    "teamButton": "Nuestro equipo",
+    "paradigmTitle": "Un nuevo paradigma profesional",
+    "paradigmDescription1": "Una realidad joven y dinámica que quiere subvertir el paradigma del estudio profesional tradicional, basado en la figura central del dominus. Competencias, meritocracia, igualdad de oportunidades son nuestra misión.",
+    "paradigmDescription2": "Agregación, especialización, digitalización, organización son los pilares de nuestra cultura profesional.",
+    "diversityQuote": "Más del 50% de los socios, colaboradores y partners tienen menos de 40 años y son mujeres. Una mezcla de nuevas competencias profesionales y experiencia consolidada en el sector de la consultoría, a disposición de nuestros clientes.",
+    "teamImage": "Nuestro equipo",
+    "stats": {
+      "partners": "Socios",
+      "employees": "Empleados",
+      "collaborators": "Colaboradores",
+      "womenPercentage": "Mujeres en el equipo"
+    },
+    "teamSection": {
+      "badge": "Nuestro equipo",
+      "titlePrefix": "Nuestras",
+      "titleMain": "personas",
+      "description": "Profesionales altamente cualificados con experiencia y competencia en sus respectivos sectores.",
+      "roles": {
+        "founder": "Fundador",
+        "ceo": "CEO",
+        "founderCeo": "Fundador y CEO",
+        "partner": "Socio"
+      },
+      "specialties": {
+        "accountant": "Contador público y auditor legal, especializado en fiscalidad para comercio electrónico, agencias web, startups y PYMES innovadoras",
+        "consultant": "Contador público y auditor legal, especializado en consultoría empresarial y directiva, organización empresarial, financiación facilitada",
+        "labor": "Consultor laboral",
+        "digital": "Contador público y auditor legal, especializado en startups y PYMES innovadoras, digitalización de procesos empresariales",
+        "itAccounting": "Contador público y auditor legal, especializado en balance y fiscalidad de sociedades IT",
+        "laborSpecialist": "Contador público especializado en consultoría laboral"
+      }
+    },
+    "valuesSection": {
+      "title": "Nuestros valores",
+      "description": "Profesionales altamente cualificados con experiencias multidisciplinares para soluciones integradas."
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über Uns",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Buchhaltungsexpertise für Ihr globales Geschäft",
+    "subtitle": "Wir unterstützen ausländische Unternehmen und Investoren bei der erfolgreichen Geschäftsführung in Italien durch exzellente Steuer- und Handelsberatung.",
+    "contactButton": "Kontaktieren Sie uns",
+    "servicesButton": "Entdecken Sie unsere Dienstleistungen",
+    "backgroundAlt": "Professionelles Buchhaltungsbüro"
+  },
+  "stats": {
+    "title": "Unsere Erfahrung in Zahlen",
+    "subtitle": "Die Zahlen sprechen für sich: Unsere nachgewiesene Erfahrung bei der erfolgreichen Unterstützung internationaler Kunden.",
+    "clients": {
+      "title": "Internationale Kunden",
+      "description": "Unternehmen aus der ganzen Welt haben unsere Dienstleistungen gewählt"
+    },
+    "experience": {
+      "title": "Jahre Erfahrung",
+      "description": "Im Dienst nationaler und internationaler Kunden"
+    },
+    "professionals": {
+      "title": "Fachleute",
+      "description": "Ein mehrsprachiges Team von Buchhaltern und Steuerexperten"
+    },
+    "volume": {
+      "title": "Euro verwaltet",
+      "description": "Jährliches Geschäftsvolumen unserer betreuten Kunden"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Warum uns wählen",
+    "ctaButton": "Sprechen Sie mit einem Experten",
+    "mainImageAlt": "Geschäftstreffen mit internationalen Kunden",
+    "smallImageAlt": "Buchhaltungsdiagramme",
+    "features": {
+      "international": {
+        "title": "Internationale Kompetenz",
+        "description": "Wir kennen die Herausforderungen ausländischer Unternehmen in Italien. Unser mehrsprachiges Team bietet Unterstützung in Englisch, Französisch, Deutsch und Spanisch."
+      },
+      "excellence": {
+        "title": "Professionelle Exzellenz",
+        "description": "Zertifizierte Fachleute mit langjähriger Erfahrung in internationaler Buchhaltungs- und Steuerberatung. Ständige Aktualisierung der Vorschriften."
+      },
+      "approach": {
+        "title": "Personalisierter Ansatz",
+        "description": "Jeder Kunde erhält maßgeschneiderte Lösungen für seine spezifischen Bedürfnisse. Wir sind Ihr strategischer Partner, nicht nur ein Dienstleister."
+      },
+      "reliability": {
+        "title": "Pünktlichkeit und Zuverlässigkeit",
+        "description": "Wir antworten schnell auf Ihre Anfragen und halten Fristen und Verpflichtungen ein. Sie können sich in allen Aspekten Ihres Geschäfts in Italien auf uns verlassen."
+      }
+    }
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Wir bieten ein breites Spektrum an professionellen Dienstleistungen zur Unterstützung Ihrer Geschäftstätigkeit in Italien.",
+    "titlePrefix": "Unsere",
+    "titleMain": "Dienstleistungen",
+    "description": "Wir bieten maßgeschneiderte professionelle Lösungen für die spezifischen Bedürfnisse internationaler Unternehmen und Investoren in Italien.",
+    "whatPrefix": "Was",
+    "whatMain": "wir anbieten",
+    "whatDescription": "Entdecken Sie unsere umfassende Palette an Steuer- und Handelsberatungsdiensten für internationale Kunden in Italien.",
+    "cta": {
+      "requestConsultation": "Beratung anfordern",
+      "discoverServices": "Dienstleistungen entdecken",
+      "requestInfo": "Informationen anfordern"
+    },
+    "whyUs": {
+      "subtitle": "Warum uns wählen",
+      "titlePrefix": "Warum",
+      "titleMain": "uns wählen",
+      "description": "Was uns als idealen Partner für Ihr Geschäft in Italien auszeichnet",
+      "reasons": {
+        "international": {
+          "title": "Internationale Kompetenz",
+          "description": "Mehrsprachiges Team mit Erfahrung in den typischen Steuerproblemen ausländischer Unternehmen in Italien."
+        },
+        "quality": {
+          "title": "Zertifizierte Qualität",
+          "description": "Zertifizierte Fachleute mit kontinuierlicher Ausbildung, um das höchste Kompetenzniveau zu garantieren."
+        },
+        "custom": {
+          "title": "Maßgeschneiderte Lösungen",
+          "description": "Maßgeschneiderter Ansatz für die spezifischen Bedürfnisse Ihres internationalen Geschäfts."
+        },
+        "speed": {
+          "title": "Reaktionsfähigkeit",
+          "description": "Schnelle Antworten und Einhaltung von Fristen für zeitnahe und effektive Unterstützung."
+        }
+      }
+    },
+    "features": {
+      "accountant": {
+        "title": "Buchhalter und Arbeitsberater",
+        "description": "Steuer- und Buchführungsmanagement für Kapitalgesellschaften mit Erfahrung in außergewöhnlichen Transaktionen: Fusionen, Spaltungen, Umwandlungen, Unternehmensbeiträge und Konzernreorganisationen."
+      },
+      "startup": {
+        "title": "Startups und innovative KMUs",
+        "description": "Gründung und Unterstützung von Startups und innovativen KMUs mit Unterstützung für Finanzierung, Crowdfunding und Investitionen. Wir verwandeln Ihre Ideen mit Kompetenz und Effizienz in erfolgreiche Geschäfte."
+      },
+      "finance": {
+        "title": "Vergünstigte Finanzierung und Steuergutschriften",
+        "description": "Zugang zu Transition 4.0, regionalen Zuschüssen und nationalen und EU-Fördermaßnahmen. Wir identifizieren die besten Finanzierungsmöglichkeiten für Ihr Unternehmen."
+      },
+      "ecommerce": {
+        "title": "E-Commerce und Webagenturen",
+        "description": "Spezialisiertes Steuerungsmanagement für E-Commerce und Webagenturen, mit Erfahrung in OSS/IOSS-Systemen und in Beziehungen zu europäischen und außereuropäischen Staaten."
+      },
+      "business": {
+        "title": "Business Intelligence",
+        "description": "Optimierung von Geschäftsprozessen und strategische Unterstützung mit maßgeschneiderten Lösungen zur Verbesserung der Leistung und des Geschäftswachstums."
+      }
+    },
+    "items": {
+      "formation": {
+        "title": "Gesellschaftsgründung in Italien",
+        "description": "Umfassende Unterstützung bei der Gründung von Kapital- und Personengesellschaften in Italien, einschließlich aller bürokratischen und steuerlichen Anforderungen.",
+        "link": "Mehr Informationen"
+      },
+      "accounting": {
+        "title": "Buchhaltung und Bilanzierung",
+        "description": "Vollständige Verwaltung der Unternehmensbuchhaltung, Erstellung des Jahresabschlusses und regelmäßige Steuerpflichten.",
+        "link": "Mehr Informationen"
+      },
+      "tax": {
+        "title": "Internationale Steuerberatung",
+        "description": "Beratung zu Doppelbesteuerungsabkommen, Steuerresidenz, Verrechnungspreisen und internationaler Steueroptimierung.",
+        "link": "Mehr Informationen"
+      },
+      "planning": {
+        "title": "Geschäftsplanung",
+        "description": "Marktanalyse, Geschäftsplan, strategische Planung und Beratung für den Zugang zu Finanzierung und Investitionen in Italien.",
+        "link": "Mehr Informationen"
+      },
+      "payroll": {
+        "title": "Gehaltsabrechnung und Personalwesen",
+        "description": "Personalverwaltung, Lohnabrechnung, Beratung zu Arbeitsverträgen und italienischen Arbeitsvorschriften.",
+        "link": "Mehr Informationen"
+      },
+      "legal": {
+        "title": "Rechtliche Unterstützung",
+        "description": "Rechtsbeistand in Handelsfragen, Verträgen, Compliance und Vertretung bei italienischen Behörden.",
+        "link": "Mehr Informationen"
+      }
+    }
+  },
+  "media": {
+    "title": "Man spricht über uns",
+    "subtitle": "Entdecken Sie, was die Fachpresse und Medien über DoBusinessNew im wirtschaftlichen und finanziellen Sektor sagen.",
+    "typeArticle": "Artikel",
+    "typeProfile": "Profil",
+    "typeMention": "Erwähnung",
+    "readMore": "Vollständigen Artikel lesen",
+    "seeAll": "Alle Erwähnungen anzeigen"
+  },
+  "blog": {
+    "title": "Blog und Updates",
+    "subtitle": "Neueste Artikel und Nachrichten aus der italienischen Steuer- und Handelswelt.",
+    "viewAll": "Alle Artikel",
+    "readMore": "Artikel lesen",
+    "posts": [
+      {
+        "date": "12. Mai 2023",
+        "category": "Internationale Besteuerung",
+        "title": "Neuigkeiten zum Steuerregime für Expatriates in Italien: Chancen für ausländische Manager",
+        "excerpt": "Analyse der jüngsten Änderungen des Steuerregimes für zugewanderte Arbeitnehmer und der Chancen für ausländische Manager und Fachleute."
+      },
+      {
+        "date": "28. April 2023",
+        "category": "Investitionen",
+        "title": "Investieren in den italienischen Immobilienmarkt: Leitfaden für ausländische Investoren",
+        "excerpt": "Ein umfassender Überblick über die Chancen, Verfahren und steuerlichen Auswirkungen für ausländische Investoren im italienischen Immobiliensektor."
+      },
+      {
+        "date": "15. April 2023",
+        "category": "Gesetzgebung",
+        "title": "E-Commerce in Italien: Rechtliche und steuerliche Anforderungen für ausländische Betreiber",
+        "excerpt": "Eine detaillierte Analyse der regulatorischen und steuerlichen Verpflichtungen für ausländische Unternehmen, die online auf dem italienischen Markt verkaufen möchten."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Abonnieren Sie unseren Newsletter",
+    "subtitle": "Bleiben Sie über die neuesten steuerlichen und kommerziellen Entwicklungen für Ihr Geschäft in Italien informiert. Erhalten Sie praktische Tipps und Chancen direkt in Ihrem Posteingang.",
+    "placeholder": "Ihre E-Mail-Adresse",
+    "subscribe": "Abonnieren",
+    "subscribing": "Wird abonniert...",
+    "privacy": "Wir respektieren Ihre Privatsphäre. Sie können Ihr Abonnement jederzeit kündigen.",
+    "success": {
+      "title": "Anmeldung abgeschlossen",
+      "message": "Vielen Dank für Ihr Abonnement unseres Newsletters!"
+    },
+    "error": {
+      "title": "Anmeldefehler",
+      "message": "Bei der Anmeldung zum Newsletter ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Haben Sie Fragen zu unseren Dienstleistungen oder wünschen Sie eine Beratung? Füllen Sie das Kontaktformular aus und unser Team wird Ihnen so schnell wie möglich antworten.",
+    "form": {
+      "name": "Vor- und Nachname",
+      "company": "Unternehmen",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "service": "Interessierte Dienstleistung",
+      "servicePlaceholder": "Wählen Sie eine Dienstleistung",
+      "services": {
+        "formation": "Gesellschaftsgründung in Italien",
+        "accounting": "Buchhaltung und Bilanzierung",
+        "tax": "Internationale Steuerberatung",
+        "planning": "Geschäftsplanung",
+        "payroll": "Gehaltsabrechnung und Personalwesen",
+        "legal": "Rechtliche Unterstützung",
+        "other": "Andere"
+      },
+      "message": "Ihre Nachricht",
+      "privacyConsent": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der",
+      "privacyPolicy": "Datenschutzrichtlinie zu",
+      "send": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "validation": {
+        "nameRequired": "Name ist erforderlich",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "serviceRequired": "Bitte wählen Sie eine Dienstleistung",
+        "messageLength": "Die Nachricht muss mindestens 10 Zeichen enthalten",
+        "privacyRequired": "Sie müssen der Datenschutzrichtlinie zustimmen"
+      }
+    },
+    "info": {
+      "title": "Kontaktinformationen",
+      "address": {
+        "title": "Adresse",
+        "value": "Via Roma 123, 20121 Mailand, Italien"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+39 02 1234 5678"
+      },
+      "email": {
+        "title": "E-Mail",
+        "value": "info@dobusinessnew.it"
+      },
+      "hours": {
+        "title": "Öffnungszeiten",
+        "value": "Montag - Freitag: 9:00 - 18:00 Uhr"
+      },
+      "officeImageAlt": "Unser Büro"
+    },
+    "social": {
+      "title": "Folgen Sie uns"
+    },
+    "success": {
+      "title": "Nachricht gesendet",
+      "message": "Vielen Dank für Ihre Kontaktaufnahme! Wir werden Ihnen so bald wie möglich antworten."
+    },
+    "error": {
+      "title": "Nachricht nicht gesendet",
+      "message": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  },
+  "footer": {
+    "tagline": "Experten für Steuer- und Handelsberatung für internationale Unternehmen und Investoren in Italien.",
+    "quickLinks": "Schnelllinks",
+    "services": "Dienstleistungen",
+    "contact": "Kontakt",
+    "copyright": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Allgemeine Geschäftsbedingungen",
+    "cookies": "Cookie-Richtlinie"
+  },
+  "about": {
+    "badge": "Unser Unternehmen",
+    "title": "Über Uns",
+    "titlePrefix": "Über",
+    "titleMain": "Uns",
+    "longDescription": "Eine junge und dynamische Realität, die das Paradigma der traditionellen Anwaltskanzlei umkehren will. Kompetenz, Leistungsprinzip und Chancengleichheit sind unsere Mission.",
+    "contactButton": "Kontakt",
+    "teamButton": "Unser Team",
+    "paradigmTitle": "Ein neues professionelles Paradigma",
+    "paradigmDescription1": "Eine junge und dynamische Realität, die das Paradigma der traditionellen Anwaltskanzlei umkehren will, basierend auf der zentralen Figur des dominus. Kompetenz, Leistungsprinzip und Chancengleichheit sind unsere Mission.",
+    "paradigmDescription2": "Aggregation, Spezialisierung, Digitalisierung und Organisation sind die Grundpfeiler unserer Berufskultur.",
+    "diversityQuote": "Über 50% der Partner, Mitarbeiter und Mitglieder sind unter 40 Jahren und weiblich. Eine Mischung aus neuen beruflichen Kompetenzen und konsolidierter Erfahrung im Beratungssektor, die unseren Kunden zur Verfügung steht.",
+    "teamImage": "Unser Team",
+    "stats": {
+      "partners": "Partner",
+      "employees": "Angestellte",
+      "collaborators": "Mitarbeiter",
+      "womenPercentage": "Frauen im Team"
+    },
+    "teamSection": {
+      "badge": "Unser Team",
+      "titlePrefix": "Unsere",
+      "titleMain": "Mitarbeiter",
+      "description": "Hochqualifizierte Fachleute mit Erfahrung und Kompetenz in ihren jeweiligen Bereichen.",
+      "roles": {
+        "founder": "Gründer",
+        "ceo": "CEO",
+        "founderCeo": "Gründer & CEO",
+        "partner": "Partner"
+      },
+      "specialties": {
+        "accountant": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Steuern für E-Commerce, Webagenturen, Startups und innovative KMUs",
+        "consultant": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Unternehmens- und Managementberatung, Unternehmensorganisation, vergünstigte Finanzierung",
+        "labor": "Arbeitsberater",
+        "digital": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Startups und innovative KMUs, Digitalisierung von Geschäftsprozessen",
+        "itAccounting": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Bilanzierung und Besteuerung von IT-Unternehmen",
+        "laborSpecialist": "Wirtschaftsprüfer, spezialisiert auf Arbeitsberatung"
+      }
+    },
+    "valuesSection": {
+      "title": "Unsere Werte",
+      "description": "Hochqualifizierte Fachleute mit multidisziplinärer Erfahrung für integrierte Lösungen."
+    }
+  }
+}

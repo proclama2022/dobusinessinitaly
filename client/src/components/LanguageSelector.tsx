@@ -15,7 +15,9 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   const languages = [
     { code: 'it', name: 'Italiano', flag: 'https://flagcdn.com/w20/it.png' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
-    { code: 'fr', name: 'Français', flag: 'https://flagcdn.com/w20/fr.png' }
+    { code: 'fr', name: 'Français', flag: 'https://flagcdn.com/w20/fr.png' },
+    { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
+    { code: 'es', name: 'Español', flag: 'https://flagcdn.com/w20/es.png' }
   ];
 
   const getCurrentLanguageInfo = () => {
