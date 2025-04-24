@@ -54,15 +54,7 @@ function AppRouter() {
           
           {/* Pagina 404 con supporto per prefissi linguistici */}
           {supportedLanguages.map(lang => (
-            <Route key={`notfound-${lang}`} path={`/${lang}/:rest*`}>
-              {(params) => {
-                // Verifica se l'URL contiene una rotta valida senza il prefisso della lingua
-                if (!['/services', '/about', '/blog', '/contact'].includes(`/${params.rest}`)) {
-                  return <NotFound />;
-                }
-                return null;
-              }}
-            </Route>
+            <Route key={`notfound-${lang}`} path={`/${lang}/:any*`} component={NotFound} />
           ))}
           <Route component={NotFound} />
         </Switch>

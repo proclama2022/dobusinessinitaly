@@ -33,7 +33,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-heading font-bold text-primary">
+            <Link href={getLocalizedPath('/')} className="text-2xl font-heading font-bold text-primary">
               <span>DoBusinessNew</span>
             </Link>
           </div>
@@ -53,7 +53,7 @@ const Header = () => {
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path} 
-                href={link.path}
+                href={getLocalizedPath(link.path)}
                 className={`font-medium ${isActiveLink(link.path) 
                   ? 'text-primary border-b-2 border-primary' 
                   : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-3`}
@@ -72,7 +72,7 @@ const Header = () => {
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path} 
-                href={link.path}
+                href={getLocalizedPath(link.path)}
                 className={`font-medium ${isActiveLink(link.path) 
                   ? 'text-primary' 
                   : 'text-neutral-700 hover:text-primary'}`}
