@@ -150,7 +150,7 @@ const Services = () => {
             {/* Badge identificativo */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-6 animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
-              {t('services.badge') || 'I nostri servizi professionali'}
+              {'I nostri servizi professionali'}
             </div>
             
             {/* Titolo principale con stile italiano */}
@@ -164,7 +164,7 @@ const Services = () => {
             
             {/* Sottotitolo con introduzione */}
             <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              {t('services.longDescription') || 'Offriamo consulenza avanzata con focus su innovazione, digitalizzazione e qualità. La nostra mission è supportare i clienti nello sviluppo del business, nell\'innovazione e nella crescita.'}
+              {'Offriamo consulenza avanzata con focus su innovazione, digitalizzazione e qualità. La nostra mission è supportare i clienti nello sviluppo del business, nell\'innovazione e nella crescita.'}
             </p>
             
             {/* Call to action */}
@@ -194,7 +194,7 @@ const Services = () => {
               </span>
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto">
-              {t('services.offerDescription') || 'Offriamo una vasta gamma di servizi professionali per supportare la tua attività in Italia e nel mondo. Il nostro team di esperti è pronto ad assisterti in ogni fase del tuo business.'}
+              {'Offriamo una vasta gamma di servizi professionali per supportare la tua attività in Italia e nel mondo. Il nostro team di esperti è pronto ad assisterti in ogni fase del tuo business.'}
             </p>
           </div>
           
@@ -227,7 +227,7 @@ const Services = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#ce2b3715] text-[#ce2b37] text-sm font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-[#ce2b37] mr-2"></span>
-              {t('whyChooseUs.badge') || 'I nostri vantaggi'}
+              {'I nostri vantaggi'}
             </div>
             
             <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
@@ -239,7 +239,7 @@ const Services = () => {
             </h2>
             
             <p className="text-neutral-600 max-w-2xl mx-auto">
-              {t('whyChooseUs.subtitle') || 'Le ragioni per cui i nostri clienti ci scelgono e continuano a fidarsi di noi per la gestione delle loro attività'}
+              {'Le ragioni per cui i nostri clienti ci scelgono e continuano a fidarsi di noi per la gestione delle loro attività'}
             </p>
           </div>
           
@@ -250,10 +250,10 @@ const Services = () => {
                 <i className="fas fa-globe text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {t('whyChooseUs.features.international.title')}
+                {'Esperienza internazionale'}
               </h3>
               <p className="text-neutral-600">
-                {t('whyChooseUs.features.international.description')}
+                {'Supportiamo clienti in tutta Europa con un team multilingue che comprende le dinamiche dei mercati internazionali.'}
               </p>
             </div>
             
@@ -262,10 +262,10 @@ const Services = () => {
                 <i className="fas fa-certificate text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-3">
-                {t('whyChooseUs.features.excellence.title')}
+                {'Qualità certificata'}
               </h3>
               <p className="text-neutral-600">
-                {t('whyChooseUs.features.excellence.description')}
+                {'Rispettiamo i più alti standard professionali con procedure certificate e continuo aggiornamento del nostro team.'}
               </p>
             </div>
             
