@@ -378,10 +378,10 @@ const ContactSection = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-semibold text-neutral-800">{'Email'}</h4>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.email.label')}</h4>
                       <p className="text-neutral-600 mt-1">
                         <a href="mailto:info@dobusinessnew.it" className="hover:text-[#009246] transition-colors">
-                          {'info@dobusinessnew.it'}
+                          {t('contact.info.email.value')}
                         </a>
                       </p>
                     </div>
@@ -394,8 +394,8 @@ const ContactSection = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h4 className="font-semibold text-neutral-800">{'Orari di apertura'}</h4>
-                      <p className="text-neutral-600 mt-1">{'Lunedì - Venerdì: 9:00 - 18:00'}</p>
+                      <h4 className="font-semibold text-neutral-800">{t('contact.info.hours.label')}</h4>
+                      <p className="text-neutral-600 mt-1">{t('contact.info.hours.value')}</p>
                     </div>
                   </div>
                 </div>
@@ -404,7 +404,7 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-lg font-heading font-semibold mb-4 relative inline-flex items-center">
                   <i className="fas fa-share-alt text-[#ce2b37] mr-2"></i>
-                  <span>{'Seguici sui social'}</span>
+                  <span>{t('contact.info.social')}</span>
                 </h3>
                 
                 <div className="flex space-x-3">
