@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
-import { supportedLanguages } from '@/App';
+import { supportedLanguages } from '@/lib/languages';
 
 type LanguageSelectorProps = {
   isMobile?: boolean;

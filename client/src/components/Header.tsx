@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
-import { supportedLanguages } from '@/App';
+import { supportedLanguages } from '@/lib/languages';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

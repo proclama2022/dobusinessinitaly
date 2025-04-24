@@ -2,8 +2,7 @@ import { useLocation, useRoute } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
-// Array delle lingue supportate
-export const supportedLanguages = ['it', 'en', 'fr', 'de', 'es'];
+import { supportedLanguages } from '@/lib/languages';
 
 /**
  * Estrae il prefisso della lingua dall'URL corrente

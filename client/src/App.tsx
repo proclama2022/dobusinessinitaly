@@ -15,9 +15,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-
-// Lingue supportate dall'applicazione
-export const supportedLanguages = ['it', 'en', 'fr', 'de', 'es'];
+import { supportedLanguages } from "./lib/languages";
 
 function Router() {
   const { i18n } = useTranslation();
@@ -68,6 +66,9 @@ function Router() {
             <Route key={`contact-${lang}`} path={`/${lang}/contact`} component={Contact} />
           ))}
           <Route path="/contact" component={Contact} />
+          
+          {/* Pagina di amministrazione per il blog */}
+          <Route path="/admin" component={Admin} />
           
           {/* Pagina non trovata */}
           <Route component={NotFound} />
