@@ -168,11 +168,30 @@ const About = () => {
   return (
     <>
       {/* Hero section con intestazione */}
-      <section className="relative py-32 bg-gradient-to-br from-white via-neutral-50 to-white overflow-hidden">
-        {/* Pattern di sfondo e decorazioni */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23009246\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
-        ></div>
+      <section className="relative py-32 overflow-hidden">
+        {/* Sfondo con overlay verde-rosso */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] to-[#ce2b3730]">
+          {/* Immagine di sfondo */}
+          <div className="absolute inset-0 opacity-20 bg-cover bg-center" 
+            style={{ 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
+              backgroundBlendMode: 'overlay'
+            }}
+          ></div>
+          
+          {/* Pattern di sfondo e decorazioni */}
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
+          ></div>
+          
+          {/* Punti decorativi simili all'immagine di riferimento */}
+          <div className="absolute inset-0 opacity-30" 
+            style={{ 
+              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 2px)',
+              backgroundSize: '40px 40px' 
+            }}
+          ></div>
+        </div>
         
         {/* Bordi decorativi */}
         <div className="absolute top-0 left-0 w-1 h-full bg-[#009246]"></div>
@@ -185,22 +204,22 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-6 animate-fade-in">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white bg-opacity-80 text-[#009246] text-sm font-medium mb-6 animate-fade-in shadow-sm border border-[#00924630]">
               <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
               {t('about.badge') || 'La nostra azienda'}
             </div>
             
             {/* Titolo principale */}
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">{t('about.titlePrefix')} </span>
-              <span className="relative">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in text-white" style={{ animationDelay: '0.2s', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+              <span className="text-[#009246] bg-white bg-opacity-80 px-2 py-1 rounded-tl-md rounded-br-md">{t('about.titlePrefix')} </span>
+              <span className="relative text-white ml-2">
                 {t('about.titleMain')}
                 <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
               </span>
             </h1>
             
             {/* Sottotitolo */}
-            <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-white bg-black bg-opacity-20 p-4 rounded-md mb-8 animate-fade-in max-w-2xl" style={{ animationDelay: '0.4s', textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
               {t('about.longDescription') || 'Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale. Competenze, meritocrazia, pari opportunità sono la nostra mission.'}
             </p>
             
