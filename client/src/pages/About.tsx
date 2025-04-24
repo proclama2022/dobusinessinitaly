@@ -388,7 +388,7 @@ const About = () => {
       
       {/* Altre sezioni */}
       <StatsSection />
-      <TestimonialsSection />
+      <MediaCoverageSection />
       <NewsletterSection />
     </>
   );
