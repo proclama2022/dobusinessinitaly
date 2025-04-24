@@ -1,7 +1,20 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
-import { Link } from 'wouter';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'wouter';
 import NewsletterSection from '@/components/NewsletterSection';
+import { useQuery } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
+
+// Interfaccia per i metadati del blog post
+interface BlogPostMeta {
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  coverImage: string;
+  author: string;
+}
 
 // Componente per un articolo del blog
 const BlogPostCard = ({ 
@@ -97,6 +110,15 @@ const CategoryBadge = ({
 
 const Blog = () => {
   const { t } = useTranslation();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Tutte");
+  const [location, setLocation] = useLocation();
+
+  // Fetch dei post del blog dall'API
+  const { data: postsData, isLoading, error } = useQuery({
+    queryKey: ['/api/blog'],
+    queryFn: () => apiRequest<{ success: boolean, data: BlogPostMeta[] }>('/api/blog', { method: 'GET' }),
+  });
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -105,63 +127,44 @@ const Blog = () => {
     document.title = `${t('navigation.blog')} - DoBusinessNew`;
   }, [t]);
 
-  // Categorie per il filtro
-  const categories = [
-    { name: "Tutte", isActive: true },
-    { name: "Tassazione", isActive: false },
-    { name: "Internazionalizzazione", isActive: false },
-    { name: "Compliance", isActive: false },
-    { name: "Finanza", isActive: false },
-  ];
+  // Estratti tutte le categorie uniche dai post
+  const uniqueCategories = postsData?.data 
+    ? ['Tutte', ...new Set(postsData.data.map(post => post.category))]
+    : ['Tutte'];
 
-  // Post del blog con dati reali
-  const blogPosts = [
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '15 Aprile 2023',
-      category: 'Fiscalità',
-      title: 'Agevolazioni Fiscali per Startup e PMI: Guida 2023',
-      excerpt: 'Le principali novità sulle agevolazioni fiscali destinate a startup e PMI innovative, con focus sulle deduzioni per gli investimenti in R&S.'
-    },
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '10 Aprile 2023',
-      category: 'Internazionalizzazione',
-      title: 'Espandersi all\'Estero: Strategie per le Aziende Italiane',
-      excerpt: 'Analisi delle opportunità e dei rischi per le aziende italiane che desiderano internazionalizzare il proprio business nell\'attuale contesto economico.'
-    },
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '5 Aprile 2023',
-      category: 'Compliance',
-      title: 'Il nuovo Decreto Fiscale: Implicazioni per le Imprese',
-      excerpt: 'Tutte le novità contenute nel recente decreto fiscale e le implicazioni pratiche per imprenditori e manager delle PMI italiane.'
-    },
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '1 Aprile 2023',
-      category: 'Tassazione',
-      title: 'Agevolazioni Fiscali per Start-up Innovative: Cosa Sapere',
-      excerpt: 'Una guida completa alle agevolazioni fiscali disponibili per le start-up innovative in Italia e come accedervi.'
-    },
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '20 Marzo 2023',
-      category: 'Internazionalizzazione',
-      title: 'Aprire una Filiale in Italia: Procedura e Considerazioni Fiscali',
-      excerpt: 'I passaggi chiave e le implicazioni fiscali per le aziende straniere che desiderano aprire una filiale in Italia.'
-    },
-    {
-      imgSrc: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      date: '5 Marzo 2023',
-      category: 'Compliance',
-      title: 'GDPR e Aziende Straniere Operanti in Italia: Obblighi di Conformità',
-      excerpt: 'Cosa devono sapere le aziende straniere sul Regolamento Generale sulla Protezione dei Dati quando operano in Italia.'
-    }
-  ];
+  // Categorie per il filtro con stato attivo
+  const categories = uniqueCategories.map(cat => ({
+    name: cat,
+    isActive: cat === selectedCategory
+  }));
 
-  // Featured post - il primo articolo della lista
-  const featuredPost = blogPosts[0];
+  // Filtra i post in base alla ricerca e alla categoria selezionata
+  const filteredPosts = postsData?.data
+    ? postsData.data.filter(post => {
+        const matchesSearch = searchTerm === "" || 
+          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        const matchesCategory = selectedCategory === "Tutte" || 
+          post.category === selectedCategory;
+        
+        return matchesSearch && matchesCategory;
+      })
+    : [];
+
+  // Featured post - il primo articolo della lista o undefined se non ci sono post
+  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : undefined;
+
+  // Handler per il cambio di categoria
+  const handleCategoryChange = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+  };
+
+  // Handler per la ricerca
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // La ricerca è già gestita dal state, quindi non serve fare altro
+  };
 
   return (
     <>
@@ -203,16 +206,21 @@ const Blog = () => {
             </p>
             
             {/* Barra di ricerca blog */}
-            <div className="relative max-w-lg mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <form onSubmit={handleSearch} className="relative max-w-lg mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <input
                 type="text"
                 placeholder="Cerca nel blog..."
                 className="w-full px-5 py-3 pr-12 rounded-full border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#009246] focus:border-transparent"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <button className="absolute right-4 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-[#009246] transition-colors">
+              <button 
+                type="submit"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-[#009246] transition-colors"
+              >
                 <i className="fas fa-search"></i>
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>

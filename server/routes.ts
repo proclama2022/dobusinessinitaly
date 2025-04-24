@@ -391,7 +391,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Servi i file caricati staticamente
-  app.use('/uploads', express.static(uploadDir));
+  app.use('/uploads', express.static(uploadDir, { maxAge: '1d' }));
 
   const httpServer = createServer(app);
   return httpServer;
