@@ -1,1 +1,293 @@
-null
+{
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À Propos",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Expertise Comptable Pour Votre Business Global",
+    "subtitle": "Nous assistons les entreprises et investisseurs étrangers dans la gestion réussie de leurs activités en Italie, en fournissant des conseils fiscaux et commerciaux d'excellence.",
+    "contactButton": "Contactez-nous",
+    "servicesButton": "Découvrez Nos Services",
+    "backgroundAlt": "Bureau comptable professionnel"
+  },
+  "stats": {
+    "title": "Notre Expérience en Chiffres",
+    "subtitle": "Les chiffres ne mentent pas: notre expérience prouvée dans le soutien aux clients internationaux avec succès.",
+    "clients": {
+      "title": "Clients Internationaux",
+      "description": "Des entreprises du monde entier ont choisi nos services"
+    },
+    "experience": {
+      "title": "Années d'Expérience",
+      "description": "Au service de clients nationaux et internationaux"
+    },
+    "professionals": {
+      "title": "Professionnels",
+      "description": "Une équipe multilingue de comptables et d'experts fiscaux"
+    },
+    "volume": {
+      "title": "Euros Gérés",
+      "description": "Chiffre d'affaires annuel de nos clients assistés"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Pourquoi Nous Choisir",
+    "ctaButton": "Parler à un Expert",
+    "mainImageAlt": "Réunion d'affaires avec clients internationaux",
+    "smallImageAlt": "Graphiques comptables",
+    "features": {
+      "international": {
+        "title": "Expertise Internationale",
+        "description": "Nous comprenons les défis auxquels les entreprises étrangères sont confrontées en Italie. Notre équipe multilingue fournit une assistance en anglais, français, allemand et espagnol."
+      },
+      "excellence": {
+        "title": "Excellence Professionnelle",
+        "description": "Professionnels certifiés avec des années d'expérience en comptabilité internationale et conseil fiscal. Mises à jour constantes sur les réglementations."
+      },
+      "approach": {
+        "title": "Approche Personnalisée",
+        "description": "Chaque client reçoit des solutions adaptées à ses besoins spécifiques. Nous sommes votre partenaire stratégique, pas seulement des prestataires de services."
+      },
+      "reliability": {
+        "title": "Réactivité et Fiabilité",
+        "description": "Nous répondons rapidement à vos demandes, en respectant les délais et les engagements. Vous pouvez compter sur nous pour tous les aspects de votre entreprise en Italie."
+      }
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Nous offrons une large gamme de services professionnels pour soutenir vos activités commerciales en Italie.",
+    "titlePrefix": "Nos",
+    "titleMain": "Services",
+    "description": "Nous offrons des solutions professionnelles adaptées aux besoins spécifiques des entreprises et investisseurs internationaux opérant en Italie.",
+    "whatPrefix": "Ce que",
+    "whatMain": "Nous Offrons",
+    "whatDescription": "Découvrez notre gamme complète de services de conseil fiscal et commercial pour les clients internationaux en Italie.",
+    "cta": {
+      "requestConsultation": "Demander une Consultation",
+      "discoverServices": "Découvrir les Services",
+      "requestInfo": "Demander des informations"
+    },
+    "whyUs": {
+      "subtitle": "Pourquoi nous choisir",
+      "titlePrefix": "Pourquoi",
+      "titleMain": "Nous Choisir",
+      "description": "Ce qui fait de nous le partenaire idéal pour votre entreprise en Italie",
+      "reasons": {
+        "international": {
+          "title": "Expertise Internationale",
+          "description": "Équipe multilingue avec expérience dans les problématiques fiscales typiques des entreprises étrangères en Italie."
+        },
+        "quality": {
+          "title": "Qualité Certifiée",
+          "description": "Professionnels certifiés avec formation continue pour garantir le plus haut niveau de compétence."
+        },
+        "custom": {
+          "title": "Solutions Personnalisées",
+          "description": "Approche sur mesure pour les besoins spécifiques de votre entreprise internationale."
+        },
+        "speed": {
+          "title": "Réactivité",
+          "description": "Réponses rapides et respect des délais pour vous soutenir de manière opportune et efficace."
+        }
+      }
+    },
+    "features": {
+      "accountant": {
+        "title": "Expert-comptable et conseiller du travail",
+        "description": "Gestion fiscale et comptable pour les sociétés de capitaux avec expérience dans les opérations extraordinaires: fusions, scissions, transformations, apports d'entreprise et réorganisations de groupes d'entreprises."
+      },
+      "startup": {
+        "title": "Startups et PME innovantes",
+        "description": "Constitution et assistance aux startups et PME innovantes avec support pour financements, crowdfunding et investissements. Nous transformons vos idées en business à succès avec expertise et efficacité."
+      },
+      "finance": {
+        "title": "Finance facilitée et crédits d'impôt",
+        "description": "Accès à Transition 4.0, bonus régionaux et mesures de facilitation nationales et communautaires. Nous identifions les meilleures opportunités de financement pour votre entreprise."
+      },
+      "ecommerce": {
+        "title": "E-commerce et agence web",
+        "description": "Gestion fiscale spécialisée pour l'e-commerce et les agences web, avec expérience dans les systèmes OSS/IOSS et les relations avec les états européens et extra-européens."
+      },
+      "business": {
+        "title": "Business intelligence",
+        "description": "Optimisation des processus d'entreprise et support stratégique avec des solutions personnalisées pour améliorer la performance et la croissance des affaires."
+      }
+    },
+    "items": {
+      "formation": {
+        "title": "Constitution de Société en Italie",
+        "description": "Assistance complète pour la création de sociétés de capitaux et de personnes en Italie, y compris toutes les exigences bureaucratiques et fiscales.",
+        "link": "Plus d'informations"
+      },
+      "accounting": {
+        "title": "Comptabilité et États Financiers",
+        "description": "Gestion complète de la comptabilité d'entreprise, préparation des états financiers et des obligations fiscales périodiques.",
+        "link": "Plus d'informations"
+      },
+      "tax": {
+        "title": "Conseil Fiscal International",
+        "description": "Conseils sur les traités de double imposition, la résidence fiscale, les prix de transfert et l'optimisation fiscale internationale.",
+        "link": "Plus d'informations"
+      },
+      "planning": {
+        "title": "Business Planning",
+        "description": "Analyse de marché, business plans, planification stratégique et conseils pour accéder aux financements et investissements en Italie.",
+        "link": "Plus d'informations"
+      },
+      "payroll": {
+        "title": "Gestion de la Paie et RH",
+        "description": "Administration du personnel, traitement de la paie, conseils sur les contrats de travail et la réglementation italienne du travail.",
+        "link": "Plus d'informations"
+      },
+      "legal": {
+        "title": "Support Juridique",
+        "description": "Assistance juridique en matière commerciale, contrats, conformité réglementaire et représentation auprès des autorités italiennes.",
+        "link": "Plus d'informations"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages de Nos Clients",
+    "subtitle": "Voici ce que nos clients internationaux disent de nous.",
+    "previous": "Témoignage précédent",
+    "next": "Témoignage suivant",
+    "goToSlide": "Aller au témoignage",
+    "items": [
+      {
+        "quote": "Nous travaillons avec DoBusinessNew depuis que nous avons décidé de nous développer en Italie il y a trois ans. Leur expertise en matière de fiscalité internationale et leur capacité à expliquer clairement des concepts complexes nous ont permis de naviguer dans le système italien en toute confiance. Hautement recommandé.",
+        "name": "Robert Johnson",
+        "position": "Directeur Financier, TechGrowth GmbH - Allemagne"
+      },
+      {
+        "quote": "L'équipe de DoBusinessNew a joué un rôle déterminant dans la création de notre filiale italienne. Leur assistance multilingue et leur connaissance approfondie des réglementations locales ont grandement simplifié le processus. Nous continuons à compter sur eux pour toutes les questions fiscales et comptables.",
+        "name": "Sophie Martin",
+        "position": "Directrice des Opérations, Lumière Design - France"
+      },
+      {
+        "quote": "En tant qu'investisseur étranger sur le marché immobilier italien, j'avais besoin de conseils fiscaux et juridiques fiables. DoBusinessNew m'a offert un service impeccable, me donnant la tranquillité d'esprit nécessaire pour me concentrer sur les investissements. Leur réactivité est extraordinaire.",
+        "name": "James Wilson",
+        "position": "PDG, Wilson Properties - Royaume-Uni"
+      }
+    ]
+  },
+  "blog": {
+    "title": "Blog et Actualités",
+    "subtitle": "Derniers articles et nouvelles du monde fiscal et commercial italien.",
+    "viewAll": "Tous les articles",
+    "readMore": "Lire l'article",
+    "posts": [
+      {
+        "date": "12 Mai 2023",
+        "category": "Fiscalité Internationale",
+        "title": "Nouveau Régime Fiscal pour les Expatriés en Italie: Opportunités pour les Managers Étrangers",
+        "excerpt": "Analyse des récents changements au régime fiscal dédié aux travailleurs impatriés et opportunités pour les managers et professionnels étrangers."
+      },
+      {
+        "date": "28 Avril 2023",
+        "category": "Investissements",
+        "title": "Investir dans le Marché Immobilier Italien: Guide pour les Investisseurs Étrangers",
+        "excerpt": "Une vue d'ensemble complète des opportunités, procédures et implications fiscales pour les investisseurs étrangers dans le secteur immobilier italien."
+      },
+      {
+        "date": "15 Avril 2023",
+        "category": "Législation",
+        "title": "E-commerce en Italie: Exigences Légales et Fiscales pour les Opérateurs Étrangers",
+        "excerpt": "Une analyse détaillée des obligations réglementaires et fiscales pour les entreprises étrangères souhaitant vendre en ligne sur le marché italien."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Abonnez-vous à Notre Newsletter",
+    "subtitle": "Restez informé des dernières actualités fiscales et commerciales pertinentes pour votre entreprise en Italie. Recevez des conseils pratiques et des opportunités directement dans votre boîte de réception.",
+    "placeholder": "Votre adresse email",
+    "subscribe": "S'abonner",
+    "subscribing": "Abonnement en cours...",
+    "privacy": "Nous respectons votre vie privée. Vous pouvez vous désabonner à tout moment.",
+    "success": {
+      "title": "Abonnement réussi",
+      "message": "Merci de vous être abonné à notre newsletter!"
+    },
+    "error": {
+      "title": "Erreur d'abonnement",
+      "message": "Une erreur s'est produite lors de l'abonnement à la newsletter. Veuillez réessayer."
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Vous avez des questions sur nos services ou souhaitez une consultation? Remplissez le formulaire de contact et notre équipe vous répondra dans les plus brefs délais.",
+    "form": {
+      "name": "Nom Complet",
+      "company": "Entreprise",
+      "email": "Email",
+      "phone": "Téléphone",
+      "service": "Service d'Intérêt",
+      "servicePlaceholder": "Sélectionner un service",
+      "services": {
+        "formation": "Constitution de Société en Italie",
+        "accounting": "Comptabilité et États Financiers",
+        "tax": "Conseil Fiscal International",
+        "planning": "Business Planning",
+        "payroll": "Gestion de la Paie et RH",
+        "legal": "Support Juridique",
+        "other": "Autre"
+      },
+      "message": "Votre Message",
+      "privacyConsent": "Je consens au traitement de mes données personnelles conformément à la",
+      "privacyPolicy": "Politique de Confidentialité",
+      "send": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "validation": {
+        "nameRequired": "Le nom est requis",
+        "emailInvalid": "Veuillez entrer une adresse email valide",
+        "serviceRequired": "Veuillez sélectionner un service",
+        "messageLength": "Le message doit comporter au moins 10 caractères",
+        "privacyRequired": "Vous devez accepter la politique de confidentialité"
+      }
+    },
+    "info": {
+      "title": "Informations de Contact",
+      "address": {
+        "title": "Adresse",
+        "value": "Via Roma 123, 20121 Milan, Italie"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "value": "+39 02 1234 5678"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@dobusinessnew.it"
+      },
+      "hours": {
+        "title": "Heures d'Ouverture",
+        "value": "Lundi - Vendredi: 9:00 - 18:00"
+      },
+      "officeImageAlt": "Notre bureau"
+    },
+    "social": {
+      "title": "Suivez-nous"
+    },
+    "success": {
+      "title": "Message envoyé",
+      "message": "Merci de nous avoir contactés! Nous vous répondrons dès que possible."
+    },
+    "error": {
+      "title": "Message non envoyé",
+      "message": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+    }
+  },
+  "footer": {
+    "tagline": "Experts en conseil fiscal et commercial pour les entreprises et investisseurs internationaux en Italie.",
+    "quickLinks": "Liens Rapides",
+    "services": "Services",
+    "contact": "Contact",
+    "copyright": "Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions Générales",
+    "cookies": "Politique de Cookies"
+  }
+}

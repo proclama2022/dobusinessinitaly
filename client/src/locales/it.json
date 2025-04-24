@@ -60,6 +60,63 @@
   "services": {
     "title": "I Nostri Servizi",
     "subtitle": "Offriamo un'ampia gamma di servizi professionali per supportare le vostre attività commerciali in Italia.",
+    "titlePrefix": "I Nostri",
+    "titleMain": "Servizi",
+    "description": "Offriamo soluzioni professionali su misura per le esigenze specifiche di aziende e investitori internazionali che operano in Italia.",
+    "whatPrefix": "Cosa",
+    "whatMain": "Offriamo",
+    "whatDescription": "Scopri la nostra gamma completa di servizi di consulenza fiscale e commerciale per clienti internazionali in Italia.",
+    "cta": {
+      "requestConsultation": "Richiedi Consulenza",
+      "discoverServices": "Scopri i Servizi",
+      "requestInfo": "Richiedi informazioni"
+    },
+    "whyUs": {
+      "subtitle": "Perché sceglierci",
+      "titlePrefix": "Perché",
+      "titleMain": "Scegliere Noi",
+      "description": "Cosa ci distingue come partner ideale per la tua attività in Italia",
+      "reasons": {
+        "international": {
+          "title": "Competenza Internazionale",
+          "description": "Team multilingue con esperienza nelle problematiche fiscali tipiche delle aziende straniere in Italia."
+        },
+        "quality": {
+          "title": "Qualità Certificata",
+          "description": "Professionisti certificati con formazione continua per garantire il massimo livello di competenza."
+        },
+        "custom": {
+          "title": "Soluzioni Personalizzate",
+          "description": "Approccio su misura per le specifiche esigenze del tuo business internazionale."
+        },
+        "speed": {
+          "title": "Reattività",
+          "description": "Risposte rapide e rispetto delle scadenze per supportarti in modo tempestivo ed efficace."
+        }
+      }
+    },
+    "features": {
+      "accountant": {
+        "title": "Commercialista e consulente del lavoro",
+        "description": "Gestione fiscale e contabile per società di capitali con esperienza in operazioni straordinarie: fusioni, scissioni, trasformazioni, conferimenti di azienda e riorganizzazioni di gruppi societari."
+      },
+      "startup": {
+        "title": "Startup e PMI innovative",
+        "description": "Costituzione e assistenza alle startup e PMI innovative con supporto per finanziamenti, crowdfunding e investimenti. Trasformiamo le tue idee in business di successo con competenza ed efficienza."
+      },
+      "finance": {
+        "title": "Finanza agevolata e crediti di imposta",
+        "description": "Accesso a Transizione 4.0, bonus regionali e misure di agevolazione nazionali e comunitarie. Identifichiamo le migliori opportunità di finanziamento per la tua azienda."
+      },
+      "ecommerce": {
+        "title": "Ecommerce e web agency",
+        "description": "Gestione fiscale specializzata per ecommerce e web agency, con esperienza nei sistemi OSS/IOSS e nelle relazioni con stati europei ed extraeuropei."
+      },
+      "business": {
+        "title": "Business intelligence",
+        "description": "Ottimizzazione dei processi aziendali e supporto strategico con soluzioni personalizzate per migliorare performance e crescita del business."
+      }
+    },
     "items": {
       "formation": {
         "title": "Costituzione Società in Italia",

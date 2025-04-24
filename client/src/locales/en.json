@@ -60,6 +60,63 @@
   "services": {
     "title": "Our Services",
     "subtitle": "We offer a wide range of professional services to support your business activities in Italy.",
+    "titlePrefix": "Our",
+    "titleMain": "Services",
+    "description": "We offer professional solutions tailored to the specific needs of international companies and investors operating in Italy.",
+    "whatPrefix": "What",
+    "whatMain": "We Offer",
+    "whatDescription": "Discover our complete range of tax and business consulting services for international clients in Italy.",
+    "cta": {
+      "requestConsultation": "Request Consultation",
+      "discoverServices": "Discover Services",
+      "requestInfo": "Request information"
+    },
+    "whyUs": {
+      "subtitle": "Why choose us",
+      "titlePrefix": "Why",
+      "titleMain": "Choose Us",
+      "description": "What makes us the ideal partner for your business in Italy",
+      "reasons": {
+        "international": {
+          "title": "International Expertise",
+          "description": "Multilingual team with experience in tax issues typical of foreign companies in Italy."
+        },
+        "quality": {
+          "title": "Certified Quality",
+          "description": "Certified professionals with continuous training to ensure the highest level of competence."
+        },
+        "custom": {
+          "title": "Customized Solutions",
+          "description": "Tailored approach to the specific needs of your international business."
+        },
+        "speed": {
+          "title": "Responsiveness",
+          "description": "Quick responses and meeting deadlines to support you in a timely and effective manner."
+        }
+      }
+    },
+    "features": {
+      "accountant": {
+        "title": "Accountant and labor consultant",
+        "description": "Tax and accounting management for corporations with experience in extraordinary operations: mergers, demergers, transformations, business contributions and reorganization of corporate groups."
+      },
+      "startup": {
+        "title": "Startups and innovative SMEs",
+        "description": "Establishment and assistance to startups and innovative SMEs with support for financing, crowdfunding and investments. We transform your ideas into successful businesses with expertise and efficiency."
+      },
+      "finance": {
+        "title": "Facilitated finance and tax credits",
+        "description": "Access to Transition 4.0, regional bonuses and national and EU facilitation measures. We identify the best financing opportunities for your company."
+      },
+      "ecommerce": {
+        "title": "Ecommerce and web agency",
+        "description": "Specialized tax management for e-commerce and web agency, with experience in OSS/IOSS systems and relations with European and non-European states."
+      },
+      "business": {
+        "title": "Business intelligence",
+        "description": "Optimization of business processes and strategic support with customized solutions to improve business performance and growth."
+      }
+    },
     "items": {
       "formation": {
         "title": "Company Formation in Italy",
