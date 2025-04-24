@@ -65,8 +65,11 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
       className={`bg-gradient-to-br ${getBackgroundColor()} p-6 rounded-lg text-center shadow-md animate-float`}
       style={{ animationDelay: `${index * 0.2}s` }}
     >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full italian-gradient flex items-center justify-center">
-        <i className={`${icon} text-white text-2xl`}></i>
+      <div className="w-16 h-16 mx-auto mb-4 rounded-full relative">
+        <div className="absolute inset-0 italian-gradient rounded-full opacity-80"></div>
+        <div className="absolute inset-0 rounded-full bg-white/40 flex items-center justify-center">
+          <i className={`${icon} text-[#222] text-2xl drop-shadow-sm`}></i>
+        </div>
       </div>
       <div className="italian-text-gradient text-4xl font-bold mb-2">
         <span ref={countRef}>{count}</span>{suffix}
