@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { useLanguagePrefix } from '@/hooks/use-language-prefix';
+import { useTranslation } from 'react-i18next';
+import { supportedLanguages } from '@/App';
 
 type LanguageSelectorProps = {
   isMobile?: boolean;
 };
 
 const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
-  const { currentLanguage, changeLanguage } = useLanguagePrefix();
+  const { i18n } = useTranslation();
+  const [location, setLocation] = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   
@@ -20,13 +22,25 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   ];
 
   const getCurrentLanguageInfo = () => {
-    return languages.find(lang => lang.code === currentLanguage) || languages[0];
+    return languages.find(lang => lang.code === i18n.language) || languages[0];
   };
 
+  // Funzione per cambiare lingua e aggiornare l'URL
   const handleLanguageChange = (langCode: string) => {
-    // Utilizza la funzione dal hook per cambiare lingua e aggiornare l'URL
-    changeLanguage(langCode);
+    i18n.changeLanguage(langCode);
     setDropdownOpen(false);
+    
+    // Modifica l'URL mantenendo il percorso corrente ma cambiando il prefisso della lingua
+    const segments = location.split('/');
+    
+    // Se c'è già un prefisso linguistico, lo sostituisce
+    if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
+      segments[1] = langCode;
+      setLocation(segments.join('/'));
+    } else {
+      // Altrimenti aggiungi il nuovo prefisso
+      setLocation(`/${langCode}${location === '/' ? '' : location}`);
+    }
   };
 
   useEffect(() => {
@@ -48,7 +62,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
         {languages.map(lang => (
           <button
             key={lang.code}
-            className={`flex items-center text-neutral-700 hover:text-primary ${currentLanguage === lang.code ? 'font-semibold' : ''}`}
+            className={`flex items-center text-neutral-700 hover:text-primary ${i18n.language === lang.code ? 'font-semibold' : ''}`}
             onClick={() => handleLanguageChange(lang.code)}
           >
             <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" />
@@ -75,7 +89,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
       {dropdownOpen && (
         <div className="absolute right-0 mt-2 w-24 bg-white shadow-lg rounded-md py-1 z-10">
           {languages
-            .filter(lang => lang.code !== currentLanguage)
+            .filter(lang => lang.code !== i18n.language)
             .map(lang => (
               <button
                 key={lang.code}
