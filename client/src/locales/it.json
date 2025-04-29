@@ -41,7 +41,7 @@
     "features": {
       "international": {
         "title": "Competenza Internazionale",
-        "description": "Conosciamo le sfide delle aziende straniere in Italia. Il nostro team multilingue fornisce assistenza in inglese, francese, tedesco e spagnolo."
+        "description": "Conosciamo le sfide delle aziende straniere in Italia. Forniamo assistenza principalmente in lingua inglese, ma grazie alla nostra specializzazione in tecnologie AI, siamo in grado di comunicare con i clienti nella loro lingua madre."
       },
       "excellence": {
         "title": "Eccellenza Professionale",
@@ -79,7 +79,7 @@
       "reasons": {
         "international": {
           "title": "Competenza Internazionale",
-          "description": "Team multilingue con esperienza nelle problematiche fiscali tipiche delle aziende straniere in Italia."
+          "description": "Forniamo assistenza principalmente in lingua inglese, ma grazie alla nostra specializzazione in tecnologie AI, possiamo comunicare con i clienti nella loro lingua madre."
         },
         "quality": {
           "title": "Qualità Certificata",
