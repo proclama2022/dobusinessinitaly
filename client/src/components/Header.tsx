@@ -15,7 +15,12 @@ const Header = () => {
 
   // Funzione per generare un percorso con il prefisso lingua corrente
   const getLocalizedPath = (path: string) => {
-    return `/${i18n.language}${path === '/' ? '' : path}`;
+    // Se il percorso è '/', reindirizza alla home page con solo il prefisso lingua
+    if (path === '/') {
+      return `/${i18n.language}`;
+    }
+    // Altrimenti aggiungi il prefisso lingua al percorso
+    return `/${i18n.language}${path}`;
   };
 
   // Estrai il percorso e la lingua corrente dall'URL
