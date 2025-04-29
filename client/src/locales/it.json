@@ -69,7 +69,8 @@
     "cta": {
       "requestConsultation": "Richiedi Consulenza",
       "discoverServices": "Scopri i Servizi",
-      "requestInfo": "Richiedi informazioni"
+      "requestInfo": "Richiedi informazioni",
+      "viewAll": "Visualizza tutti"
     },
     "whyUs": {
       "subtitle": "Perché sceglierci",

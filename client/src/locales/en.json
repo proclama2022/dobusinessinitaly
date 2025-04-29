@@ -69,7 +69,8 @@
     "cta": {
       "requestConsultation": "Request Consultation",
       "discoverServices": "Discover Services",
-      "requestInfo": "Request information"
+      "requestInfo": "Request information",
+      "viewAll": "View All"
     },
     "whyUs": {
       "subtitle": "Why choose us",
