@@ -205,7 +205,9 @@
   "contact": {
     "title": "Contattaci",
     "subtitle": "Hai domande sui nostri servizi o desideri una consulenza? Compila il modulo di contatto e il nostro team ti risponderà al più presto.",
+    "contactInfo": "Informazioni di contatto",
     "form": {
+      "title": "Contattaci",
       "name": "Nome e Cognome",
       "company": "Azienda",
       "email": "Email",
@@ -238,19 +240,23 @@
       "title": "Informazioni di Contatto",
       "address": {
         "title": "Indirizzo",
-        "value": "Via Roma 123, 20121 Milano, Italia"
+        "value": "Via Roma 123, 20121 Milano, Italia",
+        "label": "Indirizzo"
       },
       "phone": {
         "title": "Telefono",
-        "value": "+39 02 1234 5678"
+        "value": "+39 02 1234 5678",
+        "label": "Telefono"
       },
       "email": {
         "title": "Email",
-        "value": "info@dobusinessnew.it"
+        "value": "info@dobusinessnew.it",
+        "label": "Email"
       },
       "hours": {
         "title": "Orari di Apertura",
-        "value": "Lunedì - Venerdì: 9:00 - 18:00"
+        "value": "Lunedì - Venerdì: 9:00 - 18:00",
+        "label": "Orari di Apertura"
       },
       "officeImageAlt": "Il nostro ufficio"
     },
