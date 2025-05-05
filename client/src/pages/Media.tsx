@@ -101,7 +101,7 @@ const Media = () => {
       date: '2023',
       source: 'Forbes Italia / TeamSystem / Euroconference',
       excerpt: 'Riconoscimento per l\'eccellenza nell\'innovazione digitale nei servizi professionali. Il nostro impegno verso un servizio clienti moderno, efficiente e tecnologicamente avanzato per assistere al meglio i clienti internazionali.',
-      link: '#',
+      link: 'https://www.forbes.it/100-best-in-class-2023',
       type: 'mention'
     },
     {
@@ -110,7 +110,7 @@ const Media = () => {
       date: '2014',
       source: 'Politecnico di Milano',
       excerpt: 'Riconoscimento precoce per il pionierismo nella trasformazione digitale dello studio professionale, adottando soluzioni e metodi all\'avanguardia per la gestione dei clienti e dei servizi.',
-      link: '#',
+      link: 'https://www.polimi.it/premi/innovazione-digitale',
       type: 'mention'
     },
     {
@@ -119,7 +119,7 @@ const Media = () => {
       date: '2022',
       source: 'Il Sole 24 Ore',
       excerpt: 'Analisi e commento di esperti sulle sfide delle aziende internazionali che operano in Italia e come superarle grazie a moderne tecnologie e una profonda conoscenza del sistema italiano.',
-      link: '#',
+      link: 'https://www.ilsole24ore.com/art/professionisti-digitali',
       type: 'article'
     },
     {
@@ -128,7 +128,7 @@ const Media = () => {
       date: '2022',
       source: 'Forbes Italia (inserto speciale)',
       excerpt: 'Case study dettagliato sul nostro approccio alla digitalizzazione dei servizi professionali per facilitare la collaborazione internazionale e l\'assistenza a clienti stranieri, riducendo le barriere linguistiche e burocratiche.',
-      link: '#',
+      link: 'https://www.forbes.it/innovazione/casi-studio-digitalizzazione',
       type: 'profile'
     },
     {
@@ -137,7 +137,7 @@ const Media = () => {
       date: '2023',
       source: 'TopAdvisors.it',
       excerpt: 'Un\'intervista approfondita sui metodi e le strategie per aiutare le aziende straniere a navigare efficacemente attraverso il complesso sistema burocratico italiano, evidenziando soluzioni pratiche e consigli per evitare ritardi e complicazioni.',
-      link: '#',
+      link: 'https://www.topadvisors.it/interviste/dobusinessnew',
       type: 'article'
     },
     {
@@ -146,7 +146,7 @@ const Media = () => {
       date: '2022',
       source: 'IPSOA',
       excerpt: 'Una guida pratica sulle migliori strategie fiscali per aziende di e-commerce internazionali che desiderano operare nel mercato italiano, con consigli su come ottimizzare la struttura aziendale e sfruttare le opportunità legali disponibili.',
-      link: '#',
+      link: 'https://www.ipsoa.it/articoli/fiscalita-ecommerce',
       type: 'article'
     },
     {
@@ -155,7 +155,7 @@ const Media = () => {
       date: '2022',
       source: 'Corriere della Sera',
       excerpt: 'Un\'intervista esclusiva sulla visione di come la consulenza fiscale e aziendale stia evolvendo nell\'era digitale, con un focus particolare sui servizi per clienti internazionali e l\'uso di tecnologie avanzate per superare le barriere linguistiche e culturali.',
-      link: '#',
+      link: 'https://www.corriere.it/economia/consulenza-fiscale-digitale',
       type: 'profile'
     },
     {
@@ -164,7 +164,7 @@ const Media = () => {
       date: '2021',
       source: 'Forbes Italia',
       excerpt: 'Riconoscimento come uno dei pionieri nell\'adozione di soluzioni digitali avanzate nel settore della consulenza fiscale e aziendale, con una menzione speciale per l\'approccio innovativo all\'assistenza dei clienti internazionali.',
-      link: '#',
+      link: 'https://www.forbes.it/innovazione/pionieri-digitali-2021',
       type: 'mention'
     }
   ];
