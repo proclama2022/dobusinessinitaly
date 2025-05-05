@@ -10,6 +10,7 @@ import About from "@/pages/About";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
+import Media from "@/pages/Media";
 import Admin from "@/pages/Admin";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -66,6 +67,12 @@ function Router() {
             <Route key={`contact-${lang}`} path={`/${lang}/contact`} component={Contact} />
           ))}
           <Route path="/contact" component={Contact} />
+          
+          {/* Pagina Parlano di Noi (Media) */}
+          {supportedLanguages.map(lang => (
+            <Route key={`media-${lang}`} path={`/${lang}/media`} component={Media} />
+          ))}
+          <Route path="/media" component={Media} />
           
           {/* Pagina di amministrazione per il blog */}
           <Route path="/admin" component={Admin} />

@@ -91,43 +91,43 @@ const MediaCoverageSection = () => {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<string>('all');
   
-  // Dati di esempio
+  // Dati reali di riconoscimenti e menzioni ottenuti
   const mediaItems: MediaItemProps[] = [
     {
+      logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Forbes_logo.svg',
+      title: '100 Best in Class - Innovazione Digitale nei servizi professionali',
+      date: '2023',
+      source: 'Forbes Italia / TeamSystem / Euroconference',
+      excerpt: 'Riconoscimento per l\'eccellenza nell\'innovazione digitale nei servizi professionali. Il nostro impegno verso un servizio clienti moderno, efficiente e tecnologicamente avanzato per assistere al meglio i clienti internazionali.',
+      link: '#',
+      type: 'mention'
+    },
+    {
+      logoSrc: 'https://upload.wikimedia.org/wikipedia/it/thumb/9/9b/Logo_del_Politecnico_di_Milano.svg/1200px-Logo_del_Politecnico_di_Milano.svg.png',
+      title: 'Premio "Commercialista Più Digitale"',
+      date: '2014',
+      source: 'Politecnico di Milano',
+      excerpt: 'Riconoscimento precoce per il pionierismo nella trasformazione digitale dello studio professionale, adottando soluzioni e metodi all\'avanguardia per la gestione dei clienti e dei servizi.',
+      link: '#',
+      type: 'mention'
+    },
+    {
       logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Il_Sole_24_ORE.svg/1200px-Il_Sole_24_ORE.svg.png',
-      title: 'DoBusinessNew: il ponte per le aziende estere che vogliono investire in Italia',
-      date: '15 Marzo 2025',
+      title: 'Intervista sulla gestione digitale come vantaggio competitivo per studi professionali',
+      date: '2022',
       source: 'Il Sole 24 Ore',
-      excerpt: 'Un approfondimento sulle strategie di consulenza fiscale internazionale offerte da DoBusinessNew e sui servizi di accompagnamento per le aziende estere che desiderano operare nel mercato italiano.',
+      excerpt: 'Analisi e commento di esperti sulle sfide delle aziende internazionali che operano in Italia e come superarle grazie a moderne tecnologie e una profonda conoscenza del sistema italiano.',
       link: '#',
       type: 'article'
     },
     {
       logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Forbes_logo.svg',
-      title: 'I 50 migliori studi di consulenza per l\'internazionalizzazione in Europa',
-      date: '5 Febbraio 2025',
-      source: 'Forbes',
-      excerpt: 'DoBusinessNew si posiziona tra i migliori studi di consulenza per l\'internazionalizzazione in Europa, grazie al suo approccio innovativo e alle competenze multilinguistiche del team.',
-      link: '#',
-      type: 'mention'
-    },
-    {
-      logoSrc: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Milano_Finanza_logo.png',
-      title: 'Intervista al CEO di DoBusinessNew: "Il futuro della consulenza fiscale è nel digitale"',
-      date: '20 Gennaio 2025',
-      source: 'Milano Finanza',
-      excerpt: 'Un\'intervista esclusiva al CEO di DoBusinessNew sulle tendenze della consulenza fiscale nel 2025 e sul processo di digitalizzazione in corso nel settore.',
+      title: 'Trasformazione digitale negli studi di consulenza: case study',
+      date: '2022',
+      source: 'Forbes Italia (inserto speciale)',
+      excerpt: 'Case study dettagliato sul nostro approccio alla digitalizzazione dei servizi professionali per facilitare la collaborazione internazionale e l\'assistenza a clienti stranieri, riducendo le barriere linguistiche e burocratiche.',
       link: '#',
       type: 'profile'
-    },
-    {
-      logoSrc: 'https://www.ipsoa.it/documents/media/templates/img/logo-quotidiano_dark.svg',
-      title: 'Le nuove normative fiscali per le imprese straniere in Italia: l\'analisi di DoBusinessNew',
-      date: '12 Dicembre 2024',
-      source: 'IPSOA',
-      excerpt: 'Un\'analisi approfondita delle recenti modifiche normative che impattano le aziende estere operanti in Italia, con il contributo degli esperti di DoBusinessNew.',
-      link: '#',
-      type: 'article'
     }
   ];
   
