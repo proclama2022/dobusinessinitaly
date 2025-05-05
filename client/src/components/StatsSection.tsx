@@ -94,7 +94,7 @@ const StatsSection = () => {
 
   const stats = [
     {
-      value: 150,
+      value: 500,
       suffix: '+',
       title: t('stats.clients.title'),
       description: t('stats.clients.description'),

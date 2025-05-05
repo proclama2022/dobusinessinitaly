@@ -200,7 +200,7 @@ const ServicesSection = () => {
           <Link href="/services" className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 py-3 font-medium text-neutral-800 shadow-md transition duration-300 ease-out border border-neutral-200 hover:border-neutral-300">
             <span className="absolute inset-0 italian-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out rounded-lg"></span>
             <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-out">
-              {t('services.viewAll')}
+              {t('services.cta.viewAll')}
               <i className="fas fa-chevron-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
             </span>
           </Link>
