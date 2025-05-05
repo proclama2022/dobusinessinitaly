@@ -115,7 +115,7 @@ const StatsSection = () => {
       icon: 'fas fa-user-tie'
     },
     {
-      value: 20,
+      value: 50,
       suffix: 'M+',
       title: t('stats.volume.title'),
       description: t('stats.volume.description'),
