@@ -152,13 +152,57 @@
     }
   },
   "media": {
-    "title": "Man spricht über uns",
-    "subtitle": "Entdecken Sie, was die Fachpresse und Medien über DoBusinessNew im wirtschaftlichen und finanziellen Sektor sagen.",
+    "title": "Medienpräsenz",
+    "subtitle": "Entdecken Sie, was die Fachpresse und Medien über Dobusinessinitaly.com im wirtschaftlichen und finanziellen Sektor sagen.",
     "typeArticle": "Artikel",
     "typeProfile": "Profil",
     "typeMention": "Erwähnung",
     "readMore": "Vollständigen Artikel lesen",
-    "seeAll": "Alle Erwähnungen anzeigen"
+    "requestArticle": "Artikel auf Anfrage verfügbar",
+    "seeAll": "Alle Erwähnungen anzeigen",
+    "all": "Alle",
+    "noResults": "Keine Ergebnisse für den ausgewählten Filter gefunden.",
+    "credentialsTitle": "Anerkennung und Glaubwürdigkeit",
+    "credentialsParagraph1": "Die Anerkennungen und Erwähnungen, die wir erhalten haben, zeugen von unserem ständigen Engagement für Exzellenz im Service für internationale Kunden und für technologische Innovation in der Steuer- und Unternehmensberatung. Wir sind stolz darauf, als Pioniere bei der Digitalisierung professioneller Dienstleistungen anerkannt zu werden, wie der Preis \"Digitaler Fachmann des Jahres\" vom Politecnico di Milano und die Auszeichnungen \"100 Best in Class\" von Forbes Italia und TeamSystem zeigen.",
+    "credentialsParagraph2": "Unsere Erfahrung in der Digitalisierung von Prozessen, dokumentiert in den Veröffentlichungen unseres Gründers Giovanni Emmi, ermöglicht es uns, einen effizienten und qualitativ hochwertigen Service zu bieten und die sprachlichen und bürokratischen Barrieren zu überwinden, die ausländische Unternehmen, die in Italien tätig werden wollen, oft behindern. Unsere digitalen Projekte wie Partitaiva.ai und Evoluzione.pro sind konkrete Beispiele für unseren innovativen Ansatz.",
+    "credentialsParagraph3": "Diese Referenzen stärken unsere Position als zuverlässiger Partner, um Ihr Unternehmen bei der erfolgreichen Navigation durch die komplexe italienische Steuer- und Regulierungslandschaft zu unterstützen. Unser Ruf basiert auf konkreten Ergebnissen, maßgeblichen Publikationen und der Zufriedenheit unserer internationalen Kunden.",
+    "note": "Hinweis",
+    "noteText": "Die Links auf dieser Seite führen zu überprüfbaren Ressourcen wie Amazon-Publikationen, offiziellen Websites unserer Projekte und Anerkennungsseiten. Für weitere Informationen oder Details zu einer Erwähnung zögern Sie nicht,",
+    "contactUs": "uns zu kontaktieren",
+    "items": [
+      {
+        "title": "100 Best in Class 2024 - Digitale Innovation in professionellen Dienstleistungen",
+        "date": "2024",
+        "source": "Forbes Italia / TeamSystem",
+        "excerpt": "Anerkennung für Exzellenz in der digitalen Innovation bei professionellen Dienstleistungen. Proclama SPA wurde unter den besten italienischen Kanzleien für digitale Innovation ausgezeichnet, was unser Engagement für einen modernen und effizienten Kundenservice bestätigt.",
+        "link": "https://www.forbes.it/100-best-in-class-2023",
+        "type": "mention"
+      },
+      {
+        "title": "Preis \"Digitaler Fachmann des Jahres 2014\"",
+        "date": "2014",
+        "source": "Politecnico di Milano - Observatorium für Fachleute und digitale Innovation",
+        "excerpt": "Im Jahr 2014 zeichnete sich Studio Emmi, heute Proclama SPA, in Italien durch innovative Fähigkeiten auf organisatorischer und geschäftlicher Ebene mit dem Einsatz digitaler Technologien aus. Insbesondere für das Projekt partitaiva.it, ein Pionier in der digitalen Transformation der professionellen Kanzlei.",
+        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
+        "type": "mention"
+      },
+      {
+        "title": "Veröffentlichung: \"Die Evolution des Buchhalters im Zeitalter der künstlichen Intelligenz\"",
+        "date": "2024",
+        "source": "Amazon - Veröffentlichungen von Giovanni Emmi",
+        "excerpt": "Buch, das untersucht, wie künstliche Intelligenz den Beruf des Buchhalters verändert. \"Ein innovativer Buchhalter zu sein bedeutet, eine Säule für die Kontinuität und den Fortschritt der Kundenunternehmen zu sein, ein Bezugspunkt für die Zukunft, wobei stets eine hohe Berufsethik gewahrt wird.\"",
+        "link": "https://amzn.eu/d/4GNuret",
+        "type": "profile"
+      },
+      {
+        "title": "Partitaiva.ai - Innovative Plattform für Buchhalter und KMUs",
+        "date": "2023",
+        "source": "Digitale Projekte von Proclama SPA",
+        "excerpt": "Portal, das Buchhaltungskanzleien und die Verwaltungs- und Buchhaltungsbereiche von KMUs vereinfacht und neu organisiert. Ein Spitzenprojekt, das künstliche Intelligenz einsetzt, um Verwaltungs- und Buchhaltungsprozesse zu optimieren.",
+        "link": "https://www.partitaiva.it",
+        "type": "article"
+      }
+    ]
   },
   "blog": {
     "title": "Blog und Updates",
@@ -238,7 +282,7 @@
       "title": "Kontaktinformationen",
       "address": {
         "title": "Adresse",
-        "value": "Via Roma 123, 20121 Mailand, Italien"
+        "value": "Catania, Viale Africa 31"
       },
       "phone": {
         "title": "Telefon",
@@ -246,13 +290,17 @@
       },
       "email": {
         "title": "E-Mail",
-        "value": "info@dobusinessnew.it"
+        "value": "info@dobusinessinitaly.com"
       },
       "hours": {
         "title": "Öffnungszeiten",
         "value": "Montag - Freitag: 9:00 - 18:00 Uhr"
       },
       "officeImageAlt": "Unser Büro"
+    },
+    "map": {
+      "title": "Wo wir sind",
+      "titleAlt": "Karte unseres Büros"
     },
     "social": {
       "title": "Folgen Sie uns"
@@ -318,6 +366,24 @@
     "valuesSection": {
       "title": "Unsere Werte",
       "description": "Hochqualifizierte Fachleute mit multidisziplinärer Erfahrung für integrierte Lösungen."
+    },
+    "stpSection": {
+      "badge": "Berufsgesellschaft",
+      "title": "Offiziell eingetragenes Unternehmen",
+      "description": "Unser Unternehmen, Proclama S.p.A., ist eine Berufsgesellschaft (STP), die aus Wirtschaftsprüfern besteht, die regelmäßig bei der Kammer der Wirtschaftsprüfer und Rechnungswesen-Experten von Catania eingetragen sind, einem vom italienischen Staat anerkannten Berufsregister. Die Eintragung in die Kammer garantiert, dass alle unsere Fachleute einen strengen Ausbildungs- und Qualifikationsprozess durchlaufen haben und bietet unseren Kunden somit maximale Zuverlässigkeit und Expertise.",
+      "verifyTitle": "Überprüfen Sie im Register der Wirtschaftsprüfer von Catania",
+      "verifyDescription": "Für maximale Transparenz sind alle Informationen zu registrierten Fachleuten und Unternehmen öffentlich und können im Register der Kammer der Wirtschaftsprüfer und Rechnungswesen-Experten von Catania eingesehen werden. Hier können Sie Registrierungsdaten, Qualifikationen und Kontaktinformationen von Wirtschaftsprüfern und Berufsgesellschaften überprüfen.",
+      "verifyLink": "Im Register überprüfen",
+      "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
+      "accountantTitle": "Wer ist der Wirtschaftsprüfer",
+      "accountantDescription": "Der Wirtschaftsprüfer ist ein hochqualifizierter Fachmann, der sowohl Privatpersonen als auch Unternehmen Steuer-, Unternehmens-, Verwaltungs- und Rechtsberatung anbietet. Es ist eine vom italienischen Staat anerkannte Figur mit spezifischem Fachwissen in wirtschaftlichen, kommerziellen, finanziellen und steuerlichen Angelegenheiten.",
+      "pathTitle": "Der Weg zum Wirtschaftsprüfer umfasst:",
+      "pathSteps": [
+        "Erlangung eines Master-Abschlusses in wirtschaftlichen Disziplinen (zum Beispiel Wirtschaft und Handel oder Betriebswirtschaft).",
+        "Eine praktische Ausbildungszeit von mindestens 18 Monaten im Büro eines bei der Kammer eingetragenen Wirtschaftsprüfers.",
+        "Bestehen der Staatsprüfung, bestehend aus drei schriftlichen Tests (zu Themen wie Rechnungswesen, Handelsrecht, Steuerrecht, Unternehmensrevision) und einem mündlichen Test, der auch deontologisches und IT-Wissen überprüft."
+      ],
+      "conclusion": "Nur diejenigen, die die Staatsprüfung bestehen und sich bei der Kammer registrieren, können in Italien legal als Wirtschaftsprüfer tätig sein und bieten den Kunden somit eine Garantie für Professionalität, kontinuierliche Aktualisierung und Einhaltung ethischer und rechtlicher Standards."
     }
   }
 }

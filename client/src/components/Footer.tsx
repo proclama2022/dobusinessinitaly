@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
+// Using the new 3:1 aspect ratio logo from public directory
+const logoImage = '/images/logo.png';
 
 const Footer = () => {
   const { t } = useTranslation();
-  
+
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,16 +15,30 @@ const Footer = () => {
       <div className="absolute bottom-0 left-0 w-1/3 h-1 bg-[#009246]"></div>
       <div className="absolute bottom-0 left-1/3 w-1/3 h-1 bg-white"></div>
       <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-[#ce2b37]"></div>
-      
+
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
-              <span className="relative italic">
-                DoBusinessNew
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
-              </span>
-            </h3>
+            <div className="mb-6">
+              <img
+                src={logoImage}
+                alt="Dobusinessinitaly.com"
+                className="h-auto w-56 mb-2 object-contain max-w-full"
+                onError={(e) => {
+                  // Fallback al testo se l'immagine non può essere caricata
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = `
+                    <h3 className="text-xl font-heading font-medium relative inline-block">
+                      <span className="relative italic">
+                        Dobusinessinitaly.com
+                        <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+                      </span>
+                    </h3>
+                  `;
+                }}
+              />
+            </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
             <div className="flex space-x-4">
               <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
@@ -39,7 +55,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
@@ -80,7 +96,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
@@ -127,7 +143,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
@@ -163,10 +179,10 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-neutral-400 text-sm">© {currentYear} DoBusinessNew. {t('footer.copyright')}</p>
+            <p className="text-neutral-400 text-sm">© {currentYear} Dobusinessinitaly.com. {t('footer.copyright')}</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.privacy')}</a>
               <a href="#" className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.terms')}</a>

@@ -1,0 +1,26 @@
+# Istruzioni per l'implementazione del logo
+
+Per implementare il logo che hai generato:
+
+1. Salva l'immagine del logo come file PNG o SVG con sfondo trasparente
+2. Rinomina il file in "logo.png" o "logo.svg"
+3. Carica il file nella cartella "client/public/images/"
+
+## Suggerimenti per ottimizzare il logo
+
+Il logo che hai mostrato ha un buon concetto di base, ma potrebbe essere migliorato:
+
+1. Assicurati che il testo sia pieno (non solo contorno) per migliorare la leggibilità
+2. Aumenta il contrasto tra il testo e lo sfondo
+3. Ottimizza le proporzioni tra l'arco e il testo
+4. Considera di utilizzare un formato vettoriale (SVG) per mantenere la qualità a qualsiasi dimensione
+
+## Dimensioni consigliate
+
+- Larghezza: 200-300px
+- Altezza: proporzionale alla larghezza
+- Formato: PNG con sfondo trasparente o SVG
+
+## Implementazione nel codice
+
+Il logo è già configurato per apparire sia nell'header che nel footer del sito. Se il logo non viene trovato, verrà mostrato il testo "Dobusinessinitaly.com" come fallback.

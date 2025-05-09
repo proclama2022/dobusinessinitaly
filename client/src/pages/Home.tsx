@@ -2,9 +2,8 @@ import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import ServicesSection from '@/components/ServicesSection';
-import MediaCoverageSection from '@/components/MediaCoverageSection';
+import MediaCoverageSectionNew from '@/components/MediaCoverageSectionNew';
 import BlogSection from '@/components/BlogSection';
-import NewsletterSection from '@/components/NewsletterSection';
 import ContactSection from '@/components/ContactSection';
 import { useEffect } from 'react';
 
@@ -13,7 +12,7 @@ const Home = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = 'DoBusinessNew - Studio Commercialisti';
+    document.title = 'Dobusinessinitaly.com - Studio Commercialisti';
   }, []);
 
   return (
@@ -22,9 +21,8 @@ const Home = () => {
       <StatsSection />
       <WhyChooseUs />
       <ServicesSection />
-      <MediaCoverageSection />
+      <MediaCoverageSectionNew />
       <BlogSection />
-      <NewsletterSection />
       <ContactSection />
     </>
   );

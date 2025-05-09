@@ -114,7 +114,10 @@ export const LocalizedRouter = () => {
           }} />
           
           <Route path="/:lang/blog/:slug" component={({ params }) => {
-            return supportedLanguages.includes(params.lang) ? <BlogPost /> : <NotFound />;
+            // BlogPost gets lang and slug from URL params
+            return supportedLanguages.includes(params.lang) 
+              ? <BlogPost /> 
+              : <NotFound />;
           }} />
           
           <Route path="/:lang/contact" component={({ params }) => {

@@ -12,7 +12,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   const [location, setLocation] = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
   const languages = [
     { code: 'it', name: 'Italiano', flag: 'https://flagcdn.com/w20/it.png' },
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
@@ -29,10 +29,10 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
     setDropdownOpen(false);
-    
+
     // Modifica l'URL mantenendo il percorso corrente ma cambiando il prefisso della lingua
     const segments = location.split('/');
-    
+
     // Se c'è già un prefisso linguistico, lo sostituisce
     if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
       segments[1] = langCode;
@@ -77,26 +77,26 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <button 
-        className="flex items-center text-neutral-700 hover:text-primary"
+      <button
+        className="flex items-center text-neutral-700 hover:text-primary text-sm"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <img src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-5 h-auto mr-1" />
+        <img src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-4 h-auto mr-1" />
         <span className="mr-1">{currentLang.code.toUpperCase()}</span>
         <i className="fas fa-chevron-down text-xs"></i>
       </button>
-      
+
       {dropdownOpen && (
-        <div className="absolute right-0 mt-2 w-24 bg-white shadow-lg rounded-md py-1 z-10">
+        <div className="absolute right-0 mt-1 w-20 bg-white shadow-lg rounded-md py-1 z-10">
           {languages
             .filter(lang => lang.code !== i18n.language)
             .map(lang => (
               <button
                 key={lang.code}
-                className="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 flex items-center"
+                className="block w-full px-4 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100 flex items-center"
                 onClick={() => handleLanguageChange(lang.code)}
               >
-                <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" />
+                <img src={lang.flag} alt={`${lang.name} flag`} className="w-4 h-auto mr-2" />
                 {lang.code.toUpperCase()}
               </button>
             ))}

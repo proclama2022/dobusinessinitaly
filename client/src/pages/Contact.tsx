@@ -9,7 +9,7 @@ const Contact = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = `${t('navigation.contact')} - DoBusinessNew`;
+    document.title = `${t('navigation.contact')} - Dobusinessinitaly.com`;
   }, [t]);
 
   return (
@@ -24,9 +24,9 @@ const Contact = () => {
           </p>
         </div>
       </div>
-      
+
       <ContactSection />
-      
+
       <section className="py-16 bg-neutral-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -34,15 +34,15 @@ const Contact = () => {
               {t('contact.map.title')}
             </h2>
           </div>
-          
+
           <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.211381461838!2d9.191012776593187!3d45.46512933583656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6aec34636a1%3A0xab7f4e27101a2e19!2sVia%20Roma%2C%20Milano%20MI!5e0!3m2!1sit!2sit!4v1684759287682!5m2!1sit!2sit" 
-              width="100%" 
-              height="500" 
-              style={{ border: 0 }} 
-              allowFullScreen={true} 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.7795502588883!2d15.101126376590404!3d37.51223167205279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313fcb5e93d5389%3A0x61faf25f2c48b9d8!2sViale%20Africa%2C%2031%2C%2095129%20Catania%20CT!5e1!3m2!1sit!2sit!4v1746641991088!5m2!1sit!2sit"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title={t('contact.map.titleAlt')}
             ></iframe>

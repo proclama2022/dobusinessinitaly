@@ -154,12 +154,56 @@
   },
   "media": {
     "title": "Parlano di Noi",
-    "subtitle": "Scopri cosa dicono di DoBusinessNew la stampa e i media specializzati nel settore economico-finanziario.",
+    "subtitle": "Scopri cosa dicono di Dobusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.",
     "typeArticle": "Articolo",
     "typeProfile": "Profilo",
     "typeMention": "Menzione",
     "readMore": "Leggi l'articolo completo",
-    "seeAll": "Vedi tutte le menzioni"
+    "requestArticle": "Articolo disponibile su richiesta",
+    "seeAll": "Vedi tutte le menzioni",
+    "all": "Tutti",
+    "noResults": "Nessun risultato trovato per il filtro selezionato.",
+    "credentialsTitle": "Riconoscimenti e Credibilità",
+    "credentialsParagraph1": "I riconoscimenti e le menzioni che abbiamo ricevuto testimoniano il nostro impegno costante verso l'eccellenza nel servizio ai clienti internazionali e l'innovazione tecnologica applicata alla consulenza fiscale e aziendale. Siamo orgogliosi di essere riconosciuti come pionieri nella digitalizzazione dei servizi professionali, come dimostrato dal premio \"Professionista Digitale dell'anno\" ricevuto dal Politecnico di Milano e dai riconoscimenti \"100 Best in Class\" di Forbes Italia e TeamSystem.",
+    "credentialsParagraph2": "La nostra esperienza nella digitalizzazione dei processi, documentata nelle pubblicazioni del nostro fondatore Giovanni Emmi, ci permette di offrire un servizio efficiente e di qualità, superando le barriere linguistiche e burocratiche che spesso ostacolano le aziende straniere che desiderano operare in Italia. I nostri progetti digitali come Partitaiva.ai ed Evoluzione.pro sono esempi concreti del nostro approccio innovativo.",
+    "credentialsParagraph3": "Queste credenziali rafforzano la nostra posizione come partner affidabile per assistere la vostra azienda nel navigare con successo il complesso panorama fiscale e normativo italiano. La nostra reputazione è costruita su risultati concreti, pubblicazioni autorevoli e sulla soddisfazione dei nostri clienti internazionali.",
+    "note": "Nota",
+    "noteText": "I link in questa pagina conducono a risorse verificabili come pubblicazioni su Amazon, siti web ufficiali dei nostri progetti e pagine di riconoscimenti. Per ulteriori informazioni o dettagli su qualsiasi menzione, non esitate a",
+    "contactUs": "contattarci",
+    "items": [
+      {
+        "title": "100 Best in Class 2024 - Innovazione Digitale nei servizi professionali",
+        "date": "2024",
+        "source": "Forbes Italia / TeamSystem",
+        "excerpt": "Riconoscimento per l'eccellenza nell'innovazione digitale nei servizi professionali. Proclama SPA è stata premiata tra i migliori studi italiani per innovazione digitale, confermando il nostro impegno verso un servizio clienti moderno ed efficiente.",
+        "link": "https://www.forbes.it/100-best-in-class-2023",
+        "type": "mention"
+      },
+      {
+        "title": "Premio \"Professionista Digitale dell'anno 2014\"",
+        "date": "2014",
+        "source": "Politecnico di Milano - Osservatorio Professionisti e Innovazione Digitale",
+        "excerpt": "Nel 2014 lo Studio Emmi, oggi Proclama SPA, si è distinto in Italia per capacità innovativa a livello organizzativo e di business con l'utilizzo delle tecnologie digitali. In particolare per il progetto partitaiva.it, pioniere nella trasformazione digitale dello studio professionale.",
+        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
+        "type": "mention"
+      },
+      {
+        "title": "Pubblicazione: \"L'evoluzione del commercialista nell'era dell'Intelligenza Artificiale\"",
+        "date": "2024",
+        "source": "Amazon - Pubblicazioni di Giovanni Emmi",
+        "excerpt": "Libro che esplora come l'intelligenza artificiale stia trasformando la professione del commercialista. \"Essere un commercialista innovativo significa essere un pilastro per la continuità e il progresso delle aziende clienti, un punto di riferimento per il futuro, mantenendo sempre un'alta etica professionale.\"",
+        "link": "https://amzn.eu/d/4GNuret",
+        "type": "profile"
+      },
+      {
+        "title": "Partitaiva.ai - Piattaforma innovativa per commercialisti e PMI",
+        "date": "2023",
+        "source": "Progetti digitali di Proclama SPA",
+        "excerpt": "Portale che semplifica e riorganizza gli studi dei commercialisti e le aree amministrative e contabili delle PMI. Un progetto all'avanguardia che utilizza l'intelligenza artificiale per ottimizzare i processi amministrativi e contabili.",
+        "link": "https://www.partitaiva.it",
+        "type": "article"
+      }
+    ]
   },
   "blog": {
     "title": "Blog e Aggiornamenti",
@@ -241,7 +285,7 @@
       "title": "Informazioni di Contatto",
       "address": {
         "title": "Indirizzo",
-        "value": "Via Roma 123, 20121 Milano, Italia",
+        "value": "Catania, Viale Africa 31",
         "label": "Indirizzo"
       },
       "phone": {
@@ -251,7 +295,7 @@
       },
       "email": {
         "title": "Email",
-        "value": "info@dobusinessnew.it",
+        "value": "info@dobusinessinitaly.com",
         "label": "Email"
       },
       "hours": {
@@ -260,6 +304,10 @@
         "label": "Orari di Apertura"
       },
       "officeImageAlt": "Il nostro ufficio"
+    },
+    "map": {
+      "title": "Dove Siamo",
+      "titleAlt": "Mappa della nostra sede"
     },
     "social": {
       "title": "Seguici"
@@ -325,6 +373,24 @@
     "valuesSection": {
       "title": "I nostri valori",
       "description": "Professionisti altamente qualificati con esperienze multidisciplinari per soluzioni integrate."
+    },
+    "stpSection": {
+      "badge": "Società tra Professionisti",
+      "title": "Società iscritta all'Albo",
+      "description": "La nostra società, Proclama S.p.A., è una Società tra Professionisti (STP) costituita da dottori commercialisti regolarmente iscritti all'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania, un albo professionale riconosciuto dallo Stato italiano. L'iscrizione all'albo garantisce che tutti i nostri professionisti abbiano superato un rigoroso percorso di formazione e abilitazione, offrendo così ai nostri clienti la massima affidabilità e competenza.",
+      "verifyTitle": "Verifica nell'Albo dei Dottori Commercialisti di Catania",
+      "verifyDescription": "Per la massima trasparenza, tutte le informazioni relative ai professionisti e alle società iscritte sono pubbliche e consultabili nell'Albo dell'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania. Qui è possibile verificare i dati di iscrizione, le qualifiche e le informazioni di contatto dei commercialisti e delle società tra professionisti.",
+      "verifyLink": "Verifica nell'Albo",
+      "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
+      "accountantTitle": "Chi è il Dottore Commercialista",
+      "accountantDescription": "Il dottore commercialista è un professionista altamente qualificato che offre consulenza fiscale, societaria, amministrativa e legale sia a privati che ad aziende. È una figura riconosciuta dallo Stato italiano, con competenze specifiche in ambito economico, commerciale, finanziario e tributario.",
+      "pathTitle": "Il percorso per diventare dottore commercialista prevede:",
+      "pathSteps": [
+        "Il conseguimento di una laurea magistrale in discipline economiche (ad esempio, Economia e Commercio o Economia Aziendale).",
+        "Un periodo di tirocinio pratico di almeno 18 mesi presso uno studio di un commercialista iscritto all'albo.",
+        "Il superamento dell'Esame di Stato, articolato in tre prove scritte (su materie come contabilità, diritto commerciale, diritto tributario, revisione aziendale) e una prova orale, che verifica anche le conoscenze deontologiche e informatiche."
+      ],
+      "conclusion": "Solo chi supera l'Esame di Stato e si iscrive all'albo può esercitare legalmente la professione di dottore commercialista in Italia, offrendo così ai clienti garanzia di professionalità, aggiornamento continuo e rispetto delle norme etiche e legali."
     }
   }
 }

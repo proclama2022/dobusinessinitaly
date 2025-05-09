@@ -152,13 +152,57 @@
     }
   },
   "media": {
-    "title": "Hablan de Nosotros",
-    "subtitle": "Descubre lo que dicen de DoBusinessNew la prensa y los medios especializados en el sector económico-financiero.",
+    "title": "En los Medios",
+    "subtitle": "Descubre lo que dicen de Dobusinessinitaly.com la prensa y los medios especializados en el sector económico-financiero.",
     "typeArticle": "Artículo",
     "typeProfile": "Perfil",
     "typeMention": "Mención",
     "readMore": "Leer el artículo completo",
-    "seeAll": "Ver todas las menciones"
+    "requestArticle": "Artículo disponible bajo petición",
+    "seeAll": "Ver todas las menciones",
+    "all": "Todos",
+    "noResults": "No se encontraron resultados para el filtro seleccionado.",
+    "credentialsTitle": "Reconocimientos y Credibilidad",
+    "credentialsParagraph1": "Los reconocimientos y menciones que hemos recibido testimonian nuestro compromiso constante con la excelencia en el servicio a clientes internacionales y la innovación tecnológica aplicada a la consultoría fiscal y empresarial. Estamos orgullosos de ser reconocidos como pioneros en la digitalización de servicios profesionales, como lo demuestra el premio \"Profesional Digital del Año\" recibido del Politécnico de Milán y los reconocimientos \"100 Best in Class\" de Forbes Italia y TeamSystem.",
+    "credentialsParagraph2": "Nuestra experiencia en la digitalización de procesos, documentada en las publicaciones de nuestro fundador Giovanni Emmi, nos permite ofrecer un servicio eficiente y de calidad, superando las barreras lingüísticas y burocráticas que a menudo obstaculizan a las empresas extranjeras que desean operar en Italia. Nuestros proyectos digitales como Partitaiva.ai y Evoluzione.pro son ejemplos concretos de nuestro enfoque innovador.",
+    "credentialsParagraph3": "Estas credenciales refuerzan nuestra posición como socio confiable para ayudar a su empresa a navegar con éxito en el complejo panorama fiscal y normativo italiano. Nuestra reputación se basa en resultados concretos, publicaciones autorizadas y la satisfacción de nuestros clientes internacionales.",
+    "note": "Nota",
+    "noteText": "Los enlaces en esta página conducen a recursos verificables como publicaciones de Amazon, sitios web oficiales de nuestros proyectos y páginas de reconocimiento. Para más información o detalles sobre cualquier mención, no dude en",
+    "contactUs": "contactarnos",
+    "items": [
+      {
+        "title": "100 Best in Class 2024 - Innovación Digital en Servicios Profesionales",
+        "date": "2024",
+        "source": "Forbes Italia / TeamSystem",
+        "excerpt": "Reconocimiento a la excelencia en innovación digital en servicios profesionales. Proclama SPA ha sido premiada entre los mejores despachos italianos por innovación digital, confirmando nuestro compromiso con un servicio al cliente moderno y eficiente.",
+        "link": "https://www.forbes.it/100-best-in-class-2023",
+        "type": "mention"
+      },
+      {
+        "title": "Premio \"Profesional Digital del Año 2014\"",
+        "date": "2014",
+        "source": "Politécnico de Milán - Observatorio de Profesionales e Innovación Digital",
+        "excerpt": "En 2014, Studio Emmi, hoy Proclama SPA, se distinguió en Italia por su capacidad innovadora a nivel organizativo y empresarial con el uso de tecnologías digitales. En particular por el proyecto partitaiva.it, pionero en la transformación digital del despacho profesional.",
+        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
+        "type": "mention"
+      },
+      {
+        "title": "Publicación: \"La evolución del contador en la era de la Inteligencia Artificial\"",
+        "date": "2024",
+        "source": "Amazon - Publicaciones de Giovanni Emmi",
+        "excerpt": "Libro que explora cómo la inteligencia artificial está transformando la profesión contable. \"Ser un contador innovador significa ser un pilar para la continuidad y el progreso de las empresas clientes, un punto de referencia para el futuro, manteniendo siempre una alta ética profesional.\"",
+        "link": "https://amzn.eu/d/4GNuret",
+        "type": "profile"
+      },
+      {
+        "title": "Partitaiva.ai - Plataforma innovadora para contadores y PYMES",
+        "date": "2023",
+        "source": "Proyectos digitales de Proclama SPA",
+        "excerpt": "Portal que simplifica y reorganiza los despachos contables y las áreas administrativas y contables de las PYMES. Un proyecto de vanguardia que utiliza la inteligencia artificial para optimizar los procesos administrativos y contables.",
+        "link": "https://www.partitaiva.it",
+        "type": "article"
+      }
+    ]
   },
   "blog": {
     "title": "Blog y Actualizaciones",
@@ -238,7 +282,7 @@
       "title": "Información de Contacto",
       "address": {
         "title": "Dirección",
-        "value": "Via Roma 123, 20121 Milán, Italia"
+        "value": "Catania, Viale Africa 31"
       },
       "phone": {
         "title": "Teléfono",
@@ -246,13 +290,17 @@
       },
       "email": {
         "title": "Correo electrónico",
-        "value": "info@dobusinessnew.it"
+        "value": "info@dobusinessinitaly.com"
       },
       "hours": {
         "title": "Horario de Apertura",
         "value": "Lunes - Viernes: 9:00 - 18:00"
       },
       "officeImageAlt": "Nuestra oficina"
+    },
+    "map": {
+      "title": "Dónde Estamos",
+      "titleAlt": "Mapa de nuestra oficina"
     },
     "social": {
       "title": "Síguenos"
@@ -318,6 +366,24 @@
     "valuesSection": {
       "title": "Nuestros valores",
       "description": "Profesionales altamente cualificados con experiencias multidisciplinares para soluciones integradas."
+    },
+    "stpSection": {
+      "badge": "Sociedad Profesional",
+      "title": "Empresa Oficialmente Registrada",
+      "description": "Nuestra empresa, Proclama S.p.A., es una Sociedad Profesional (STP) compuesta por contadores públicos regularmente inscritos en la Orden de Contadores Públicos y Expertos Contables de Catania, un registro profesional reconocido por el Estado italiano. La inscripción en la Orden garantiza que todos nuestros profesionales han completado un riguroso proceso de formación y cualificación, ofreciendo así a nuestros clientes máxima fiabilidad y experiencia.",
+      "verifyTitle": "Verificar en el Registro de Contadores Públicos de Catania",
+      "verifyDescription": "Para máxima transparencia, toda la información sobre profesionales y empresas registradas es pública y puede consultarse en el Registro de la Orden de Contadores Públicos y Expertos Contables de Catania. Aquí puede verificar datos de registro, cualificaciones e información de contacto de contadores y sociedades profesionales.",
+      "verifyLink": "Verificar en el Registro",
+      "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
+      "accountantTitle": "Quién es el Contador Público",
+      "accountantDescription": "El contador público es un profesional altamente cualificado que ofrece asesoramiento fiscal, corporativo, administrativo y legal tanto a particulares como a empresas. Es una figura reconocida por el Estado italiano, con experiencia específica en asuntos económicos, comerciales, financieros y fiscales.",
+      "pathTitle": "El camino para convertirse en contador público incluye:",
+      "pathSteps": [
+        "Obtener un título de maestría en disciplinas económicas (por ejemplo, Economía y Comercio o Economía Empresarial).",
+        "Un período de formación práctica de al menos 18 meses en la oficina de un contador público registrado en la Orden.",
+        "Aprobar el Examen de Estado, que consta de tres pruebas escritas (sobre materias como contabilidad, derecho mercantil, derecho fiscal, auditoría empresarial) y una prueba oral, que también verifica conocimientos deontológicos e informáticos."
+      ],
+      "conclusion": "Solo aquellos que aprueban el Examen de Estado y se registran en la Orden pueden ejercer legalmente como contadores públicos en Italia, ofreciendo así a los clientes una garantía de profesionalidad, actualización continua y cumplimiento de estándares éticos y legales."
     }
   }
 }

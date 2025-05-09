@@ -152,6 +152,59 @@
       }
     }
   },
+  "media": {
+    "title": "Media Coverage",
+    "subtitle": "Discover what the press and specialized media in the economic-financial sector say about Dobusinessinitaly.com.",
+    "typeArticle": "Article",
+    "typeProfile": "Profile",
+    "typeMention": "Mention",
+    "readMore": "Read full article",
+    "requestArticle": "Article available upon request",
+    "seeAll": "See all mentions",
+    "all": "All",
+    "noResults": "No results found for the selected filter.",
+    "credentialsTitle": "Recognition and Credibility",
+    "credentialsParagraph1": "The recognitions and mentions we have received testify to our constant commitment to excellence in service to international clients and technological innovation applied to tax and business consulting. We are proud to be recognized as pioneers in the digitization of professional services, as demonstrated by the \"Digital Professional of the Year\" award received from the Politecnico di Milano and the \"100 Best in Class\" recognitions from Forbes Italia and TeamSystem.",
+    "credentialsParagraph2": "Our experience in process digitization, documented in the publications of our founder Giovanni Emmi, allows us to offer an efficient and quality service, overcoming the linguistic and bureaucratic barriers that often hinder foreign companies wishing to operate in Italy. Our digital projects such as Partitaiva.ai and Evoluzione.pro are concrete examples of our innovative approach.",
+    "credentialsParagraph3": "These credentials strengthen our position as a reliable partner to assist your company in successfully navigating the complex Italian tax and regulatory landscape. Our reputation is built on concrete results, authoritative publications, and the satisfaction of our international clients.",
+    "note": "Note",
+    "noteText": "The links on this page lead to verifiable resources such as Amazon publications, official websites of our projects, and recognition pages. For more information or details on any mention, do not hesitate to",
+    "contactUs": "contact us",
+    "items": [
+      {
+        "title": "100 Best in Class 2024 - Digital Innovation in Professional Services",
+        "date": "2024",
+        "source": "Forbes Italia / TeamSystem",
+        "excerpt": "Recognition for excellence in digital innovation in professional services. Proclama SPA has been awarded among the best Italian firms for digital innovation, confirming our commitment to modern and efficient customer service.",
+        "link": "https://www.forbes.it/100-best-in-class-2023",
+        "type": "mention"
+      },
+      {
+        "title": "\"Digital Professional of the Year 2014\" Award",
+        "date": "2014",
+        "source": "Politecnico di Milano - Observatory for Professionals and Digital Innovation",
+        "excerpt": "In 2014, Studio Emmi, now Proclama SPA, distinguished itself in Italy for innovative capacity at the organizational and business level with the use of digital technologies. In particular for the partitaiva.it project, a pioneer in the digital transformation of the professional firm.",
+        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
+        "type": "mention"
+      },
+      {
+        "title": "Publication: \"The Evolution of the Accountant in the Age of Artificial Intelligence\"",
+        "date": "2024",
+        "source": "Amazon - Publications by Giovanni Emmi",
+        "excerpt": "Book that explores how artificial intelligence is transforming the accounting profession. \"Being an innovative accountant means being a pillar for the continuity and progress of client companies, a reference point for the future, always maintaining high professional ethics.\"",
+        "link": "https://amzn.eu/d/4GNuret",
+        "type": "profile"
+      },
+      {
+        "title": "Partitaiva.ai - Innovative Platform for Accountants and SMEs",
+        "date": "2023",
+        "source": "Digital Projects by Proclama SPA",
+        "excerpt": "Portal that simplifies and reorganizes accounting firms and the administrative and accounting areas of SMEs. A cutting-edge project that uses artificial intelligence to optimize administrative and accounting processes.",
+        "link": "https://www.partitaiva.it",
+        "type": "article"
+      }
+    ]
+  },
   "testimonials": {
     "title": "Testimonials from Our Clients",
     "subtitle": "Here's what our international clients have to say about us.",
@@ -160,17 +213,17 @@
     "goToSlide": "Go to slide",
     "items": [
       {
-        "quote": "We've been working with DoBusinessNew since we decided to expand into Italy three years ago. Their expertise in international taxation and ability to explain complex concepts clearly has allowed us to navigate the Italian system with confidence. Highly recommended.",
+        "quote": "We've been working with Dobusinessinitaly.com since we decided to expand into Italy three years ago. Their expertise in international taxation and ability to explain complex concepts clearly has allowed us to navigate the Italian system with confidence. Highly recommended.",
         "name": "Robert Johnson",
         "position": "CFO, TechGrowth GmbH - Germany"
       },
       {
-        "quote": "The DoBusinessNew team was instrumental in setting up our Italian branch. Their multilingual assistance and deep knowledge of local regulations greatly simplified the process. We continue to rely on them for all tax and accounting matters.",
+        "quote": "The Dobusinessinitaly.com team was instrumental in setting up our Italian branch. Their multilingual assistance and deep knowledge of local regulations greatly simplified the process. We continue to rely on them for all tax and accounting matters.",
         "name": "Sophie Martin",
         "position": "Operations Director, Lumière Design - France"
       },
       {
-        "quote": "As a foreign investor in the Italian real estate market, I needed reliable tax and legal advice. DoBusinessNew offered impeccable service, giving me the peace of mind to focus on investments. Their responsiveness is extraordinary.",
+        "quote": "As a foreign investor in the Italian real estate market, I needed reliable tax and legal advice. Dobusinessinitaly.com offered impeccable service, giving me the peace of mind to focus on investments. Their responsiveness is extraordinary.",
         "name": "James Wilson",
         "position": "CEO, Wilson Properties - United Kingdom"
       }
@@ -256,7 +309,7 @@
       "title": "Contact Information",
       "address": {
         "title": "Address",
-        "value": "Via Roma 123, 20121 Milan, Italy",
+        "value": "Catania, Viale Africa 31",
         "label": "Address"
       },
       "phone": {
@@ -266,7 +319,7 @@
       },
       "email": {
         "title": "Email",
-        "value": "info@dobusinessnew.it",
+        "value": "info@dobusinessinitaly.com",
         "label": "Email"
       },
       "hours": {
@@ -275,6 +328,10 @@
         "label": "Opening Hours"
       },
       "officeImageAlt": "Our office"
+    },
+    "map": {
+      "title": "Where We Are",
+      "titleAlt": "Map of our office"
     },
     "social": {
       "title": "Follow Us"
@@ -340,6 +397,24 @@
     "valuesSection": {
       "title": "Our values",
       "description": "Highly qualified professionals with multidisciplinary experiences for integrated solutions."
+    },
+    "stpSection": {
+      "badge": "Professional Corporation",
+      "title": "Officially Registered Company",
+      "description": "Our company, Proclama S.p.A., is a Professional Corporation (STP) composed of chartered accountants regularly registered with the Order of Chartered Accountants and Accounting Experts of Catania, a professional register recognized by the Italian State. Registration with the Order guarantees that all our professionals have completed a rigorous training and qualification process, thus offering our clients maximum reliability and expertise.",
+      "verifyTitle": "Verify in the Register of Chartered Accountants of Catania",
+      "verifyDescription": "For maximum transparency, all information regarding registered professionals and companies is public and can be consulted in the Register of the Order of Chartered Accountants and Accounting Experts of Catania. Here you can verify registration data, qualifications, and contact information of accountants and professional corporations.",
+      "verifyLink": "Verify in the Register",
+      "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
+      "accountantTitle": "Who is the Chartered Accountant",
+      "accountantDescription": "The chartered accountant is a highly qualified professional who offers tax, corporate, administrative, and legal consulting to both individuals and companies. It is a figure recognized by the Italian State, with specific expertise in economic, commercial, financial, and tax matters.",
+      "pathTitle": "The path to becoming a chartered accountant includes:",
+      "pathSteps": [
+        "Obtaining a master's degree in economic disciplines (for example, Economics and Commerce or Business Economics).",
+        "A period of practical training of at least 18 months at the office of a chartered accountant registered with the Order.",
+        "Passing the State Examination, consisting of three written tests (on subjects such as accounting, commercial law, tax law, business auditing) and an oral test, which also verifies deontological and IT knowledge."
+      ],
+      "conclusion": "Only those who pass the State Examination and register with the Order can legally practice as chartered accountants in Italy, thus offering clients a guarantee of professionalism, continuous updating, and compliance with ethical and legal standards."
     }
   }
 }

@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
-import NewsletterSection from '@/components/NewsletterSection';
+import SEOHead from '@/components/SEOHead';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+import remarkGfm from 'remark-gfm';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -22,14 +27,14 @@ interface BlogPostData {
 }
 
 // Componente per il post correlato
-const RelatedPostCard = ({ 
-  imgSrc, 
-  title, 
+const RelatedPostCard = ({
+  imgSrc,
+  title,
   excerpt,
   slug,
-}: { 
-  imgSrc: string; 
-  title: string; 
+}: {
+  imgSrc: string;
+  title: string;
   excerpt: string;
   slug: string;
 }) => {
@@ -39,31 +44,31 @@ const RelatedPostCard = ({
       <div className="relative overflow-hidden h-40">
         {/* Overlay con gradiente italiano al hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
-        
+
         {/* Immagine articolo */}
-        <img 
-          src={imgSrc} 
-          alt={title} 
+        <img
+          src={imgSrc}
+          alt={title}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
         />
-        
+
         {/* Linee decorative */}
         <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
       </div>
-      
+
       {/* Contenuto testuale */}
       <div className="p-4 relative">
         {/* Titolo articolo */}
         <h3 className="text-lg font-heading font-bold text-neutral-800 mb-2 group-hover:text-[#009246] transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
-        
+
         {/* Estratto articolo */}
         <p className="text-neutral-600 mb-3 text-sm line-clamp-2">
           {excerpt}
         </p>
-        
+
         {/* Pulsante leggi di più */}
         <Link href={`/blog/${slug}`} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
           Leggi l'articolo
@@ -74,16 +79,24 @@ const RelatedPostCard = ({
   );
 };
 
+interface BlogPostProps {
+  lang?: string;
+}
+
 const BlogPost = () => {
-  const { t } = useTranslation();
-  const params = useParams<{ slug: string }>();
+  const { t, i18n } = useTranslation();
+  const params = useParams<{ slug: string; lang?: string }>();
   const [location, setLocation] = useLocation();
-  const slug = params.slug;
+  const { slug, lang } = params;
 
   // Fetch del post del blog specifico
   const { data: postData, isLoading, error } = useQuery({
-    queryKey: ['/api/blog', slug],
-    queryFn: () => apiRequest<{ success: boolean, data: BlogPostData }>(`/api/blog/${slug}`, { method: 'GET' }),
+    queryKey: ['/api/blog', lang || i18n.language, slug],
+    queryFn: () => apiRequest<{ success: boolean, data: BlogPostData }>(
+      // Handle language-specific URLs
+      lang ? `/api/blog/${lang}/${slug}` : `/api/blog/${slug}`,
+      { method: 'GET' }
+    ),
   });
 
   // Fetch di tutti i post per i post correlati
@@ -95,20 +108,34 @@ const BlogPost = () => {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
-    
+
     // Set page title
     if (postData?.data?.meta?.title) {
-      document.title = `${postData.data.meta.title} - DoBusinessNew`;
+      document.title = `${postData.data.meta.title} - Dobusinessinitaly.com`;
     } else {
-      document.title = `Blog - DoBusinessNew`;
+      document.title = `Blog - Dobusinessinitaly.com`;
     }
   }, [postData]);
 
-  // Ottieni post correlati (stessa categoria)
-  const relatedPosts = postsData?.data 
-    ? postsData.data
-        .filter(post => post.category === postData?.data?.meta?.category && post.slug !== slug)
-        .slice(0, 3)
+  // Ottieni post correlati con strategia migliorata per SEO
+  const relatedPosts = postsData?.data
+    ? (() => {
+        // Prima cerca post nella stessa categoria
+        const sameCategoryPosts = postsData.data
+          .filter(post => post.category === postData?.data?.meta?.category && post.slug !== slug);
+
+        // Se abbiamo abbastanza post nella stessa categoria, usiamo quelli
+        if (sameCategoryPosts.length >= 3) {
+          return sameCategoryPosts.slice(0, 3);
+        }
+
+        // Altrimenti, aggiungiamo altri post recenti di categorie diverse
+        const otherPosts = postsData.data
+          .filter(post => post.category !== postData?.data?.meta?.category && post.slug !== slug)
+          .slice(0, 3 - sameCategoryPosts.length);
+
+        return [...sameCategoryPosts, ...otherPosts];
+      })()
     : [];
 
   // Rendering condizionale in base allo stato
@@ -140,20 +167,71 @@ const BlogPost = () => {
 
   const { meta, content } = postData.data;
 
+  // Prepara i dati strutturati per l'articolo
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: meta.title,
+    description: meta.excerpt,
+    image: meta.coverImage,
+    datePublished: meta.date,
+    dateModified: meta.date,
+    author: {
+      '@type': 'Person',
+      name: meta.author
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dobusinessinitaly.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://dobusinessinitaly.com/logo.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://dobusinessinitaly.com/blog/${meta.slug}`
+    },
+    articleSection: meta.category
+  };
+
+  // Formatta la data per i meta tag
+  const formattedDate = new Date(meta.date).toISOString();
+
   return (
     <>
+      <SEOHead
+        title={`${meta.title} - Dobusinessinitaly.com`}
+        description={meta.excerpt}
+        canonicalUrl={`/blog/${meta.slug}`}
+        ogImage={meta.coverImage}
+        ogType="article"
+        twitterCard="summary_large_image"
+        keywords={`${meta.category}, blog, articoli, fiscale, legale, business, italia`}
+        author={meta.author}
+        publishedTime={formattedDate}
+        modifiedTime={formattedDate}
+        articleSection={meta.category}
+        structuredData={articleStructuredData}
+      />
+
       {/* Hero section con immagine di copertina */}
       <section className="relative h-[500px] overflow-hidden">
         {/* Immagine di sfondo con overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 z-10"></div>
-          <img 
-            src={meta.coverImage} 
-            alt={meta.title} 
+          <img
+            src={meta.coverImage}
+            alt={`${meta.title} - Dobusinessinitaly.com`}
             className="w-full h-full object-cover"
+            width="1200"
+            height="630"
+            loading="eager"
+            decoding="async"
+            itemProp="image"
           />
         </div>
-        
+
         {/* Contenuto */}
         <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-16 relative z-20">
           {/* Badge categoria */}
@@ -162,12 +240,12 @@ const BlogPost = () => {
               {meta.category}
             </span>
           </div>
-          
+
           {/* Titolo */}
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 max-w-4xl">
             {meta.title}
           </h1>
-          
+
           {/* Metadata */}
           <div className="flex items-center text-white/80 text-sm">
             <span className="inline-flex items-center mr-6">
@@ -180,25 +258,50 @@ const BlogPost = () => {
             </span>
           </div>
         </div>
-        
+
         {/* Bordi decorativi */}
         <div className="absolute top-0 left-0 w-1 h-full bg-[#009246] z-20"></div>
         <div className="absolute top-0 right-0 w-1 h-full bg-[#ce2b37] z-20"></div>
       </section>
-      
+
       {/* Contenuto dell'articolo */}
       <section className="py-16 bg-white relative">
         <div className="container mx-auto px-4">
+          {/* Breadcrumbs */}
+          <Breadcrumbs
+            items={[
+              { label: t('navigation.blog'), path: '/blog' },
+              { label: meta.title, path: `/blog/${meta.slug}`, isLast: true }
+            ]}
+            className="mb-8"
+          />
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Contenuto principale */}
             <div className="lg:col-span-8">
-              {/* Articolo formattato */}
-              <article className="prose prose-lg max-w-none">
+              {/* Articolo formattato con struttura semantica migliorata */}
+              <article className="prose prose-lg max-w-none" itemScope itemType="https://schema.org/BlogPosting">
+                <meta itemProp="headline" content={meta.title} />
+                <meta itemProp="author" content={meta.author} />
+                <meta itemProp="datePublished" content={formattedDate} />
+                <meta itemProp="image" content={meta.coverImage} />
                 <div className="bg-white rounded-xl p-8 shadow-md">
-                  <div dangerouslySetInnerHTML={{ __html: `<div class="markdown-content">${content}</div>` }} />
+                  <div
+                    itemProp="articleBody"
+                    className="article-content"
+                  >
+                    <div className="markdown-content">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                      >
+                        {content}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
                 </div>
               </article>
-              
+
               {/* Social sharing */}
               <div className="mt-12">
                 <div className="border-t border-neutral-200 pt-6">
@@ -222,7 +325,7 @@ const BlogPost = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Sidebar */}
             <div className="lg:col-span-4">
               {/* Autore */}
@@ -233,8 +336,8 @@ const BlogPost = () => {
                 </h3>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-neutral-200 overflow-hidden mr-4">
-                    <img 
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(meta.author)}&background=random&color=fff`} 
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(meta.author)}&background=random&color=fff`}
                       alt={meta.author}
                       className="w-full h-full object-cover"
                     />
@@ -245,7 +348,7 @@ const BlogPost = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Categorie */}
               <div className="bg-neutral-50 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-heading font-bold mb-4 text-[#009246]">
@@ -261,7 +364,7 @@ const BlogPost = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* CTA */}
               <div className="bg-gradient-to-br from-[#009246] to-[#38a169] rounded-xl p-6 text-white mb-8">
                 <h3 className="text-xl font-heading font-bold mb-3">
@@ -279,7 +382,7 @@ const BlogPost = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Post correlati */}
       {relatedPosts.length > 0 && (
         <section className="py-16 bg-neutral-50">
@@ -296,10 +399,10 @@ const BlogPost = () => {
                 Altri articoli che potrebbero interessarti nella categoria {meta.category}.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedPosts.map((post, index) => (
-                <RelatedPostCard 
+                <RelatedPostCard
                   key={index}
                   imgSrc={post.coverImage}
                   title={post.title}
@@ -311,9 +414,8 @@ const BlogPost = () => {
           </div>
         </section>
       )}
-      
-      {/* Iscrizione alla newsletter */}
-      <NewsletterSection />
+
+
     </>
   );
 };

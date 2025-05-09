@@ -151,6 +151,59 @@
       }
     }
   },
+  "media": {
+    "title": "Dans les Médias",
+    "subtitle": "Découvrez ce que la presse et les médias spécialisés du secteur économico-financier disent de Dobusinessinitaly.com.",
+    "typeArticle": "Article",
+    "typeProfile": "Profil",
+    "typeMention": "Mention",
+    "readMore": "Lire l'article complet",
+    "requestArticle": "Article disponible sur demande",
+    "seeAll": "Voir toutes les mentions",
+    "all": "Tous",
+    "noResults": "Aucun résultat trouvé pour le filtre sélectionné.",
+    "credentialsTitle": "Reconnaissance et Crédibilité",
+    "credentialsParagraph1": "Les reconnaissances et mentions que nous avons reçues témoignent de notre engagement constant envers l'excellence dans le service aux clients internationaux et l'innovation technologique appliquée au conseil fiscal et commercial. Nous sommes fiers d'être reconnus comme des pionniers dans la numérisation des services professionnels, comme le démontre le prix \"Professionnel Numérique de l'Année\" reçu du Politecnico di Milano et les reconnaissances \"100 Best in Class\" de Forbes Italia et TeamSystem.",
+    "credentialsParagraph2": "Notre expérience dans la numérisation des processus, documentée dans les publications de notre fondateur Giovanni Emmi, nous permet d'offrir un service efficace et de qualité, en surmontant les barrières linguistiques et bureaucratiques qui entravent souvent les entreprises étrangères souhaitant opérer en Italie. Nos projets numériques comme Partitaiva.ai et Evoluzione.pro sont des exemples concrets de notre approche innovante.",
+    "credentialsParagraph3": "Ces références renforcent notre position en tant que partenaire fiable pour aider votre entreprise à naviguer avec succès dans le paysage fiscal et réglementaire complexe italien. Notre réputation est construite sur des résultats concrets, des publications faisant autorité et la satisfaction de nos clients internationaux.",
+    "note": "Note",
+    "noteText": "Les liens sur cette page mènent à des ressources vérifiables telles que des publications Amazon, des sites web officiels de nos projets et des pages de reconnaissance. Pour plus d'informations ou de détails sur n'importe quelle mention, n'hésitez pas à",
+    "contactUs": "nous contacter",
+    "items": [
+      {
+        "title": "100 Best in Class 2024 - Innovation Numérique dans les Services Professionnels",
+        "date": "2024",
+        "source": "Forbes Italia / TeamSystem",
+        "excerpt": "Reconnaissance pour l'excellence dans l'innovation numérique dans les services professionnels. Proclama SPA a été récompensée parmi les meilleurs cabinets italiens pour l'innovation numérique, confirmant notre engagement envers un service client moderne et efficace.",
+        "link": "https://www.forbes.it/100-best-in-class-2023",
+        "type": "mention"
+      },
+      {
+        "title": "Prix \"Professionnel Numérique de l'Année 2014\"",
+        "date": "2014",
+        "source": "Politecnico di Milano - Observatoire des Professionnels et de l'Innovation Numérique",
+        "excerpt": "En 2014, Studio Emmi, aujourd'hui Proclama SPA, s'est distingué en Italie pour sa capacité d'innovation au niveau organisationnel et commercial avec l'utilisation des technologies numériques. En particulier pour le projet partitaiva.it, pionnier dans la transformation numérique du cabinet professionnel.",
+        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
+        "type": "mention"
+      },
+      {
+        "title": "Publication: \"L'Évolution du Comptable à l'Ère de l'Intelligence Artificielle\"",
+        "date": "2024",
+        "source": "Amazon - Publications de Giovanni Emmi",
+        "excerpt": "Livre qui explore comment l'intelligence artificielle transforme la profession comptable. \"Être un comptable innovant signifie être un pilier pour la continuité et le progrès des entreprises clientes, un point de référence pour l'avenir, tout en maintenant une éthique professionnelle élevée.\"",
+        "link": "https://amzn.eu/d/4GNuret",
+        "type": "profile"
+      },
+      {
+        "title": "Partitaiva.ai - Plateforme Innovante pour Comptables et PME",
+        "date": "2023",
+        "source": "Projets Numériques de Proclama SPA",
+        "excerpt": "Portail qui simplifie et réorganise les cabinets comptables et les domaines administratifs et comptables des PME. Un projet de pointe qui utilise l'intelligence artificielle pour optimiser les processus administratifs et comptables.",
+        "link": "https://www.partitaiva.it",
+        "type": "article"
+      }
+    ]
+  },
   "testimonials": {
     "title": "Témoignages de Nos Clients",
     "subtitle": "Voici ce que nos clients internationaux disent de nous.",
@@ -159,17 +212,17 @@
     "goToSlide": "Aller au témoignage",
     "items": [
       {
-        "quote": "Nous travaillons avec DoBusinessNew depuis que nous avons décidé de nous développer en Italie il y a trois ans. Leur expertise en matière de fiscalité internationale et leur capacité à expliquer clairement des concepts complexes nous ont permis de naviguer dans le système italien en toute confiance. Hautement recommandé.",
+        "quote": "Nous travaillons avec Dobusinessinitaly.com depuis que nous avons décidé de nous développer en Italie il y a trois ans. Leur expertise en matière de fiscalité internationale et leur capacité à expliquer clairement des concepts complexes nous ont permis de naviguer dans le système italien en toute confiance. Hautement recommandé.",
         "name": "Robert Johnson",
         "position": "Directeur Financier, TechGrowth GmbH - Allemagne"
       },
       {
-        "quote": "L'équipe de DoBusinessNew a joué un rôle déterminant dans la création de notre filiale italienne. Leur assistance multilingue et leur connaissance approfondie des réglementations locales ont grandement simplifié le processus. Nous continuons à compter sur eux pour toutes les questions fiscales et comptables.",
+        "quote": "L'équipe de Dobusinessinitaly.com a joué un rôle déterminant dans la création de notre filiale italienne. Leur assistance multilingue et leur connaissance approfondie des réglementations locales ont grandement simplifié le processus. Nous continuons à compter sur eux pour toutes les questions fiscales et comptables.",
         "name": "Sophie Martin",
         "position": "Directrice des Opérations, Lumière Design - France"
       },
       {
-        "quote": "En tant qu'investisseur étranger sur le marché immobilier italien, j'avais besoin de conseils fiscaux et juridiques fiables. DoBusinessNew m'a offert un service impeccable, me donnant la tranquillité d'esprit nécessaire pour me concentrer sur les investissements. Leur réactivité est extraordinaire.",
+        "quote": "En tant qu'investisseur étranger sur le marché immobilier italien, j'avais besoin de conseils fiscaux et juridiques fiables. Dobusinessinitaly.com m'a offert un service impeccable, me donnant la tranquillité d'esprit nécessaire pour me concentrer sur les investissements. Leur réactivité est extraordinaire.",
         "name": "James Wilson",
         "position": "PDG, Wilson Properties - Royaume-Uni"
       }
@@ -253,7 +306,7 @@
       "title": "Informations de Contact",
       "address": {
         "title": "Adresse",
-        "value": "Via Roma 123, 20121 Milan, Italie"
+        "value": "Catania, Viale Africa 31"
       },
       "phone": {
         "title": "Téléphone",
@@ -261,13 +314,17 @@
       },
       "email": {
         "title": "Email",
-        "value": "info@dobusinessnew.it"
+        "value": "info@dobusinessinitaly.com"
       },
       "hours": {
         "title": "Heures d'Ouverture",
         "value": "Lundi - Vendredi: 9:00 - 18:00"
       },
       "officeImageAlt": "Notre bureau"
+    },
+    "map": {
+      "title": "Où nous sommes",
+      "titleAlt": "Carte de nos bureaux"
     },
     "social": {
       "title": "Suivez-nous"
@@ -333,6 +390,24 @@
     "valuesSection": {
       "title": "Nos valeurs",
       "description": "Professionnels hautement qualifiés avec des expériences multidisciplinaires pour des solutions intégrées."
+    },
+    "stpSection": {
+      "badge": "Société de Professionnels",
+      "title": "Société inscrite au Registre",
+      "description": "Notre société, Proclama S.p.A., est une Société de Professionnels (STP) composée d'experts-comptables régulièrement inscrits à l'Ordre des Experts-Comptables et des Experts Comptables de Catane, un registre professionnel reconnu par l'État italien. L'inscription à l'Ordre garantit que tous nos professionnels ont suivi un parcours rigoureux de formation et de qualification, offrant ainsi à nos clients une fiabilité et une expertise maximales.",
+      "verifyTitle": "Vérifier dans le Registre des Experts-Comptables de Catane",
+      "verifyDescription": "Pour une transparence maximale, toutes les informations concernant les professionnels et les sociétés inscrits sont publiques et consultables dans le Registre de l'Ordre des Experts-Comptables et des Experts Comptables de Catane. Vous pouvez y vérifier les données d'inscription, les qualifications et les coordonnées des comptables et des sociétés de professionnels.",
+      "verifyLink": "Vérifier dans le Registre",
+      "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
+      "accountantTitle": "Qui est l'Expert-Comptable",
+      "accountantDescription": "L'expert-comptable est un professionnel hautement qualifié qui offre des conseils fiscaux, d'entreprise, administratifs et juridiques aux particuliers et aux entreprises. C'est une figure reconnue par l'État italien, avec une expertise spécifique dans les domaines économique, commercial, financier et fiscal.",
+      "pathTitle": "Le parcours pour devenir expert-comptable comprend:",
+      "pathSteps": [
+        "L'obtention d'un master en disciplines économiques (par exemple, Économie et Commerce ou Économie d'Entreprise).",
+        "Une période de formation pratique d'au moins 18 mois dans le cabinet d'un expert-comptable inscrit à l'Ordre.",
+        "La réussite à l'Examen d'État, composé de trois épreuves écrites (sur des matières comme la comptabilité, le droit commercial, le droit fiscal, l'audit d'entreprise) et d'une épreuve orale, qui vérifie également les connaissances déontologiques et informatiques."
+      ],
+      "conclusion": "Seuls ceux qui réussissent l'Examen d'État et s'inscrivent à l'Ordre peuvent légalement exercer en tant qu'experts-comptables en Italie, offrant ainsi aux clients une garantie de professionnalisme, de mise à jour continue et de respect des normes éthiques et légales."
     }
   }
 }

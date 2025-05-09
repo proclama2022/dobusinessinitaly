@@ -3,6 +3,8 @@ import { Link, useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
+// Using the new 3:1 aspect ratio logo from public directory
+const logoImage = '/images/logo.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -64,51 +66,62 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link href={getLocalizedPath('/')} className="text-2xl font-heading font-bold text-primary">
-              <span>DoBusinessNew</span>
+            <Link href={getLocalizedPath('/')} className="flex items-center">
+              <img
+                src={logoImage}
+                alt="Dobusinessinitaly.com"
+                className="w-64 h-auto object-contain max-w-full"
+                onError={(e) => {
+                  // Fallback al testo se l'immagine non può essere caricata
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement?.classList.add('text-2xl', 'font-heading', 'font-bold', 'text-primary');
+                  target.parentElement!.innerHTML = '<span>Dobusinessinitaly.com</span>';
+                }}
+              />
             </Link>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={toggleMobileMenu}
               className="text-neutral-700 hover:text-primary focus:outline-none"
             >
               <i className="fas fa-bars text-xl"></i>
             </button>
           </div>
-          
+
           {/* Desktop menu */}
           <nav className="hidden md:flex items-center space-x-6">
             {navigationLinks.map((link) => (
-              <Link 
-                key={link.path} 
+              <Link
+                key={link.path}
                 href={getLocalizedPath(link.path)}
-                className={`font-medium ${isActiveLink(link.path) 
-                  ? 'text-primary border-b-2 border-primary' 
-                  : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-3`}
+                className={`font-medium ${isActiveLink(link.path)
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-2 text-sm`}
               >
                 {link.label}
               </Link>
             ))}
-            
+
             <LanguageSelector />
           </nav>
         </div>
-        
+
         {/* Mobile menu */}
         <div className={`md:hidden mt-3 border-t border-neutral-200 pt-3 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
           <nav className="flex flex-col space-y-3">
             {navigationLinks.map((link) => (
-              <Link 
-                key={link.path} 
+              <Link
+                key={link.path}
                 href={getLocalizedPath(link.path)}
-                className={`font-medium ${isActiveLink(link.path) 
-                  ? 'text-primary' 
+                className={`font-medium ${isActiveLink(link.path)
+                  ? 'text-primary'
                   : 'text-neutral-700 hover:text-primary'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >

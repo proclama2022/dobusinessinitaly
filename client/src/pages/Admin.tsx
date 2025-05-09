@@ -50,7 +50,7 @@ const AdminPage = () => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setCoverImageFile(file);
-      
+
       // Crea un'anteprima dell'immagine
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -64,34 +64,41 @@ const AdminPage = () => {
   const onSubmit = async (data: BlogPostFormValues) => {
     try {
       setIsSubmitting(true);
-      
+
       // Step 1: Se c'è un'immagine, la carica prima
       let coverImageUrl = '';
-      
+
       if (coverImageFile) {
         const formData = new FormData();
         formData.append('image', coverImageFile);
-        
+
         const uploadResponse = await fetch('/api/upload', {
           method: 'POST',
           body: formData,
         });
-        
+
         if (!uploadResponse.ok) {
           throw new Error('Errore durante il caricamento dell\'immagine');
         }
-        
+
         const uploadResult = await uploadResponse.json();
-        coverImageUrl = uploadResult.imageUrl;
+        // Verifica la struttura della risposta e ottieni l'URL dell'immagine
+        if (uploadResult.data && uploadResult.data.path) {
+          coverImageUrl = uploadResult.data.path;
+        } else if (uploadResult.imageUrl) {
+          coverImageUrl = uploadResult.imageUrl;
+        } else {
+          throw new Error('Formato di risposta dell\'upload non valido');
+        }
       } else {
         // Se non è stata caricata un'immagine, usa un'immagine di placeholder
         coverImageUrl = 'https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';
       }
-      
+
       // Step 2: Salva il post del blog
       const response = await apiRequest('/api/blog', {
         method: 'POST',
-        body: JSON.stringify({
+        body: {
           meta: {
             title: data.title,
             date: data.date,
@@ -102,23 +109,51 @@ const AdminPage = () => {
           },
           content: data.content,
           slug: data.slug || undefined,
-        }),
+        },
       });
-      
-      if (response.success) {
-        toast({
-          title: 'Articolo pubblicato',
-          description: 'L\'articolo è stato pubblicato con successo.',
-        });
-        
-        // Reset del form
-        form.reset();
-        setCoverImageFile(null);
-        setCoverImagePreview(null);
-      } else {
+
+        if (response.success) {
+          toast({
+            title: 'Articolo pubblicato',
+            description: 'L\'articolo è stato pubblicato con successo.',
+          });
+
+          // Reset del form
+          form.reset();
+          setCoverImageFile(null);
+          setCoverImagePreview(null);
+
+          // Avvia generazione delle traduzioni in background
+          const slugBase = data.slug || data.title
+            .toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^\w\s]/gi, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+          const finalSlug = data.slug || `${data.date}-${slugBase}`;
+          apiRequest(`/api/blog/${finalSlug}/translate`, { method: 'POST' })
+            .then(() => {
+              toast({
+                title: 'Traduzioni avviate',
+                description: 'Le traduzioni sono in corso.',
+              });
+            })
+            .catch((err) => {
+              console.error('Errore traduzioni:', err);
+              toast({
+                title: 'Errore traduzioni',
+                description: 'Impossibile avviare la generazione delle traduzioni.',
+                variant: 'destructive',
+              });
+            });
+        } else {
         throw new Error(response.message || 'Errore durante il salvataggio dell\'articolo');
       }
+
+      // Se arriviamo qui, l'articolo è stato pubblicato con successo
     } catch (error: any) {
+      console.error('Errore durante la pubblicazione:', error);
       toast({
         title: 'Errore',
         description: error.message || 'Si è verificato un errore durante la pubblicazione dell\'articolo',
@@ -132,10 +167,10 @@ const AdminPage = () => {
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-8">Amministrazione Blog</h1>
-      
+
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-6">Nuovo Articolo</h2>
-        
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -153,7 +188,7 @@ const AdminPage = () => {
                   </FormItem>
                 )}
               />
-              
+
               {/* Slug (opzionale) */}
               <FormField
                 control={form.control}
@@ -171,7 +206,7 @@ const AdminPage = () => {
                   </FormItem>
                 )}
               />
-              
+
               {/* Data */}
               <FormField
                 control={form.control}
@@ -186,7 +221,7 @@ const AdminPage = () => {
                   </FormItem>
                 )}
               />
-              
+
               {/* Categoria */}
               <FormField
                 control={form.control}
@@ -201,7 +236,7 @@ const AdminPage = () => {
                   </FormItem>
                 )}
               />
-              
+
               {/* Autore */}
               <FormField
                 control={form.control}
@@ -216,13 +251,13 @@ const AdminPage = () => {
                   </FormItem>
                 )}
               />
-              
+
               {/* Immagine di copertina */}
               <div>
                 <Label htmlFor="coverImage">Immagine di copertina</Label>
-                <Input 
-                  id="coverImage" 
-                  type="file" 
+                <Input
+                  id="coverImage"
+                  type="file"
                   accept="image/*"
                   onChange={handleImageChange}
                   className="mt-1"
@@ -230,16 +265,16 @@ const AdminPage = () => {
                 {coverImagePreview && (
                   <div className="mt-2">
                     <p className="text-sm text-gray-500 mb-1">Anteprima:</p>
-                    <img 
-                      src={coverImagePreview} 
-                      alt="Anteprima" 
-                      className="h-32 object-cover rounded-md" 
+                    <img
+                      src={coverImagePreview}
+                      alt="Anteprima"
+                      className="h-32 object-cover rounded-md"
                     />
                   </div>
                 )}
               </div>
             </div>
-            
+
             {/* Estratto */}
             <FormField
               control={form.control}
@@ -248,8 +283,8 @@ const AdminPage = () => {
                 <FormItem>
                   <FormLabel>Estratto</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Breve descrizione dell'articolo (comparirà nelle anteprime)" 
+                    <Textarea
+                      placeholder="Breve descrizione dell'articolo (comparirà nelle anteprime)"
                       {...field}
                       rows={2}
                     />
@@ -258,7 +293,7 @@ const AdminPage = () => {
                 </FormItem>
               )}
             />
-            
+
             {/* Contenuto */}
             <FormField
               control={form.control}
@@ -267,8 +302,8 @@ const AdminPage = () => {
                 <FormItem>
                   <FormLabel>Contenuto</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Scrivi il contenuto dell'articolo utilizzando la sintassi Markdown" 
+                    <Textarea
+                      placeholder="Scrivi il contenuto dell'articolo utilizzando la sintassi Markdown"
                       {...field}
                       rows={15}
                       className="font-mono"
@@ -281,9 +316,9 @@ const AdminPage = () => {
                 </FormItem>
               )}
             />
-            
-            <Button 
-              type="submit" 
+
+            <Button
+              type="submit"
               className="w-full md:w-auto"
               disabled={isSubmitting}
             >
