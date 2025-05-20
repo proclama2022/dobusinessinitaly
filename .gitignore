@@ -38,3 +38,4 @@ tsconfig.json
 # Other
 .DS_Store
 *.env
+.vercel

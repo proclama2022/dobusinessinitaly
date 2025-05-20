@@ -2,25 +2,28 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
         "handler": "dist/api/index.js"
       }
     },
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build"
+      "src": "client/vite.config.ts",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/public"
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "dest": "/dist/api/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/client"
+      "dest": "/dist/public/index.html"
     }
   ]
 }

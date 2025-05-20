@@ -47,7 +47,11 @@ const MediaItem = ({
   );
 };
 
-const MediaCoverageSection = () => {
+interface MediaCoverageSectionProps {
+  maxItems?: number;
+}
+
+const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
   const { t } = useTranslation();
   // 4 card reali, fisse, senza loghi o icone
   const mediaItems: MediaItemProps[] = [
@@ -93,7 +97,7 @@ const MediaCoverageSection = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mediaItems.map((item, index) => (
+          {mediaItems.slice(0, maxItems).map((item, index) => (
             <MediaItem key={index} {...item} />
           ))}
         </div>

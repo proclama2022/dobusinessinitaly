@@ -14,6 +14,7 @@ interface SEOHeadProps {
   articleSection?: string;
   structuredData?: Record<string, any>;
   lang?: string;
+  alternates?: Record<string, string>; // { 'en': 'https://...', 'fr': 'https://...' }
 }
 
 /**
@@ -32,7 +33,8 @@ const SEOHead = ({
   modifiedTime,
   articleSection,
   structuredData,
-  lang = 'it'
+  lang = 'it',
+  alternates
 }: SEOHeadProps) => {
   // Costruisci l'URL canonico completo
   const siteUrl = 'https://dobusinessinitaly.com';
@@ -46,6 +48,18 @@ const SEOHead = ({
     url: siteUrl,
     description: 'Servizi professionali per fare business in Italia',
   };
+  
+  // Prepara i link hreflang per SEO internazionale
+  const hreflangLinks = alternates ? Object.entries(alternates).map(([langCode, url]) => (
+    <link key={langCode} rel="alternate" hrefLang={langCode} href={url} />
+  )) : [];
+  
+  // Aggiungi il link x-default per la versione italiana di default
+  if (lang === 'it' && fullCanonicalUrl) {
+    hreflangLinks.push(
+      <link key="x-default" rel="alternate" hrefLang="x-default" href={fullCanonicalUrl} />
+    );
+  }
   
   // Unisci i dati strutturati personalizzati con quelli predefiniti
   const jsonLd = structuredData || defaultStructuredData;
@@ -85,6 +99,9 @@ const SEOHead = ({
       {ogType === 'article' && articleSection && (
         <meta property="article:section" content={articleSection} />
       )}
+      
+      {/* Link hreflang per SEO internazionale */}
+      {hreflangLinks}
       
       {/* JSON-LD per dati strutturati */}
       <script type="application/ld+json">
