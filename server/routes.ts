@@ -26,107 +26,81 @@ interface BlogPostMeta {
  * @param lang Optional: language code to filter by (e.g., 'en', 'es'). If 'it' or not provided, returns original articles.
  * @returns Array di oggetti contenenti i metadati dei post
  */
-function getAllPosts(lang?: string): BlogPostMeta[] {
-  console.log(`[getAllPosts] Filtering for language: ${lang || 'it (default)'}`);
-
-  if (!fs.existsSync(BLOG_DIR)) {
-    console.warn(`Directory ${BLOG_DIR} non trovata`);
-    return [];
-  }
-
-  const filenames = fs.readdirSync(BLOG_DIR);
-  console.log(`[getAllPosts] Total files found: ${filenames.length}`);
-
-  // Filtra i file in base alla lingua specificata
-  const mdxFiles = filenames.filter(filename => {
-    // Skip temporary files and hidden files
-    if (filename.startsWith('.') || filename.startsWith('~')) {
-      return false;
+/**
+ * Legge tutti i file MDX dalla directory del blog, filtrando per lingua se specificato
+ */
+function getAllPosts(language?: string): BlogPostMeta[] {
+    const targetLanguage = (language || 'it').toLowerCase();
+    
+    if (!fs.existsSync(BLOG_DIR)) {
+        console.warn('[Blog] Directory non trovata:', BLOG_DIR);
+        return [];
     }
 
-    const hasLanguageSuffix = filename.match(/\.[a-z]{2}\.mdx$/);
+    try {
+        return fs.readdirSync(BLOG_DIR)
+            .filter((filename: string) => {
+                // Filtra file nascosti e temporanei
+                if (filename.startsWith('.') || filename.startsWith('~')) return false;
 
-    // Log per debug
-    console.log(`[getAllPosts] Checking file: ${filename}`);
-    console.log(`[getAllPosts] Has language suffix: ${hasLanguageSuffix ? 'yes' : 'no'}`);
-    console.log(`[getAllPosts] Current language: ${lang || 'it (default)'}`);
+                // Estrae la lingua dal filename (formato: nomefile.[LANG].mdx)
+                const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+                const fileLanguage = langMatch?.[1] || 'it';
 
-    if (lang && lang !== 'it') {
-      // Per le lingue diverse dall'italiano, cerca i file con suffisso della lingua esatto
-      const matchesLang = filename.endsWith(`.${lang}.mdx`);
-      console.log(`[getAllPosts] Matches requested language (${lang}): ${matchesLang}`);
-      return matchesLang;
-    } else {
-      // Per italiano (default), prendi i file senza suffisso di lingua
-      const isDefaultFile = filename.endsWith('.mdx') && !hasLanguageSuffix;
-      console.log(`[getAllPosts] Is default (no language suffix) file: ${isDefaultFile}`);
-      return isDefaultFile;
+                // Logica di filtraggio
+                return targetLanguage === 'it'
+                    ? !langMatch  // Accetta file senza suffisso o con .it
+                    : fileLanguage === targetLanguage;
+            })
+            .map((filename: string) => {
+                try {
+                    const filePath = path.join(BLOG_DIR, filename);
+                    const { data } = matter(fs.readFileSync(filePath, 'utf8'));
+                    
+                    // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
+                    const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+
+                    // Validazione dei metadati
+                    if (!data.title?.trim() || !data.date) {
+                        console.warn('[Blog] Metadata mancanti in:', filename);
+                        return null;
+                    }
+
+                    return {
+                        slug,
+                        title: data.title,
+                        date: new Date(data.date).toISOString(),
+                        category: data.category?.trim() || 'Generale',
+                        excerpt: data.excerpt?.trim() || '',
+                        coverImage: data.coverImage?.trim() || '',
+                        author: data.author?.trim() || 'Redazione'
+                    } satisfies BlogPostMeta;
+                } catch (error) {
+                    console.error('[Blog] Errore elaborazione file:', filename, error);
+                    return null;
+                }
+            })
+            .filter((post): post is BlogPostMeta => post !== null)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    } catch (error) {
+        console.error('[Blog] Errore lettura directory:', error);
+        return [];
     }
-  });
-
-  console.log(`[getAllPosts] Found ${mdxFiles.length} MDX files for language ${lang || 'it'}`);
-
-  try {
-    const posts = mdxFiles
-      .map(filename => {
-        try {
-          const filePath = path.join(BLOG_DIR, filename);
-          const fileContents = fs.readFileSync(filePath, 'utf8');
-          const { data } = matter(fileContents);
-
-          // Extract slug correctly based on whether it's a translated file or not
-          const hasLanguageSuffix = filename.match(/\.[a-z]{2}\.mdx$/);
-          const slug = hasLanguageSuffix 
-            ? filename.replace(/\.[a-z]{2}\.mdx$/, '') // Remove language suffix and .mdx
-            : filename.replace(/\.mdx$/, ''); // Just remove .mdx
-
-          console.log(`[getAllPosts] Processing file: ${filename}, slug: ${slug}`);
-
-          if (!data.title || !data.date) {
-            console.warn(`[getAllPosts] Missing required metadata in file: ${filename}`);
-            return null;
-          }
-
-          return {
-            slug,
-            title: data.title || '',
-            date: data.date || new Date().toISOString(),
-            category: data.category || 'Uncategorized',
-            excerpt: data.excerpt || '',
-            coverImage: data.coverImage || '',
-            author: data.author || 'Admin'
-          } as BlogPostMeta;
-        } catch (err) {
-          console.error(`[getAllPosts] Error processing file ${filename}:`, err);
-          return null;
-        }
-      })
-      .filter((post): post is BlogPostMeta => post !== null)
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    console.log(`[getAllPosts] Successfully processed ${posts.length} posts`);
-    return posts;
-  } catch (err) {
-    console.error('[getAllPosts] Error processing posts:', err);
-    return [];
-  }
 }
 
+
+/**
 /**
  * Ottiene un singolo post per slug
  * @param slug Lo slug del post da cercare
+ * @param lang Lingua opzionale per la traduzione
  * @returns Metadati del post e contenuto raw
  */
 function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, content: string } | null {
-  let filePath;
-  
-  if (lang) {
-    filePath = path.join(BLOG_DIR, `${slug}.${lang}.mdx`);
-  } else {
-    filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-  }
-
-  console.log(`[getPostBySlug] Attempting to read: ${filePath}`);
+  const filePath = lang
+    ? path.join(BLOG_DIR, `${slug}.${lang}.mdx`)
+    : path.join(BLOG_DIR, `${slug}.mdx`);
 
   // Check if file exists
   if (!fs.existsSync(filePath)) {
@@ -336,179 +310,77 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // API per ottenere tutti i post del blog, con filtro per lingua
   app.get('/api/blog', (req: Request, res: Response) => {
-    try {
-      const lang = req.query.lang as string | undefined; // Get optional language query parameter
-      console.log(`Fetching blog posts for language: ${lang || 'default (Italian)'}`); // Log the language
-      // Se non c'è parametro lang o se è "it", non passare la lingua per ottenere i file senza suffisso
-      const posts = getAllPosts(lang === 'it' ? undefined : lang);
-      console.log(`Found ${posts.length} posts for language: ${lang || 'default (Italian)'}`); // Log the number of posts found
-      res.status(200).json({
-        success: true,
-        data: posts
-      });
-    } catch (error: any) {
-      console.error('Get blog posts error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
+      try {
+          const lang = req.query.lang as string | undefined;
+          const posts = getAllPosts(lang);
+          res.status(200).json({
+              success: true,
+              data: posts
+          });
+      } catch (error: any) {
+          console.error('[/api/blog] Error:', error);
+          res.status(500).json({
+              success: false,
+              message: 'Internal server error'
+          });
+      }
   });
 
   // API per ottenere un post specifico
   app.get('/api/blog/:slug', (req: Request, res: Response) => {
-    try {
-      const { slug } = req.params;
-      const post = getPostBySlug(slug);
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Post not found'
-        });
+      console.log(`[/api/blog/:slug] Request received`);
+      console.log(`[/api/blog/:slug] Slug parameter: ${req.params.slug}`);
+      try {
+          const { slug } = req.params;
+          const post = getPostBySlug(slug);
+  
+          if (!post) {
+              return res.status(404).json({
+                  success: false,
+                  message: 'Post not found'
+              });
+          }
+  
+          res.status(200).json({
+              success: true,
+              data: post
+          });
+      } catch (error: any) {
+          console.error('[/api/blog/:slug] Get blog post error:', error);
+          res.status(500).json({
+              success: false,
+              message: error.message || 'Internal server error'
+          });
       }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
   });
 
   // API per ottenere un post tradotto
   app.get('/api/blog/:lang/:slug', (req: Request, res: Response) => {
-    try {
-      const { lang, slug } = req.params;
-      const post = getPostBySlug(slug, lang); // Pass both slug and lang to getPostBySlug
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Translated post not found'
-        });
+      console.log(`[/api/blog/:lang/:slug] Request received`);
+      console.log(`[/api/blog/:lang/:slug] Language parameter: ${req.params.lang}`);
+      console.log(`[/api/blog/:lang/:slug] Slug parameter: ${req.params.slug}`);
+      try {
+          const { lang, slug } = req.params;
+          const post = getPostBySlug(slug, lang);
+  
+          if (!post) {
+              return res.status(404).json({
+                  success: false,
+                  message: 'Translated post not found'
+              });
+          }
+  
+          res.status(200).json({
+              success: true,
+              data: post
+          });
+      } catch (error: any) {
+          console.error('[/api/blog/:lang/:slug] Get translated blog post error:', error);
+          res.status(500).json({
+              success: false,
+              message: error.message || 'Internal server error'
+          });
       }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get translated blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
-  });
-
-  // API per ottenere un post specifico
-  app.get('/api/blog/:slug', (req: Request, res: Response) => {
-    try {
-      const { slug } = req.params;
-      const post = getPostBySlug(slug);
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Post not found'
-        });
-      }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
-  });
-
-  // API per ottenere un post tradotto
-  app.get('/api/blog/:lang/:slug', (req: Request, res: Response) => {
-    try {
-      const { lang, slug } = req.params;
-      const post = getPostBySlug(slug, lang); // Pass both slug and lang to getPostBySlug
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Translated post not found'
-        });
-      }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get translated blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
-  });
-
-  // API per ottenere un post specifico
-  app.get('/api/blog/:slug', (req: Request, res: Response) => {
-    try {
-      const { slug } = req.params;
-      const post = getPostBySlug(slug);
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Post not found'
-        });
-      }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
-  });
-
-  // API per ottenere un post tradotto
-  app.get('/api/blog/:lang/:slug', (req: Request, res: Response) => {
-    try {
-      const { lang, slug } = req.params;
-      const post = getPostBySlug(slug, lang); // Pass both slug and lang to getPostBySlug
-
-      if (!post) {
-        return res.status(404).json({
-          success: false,
-          message: 'Translated post not found'
-        });
-      }
-
-      res.status(200).json({
-        success: true,
-        data: post
-      });
-    } catch (error: any) {
-      console.error('Get translated blog post error:', error);
-      res.status(500).json({
-        success: false,
-        message: error.message || 'Internal server error'
-      });
-    }
   });
 
   // API per creare/modificare un post
@@ -694,3 +566,5 @@ Sitemap: https://dobusinessinitaly.com/sitemap.xml
   const httpServer = createServer(app);
   return httpServer;
 }
+
+// Add logs to validate assumptions
