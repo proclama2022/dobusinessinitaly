@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
+import { useQueryClient } from '@tanstack/react-query';
 import { supportedLanguages } from '@/lib/languages';
 
 type LanguageSelectorProps = {
@@ -9,9 +10,28 @@ type LanguageSelectorProps = {
 
 const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
+  const queryClient = useQueryClient();
   const [location, setLocation] = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle language change with proper hook usage
+  const handleLanguageChange = useCallback(async (langCode: string) => {
+    await i18n.changeLanguage(langCode);
+    setDropdownOpen(false);
+
+    // Force refetch any queries that depend on the language
+    await queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
+
+    // Update URL
+    const segments = location.split('/');
+    if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
+      segments[1] = langCode;
+      setLocation(segments.join('/'));
+    } else {
+      setLocation(`/${langCode}${location === '/' ? '' : location}`);
+    }
+  }, [i18n, queryClient, location, setLocation]);
 
   const languages = [
     { code: 'it', name: 'Italiano', flag: 'https://flagcdn.com/w20/it.png' },
@@ -23,24 +43,6 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
 
   const getCurrentLanguageInfo = () => {
     return languages.find(lang => lang.code === i18n.language) || languages[0];
-  };
-
-  // Funzione per cambiare lingua e aggiornare l'URL
-  const handleLanguageChange = (langCode: string) => {
-    i18n.changeLanguage(langCode);
-    setDropdownOpen(false);
-
-    // Modifica l'URL mantenendo il percorso corrente ma cambiando il prefisso della lingua
-    const segments = location.split('/');
-
-    // Se c'è già un prefisso linguistico, lo sostituisce
-    if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
-      segments[1] = langCode;
-      setLocation(segments.join('/'));
-    } else {
-      // Altrimenti aggiungi il nuovo prefisso
-      setLocation(`/${langCode}${location === '/' ? '' : location}`);
-    }
   };
 
   useEffect(() => {

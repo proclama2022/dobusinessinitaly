@@ -42,16 +42,40 @@ const Footer = () => {
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
             <div className="flex space-x-4">
               <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-linkedin-in"></i>
+                <i className="fab fa-linkedin-in" style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'auto',
+                  filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
+                  transform: 'translateZ(0)'
+                }}></i>
               </a>
               <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-twitter"></i>
+                <i className="fab fa-twitter" style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'auto',
+                  filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
+                  transform: 'translateZ(0)'
+                }}></i>
               </a>
               <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f" style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'auto',
+                  filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
+                  transform: 'translateZ(0)'
+                }}></i>
               </a>
               <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-instagram"></i>
+                <i className="fab fa-instagram" style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'auto',
+                  filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
+                  transform: 'translateZ(0)'
+                }}></i>
               </a>
             </div>
           </div>
@@ -66,7 +90,13 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'auto',
+                    filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
+                    transform: 'translateZ(0)'
+                  }}></i>
                   {t('navigation.home')}
                 </Link>
               </li>
@@ -154,7 +184,13 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-map-marker-alt text-neutral-300"></i>
+                  <i className="fas fa-map-marker-alt text-neutral-300" style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'auto',
+                    filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
+                    transform: 'translateZ(0)'
+                  }}></i>
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.address.value')}
@@ -162,7 +198,13 @@ const Footer = () => {
               </li>
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-phone-alt text-neutral-300"></i>
+                  <i className="fas fa-phone-alt text-neutral-300" style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'auto',
+                    filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
+                    transform: 'translateZ(0)'
+                  }}></i>
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.phone.value')}
@@ -170,7 +212,13 @@ const Footer = () => {
               </li>
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-envelope text-neutral-300"></i>
+                  <i className="fas fa-envelope text-neutral-300" style={{
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'auto',
+                    filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
+                    transform: 'translateZ(0)'
+                  }}></i>
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.email.value')}

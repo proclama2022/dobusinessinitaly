@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -35,6 +35,7 @@ const BlogPostCard = ({
   slug: string;
   animationDelay?: number;
 }) => {
+  const { t } = useTranslation();
   return (
     <article className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white animate-slide-up" style={{ animationDelay: `${animationDelay}s` }}>
       {/* Contenitore immagine */}
@@ -90,7 +91,7 @@ const BlogPostCard = ({
         {/* Pulsante leggi di più */}
         <Link href={`/blog/${slug}`} className="group-hover:italic-text-gradient inline-flex items-center text-sm font-medium relative">
           <span className="relative">
-            Leggi l'articolo
+            {t('blog.readMore')}
             <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#009246] to-[#ce2b37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </span>
           <i className="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -127,18 +128,34 @@ const Blog = () => {
   const [location, setLocation] = useLocation();
 
   // Fetch dei post del blog dall'API, filtrando per lingua
+  const queryClient = useQueryClient();
+
   const { data: postsData, isLoading, error } = useQuery({
     queryKey: ['/api/blog', i18n.language], // Include language in query key
     queryFn: async () => {
       console.log(`[Blog] Fetching posts for language: ${i18n.language}`);
       const response = await apiRequest<{ success: boolean, data: BlogPostMeta[] }>(
-        `/api/blog?lang=${i18n.language}`, // Pass language as query parameter
+        `/api/blog${i18n.language === 'it' ? '' : ('?lang=' + i18n.language)}`,
         { method: 'GET' }
       );
       console.log(`[Blog] Received ${response.data?.length || 0} posts from API`);
       return response;
     },
+    refetchOnWindowFocus: false,
+    staleTime: 1000, // Reduce stale time to ensure fresh data
   });
+
+  // Ensure we have accurate data and UI translations when language changes
+  useEffect(() => {
+    console.log(`[Blog] Language changed to: ${i18n.language}`);
+    
+    // Force data refetch
+    queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
+
+    // Update UI text
+    document.title = `${t('navigation.blog')} - Dobusinessinitaly.com`;
+    
+  }, [i18n.language, queryClient, t]);
 
   // Estratti tutte le categorie uniche dai post
   const uniqueCategories = postsData?.data
@@ -289,25 +306,25 @@ const Blog = () => {
               {'Insights & News'}
             </div>
 
-            {/* Titolo principale */}
+            {/* Main title */}
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">Il nostro </span>
+              <span className="text-[#009246]">{t('blog.title')}</span>
               <span className="relative pl-4">
                 Blog
                 <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
               </span>
             </h1>
 
-            {/* Sottotitolo */}
+            {/* Subtitle */}
             <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              {'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
+              {t('blog.subtitle')}
             </p>
 
             {/* Barra di ricerca blog */}
             <form onSubmit={handleSearch} className="relative max-w-lg mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <input
                 type="text"
-                placeholder="Cerca nel blog..."
+                placeholder={t('blog.searchPlaceholder')}
                 className="w-full px-5 py-3 pr-12 rounded-full border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#009246] focus:border-transparent"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -328,21 +345,21 @@ const Blog = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">
             <div className="w-16 h-16 mx-auto border-4 border-[#009246] border-t-transparent rounded-full animate-spin"></div>
-            <p className="mt-4 text-neutral-600">Caricamento articoli in corso...</p>
+            <p className="mt-4 text-neutral-600">{t('common.loading')}</p>
           </div>
         </section>
       ) : error ? (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <div className="text-[#ce2b37] text-xl mb-4">Si è verificato un errore nel caricamento degli articoli</div>
-            <p className="text-neutral-600">Si prega di riprovare più tardi</p>
+            <div className="text-[#ce2b37] text-xl mb-4">{t('common.error')}</div>
+            <p className="text-neutral-600">{t('common.tryAgain')}</p>
           </div>
         </section>
       ) : filteredPosts.length === 0 ? (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <div className="text-neutral-700 text-xl mb-4">Nessun articolo trovato</div>
-            <p className="text-neutral-600">Prova con una ricerca diversa</p>
+            <div className="text-neutral-700 text-xl mb-4">{t('blog.noArticlesFound')}</div>
+            <p className="text-neutral-600">{t('blog.tryDifferentSearch')}</p>
           </div>
         </section>
       ) : (
@@ -355,9 +372,9 @@ const Blog = () => {
             {/* Heading */}
             <div className="text-center mb-16 relative">
               <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-                <span className="text-[#ce2b37]">Articolo in </span>
+                <span className="text-[#ce2b37]">{t('blog.featuredArticle')} </span>
                 <span className="relative pl-4">
-                  evidenza
+                  {t('blog.featured')}
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246]"></span>
                 </span>
               </h2>
@@ -416,11 +433,11 @@ const Blog = () => {
                   <i className="fas fa-user mr-2"></i> {featuredPost?.author}
                 </p>
 
-                {/* CTA */}
-                <Link href={`/blog/${featuredPost?.slug}`} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
-                  Leggi l'articolo completo
-                  <i className="fas fa-arrow-right ml-2 text-sm"></i>
-                </Link>
+              {/* CTA */}
+              <Link href={`/blog/${featuredPost?.slug}`} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
+                {t('blog.readMore')}
+                <i className="fas fa-arrow-right ml-2 text-sm"></i>
+              </Link>
               </div>
             </div>
           </div>

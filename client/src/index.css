@@ -75,13 +75,49 @@
     @apply border-border;
   }
 
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-[#f5f7fa] text-neutral-800 font-[Open_Sans];
+    letter-spacing: 0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-[Montserrat] font-semibold;
+    letter-spacing: -0.01em;
   }
+}
+
+/* Miglioramenti per la nitidezza delle icone */
+.fa, .fas, .far, .fal, .fab, .fa-solid, .fa-regular, .fa-light, .fa-brands {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: auto;
+  transform: translateZ(0); /* Attiva l'accelerazione hardware */
+}
+
+/* Contenitore per icone con dimensioni fisse */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+}
+
+/* Miglioramento del contrasto per il testo */
+.enhanced-text {
+  text-shadow: 0 0 1px rgba(0,0,0,0.05);
+}
+
+/* Miglioramento della leggibilità per testo su sfondi colorati */
+.text-on-color {
+  text-shadow: 0 0 1px rgba(255,255,255,0.1);
 }
 
 .section-padding {

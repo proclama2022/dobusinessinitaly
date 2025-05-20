@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
-import MediaCoverageSectionNew from '@/components/MediaCoverageSectionNew';
+import MediaCoverageSection from '@/components/MediaCoverageSection';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -106,55 +106,29 @@ const About = () => {
     document.title = `${t('navigation.about')} - Dobusinessinitaly.com`;
   }, [t]);
 
-  // Dati del team basati su Proclama
-  const teamMembers = [
-    {
-      name: "Rosario Petralia",
-      role: "Founder e chairman",
-      image: "https://proclama.co/wp-content/uploads/2022/05/pr2.jpg",
-      specialty: "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
-      isFounder: true
-    },
-    {
-      name: "Giovanni Emmi",
-      role: "Founder e CEO",
-      image: "https://proclama.co/wp-content/uploads/2022/05/giovanni_ritratto.png",
-      specialty: "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
-      isFounder: true,
-      isCEO: true
-    },
-    {
-      name: "Rosalia Rita Fresta",
-      role: "Socio",
-      image: "https://proclama.co/wp-content/uploads/2022/05/rosy_fresta3.jpg",
-      specialty: "Consulente del lavoro"
-    },
-    {
-      name: "Rosy Fresta",
-      role: "Socio",
-      image: "https://proclama.co/wp-content/uploads/2022/05/Rosy_fresta2.jpg",
-      specialty: "Consulente del lavoro"
-    },
-    {
-      name: "Rosario Emmi",
-      role: "Founder",
-      image: "https://proclama.co/wp-content/uploads/2022/05/rosario_size.jpg",
-      specialty: "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
-      isFounder: true
-    },
-    {
-      name: "Danilo Gulizia",
-      role: "Socio",
-      image: "https://proclama.co/wp-content/uploads/2022/05/danilo2.jpg",
-      specialty: "Dottore commercialista e revisore legale, specializzato in bilancio e fiscalità di società IT"
-    },
-    {
-      name: "Gaetana Vecchio",
-      role: "Socio",
-      image: "https://proclama.co/wp-content/uploads/2022/05/gaetana.jpg",
-      specialty: "Dottore commercialista specializzato in consulenza del lavoro"
-    }
-  ];
+  // Stato dinamico dei membri del team
+  const [teamMembers, setTeamMembers] = useState<{
+    filename: string;
+    name: string;
+    role: string;
+    specialty?: string;
+    isFounder?: boolean;
+    isCEO?: boolean;
+    image: string;
+  }[]>([]);
+
+  useEffect(() => {
+    fetch('/images/team/team.json')
+      .then(res => res.json())
+      .then((data) => {
+        const members = (data as any[]).map(entry => ({
+          ...entry,
+          image: '/images/team/' + encodeURIComponent(entry.filename),
+        }));
+        setTeamMembers(members);
+      })
+      .catch(err => console.error('Errore caricamento team:', err));
+  }, []);
 
   // Dati delle statistiche
   const stats = [
@@ -300,7 +274,7 @@ const About = () => {
                         {t('about.stpSection.pathTitle')}
                       </summary>
                       <ul className="list-disc pl-5 mt-2 space-y-1 text-neutral-700">
-                        {t('about.stpSection.pathSteps', { returnObjects: true }).map((step: string, index: number) => (
+                        {(t('about.stpSection.pathSteps', { returnObjects: true }) as string[]).map((step: string, index: number) => (
                           <li key={index} className="leading-relaxed">{step}</li>
                         ))}
                       </ul>
@@ -414,9 +388,9 @@ const About = () => {
               >
                 <TeamMemberCard
                   name={member.name}
-                  role={member.role}
+                  role={t(member.role || "")}
                   image={member.image}
-                  specialty={member.specialty}
+                  specialty={t(member.specialty || "")}
                   isFounder={member.isFounder}
                   isCEO={member.isCEO}
                 />
@@ -438,39 +412,32 @@ const About = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <div className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group">
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#009246] text-white flex items-center justify-center">
-                  <i className="fas fa-users"></i>
+              {/* Mappa dinamicamente i valori tradotti */}
+              {(t('about.valuesSection.values', { returnObjects: true }) as Array<{ title: string; description: string }>).map((value, index) => (
+                <div 
+                  key={index}
+                  className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group"
+                >
+                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#009246] text-white flex items-center justify-center">
+                    {/* Icone statiche basate sul valore - modificabili in base al contenuto */}
+                    <i className={index === 0 ? "fas fa-user-tie" : index === 1 ? "fas fa-lightbulb" : "fas fa-balance-scale"}></i>
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#009246] transition-colors">
+                    {value.title}
+                  </h3>
+                  <p className="text-neutral-600 text-sm">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#009246] transition-colors">Competenze</h3>
-                <p className="text-neutral-600 text-sm">{t('about.valuesSection.description')}</p>
-              </div>
-
-              <div className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group">
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#ce2b37] text-white flex items-center justify-center">
-                  <i className="fas fa-laptop-code"></i>
-                </div>
-                <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#ce2b37] transition-colors">Innovazione</h3>
-                <p className="text-neutral-600 text-sm">Continuo adattamento tecnologico e metodologico per offrire servizi all'avanguardia.</p>
-              </div>
-
-              <div className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group">
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#009246] text-white flex items-center justify-center">
-                  <i className="fas fa-balance-scale"></i>
-                </div>
-                <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#009246] transition-colors">Integrità</h3>
-                <p className="text-neutral-600 text-sm">Trasparenza, etica professionale e attenzione ai dettagli in ogni progetto e interazione.</p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-
-
       {/* Altre sezioni */}
       <StatsSection />
-      <MediaCoverageSectionNew />
+      <MediaCoverageSection />
     </>
   );
 };

@@ -1,0 +1,30 @@
+[
+  {
+    "filename": "Rosario2.jpg",
+    "name": "Rosario Petralia",
+    "role": "team.rosario_petralia_role",
+    "specialty": "team.rosario_petralia_specialty",
+    "isFounder": true
+  },
+  {
+    "filename": "Giovanni.jpg",
+    "name": "Giovanni Emmi",
+    "role": "team.giovanni_emmi_role",
+    "specialty": "team.giovanni_emmi_specialty",
+    "isFounder": true,
+    "isCEO": true
+  },
+  {
+    "filename": "Rosario1.jpg",
+    "name": "Rosario Emmi",
+    "role": "team.rosario_emmi_role",
+    "specialty": "team.rosario_emmi_specialty",
+    "isFounder": true
+  },
+  {
+    "filename": "Gaetana.jpg",
+    "name": "Gaetana Vecchio",
+    "role": "team.gaetana_vecchio_role",
+    "specialty": "team.gaetana_vecchio_specialty"
+  }
+]

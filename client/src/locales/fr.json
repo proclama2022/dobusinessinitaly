@@ -3,7 +3,7 @@
     "home": "Accueil",
     "services": "Services",
     "about": "À Propos",
-    "media": "Dans les Médias",
+    "media": "Médias",
     "blog": "Blog",
     "contact": "Contact"
   },
@@ -18,20 +18,20 @@
     "title": "Notre Expérience en Chiffres",
     "subtitle": "Les chiffres ne mentent pas: notre expérience prouvée dans le soutien aux clients internationaux avec succès.",
     "clients": {
-      "title": "Clients Internationaux",
-      "description": "Des entreprises du monde entier ont choisi nos services"
+      "title": "Clients Satisfaits",
+      "description": "Entreprises et investisseurs internationaux qui se fient à notre conseil"
     },
     "experience": {
       "title": "Années d'Expérience",
-      "description": "Au service de clients nationaux et internationaux"
+      "description": "Au service des clients internationaux avec dévouement et compétence"
     },
     "professionals": {
       "title": "Professionnels",
-      "description": "Une équipe multilingue de comptables et d'experts fiscaux"
+      "description": "Comptables et experts fiscaux à votre service"
     },
     "volume": {
       "title": "Euros Gérés",
-      "description": "Chiffre d'affaires annuel de nos clients assistés"
+      "description": "Valeur totale des actifs gérés par notre cabinet"
     }
   },
   "whyChooseUs": {
@@ -42,45 +42,46 @@
     "features": {
       "international": {
         "title": "Expertise Internationale",
-        "description": "Nous comprenons les défis auxquels les entreprises étrangères sont confrontées en Italie. Notre équipe multilingue fournit une assistance en anglais, français, allemand et espagnol."
+        "description": "Nous comprenons les défis des entreprises étrangères en Italie. Fournissons principalement de l'aide en anglais, mais grâce à notre spécialisation en technologies AI, nous pouvons communiquer avec les clients dans leur langue maternelle."
       },
       "excellence": {
         "title": "Excellence Professionnelle",
-        "description": "Professionnels certifiés avec des années d'expérience en comptabilité internationale et conseil fiscal. Mises à jour constantes sur les réglementations."
+        "description": "Professionnels certifiés avec des années d'expérience en conseil comptable et fiscal international. Mises à jour constantes sur les réglementations."
       },
       "approach": {
         "title": "Approche Personnalisée",
-        "description": "Chaque client reçoit des solutions adaptées à ses besoins spécifiques. Nous sommes votre partenaire stratégique, pas seulement des prestataires de services."
+        "description": "Chaque client reçoit des solutions adaptées à ses besoins spécifiques. Nous sommes votre partenaire stratégique, pas seulement des fournisseurs de services."
       },
       "reliability": {
         "title": "Réactivité et Fiabilité",
-        "description": "Nous répondons rapidement à vos demandes, en respectant les délais et les engagements. Vous pouvez compter sur nous pour tous les aspects de votre entreprise en Italie."
+        "description": "Nous répondons rapidement à vos demandes, respectons les délais et engagements. Vous pouvez compter sur nous pour chaque aspect de votre business en Italie."
       }
     }
   },
   "services": {
     "title": "Nos Services",
-    "subtitle": "Nous offrons une large gamme de services professionnels pour soutenir vos activités commerciales en Italie.",
+    "subtitle": "Nous offrons une gamme étendue de services professionnels pour soutenir vos activités commerciales en Italie.",
     "titlePrefix": "Nos",
     "titleMain": "Services",
-    "description": "Nous offrons des solutions professionnelles adaptées aux besoins spécifiques des entreprises et investisseurs internationaux opérant en Italie.",
+    "description": "Nous offrons des solutions professionnelles adaptées aux besoins spécifiques d'entreprises et d'investisseurs internationaux.",
     "whatPrefix": "Ce que",
     "whatMain": "Nous Offrons",
-    "whatDescription": "Découvrez notre gamme complète de services de conseil fiscal et commercial pour les clients internationaux en Italie.",
+    "whatDescription": "Découvrez notre gamme complète de services de conseil fiscal et commercial pour clients internationaux en Italie.",
     "cta": {
       "requestConsultation": "Demander une Consultation",
       "discoverServices": "Découvrir les Services",
-      "requestInfo": "Demander des informations"
+      "requestInfo": "Demander des Informations",
+      "viewAll": "Voir tous"
     },
     "whyUs": {
       "subtitle": "Pourquoi nous choisir",
       "titlePrefix": "Pourquoi",
       "titleMain": "Nous Choisir",
-      "description": "Ce qui fait de nous le partenaire idéal pour votre entreprise en Italie",
+      "description": "Ce qui nous distingue comme partenaire idéal pour votre entreprise en Italie",
       "reasons": {
         "international": {
           "title": "Expertise Internationale",
-          "description": "Équipe multilingue avec expérience dans les problématiques fiscales typiques des entreprises étrangères en Italie."
+          "description": "Fournissons principalement de l'aide en anglais, grâce à notre spécialisation en technologies AI, nous pouvons communiquer avec les clients dans leur langue maternelle."
         },
         "quality": {
           "title": "Qualité Certifiée",
@@ -99,44 +100,44 @@
     "features": {
       "accountant": {
         "title": "Expert-comptable et conseiller du travail",
-        "description": "Gestion fiscale et comptable pour les sociétés de capitaux avec expérience dans les opérations extraordinaires: fusions, scissions, transformations, apports d'entreprise et réorganisations de groupes d'entreprises."
+        "description": "Gestion fiscale et comptable pour sociétés de capitaux avec expérience en opérations extraordinaires: fusions, scissions, transformations, apports d'entreprise et réorganisations de groupes sociétaires."
       },
       "startup": {
         "title": "Startups et PME innovantes",
-        "description": "Constitution et assistance aux startups et PME innovantes avec support pour financements, crowdfunding et investissements. Nous transformons vos idées en business à succès avec expertise et efficacité."
+        "description": "Constitution et assistance aux startups et PME innovantes avec soutien pour financements, crowdfunding et investissements. Transformons vos idées en business réussis avec expertise et efficacité."
       },
       "finance": {
         "title": "Finance facilitée et crédits d'impôt",
-        "description": "Accès à Transition 4.0, bonus régionaux et mesures de facilitation nationales et communautaires. Nous identifions les meilleures opportunités de financement pour votre entreprise."
+        "description": "Accès à Transition 4.0, bonus régionaux et mesures de facilitation nationales et communautaires. Identifions les meilleures opportunités de financement pour votre entreprise."
       },
       "ecommerce": {
         "title": "E-commerce et agence web",
-        "description": "Gestion fiscale spécialisée pour l'e-commerce et les agences web, avec expérience dans les systèmes OSS/IOSS et les relations avec les états européens et extra-européens."
+        "description": "Gestion fiscale spécialisée pour e-commerce et agences web, avec expérience dans les systèmes OSS/IOSS et relations avec états européens et extra-européens."
       },
       "business": {
         "title": "Business intelligence",
-        "description": "Optimisation des processus d'entreprise et support stratégique avec des solutions personnalisées pour améliorer la performance et la croissance des affaires."
+        "description": "Optimisation des processus d'entreprise et soutien stratégique avec des solutions personnalisées pour améliorer la performance et la croissance des affaires."
       }
     },
     "items": {
       "formation": {
         "title": "Constitution de Société en Italie",
-        "description": "Assistance complète pour la création de sociétés de capitaux et de personnes en Italie, y compris toutes les exigences bureaucratiques et fiscales.",
+        "description": "Assistance complète pour l'ouverture de sociétés de capitaux et de personnes en Italie, incluant tous les formalités administratives et fiscales.",
         "link": "Plus d'informations"
       },
       "accounting": {
-        "title": "Comptabilité et États Financiers",
-        "description": "Gestion complète de la comptabilité d'entreprise, préparation des états financiers et des obligations fiscales périodiques.",
+        "title": "Comptabilité et Bilan",
+        "description": "Gestion complète de la comptabilité d'entreprise, rédaction du bilan d'exercice et des obligations fiscales périodiques.",
         "link": "Plus d'informations"
       },
       "tax": {
         "title": "Conseil Fiscal International",
-        "description": "Conseils sur les traités de double imposition, la résidence fiscale, les prix de transfert et l'optimisation fiscale internationale.",
+        "description": "Conseils sur les traités contre les doubles impositions, la résidence fiscale, le transfer pricing et l'optimisation fiscale internationale.",
         "link": "Plus d'informations"
       },
       "planning": {
-        "title": "Business Planning",
-        "description": "Analyse de marché, business plans, planification stratégique et conseils pour accéder aux financements et investissements en Italie.",
+        "title": "Planification d'Entreprise",
+        "description": "Analyse de marché, business plan, planification stratégique et conseils pour l'accès à des financements et investissements en Italie.",
         "link": "Plus d'informations"
       },
       "payroll": {
@@ -146,14 +147,14 @@
       },
       "legal": {
         "title": "Support Juridique",
-        "description": "Assistance juridique en matière commerciale, contrats, conformité réglementaire et représentation auprès des autorités italiennes.",
+        "description": "Assistance juridique en matière commerciale, contrats, conformité réglementaire et représentation devant les autorités italiennes.",
         "link": "Plus d'informations"
       }
     }
   },
   "media": {
     "title": "Dans les Médias",
-    "subtitle": "Découvrez ce que la presse et les médias spécialisés du secteur économico-financier disent de Dobusinessinitaly.com.",
+    "subtitle": "Découvrez ce que la presse et les médias spécialisés disent de Dobusinessinitaly.com.",
     "typeArticle": "Article",
     "typeProfile": "Profil",
     "typeMention": "Mention",
@@ -162,12 +163,12 @@
     "seeAll": "Voir toutes les mentions",
     "all": "Tous",
     "noResults": "Aucun résultat trouvé pour le filtre sélectionné.",
-    "credentialsTitle": "Reconnaissance et Crédibilité",
-    "credentialsParagraph1": "Les reconnaissances et mentions que nous avons reçues témoignent de notre engagement constant envers l'excellence dans le service aux clients internationaux et l'innovation technologique appliquée au conseil fiscal et commercial. Nous sommes fiers d'être reconnus comme des pionniers dans la numérisation des services professionnels, comme le démontre le prix \"Professionnel Numérique de l'Année\" reçu du Politecnico di Milano et les reconnaissances \"100 Best in Class\" de Forbes Italia et TeamSystem.",
-    "credentialsParagraph2": "Notre expérience dans la numérisation des processus, documentée dans les publications de notre fondateur Giovanni Emmi, nous permet d'offrir un service efficace et de qualité, en surmontant les barrières linguistiques et bureaucratiques qui entravent souvent les entreprises étrangères souhaitant opérer en Italie. Nos projets numériques comme Partitaiva.ai et Evoluzione.pro sont des exemples concrets de notre approche innovante.",
-    "credentialsParagraph3": "Ces références renforcent notre position en tant que partenaire fiable pour aider votre entreprise à naviguer avec succès dans le paysage fiscal et réglementaire complexe italien. Notre réputation est construite sur des résultats concrets, des publications faisant autorité et la satisfaction de nos clients internationaux.",
+    "credentialsTitle": "Reconnaissances et Crédibilité",
+    "credentialsParagraph1": "Les reconnaissances et mentions que nous avons reçues témoignent de notre engagement constant envers l'excellence dans le service aux clients internationaux et l'innovation technologique appliquée au conseil fiscal et d'entreprise. Nous sommes fiers d'être reconnus comme des pionniers dans la numérisation des services professionnels, comme le démontre le prix \"Professionnel Numérique de l'Année\" reçu du Politecnico di Milano et les reconnaissances \"100 Best in Class\" de Forbes Italia et TeamSystem.",
+    "credentialsParagraph2": "Notre expérience dans la numérisation des processus, documentée dans les publications de notre fondateur Giovanni Emmi, nous permet d'offrir un service efficace et de qualité, dépassant les barrières linguistiques et bureaucratiques qui freinent souvent les entreprises étrangères souhaitant opérer en Italie. Nos projets numériques comme Partitaiva.ai et Evoluzione.pro sont des exemples concrets de notre approche innovante.",
+    "credentialsParagraph3": "Ces références renforcent notre position en tant que partenaire fiable pour aider votre entreprise à naviguer avec succès dans le paysage fiscal et réglementaire complexe italien. Notre réputation est construite sur des résultats concrets, des publications autoritatives et la satisfaction de nos clients internationaux.",
     "note": "Note",
-    "noteText": "Les liens sur cette page mènent à des ressources vérifiables telles que des publications Amazon, des sites web officiels de nos projets et des pages de reconnaissance. Pour plus d'informations ou de détails sur n'importe quelle mention, n'hésitez pas à",
+    "noteText": "Les liens sur cette page mènent à des ressources vérifiables comme les publications Amazon, les sites web officiels de nos projets et les pages de reconnaissance. Pour plus d'informations ou des détails sur une mention, n'hésitez pas à",
     "contactUs": "nous contacter",
     "items": [
       {
@@ -182,20 +183,20 @@
         "title": "Prix \"Professionnel Numérique de l'Année 2014\"",
         "date": "2014",
         "source": "Politecnico di Milano - Observatoire des Professionnels et de l'Innovation Numérique",
-        "excerpt": "En 2014, Studio Emmi, aujourd'hui Proclama SPA, s'est distingué en Italie pour sa capacité d'innovation au niveau organisationnel et commercial avec l'utilisation des technologies numériques. En particulier pour le projet partitaiva.it, pionnier dans la transformation numérique du cabinet professionnel.",
+        "excerpt": "En 2014, Studio Emmi, aujourd'hui Proclama SPA, s'est distingué en Italie par sa capacité innovante au niveau organisationnel et commercial grâce à l'utilisation des technologies numériques. En particulier pour le projet partitaiva.it, pionnier dans la transformation numérique du cabinet professionnel.",
         "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
         "type": "mention"
       },
       {
-        "title": "Publication: \"L'Évolution du Comptable à l'Ère de l'Intelligence Artificielle\"",
+        "title": "Publication: \"L'Évolution de l'Expert-Comptable à l'Ère de l'Intelligence Artificielle\"",
         "date": "2024",
         "source": "Amazon - Publications de Giovanni Emmi",
-        "excerpt": "Livre qui explore comment l'intelligence artificielle transforme la profession comptable. \"Être un comptable innovant signifie être un pilier pour la continuité et le progrès des entreprises clientes, un point de référence pour l'avenir, tout en maintenant une éthique professionnelle élevée.\"",
+        "excerpt": "Livre qui explore comment l'intelligence artificielle transforme la profession comptable. \"Être un expert-comptable innovant signifie être un pilier pour la continuité et le progrès des entreprises clientes, un point de repère pour le futur, tout en maintenant une éthique professionnelle élevée.\"",
         "link": "https://amzn.eu/d/4GNuret",
         "type": "profile"
       },
       {
-        "title": "Partitaiva.ai - Plateforme Innovante pour Comptables et PME",
+        "title": "Partitaiva.ai - Plateforme Innovante pour Experts-Comptables et PME",
         "date": "2023",
         "source": "Projets Numériques de Proclama SPA",
         "excerpt": "Portail qui simplifie et réorganise les cabinets comptables et les domaines administratifs et comptables des PME. Un projet de pointe qui utilise l'intelligence artificielle pour optimiser les processus administratifs et comptables.",
@@ -207,22 +208,22 @@
   "testimonials": {
     "title": "Témoignages de Nos Clients",
     "subtitle": "Voici ce que nos clients internationaux disent de nous.",
-    "previous": "Témoignage précédent",
-    "next": "Témoignage suivant",
-    "goToSlide": "Aller au témoignage",
+    "previous": "Témoignage Précédent",
+    "next": "Témoignage Suivant",
+    "goToSlide": "Aller à la diapositive",
     "items": [
       {
-        "quote": "Nous travaillons avec Dobusinessinitaly.com depuis que nous avons décidé de nous développer en Italie il y a trois ans. Leur expertise en matière de fiscalité internationale et leur capacité à expliquer clairement des concepts complexes nous ont permis de naviguer dans le système italien en toute confiance. Hautement recommandé.",
+        "quote": "Nous travaillons avec Dobusinessinitaly.com depuis que nous avons décidé de nous développer en Italie il y a trois ans. Leur expertise en fiscalité internationale et leur capacité à expliquer clairement des concepts complexes nous ont permis de naviguer dans le système italien avec confiance. Hautement recommandé.",
         "name": "Robert Johnson",
         "position": "Directeur Financier, TechGrowth GmbH - Allemagne"
       },
       {
-        "quote": "L'équipe de Dobusinessinitaly.com a joué un rôle déterminant dans la création de notre filiale italienne. Leur assistance multilingue et leur connaissance approfondie des réglementations locales ont grandement simplifié le processus. Nous continuons à compter sur eux pour toutes les questions fiscales et comptables.",
+        "quote": "L'équipe de Dobusinessinitaly.com a été essentielle dans la mise en place de notre filiale italienne. Leur assistance multilingue et leur connaissance approfondie des réglementations locales ont grandement simplifié le processus. Nous continuons à compter sur eux pour toutes les questions fiscales et comptables.",
         "name": "Sophie Martin",
         "position": "Directrice des Opérations, Lumière Design - France"
       },
       {
-        "quote": "En tant qu'investisseur étranger sur le marché immobilier italien, j'avais besoin de conseils fiscaux et juridiques fiables. Dobusinessinitaly.com m'a offert un service impeccable, me donnant la tranquillité d'esprit nécessaire pour me concentrer sur les investissements. Leur réactivité est extraordinaire.",
+        "quote": "En tant qu'investisseur étranger sur le marché immobilier italien, j'avais besoin de conseils fiscales et juridiques fiables. Dobusinessinitaly.com m'a offert un service irréprochable, me donnant la tranquillité d'esprit nécessaire pour me concentrer sur les investissements. Leur réactivité est extraordinaire.",
         "name": "James Wilson",
         "position": "PDG, Wilson Properties - Royaume-Uni"
       }
@@ -272,8 +273,10 @@
   },
   "contact": {
     "title": "Contactez-nous",
-    "subtitle": "Vous avez des questions sur nos services ou souhaitez une consultation? Remplissez le formulaire de contact et notre équipe vous répondra dans les plus brefs délais.",
+    "subtitle": "Avez-vous des questions sur nos services ou souhaitez-vous une consultation? Remplissez le formulaire de contact et notre équipe vous répondra dès que possible.",
+    "contactInfo": "Informations de contact",
     "form": {
+      "title": "Contactez-nous",
       "name": "Nom Complet",
       "company": "Entreprise",
       "email": "Email",
@@ -282,15 +285,15 @@
       "servicePlaceholder": "Sélectionner un service",
       "services": {
         "formation": "Constitution de Société en Italie",
-        "accounting": "Comptabilité et États Financiers",
+        "accounting": "Comptabilité et Bilan",
         "tax": "Conseil Fiscal International",
-        "planning": "Business Planning",
+        "planning": "Planification d'Entreprise",
         "payroll": "Gestion de la Paie et RH",
         "legal": "Support Juridique",
         "other": "Autre"
       },
       "message": "Votre Message",
-      "privacyConsent": "Je consens au traitement de mes données personnelles conformément à la",
+      "privacyConsent": "J'accepte le traitement de mes données personnelles conformément à la",
       "privacyPolicy": "Politique de Confidentialité",
       "send": "Envoyer le Message",
       "sending": "Envoi en cours...",
@@ -298,7 +301,7 @@
         "nameRequired": "Le nom est requis",
         "emailInvalid": "Veuillez entrer une adresse email valide",
         "serviceRequired": "Veuillez sélectionner un service",
-        "messageLength": "Le message doit comporter au moins 10 caractères",
+        "messageLength": "Le message doit contenir au moins 10 caractères",
         "privacyRequired": "Vous devez accepter la politique de confidentialité"
       }
     },
@@ -306,32 +309,36 @@
       "title": "Informations de Contact",
       "address": {
         "title": "Adresse",
-        "value": "Catania, Viale Africa 31"
+        "value": "Catania, Viale Africa 31",
+        "label": "Adresse"
       },
       "phone": {
         "title": "Téléphone",
-        "value": "+39 02 1234 5678"
+        "value": "+39 02 1234 5678",
+        "label": "Téléphone"
       },
       "email": {
         "title": "Email",
-        "value": "info@dobusinessinitaly.com"
+        "value": "info@dobusinessinitaly.com",
+        "label": "Email"
       },
       "hours": {
         "title": "Heures d'Ouverture",
-        "value": "Lundi - Vendredi: 9:00 - 18:00"
+        "value": "Lundi - Vendredi: 9:00 - 18:00",
+        "label": "Heures d'Ouverture"
       },
       "officeImageAlt": "Notre bureau"
     },
     "map": {
       "title": "Où nous sommes",
-      "titleAlt": "Carte de nos bureaux"
+      "titleAlt": "Carte de notre bureau"
     },
     "social": {
       "title": "Suivez-nous"
     },
     "success": {
       "title": "Message envoyé",
-      "message": "Merci de nous avoir contactés! Nous vous répondrons dès que possible."
+      "message": "Merci de nous avoir contactés! Nous répondrons dès que possible."
     },
     "error": {
       "title": "Message non envoyé",
@@ -357,8 +364,8 @@
     "contactButton": "Contactez-nous",
     "teamButton": "Notre équipe",
     "paradigmTitle": "Un nouveau paradigme professionnel",
-    "paradigmDescription1": "Une réalité jeune et dynamique qui vise à renverser le paradigme traditionnel du cabinet professionnel, basé sur la figure centrale du dominus. Les compétences, la méritocratie et l'égalité des chances sont notre mission.",
-    "paradigmDescription2": "Agrégation, spécialisation, numérisation et organisation sont les piliers à la base de notre culture professionnelle.",
+    "paradigmDescription1": "Une réalité jeune et dynamique qui vise à renverser le paradigme traditionnel du cabinet professionnel, basé sur la figure centrale du 'dominus'. Les compétences, la méritocratie et l'égalité des chances sont notre mission.",
+    "paradigmDescription2": "Agrégation, spécialisation, numérisation, organisation sont les piliers à la base de notre culture professionnelle.",
     "diversityQuote": "Plus de 50% des associés, collaborateurs et partenaires ont moins de 40 ans et sont des femmes. Un mélange de nouvelles compétences professionnelles et d'expérience consolidée dans le secteur du conseil, à la disposition de nos clients.",
     "teamImage": "Notre équipe",
     "stats": {
@@ -380,8 +387,8 @@
       },
       "specialties": {
         "accountant": "Expert-comptable et commissaire aux comptes, spécialisé dans la fiscalité pour e-commerce, agences web, startups et PME innovantes",
-        "consultant": "Expert-comptable et commissaire aux comptes, spécialisé dans le conseil en entreprise et en gestion, l'organisation d'entreprise, la finance subventionnée",
-        "labor": "Consultant en droit du travail",
+        "consultant": "Expert-comptable et commissaire aux comptes, spécialisé dans le conseil en entreprise et gestion, l'organisation d'entreprise, la finance subventionnée",
+        "labor": "Conseiller en droit du travail",
         "digital": "Expert-comptable et commissaire aux comptes, spécialisé dans les startups et les PME innovantes, la numérisation des processus d'entreprise",
         "itAccounting": "Expert-comptable et commissaire aux comptes, spécialisé dans les états financiers et la fiscalité des entreprises informatiques",
         "laborSpecialist": "Expert-comptable spécialisé dans le conseil en droit du travail"
@@ -389,25 +396,49 @@
     },
     "valuesSection": {
       "title": "Nos valeurs",
-      "description": "Professionnels hautement qualifiés avec des expériences multidisciplinaires pour des solutions intégrées."
+      "description": "Professionnels hautement qualifiés avec des expériences multidisciplinaires pour des solutions intégrées.",
+      "values": [
+        {
+          "title": "Compétence",
+          "description": "Connaissances approfondies en conseil fiscal et d'entreprise international"
+        },
+        {
+          "title": "Innovation",
+          "description": "Technologies et méthodologies en constante évolution pour des services prospectifs"
+        },
+        {
+          "title": "Intégrité",
+          "description": "Transparence, éthique professionnelle et attention précise dans chaque projet"
+        }
+      ]
     },
     "stpSection": {
       "badge": "Société de Professionnels",
       "title": "Société inscrite au Registre",
-      "description": "Notre société, Proclama S.p.A., est une Société de Professionnels (STP) composée d'experts-comptables régulièrement inscrits à l'Ordre des Experts-Comptables et des Experts Comptables de Catane, un registre professionnel reconnu par l'État italien. L'inscription à l'Ordre garantit que tous nos professionnels ont suivi un parcours rigoureux de formation et de qualification, offrant ainsi à nos clients une fiabilité et une expertise maximales.",
+      "description": "Notre société, Proclama S.p.A., est une Société de Professionnels (STP) composée d'experts-comptables régulièrement inscrits à l'Ordre des Experts-Comptables et des Experts Comptables de Catane, un registre professionnel reconnu par l'État italien. L'inscription à l'Ordre garantit que tous nos professionnels ont suivi un parcours rigoureux de formation et de qualification, offrant ainsi à nos clients la plus grande fiabilité et expertise.",
       "verifyTitle": "Vérifier dans le Registre des Experts-Comptables de Catane",
-      "verifyDescription": "Pour une transparence maximale, toutes les informations concernant les professionnels et les sociétés inscrits sont publiques et consultables dans le Registre de l'Ordre des Experts-Comptables et des Experts Comptables de Catane. Vous pouvez y vérifier les données d'inscription, les qualifications et les coordonnées des comptables et des sociétés de professionnels.",
+      "verifyDescription": "Pour une transparence maximale, toutes les informations concernant les professionnels et les sociétés inscrites sont publiques et consultables dans le Registre de l'Ordre des Experts-Comptables et des Experts Comptables de Catane. Ici vous pouvez vérifier les données d'inscription, les qualifications et les coordonnées des comptables et sociétés de professionnels.",
       "verifyLink": "Vérifier dans le Registre",
       "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
       "accountantTitle": "Qui est l'Expert-Comptable",
       "accountantDescription": "L'expert-comptable est un professionnel hautement qualifié qui offre des conseils fiscaux, d'entreprise, administratifs et juridiques aux particuliers et aux entreprises. C'est une figure reconnue par l'État italien, avec une expertise spécifique dans les domaines économique, commercial, financier et fiscal.",
-      "pathTitle": "Le parcours pour devenir expert-comptable comprend:",
+      "pathTitle": "Le parcours pour devenir expert-comptable inclut:",
       "pathSteps": [
-        "L'obtention d'un master en disciplines économiques (par exemple, Économie et Commerce ou Économie d'Entreprise).",
-        "Une période de formation pratique d'au moins 18 mois dans le cabinet d'un expert-comptable inscrit à l'Ordre.",
-        "La réussite à l'Examen d'État, composé de trois épreuves écrites (sur des matières comme la comptabilité, le droit commercial, le droit fiscal, l'audit d'entreprise) et d'une épreuve orale, qui vérifie également les connaissances déontologiques et informatiques."
+        "Obtenir un master en disciplines économiques (par exemple, Économie et Commerce ou Économie d'Entreprise).",
+        "Une période de stage d'au moins 18 mois dans un cabinet d'expert-comptable inscrit à l'Ordre.",
+        "Réussir l'Examen d'État, composé de trois épreuves écrites (sur des sujets tels que la comptabilité, le droit commercial, le droit fiscal, l'audit d'entreprise) et d'une épreuve orale, qui vérifie également les connaissances déontologiques et informatiques."
       ],
       "conclusion": "Seuls ceux qui réussissent l'Examen d'État et s'inscrivent à l'Ordre peuvent légalement exercer en tant qu'experts-comptables en Italie, offrant ainsi aux clients une garantie de professionnalisme, de mise à jour continue et de respect des normes éthiques et légales."
     }
+  },
+  "team": {
+    "rosario_petralia_role": "Fondateur & Président",
+    "rosario_petralia_specialty": "Expert-comptable et commissaire aux comptes, spécialisé dans la fiscalité pour e-commerce, agences web, startups et PME innovantes",
+    "giovanni_emmi_role": "Fondateur & PDG",
+    "giovanni_emmi_specialty": "Expert-comptable et commissaire aux comptes, spécialisé dans le conseil en entreprise et gestion, l'organisation d'entreprise, la finance subventionnée",
+    "rosario_emmi_role": "Fondateur",
+    "rosario_emmi_specialty": "Expert-comptable et commissaire aux comptes, spécialisé dans les startups et les PME innovantes, la numérisation des processus d'entreprise",
+    "gaetana_vecchio_role": "Associée",
+    "gaetana_vecchio_specialty": "Expert-comptable spécialisé dans le conseil en droit du travail"
   }
 }

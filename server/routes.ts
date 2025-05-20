@@ -46,12 +46,21 @@ function getAllPosts(lang?: string): BlogPostMeta[] {
 
     const hasLanguageSuffix = filename.match(/\.[a-z]{2}\.mdx$/);
 
-    if (lang) {
-      // Per le lingue specificate, cerca i file con suffisso della lingua esatto
-      return filename.endsWith(`.${lang}.mdx`);
+    // Log per debug
+    console.log(`[getAllPosts] Checking file: ${filename}`);
+    console.log(`[getAllPosts] Has language suffix: ${hasLanguageSuffix ? 'yes' : 'no'}`);
+    console.log(`[getAllPosts] Current language: ${lang || 'it (default)'}`);
+
+    if (lang && lang !== 'it') {
+      // Per le lingue diverse dall'italiano, cerca i file con suffisso della lingua esatto
+      const matchesLang = filename.endsWith(`.${lang}.mdx`);
+      console.log(`[getAllPosts] Matches requested language (${lang}): ${matchesLang}`);
+      return matchesLang;
     } else {
       // Per italiano (default), prendi i file senza suffisso di lingua
-      return filename.endsWith('.mdx') && !hasLanguageSuffix;
+      const isDefaultFile = filename.endsWith('.mdx') && !hasLanguageSuffix;
+      console.log(`[getAllPosts] Is default (no language suffix) file: ${isDefaultFile}`);
+      return isDefaultFile;
     }
   });
 
@@ -330,7 +339,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const lang = req.query.lang as string | undefined; // Get optional language query parameter
       console.log(`Fetching blog posts for language: ${lang || 'default (Italian)'}`); // Log the language
-      const posts = getAllPosts(lang); // Pass language to filter function
+      // Se non c'è parametro lang o se è "it", non passare la lingua per ottenere i file senza suffisso
+      const posts = getAllPosts(lang === 'it' ? undefined : lang);
       console.log(`Found ${posts.length} posts for language: ${lang || 'default (Italian)'}`); // Log the number of posts found
       res.status(200).json({
         success: true,

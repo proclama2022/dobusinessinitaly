@@ -87,8 +87,10 @@ function Router() {
   );
 }
 
-// Configure FontAwesome
-config.autoAddCss = false; // Tell Font Awesome to skip adding CSS automatically since it's imported in main.tsx
+// Configurazione ottimizzata per FontAwesome
+// Nota: La configurazione principale è ora in fontawesome.ts
+// Questa configurazione è mantenuta qui per compatibilità
+config.autoAddCss = true; // Assicurarsi che il CSS sia aggiunto automaticamente
 
 function App() {
   return (

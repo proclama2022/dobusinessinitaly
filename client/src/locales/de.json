@@ -1,220 +1,245 @@
 {
   "navigation": {
     "home": "Startseite",
-    "services": "Dienstleistungen",
+    "services": "Leistungen",
     "about": "Über Uns",
-    "media": "Medienpräsenz",
+    "media": "Presse",
     "blog": "Blog",
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Buchhaltungsexpertise für Ihr globales Geschäft",
-    "subtitle": "Wir unterstützen ausländische Unternehmen und Investoren bei der erfolgreichen Geschäftsführung in Italien durch exzellente Steuer- und Handelsberatung.",
+    "title": "Steuerliche Expertise für Ihr globales Unternehmen",
+    "subtitle": "Wir unterstützen ausländische Unternehmen und Investoren dabei, ihr Geschäft in Italien erfolgreich zu managen, mit Exzellenz in steuerlicher und kaufmännischer Beratung.",
     "contactButton": "Kontaktieren Sie uns",
-    "servicesButton": "Entdecken Sie unsere Dienstleistungen",
-    "backgroundAlt": "Professionelles Buchhaltungsbüro"
+    "servicesButton": "Unsere Leistungen entdecken",
+    "backgroundAlt": "Professionelles Steuerbüro"
   },
   "stats": {
     "title": "Unsere Erfahrung in Zahlen",
-    "subtitle": "Die Zahlen sprechen für sich: Unsere nachgewiesene Erfahrung bei der erfolgreichen Unterstützung internationaler Kunden.",
+    "subtitle": "Die Zahlen sprechen für sich: Unsere bewiesene Erfahrung bei der Unterstützung internationaler Kunden mit Erfolg.",
     "clients": {
-      "title": "Internationale Kunden",
-      "description": "Unternehmen aus der ganzen Welt haben unsere Dienstleistungen gewählt"
+      "title": "Zufriedene Kunden",
+      "description": "Unternehmen und Betriebe, die sich auf unsere Beratung verlassen"
     },
     "experience": {
       "title": "Jahre Erfahrung",
-      "description": "Im Dienst nationaler und internationaler Kunden"
+      "description": "Mit Engagement und Kompetenz im Dienst unserer Kunden"
     },
     "professionals": {
-      "title": "Fachleute",
-      "description": "Ein mehrsprachiges Team von Buchhaltern und Steuerexperten"
+      "title": "Fachkräfte",
+      "description": "Steuerberater und Experten, die Ihr Business unterstützen"
     },
     "volume": {
       "title": "Euro verwaltet",
-      "description": "Jährliches Geschäftsvolumen unserer betreuten Kunden"
+      "description": "Gesamtwert der vom Studio verwalteten Mittel"
     }
   },
   "whyChooseUs": {
-    "title": "Warum uns wählen",
-    "ctaButton": "Sprechen Sie mit einem Experten",
-    "mainImageAlt": "Geschäftstreffen mit internationalen Kunden",
+    "title": "Warum Uns Wählen",
+    "ctaButton": "Mit einem Experten sprechen",
+    "mainImageAlt": "Geschäftsbesprechung mit internationalen Kunden",
     "smallImageAlt": "Buchhaltungsdiagramme",
     "features": {
       "international": {
-        "title": "Internationale Kompetenz",
-        "description": "Wir kennen die Herausforderungen ausländischer Unternehmen in Italien. Unser mehrsprachiges Team bietet Unterstützung in Englisch, Französisch, Deutsch und Spanisch."
+        "title": "Internationale Expertise",
+        "description": "Wir verstehen die Herausforderungen, mit denen ausländische Unternehmen in Italien konfrontiert sind. Wir bieten hauptsächlich Unterstützung auf Englisch, dank unserer Expertise in AI-Technologien können wir uns jedoch in der Muttersprache unserer Kunden ausdrücken."
       },
       "excellence": {
         "title": "Professionelle Exzellenz",
-        "description": "Zertifizierte Fachleute mit langjähriger Erfahrung in internationaler Buchhaltungs- und Steuerberatung. Ständige Aktualisierung der Vorschriften."
+        "description": "Zertifizierte Fachkräfte mit jahrelanger Erfahrung in internationaler Buchhaltung und steuerlicher Beratung. Ständige Aktualisierungen zu den Regularien."
       },
       "approach": {
         "title": "Personalisierter Ansatz",
-        "description": "Jeder Kunde erhält maßgeschneiderte Lösungen für seine spezifischen Bedürfnisse. Wir sind Ihr strategischer Partner, nicht nur ein Dienstleister."
+        "description": "Jeder Kunde erhält maßgeschneiderte Lösungen für seine spezifischen Bedürfnisse. Wir sind Ihr strategischer Partner, nicht nur Dienstleister."
       },
       "reliability": {
         "title": "Pünktlichkeit und Zuverlässigkeit",
-        "description": "Wir antworten schnell auf Ihre Anfragen und halten Fristen und Verpflichtungen ein. Sie können sich in allen Aspekten Ihres Geschäfts in Italien auf uns verlassen."
+        "description": "Wir reagieren schnell auf Ihre Anfragen, halten Deadlines und Zusagen ein. Sie können sich auf uns verlassen für jeden Aspekt Ihres Geschäfts in Italien."
       }
     }
   },
   "services": {
-    "title": "Unsere Dienstleistungen",
-    "subtitle": "Wir bieten ein breites Spektrum an professionellen Dienstleistungen zur Unterstützung Ihrer Geschäftstätigkeit in Italien.",
+    "title": "Unsere Leistungen",
+    "subtitle": "Wir bieten ein breites Spektrum an professionellen Dienstleistungen, um Ihre Geschäftsaktivitäten in Italien zu unterstützen.",
     "titlePrefix": "Unsere",
-    "titleMain": "Dienstleistungen",
-    "description": "Wir bieten maßgeschneiderte professionelle Lösungen für die spezifischen Bedürfnisse internationaler Unternehmen und Investoren in Italien.",
+    "titleMain": "Leistungen",
+    "description": "Wir bieten professionelle Lösungen, die auf die spezifischen Bedürfnisse internationaler Unternehmen und Investoren abgestimmt sind.",
     "whatPrefix": "Was",
-    "whatMain": "wir anbieten",
-    "whatDescription": "Entdecken Sie unsere umfassende Palette an Steuer- und Handelsberatungsdiensten für internationale Kunden in Italien.",
+    "whatMain": "Wir bieten",
+    "whatDescription": "Entdecken Sie unser vollständiges Angebot an steuerlichen und kaufmännischen Beratungsdiensten für internationale Kunden in Italien.",
     "cta": {
       "requestConsultation": "Beratung anfordern",
-      "discoverServices": "Dienstleistungen entdecken",
-      "requestInfo": "Informationen anfordern"
+      "discoverServices": "Leistungen entdecken",
+      "requestInfo": "Informationen anfordern",
+      "viewAll": "Alle anzeigen"
     },
     "whyUs": {
       "subtitle": "Warum uns wählen",
       "titlePrefix": "Warum",
-      "titleMain": "uns wählen",
-      "description": "Was uns als idealen Partner für Ihr Geschäft in Italien auszeichnet",
+      "titleMain": "Uns wählen",
+      "description": "Was uns zum idealen Partner für Ihr Unternehmen in Italien macht",
       "reasons": {
         "international": {
-          "title": "Internationale Kompetenz",
-          "description": "Mehrsprachiges Team mit Erfahrung in den typischen Steuerproblemen ausländischer Unternehmen in Italien."
+          "title": "Internationale Expertise",
+          "description": "Wir bieten Unterstützung hauptsächlich auf Englisch, dank unserer Spezialisierung auf AI-Technologien können wir uns in der Muttersprache unserer Kunden ausdrücken."
         },
         "quality": {
           "title": "Zertifizierte Qualität",
-          "description": "Zertifizierte Fachleute mit kontinuierlicher Ausbildung, um das höchste Kompetenzniveau zu garantieren."
+          "description": "Zertifizierte Fachkräfte mit kontinuierlicher Weiterbildung, um das höchste Niveau an Kompetenz zu gewährleisten."
         },
         "custom": {
           "title": "Maßgeschneiderte Lösungen",
-          "description": "Maßgeschneiderter Ansatz für die spezifischen Bedürfnisse Ihres internationalen Geschäfts."
+          "description": "Individueller Ansatz für die spezifischen Bedürfnisse Ihres internationalen Unternehmens."
         },
         "speed": {
           "title": "Reaktionsfähigkeit",
-          "description": "Schnelle Antworten und Einhaltung von Fristen für zeitnahe und effektive Unterstützung."
+          "description": "Schnelle Reaktionen und Einhaltung von Fristen, um Sie zeitnah und effektiv zu unterstützen."
         }
       }
     },
     "features": {
       "accountant": {
-        "title": "Buchhalter und Arbeitsberater",
-        "description": "Steuer- und Buchführungsmanagement für Kapitalgesellschaften mit Erfahrung in außergewöhnlichen Transaktionen: Fusionen, Spaltungen, Umwandlungen, Unternehmensbeiträge und Konzernreorganisationen."
+        "title": "Steuerberater und Arbeitsrechtberater",
+        "description": "Steuerliche und buchhalterische Betreuung von Kapitalgesellschaften mit Erfahrung in außergewöhnlichen Operationen: Fusionen, Spaltungen, Umwandlungen, Unternehmensbeiträge und Reorganisation von Unternehmensgruppen."
       },
       "startup": {
-        "title": "Startups und innovative KMUs",
-        "description": "Gründung und Unterstützung von Startups und innovativen KMUs mit Unterstützung für Finanzierung, Crowdfunding und Investitionen. Wir verwandeln Ihre Ideen mit Kompetenz und Effizienz in erfolgreiche Geschäfte."
+        "title": "Start-ups und innovative KMU",
+        "description": "Gründung und Betreuung von Start-ups und innovativen KMU mit Unterstützung bei Finanzierung, Crowdfunding und Investitionen. Wir verwandeln Ihre Ideen in erfolgreiche Unternehmen mit Expertise und Effizienz."
       },
       "finance": {
-        "title": "Vergünstigte Finanzierung und Steuergutschriften",
-        "description": "Zugang zu Transition 4.0, regionalen Zuschüssen und nationalen und EU-Fördermaßnahmen. Wir identifizieren die besten Finanzierungsmöglichkeiten für Ihr Unternehmen."
+        "title": "Geförderte Finanzierung und Steuergutschriften",
+        "description": "Zugang zu Transition 4.0, regionalen Boni und nationalen sowie EU-weiten Fördermaßnahmen. Wir identifizieren die besten Finanzierungsmöglichkeiten für Ihr Unternehmen."
       },
       "ecommerce": {
         "title": "E-Commerce und Webagenturen",
-        "description": "Spezialisiertes Steuerungsmanagement für E-Commerce und Webagenturen, mit Erfahrung in OSS/IOSS-Systemen und in Beziehungen zu europäischen und außereuropäischen Staaten."
+        "description": "Spezialisierte steuerliche Betreuung für E-Commerce und Webagenturen mit Erfahrung in OSS/IOSS-Systemen und Beziehungen zu europäischen und außereuropäischen Staaten."
       },
       "business": {
         "title": "Business Intelligence",
-        "description": "Optimierung von Geschäftsprozessen und strategische Unterstützung mit maßgeschneiderten Lösungen zur Verbesserung der Leistung und des Geschäftswachstums."
+        "description": "Optimierung von Geschäftsprozessen und strategische Unterstützung mit maßgeschneiderten Lösungen zur Verbesserung der Unternehmensleistung und des Wachstums."
       }
     },
     "items": {
       "formation": {
-        "title": "Gesellschaftsgründung in Italien",
-        "description": "Umfassende Unterstützung bei der Gründung von Kapital- und Personengesellschaften in Italien, einschließlich aller bürokratischen und steuerlichen Anforderungen.",
+        "title": "Unternehmensgründung in Italien",
+        "description": "Vollständige Unterstützung bei der Gründung von Kapital- und Personengesellschaften in Italien, einschließlich aller bürokratischen und steuerlichen Anforderungen.",
         "link": "Mehr Informationen"
       },
       "accounting": {
-        "title": "Buchhaltung und Bilanzierung",
-        "description": "Vollständige Verwaltung der Unternehmensbuchhaltung, Erstellung des Jahresabschlusses und regelmäßige Steuerpflichten.",
+        "title": "Buchhaltung und Jahresabschlüsse",
+        "description": "Vollständige Verwaltung der Unternehmensbuchhaltung, Erstellung von Jahresabschlüssen und periodischen steuerlichen Anforderungen.",
         "link": "Mehr Informationen"
       },
       "tax": {
         "title": "Internationale Steuerberatung",
-        "description": "Beratung zu Doppelbesteuerungsabkommen, Steuerresidenz, Verrechnungspreisen und internationaler Steueroptimierung.",
+        "description": "Beratung zu Doppelbesteuerungsabkommen, Steuerresidenz, Transfer Pricing und internationaler Steueroptimierung.",
         "link": "Mehr Informationen"
       },
       "planning": {
-        "title": "Geschäftsplanung",
-        "description": "Marktanalyse, Geschäftsplan, strategische Planung und Beratung für den Zugang zu Finanzierung und Investitionen in Italien.",
+        "title": "Businessplanung",
+        "description": "Marktanalyse, Businesspläne, strategische Planung und Beratung zum Zugang zu Fördermitteln und Investitionen in Italien.",
         "link": "Mehr Informationen"
       },
       "payroll": {
-        "title": "Gehaltsabrechnung und Personalwesen",
-        "description": "Personalverwaltung, Lohnabrechnung, Beratung zu Arbeitsverträgen und italienischen Arbeitsvorschriften.",
+        "title": "Lohn- und Personalverwaltung",
+        "description": "Personalamtliche Verwaltung, Lohnabrechnung, Beratung zu Arbeitsverträgen und italienischen Arbeitsvorschriften.",
         "link": "Mehr Informationen"
       },
       "legal": {
         "title": "Rechtliche Unterstützung",
-        "description": "Rechtsbeistand in Handelsfragen, Verträgen, Compliance und Vertretung bei italienischen Behörden.",
+        "description": "Rechtliche Unterstützung in kaufmännischen Angelegenheiten, Verträgen, regulatorischer Einhaltung und Vertretung vor italienischen Behörden.",
         "link": "Mehr Informationen"
       }
     }
   },
   "media": {
-    "title": "Medienpräsenz",
-    "subtitle": "Entdecken Sie, was die Fachpresse und Medien über Dobusinessinitaly.com im wirtschaftlichen und finanziellen Sektor sagen.",
+    "title": "Presseberichte",
+    "subtitle": "Entdecken Sie, was die Presse und Fachmedien im wirtschaftsfinanziellen Bereich über Dobusinessinitaly.com berichten.",
     "typeArticle": "Artikel",
     "typeProfile": "Profil",
     "typeMention": "Erwähnung",
     "readMore": "Vollständigen Artikel lesen",
     "requestArticle": "Artikel auf Anfrage verfügbar",
-    "seeAll": "Alle Erwähnungen anzeigen",
+    "seeAll": "Alle Erwähnungen ansehen",
     "all": "Alle",
     "noResults": "Keine Ergebnisse für den ausgewählten Filter gefunden.",
     "credentialsTitle": "Anerkennung und Glaubwürdigkeit",
-    "credentialsParagraph1": "Die Anerkennungen und Erwähnungen, die wir erhalten haben, zeugen von unserem ständigen Engagement für Exzellenz im Service für internationale Kunden und für technologische Innovation in der Steuer- und Unternehmensberatung. Wir sind stolz darauf, als Pioniere bei der Digitalisierung professioneller Dienstleistungen anerkannt zu werden, wie der Preis \"Digitaler Fachmann des Jahres\" vom Politecnico di Milano und die Auszeichnungen \"100 Best in Class\" von Forbes Italia und TeamSystem zeigen.",
-    "credentialsParagraph2": "Unsere Erfahrung in der Digitalisierung von Prozessen, dokumentiert in den Veröffentlichungen unseres Gründers Giovanni Emmi, ermöglicht es uns, einen effizienten und qualitativ hochwertigen Service zu bieten und die sprachlichen und bürokratischen Barrieren zu überwinden, die ausländische Unternehmen, die in Italien tätig werden wollen, oft behindern. Unsere digitalen Projekte wie Partitaiva.ai und Evoluzione.pro sind konkrete Beispiele für unseren innovativen Ansatz.",
-    "credentialsParagraph3": "Diese Referenzen stärken unsere Position als zuverlässiger Partner, um Ihr Unternehmen bei der erfolgreichen Navigation durch die komplexe italienische Steuer- und Regulierungslandschaft zu unterstützen. Unser Ruf basiert auf konkreten Ergebnissen, maßgeblichen Publikationen und der Zufriedenheit unserer internationalen Kunden.",
+    "credentialsParagraph1": "Die Anerkennungen und Erwähnungen, die wir erhalten haben, belegen unser ständiges Engagement für Exzellenz in der Betreuung internationaler Kunden und technologische Innovation in der steuerlichen und kaufmännischen Beratung. Wir sind stolz darauf, als Pioniere der Digitalisierung professioneller Dienstleistungen anerkannt zu werden, wie das \"Digital Professional of the Year\"-Award der Politecnico di Milano und die \"100 Best in Class\"-Anerkennungen von Forbes Italia und TeamSystem belegen.",
+    "credentialsParagraph2": "Unsere Erfahrung in der Prozessdigitalisierung, dokumentiert in den Veröffentlichungen unseres Gründers Giovanni Emmi, ermöglicht es uns, einen effizienten und qualitativ hochwertigen Service anzubieten, der die sprachlichen und bürokratischen Barrieren überwindet, die ausländische Unternehmen oft daran hindern, in Italien zu operieren. Unsere digitalen Projekte wie Partitaiva.ai und Evoluzione.pro sind konkrete Beispiele für unseren innovativen Ansatz.",
+    "credentialsParagraph3": "Diese Qualifikationen stärken unsere Position als verlässlicher Partner, um Ihr Unternehmen dabei zu unterstützen, den komplexen italienischen Steuer- und Regulierungsdschungel erfolgreich zu navigieren. Unser Ruf basiert auf konkreten Ergebnissen, autoritativen Veröffentlichungen und der Zufriedenheit unserer internationalen Kunden.",
     "note": "Hinweis",
-    "noteText": "Die Links auf dieser Seite führen zu überprüfbaren Ressourcen wie Amazon-Publikationen, offiziellen Websites unserer Projekte und Anerkennungsseiten. Für weitere Informationen oder Details zu einer Erwähnung zögern Sie nicht,",
-    "contactUs": "uns zu kontaktieren",
+    "noteText": "Die Links auf dieser Seite führen zu überprüfbaren Ressourcen wie Amazon-Veröffentlichungen, offiziellen Websites unserer Projekte und Anerkennungsseiten. Für weitere Informationen oder Details zu einer Erwähnung zögern Sie nicht,",
+    "contactUs": "kontaktieren Sie uns",
     "items": [
       {
         "title": "100 Best in Class 2024 - Digitale Innovation in professionellen Dienstleistungen",
         "date": "2024",
         "source": "Forbes Italia / TeamSystem",
-        "excerpt": "Anerkennung für Exzellenz in der digitalen Innovation bei professionellen Dienstleistungen. Proclama SPA wurde unter den besten italienischen Kanzleien für digitale Innovation ausgezeichnet, was unser Engagement für einen modernen und effizienten Kundenservice bestätigt.",
+        "excerpt": "Anerkennung für Exzellenz in der digitalen Innovation in professionellen Dienstleistungen. Proclama SPA wurde unter den besten italienischen Firmen für digitale Innovation ausgezeichnet, was unser Engagement für modernen und effizienten Kundenservice unterstreicht.",
         "link": "https://www.forbes.it/100-best-in-class-2023",
         "type": "mention"
       },
       {
-        "title": "Preis \"Digitaler Fachmann des Jahres 2014\"",
+        "title": "\"Digital Professional of the Year 2014\" Award",
         "date": "2014",
-        "source": "Politecnico di Milano - Observatorium für Fachleute und digitale Innovation",
-        "excerpt": "Im Jahr 2014 zeichnete sich Studio Emmi, heute Proclama SPA, in Italien durch innovative Fähigkeiten auf organisatorischer und geschäftlicher Ebene mit dem Einsatz digitaler Technologien aus. Insbesondere für das Projekt partitaiva.it, ein Pionier in der digitalen Transformation der professionellen Kanzlei.",
+        "source": "Politecnico di Milano - Observatory for Professionals and Digital Innovation",
+        "excerpt": "Im Jahr 2014 zeichnete sich Studio Emmi, heute Proclama SPA, in Italien durch innovative Kapazitäten auf organisatorischer und geschäftlicher Ebene durch den Einsatz digitaler Technologien aus. Insbesondere für das partitaiva.it-Projekt, ein Pionier in der digitalen Transformation des professionellen Unternehmens.",
         "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
         "type": "mention"
       },
       {
-        "title": "Veröffentlichung: \"Die Evolution des Buchhalters im Zeitalter der künstlichen Intelligenz\"",
+        "title": "Veröffentlichung: \"Die Evolution des Steuerberaters im Zeitalter der künstlichen Intelligenz\"",
         "date": "2024",
         "source": "Amazon - Veröffentlichungen von Giovanni Emmi",
-        "excerpt": "Buch, das untersucht, wie künstliche Intelligenz den Beruf des Buchhalters verändert. \"Ein innovativer Buchhalter zu sein bedeutet, eine Säule für die Kontinuität und den Fortschritt der Kundenunternehmen zu sein, ein Bezugspunkt für die Zukunft, wobei stets eine hohe Berufsethik gewahrt wird.\"",
+        "excerpt": "Buch, das untersucht, wie künstliche Intelligenz die Steuerberufsbranche transformiert. \"Ein innovativer Steuerberater zu sein bedeutet, ein Pfeiler für die Kontinuität und den Fortschritt der Kundengesellschaften zu sein, ein Bezugspunkt für die Zukunft, immer mit hoher professioneller Ethik.\"",
         "link": "https://amzn.eu/d/4GNuret",
         "type": "profile"
       },
       {
-        "title": "Partitaiva.ai - Innovative Plattform für Buchhalter und KMUs",
+        "title": "Partitaiva.ai - Innovative Plattform für Steuerberater und KMU",
         "date": "2023",
         "source": "Digitale Projekte von Proclama SPA",
-        "excerpt": "Portal, das Buchhaltungskanzleien und die Verwaltungs- und Buchhaltungsbereiche von KMUs vereinfacht und neu organisiert. Ein Spitzenprojekt, das künstliche Intelligenz einsetzt, um Verwaltungs- und Buchhaltungsprozesse zu optimieren.",
+        "excerpt": "Portal, das Steuerberatungsbüros und die administrativen und buchhalterischen Bereiche von KMU vereinfacht und reorganisiert. Ein wegweisendes Projekt, das künstliche Intelligenz nutzt, um administrative und buchhalterische Prozesse zu optimieren.",
         "link": "https://www.partitaiva.it",
         "type": "article"
       }
     ]
   },
+  "testimonials": {
+    "title": "Referenzen unserer Kunden",
+    "subtitle": "Hier ist das, was unsere internationalen Kunden über uns sagen.",
+    "previous": "Vorheriges Referenz",
+    "next": "Nächstes Referenz",
+    "goToSlide": "Zu Folie gehen",
+    "items": [
+      {
+        "quote": "Wir arbeiten seit drei Jahren mit Dobusinessinitaly.com, seit wir uns entschieden haben, in Italien zu expandieren. Ihre Expertise in internationaler Steuerberatung und die Fähigkeit, komplexe Konzepte klar zu erklären, haben es uns ermöglicht, das italienische System mit Vertrauen zu navigieren. Sehr empfehlenswert.",
+        "name": "Robert Johnson",
+        "position": "CFO, TechGrowth GmbH - Deutschland"
+      },
+      {
+        "quote": "Das Dobusinessinitaly.com-Team war entscheidend bei der Einrichtung unserer italienischen Niederlassung. Ihre mehrsprachige Unterstützung und tiefes Wissen über lokale Regularien haben den Prozess erheblich vereinfacht. Wir verlassen uns weiterhin auf sie für alle steuerlichen und buchhalterischen Angelegenheiten.",
+        "name": "Sophie Martin",
+        "position": "Operations Director, Lumière Design - Frankreich"
+      },
+      {
+        "quote": "Als ausländischer Investor im italienischen Immobilienmarkt benötigte ich verlässliche steuerliche und rechtliche Beratung. Dobusinessinitaly.com bot einen makellosen Service, der mir die Gewissheit gab, mich auf Investitionen zu konzentrieren. Ihre Reaktionsfähigkeit ist außergewöhnlich.",
+        "name": "James Wilson",
+        "position": "CEO, Wilson Properties - Vereinigtes Königreich"
+      }
+    ]
+  },
   "blog": {
     "title": "Blog und Updates",
-    "subtitle": "Neueste Artikel und Nachrichten aus der italienischen Steuer- und Handelswelt.",
+    "subtitle": "Neueste Artikel und Nachrichten aus der italienischen Steuer- und Wirtschaftswelt.",
     "viewAll": "Alle Artikel",
     "readMore": "Artikel lesen",
     "posts": [
       {
         "date": "12. Mai 2023",
-        "category": "Internationale Besteuerung",
-        "title": "Neuigkeiten zum Steuerregime für Expatriates in Italien: Chancen für ausländische Manager",
-        "excerpt": "Analyse der jüngsten Änderungen des Steuerregimes für zugewanderte Arbeitnehmer und der Chancen für ausländische Manager und Fachleute."
+        "category": "Internationale Steuerberatung",
+        "title": "Neues Steuerregime für Expatriates in Italien: Chancen für ausländische Manager",
+        "excerpt": "Analyse der jüngsten Änderungen am Steuerregime für Impatrioten und Chancen für ausländische Manager und Fachkräfte."
       },
       {
         "date": "28. April 2023",
@@ -232,7 +257,7 @@
   },
   "newsletter": {
     "title": "Abonnieren Sie unseren Newsletter",
-    "subtitle": "Bleiben Sie über die neuesten steuerlichen und kommerziellen Entwicklungen für Ihr Geschäft in Italien informiert. Erhalten Sie praktische Tipps und Chancen direkt in Ihrem Posteingang.",
+    "subtitle": "Bleiben Sie über die neuesten steuerlichen und kommerziellen Entwicklungen für Ihr Geschäft in Italien informiert.",
     "placeholder": "Ihre E-Mail-Adresse",
     "subscribe": "Abonnieren",
     "subscribing": "Wird abonniert...",
@@ -247,33 +272,35 @@
     }
   },
   "contact": {
-    "title": "Kontakt",
-    "subtitle": "Haben Sie Fragen zu unseren Dienstleistungen oder wünschen Sie eine Beratung? Füllen Sie das Kontaktformular aus und unser Team wird Ihnen so schnell wie möglich antworten.",
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie Fragen zu unseren Leistungen oder möchten Sie eine Beratung? Füllen Sie das Kontaktformular aus und unser Team wird sich so bald wie möglich bei Ihnen melden.",
+    "contactInfo": "Kontaktinformationen",
     "form": {
-      "name": "Vor- und Nachname",
+      "title": "Kontaktieren Sie uns",
+      "name": "Vollständiger Name",
       "company": "Unternehmen",
       "email": "E-Mail",
       "phone": "Telefon",
-      "service": "Interessierte Dienstleistung",
-      "servicePlaceholder": "Wählen Sie eine Dienstleistung",
+      "service": "Interessierter Dienst",
+      "servicePlaceholder": "Dienst auswählen",
       "services": {
-        "formation": "Gesellschaftsgründung in Italien",
-        "accounting": "Buchhaltung und Bilanzierung",
+        "formation": "Unternehmensgründung in Italien",
+        "accounting": "Buchhaltung und Jahresabschlüsse",
         "tax": "Internationale Steuerberatung",
-        "planning": "Geschäftsplanung",
-        "payroll": "Gehaltsabrechnung und Personalwesen",
+        "planning": "Businessplanung",
+        "payroll": "Lohn- und Personalverwaltung",
         "legal": "Rechtliche Unterstützung",
-        "other": "Andere"
+        "other": "Sonstiges"
       },
       "message": "Ihre Nachricht",
       "privacyConsent": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der",
-      "privacyPolicy": "Datenschutzrichtlinie zu",
+      "privacyPolicy": "Datenschutzrichtlinie",
       "send": "Nachricht senden",
       "sending": "Wird gesendet...",
       "validation": {
         "nameRequired": "Name ist erforderlich",
         "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-        "serviceRequired": "Bitte wählen Sie eine Dienstleistung",
+        "serviceRequired": "Bitte wählen Sie einen Dienst",
         "messageLength": "Die Nachricht muss mindestens 10 Zeichen enthalten",
         "privacyRequired": "Sie müssen der Datenschutzrichtlinie zustimmen"
       }
@@ -282,19 +309,23 @@
       "title": "Kontaktinformationen",
       "address": {
         "title": "Adresse",
-        "value": "Catania, Viale Africa 31"
+        "value": "Catania, Viale Africa 31",
+        "label": "Adresse"
       },
       "phone": {
         "title": "Telefon",
-        "value": "+39 02 1234 5678"
+        "value": "+39 02 1234 5678",
+        "label": "Telefon"
       },
       "email": {
         "title": "E-Mail",
-        "value": "info@dobusinessinitaly.com"
+        "value": "info@dobusinessinitaly.com",
+        "label": "E-Mail"
       },
       "hours": {
         "title": "Öffnungszeiten",
-        "value": "Montag - Freitag: 9:00 - 18:00 Uhr"
+        "value": "Montag - Freitag: 9:00 - 18:00",
+        "label": "Öffnungszeiten"
       },
       "officeImageAlt": "Unser Büro"
     },
@@ -307,7 +338,7 @@
     },
     "success": {
       "title": "Nachricht gesendet",
-      "message": "Vielen Dank für Ihre Kontaktaufnahme! Wir werden Ihnen so bald wie möglich antworten."
+      "message": "Vielen Dank, dass Sie uns kontaktiert haben! Wir werden so bald wie möglich antworten."
     },
     "error": {
       "title": "Nachricht nicht gesendet",
@@ -315,9 +346,9 @@
     }
   },
   "footer": {
-    "tagline": "Experten für Steuer- und Handelsberatung für internationale Unternehmen und Investoren in Italien.",
+    "tagline": "Experten für steuerliche und kaufmännische Beratung für internationale Unternehmen und Investoren in Italien.",
     "quickLinks": "Schnelllinks",
-    "services": "Dienstleistungen",
+    "services": "Leistungen",
     "contact": "Kontakt",
     "copyright": "Alle Rechte vorbehalten.",
     "privacy": "Datenschutzrichtlinie",
@@ -329,25 +360,25 @@
     "title": "Über Uns",
     "titlePrefix": "Über",
     "titleMain": "Uns",
-    "longDescription": "Eine junge und dynamische Realität, die das Paradigma der traditionellen Anwaltskanzlei umkehren will. Kompetenz, Leistungsprinzip und Chancengleichheit sind unsere Mission.",
-    "contactButton": "Kontakt",
+    "longDescription": "Eine junge und dynamische Realität, die das Paradigma des traditionellen Berufsstudios umkehren möchte. Kompetenzen, Leistungsbereitschaft, Chancengleichheit sind unsere Mission.",
+    "contactButton": "Kontaktieren Sie uns",
     "teamButton": "Unser Team",
-    "paradigmTitle": "Ein neues professionelles Paradigma",
-    "paradigmDescription1": "Eine junge und dynamische Realität, die das Paradigma der traditionellen Anwaltskanzlei umkehren will, basierend auf der zentralen Figur des dominus. Kompetenz, Leistungsprinzip und Chancengleichheit sind unsere Mission.",
-    "paradigmDescription2": "Aggregation, Spezialisierung, Digitalisierung und Organisation sind die Grundpfeiler unserer Berufskultur.",
-    "diversityQuote": "Über 50% der Partner, Mitarbeiter und Mitglieder sind unter 40 Jahren und weiblich. Eine Mischung aus neuen beruflichen Kompetenzen und konsolidierter Erfahrung im Beratungssektor, die unseren Kunden zur Verfügung steht.",
+    "paradigmTitle": "Ein neues Berufsparadigma",
+    "paradigmDescription1": "Eine junge und dynamische Realität, die das Paradigma des traditionellen Berufsstudios umkehren möchte, basierend auf der zentralen Figur des 'Dominus'. Kompetenzen, Leistungsbereitschaft, Chancengleichheit sind unsere Mission.",
+    "paradigmDescription2": "Aggregation, Spezialisierung, Digitalisierung, Organisation sind die Säulen unserer Berufskultur.",
+    "diversityQuote": "Mehr als 50 % der Partner, Mitarbeiter und Partnerunternehmen sind jünger als 40 Jahre und weiblich. Ein Mix aus neuen Berufskompetenzen und etablierter Erfahrung in der Beratung steht unseren Kunden zur Verfügung.",
     "teamImage": "Unser Team",
     "stats": {
       "partners": "Partner",
-      "employees": "Angestellte",
-      "collaborators": "Mitarbeiter",
+      "employees": "Mitarbeiter",
+      "collaborators": "Kooperationspartner",
       "womenPercentage": "Frauen im Team"
     },
     "teamSection": {
       "badge": "Unser Team",
       "titlePrefix": "Unsere",
       "titleMain": "Mitarbeiter",
-      "description": "Hochqualifizierte Fachleute mit Erfahrung und Kompetenz in ihren jeweiligen Bereichen.",
+      "description": "Hochqualifizierte Fachkräfte mit Erfahrung und Kompetenz in ihren jeweiligen Bereichen.",
       "roles": {
         "founder": "Gründer",
         "ceo": "CEO",
@@ -355,35 +386,59 @@
         "partner": "Partner"
       },
       "specialties": {
-        "accountant": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Steuern für E-Commerce, Webagenturen, Startups und innovative KMUs",
-        "consultant": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Unternehmens- und Managementberatung, Unternehmensorganisation, vergünstigte Finanzierung",
-        "labor": "Arbeitsberater",
-        "digital": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Startups und innovative KMUs, Digitalisierung von Geschäftsprozessen",
-        "itAccounting": "Wirtschaftsprüfer und gesetzlicher Prüfer, spezialisiert auf Bilanzierung und Besteuerung von IT-Unternehmen",
-        "laborSpecialist": "Wirtschaftsprüfer, spezialisiert auf Arbeitsberatung"
+        "accountant": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf E-Commerce, Webagenturen, Start-ups und innovative KMU",
+        "consultant": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Unternehmens- und Managementberatung, Organisation, geförderte Finanzierung",
+        "labor": "Arbeitsrechtberater",
+        "digital": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Start-ups und innovative KMU, Digitalisierung betrieblicher Prozesse",
+        "itAccounting": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Rechnungslegung und Steuerrecht für IT-Unternehmen",
+        "laborSpecialist": "Diplomierter Steuerberater, spezialisiert auf Arbeitsrechtberatung"
       }
     },
     "valuesSection": {
       "title": "Unsere Werte",
-      "description": "Hochqualifizierte Fachleute mit multidisziplinärer Erfahrung für integrierte Lösungen."
+      "description": "Hochqualifizierte Fachkräfte mit multidisziplinärer Erfahrung für integrierte Lösungen.",
+      "values": [
+        {
+          "title": "Kompetenz",
+          "description": "Tiefes Wissen in internationaler Steuerberatung und Wirtschaftsprüfung"
+        },
+        {
+          "title": "Innovation",
+          "description": "Ständige technologische und methodische Weiterentwicklung für zukunftsweisende Dienstleistungen"
+        },
+        {
+          "title": "Integrität",
+          "description": "Transparenz, professionelle Ethik und präzise Aufmerksamkeit in jedem Projekt"
+        }
+      ]
     },
     "stpSection": {
-      "badge": "Berufsgesellschaft",
-      "title": "Offiziell eingetragenes Unternehmen",
-      "description": "Unser Unternehmen, Proclama S.p.A., ist eine Berufsgesellschaft (STP), die aus Wirtschaftsprüfern besteht, die regelmäßig bei der Kammer der Wirtschaftsprüfer und Rechnungswesen-Experten von Catania eingetragen sind, einem vom italienischen Staat anerkannten Berufsregister. Die Eintragung in die Kammer garantiert, dass alle unsere Fachleute einen strengen Ausbildungs- und Qualifikationsprozess durchlaufen haben und bietet unseren Kunden somit maximale Zuverlässigkeit und Expertise.",
-      "verifyTitle": "Überprüfen Sie im Register der Wirtschaftsprüfer von Catania",
-      "verifyDescription": "Für maximale Transparenz sind alle Informationen zu registrierten Fachleuten und Unternehmen öffentlich und können im Register der Kammer der Wirtschaftsprüfer und Rechnungswesen-Experten von Catania eingesehen werden. Hier können Sie Registrierungsdaten, Qualifikationen und Kontaktinformationen von Wirtschaftsprüfern und Berufsgesellschaften überprüfen.",
-      "verifyLink": "Im Register überprüfen",
+      "badge": "Gesellschaft zwischen Fachleuten",
+      "title": "In der Liste eingetragene Gesellschaft",
+      "description": "Unsere Gesellschaft, Proclama S.p.A., ist eine Gesellschaft zwischen Fachleuten (STP), bestehend aus Diplomierten Steuerberatern, die ordnungsgemäß bei der Steuerberaterkammer Catania eingetragen sind, eine Berufsliste, die vom italienischen Staat anerkannt wird. Die Eintragung in die Liste garantiert, dass alle unsere Fachkräfte einen strengen Ausbildungs- und Eignungsweg absolviert haben und unseren Kunden so maximale Zuverlässigkeit und Kompetenz bieten.",
+      "verifyTitle": "In der Liste der Steuerberater von Catania überprüfen",
+      "verifyDescription": "Zur maximalen Transparenz sind alle Informationen zu den Fachleuten und Gesellschaften, die in die Liste eingetragen sind, öffentlich einsehbar im Register der Steuerberater und Experten von Catania. Hier können Sie die Registrierungsdaten, Qualifikationen und Kontaktdaten der Steuerberater und Gesellschaften zwischen Fachleuten einsehen.",
+      "verifyLink": "In der Liste überprüfen",
       "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
-      "accountantTitle": "Wer ist der Wirtschaftsprüfer",
-      "accountantDescription": "Der Wirtschaftsprüfer ist ein hochqualifizierter Fachmann, der sowohl Privatpersonen als auch Unternehmen Steuer-, Unternehmens-, Verwaltungs- und Rechtsberatung anbietet. Es ist eine vom italienischen Staat anerkannte Figur mit spezifischem Fachwissen in wirtschaftlichen, kommerziellen, finanziellen und steuerlichen Angelegenheiten.",
-      "pathTitle": "Der Weg zum Wirtschaftsprüfer umfasst:",
+      "accountantTitle": "Wer ist der Diplomierte Steuerberater",
+      "accountantDescription": "Der Diplomierte Steuerberater ist ein hochqualifizierter Fachmann, der steuerliche, gesellschaftsrechtliche, administrative und rechtliche Beratung sowohl für Privatpersonen als auch für Unternehmen anbietet. Er ist eine vom italienischen Staat anerkannte Persönlichkeit mit spezifischen Kenntnissen im wirtschaftlichen, kaufmännischen, finanziellen und steuerlichen Bereich.",
+      "pathTitle": "Der Weg zum Diplomierten Steuerberater umfasst:",
       "pathSteps": [
-        "Erlangung eines Master-Abschlusses in wirtschaftlichen Disziplinen (zum Beispiel Wirtschaft und Handel oder Betriebswirtschaft).",
-        "Eine praktische Ausbildungszeit von mindestens 18 Monaten im Büro eines bei der Kammer eingetragenen Wirtschaftsprüfers.",
-        "Bestehen der Staatsprüfung, bestehend aus drei schriftlichen Tests (zu Themen wie Rechnungswesen, Handelsrecht, Steuerrecht, Unternehmensrevision) und einem mündlichen Test, der auch deontologisches und IT-Wissen überprüft."
+        "Erwerb eines Master-Abschlusses in Wirtschaftswissenschaften (z.B. Wirtschaftswissenschaften oder Betriebswirtschaftslehre).",
+        "Ein Praktikum von mindestens 18 Monaten in einer Steuerberaterkanzlei, die in die Liste eingetragen ist.",
+        "Bestehen der staatlichen Prüfung, bestehend aus drei schriftlichen Prüfungen (zu Themen wie Buchhaltung, Handelsrecht, Steuerrecht, Unternehmensprüfung) und einer mündlichen Prüfung, die auch deontologische und computerbezogene Kenntnisse überprüft."
       ],
-      "conclusion": "Nur diejenigen, die die Staatsprüfung bestehen und sich bei der Kammer registrieren, können in Italien legal als Wirtschaftsprüfer tätig sein und bieten den Kunden somit eine Garantie für Professionalität, kontinuierliche Aktualisierung und Einhaltung ethischer und rechtlicher Standards."
+      "conclusion": "Nur wer die staatliche Prüfung besteht und sich in die Liste einträgt, darf in Italien legal als Diplomierter Steuerberater tätig sein und bietet Kunden so die Garantie für Professionalität, kontinuierliche Weiterbildung und Einhaltung ethischer und rechtlicher Vorschriften."
     }
+  },
+  "team": {
+    "rosario_petralia_role": "Gründer & Vorsitzender",
+    "rosario_petralia_specialty": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Steuerrecht für E-Commerce, Webagenturen, Start-ups und innovative KMU",
+    "giovanni_emmi_role": "Gründer & CEO",
+    "giovanni_emmi_specialty": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Unternehmens- und Managementberatung, Organisation, geförderte Finanzierung",
+    "rosario_emmi_role": "Gründer",
+    "rosario_emmi_specialty": "Diplomierter Steuerberater und Wirtschaftsprüfer, spezialisiert auf Start-ups und innovative KMU, Digitalisierung betrieblicher Prozesse",
+    "gaetana_vecchio_role": "Partner",
+    "gaetana_vecchio_specialty": "Diplomierter Steuerberater, spezialisiert auf Arbeitsrechtberatung"
   }
 }

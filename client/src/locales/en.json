@@ -155,9 +155,14 @@
   "media": {
     "title": "Media Coverage",
     "subtitle": "Discover what the press and specialized media in the economic-financial sector say about Dobusinessinitaly.com.",
-    "typeArticle": "Article",
-    "typeProfile": "Profile",
-    "typeMention": "Mention",
+    "types": {
+      "article": "Article",
+      "profile": "Profile",
+      "mention": "Mention"
+    },
+    "filters": {
+      "all": "All"
+    },
     "readMore": "Read full article",
     "requestArticle": "Article available upon request",
     "seeAll": "See all mentions",
@@ -234,6 +239,8 @@
     "subtitle": "Latest articles and news from the Italian fiscal and commercial world.",
     "viewAll": "All articles",
     "readMore": "Read article",
+    "featuredArticle": "Featured",
+    "featured": "Article",
     "posts": [
       {
         "date": "May 12, 2023",
@@ -396,7 +403,21 @@
     },
     "valuesSection": {
       "title": "Our values",
-      "description": "Highly qualified professionals with multidisciplinary experiences for integrated solutions."
+      "description": "Highly qualified professionals with multidisciplinary experiences for integrated solutions.",
+      "values": [
+        {
+          "title": "Professionalism",
+          "description": "Competence, continuous updating, and compliance with ethical and legal standards are the foundation of our work."
+        },
+        {
+          "title": "Innovation",
+          "description": "We use cutting-edge technologies and innovative approaches to offer efficient and modern solutions."
+        },
+        {
+          "title": "Integrity",
+          "description": "Transparency, honesty, and fairness guide every action and professional relationship."
+        }
+      ]
     },
     "stpSection": {
       "badge": "Professional Corporation",
@@ -416,5 +437,15 @@
       ],
       "conclusion": "Only those who pass the State Examination and register with the Order can legally practice as chartered accountants in Italy, thus offering clients a guarantee of professionalism, continuous updating, and compliance with ethical and legal standards."
     }
+  },
+  "team": {
+    "rosario_petralia_role": "Founder & Chairman",
+    "rosario_petralia_specialty": "Chartered accountant and auditor, specialized in taxation for ecommerce, web agencies, startups and innovative SMEs",
+    "giovanni_emmi_role": "Founder & CEO",
+    "giovanni_emmi_specialty": "Chartered accountant and auditor, specialized in business and management consulting, business organization, subsidized finance",
+    "rosario_emmi_role": "Founder",
+    "rosario_emmi_specialty": "Chartered accountant and auditor, specialized in startups and innovative SMEs, business process digitalization",
+    "gaetana_vecchio_role": "Partner",
+    "gaetana_vecchio_specialty": "Chartered accountant specialized in labor consulting"
   }
 }

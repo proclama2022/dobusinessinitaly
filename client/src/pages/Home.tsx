@@ -2,7 +2,7 @@ import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import ServicesSection from '@/components/ServicesSection';
-import MediaCoverageSectionNew from '@/components/MediaCoverageSectionNew';
+import MediaCoverageSection from '@/components/MediaCoverageSection';
 import BlogSection from '@/components/BlogSection';
 import ContactSection from '@/components/ContactSection';
 import { useEffect } from 'react';
@@ -21,7 +21,7 @@ const Home = () => {
       <StatsSection />
       <WhyChooseUs />
       <ServicesSection />
-      <MediaCoverageSectionNew />
+      <MediaCoverageSection maxItems={4} />
       <BlogSection />
       <ContactSection />
     </>

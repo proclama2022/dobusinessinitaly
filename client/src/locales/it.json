@@ -210,6 +210,8 @@
     "subtitle": "Ultimi articoli e novità dal mondo fiscale e commerciale italiano.",
     "viewAll": "Tutti gli articoli",
     "readMore": "Leggi l'articolo",
+    "featuredArticle": "Articolo",
+    "featured": "in Evidenza",
     "posts": [
       {
         "date": "12 Maggio 2023",
@@ -372,7 +374,21 @@
     },
     "valuesSection": {
       "title": "I nostri valori",
-      "description": "Professionisti altamente qualificati con esperienze multidisciplinari per soluzioni integrate."
+      "description": "Professionisti altamente qualificati con esperienze multidisciplinari per soluzioni integrate.",
+      "values": [
+        {
+          "title": "Professionalità",
+          "description": "Competenza, aggiornamento continuo e rispetto delle norme etiche e legali sono alla base del nostro lavoro."
+        },
+        {
+          "title": "Innovazione",
+          "description": "Utilizziamo tecnologie all'avanguardia e approcci innovativi per offrire soluzioni efficienti e moderne."
+        },
+        {
+          "title": "Integrità",
+          "description": "Trasparenza, onestà e correttezza guidano ogni nostra azione e relazione professionale."
+        }
+      ]
     },
     "stpSection": {
       "badge": "Società tra Professionisti",
@@ -392,5 +408,15 @@
       ],
       "conclusion": "Solo chi supera l'Esame di Stato e si iscrive all'albo può esercitare legalmente la professione di dottore commercialista in Italia, offrendo così ai clienti garanzia di professionalità, aggiornamento continuo e rispetto delle norme etiche e legali."
     }
+  },
+  "team": {
+    "rosario_petralia_role": "Founder e chairman",
+    "rosario_petralia_specialty": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
+    "giovanni_emmi_role": "Founder e CEO",
+    "giovanni_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
+    "rosario_emmi_role": "Founder",
+    "rosario_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
+    "gaetana_vecchio_role": "Socio",
+    "gaetana_vecchio_specialty": "Dottore commercialista specializzato in consulenza del lavoro"
   }
 }

@@ -91,7 +91,13 @@ const Header = () => {
               onClick={toggleMobileMenu}
               className="text-neutral-700 hover:text-primary focus:outline-none"
             >
-              <i className="fas fa-bars text-xl"></i>
+              <i className="fas fa-bars text-xl" style={{
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+                textRendering: 'auto',
+                filter: 'drop-shadow(0 0 0.5px rgba(0,0,0,0.1))',
+                transform: 'translateZ(0)'
+              }}></i>
             </button>
           </div>
 
