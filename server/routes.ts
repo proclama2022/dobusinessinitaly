@@ -407,6 +407,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // API per ottenere un post specifico
+  app.get('/api/blog/:slug', (req: Request, res: Response) => {
+    try {
+      const { slug } = req.params;
+      const post = getPostBySlug(slug);
+
+      if (!post) {
+        return res.status(404).json({
+          success: false,
+          message: 'Post not found'
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        data: post
+      });
+    } catch (error: any) {
+      console.error('Get blog post error:', error);
+      res.status(500).json({
+        success: false,
+        message: error.message || 'Internal server error'
+      });
+    }
+  });
+
+  // API per ottenere un post tradotto
+  app.get('/api/blog/:lang/:slug', (req: Request, res: Response) => {
+    try {
+      const { lang, slug } = req.params;
+      const post = getPostBySlug(slug, lang); // Pass both slug and lang to getPostBySlug
+
+      if (!post) {
+        return res.status(404).json({
+          success: false,
+          message: 'Translated post not found'
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        data: post
+      });
+    } catch (error: any) {
+      console.error('Get translated blog post error:', error);
+      res.status(500).json({
+        success: false,
+        message: error.message || 'Internal server error'
+      });
+    }
+  });
+
   // API per creare/modificare un post
   app.post('/api/blog', (req: Request, res: Response) => {
     try {
