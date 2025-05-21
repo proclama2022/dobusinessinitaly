@@ -8,10 +8,12 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
+console.log(`[Blog API] __dirname: ${__dirname}`);
+ 
 // Percorso dove sono archiviati i file MDX (relativo alla root del progetto)
 const BLOG_DIR = path.join(__dirname, '..', 'content', 'blog');
-
+console.log(`[Blog API] BLOG_DIR resolved to: ${BLOG_DIR}`);
+ 
 interface BlogPostMeta {
   slug: string;
   title: string;
@@ -26,15 +28,16 @@ function getAllPosts(language?: string): BlogPostMeta[] {
   const targetLanguage = (language || 'it').toLowerCase();
   console.log(`[Blog API] Getting posts for language: ${targetLanguage}`);
   console.log(`[Blog API] Blog directory path: ${BLOG_DIR}`);
-
+  console.log(`[Blog API] Does BLOG_DIR exist? ${fs.existsSync(BLOG_DIR)}`);
+ 
   if (!fs.existsSync(BLOG_DIR)) {
     console.log(`[Blog API] Blog directory does not exist: ${BLOG_DIR}`);
     return [];
   }
-
+ 
   try {
     const files = fs.readdirSync(BLOG_DIR);
-    console.log(`[Blog API] Found ${files.length} files in blog directory`);
+    console.log(`[Blog API] Found ${files.length} files in blog directory: ${files.join(', ')}`);
     
     const posts = files
       .filter((filename: string) => {
@@ -48,8 +51,10 @@ function getAllPosts(language?: string): BlogPostMeta[] {
       .map((filename: string) => {
         try {
           const filePath = path.join(BLOG_DIR, filename);
-          console.log(`[Blog API] Reading file: ${filePath}`);
-          const { data } = matter(fs.readFileSync(filePath, 'utf8'));
+          console.log(`[Blog API] Attempting to read file: ${filePath}`);
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const { data } = matter(fileContent);
+          console.log(`[Blog API] Successfully read file ${filename}. Metadata:`, data);
           const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
           if (!data.title?.trim() || !data.date) {
             console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
