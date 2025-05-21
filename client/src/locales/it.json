@@ -349,7 +349,7 @@
     "stats": {
       "partners": "Soci",
       "employees": "Dipendenti",
-      "collaborators": "Collaboratori",
+      "collaborators": "Commercialisti partner",
       "womenPercentage": "Donne nel team"
     },
     "teamSection": {
@@ -417,6 +417,8 @@
     "rosario_emmi_role": "Founder",
     "rosario_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
     "gaetana_vecchio_role": "Socio",
-    "gaetana_vecchio_specialty": "Dottore commercialista specializzato in consulenza del lavoro"
+    "gaetana_vecchio_specialty": "Dottore commercialista specializzato in consulenza del lavoro",
+    "rosy_fresta_role": "Socio",
+    "rosy_fresta_specialty": "Consulente del lavoro"
   }
 }
