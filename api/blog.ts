@@ -94,7 +94,47 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     res.status(405).json({ success: false, message: 'Method not allowed' });
     return;
   }
-  
+
+  // Handle single post request by slug
+  const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
+  const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
+  if (slug) {
+    console.log(`[Blog API] Fetching single post for slug: ${slug}, language: ${lang || 'default (it)'}`);
+    const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';
+    const fileName = `${slug}${langSuffix}.mdx`;
+    const filePath = path.join(BLOG_DIR, fileName);
+    console.log(`[Blog API] Looking for file: ${filePath}`);
+    if (!fs.existsSync(filePath)) {
+      console.log(`[Blog API] Post file not found: ${filePath}`);
+      res.status(404).json({ success: false, message: 'Post not found' });
+      return;
+    }
+    try {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContent);
+      if (!data.title?.trim() || !data.date) {
+        console.log(`[Blog API] Missing title or date in frontmatter: ${fileName}`);
+        res.status(400).json({ success: false, message: 'Invalid post metadata' });
+        return;
+      }
+      const meta: BlogPostMeta = {
+        slug,
+        title: data.title.trim(),
+        date: new Date(data.date).toISOString(),
+        category: data.category?.trim() || 'Generale',
+        excerpt: data.excerpt?.trim() || '',
+        coverImage: data.coverImage?.trim() || '',
+        author: data.author?.trim() || 'Redazione',
+      };
+      console.log(`[Blog API] Successfully fetched post: ${slug}`);
+      res.status(200).json({ success: true, data: { meta, content } });
+    } catch (error: any) {
+      console.log(`[Blog API] Error reading post file: ${error}`);
+      res.status(500).json({ success: false, message: error.message || 'Internal server error' });
+    }
+    return;
+  }
+
   try {
     const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
     console.log(`[Blog API] Processing request for language: ${lang || 'default (it)'}`);

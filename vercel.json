@@ -16,6 +16,18 @@
   ],
   "routes": [
     {
+      "src": "^/api/blog/([a-z]{2})/(.+)$",
+      "dest": "/api/blog.ts?lang=$1&slug=$2"
+    },
+    {
+      "src": "^/api/blog$",
+      "dest": "/api/blog.ts"
+    },
+    {
+      "src": "^/api/blog/([^/]+)$",
+      "dest": "/api/blog.ts?slug=$1"
+    },
+    {
       "src": "^/api/(.*)$",
       "dest": "/api/$1.ts"
     },
