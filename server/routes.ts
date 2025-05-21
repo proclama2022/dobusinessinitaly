@@ -24,6 +24,7 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  lang: string; // Add language property
 }
 
 /**
@@ -33,6 +34,11 @@ interface BlogPostMeta {
  */
 /**
  * Legge tutti i file MDX dalla directory del blog, filtrando per lingua se specificato
+ */
+/**
+ * Legge tutti i file MDX dalla directory del blog, filtrando per lingua se specificato
+ * @param lang Optional: language code to filter by (e.g., 'en', 'es'). If 'it' or not provided, returns original articles.
+ * @returns Array di oggetti contenenti i metadati dei post
  */
 function getAllPosts(language?: string): BlogPostMeta[] {
     const targetLanguage = (language || 'it').toLowerCase();
@@ -84,6 +90,9 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                         return null;
                     }
 
+                    const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+                    const fileLanguage = langMatch?.[1] || 'it'; // Extract language from filename
+                    
                     console.log(`[Blog] Successfully parsed: ${filename}`);
                     return {
                         slug,
@@ -92,7 +101,8 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                         category: data.category?.trim() || 'Generale',
                         excerpt: data.excerpt?.trim() || '',
                         coverImage: data.coverImage?.trim() || '',
-                        author: data.author?.trim() || 'Redazione'
+                        author: data.author?.trim() || 'Redazione',
+                        lang: fileLanguage // Assign the extracted language
                     } satisfies BlogPostMeta;
                 } catch (error) {
                     console.error('[Blog] Errore elaborazione file:', filename, error);
@@ -111,6 +121,79 @@ function getAllPosts(language?: string): BlogPostMeta[] {
     }
 }
 
+/**
+ * Legge tutti i file MDX dalla directory del blog, senza filtrare per lingua.
+ * Include la lingua rilevata nel BlogPostMeta.
+ * @returns Array di oggetti contenenti i metadati di tutti i post, con la loro lingua.
+ */
+function getAllPostsForAllLanguages(): BlogPostMeta[] {
+    console.log(`[Blog] getAllPostsForAllLanguages called.`);
+    console.log(`[Blog] BLOG_DIR: ${BLOG_DIR}`);
+
+    if (!fs.existsSync(BLOG_DIR)) {
+        console.warn('[Blog] Directory non trovata:', BLOG_DIR);
+        return [];
+    }
+
+    try {
+        const files = fs.readdirSync(BLOG_DIR);
+        console.log(`[Blog] Found ${files.length} files in directory for all languages.`);
+
+        const posts = files
+            .filter((filename: string) => {
+                // Filtra file nascosti e temporanei
+                if (filename.startsWith('.') || filename.startsWith('~')) {
+                    console.log(`[Blog] Filtering out hidden/temp file: ${filename}`);
+                    return false;
+                }
+                return true; // Include all files for all languages
+            })
+            .map((filename: string) => {
+                try {
+                    const filePath = path.join(BLOG_DIR, filename);
+                    console.log(`[Blog] Processing file: ${filePath}`);
+                    const { data } = matter(fs.readFileSync(filePath, 'utf8'));
+                    
+                    // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
+                    const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+
+                    // Validazione dei metadati
+                    if (!data.title?.trim() || !data.date) {
+                        console.warn('[Blog] Metadata mancanti in:', filename);
+                        return null;
+                    }
+
+                    const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+                    const fileLanguage = langMatch?.[1] || 'it'; // Extract language from filename
+                    
+                    console.log(`[Blog] Successfully parsed: ${filename}`);
+                    return {
+                        slug,
+                        title: data.title,
+                        date: new Date(data.date).toISOString(),
+                        category: data.category?.trim() || 'Generale',
+                        excerpt: data.excerpt?.trim() || '',
+                        coverImage: data.coverImage?.trim() || '',
+                        author: data.author?.trim() || 'Redazione',
+                        lang: fileLanguage // Assign the extracted language
+                    } satisfies BlogPostMeta;
+                } catch (error) {
+                    console.error('[Blog] Errore elaborazione file:', filename, error);
+                    return null;
+                }
+            })
+            .filter((post): post is BlogPostMeta => post !== null)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        
+        console.log(`[Blog] Finished processing. Total posts found for all languages: ${posts.length}`);
+        return posts;
+
+    } catch (error) {
+        console.error('[Blog] Errore lettura directory:', error);
+        return [];
+    }
+}
+
 
 /**
 /**
@@ -120,8 +203,9 @@ function getAllPosts(language?: string): BlogPostMeta[] {
  * @returns Metadati del post e contenuto raw
  */
 function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, content: string } | null {
-  const filePath = lang
-    ? path.join(BLOG_DIR, `${slug}.${lang}.mdx`)
+  const targetLanguage = (lang || 'it').toLowerCase(); // Use provided lang or default to 'it'
+  const filePath = targetLanguage !== 'it'
+    ? path.join(BLOG_DIR, `${slug}.${targetLanguage}.mdx`)
     : path.join(BLOG_DIR, `${slug}.mdx`);
 
   // Check if file exists
@@ -146,7 +230,8 @@ function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, conte
       category: data.category || 'Uncategorized',
       excerpt: data.excerpt || '',
       coverImage: data.coverImage || '',
-      author: data.author || 'Admin'
+      author: data.author || 'Admin',
+      lang: targetLanguage // Assign the language
     };
 
     return { meta, content };
@@ -355,14 +440,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       try {
           const { slug } = req.params;
           const post = getPostBySlug(slug);
-  
+
           if (!post) {
               return res.status(404).json({
                   success: false,
                   message: 'Post not found'
               });
           }
-  
+
           res.status(200).json({
               success: true,
               data: post
@@ -384,14 +469,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       try {
           const { lang, slug } = req.params;
           const post = getPostBySlug(slug, lang);
-  
+
           if (!post) {
               return res.status(404).json({
                   success: false,
                   message: 'Translated post not found'
               });
           }
-  
+
           res.status(200).json({
               success: true,
               data: post
@@ -452,7 +537,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { slug } = req.params;
       const success = deletePost(slug);
-  
+
       if (success) {
         res.status(200).json({
           success: true,
@@ -523,57 +608,66 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Servi i file caricati staticamente
   app.use('/uploads', express.static(uploadDir, { maxAge: '1d' }));
 
-  // Endpoint per generare la sitemap.xml
-  app.get('/sitemap.xml', (req: Request, res: Response) => {
-    try {
-      const baseUrl = 'https://dobusinessinitaly.com';
+// Endpoint per generare la sitemap.xml
+app.get('/sitemap.xml', (req: Request, res: Response) => {
+  try {
+    const baseUrl = 'https://dobusinessinitaly.com';
 
-      // Pagine statiche
-      const staticPages = [
-        '',
-        '/about',
-        '/services',
-        '/contact',
-        '/blog',
-        '/media'
-      ];
+    // Pagine statiche
+    const staticPages = [
+      '',
+      '/about',
+      '/services',
+      '/contact',
+      '/blog',
+      '/media'
+    ];
 
-      // Ottieni tutti i post del blog per aggiungerli alla sitemap
-      const blogPosts = getAllPosts();
+    // Ottieni tutti i post del blog per aggiungerli alla sitemap
+    const blogPosts = getAllPostsForAllLanguages();
 
-      // Crea l'XML della sitemap
-      let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
-      sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n';
+    // Crea l'XML della sitemap
+    let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n';
 
-      // Aggiungi le pagine statiche
-      staticPages.forEach(page => {
-        sitemap += '  <url>\n';
-        sitemap += `    <loc>${baseUrl}${page}</loc>\n`;
-        sitemap += '    <changefreq>weekly</changefreq>\n';
-        sitemap += '    <priority>0.8</priority>\n';
-        sitemap += '  </url>\n';
-      });
+    // Aggiungi le pagine statiche
+    staticPages.forEach(page => {
+      sitemap += '  <url>\n';
+      sitemap += `    <loc>${baseUrl}${page}</loc>\n`;
+      sitemap += '    <changefreq>weekly</changefreq>\n';
+      sitemap += '    <priority>0.8</priority>\n';
+      sitemap += '  </url>\n';
+    });
 
-      // Aggiungi le pagine del blog
-      blogPosts.forEach(post => {
-        sitemap += '  <url>\n';
-        sitemap += `    <loc>${baseUrl}/blog/${post.slug}</loc>\n`;
-        sitemap += `    <lastmod>${new Date(post.date).toISOString()}</lastmod>\n`;
-        sitemap += '    <changefreq>monthly</changefreq>\n';
-        sitemap += '    <priority>0.6</priority>\n';
-        sitemap += '  </url>\n';
-      });
+    // Aggiungi le pagine del blog
+    blogPosts.forEach(post => {
+      sitemap += '  <url>\n';
+      sitemap += `    <loc>${baseUrl}/blog/${post.lang}/${post.slug}</loc>\n`;
+      sitemap += `    <lastmod>${new Date(post.date).toISOString()}</lastmod>\n`;
+      sitemap += '    <changefreq>monthly</changefreq>\n';
+      sitemap += '    <priority>0.6</priority>\n';
 
-      sitemap += '</urlset>';
+      // Aggiungi link alternati per le versioni in altre lingue
+      const alternateLinks = blogPosts
+        .filter(p => p.slug === post.slug && p.lang !== post.lang)
+        .map(p => `    <xhtml:link rel="alternate" hreflang="${p.lang}" href="${baseUrl}/blog/${p.lang}/${p.slug}" />\n`)
+        .join('');
 
-      // Invia la sitemap come XML
-      res.header('Content-Type', 'application/xml');
-      res.send(sitemap);
-    } catch (error) {
-      console.error('Errore nella generazione della sitemap:', error);
-      res.status(500).send('Errore nella generazione della sitemap');
-    }
-  });
+      sitemap += alternateLinks;
+
+      sitemap += '  </url>\n';
+    });
+
+    sitemap += '</urlset>';
+
+    // Invia la sitemap come XML
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
+  } catch (error) {
+    console.error('Errore nella generazione della sitemap:', error);
+    res.status(500).send('Errore nella generazione della sitemap');
+  }
+});
 
   // Endpoint per il file robots.txt
   app.get('/robots.txt', (req: Request, res: Response) => {
@@ -588,5 +682,3 @@ Sitemap: https://dobusinessinitaly.com/sitemap.xml
   const httpServer = createServer(app);
   return httpServer;
 }
-
-// Add logs to validate assumptions
