@@ -32,29 +32,42 @@ interface BlogPostMeta {
 function getAllPosts(language?: string): BlogPostMeta[] {
     const targetLanguage = (language || 'it').toLowerCase();
     
+    console.log(`[Blog] getAllPosts called for language: ${targetLanguage}`);
+    console.log(`[Blog] BLOG_DIR: ${BLOG_DIR}`);
+
     if (!fs.existsSync(BLOG_DIR)) {
         console.warn('[Blog] Directory non trovata:', BLOG_DIR);
         return [];
     }
 
     try {
-        return fs.readdirSync(BLOG_DIR)
+        const files = fs.readdirSync(BLOG_DIR);
+        console.log(`[Blog] Found ${files.length} files in directory.`);
+
+        const posts = files
             .filter((filename: string) => {
                 // Filtra file nascosti e temporanei
-                if (filename.startsWith('.') || filename.startsWith('~')) return false;
+                if (filename.startsWith('.') || filename.startsWith('~')) {
+                    console.log(`[Blog] Filtering out hidden/temp file: ${filename}`);
+                    return false;
+                }
 
                 // Estrae la lingua dal filename (formato: nomefile.[LANG].mdx)
                 const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
                 const fileLanguage = langMatch?.[1] || 'it';
 
                 // Logica di filtraggio
-                return targetLanguage === 'it'
+                const shouldInclude = targetLanguage === 'it'
                     ? !langMatch  // Accetta file senza suffisso o con .it
                     : fileLanguage === targetLanguage;
+                
+                console.log(`[Blog] File: ${filename}, Detected Lang: ${fileLanguage}, Target Lang: ${targetLanguage}, Include: ${shouldInclude}`);
+                return shouldInclude;
             })
             .map((filename: string) => {
                 try {
                     const filePath = path.join(BLOG_DIR, filename);
+                    console.log(`[Blog] Processing file: ${filePath}`);
                     const { data } = matter(fs.readFileSync(filePath, 'utf8'));
                     
                     // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
@@ -66,6 +79,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                         return null;
                     }
 
+                    console.log(`[Blog] Successfully parsed: ${filename}`);
                     return {
                         slug,
                         title: data.title,
@@ -82,6 +96,9 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             })
             .filter((post): post is BlogPostMeta => post !== null)
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        
+        console.log(`[Blog] Finished processing. Total posts found: ${posts.length}`);
+        return posts;
 
     } catch (error) {
         console.error('[Blog] Errore lettura directory:', error);
