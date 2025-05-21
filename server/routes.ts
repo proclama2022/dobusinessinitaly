@@ -8,7 +8,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 // Percorso dove sono archiviati i file MDX
-const BLOG_DIR = path.join(process.cwd(), 'content/blog');
+const BLOG_DIR = path.join(__dirname, '..', '..', 'content', 'blog');
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
