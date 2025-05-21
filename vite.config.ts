@@ -28,4 +28,9 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  server: { // Add this server configuration
+    proxy: {
+      '/api': 'http://localhost:3000', // Proxy /api requests to your Express backend
+    },
+  },
 });
