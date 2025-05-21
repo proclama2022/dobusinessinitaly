@@ -6,9 +6,14 @@ import path from "path";
 import multer from "multer";
 import fs from "fs";
 import matter from "gray-matter";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Percorso dove sono archiviati i file MDX
-const BLOG_DIR = path.join(__dirname, '..', '..', 'content', 'blog');
+const BLOG_DIR = path.join(__dirname, '..', 'content', 'blog');
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
