@@ -3,8 +3,14 @@ import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // Percorso dove sono archiviati i file MDX (relativo alla root del progetto)
-const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
+const BLOG_DIR = path.join(__dirname, '..', 'content', 'blog');
 
 interface BlogPostMeta {
   slug: string;
