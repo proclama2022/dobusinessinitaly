@@ -378,7 +378,7 @@
     "stats": {
       "partners": "Partners",
       "employees": "Employees",
-      "collaborators": "Collaborators",
+      "collaborators": "Partner accountants",
       "womenPercentage": "Women in team"
     },
     "teamSection": {
@@ -446,6 +446,8 @@
     "rosario_emmi_role": "Founder",
     "rosario_emmi_specialty": "Chartered accountant and auditor, specialized in startups and innovative SMEs, business process digitalization",
     "gaetana_vecchio_role": "Partner",
-    "gaetana_vecchio_specialty": "Chartered accountant specialized in labor consulting"
+    "gaetana_vecchio_specialty": "Chartered accountant specialized in labor consulting",
+    "rosy_fresta_role": "Partner",
+    "rosy_fresta_specialty": "Chartered accountant specialized in labor consulting"
   }
 }

@@ -26,5 +26,11 @@
     "name": "Gaetana Vecchio",
     "role": "team.gaetana_vecchio_role",
     "specialty": "team.gaetana_vecchio_specialty"
+  },
+  {
+    "filename": "rosy.jpg",
+    "name": "Rosy Fresta",
+    "role": "team.rosy_fresta_role",
+    "specialty": "team.rosy_fresta_specialty"
   }
 ]

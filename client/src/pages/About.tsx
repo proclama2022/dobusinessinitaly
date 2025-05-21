@@ -132,7 +132,7 @@ const About = () => {
 
   // Dati delle statistiche
   const stats = [
-    { number: "6", label: t('about.stats.partners'), icon: "fas fa-user-tie" },
+    { number: "5", label: t('about.stats.partners'), icon: "fas fa-user-tie" },
     { number: "6", label: t('about.stats.employees'), icon: "fas fa-users" },
     { number: "20+", label: t('about.stats.collaborators'), icon: "fas fa-handshake" },
     { number: "50%", label: t('about.stats.womenPercentage'), icon: "fas fa-venus" }
@@ -379,7 +379,7 @@ const About = () => {
           </div>
 
           {/* Grid di team members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
