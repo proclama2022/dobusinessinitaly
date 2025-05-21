@@ -86,7 +86,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
 }
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
-  console.log(`[Blog API] Received request: ${req.method} ${req.url}`);
+  console.log(`[Blog API] Received request: ${req.method} ${req.url} - Simplified Test`);
   console.log(`[Blog API] Query parameters:`, req.query);
   
   if (req.method !== 'GET') {
@@ -96,15 +96,10 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   }
   
   try {
-    const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
-    console.log(`[Blog API] Processing request for language: ${lang || 'default (it)'}`);
-    
-    const posts = getAllPosts(lang);
-    console.log(`[Blog API] Sending response with ${posts.length} posts`);
-    
-    res.status(200).json({ success: true, data: posts });
+    console.log(`[Blog API] Sending dummy response`);
+    res.status(200).json({ success: true, data: [] });
   } catch (error: any) {
-    console.log(`[Blog API] Error processing request: ${error.message || error}`);
-    res.status(500).json({ success: false, message: error.message || 'Internal server error' });
+    console.log(`[Blog API] Error in simplified handler: ${error.message || error}`);
+    res.status(500).json({ success: false, message: error.message || 'Internal server error in simplified handler' });
   }
 }
