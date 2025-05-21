@@ -14,9 +14,6 @@
       "use": "@vercel/node"
     }
   ],
-  "includeFiles": [
-    "content/**"
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
