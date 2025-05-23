@@ -9,11 +9,11 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 console.log(`[Blog API] __dirname: ${__dirname}`);
- 
+
 // Percorso dove sono archiviati i file MDX (relativo alla root del progetto)
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 console.log(`[Blog API] BLOG_DIR resolved to: ${BLOG_DIR}`);
- 
+
 interface BlogPostMeta {
   slug: string;
   title: string;
@@ -29,16 +29,16 @@ function getAllPosts(language?: string): BlogPostMeta[] {
   console.log(`[Blog API] Getting posts for language: ${targetLanguage}`);
   console.log(`[Blog API] Blog directory path: ${BLOG_DIR}`);
   console.log(`[Blog API] Does BLOG_DIR exist? ${fs.existsSync(BLOG_DIR)}`);
- 
+
   if (!fs.existsSync(BLOG_DIR)) {
     console.log(`[Blog API] Blog directory does not exist: ${BLOG_DIR}`);
     return [];
   }
- 
+
   try {
     const files = fs.readdirSync(BLOG_DIR);
     console.log(`[Blog API] Found ${files.length} files in blog directory: ${files.join(', ')}`);
-    
+
     const posts = files
       .filter((filename: string) => {
         if (filename.startsWith('.') || filename.startsWith('~')) return false;
@@ -76,7 +76,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
       })
       .filter((post): post is BlogPostMeta => post !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    
+
     console.log(`[Blog API] Returning ${posts.length} posts`);
     return posts;
   } catch (error) {
@@ -88,63 +88,101 @@ function getAllPosts(language?: string): BlogPostMeta[] {
 export default function handler(req: VercelRequest, res: VercelResponse) {
   console.log(`[Blog API] Received request: ${req.method} ${req.url}`);
   console.log(`[Blog API] Query parameters:`, req.query);
-  
-  if (req.method !== 'GET') {
-    console.log(`[Blog API] Method not allowed: ${req.method}`);
-    res.status(405).json({ success: false, message: 'Method not allowed' });
-    return;
-  }
 
-  // Handle single post request by slug
-  const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
-  const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
-  if (slug) {
-    console.log(`[Blog API] Fetching single post for slug: ${slug}, language: ${lang || 'default (it)'}`);
-    const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';
-    const fileName = `${slug}${langSuffix}.mdx`;
-    const filePath = path.join(BLOG_DIR, fileName);
-    console.log(`[Blog API] Looking for file: ${filePath}`);
-    if (!fs.existsSync(filePath)) {
-      console.log(`[Blog API] Post file not found: ${filePath}`);
-      res.status(404).json({ success: false, message: 'Post not found' });
+  if (req.method === 'POST') {
+    console.log(`[Blog API] Handling POST request`);
+    const { slug, title, date, category, excerpt, coverImage, author, content, language } = req.body;
+
+    if (!slug || !title || !date || !content) {
+      console.log(`[Blog API] Missing required fields in POST request`);
+      res.status(400).json({ success: false, message: 'Missing required fields' });
       return;
     }
+
+    const langSuffix = language && language.toLowerCase() !== 'it' ? `.${language.toLowerCase()}` : '';
+    const fileName = `${slug}${langSuffix}.mdx`;
+    const filePath = path.join(BLOG_DIR, fileName);
+
+    if (fs.existsSync(filePath)) {
+      console.log(`[Blog API] Post with slug ${slug} already exists`);
+      res.status(409).json({ success: false, message: 'Post already exists' });
+      return;
+    }
+
+    const frontMatter = `---
+title: "${title}"
+date: "${date}"
+category: "${category}"
+excerpt: "${excerpt}"
+coverImage: "${coverImage}"
+author: "${author}"
+---`;
+
+    const fileContent = `${frontMatter}\n\n${content}`;
+
     try {
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContent);
-      if (!data.title?.trim() || !data.date) {
-        console.log(`[Blog API] Missing title or date in frontmatter: ${fileName}`);
-        res.status(400).json({ success: false, message: 'Invalid post metadata' });
+      fs.writeFileSync(filePath, fileContent, 'utf8');
+      console.log(`[Blog API] Successfully created new post: ${fileName}`);
+      res.status(201).json({ success: true, message: 'Post created successfully' });
+    } catch (error) {
+      console.log(`[Blog API] Error creating new post: ${error}`);
+      res.status(500).json({ success: false, message: 'Error creating post' });
+    }
+  } else if (req.method === 'GET') {
+    // Handle single post request by slug
+    const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
+    const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
+    if (slug) {
+      console.log(`[Blog API] Fetching single post for slug: ${slug}, language: ${lang || 'default (it)'}`);
+      const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';
+      const fileName = `${slug}${langSuffix}.mdx`;
+      const filePath = path.join(BLOG_DIR, fileName);
+      console.log(`[Blog API] Looking for file: ${filePath}`);
+      if (!fs.existsSync(filePath)) {
+        console.log(`[Blog API] Post file not found: ${filePath}`);
+        res.status(404).json({ success: false, message: 'Post not found' });
         return;
       }
-      const meta: BlogPostMeta = {
-        slug,
-        title: data.title.trim(),
-        date: new Date(data.date).toISOString(),
-        category: data.category?.trim() || 'Generale',
-        excerpt: data.excerpt?.trim() || '',
-        coverImage: data.coverImage?.trim() || '',
-        author: data.author?.trim() || 'Redazione',
-      };
-      console.log(`[Blog API] Successfully fetched post: ${slug}`);
-      res.status(200).json({ success: true, data: { meta, content } });
+      try {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(fileContent);
+        if (!data.title?.trim() || !data.date) {
+          console.log(`[Blog API] Missing title or date in frontmatter: ${fileName}`);
+          res.status(400).json({ success: false, message: 'Invalid post metadata' });
+          return;
+        }
+        const meta: BlogPostMeta = {
+          slug,
+          title: data.title.trim(),
+          date: new Date(data.date).toISOString(),
+          category: data.category?.trim() || 'Generale',
+          excerpt: data.excerpt?.trim() || '',
+          coverImage: data.coverImage?.trim() || '',
+          author: data.author?.trim() || 'Redazione',
+        };
+        console.log(`[Blog API] Successfully fetched post: ${slug}`);
+        res.status(200).json({ success: true, data: { meta, content } });
+      } catch (error: any) {
+        console.log(`[Blog API] Error reading post file: ${error}`);
+        res.status(500).json({ success: false, message: error.message || 'Internal server error' });
+      }
+      return;
+    }
+
+    try {
+      const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
+      console.log(`[Blog API] Processing request for language: ${lang || 'default (it)'}`);
+
+      const posts = getAllPosts(lang);
+      console.log(`[Blog API] Sending response with ${posts.length} posts`);
+
+      res.status(200).json({ success: true, data: posts });
     } catch (error: any) {
-      console.log(`[Blog API] Error reading post file: ${error}`);
+      console.log(`[Blog API] Error processing request: ${error.message || error}`);
       res.status(500).json({ success: false, message: error.message || 'Internal server error' });
     }
-    return;
-  }
-
-  try {
-    const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
-    console.log(`[Blog API] Processing request for language: ${lang || 'default (it)'}`);
-    
-    const posts = getAllPosts(lang);
-    console.log(`[Blog API] Sending response with ${posts.length} posts`);
-    
-    res.status(200).json({ success: true, data: posts });
-  } catch (error: any) {
-    console.log(`[Blog API] Error processing request: ${error.message || error}`);
-    res.status(500).json({ success: false, message: error.message || 'Internal server error' });
+  } else {
+    console.log(`[Blog API] Method not allowed: ${req.method}`);
+    res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 }
