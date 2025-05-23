@@ -133,6 +133,8 @@ author: "${author}"
       const { url } = await put(fileName, fileContent, {
         access: 'public',
         token: process.env.BLOB_READ_WRITE_TOKEN,
+        allowOverwrite: true,  // Permette sovrascrittura
+        addRandomSuffix: false // Mantiene lo slug pulito
       });
 
       console.log(`[Blog API] Successfully created new post at: ${url}`);
