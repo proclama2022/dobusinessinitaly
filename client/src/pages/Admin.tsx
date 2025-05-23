@@ -125,7 +125,7 @@ const AdminPage = () => {
           setCoverImageFile(null);
           setCoverImagePreview(null);
 
-          // Avvia generazione delle traduzioni in background
+          // Avvia generazione delle traduzioni in background (non bloccante)
           const slugBase = data.slug || data.title
             .toLowerCase()
             .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -137,6 +137,13 @@ const AdminPage = () => {
           
           // Genera traduzioni per tutte le lingue supportate
           const targetLanguages = ['en', 'de', 'fr', 'es'];
+          
+          // Mostra toast informativo per le traduzioni
+          toast({
+            title: 'Traduzioni in corso',
+            description: 'Le traduzioni automatiche sono state avviate in background.',
+          });
+
           const translationPromises = targetLanguages.map(lang => 
             apiRequest('/api/translate', { 
               method: 'POST',
@@ -144,32 +151,47 @@ const AdminPage = () => {
                 slug: finalSlug,
                 targetLang: lang
               }
+            }).catch(error => {
+              console.error(`Translation failed for ${lang}:`, error);
+              return { error: error.message, lang };
             })
           );
 
+          // Gestisci le traduzioni in background senza bloccare l'interfaccia
           Promise.allSettled(translationPromises)
             .then((results) => {
-              const successful = results.filter(r => r.status === 'fulfilled').length;
-              const failed = results.filter(r => r.status === 'rejected').length;
+              const successful = results.filter(r => r.status === 'fulfilled' && !r.value?.error).length;
+              const failed = results.filter(r => r.status === 'rejected' || r.value?.error).length;
+              
+              console.log(`Translation results: ${successful} successful, ${failed} failed`);
               
               if (successful > 0) {
                 toast({
                   title: 'Traduzioni completate',
                   description: `${successful} traduzioni generate con successo${failed > 0 ? `, ${failed} fallite` : ''}.`,
                 });
-              } else {
+              } else if (failed > 0) {
                 toast({
-                  title: 'Errore traduzioni',
-                  description: 'Nessuna traduzione è stata generata.',
+                  title: 'Problemi con le traduzioni',
+                  description: 'Le traduzioni automatiche hanno riscontrato problemi. L\'articolo è comunque pubblicato.',
                   variant: 'destructive',
                 });
               }
+              
+              // Log detailed errors for debugging
+              results.forEach((result, index) => {
+                if (result.status === 'rejected') {
+                  console.error(`Translation ${targetLanguages[index]} rejected:`, result.reason);
+                } else if (result.value?.error) {
+                  console.error(`Translation ${targetLanguages[index]} failed:`, result.value.error);
+                }
+              });
             })
             .catch((err) => {
-              console.error('Errore traduzioni:', err);
+              console.error('Errore generale traduzioni:', err);
               toast({
                 title: 'Errore traduzioni',
-                description: 'Impossibile avviare la generazione delle traduzioni.',
+                description: 'Si è verificato un errore durante le traduzioni automatiche. L\'articolo è comunque pubblicato.',
                 variant: 'destructive',
               });
             });
