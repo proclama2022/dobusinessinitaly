@@ -149,10 +149,62 @@
         "title": "Legal Support",
         "description": "Legal assistance in commercial matters, contracts, regulatory compliance and representation with Italian authorities.",
         "link": "More information"
+      },
+      "private_clients": {
+        "title": "Services for Private Clients and Pensioners",
+        "description": "Tax and administrative assistance for private individuals, pensioners, and those looking to buy or do business in Italy.",
+        "link": "More information"
+      },
+      "freelancer": {
+        "title": "Services for Freelancers",
+        "description": "Comprehensive tax and administrative assistance for professionals and freelancers in Italy.",
+        "link": "More information"
+      },
+      "relocation": {
+        "title": "Relocation Support in Italy",
+        "description": "Complete assistance for individuals and families relocating to Italy, including tax and bureaucratic aspects.",
+        "link": "More information"
+      },
+      "facilitated_finance": {
+        "title": "Facilitated Finance",
+        "description": "Identification and access to facilitated financing, bonuses, and tax credits for businesses and individuals.",
+        "link": "More information"
+      },
+      "agriculture": {
+        "title": "Agricultural Sector Consulting",
+        "description": "Specific fiscal, accounting and strategic assistance for agricultural companies and related activities.",
+        "link": "More information"
+      },
+      "partita_iva": {
+        "title": "VAT Number Opening and Management",
+        "description": "Complete assistance for VAT number opening, choosing the most convenient tax regime and managing periodic obligations.",
+        "link": "More information"
+      },
+      "regime_forfettario": {
+        "title": "Flat Rate Regime",
+        "description": "Specialized consulting for the facilitated tax regime dedicated to freelancers and small businesses with turnover up to €85,000.",
+        "link": "More information"
+      },
+      "srl_semplificata": {
+        "title": "Simplified SRL",
+        "description": "Quick and economical incorporation of SRL with reduced capital, ideal for startups and innovative small businesses.",
+        "link": "More information"
+      },
+      "digitalizzazione": {
+        "title": "Business Digitalization",
+        "description": "Implementation of digital systems to optimize administrative, accounting and management processes for small businesses.",
+        "link": "More information"
+      },
+      "controllo_gestione": {
+        "title": "Management Control",
+        "description": "Periodic analysis of business performance, KPIs and decision support for business growth.",
+        "link": "More information"
       }
     }
   },
   "media": {
+
+
     "title": "Media Coverage",
     "subtitle": "Discover what the press and specialized media in the economic-financial sector say about Dobusinessinitaly.com.",
     "types": {
@@ -448,6 +500,5 @@
     "gaetana_vecchio_role": "Partner",
     "gaetana_vecchio_specialty": "Chartered accountant specialized in labor consulting",
     "rosy_fresta_role": "Partner",
-    "rosy_fresta_specialty": "Chartered accountant specialized in labor consulting"
+    "rosy_fresta_specialty": "Chartered accountant specialized in labor consulting"}
   }
-}

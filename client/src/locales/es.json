@@ -149,6 +149,56 @@
         "title": "Apoyo Jurídico",
         "description": "Asistencia jurídica en materia comercial, contratos, cumplimiento normativo y representación ante autoridades italianas.",
         "link": "Más información"
+      },
+      "private_clients": {
+        "title": "Servicios para Clientes Privados y Pensionistas",
+        "description": "Asistencia fiscal y administrativa para particulares, pensionistas y aquellos que buscan comprar o hacer negocios en Italia.",
+        "link": "Más información"
+      },
+      "freelancer": {
+        "title": "Servicios para Freelancers",
+        "description": "Asistencia fiscal y administrativa completa para profesionales y autónomos en Italia.",
+        "link": "Más información"
+      },
+      "relocation": {
+        "title": "Soporte para el Traslado a Italia",
+        "description": "Asistencia completa para individuos y familias que se trasladan a Italia, incluyendo aspectos fiscales y burocráticos.",
+        "link": "Más información"
+      },
+      "facilitated_finance": {
+        "title": "Financiación Facilitada",
+        "description": "Identificación y acceso a financiación facilitada, bonificaciones y créditos fiscales para empresas e individuos.",
+        "link": "Más información"
+      },
+      "agriculture": {
+        "title": "Consultoría para el Sector Agrícola",
+        "description": "Asistencia fiscal, contable y estratégica específica para empresas agrícolas y actividades relacionadas.",
+        "link": "Más información"
+      },
+      "partita_iva": {
+        "title": "Apertura y Gestión de Partita IVA",
+        "description": "Asistencia completa para la apertura de partita IVA, elección del régimen fiscal más conveniente y gestión de obligaciones periódicas.",
+        "link": "Más información"
+      },
+      "regime_forfettario": {
+        "title": "Régimen Forfetario",
+        "description": "Consultoría especializada para el régimen fiscal facilitado dedicado a freelancers y pequeñas empresas con facturación hasta 85.000€.",
+        "link": "Más información"
+      },
+      "srl_semplificata": {
+        "title": "SRL Simplificada",
+        "description": "Constitución rápida y económica de SRL con capital reducido, ideal para startups y pequeñas empresas innovadoras.",
+        "link": "Más información"
+      },
+      "digitalizzazione": {
+        "title": "Digitalización Empresarial",
+        "description": "Implementación de sistemas digitales para optimizar procesos administrativos, contables y de gestión de pequeñas empresas.",
+        "link": "Más información"
+      },
+      "controllo_gestione": {
+        "title": "Control de Gestión",
+        "description": "Análisis periódicos del rendimiento empresarial, KPIs y apoyo decisional para el crecimiento del negocio.",
+        "link": "Más información"
       }
     }
   },

@@ -118,6 +118,60 @@ const ServicesSection = () => {
       title: t('services.items.legal.title'),
       description: t('services.items.legal.description'),
       linkText: t('services.items.legal.link')
+    },
+    {
+      icon: 'fas fa-user-tie',
+      title: t('services.items.freelancer.title'),
+      description: t('services.items.freelancer.description'),
+      linkText: t('services.items.freelancer.link')
+    },
+    {
+      icon: 'fas fa-suitcase-rolling',
+      title: t('services.items.relocation.title'),
+      description: t('services.items.relocation.description'),
+      linkText: t('services.items.relocation.link')
+    },
+    {
+      icon: 'fas fa-hand-holding-usd',
+      title: t('services.items.facilitated_finance.title'),
+      description: t('services.items.facilitated_finance.description'),
+      linkText: t('services.items.facilitated_finance.link')
+    },
+    {
+      icon: 'fas fa-leaf',
+      title: t('services.items.agriculture.title'),
+      description: t('services.items.agriculture.description'),
+      linkText: t('services.items.agriculture.link')
+    },
+    {
+      icon: 'fas fa-id-card',
+      title: t('services.items.partita_iva.title'),
+      description: t('services.items.partita_iva.description'),
+      linkText: t('services.items.partita_iva.link')
+    },
+    {
+      icon: 'fas fa-percentage',
+      title: t('services.items.regime_forfettario.title'),
+      description: t('services.items.regime_forfettario.description'),
+      linkText: t('services.items.regime_forfettario.link')
+    },
+    {
+      icon: 'fas fa-rocket',
+      title: t('services.items.srl_semplificata.title'),
+      description: t('services.items.srl_semplificata.description'),
+      linkText: t('services.items.srl_semplificata.link')
+    },
+    {
+      icon: 'fas fa-laptop-code',
+      title: t('services.items.digitalizzazione.title'),
+      description: t('services.items.digitalizzazione.description'),
+      linkText: t('services.items.digitalizzazione.link')
+    },
+    {
+      icon: 'fas fa-chart-pie',
+      title: t('services.items.controllo_gestione.title'),
+      description: t('services.items.controllo_gestione.description'),
+      linkText: t('services.items.controllo_gestione.link')
     }
   ];
 

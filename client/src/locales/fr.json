@@ -149,6 +149,56 @@
         "title": "Support Juridique",
         "description": "Assistance juridique en matière commerciale, contrats, conformité réglementaire et représentation devant les autorités italiennes.",
         "link": "Plus d'informations"
+      },
+      "private_clients": {
+        "title": "Services pour Clients Privés et Retraités",
+        "description": "Assistance fiscale et administrative pour les particuliers, les retraités et ceux qui souhaitent acheter ou faire des affaires en Italie.",
+        "link": "Plus d'informations"
+      },
+      "freelancer": {
+        "title": "Services pour Freelancers",
+        "description": "Assistance fiscale et administrative complète pour les professionnels et les travailleurs indépendants en Italie.",
+        "link": "Plus d'informations"
+      },
+      "relocation": {
+        "title": "Support à la Relocalisation en Italie",
+        "description": "Assistance complète pour les individus et les familles qui déménagent en Italie, y compris les aspects fiscaux et bureaucratiques.",
+        "link": "Plus d'informations"
+      },
+      "facilitated_finance": {
+        "title": "Financement Facilités",
+        "description": "Identification et accès à des financements facilités, bonus et crédits d'impôt pour les entreprises et les particuliers.",
+        "link": "Plus d'informations"
+      },
+      "agriculture": {
+        "title": "Conseil pour le Secteur Agricole",
+        "description": "Assistance fiscale, comptable et stratégique spécifique pour les entreprises agricoles et les activités connexes.",
+        "link": "Plus d'informations"
+      },
+      "partita_iva": {
+        "title": "Ouverture et Gestion Partita IVA",
+        "description": "Assistance complète pour l'ouverture de la partita IVA, choix du régime fiscal le plus avantageux et gestion des obligations périodiques.",
+        "link": "Plus d'informations"
+      },
+      "regime_forfettario": {
+        "title": "Régime Forfaitaire",
+        "description": "Conseil spécialisé pour le régime fiscal facilité dédié aux freelancers et petites entreprises avec un chiffre d'affaires jusqu'à 85 000€.",
+        "link": "Plus d'informations"
+      },
+      "srl_semplificata": {
+        "title": "SRL Simplifiée",
+        "description": "Constitution rapide et économique de SRL avec capital réduit, idéale pour les startups et petites entreprises innovantes.",
+        "link": "Plus d'informations"
+      },
+      "digitalizzazione": {
+        "title": "Digitalisation d'Entreprise",
+        "description": "Implémentation de systèmes numériques pour optimiser les processus administratifs, comptables et de gestion des petites entreprises.",
+        "link": "Plus d'informations"
+      },
+      "controllo_gestione": {
+        "title": "Contrôle de Gestion",
+        "description": "Analyses périodiques des performances d'entreprise, KPI et support décisionnel pour la croissance des affaires.",
+        "link": "Plus d'informations"
       }
     }
   },

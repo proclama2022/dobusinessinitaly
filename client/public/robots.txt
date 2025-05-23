@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://dobusinessinitaly.com/sitemap.xml
+Disallow: /

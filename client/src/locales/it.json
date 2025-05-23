@@ -67,6 +67,21 @@
     "whatPrefix": "Cosa",
     "whatMain": "Offriamo",
     "whatDescription": "Scopri la nostra gamma completa di servizi di consulenza fiscale e commerciale per clienti internazionali in Italia.",
+    "backgroundAlt": "Ufficio moderno di consulenza",
+    "categories": {
+      "corporate": {
+        "title": "Servizi per Aziende",
+        "subtitle": "Soluzioni complete per società di capitali e grandi imprese"
+      },
+      "freelancers": {
+        "title": "Servizi per Freelancer e Piccole Imprese",
+        "subtitle": "Soluzioni dedicate a professionisti e startup"
+      },
+      "private": {
+        "title": "Servizi per Privati",
+        "subtitle": "Assistenza personalizzata per clienti privati e pensionati"
+      }
+    },
     "cta": {
       "requestConsultation": "Richiedi Consulenza",
       "discoverServices": "Scopri i Servizi",
@@ -148,6 +163,56 @@
       "legal": {
         "title": "Supporto Legale",
         "description": "Assistenza legale in materia commerciale, contrattualistica, compliance normativa e rappresentanza presso autorità italiane.",
+        "link": "Maggiori informazioni"
+      },
+      "private_clients": {
+        "title": "Servizi per Privati e Pensionati",
+        "description": "Assistenza fiscale e amministrativa per privati, pensionati e coloro che desiderano acquistare o fare business in Italia.",
+        "link": "Maggiori informazioni"
+      },
+      "freelancer": {
+        "title": "Servizi per Freelancer",
+        "description": "Assistenza fiscale e amministrativa completa per professionisti e lavoratori autonomi in Italia.",
+        "link": "Maggiori informazioni"
+      },
+      "relocation": {
+        "title": "Supporto al Trasferimento in Italia",
+        "description": "Assistenza completa per individui e famiglie che si trasferiscono in Italia, inclusi aspetti fiscali e burocratici.",
+        "link": "Maggiori informazioni"
+      },
+      "facilitated_finance": {
+        "title": "Finanziamenti Agevolati",
+        "description": "Identificazione e accesso a finanziamenti agevolati, bonus e crediti d'imposta per imprese e privati.",
+        "link": "Maggiori informazioni"
+      },
+      "agriculture": {
+        "title": "Consulenza per il Settore Agricolo",
+        "description": "Assistenza fiscale, contabile e strategica specifica per aziende agricole e attività connesse.",
+        "link": "Maggiori informazioni"
+      },
+      "partita_iva": {
+        "title": "Apertura e Gestione Partita IVA",
+        "description": "Assistenza completa per l'apertura della partita IVA, scelta del regime fiscale più conveniente e gestione degli adempimenti periodici.",
+        "link": "Maggiori informazioni"
+      },
+      "regime_forfettario": {
+        "title": "Regime Forfettario",
+        "description": "Consulenza specializzata per il regime fiscale agevolato dedicato ai freelancer e piccole imprese con fatturato fino a 85.000€.",
+        "link": "Maggiori informazioni"
+      },
+      "srl_semplificata": {
+        "title": "SRL Semplificata",
+        "description": "Costituzione rapida ed economica di SRL con capitale ridotto, ideale per startup e piccole imprese innovative.",
+        "link": "Maggiori informazioni"
+      },
+      "digitalizzazione": {
+        "title": "Digitalizzazione Aziendale",
+        "description": "Implementazione di sistemi digitali per ottimizzare processi amministrativi, contabili e gestionali delle piccole imprese.",
+        "link": "Maggiori informazioni"
+      },
+      "controllo_gestione": {
+        "title": "Controllo di Gestione",
+        "description": "Analisi periodiche delle performance aziendali, KPI e supporto decisionale per la crescita del business.",
         "link": "Maggiori informazioni"
       }
     }

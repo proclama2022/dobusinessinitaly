@@ -87,44 +87,114 @@ const Services = () => {
     document.title = `${t('services.title')} - Dobusinessinitaly.com`;
   }, [t]);
 
-  // Definizione dei servizi con descrizioni più concise
-  const serviceFeatures = [
+  // Organizzazione dei servizi per categorie
+  const serviceCategories = [
     {
-      title: t('services.features.accountant.title'),
-      description: t('services.features.accountant.description'),
-      imageSrc: "https://proclama.co/wp-content/uploads/2022/05/businessman-accountant-pressing-calculator-and-mak-2021-09-03-06-37-28-utc-2048x1365.jpg",
-      imageAlt: t('services.features.accountant.title'),
-      icon: "fas fa-calculator"
+      id: 'corporate',
+      title: t('services.categories.corporate.title'),
+      subtitle: t('services.categories.corporate.subtitle'),
+      color: '#009246',
+      bgColor: 'bg-[#009246]',
+      lightBg: 'bg-[#00924610]',
+      services: [
+        {
+          title: t('services.features.accountant.title'),
+          description: t('services.features.accountant.description'),
+          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/businessman-accountant-pressing-calculator-and-mak-2021-09-03-06-37-28-utc-2048x1365.jpg",
+          imageAlt: t('services.features.accountant.title'),
+          icon: "fas fa-calculator"
+        },
+        {
+          title: t('services.features.startup.title'),
+          description: t('services.features.startup.description'),
+          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg",
+          imageAlt: t('services.features.startup.title'),
+          icon: "fas fa-rocket"
+        },
+        {
+          title: t('services.features.finance.title'),
+          description: t('services.features.finance.description'),
+          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/finance-2021-08-30-04-48-36-utc-2048x1365.jpg",
+          imageAlt: t('services.features.finance.title'),
+          icon: "fas fa-file-invoice-dollar"
+        },
+        {
+          title: t('services.features.ecommerce.title'),
+          description: t('services.features.ecommerce.description'),
+          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/e-commerce-and-electronic-banking-concept-man-usi-2021-12-14-19-50-10-utc-2048x1365.jpg",
+          imageAlt: t('services.features.ecommerce.title'),
+          icon: "fas fa-shopping-cart"
+        },
+        {
+          title: t('services.features.business.title'),
+          description: t('services.features.business.description'),
+          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-hand-robot-handshake-artificial-intellig-2021-10-13-21-43-17-utc-2048x1366.jpg",
+          imageAlt: t('services.features.business.title'),
+          icon: "fas fa-cogs"
+        }
+      ]
     },
     {
-      title: t('services.features.startup.title'),
-      description: t('services.features.startup.description'),
-      imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg",
-      imageAlt: t('services.features.startup.title'),
-      icon: "fas fa-rocket",
-      isReversed: true
+      id: 'freelancers',
+      title: t('services.categories.freelancers.title'),
+      subtitle: t('services.categories.freelancers.subtitle'),
+      color: '#ce2b37',
+      bgColor: 'bg-[#ce2b37]',
+      lightBg: 'bg-[#ce2b3710]',
+      services: [
+        {
+          title: t('services.items.partita_iva.title'),
+          description: t('services.items.partita_iva.description'),
+          imageSrc: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.partita_iva.title'),
+          icon: "fas fa-id-card"
+        },
+        {
+          title: t('services.items.regime_forfettario.title'),
+          description: t('services.items.regime_forfettario.description'),
+          imageSrc: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.regime_forfettario.title'),
+          icon: "fas fa-percentage"
+        },
+        {
+          title: t('services.items.srl_semplificata.title'),
+          description: t('services.items.srl_semplificata.description'),
+          imageSrc: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.srl_semplificata.title'),
+          icon: "fas fa-rocket"
+        },
+        {
+          title: t('services.items.digitalizzazione.title'),
+          description: t('services.items.digitalizzazione.description'),
+          imageSrc: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.digitalizzazione.title'),
+          icon: "fas fa-laptop-code"
+        },
+        {
+          title: t('services.items.controllo_gestione.title'),
+          description: t('services.items.controllo_gestione.description'),
+          imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.controllo_gestione.title'),
+          icon: "fas fa-chart-pie"
+        }
+      ]
     },
     {
-      title: t('services.features.finance.title'),
-      description: t('services.features.finance.description'),
-      imageSrc: "https://proclama.co/wp-content/uploads/2022/05/finance-2021-08-30-04-48-36-utc-2048x1365.jpg",
-      imageAlt: t('services.features.finance.title'),
-      icon: "fas fa-file-invoice-dollar"
-    },
-    {
-      title: t('services.features.ecommerce.title'),
-      description: t('services.features.ecommerce.description'),
-      imageSrc: "https://proclama.co/wp-content/uploads/2022/05/e-commerce-and-electronic-banking-concept-man-usi-2021-12-14-19-50-10-utc-2048x1365.jpg",
-      imageAlt: t('services.features.ecommerce.title'),
-      icon: "fas fa-shopping-cart",
-      isReversed: true
-    },
-    {
-      title: t('services.features.business.title'),
-      description: t('services.features.business.description'),
-      imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-hand-robot-handshake-artificial-intellig-2021-10-13-21-43-17-utc-2048x1366.jpg",
-      imageAlt: t('services.features.business.title'),
-      icon: "fas fa-cogs"
+      id: 'private',
+      title: t('services.categories.private.title'),
+      subtitle: t('services.categories.private.subtitle'),
+      color: '#6b7280',
+      bgColor: 'bg-[#6b7280]',
+      lightBg: 'bg-[#6b728010]',
+      services: [
+        {
+          title: t('services.items.private_clients.title'),
+          description: t('services.items.private_clients.description'),
+          imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+          imageAlt: t('services.items.private_clients.title'),
+          icon: "fas fa-house-user"
+        }
+      ]
     }
   ];
 
@@ -218,18 +288,52 @@ const Services = () => {
             </p>
           </div>
 
-          {/* Elenco dei servizi con alternanza immagine/testo */}
-          <div className="space-y-12">
-            {serviceFeatures.map((service, index) => (
-              <ServiceFeature
-                key={index}
-                title={service.title}
-                description={service.description}
-                imageSrc={service.imageSrc}
-                imageAlt={service.imageAlt}
-                isReversed={service.isReversed}
-                icon={service.icon}
-              />
+          {/* Elenco dei servizi organizzati per categorie */}
+          <div className="space-y-20">
+            {serviceCategories.map((category, categoryIndex) => (
+              <div key={category.id} className="relative">
+                {/* Header della categoria */}
+                <div className="text-center mb-12">
+                  <div className={`inline-flex items-center px-4 py-2 rounded-full ${category.lightBg} text-sm font-medium mb-6`} style={{ color: category.color }}>
+                    <span className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: category.color }}></span>
+                    {category.title}
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold mb-3" style={{ color: category.color }}>
+                    {category.title}
+                  </h3>
+                  <p className="text-neutral-600 max-w-xl mx-auto">
+                    {category.subtitle}
+                  </p>
+                </div>
+
+                {/* Servizi della categoria */}
+                <div className="space-y-16">
+                  {category.services.map((service, serviceIndex) => (
+                    <ServiceFeature
+                      key={`${category.id}-${serviceIndex}`}
+                      title={service.title}
+                      description={service.description}
+                      imageSrc={service.imageSrc}
+                      imageAlt={service.imageAlt}
+                      isReversed={serviceIndex % 2 === 1}
+                      icon={service.icon}
+                    />
+                  ))}
+                </div>
+
+                {/* Separatore tra categorie (tranne l'ultima) */}
+                {categoryIndex < serviceCategories.length - 1 && (
+                  <div className="mt-20 flex items-center justify-center">
+                    <div className="h-px w-full bg-neutral-200 max-w-md"></div>
+                    <div className="mx-4 flex space-x-1">
+                      <div className="w-2 h-2 rounded-full bg-[#009246]"></div>
+                      <div className="w-2 h-2 rounded-full bg-neutral-300"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#ce2b37]"></div>
+                    </div>
+                    <div className="h-px w-full bg-neutral-200 max-w-md"></div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>

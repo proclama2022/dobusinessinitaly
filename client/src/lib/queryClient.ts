@@ -16,17 +16,27 @@ export async function apiRequest<T = any>(
   }
 ): Promise<T> {
   const method = options?.method || 'GET';
-  const headers = options?.headers || {};
-  const body = options?.body ? JSON.stringify(options.body) : undefined;
-  
-  if (body) {
-    headers['Content-Type'] = 'application/json';
+  const headers = { ...options?.headers }; // Create a mutable copy
+  let bodyToSend: string | undefined;
+
+  if (options?.body) {
+    if (typeof options.body === 'string') {
+      bodyToSend = options.body;
+      // If body is already a string, Content-Type should ideally be set by the caller.
+      // As a fallback, ensure it's set if not provided.
+      if (!headers['Content-Type']) {
+        headers['Content-Type'] = 'application/json';
+      }
+    } else {
+      bodyToSend = JSON.stringify(options.body);
+      headers['Content-Type'] = 'application/json'; // Ensure it's set for objects
+    }
   }
 
   const res = await fetch(url, {
     method,
     headers,
-    body,
+    body: bodyToSend,
     credentials: "include",
   });
 

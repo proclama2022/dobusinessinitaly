@@ -59,7 +59,13 @@ const ContactSection = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: z.infer<typeof contactFormSchema>) => {
       const { privacy, ...contactData } = values;
-      const response = await apiRequest('POST', '/api/contact', contactData);
+      const response = await apiRequest('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(contactData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       return response.json();
     },
     onSuccess: (data) => {
@@ -228,25 +234,26 @@ const ContactSection = () => {
                     render={({ field }) => (
                       <FormItem className="transition-all duration-300 group">
                         <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
-                          {t('contact.form.service')} <span className="text-[#ce2b37]">*</span>
+                          {t('contact.form.service')} <span className="text-[#ce2b37]" >*</span>
                         </FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
                             <SelectTrigger className="border-neutral-200 focus:border-primary shadow-sm rounded-md">
-                              <SelectValue placeholder={t('contact.form.servicePlaceholder')} />
+                              <SelectValue placeholder={t('contact.form.selectServicePlaceholder')} />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="costituzione">{t('contact.form.services.formation')}</SelectItem>
-                            <SelectItem value="contabilita">{t('contact.form.services.accounting')}</SelectItem>
-                            <SelectItem value="fiscale">{t('contact.form.services.tax')}</SelectItem>
-                            <SelectItem value="planning">{t('contact.form.services.planning')}</SelectItem>
-                            <SelectItem value="payroll">{t('contact.form.services.payroll')}</SelectItem>
-                            <SelectItem value="legale">{t('contact.form.services.legal')}</SelectItem>
-                            <SelectItem value="altro">{t('contact.form.services.other')}</SelectItem>
+                            <SelectItem value="company_formation">{t('services.items.formation.title')}</SelectItem>
+                            <SelectItem value="accounting">{t('services.items.accounting.title')}</SelectItem>
+                            <SelectItem value="tax_consulting">{t('services.items.tax.title')}</SelectItem>
+                            <SelectItem value="business_planning">{t('services.items.planning.title')}</SelectItem>
+                            <SelectItem value="payroll_hr">{t('services.items.payroll.title')}</SelectItem>
+                            <SelectItem value="legal_support">{t('services.items.legal.title')}</SelectItem>
+                            <SelectItem value="private_clients">{t('services.items.private_clients.title')}</SelectItem>
+                            <SelectItem value="freelancer">{t('services.items.freelancer.title')}</SelectItem>
+                            <SelectItem value="relocation">{t('services.items.relocation.title')}</SelectItem>
+                            <SelectItem value="facilitated_finance">{t('services.items.facilitated_finance.title')}</SelectItem>
+                            <SelectItem value="agriculture">{t('services.items.agriculture.title')}</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage className="text-[#ce2b37] text-xs font-medium" />

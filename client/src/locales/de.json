@@ -149,9 +149,60 @@
         "title": "Rechtliche Unterstützung",
         "description": "Rechtliche Unterstützung in kaufmännischen Angelegenheiten, Verträgen, regulatorischer Einhaltung und Vertretung vor italienischen Behörden.",
         "link": "Mehr Informationen"
+      },
+      "private_clients": {
+        "title": "Dienstleistungen für Privatkunden und Rentner",
+        "description": "Steuerliche und administrative Unterstützung für Privatpersonen, Rentner und diejenigen, die in Italien kaufen oder Geschäfte machen möchten.",
+        "link": "Mehr Informationen"
+      },
+      "freelancer": {
+        "title": "Dienstleistungen für Freelancer",
+        "description": "Umfassende steuerliche und administrative Unterstützung für Freiberufler und Selbstständige in Italien.",
+        "link": "Mehr Informationen"
+      },
+      "relocation": {
+        "title": "Unterstützung bei der Umsiedlung nach Italien",
+        "description": "Umfassende Unterstützung für Einzelpersonen und Familien, die nach Italien umziehen, einschließlich steuerlicher und bürokratischer Aspekte.",
+        "link": "Mehr Informationen"
+      },
+      "facilitated_finance": {
+        "title": "Geförderte Finanzierung",
+        "description": "Identifizierung und Zugang zu geförderten Finanzierungen, Boni und Steuergutschriften für Unternehmen und Privatpersonen.",
+        "link": "Mehr Informationen"
+      },
+      "agriculture": {
+        "title": "Beratung für den Agrarsektor",
+        "description": "Spezifische steuerliche, buchhalterische und strategische Unterstützung für Agrarunternehmen und verwandte Aktivitäten.",
+        "link": "Weitere Informationen"
+      },
+      "partita_iva": {
+        "title": "Eröffnung und Verwaltung der Partita IVA",
+        "description": "Vollständige Unterstützung bei der Eröffnung der Partita IVA, Wahl des günstigsten Steuerregimes und Verwaltung periodischer Verpflichtungen.",
+        "link": "Weitere Informationen"
+      },
+      "regime_forfettario": {
+        "title": "Pauschalsteuerregime",
+        "description": "Spezialisierte Beratung für das erleichterte Steuerregime für Freelancer und kleine Unternehmen mit einem Umsatz bis zu 85.000€.",
+        "link": "Weitere Informationen"
+      },
+      "srl_semplificata": {
+        "title": "Vereinfachte SRL",
+        "description": "Schnelle und wirtschaftliche Gründung einer SRL mit reduziertem Kapital, ideal für Startups und innovative kleine Unternehmen.",
+        "link": "Weitere Informationen"
+      },
+      "digitalizzazione": {
+        "title": "Unternehmensdigitalisierung",
+        "description": "Implementierung digitaler Systeme zur Optimierung von Verwaltungs-, Buchhaltungs- und Managementprozessen kleiner Unternehmen.",
+        "link": "Weitere Informationen"
+      },
+      "controllo_gestione": {
+        "title": "Controlling",
+        "description": "Periodische Analyse der Unternehmensleistung, KPIs und Entscheidungsunterstützung für das Unternehmenswachstum.",
+        "link": "Weitere Informationen"
       }
     }
   },
+
   "media": {
     "title": "Presseberichte",
     "subtitle": "Entdecken Sie, was die Presse und Fachmedien im wirtschaftsfinanziellen Bereich über Dobusinessinitaly.com berichten.",
