@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -135,12 +134,36 @@ const AdminPage = () => {
             .replace(/-+/g, '-')
             .replace(/^-|-$/g, '');
           const finalSlug = data.slug || `${data.date}-${slugBase}`;
-          apiRequest(`/api/blog/${finalSlug}/translate`, { method: 'POST' })
-            .then(() => {
-              toast({
-                title: 'Traduzioni avviate',
-                description: 'Le traduzioni sono in corso.',
-              });
+          
+          // Genera traduzioni per tutte le lingue supportate
+          const targetLanguages = ['en', 'de', 'fr', 'es'];
+          const translationPromises = targetLanguages.map(lang => 
+            apiRequest('/api/translate', { 
+              method: 'POST',
+              body: {
+                slug: finalSlug,
+                targetLang: lang
+              }
+            })
+          );
+
+          Promise.allSettled(translationPromises)
+            .then((results) => {
+              const successful = results.filter(r => r.status === 'fulfilled').length;
+              const failed = results.filter(r => r.status === 'rejected').length;
+              
+              if (successful > 0) {
+                toast({
+                  title: 'Traduzioni completate',
+                  description: `${successful} traduzioni generate con successo${failed > 0 ? `, ${failed} fallite` : ''}.`,
+                });
+              } else {
+                toast({
+                  title: 'Errore traduzioni',
+                  description: 'Nessuna traduzione è stata generata.',
+                  variant: 'destructive',
+                });
+              }
             })
             .catch((err) => {
               console.error('Errore traduzioni:', err);
