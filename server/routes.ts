@@ -558,10 +558,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Endpoint per generare manualmente le traduzioni di un articolo
-  app.put('/api/blog/:slug/translate', async (req: Request, res: Response) => {
+  // API per tradurre un post
+  app.route('/api/blog/:slug/translate')
+    .options((req, res) => {
+      res.header('Access-Control-Allow-Origin', '*')
+         .header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+         .header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+         .sendStatus(204)
+    })
+    .post(async (req: Request, res: Response) => {
+      // Middleware di autenticazione
+      const authHeader = req.headers.authorization;
+      console.log('Authorization header:', authHeader);
+      if (!authHeader?.startsWith('Bearer ')) {
+        console.warn('Formato token errato');
+        return res.status(401).json({ error: 'Token non fornito' });
+      }
+      
+      const token = authHeader.split(' ')[1];
+      console.log('Token ricevuto:', token);
+      console.log('Token atteso:', process.env.BLOB_TOKEN?.slice(0, 4) + '...');
+      if (token !== process.env.BLOB_TOKEN) {
+        console.error('Token mismatch');
+        return res.status(403).json({ error: 'Token non valido' });
+      }
     try {
       const { slug } = req.params;
       const { targetLang } = req.body;
+      
+      console.log(`[Translation API] Received request for slug: ${slug}, targetLang: ${targetLang}`);
       
       if (!targetLang || !['en', 'de', 'fr', 'es'].includes(targetLang)) {
         return res.status(400).json({
@@ -571,14 +596,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const originalFile = path.join(BLOG_DIR, `${slug}.mdx`);
+      console.log(`[Translation API] Looking for original file: ${originalFile}`);
       
       if (!fs.existsSync(originalFile)) {
+        console.log(`[Translation API] Original file not found: ${originalFile}`);
         return res.status(404).json({
           success: false,
           message: 'Articolo originale non trovato'
         });
       }
 
+      console.log(`[Translation API] Starting translation to ${targetLang}`);
       await generateArticleTranslations(originalFile, [targetLang]);
 
       res.status(200).json({

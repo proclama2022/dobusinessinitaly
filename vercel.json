@@ -16,6 +16,10 @@
   ],
   "routes": [
     {
+      "src": "^/api/blog/([^/]+)/translate$",
+      "dest": "/server/index.ts"
+    },
+    {
       "src": "^/api/blog/([a-z]{2})/(.+)$",
       "dest": "/api/blog.ts?lang=$1&slug=$2"
     },
