@@ -42,7 +42,7 @@ interface BlogPostMeta {
  */
 function getAllPosts(language?: string): BlogPostMeta[] {
     const targetLanguage = (language || 'it').toLowerCase();
-    
+
     console.log(`[Blog] getAllPosts called for language: ${targetLanguage}`);
     console.log(`[Blog] BLOG_DIR: ${BLOG_DIR}`);
 
@@ -71,7 +71,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                 const shouldInclude = targetLanguage === 'it'
                     ? !langMatch  // Accetta file senza suffisso o con .it
                     : fileLanguage === targetLanguage;
-                
+
                 console.log(`[Blog] File: ${filename}, Detected Lang: ${fileLanguage}, Target Lang: ${targetLanguage}, Include: ${shouldInclude}`);
                 return shouldInclude;
             })
@@ -80,7 +80,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                     const filePath = path.join(BLOG_DIR, filename);
                     console.log(`[Blog] Processing file: ${filePath}`);
                     const { data } = matter(fs.readFileSync(filePath, 'utf8'));
-                    
+
                     // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
                     const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
 
@@ -92,7 +92,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
 
                     const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
                     const fileLanguage = langMatch?.[1] || 'it'; // Extract language from filename
-                    
+
                     console.log(`[Blog] Successfully parsed: ${filename}`);
                     return {
                         slug,
@@ -111,7 +111,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             })
             .filter((post): post is BlogPostMeta => post !== null)
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        
+
         console.log(`[Blog] Finished processing. Total posts found: ${posts.length}`);
         return posts;
 
@@ -153,7 +153,7 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
                     const filePath = path.join(BLOG_DIR, filename);
                     console.log(`[Blog] Processing file: ${filePath}`);
                     const { data } = matter(fs.readFileSync(filePath, 'utf8'));
-                    
+
                     // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
                     const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
 
@@ -165,7 +165,7 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
 
                     const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
                     const fileLanguage = langMatch?.[1] || 'it'; // Extract language from filename
-                    
+
                     console.log(`[Blog] Successfully parsed: ${filename}`);
                     return {
                         slug,
@@ -184,7 +184,7 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
             })
             .filter((post): post is BlogPostMeta => post !== null)
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-        
+
         console.log(`[Blog] Finished processing. Total posts found for all languages: ${posts.length}`);
         return posts;
 
@@ -194,8 +194,6 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
     }
 }
 
-
-/**
 /**
  * Ottiene un singolo post per slug
  * @param slug Lo slug del post da cercare
