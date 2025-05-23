@@ -121,12 +121,29 @@ author: "${author}"
     const fileContent = `${frontMatter}\n\n${content}`;
 
     try {
+      // Ensure directory exists
+      if (!fs.existsSync(BLOG_DIR)) {
+        fs.mkdirSync(BLOG_DIR, { recursive: true });
+      }
       fs.writeFileSync(filePath, fileContent, 'utf8');
       console.log(`[Blog API] Successfully created new post: ${fileName}`);
       res.status(201).json({ success: true, message: 'Post created successfully' });
     } catch (error) {
-      console.log(`[Blog API] Error creating new post: ${error}`);
-      res.status(500).json({ success: false, message: 'Error creating post' });
+      console.error(`[Blog API] Detailed error creating post:`, error);
+      console.error(`[Blog API] File path: ${filePath}`);
+      console.error(`[Blog API] Directory exists: ${fs.existsSync(BLOG_DIR)}`);
+      try {
+        fs.accessSync(BLOG_DIR, fs.constants.W_OK);
+        console.error(`[Blog API] Directory writable: yes`);
+      } catch (err) {
+        console.error(`[Blog API] Directory writable: no`);
+      }
+      res.status(500).json({ 
+        success: false, 
+        message: 'Error creating post',
+        error: error.message,
+        path: filePath
+      });
     }
   } else if (req.method === 'GET') {
     // Handle single post request by slug
