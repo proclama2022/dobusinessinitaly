@@ -560,11 +560,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/blog/:slug/translate', async (req: Request, res: Response) => {
     try {
       const { slug } = req.params;
+      const { targetLang } = req.body;
+      
+      if (!targetLang || !['en', 'de', 'fr', 'es'].includes(targetLang)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Lingua di destinazione non valida. Usare: en, de, fr, es'
+        });
+      }
+
       const originalFile = path.join(BLOG_DIR, `${slug}.mdx`);
-      await generateArticleTranslations(originalFile, ["en", "de", "fr", "es"]);
+      
+      if (!fs.existsSync(originalFile)) {
+        return res.status(404).json({
+          success: false,
+          message: 'Articolo originale non trovato'
+        });
+      }
+
+      await generateArticleTranslations(originalFile, [targetLang]);
+
       res.status(200).json({
         success: true,
-        message: 'Translation generation triggered'
+        message: `Traduzione in ${targetLang} avviata con successo`
       });
     } catch (error: any) {
       console.error('Error triggering translations:', error);

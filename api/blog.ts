@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
+import { put } from '@vercel/blob';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -85,7 +86,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
   }
 }
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   console.log(`[Blog API] Received request: ${req.method} ${req.url}`);
   console.log(`[Blog API] Query parameters:`, req.query);
 
@@ -125,9 +126,17 @@ author: "${author}"
       if (!fs.existsSync(BLOG_DIR)) {
         fs.mkdirSync(BLOG_DIR, { recursive: true });
       }
-      fs.writeFileSync(filePath, fileContent, 'utf8');
-      console.log(`[Blog API] Successfully created new post: ${fileName}`);
-      res.status(201).json({ success: true, message: 'Post created successfully' });
+      if (!process.env.BLOB_READ_WRITE_TOKEN) {
+        throw new Error('Missing BLOB_READ_WRITE_TOKEN environment variable');
+      }
+
+      const { url } = await put(fileName, fileContent, {
+        access: 'public',
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
+
+      console.log(`[Blog API] Successfully created new post at: ${url}`);
+      res.status(201).json({ success: true, message: 'Post created successfully', url });
     } catch (error) {
       console.error(`[Blog API] Detailed error creating post:`, error);
       console.error(`[Blog API] File path: ${filePath}`);
