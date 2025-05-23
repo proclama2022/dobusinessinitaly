@@ -30,7 +30,11 @@ export default defineConfig({
   },
   server: { // Add this server configuration
     proxy: {
-      '/api': 'http://localhost:3000', // Proxy /api requests to your Express backend
+      '/api': {
+        target: 'https://do-business-network.vercel.app',
+        changeOrigin: true,
+        secure: false
+      },
     },
   },
 });
