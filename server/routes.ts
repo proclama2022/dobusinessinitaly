@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema, insertNewsletterSchema } from "@shared/schema";
 import path from "path";
+import { translatePost } from "./services/translationService";
 import multer from "multer";
 import fs from "fs";
 import matter from "gray-matter";
@@ -557,7 +558,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Endpoint per generare manualmente le traduzioni di un articolo
-  app.post('/api/blog/:slug/translate', async (req: Request, res: Response) => {
+  app.put('/api/blog/:slug/translate', async (req: Request, res: Response) => {
     try {
       const { slug } = req.params;
       const { targetLang } = req.body;

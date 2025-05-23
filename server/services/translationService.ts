@@ -2,6 +2,7 @@ import 'dotenv/config';
 import fs from "fs/promises";
 import path from "path";
 import { OpenAI } from "openai";
+import { put } from '@vercel/blob';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -14,6 +15,31 @@ const openai = new OpenAI({
  * @param originalFilePath Path to the original Italian MDX article
  * @param targetLanguages Array of language codes to translate to (e.g. ['en', 'de', 'fr'])
  */
+export async function translatePost(content: string, targetLang: string): Promise<string> {
+  try {
+    const prompt = `Traduci il seguente contenuto in ${targetLang} mantenendo il formato markdown:\n\n${content}`;
+    
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: "Sei un assistente che traduce contenuti dall'italiano mantenendo accuratamente la formattazione markdown." },
+        { role: "user", content: prompt }
+      ],
+      temperature: 0.3,
+    });
+
+    const translatedContent = completion.choices[0].message?.content?.trim();
+    if (!translatedContent) {
+      throw new Error("Nessun contenuto tradotto ricevuto");
+    }
+
+    return translatedContent;
+  } catch (error) {
+    console.error("Errore durante la traduzione:", error);
+    throw new Error("Errore durante la traduzione del contenuto");
+  }
+}
+
 export async function generateArticleTranslations(
   originalFilePath: string,
   targetLanguages: string[]
