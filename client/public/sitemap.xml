@@ -46,4 +46,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://dobusinessinitaly.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dobusinessinitaly.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dobusinessinitaly.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dobusinessinitaly.com/fr/about" />
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dobusinessinitaly.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dobusinessinitaly.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dobusinessinitaly.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dobusinessinitaly.com/fr/contact" />
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dobusinessinitaly.com/media</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dobusinessinitaly.com/en/media" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dobusinessinitaly.com/de/media" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dobusinessinitaly.com/fr/media" />
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dobusinessinitaly.com/admin</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dobusinessinitaly.com/en/admin" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://dobusinessinitaly.com/de/admin" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dobusinessinitaly.com/fr/admin" />
+    <lastmod>2024-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

@@ -15,3 +15,9 @@ export interface FormData {
   };
   content: string;
 }
+
+export interface BlogPost {
+  slug: string;
+  lastmod: string;
+  // Other post properties
+}

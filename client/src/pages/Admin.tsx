@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { apiRequest } from '@/lib/queryClient';
 import { useTranslation } from 'react-i18next';
+import slugify from 'slugify';
 
 // Schema di validazione per il form
 const blogPostSchema = z.object({
@@ -96,20 +97,21 @@ const AdminPage = () => {
       }
 
       // Step 2: Salva il post del blog
+      const slug = slugify(data.title, { lower: true, strict: true });
+      
       const response = await apiRequest('/api/blog', {
         method: 'POST',
         body: {
-          meta: {
-            title: data.title,
-            date: data.date,
-            category: data.category,
-            excerpt: data.excerpt,
-            coverImage: coverImageUrl,
-            author: data.author,
-          },
+          slug: slug,
+          title: data.title,
+          date: data.date,
+          category: data.category,
+          excerpt: data.excerpt,
+          coverImage: coverImageUrl,
+          author: data.author,
           content: data.content,
-          slug: data.slug || undefined,
-        },
+          language: 'it'
+        }
       });
 
         if (response.success) {
