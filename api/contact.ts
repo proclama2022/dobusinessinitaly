@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
 
 // Simple validation schema without external dependencies
 function validateContactData(data: any) {
@@ -63,53 +62,43 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         timestamp: new Date().toISOString()
       });
 
-      // Send email notification using Nodemailer
+      // Send data to Make.com webhook for secure processing
       try {
-        // Check if SMTP configuration is available
-        if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-          console.warn('⚠️ SMTP configuration missing. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD in Vercel environment variables');
-          console.log('📧 Contact form submitted by', contactData.name, '(', contactData.email, ')');
-          console.log('📋 Contact data logged instead of emailed:', contactData);
+        const webhookUrl = 'https://hook.eu1.make.com/6dupd1bdxjxjkd7iqjjbvc0qtavx9yk4';
+        
+        const webhookPayload = {
+          name: contactData.name,
+          email: contactData.email,
+          company: contactData.company,
+          phone: contactData.phone,
+          service: contactData.service,
+          message: contactData.message,
+          timestamp: new Date().toISOString(),
+          source: 'yourbusinessinitaly.com',
+          form_type: 'contact'
+        };
+
+        console.log('📤 Sending data to Make.com webhook...');
+        
+        const webhookResponse = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(webhookPayload)
+        });
+
+        if (webhookResponse.ok) {
+          console.log('✅ Data sent successfully to Make.com webhook');
+          console.log('📧 Contact form submitted by:', contactData.name, '(', contactData.email, ')');
         } else {
-          // Configure Nodemailer transporter
-          const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: parseInt(process.env.SMTP_PORT || '587'),
-            secure: process.env.SMTP_SECURE === 'true',
-            auth: {
-              user: process.env.SMTP_USER,
-              pass: process.env.SMTP_PASSWORD,
-            },
-          });
-
-          const emailHtml = `
-            <h3>Nuovo messaggio dal form di contatto</h3>
-            <p><strong>Nome:</strong> ${contactData.name}</p>
-            <p><strong>Email:</strong> ${contactData.email}</p>
-            <p><strong>Azienda:</strong> ${contactData.company || 'Non specificata'}</p>
-            <p><strong>Telefono:</strong> ${contactData.phone || 'Non specificato'}</p>
-            <p><strong>Servizio:</strong> ${contactData.service}</p>
-            <p><strong>Messaggio:</strong></p>
-            <div style="background: #f5f5f5; padding: 15px; margin: 10px 0; border-left: 4px solid #009246;">
-              ${contactData.message}
-            </div>
-            <hr>
-            <small>Inviato da: https://yourbusinessinitaly.com/contact</small>
-          `;
-
-          await transporter.sendMail({
-            from: `"YourBusinessInItaly" <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER}>`,
-            to: process.env.ADMIN_EMAIL || 'amministrazione@yourbusinessinitaly.com',
-            subject: `Nuovo messaggio da ${contactData.name} - YourBusinessInItaly`,
-            html: emailHtml,
-          });
-
-          console.log('✅ Email sent successfully to:', process.env.ADMIN_EMAIL || 'amministrazione@yourbusinessinitaly.com');
+          console.error('❌ Webhook response error:', webhookResponse.status, webhookResponse.statusText);
+          throw new Error(`Webhook failed with status: ${webhookResponse.status}`);
         }
         
-      } catch (emailError) {
-        console.error('Failed to send email notification:', emailError);
-        // Continue even if email fails
+              } catch (webhookError) {
+        console.error('Failed to send data to webhook:', webhookError);
+        // Continue even if webhook fails - form submission is still recorded
       }
 
       res.status(201).json({
