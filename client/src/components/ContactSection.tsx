@@ -382,7 +382,7 @@ const ContactSection = () => {
                     <div className="ml-4">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.phone.label')}</h4>
                       <p className="text-neutral-600 mt-1">
-                        <a href="tel:+390245678901" className="hover:text-[#009246] transition-colors">
+                        <a href="tel:+39095643533" className="hover:text-[#009246] transition-colors">
                           {t('contact.info.phone.value')}
                         </a>
                       </p>
@@ -398,7 +398,7 @@ const ContactSection = () => {
                     <div className="ml-4">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.email.label')}</h4>
                       <p className="text-neutral-600 mt-1">
-                        <a href="mailto:info@youritalianbusiness.com" className="hover:text-[#009246] transition-colors">
+                        <a href="mailto:amministrazione@proclama.co" className="hover:text-[#009246] transition-colors">
                           {t('contact.info.email.value')}
                         </a>
                       </p>
