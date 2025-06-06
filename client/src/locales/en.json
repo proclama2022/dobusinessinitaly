@@ -97,6 +97,20 @@
         }
       }
     },
+    "categories": {
+      "corporate": {
+        "title": "Companies and Corporations",
+        "subtitle": "Complete solutions for corporate and tax management of international companies and startups in Italy"
+      },
+      "freelancers": {
+        "title": "Professionals and Freelancers",
+        "subtitle": "Specialized services for independent professionals and VAT holders operating in the Italian market"
+      },
+      "private": {
+        "title": "Private Individuals and Investors",
+        "subtitle": "Personalized tax assistance for foreign private individuals and investors in Italy"
+      }
+    },
     "features": {
       "accountant": {
         "title": "Accountant and labor consultant",

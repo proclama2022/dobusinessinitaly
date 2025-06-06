@@ -201,6 +201,20 @@
         }
       }
     },
+    "categories": {
+      "corporate": {
+        "title": "Aziende e Società",
+        "subtitle": "Soluzioni complete per la gestione aziendale e fiscale di società e startup internazionali in Italia"
+      },
+      "freelancers": {
+        "title": "Professionisti e Freelancer",
+        "subtitle": "Servizi specializzati per professionisti indipendenti e partite IVA che operano nel mercato italiano"
+      },
+      "private": {
+        "title": "Privati e Investitori",
+        "subtitle": "Assistenza fiscale personalizzata per privati e investitori stranieri in Italia"
+      }
+    },
     "features": {
       "accountant": {
         "title": "Commercialista e consulente del lavoro",

@@ -97,6 +97,20 @@
         }
       }
     },
+    "categories": {
+      "corporate": {
+        "title": "Unternehmen und Gesellschaften",
+        "subtitle": "Vollständige Lösungen für die Unternehmens- und Steuerverwaltung von internationalen Gesellschaften und Startups in Italien"
+      },
+      "freelancers": {
+        "title": "Freiberufler und Freelancer",
+        "subtitle": "Spezialisierte Dienstleistungen für selbstständige Berufstätige und Inhaber der Partita IVA auf dem italienischen Markt"
+      },
+      "private": {
+        "title": "Privatpersonen und Investoren",
+        "subtitle": "Personalisierte steuerliche Unterstützung für ausländische Privatpersonen und Investoren in Italien"
+      }
+    },
     "features": {
       "accountant": {
         "title": "Steuerberater und Arbeitsrechtberater",

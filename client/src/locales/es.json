@@ -97,6 +97,20 @@
         }
       }
     },
+    "categories": {
+      "corporate": {
+        "title": "Empresas y Sociedades",
+        "subtitle": "Soluciones completas para la gestión empresarial y fiscal de sociedades y startups internacionales en Italia"
+      },
+      "freelancers": {
+        "title": "Profesionales y Freelancers",
+        "subtitle": "Servicios especializados para profesionales independientes y titulares de partita IVA que operan en el mercado italiano"
+      },
+      "private": {
+        "title": "Particulares e Inversores",
+        "subtitle": "Asistencia fiscal personalizada para particulares e inversores extranjeros en Italia"
+      }
+    },
     "features": {
       "accountant": {
         "title": "Contador y consultor laboral",
