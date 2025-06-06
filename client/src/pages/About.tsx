@@ -332,7 +332,7 @@ const About = () => {
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="rounded-xl overflow-hidden shadow-xl border border-neutral-100 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
                 <img
-                  src="https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80"
                   alt={t('about.teamImage')}
                   className="w-full h-auto"
                 />

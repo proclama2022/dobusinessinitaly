@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/api --banner:js=\"import { fileURLToPath as _fileURLToPath } from 'url'; import { dirname as _dirname } from 'path'; const __filename = _fileURLToPath(import.meta.url); const __dirname = _dirname(__filename);\"",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/api",
     "start": "NODE_ENV=production node dist/api/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push"

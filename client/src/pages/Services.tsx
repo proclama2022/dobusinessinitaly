@@ -100,35 +100,35 @@ const Services = () => {
         {
           title: t('services.features.accountant.title'),
           description: t('services.features.accountant.description'),
-          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/businessman-accountant-pressing-calculator-and-mak-2021-09-03-06-37-28-utc-2048x1365.jpg",
+          imageSrc: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80",
           imageAlt: t('services.features.accountant.title'),
           icon: "fas fa-calculator"
         },
         {
           title: t('services.features.startup.title'),
           description: t('services.features.startup.description'),
-          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-team-working-in-a-start-up-office-2021-09-01-22-37-35-utc-2048x1365.jpg",
+          imageSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80",
           imageAlt: t('services.features.startup.title'),
           icon: "fas fa-rocket"
         },
         {
           title: t('services.features.finance.title'),
           description: t('services.features.finance.description'),
-          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/finance-2021-08-30-04-48-36-utc-2048x1365.jpg",
+          imageSrc: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80",
           imageAlt: t('services.features.finance.title'),
           icon: "fas fa-file-invoice-dollar"
         },
         {
           title: t('services.features.ecommerce.title'),
           description: t('services.features.ecommerce.description'),
-          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/e-commerce-and-electronic-banking-concept-man-usi-2021-12-14-19-50-10-utc-2048x1365.jpg",
+          imageSrc: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80",
           imageAlt: t('services.features.ecommerce.title'),
           icon: "fas fa-shopping-cart"
         },
         {
           title: t('services.features.business.title'),
           description: t('services.features.business.description'),
-          imageSrc: "https://proclama.co/wp-content/uploads/2022/05/business-hand-robot-handshake-artificial-intellig-2021-10-13-21-43-17-utc-2048x1366.jpg",
+          imageSrc: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80",
           imageAlt: t('services.features.business.title'),
           icon: "fas fa-cogs"
         }
