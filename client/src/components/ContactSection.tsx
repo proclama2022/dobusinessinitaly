@@ -144,11 +144,33 @@ const ContactSection = () => {
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#00924608] rounded-full"></div>
               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#ce2b3708] rounded-full"></div>
               
-              <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
+              <h3 className="text-2xl font-heading font-semibold mb-4 relative inline-block">
                 <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#009246]">
                   {t('contact.form.title')}
                 </span>
               </h3>
+              
+              {/* Badge per consulenza gratuita */}
+              <div className="mb-6 flex flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3">
+                <div className="flex items-center gap-2 bg-gradient-to-r from-[#009246] to-[#00b157] text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  FREE 30min
+                </div>
+                <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
+                  </svg>
+                  48-72h Response
+                </div>
+                <div className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                  </svg>
+                  English Call
+                </div>
+              </div>
               
                   <Form {...form} key={i18n.language}>
                 <form onSubmit={(e) => {

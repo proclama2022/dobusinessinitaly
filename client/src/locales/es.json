@@ -336,11 +336,11 @@
     }
   },
   "contact": {
-    "title": "Contáctanos",
-    "subtitle": "¿Tienes preguntas sobre nuestros servicios o deseas una consulta? Rellena el formulario de contacto y nuestro equipo te responderá lo antes posible.",
+    "title": "Reserva tu Consulta Gratuita",
+    "subtitle": "Obtén una consulta gratuita de 30 minutos con nuestros expertos. Programaremos una llamada en 48-72 horas en inglés para discutir tu proyecto de negocio en Italia.",
     "contactInfo": "Información de contacto",
     "form": {
-      "title": "Contáctanos",
+      "title": "Reservar Consulta Gratuita (30 min)",
       "name": "Nombre Completo",
       "company": "Empresa",
       "email": "Correo Electrónico",
@@ -359,8 +359,8 @@
       "message": "Tu Mensaje",
       "privacyConsent": "Acepto el tratamiento de mis datos personales de conformidad con la",
       "privacyPolicy": "Política de Privacidad",
-      "send": "Enviar Mensaje",
-      "sending": "Enviando...",
+      "send": "Reservar Consulta Gratuita",
+      "sending": "Reservando...",
       "validation": {
         "nameRequired": "El nombre es obligatorio",
         "emailInvalid": "Introduce una dirección de correo electrónico válida",

@@ -343,11 +343,11 @@
     }
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Have questions about our services or would like a consultation? Fill out the contact form and our team will get back to you as soon as possible.",
+    "title": "Book Your Free Consultation",
+    "subtitle": "Get a free 30-minute consultation with our experts. We'll schedule a call within 48-72 hours in English to discuss your business project in Italy.",
     "contactInfo": "Contact information",
     "form": {
-      "title": "Contact Us",
+      "title": "Book Free Consultation (30 min)",
       "name": "Full Name",
       "company": "Company",
       "email": "Email",
@@ -366,8 +366,8 @@
       "message": "Your Message",
       "privacyConsent": "I consent to the processing of my personal data in accordance with the",
       "privacyPolicy": "Privacy Policy",
-      "send": "Send Message",
-      "sending": "Sending...",
+      "send": "Book Free Consultation",
+      "sending": "Booking...",
       "validation": {
         "nameRequired": "Name is required",
         "emailInvalid": "Please enter a valid email address",
@@ -408,8 +408,8 @@
       "title": "Follow Us"
     },
     "success": {
-      "title": "Message sent",
-      "message": "Thank you for contacting us! We will respond as soon as possible."
+      "title": "Consultation Booked!",
+      "message": "Perfect! We'll contact you within 48-72 hours to schedule your free 30-minute consultation in English."
     },
     "error": {
       "title": "Message not sent",

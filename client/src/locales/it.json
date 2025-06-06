@@ -381,11 +381,11 @@
     "contactUs": "contattarci"
   },
   "contact": {
-    "title": "Contatti",
-    "subtitle": "Siamo qui per aiutarvi. Contattateci per una consulenza personalizzata sul vostro business in Italia.",
+    "title": "Prenota la tua Consulenza Gratuita",
+    "subtitle": "Ottieni una consulenza gratuita di 30 minuti con i nostri esperti. Fisseremo una call entro 48-72 ore in lingua inglese per discutere il tuo progetto di business in Italia.",
     "contactInfo": "Informazioni di contatto",
     "form": {
-      "title": "Inviateci un messaggio",
+      "title": "Prenota Consulenza Gratuita (30 min)",
       "name": "Nome e Cognome",
       "company": "Azienda",
       "email": "Email",
@@ -395,8 +395,8 @@
       "message": "Messaggio",
       "privacyConsent": "Accetto l'informativa sulla",
       "privacyPolicy": "privacy",
-      "send": "Invia Messaggio",
-      "sending": "Invio in corso...",
+      "send": "Prenota Consulenza Gratuita",
+      "sending": "Prenotazione in corso...",
       "validation": {
         "nameRequired": "Nome e cognome sono obbligatori",
         "emailInvalid": "Inserisci un indirizzo email valido",
@@ -406,8 +406,8 @@
       }
     },
     "success": {
-      "title": "Messaggio inviato!",
-      "message": "Grazie per averci contattato. Risponderemo al più presto."
+      "title": "Consulenza Prenotata!",
+      "message": "Perfetto! Ti contatteremo entro 48-72 ore per fissare la tua consulenza gratuita di 30 minuti in inglese."
     },
     "error": {
       "title": "Messaggio non inviato",

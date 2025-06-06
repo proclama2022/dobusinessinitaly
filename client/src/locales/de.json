@@ -337,11 +337,11 @@
     }
   },
   "contact": {
-    "title": "Kontaktieren Sie uns",
-    "subtitle": "Haben Sie Fragen zu unseren Leistungen oder möchten Sie eine Beratung? Füllen Sie das Kontaktformular aus und unser Team wird sich so bald wie möglich bei Ihnen melden.",
+    "title": "Buchen Sie Ihre Kostenlose Beratung",
+    "subtitle": "Erhalten Sie eine kostenlose 30-minütige Beratung mit unseren Experten. Wir werden einen Anruf innerhalb von 48-72 Stunden auf Englisch planen, um Ihr Geschäftsprojekt in Italien zu besprechen.",
     "contactInfo": "Kontaktinformationen",
     "form": {
-      "title": "Kontaktieren Sie uns",
+      "title": "Kostenlose Beratung Buchen (30 Min)",
       "name": "Vollständiger Name",
       "company": "Unternehmen",
       "email": "E-Mail",
@@ -360,8 +360,8 @@
       "message": "Ihre Nachricht",
       "privacyConsent": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der",
       "privacyPolicy": "Datenschutzrichtlinie",
-      "send": "Nachricht senden",
-      "sending": "Wird gesendet...",
+      "send": "Kostenlose Beratung Buchen",
+      "sending": "Buchung...",
       "validation": {
         "nameRequired": "Name ist erforderlich",
         "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
