@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
@@ -8,7 +8,7 @@ const logoImage = '/images/logo.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const { t, i18n } = useTranslation();
 
   const toggleMobileMenu = () => {
@@ -68,11 +68,21 @@ const Header = () => {
       <div className="container mx-auto px-4 py-0">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link href={getLocalizedPath('/')} className="flex items-center">
+            <Link 
+              href={getLocalizedPath('/')} 
+              className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
+              aria-label="Torna alla homepage"
+              onClick={(e) => {
+                e.preventDefault();
+                const homePath = getLocalizedPath('/');
+                console.log('Logo clicked! Navigating to:', homePath);
+                navigate(homePath);
+              }}
+            >
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com"
-                className="w-32 h-auto object-contain max-w-full"
+                className="w-32 h-auto object-contain max-w-full cursor-pointer"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;
