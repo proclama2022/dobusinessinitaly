@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import nodemailer from 'nodemailer';
 
 // Simple validation schema without external dependencies
 function validateContactData(data: any) {
@@ -62,13 +63,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         timestamp: new Date().toISOString()
       });
 
-      // Send email notification using Fetch to a mail service
+      // Send email notification using Nodemailer
       try {
-        // Using a simple email service like Formspree or EmailJS
-        const emailData = {
-          to: 'amministrazione@yourbusinessinitaly.com', // Cambia con la tua email
-          subject: `Nuovo messaggio da ${contactData.name} - YourBusinessInItaly`,
-          html: `
+        // Check if SMTP configuration is available
+        if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
+          console.warn('⚠️ SMTP configuration missing. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD in Vercel environment variables');
+          console.log('📧 Contact form submitted by', contactData.name, '(', contactData.email, ')');
+          console.log('📋 Contact data logged instead of emailed:', contactData);
+        } else {
+          // Configure Nodemailer transporter
+          const transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: parseInt(process.env.SMTP_PORT || '587'),
+            secure: process.env.SMTP_SECURE === 'true',
+            auth: {
+              user: process.env.SMTP_USER,
+              pass: process.env.SMTP_PASSWORD,
+            },
+          });
+
+          const emailHtml = `
             <h3>Nuovo messaggio dal form di contatto</h3>
             <p><strong>Nome:</strong> ${contactData.name}</p>
             <p><strong>Email:</strong> ${contactData.email}</p>
@@ -81,14 +95,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </div>
             <hr>
             <small>Inviato da: https://yourbusinessinitaly.com/contact</small>
-          `
-        };
-        
-        console.log(`📧 Contact form submitted by ${contactData.name} (${contactData.email})`);
-        console.log('📋 Contact data:', contactData);
-        
-        // Per ora solo log - implementeremo email service dopo
-        console.log('📨 Email would be sent to: amministrazione@yourbusinessinitaly.com');
+          `;
+
+          await transporter.sendMail({
+            from: `"YourBusinessInItaly" <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER}>`,
+            to: process.env.ADMIN_EMAIL || 'amministrazione@yourbusinessinitaly.com',
+            subject: `Nuovo messaggio da ${contactData.name} - YourBusinessInItaly`,
+            html: emailHtml,
+          });
+
+          console.log('✅ Email sent successfully to:', process.env.ADMIN_EMAIL || 'amministrazione@yourbusinessinitaly.com');
+        }
         
       } catch (emailError) {
         console.error('Failed to send email notification:', emailError);
