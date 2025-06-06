@@ -1,8 +1,38 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { insertContactSchema } from '../shared/schema';
 
-// This would normally use a proper database, but for now using a simple in-memory solution
-// In production, you should use a proper database like PostgreSQL or MongoDB
+// Simple validation schema without external dependencies
+function validateContactData(data: any) {
+  const errors: string[] = [];
+  
+  if (!data.name || typeof data.name !== 'string' || data.name.trim().length === 0) {
+    errors.push('Name is required');
+  }
+  
+  if (!data.email || typeof data.email !== 'string' || !data.email.includes('@')) {
+    errors.push('Valid email is required');
+  }
+  
+  if (!data.service || typeof data.service !== 'string' || data.service.trim().length === 0) {
+    errors.push('Service is required');
+  }
+  
+  if (!data.message || typeof data.message !== 'string' || data.message.trim().length === 0) {
+    errors.push('Message is required');
+  }
+  
+  if (errors.length > 0) {
+    throw new Error(errors.join(', '));
+  }
+  
+  return {
+    name: data.name.trim(),
+    email: data.email.trim().toLowerCase(),
+    company: data.company?.trim() || '',
+    phone: data.phone?.trim() || '',
+    service: data.service.trim(),
+    message: data.message.trim()
+  };
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers
@@ -17,7 +47,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'POST') {
     try {
-      const contactData = insertContactSchema.parse(req.body);
+      console.log('Contact API called with data:', req.body);
+      const contactData = validateContactData(req.body);
       
       // For now, just log the contact data
       // In production, you would save this to a database
