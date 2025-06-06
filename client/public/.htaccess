@@ -1,0 +1,45 @@
+# Protezioni di sicurezza
+<Files ".env*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.json">
+    <RequireAll>
+        Require not env admin_area
+    </RequireAll>
+</Files>
+
+# Blocca accesso a directory sensibili
+RedirectMatch 404 ^/api/
+RedirectMatch 404 ^/admin/
+RedirectMatch 404 ^/config/
+RedirectMatch 404 ^/\.
+
+# Headers di sicurezza
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Prevenzione information disclosure
+ServerTokens Prod
+Header unset Server
+Header unset X-Powered-By
+
+# Rewrite per SPA (Single Page Application)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Blocca accesso diretto a admin
+    RewriteRule ^admin/?$ / [R=301,L]
+    
+    # Gestione SPA - redirect tutto a index.html eccetto file esistenti
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteRule . /index.html [L]
+</IfModule> 

@@ -1,25 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 
 /**
- * Middleware di autenticazione di base
+ * Middleware di autenticazione sicuro
  * @param req Richiesta Express
  * @param res Risposta Express
  * @param next Funzione next
  */
 export function authenticate(req: Request, res: Response, next: NextFunction) {
-  // In una implementazione reale, qui ci sarebbe la vera logica di autenticazione
-  // Per ora, mockiamo un'autenticazione di base
+  // Per motivi di sicurezza, tutte le API admin sono temporaneamente disabilitate
+  console.warn(`[SECURITY] Tentativo di accesso non autorizzato a: ${req.path} da IP: ${req.ip}`);
   
-  const authHeader = req.headers.authorization;
-  
-  // Per semplicità, accettiamo qualsiasi header Authorization per ora
-  // In produzione, dovrebbe verificare un token valido o credenziali sicure
-  if (!authHeader) {
-    return res.status(401).json({
-      success: false,
-      message: "Missing authorization header"
-    });
-  }
-  
-  next();
+  return res.status(403).json({
+    success: false,
+    message: "Accesso negato. API amministrative temporaneamente disabilitate per motivi di sicurezza.",
+    timestamp: new Date().toISOString(),
+    requestId: Math.random().toString(36).substr(2, 9)
+  });
 }

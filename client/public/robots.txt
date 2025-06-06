@@ -1,2 +1,12 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Blocca aree admin e sensibili
+Disallow: /admin
+Disallow: /api/
+Disallow: /private/
+Disallow: /.env
+Disallow: /config/
+
+# Sitemap
+Sitemap: https://yourbusinessinitaly.com/sitemap.xml

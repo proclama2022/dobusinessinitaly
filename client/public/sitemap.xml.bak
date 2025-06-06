@@ -74,6 +74,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://yourbusinessinitaly.com/admin</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/admin" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/admin" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yourbusinessinitaly.com/fr/admin" />
     <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
