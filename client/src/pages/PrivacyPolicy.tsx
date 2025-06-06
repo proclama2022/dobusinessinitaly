@@ -9,13 +9,13 @@ const PrivacyPolicy = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = `${t('privacy.title')} - Dobusinessinitaly.com`;
+    document.title = `${t('privacy.title')} - Yourbusinessinitaly.com`;
   }, [t]);
 
   return (
     <>
       <SEOHead
-        title={`${t('privacy.title')} - Dobusinessinitaly.com`}
+        title={`${t('privacy.title')} - Yourbusinessinitaly.com`}
         description={t('privacy.intro')}
         canonicalUrl="/privacy-policy"
         keywords="privacy policy, privacy, protezione dati, GDPR, dati personali"

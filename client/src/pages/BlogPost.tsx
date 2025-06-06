@@ -111,9 +111,9 @@ const BlogPost = () => {
 
     // Set page title
     if (postData?.data?.meta?.title) {
-      document.title = `${postData.data.meta.title} - Dobusinessinitaly.com`;
+      document.title = `${postData.data.meta.title} - Yourbusinessinitaly.com`;
     } else {
-      document.title = `Blog - Dobusinessinitaly.com`;
+              document.title = `Blog - Yourbusinessinitaly.com`;
     }
   }, [postData]);
 
@@ -182,15 +182,15 @@ const BlogPost = () => {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Dobusinessinitaly.com',
+      name: 'Yourbusinessinitaly.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://dobusinessinitaly.com/logo.png'
+        url: 'https://yourbusinessinitaly.com/logo.png'
       }
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://dobusinessinitaly.com/blog/${meta.slug}`
+      '@id': `https://yourbusinessinitaly.com/blog/${meta.slug}`
     },
     articleSection: meta.category
   };
@@ -201,7 +201,7 @@ const BlogPost = () => {
   return (
     <>
       <SEOHead
-        title={`${meta.title} - Dobusinessinitaly.com`}
+        title={`${meta.title} - Yourbusinessinitaly.com`}
         description={meta.excerpt}
         canonicalUrl={`/blog/${meta.slug}`}
         ogImage={meta.coverImage}
@@ -222,7 +222,7 @@ const BlogPost = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 z-10"></div>
           <img
             src={meta.coverImage}
-            alt={`${meta.title} - Dobusinessinitaly.com`}
+            alt={`${meta.title} - Yourbusinessinitaly.com`}
             className="w-full h-full object-cover"
             width="1200"
             height="630"

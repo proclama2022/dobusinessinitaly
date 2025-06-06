@@ -24,11 +24,11 @@ const SEOHead = ({
   title,
   description,
   canonicalUrl,
-  ogImage = 'https://dobusinessinitaly.com/og-image.jpg',
+  ogImage = 'https://yourbusinessinitaly.com/og-image.jpg',
   ogType = 'website',
   twitterCard = 'summary_large_image',
   keywords,
-  author = 'Dobusinessinitaly.com',
+  author = 'Yourbusinessinitaly.com',
   publishedTime,
   modifiedTime,
   articleSection,
@@ -37,14 +37,14 @@ const SEOHead = ({
   alternates
 }: SEOHeadProps) => {
   // Costruisci l'URL canonico completo
-  const siteUrl = 'https://dobusinessinitaly.com';
+  const siteUrl = 'https://yourbusinessinitaly.com';
   const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : undefined;
   
   // Prepara i dati strutturati JSON-LD
   const defaultStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Dobusinessinitaly.com',
+            name: 'Yourbusinessinitaly.com',
     url: siteUrl,
     description: 'Servizi professionali per fare business in Italia',
   };
@@ -81,7 +81,7 @@ const SEOHead = ({
       <meta property="og:type" content={ogType} />
       {fullCanonicalUrl && <meta property="og:url" content={fullCanonicalUrl} />}
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="Dobusinessinitaly.com" />
+      <meta property="og:site_name" content="Yourbusinessinitaly.com" />
       
       {/* Twitter Card */}
       <meta name="twitter:card" content={twitterCard} />

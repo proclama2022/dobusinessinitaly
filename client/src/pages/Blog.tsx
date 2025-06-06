@@ -60,7 +60,7 @@ const BlogPostCard = ({
         {/* Immagine articolo con attributi SEO migliorati */}
         <img
           src={imgSrc}
-          alt={`${title} - Dobusinessinitaly.com`}
+                          alt={`${title} - Yourbusinessinitaly.com`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
           width="600"
           height="400"
@@ -154,7 +154,7 @@ const t = tRaw as (key: string, options?: any) => string;
     queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
 
     // Update UI text
-    document.title = `${t('navigation.blog')} - Dobusinessinitaly.com`;
+    document.title = `${t('navigation.blog')} - Yourbusinessinitaly.com`;
     
   }, [i18n.language, queryClient, t]);
 
@@ -200,7 +200,7 @@ const t = tRaw as (key: string, options?: any) => string;
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = `${t('navigation.blog')} - Dobusinessinitaly.com`;
+    document.title = `${t('navigation.blog')} - Yourbusinessinitaly.com`;
 
     // Log fetched data for debugging
     console.log('Fetched blog posts data:', postsData?.data);
@@ -225,20 +225,20 @@ const t = tRaw as (key: string, options?: any) => string;
   const blogStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    headline: t('navigation.blog') || 'Blog - Dobusinessinitaly.com',
+    headline: t('navigation.blog') || 'Blog - Yourbusinessinitaly.com',
     description: t('blog.description') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.',
-    url: 'https://dobusinessinitaly.com/blog',
+    url: 'https://yourbusinessinitaly.com/blog',
     author: {
       '@type': 'Organization',
-      name: 'Dobusinessinitaly.com',
-      url: 'https://dobusinessinitaly.com'
+      name: 'Yourbusinessinitaly.com',
+      url: 'https://yourbusinessinitaly.com'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Dobusinessinitaly.com',
+      name: 'Yourbusinessinitaly.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://dobusinessinitaly.com/logo.png'
+        url: 'https://yourbusinessinitaly.com/logo.png'
       }
     }
   };
@@ -260,7 +260,7 @@ const t = tRaw as (key: string, options?: any) => string;
           name: post.author
         },
         datePublished: post.date,
-        url: `https://dobusinessinitaly.com/blog/${post.slug}`
+        url: `https://yourbusinessinitaly.com/blog/${post.slug}`
       }
     }))
   };
@@ -268,7 +268,7 @@ const t = tRaw as (key: string, options?: any) => string;
   return (
     <>
       <SEOHead
-        title={`${t('navigation.blog')} - Dobusinessinitaly.com`}
+        title={`${t('navigation.blog')} - Yourbusinessinitaly.com`}
         description={t('blog.description') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
         canonicalUrl="/blog"
         keywords="blog, articoli, fiscale, legale, business, italia, internazionalizzazione, imprese"

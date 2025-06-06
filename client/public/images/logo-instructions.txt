@@ -23,4 +23,4 @@ Il logo che hai mostrato ha un buon concetto di base, ma potrebbe essere miglior
 
 ## Implementazione nel codice
 
-Il logo è già configurato per apparire sia nell'header che nel footer del sito. Se il logo non viene trovato, verrà mostrato il testo "Dobusinessinitaly.com" come fallback.
+Il logo è già configurato per apparire sia nell'header che nel footer del sito. Se il logo non viene trovato, verrà mostrato il testo "Yourbusinessinitaly.com" come fallback.

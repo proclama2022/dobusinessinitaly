@@ -93,7 +93,7 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
             {t('media.title', 'Parlano di Noi')}
           </h2>
           <p className="text-neutral-700 max-w-3xl mx-auto enhanced-text" style={{ letterSpacing: '0.01em' }}>
-            {t('media.subtitle', 'Scopri cosa dicono di Dobusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.')}
+            {t('media.subtitle', 'Scopri cosa dicono di Yourbusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

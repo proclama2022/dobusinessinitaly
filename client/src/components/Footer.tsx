@@ -24,7 +24,7 @@ const Footer = () => {
             <div className="mb-6">
               <img
                 src={logoImage}
-                alt="Dobusinessinitaly.com"
+                alt="Yourbusinessinitaly.com"
                 className="h-auto w-56 mb-2 object-contain max-w-full"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
@@ -33,7 +33,7 @@ const Footer = () => {
                   target.parentElement!.innerHTML = `
                     <h3 className="text-xl font-heading font-medium relative inline-block">
                       <span className="relative italic">
-                        Dobusinessinitaly.com
+                        Yourbusinessinitaly.com
                         <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
                       </span>
                     </h3>
@@ -232,7 +232,7 @@ const Footer = () => {
 
         <div className="border-t border-neutral-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-neutral-400 text-sm">© {currentYear} Dobusinessinitaly.com. {t('footer.copyright')}</p>
+            <p className="text-neutral-400 text-sm">© {currentYear} Yourbusinessinitaly.com. {t('footer.copyright')}</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link href={getLocalizedPath('/privacy-policy')} className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.privacy')}</Link>
               <Link href={getLocalizedPath('/cookie-policy')} className="text-neutral-400 hover:text-white text-sm transition-colors hover:underline">{t('footer.cookies')}</Link>

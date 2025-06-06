@@ -7,13 +7,13 @@ const CookiePolicy = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    document.title = `${t('cookies.policy.title')} - Dobusinessinitaly.com`;
+    document.title = `${t('cookies.policy.title')} - Yourbusinessinitaly.com`;
   }, [t]);
 
   return (
     <>
       <SEOHead 
-        title={`${t('cookies.policy.title')} - Dobusinessinitaly.com`}
+        title={`${t('cookies.policy.title')} - Yourbusinessinitaly.com`}
         description={t('cookies.policy.intro')}
         canonicalUrl="/cookie-policy"
       />

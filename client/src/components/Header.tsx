@@ -71,14 +71,14 @@ const Header = () => {
             <Link href={getLocalizedPath('/')} className="flex items-center">
               <img
                 src={logoImage}
-                alt="Dobusinessinitaly.com"
+                alt="Yourbusinessinitaly.com"
                 className="w-32 h-auto object-contain max-w-full"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
                   target.parentElement?.classList.add('text-2xl', 'font-heading', 'font-bold', 'text-primary');
-                  target.parentElement!.innerHTML = '<span>Dobusinessinitaly.com</span>';
+                  target.parentElement!.innerHTML = '<span>Yourbusinessinitaly.com</span>';
                 }}
               />
             </Link>

@@ -13,18 +13,18 @@ const Home = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = 'Dobusinessinitaly.com - Studio Commercialisti';
+    document.title = 'Yourbusinessinitaly.com - Studio Commercialisti';
   }, []);
 
   return (
     <>
       <SEOHead 
-        title="Dobusinessinitaly.com - Studio Commercialisti"
+        title="Yourbusinessinitaly.com - Studio Commercialisti"
         description="Servizi professionali per fare business in Italia. Consulenza fiscale, contabile e legale per aziende internazionali."
         alternates={{
-          'en': 'https://dobusinessinitaly.com/en/',
-          'fr': 'https://dobusinessinitaly.com/fr/',
-          'de': 'https://dobusinessinitaly.com/de/'
+          'en': 'https://yourbusinessinitaly.com/en/',
+          'fr': 'https://yourbusinessinitaly.com/fr/',
+          'de': 'https://yourbusinessinitaly.com/de/'
         }}
         lang="it"
       />

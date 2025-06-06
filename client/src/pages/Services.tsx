@@ -84,7 +84,7 @@ const Services = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = `${t('services.title')} - Dobusinessinitaly.com`;
+    document.title = `${t('services.title')} - Yourbusinessinitaly.com`;
   }, [t]);
 
   // Organizzazione dei servizi per categorie

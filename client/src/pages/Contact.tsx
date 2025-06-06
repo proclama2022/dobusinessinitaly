@@ -10,7 +10,7 @@ const Contact = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = `${t('navigation.contact')} - Dobusinessinitaly.com`;
+    document.title = `${t('navigation.contact')} - Yourbusinessinitaly.com`;
   }, [t]);
 
   return (

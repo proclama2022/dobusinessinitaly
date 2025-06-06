@@ -103,7 +103,7 @@ const About = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
     // Set page title
-    document.title = `${t('navigation.about')} - Dobusinessinitaly.com`;
+    document.title = `${t('navigation.about')} - Yourbusinessinitaly.com`;
   }, [t]);
 
   // Stato dinamico dei membri del team
