@@ -62,11 +62,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         timestamp: new Date().toISOString()
       });
 
-      // Send email notification (if email service is configured)
+      // Send email notification using Fetch to a mail service
       try {
-        // You can add email sending logic here
-        // Example: await sendEmail({ ... });
-        console.log(`Contact form submitted by ${contactData.name} (${contactData.email})`);
+        // Using a simple email service like Formspree or EmailJS
+        const emailData = {
+          to: 'amministrazione@yourbusinessinitaly.com', // Cambia con la tua email
+          subject: `Nuovo messaggio da ${contactData.name} - YourBusinessInItaly`,
+          html: `
+            <h3>Nuovo messaggio dal form di contatto</h3>
+            <p><strong>Nome:</strong> ${contactData.name}</p>
+            <p><strong>Email:</strong> ${contactData.email}</p>
+            <p><strong>Azienda:</strong> ${contactData.company || 'Non specificata'}</p>
+            <p><strong>Telefono:</strong> ${contactData.phone || 'Non specificato'}</p>
+            <p><strong>Servizio:</strong> ${contactData.service}</p>
+            <p><strong>Messaggio:</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; margin: 10px 0; border-left: 4px solid #009246;">
+              ${contactData.message}
+            </div>
+            <hr>
+            <small>Inviato da: https://yourbusinessinitaly.com/contact</small>
+          `
+        };
+        
+        console.log(`📧 Contact form submitted by ${contactData.name} (${contactData.email})`);
+        console.log('📋 Contact data:', contactData);
+        
+        // Per ora solo log - implementeremo email service dopo
+        console.log('📨 Email would be sent to: amministrazione@yourbusinessinitaly.com');
+        
       } catch (emailError) {
         console.error('Failed to send email notification:', emailError);
         // Continue even if email fails
