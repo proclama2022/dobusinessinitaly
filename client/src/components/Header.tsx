@@ -60,20 +60,19 @@ const Header = () => {
     { path: '/services', label: t('navigation.services') },
     { path: '/about', label: t('navigation.about') },
     { path: '/media', label: t('navigation.media') },
-    { path: '/blog', label: t('navigation.blog') },
     { path: '/contact', label: t('navigation.contact') }
   ];
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-0">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href={getLocalizedPath('/')} className="flex items-center">
               <img
                 src={logoImage}
                 alt="Dobusinessinitaly.com"
-                className="w-64 h-auto object-contain max-w-full"
+                className="w-32 h-auto object-contain max-w-full"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;

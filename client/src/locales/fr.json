@@ -395,6 +395,110 @@
       "message": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
     }
   },
+  "privacy": {
+    "title": "Politique de Confidentialité de Proclama",
+    "intro": "Cette Application collecte certaines Données Personnelles de ses Utilisateurs.",
+    "printInfo": "Ce document peut être imprimé en utilisant la commande d'impression présente dans les paramètres de n'importe quel navigateur.",
+    "summaryTitle": "Résumé de la politique",
+    "summaryText": "Données Personnelles traitées aux fins suivantes et en utilisant les services suivants:",
+    "contactTitle": "Informations de contact",
+    "owner": "Responsable du Traitement des Données",
+    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - N° TVA et Code Fiscal 04048370870",
+    "ownerEmail": "Adresse email du Responsable: amministrazione@proclama.co",
+    "fullPolicyTitle": "Politique complète",
+    "dataTypesTitle": "Types de Données collectées",
+    "dataTypesText": "Parmi les Données Personnelles collectées par cette Application, de manière autonome ou par l'intermédiaire de tiers, figurent: Données communiquées lors de l'utilisation du service; Données d'utilisation; Numéro de TVA; Code postal; ville; raison sociale; pays; date de naissance; email; nom; position géographique; nom de famille; numéro de téléphone; nom d'utilisateur.",
+    "processingTitle": "Modalités et lieu de traitement des Données collectées",
+    "processingText": "Le Responsable adopte les mesures de sécurité appropriées visant à empêcher l'accès, la divulgation, la modification ou la destruction non autorisés des Données Personnelles.",
+    "purposeTitle": "Finalités du Traitement des Données collectées",
+    "purposeText": "Les Données de l'Utilisateur sont collectées pour permettre au Responsable de fournir le Service, de respecter ses obligations légales, de répondre aux demandes d'exécution, de protéger ses droits et intérêts (ou ceux des Utilisateurs ou de tiers), de détecter toute activité malveillante ou frauduleuse, ainsi que pour les finalités suivantes: Hébergement et infrastructure backend.",
+    "rightsTitle": "Droits de l'Utilisateur sur la base du Règlement Général sur la Protection des Données (RGPD)",
+    "rightsText": "Les Utilisateurs peuvent exercer certains droits concernant leurs Données traitées par le Responsable.",
+    "definitionsTitle": "Définitions et références légales",
+    "additionalInfoTitle": "Informations supplémentaires pour les utilisateurs",
+    "legalBasisTitle": "Base juridique du traitement",
+    "legalBasisText": "Le Responsable traite les Données Personnelles relatives à l'Utilisateur si l'une des conditions suivantes s'applique:",
+    "legalBasisPoint1": "l'Utilisateur a donné son consentement pour une ou plusieurs finalités spécifiques.",
+    "legalBasisPoint2": "le traitement est nécessaire à l'exécution d'un contrat avec l'Utilisateur et/ou à l'exécution de mesures précontractuelles;",
+    "legalBasisPoint3": "le traitement est nécessaire pour respecter une obligation légale à laquelle le Responsable est soumis;",
+    "legalBasisPoint4": "le traitement est nécessaire pour l'exécution d'une tâche d'intérêt public ou pour l'exercice de pouvoirs publics dont est investi le Responsable;",
+    "legalBasisPoint5": "le traitement est nécessaire pour la poursuite de l'intérêt légitime du Responsable ou d'un tiers.",
+    "clarificationText": "Il est toujours possible de demander au Responsable de clarifier la base juridique concrète de chaque traitement et en particulier de spécifier si le traitement est basé sur la loi, prévu par un contrat ou nécessaire pour conclure un contrat.",
+    "retentionTitle": "Informations supplémentaires sur le temps de conservation",
+    "retentionText": "Sauf indication contraire dans ce document, les Données Personnelles sont traitées et conservées pendant le temps requis par la finalité pour laquelle elles ont été collectées et pourraient être conservées plus longtemps en raison d'éventuelles obligations légales ou sur la base du consentement des Utilisateurs.",
+    "retentionExamplesTitle": "Par conséquent:",
+    "retentionExample1": "Les Données Personnelles collectées à des fins liées à l'exécution d'un contrat entre le Responsable et l'Utilisateur seront conservées jusqu'à ce que l'exécution de ce contrat soit terminée.",
+    "retentionExample2": "Les Données Personnelles collectées à des fins liées à l'intérêt légitime du Responsable seront conservées jusqu'à la satisfaction de cet intérêt. L'Utilisateur peut obtenir des informations supplémentaires concernant l'intérêt légitime poursuivi par le Responsable dans les sections pertinentes de ce document ou en contactant le Responsable.",
+    "ownerTitle": "Responsable du Traitement des Données",
+    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - N° TVA et Code Fiscal 04048370870<br />Adresse email du Responsable: amministrazione@proclama.co",
+    "dataTypesCollectedTitle": "Types de Données collectées",
+    "dataTypesCollectedText1": "Parmi les Données Personnelles collectées par cette Application, de manière autonome ou par l'intermédiaire de tiers, figurent: Données communiquées lors de l'utilisation du service; Données d'utilisation; Numéro de TVA; Code postal; ville; raison sociale; pays; date de naissance; email; nom; position géographique; nom de famille; numéro de téléphone; nom d'utilisateur.",
+    "dataTypesCollectedText2": "Des détails complets sur chaque type de Données Personnelles collectées sont fournis dans les sections dédiées de cette politique de confidentialité ou au moyen de textes d'explication spécifiques affichés avant la collecte des Données elles-mêmes. Les Données Personnelles peuvent être librement fournies par l'Utilisateur ou, dans le cas des Données d'Utilisation, collectées automatiquement lors de l'utilisation de cette Application.",
+    "dataTypesCollectedText3": "Sauf indication contraire, toutes les Données demandées par cette Application sont obligatoires et le refus de les communiquer pourrait rendre impossible pour cette Application de fournir le Service. Dans les cas où cette Application indique spécifiquement que certaines Données ne sont pas obligatoires, les Utilisateurs sont libres de ne pas communiquer ces Données sans conséquences sur la disponibilité ou le fonctionnement du Service. Les Utilisateurs qui auraient des doutes sur les Données Personnelles obligatoires sont encouragés à contacter le Responsable.",
+    "dataTypesCollectedText4": "L'utilisation éventuelle de Cookies - ou d'autres outils de suivi - par cette Application ou par les propriétaires des services tiers utilisés par cette Application a pour but de fournir le Service demandé par l'Utilisateur, en plus des autres finalités décrites dans le présent document. L'Utilisateur assume la responsabilité des Données Personnelles de tiers obtenues, publiées ou partagées par l'intermédiaire de cette Application.",
+    "processingMethodTitle": "Modalités et lieu de traitement des Données collectées",
+    "processingMethodSubtitle": "Modalités de traitement",
+    "processingMethodText": "Le Responsable adopte les mesures de sécurité appropriées visant à empêcher l'accès, la divulgation, la modification ou la destruction non autorisés des Données Personnelles. Le traitement est effectué au moyen d'outils informatiques et/ou télématiques, avec des modalités organisationnelles et des logiques strictement liées aux finalités indiquées. Outre le Responsable, dans certains cas, les Données peuvent être accessibles à certains types de personnes en charge, impliquées dans le fonctionnement de cette Application (administration, ventes, marketing, juridique, administration système) ou à des parties externes (comme les fournisseurs de services techniques tiers, les transporteurs postaux, les fournisseurs d'hébergement, les entreprises informatiques, les agences de communication) nommées, si nécessaire, Responsables du Traitement par le Responsable. La liste mise à jour de ces parties peut toujours être demandée au Responsable du Traitement.",
+    "locationTitle": "Lieu",
+    "locationText1": "Les Données sont traitées dans les bureaux opérationnels du Responsable et dans tout autre lieu où les parties impliquées dans le traitement sont situées. Pour plus d'informations, contactez le Responsable.",
+    "locationText2": "Les Données Personnelles de l'Utilisateur pourraient être transférées dans un pays différent de celui où se trouve l'Utilisateur. Pour obtenir plus d'informations sur le lieu de traitement, l'Utilisateur peut se référer à la section relative aux détails sur le traitement des Données Personnelles.",
+    "retentionPeriodTitle": "Période de conservation",
+    "retentionPeriodText": "Sauf indication contraire dans ce document, les Données Personnelles sont traitées et conservées pendant le temps requis par la finalité pour laquelle elles ont été collectées et pourraient être conservées plus longtemps en raison d'éventuelles obligations légales ou sur la base du consentement des Utilisateurs.",
+    "purposeText1": "Les Données de l'Utilisateur sont collectées pour permettre au Responsable de fournir le Service, de respecter ses obligations légales, de répondre aux demandes d'exécution, de protéger ses droits et intérêts (ou ceux des Utilisateurs ou de tiers), de détecter toute activité malveillante ou frauduleuse, ainsi que pour les finalités suivantes: Hébergement et infrastructure backend.",
+    "purposeText2": "Pour obtenir des informations détaillées sur les finalités du traitement et sur les Données Personnelles traitées pour chaque finalité, l'Utilisateur peut se référer à la section \"Détails sur le traitement des Données Personnelles\".",
+    "detailsTitle": "Détails sur le traitement des Données Personnelles",
+    "detailsText": "Les Données Personnelles sont collectées aux fins suivantes et en utilisant les services suivants:",
+    "retentionConsentText": "Lorsque le traitement est basé sur le consentement de l'Utilisateur, le Responsable peut conserver les Données Personnelles plus longtemps jusqu'à ce que ce consentement soit retiré. De plus, le Responsable pourrait être obligé de conserver les Données Personnelles plus longtemps pour respecter une obligation légale ou sur ordre d'une autorité. À la fin de la période de conservation, les Données Personnelles seront supprimées. Par conséquent, à l'expiration de ce terme, le droit d'accès, de suppression, de rectification et le droit à la portabilité des Données ne pourront plus être exercés.",
+    "rightsIntro": "En particulier, dans les limites prévues par la loi, l'Utilisateur a le droit de:",
+    "rightsPoint1": "révoquer le consentement à tout moment. L'Utilisateur peut révoquer le consentement au traitement de ses Données Personnelles précédemment exprimé.",
+    "rightsPoint2": "s'opposer au traitement de ses Données. L'Utilisateur peut s'opposer au traitement de ses Données lorsqu'il a lieu en vertu d'une base juridique différente du consentement.",
+    "rightsPoint3": "accéder à ses Données. L'Utilisateur a le droit d'obtenir des informations sur les Données traitées par le Responsable, sur certains aspects du traitement et de recevoir une copie des Données traitées.",
+    "rightsPoint4": "vérifier et demander la rectification. L'Utilisateur peut vérifier l'exactitude de ses Données et demander leur mise à jour ou correction.",
+    "rightsPoint5": "obtenir la limitation du traitement. L'Utilisateur peut demander la limitation du traitement de ses Données. Dans ce cas, le Responsable ne traitera pas les Données à d'autres fins que leur conservation.",
+    "rightsPoint6": "obtenir la suppression ou l'effacement de ses Données Personnelles. L'Utilisateur peut demander la suppression de ses Données par le Responsable.",
+    "rightsPoint7": "recevoir ses Données ou les faire transférer à un autre responsable. L'Utilisateur a le droit de recevoir ses Données dans un format structuré, d'usage commun et lisible par machine et, lorsque cela est techniquement possible, d'en obtenir le transfert sans obstacle vers un autre responsable.",
+    "rightsPoint8": "déposer une plainte. L'Utilisateur peut déposer une plainte auprès de l'autorité de contrôle de la protection des données personnelles compétente ou agir en justice.",
+    "rightsTransferInfo": "Les Utilisateurs ont le droit d'obtenir des informations concernant la base juridique pour le transfert de Données à l'étranger, y compris vers toute organisation internationale régie par le droit international ou constituée par deux ou plusieurs pays, comme l'ONU, ainsi que concernant les mesures de sécurité adoptées par le Responsable pour protéger leurs Données.",
+    "oppositionTitle": "Détails sur le droit d'opposition",
+    "oppositionText1": "Lorsque les Données Personnelles sont traitées dans l'intérêt public, dans l'exercice de pouvoirs publics dont est investi le Responsable ou pour poursuivre un intérêt légitime du Responsable, les Utilisateurs ont le droit de s'opposer au traitement pour des motifs liés à leur situation particulière.",
+    "oppositionText2": "Il est rappelé aux Utilisateurs que, si leurs Données étaient traitées à des fins de marketing direct, ils peuvent s'opposer au traitement à tout moment, gratuitement et sans fournir de justification. Si les Utilisateurs s'opposent au traitement à des fins de marketing direct, les Données Personnelles ne feront plus l'objet de traitement à ces fins. Pour savoir si le Responsable traite des Données à des fins de marketing direct, les Utilisateurs peuvent se référer aux sections pertinentes de ce document.",
+    "exerciseTitle": "Comment exercer ces droits",
+    "exerciseText": "Toute demande d'exercice des droits de l'Utilisateur peut être adressée au Responsable par l'intermédiaire des coordonnées fournies dans ce document. La demande est gratuite et le Responsable répondra dans les plus brefs délais, en tout cas dans un délai d'un mois, en fournissant à l'Utilisateur toutes les informations prévues par la loi. Toute rectification, suppression ou limitation du traitement sera communiquée par le Responsable à chacun des destinataires, s'ils existent, auxquels les Données Personnelles ont été transmises, sauf si cela s'avère impossible ou implique un effort disproportionné. Le Responsable communique à l'Utilisateur ces destinataires s'il le demande.",
+    "additionalProcessingTitle": "Informations supplémentaires sur le traitement",
+    "legalDefenseTitle": "Défense en justice",
+    "legalDefenseText1": "Les Données Personnelles de l'Utilisateur peuvent être utilisées par le Responsable en justice ou dans les phases préparatoires à son éventuelle instauration pour la défense contre les abus dans l'utilisation de cette Application ou des Services connexes par l'Utilisateur.",
+    "legalDefenseText2": "L'Utilisateur déclare être conscient que le Responsable pourrait être obligé de révéler les Données sur ordre des autorités publiques.",
+    "specificInfoTitle": "Informations spécifiques",
+    "specificInfoText": "À la demande de l'Utilisateur, en plus des informations contenues dans cette politique de confidentialité, cette Application pourrait fournir à l'Utilisateur des informations supplémentaires et contextuelles concernant des Services particuliers, ou la collecte et le traitement de Données Personnelles.",
+    "systemLogsTitle": "Logs système et maintenance",
+    "systemLogsText": "Pour des besoins liés au fonctionnement et à la maintenance, cette Application et les éventuels services tiers qu'elle utilise pourraient collecter des logs système, c'est-à-dire des fichiers qui enregistrent les interactions et qui peuvent contenir aussi des Données Personnelles, telles que l'adresse IP de l'Utilisateur.",
+    "missingInfoTitle": "Informations non contenues dans cette politique",
+    "missingInfoText": "Des informations supplémentaires concernant la collecte ou le traitement des Données Personnelles peuvent être demandées à tout moment au Responsable du Traitement en utilisant les coordonnées de contact.",
+    "changesTitle": "Modifications de cette politique de confidentialité",
+    "changesText": "Le Responsable du Traitement se réserve le droit d'apporter des modifications à cette politique de confidentialité à tout moment en le notifiant aux Utilisateurs sur cette page et, si possible, sur cette Application ainsi que, dans la mesure où cela est techniquement et légalement possible, en envoyant une notification aux Utilisateurs par l'intermédiaire de l'une des coordonnées de contact en sa possession. Il est donc conseillé de consulter fréquemment cette page, en se référant à la date de dernière modification indiquée en bas. Si les modifications concernent des traitements dont la base juridique est le consentement, le Responsable procédera à la collecte d'un nouveau consentement de l'Utilisateur, si nécessaire.",
+    "personalDataTitle": "Données Personnelles (ou Données)",
+    "personalDataText": "Constitue une donnée personnelle toute information qui, directement ou indirectement, même en liaison avec toute autre information, y compris un numéro d'identification personnel, rend identifiée ou identifiable une personne physique.",
+    "usageDataTitle": "Données d'Utilisation",
+    "usageDataText": "Ce sont les informations collectées automatiquement par cette Application (même par des applications de tiers intégrées dans cette Application), parmi lesquelles: les adresses IP ou les noms de domaine des ordinateurs utilisés par l'Utilisateur qui se connecte à cette Application, les adresses en notation URI (Uniform Resource Identifier), l'heure de la demande, la méthode utilisée pour soumettre la demande au serveur, la taille du fichier obtenu en réponse, le code numérique indiquant l'état de la réponse du serveur (succès, erreur, etc.), le pays d'origine, les caractéristiques du navigateur et du système d'exploitation utilisés par le visiteur, les diverses connotations temporelles de la visite (par exemple le temps passé sur chaque page) et les détails relatifs à l'itinéraire suivi dans l'Application, avec une référence particulière à la séquence des pages consultées, aux paramètres relatifs au système d'exploitation et à l'environnement informatique de l'Utilisateur.",
+    "userTitle": "Utilisateur",
+    "userText": "L'individu qui utilise cette Application qui, sauf indication contraire, coïncide avec la Personne concernée.",
+    "dataSubjectTitle": "Personne concernée",
+    "dataSubjectText": "La personne physique à laquelle se réfèrent les Données Personnelles.",
+    "processorTitle": "Responsable du Traitement (ou Responsable)",
+    "processorText": "La personne physique, juridique, l'administration publique et tout autre organisme qui traite des données personnelles pour le compte du Responsable, selon ce qui est exposé dans cette politique de confidentialité.",
+    "controllerTitle": "Responsable du Traitement (ou Responsable)",
+    "controllerText": "La personne physique ou juridique, l'autorité publique, le service ou autre organisme qui, seul ou conjointement avec d'autres, détermine les finalités et les moyens du traitement de données personnelles et les instruments adoptés, y compris les mesures de sécurité relatives au fonctionnement et à l'utilisation de cette Application. Le Responsable du Traitement, sauf indication contraire, est le propriétaire de cette Application.",
+    "applicationTitle": "Cette Application",
+    "applicationText": "L'outil matériel ou logiciel par lequel sont collectées et traitées les Données Personnelles des Utilisateurs.",
+    "serviceTitle": "Service",
+    "serviceText": "Le Service fourni par cette Application tel que défini dans les termes relatifs (s'ils sont présents) sur ce site/application.",
+    "euTitle": "Union Européenne (ou UE)",
+    "euText": "Sauf indication contraire, toute référence à l'Union Européenne contenue dans ce document s'entend étendue à tous les États membres actuels de l'Union Européenne et de l'Espace Économique Européen.",
+    "legalReferencesTitle": "Références légales",
+    "legalReferencesText1": "Sauf indication contraire, cette politique de confidentialité concerne exclusivement cette Application.",
+    "legalReferencesText2": "Ce document a été créé avec le Générateur de Politique de Confidentialité et de Cookies d'iubenda. Découvrez aussi le Générateur de Conditions Générales. iubenda héberge ce contenu et ne collecte que les Données Personnelles strictement nécessaires à sa fourniture.",
+    "legalReferencesText3": "(EN) Ce document a été créé avec le Générateur de Politique de Confidentialité et de Cookies d'iubenda. Voir aussi le Générateur de Conditions Générales."
+  },
   "footer": {
     "tagline": "Experts en conseil fiscal et commercial pour les entreprises et investisseurs internationaux en Italie.",
     "quickLinks": "Liens Rapides",
@@ -402,7 +506,6 @@
     "contact": "Contact",
     "copyright": "Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
-    "terms": "Conditions Générales",
     "cookies": "Politique de Cookies"
   },
   "about": {
@@ -492,5 +595,81 @@
     "gaetana_vecchio_specialty": "Expert-comptable spécialisé dans le conseil en droit du travail",
     "rosy_fresta_role": "Associée",
     "rosy_fresta_specialty": "Expert-comptable spécialisé dans le conseil en droit du travail"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Nous utilisons des Cookies",
+      "message": "Ce site utilise des cookies techniques et analytiques pour améliorer votre expérience de navigation. En continuant à naviguer, vous acceptez l'utilisation de cookies.",
+      "acceptAll": "Accepter Tout",
+      "acceptNecessary": "Seulement Nécessaires",
+      "learnMore": "En savoir plus",
+      "settings": "Paramètres"
+    },
+    "preferences": {
+      "title": "Préférences des Cookies",
+      "description": "Personnalisez vos préférences de cookies. Vous pouvez activer ou désactiver différentes catégories à tout moment.",
+      "necessary": {
+        "title": "Cookies Nécessaires",
+        "description": "Ces cookies sont essentiels au fonctionnement du site web et ne peuvent pas être désactivés.",
+        "enabled": "Toujours activés"
+      },
+      "analytics": {
+        "title": "Cookies d'Analyse",
+        "description": "Nous aident à comprendre comment vous interagissez avec notre site web en collectant et rapportant des informations de manière anonyme."
+      },
+      "marketing": {
+        "title": "Cookies de Marketing",
+        "description": "Utilisés pour suivre les visiteurs sur les sites web. L'intention est d'afficher des publicités pertinentes et engageantes."
+      },
+      "savePreferences": "Sauvegarder les Préférences",
+      "acceptSelected": "Accepter Sélectionnés"
+    },
+    "policy": {
+      "title": "Politique de Cookies",
+      "lastUpdated": "Dernière mise à jour: 15 décembre 2024",
+      "intro": "Cette Politique de Cookies explique ce que sont les cookies et comment nous les utilisons sur notre site web.",
+      "whatAreCookies": {
+        "title": "Que sont les Cookies",
+        "content": "Les cookies sont de petits fichiers texte qui sont stockés sur votre appareil lorsque vous visitez un site web. Ils sont largement utilisés pour faire fonctionner les sites web, ou les faire fonctionner plus efficacement, ainsi que pour fournir des informations aux propriétaires du site."
+      },
+      "howWeUseCookies": {
+        "title": "Comment nous utilisons les Cookies",
+        "content": "Nous utilisons les cookies pour diverses raisons, notamment:",
+        "reasons": [
+          "Assurer le bon fonctionnement du site web",
+          "Améliorer les performances et la sécurité",
+          "Analyser l'utilisation du site pour améliorer nos services",
+          "Personnaliser votre expérience de navigation"
+        ]
+      },
+      "typesOfCookies": {
+        "title": "Types de Cookies que nous utilisons",
+        "necessary": {
+          "title": "Cookies Strictement Nécessaires",
+          "description": "Ces cookies sont essentiels pour vous permettre de naviguer sur le site web et d'utiliser ses fonctionnalités."
+        },
+        "performance": {
+          "title": "Cookies de Performance",
+          "description": "Ces cookies collectent des informations sur la façon dont vous utilisez notre site web, comme les pages que vous visitez le plus souvent."
+        },
+        "functionality": {
+          "title": "Cookies de Fonctionnalité",
+          "description": "Ces cookies permettent au site web de se souvenir des choix que vous faites et fournissent des fonctionnalités améliorées et plus personnelles."
+        }
+      },
+      "manageCookies": {
+        "title": "Gestion des Cookies",
+        "content": "Vous pouvez contrôler et gérer les cookies de plusieurs façons:",
+        "methods": [
+          "En utilisant nos paramètres de cookies sur ce site",
+          "En modifiant les paramètres de votre navigateur",
+          "En utilisant des outils de désinscription en ligne"
+        ]
+      },
+      "contact": {
+        "title": "Nous Contacter",
+        "content": "Si vous avez des questions sur cette Politique de Cookies, vous pouvez nous contacter à: amministrazione@proclama.co"
+      }
+    }
   }
 }

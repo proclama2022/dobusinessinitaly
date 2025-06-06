@@ -11,7 +11,7 @@ const NewsletterSection = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (email: string) => {
-      const response = await apiRequest('POST', '/api/newsletter', { email });
+      const response = await apiRequest('/api/newsletter', { method: 'POST', body: { email } });
       return response.json();
     },
     onSuccess: (data) => {

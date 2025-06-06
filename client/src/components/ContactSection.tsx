@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/select";
 
 const ContactSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
 
   // Define the form schema
@@ -59,14 +59,13 @@ const ContactSection = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: z.infer<typeof contactFormSchema>) => {
       const { privacy, ...contactData } = values;
-      const response = await apiRequest('/api/contact', {
+      return await apiRequest('/api/contact', {
         method: 'POST',
         body: JSON.stringify(contactData),
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      return response.json();
     },
     onSuccess: (data) => {
       toast({
@@ -85,8 +84,17 @@ const ContactSection = () => {
     }
   });
 
-  const onSubmit = (values: z.infer<typeof contactFormSchema>) => {
-    mutate(values);
+  const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+    try {
+      await mutate(values);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: t('contact.error.title'),
+        description: t('contact.error.message'),
+        variant: 'destructive',
+      });
+    }
   };
 
   return (
@@ -142,8 +150,11 @@ const ContactSection = () => {
                 </span>
               </h3>
               
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative">
+                  <Form {...form} key={i18n.language}>
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  form.handleSubmit(onSubmit)();
+                }} className="space-y-6 relative">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
@@ -387,7 +398,7 @@ const ContactSection = () => {
                     <div className="ml-4">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.email.label')}</h4>
                       <p className="text-neutral-600 mt-1">
-                        <a href="mailto:info@dobusinessnew.it" className="hover:text-[#009246] transition-colors">
+                        <a href="mailto:info@youritalianbusiness.com" className="hover:text-[#009246] transition-colors">
                           {t('contact.info.email.value')}
                         </a>
                       </p>

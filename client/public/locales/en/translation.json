@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Our privacy and personal data protection policy",
+      "subtitle": "We are committed to protecting your privacy and personal data in accordance with GDPR and current regulations",
+      "dataCollection": {
+        "title": "Data Collection",
+        "content": "We only collect data necessary to provide our services, including name, email and contact information when you contact us or register."
+      },
+      "dataUse": {
+        "title": "Data Usage",
+        "content": "We use your data to respond to your requests, improve our services and send you relevant communications, always respecting your preferences."
+      },
+      "cookies": {
+        "title": "Cookies and Technologies",
+        "content": "We use cookies and similar technologies to improve your experience on our site. You can manage your preferences in your browser settings."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "You have the right to access, modify, delete your data and limit their processing. Contact us to exercise these rights."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "For any privacy questions, contact us at privacy@dobusinessinitaly.com"
+      },
+      "lastUpdate": "Last update: {{date}}"
+    }
+  }
+}

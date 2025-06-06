@@ -33,7 +33,6 @@ const Home = () => {
       <WhyChooseUs />
       <ServicesSection />
       <MediaCoverageSection maxItems={4} />
-      <BlogSection />
       <ContactSection />
     </>
   );

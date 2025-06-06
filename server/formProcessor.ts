@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { processFormWithAI } from "./services/formProcessor";
+import { processForm } from "./services/formProcessor";
 import { generateArticleTranslations } from "./services/translationService";
 import { authenticate } from "./middleware/auth";
 
@@ -15,7 +15,7 @@ router.post("/process", authenticate, async (req, res) => {
     const { formData, language } = req.body;
     
     // Processa il modulo con AI
-    const processedForm = await processFormWithAI(formData, language);
+    const processedForm = await processForm(formData);
     
     res.status(200).json({
       success: true,

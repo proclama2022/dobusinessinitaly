@@ -7,19 +7,123 @@
     "blog": "Blog",
     "contact": "Contatti"
   },
+  "privacy": {
+    "title": "Privacy Policy di proclama",
+    "intro": "Questa Applicazione raccoglie alcuni Dati Personali dei propri Utenti.",
+    "printInfo": "Questo documento può essere stampato utilizzando il comando di stampa presente nelle impostazioni di qualsiasi browser.",
+    "summaryTitle": "Riassunto della policy",
+    "summaryText": "Dati Personali trattati per le seguenti finalità e utilizzando i seguenti servizi:",
+    "contactTitle": "Informazioni di contatto",
+    "owner": "Titolare del Trattamento dei Dati",
+    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA e C.Fisc. 04048370870",
+    "ownerEmail": "Indirizzo email del Titolare: amministrazione@proclama.co",
+    "fullPolicyTitle": "Policy completa",
+    "dataTypesTitle": "Tipologie di Dati raccolti",
+    "dataTypesText": "Fra i Dati Personali raccolti da questa Applicazione, in modo autonomo o tramite terze parti, ci sono: Dati comunicati durante l'utilizzo del servizio; Dati di utilizzo; Partita IVA; CAP; città; ragione sociale; nazione; data di nascita; email; nome; posizione geografica; cognome; numero di telefono; username.",
+    "processingTitle": "Modalità e luogo del trattamento dei Dati raccolti",
+    "processingText": "Il Titolare adotta le opportune misure di sicurezza volte ad impedire l'accesso, la divulgazione, la modifica o la distruzione non autorizzate dei Dati Personali.",
+    "purposeTitle": "Finalità del Trattamento dei Dati raccolti",
+    "purposeText": "I Dati dell'Utente sono raccolti per consentire al Titolare di fornire il Servizio, adempiere agli obblighi di legge, rispondere a richieste o azioni esecutive, tutelare i propri diritti ed interessi (o quelli di Utenti o di terze parti), individuare eventuali attività dolose o fraudolente, nonché per le seguenti finalità: Hosting ed infrastruttura backend.",
+    "rightsTitle": "Diritti dell'Utente sulla base del Regolamento Generale sulla Protezione dei Dati (GDPR)",
+    "rightsText": "Gli Utenti possono esercitare determinati diritti con riferimento ai Dati trattati dal Titolare.",
+    "definitionsTitle": "Definizioni e riferimenti legali",
+    "additionalInfoTitle": "Ulteriori informazioni per gli utenti",
+    "legalBasisTitle": "Base giuridica del trattamento",
+    "legalBasisText": "Il Titolare tratta Dati Personali relativi all'Utente in caso sussista una delle seguenti condizioni:",
+    "legalBasisPoint1": "l'Utente ha prestato il consenso per una o più finalità specifiche.",
+    "legalBasisPoint2": "il trattamento è necessario all'esecuzione di un contratto con l'Utente e/o all'esecuzione di misure precontrattuali;",
+    "legalBasisPoint3": "il trattamento è necessario per adempiere un obbligo legale al quale è soggetto il Titolare;",
+    "legalBasisPoint4": "il trattamento è necessario per l'esecuzione di un compito di interesse pubblico o per l'esercizio di pubblici poteri di cui è investito il Titolare;",
+    "legalBasisPoint5": "il trattamento è necessario per il perseguimento del legittimo interesse del Titolare o di terzi.",
+    "clarificationText": "È comunque sempre possibile richiedere al Titolare di chiarire la concreta base giuridica di ciascun trattamento ed in particolare di specificare se il trattamento sia basato sulla legge, previsto da un contratto o necessario per concludere un contratto.",
+    "retentionTitle": "Ulteriori informazioni sul tempo di conservazione",
+    "retentionText": "Se non diversamente indicato in questo documento, i Dati Personali sono trattati e conservati per il tempo richiesto dalla finalità per la quale sono stati raccolti e potrebbero essere conservati per un periodo più lungo a causa di eventuali obbligazioni legali o sulla base del consenso degli Utenti.",
+    "retentionExamplesTitle": "Pertanto:",
+    "retentionExample1": "I Dati Personali raccolti per scopi collegati all'esecuzione di un contratto tra il Titolare e l'Utente saranno trattenuti sino a quando sia completata l'esecuzione di tale contratto.",
+    "retentionExample2": "I Dati Personali raccolti per finalità riconducibili all'interesse legittimo del Titolare saranno trattenuti sino al soddisfacimento di tale interesse. L'Utente può ottenere ulteriori informazioni in merito all'interesse legittimo perseguito dal Titolare nelle relative sezioni di questo documento o contattando il Titolare.",
+    "ownerTitle": "Titolare del Trattamento dei Dati",
+    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA e C.Fisc. 04048370870<br />Indirizzo email del Titolare: amministrazione@proclama.co",
+    "dataTypesCollectedTitle": "Tipologie di Dati raccolti",
+    "dataTypesCollectedText1": "Fra i Dati Personali raccolti da questa Applicazione, in modo autonomo o tramite terze parti, ci sono: Dati comunicati durante l'utilizzo del servizio; Dati di utilizzo; Partita IVA; CAP; città; ragione sociale; nazione; data di nascita; email; nome; posizione geografica; cognome; numero di telefono; username.",
+    "dataTypesCollectedText2": "Dettagli completi su ciascuna tipologia di Dati Personali raccolti sono forniti nelle sezioni dedicate di questa privacy policy o mediante specifici testi informativi visualizzati prima della raccolta dei Dati stessi. I Dati Personali possono essere liberamente forniti dall'Utente o, nel caso di Dati di Utilizzo, raccolti automaticamente durante l'uso di questa Applicazione.",
+    "dataTypesCollectedText3": "Se non diversamente specificato, tutti i Dati richiesti da questa Applicazione sono obbligatori. Se l'Utente rifiuta di comunicarli, potrebbe essere impossibile per questa Applicazione fornire il Servizio. Nei casi in cui questa Applicazione indichi alcuni Dati come facoltativi, gli Utenti sono liberi di astenersi dal comunicare tali Dati, senza che ciò abbia alcuna conseguenza sulla disponibilità del Servizio o sulla sua operatività. Gli Utenti che dovessero avere dubbi su quali Dati siano obbligatori sono incoraggiati a contattare il Titolare.",
+    "dataTypesCollectedText4": "L'eventuale utilizzo di Cookie - o di altri strumenti di tracciamento - da parte di questa Applicazione o dei titolari dei servizi terzi utilizzati da questa Applicazione ha la finalità di fornire il Servizio richiesto dall'Utente, oltre alle ulteriori finalità descritte nel presente documento. L'Utente si assume la responsabilità dei Dati Personali di terzi ottenuti, pubblicati o condivisi mediante questa Applicazione.",
+    "processingMethodTitle": "Modalità e luogo del trattamento dei Dati raccolti",
+    "processingMethodSubtitle": "Modalità di trattamento",
+    "processingMethodText": "Il Titolare adotta le opportune misure di sicurezza volte ad impedire l'accesso, la divulgazione, la modifica o la distruzione non autorizzate dei Dati Personali. Il trattamento viene effettuato mediante strumenti informatici e/o telematici, con modalità organizzative e con logiche strettamente correlate alle finalità indicate. Oltre al Titolare, in alcuni casi, potrebbero avere accesso ai Dati altri soggetti coinvolti nell'organizzazione di questa Applicazione (personale amministrativo, commerciale, marketing, legali, amministratori di sistema) ovvero soggetti esterni (come fornitori di servizi tecnici terzi, corrieri postali, hosting provider, società informatiche, agenzie di comunicazione) nominati anche, se necessario, Responsabili del Trattamento da parte del Titolare. L'elenco aggiornato dei Responsabili potrà sempre essere richiesto al Titolare del Trattamento.",
+    "locationTitle": "Luogo",
+    "locationText1": "I Dati sono trattati presso le sedi operative del Titolare ed in ogni altro luogo in cui le parti coinvolte nel trattamento siano localizzate. Per ulteriori informazioni, contatta il Titolare.",
+    "locationText2": "I Dati Personali dell'Utente potrebbero essere trasferiti in un paese diverso da quello in cui l'Utente si trova. Per ottenere ulteriori informazioni sul luogo del trattamento l'Utente può fare riferimento alla sezione relativa ai dettagli sul trattamento dei Dati Personali.",
+    "retentionPeriodTitle": "Periodo di conservazione",
+    "retentionPeriodText": "Se non diversamente indicato in questo documento, i Dati Personali sono trattati e conservati per il tempo richiesto dalla finalità per la quale sono stati raccolti e potrebbero essere conservati per un periodo più lungo a causa di eventuali obbligazioni legali o sulla base del consenso degli Utenti.",
+    "purposeText1": "I Dati dell'Utente sono raccolti per consentire al Titolare di fornire il Servizio, adempiere agli obblighi di legge, rispondere a richieste o azioni esecutive, tutelare i propri diritti ed interessi (o quelli di Utenti o di terze parti), individuare eventuali attività dolose o fraudolente, nonché per le seguenti finalità: Hosting ed infrastruttura backend.",
+    "purposeText2": "Per ottenere informazioni dettagliate sulle finalità del trattamento e sui Dati Personali trattati per ciascuna finalità, l'Utente può fare riferimento alla sezione \"Dettagli sul trattamento dei Dati Personali\".",
+    "detailsTitle": "Dettagli sul trattamento dei Dati Personali",
+    "detailsText": "I Dati Personali sono raccolti per le seguenti finalità ed utilizzando i seguenti servizi:",
+    "retentionConsentText": "Quando il trattamento è basato sul consenso dell'Utente, il Titolare può conservare i Dati Personali più a lungo sino a quando detto consenso non venga revocato. Inoltre, il Titolare potrebbe essere obbligato a conservare i Dati Personali per un periodo più lungo per adempiere ad un obbligo di legge o per ordine di un'autorità. Al termine del periodo di conservazione i Dati Personali saranno cancellati. Pertanto, allo spirare di tale termine il diritto di accesso, cancellazione, rettificazione ed il diritto alla portabilità dei Dati non potranno più essere esercitati.",
+    "rightsIntro": "In particolare, nei limiti previsti dalla legge, l'Utente ha il diritto di:",
+    "rightsPoint1": "revocare il consenso in ogni momento. L'Utente può revocare il consenso al trattamento dei propri Dati Personali precedentemente espresso.",
+    "rightsPoint2": "opporsi al trattamento dei propri Dati. L'Utente può opporsi al trattamento dei propri Dati quando esso avviene in virtù di una base giuridica diversa dal consenso.",
+    "rightsPoint3": "accedere ai propri Dati. L'Utente ha diritto ad ottenere informazioni sui Dati trattati dal Titolare, su determinati aspetti del trattamento ed a ricevere una copia dei Dati trattati.",
+    "rightsPoint4": "verificare e chiedere la rettificazione. L'Utente può verificare la correttezza dei propri Dati e richiederne l'aggiornamento o la correzione.",
+    "rightsPoint5": "ottenere la limitazione del trattamento. L'Utente può richiedere la limitazione del trattamento dei propri Dati. In tal caso il Titolare non tratterà i Dati per alcun altro scopo se non la loro conservazione.",
+    "rightsPoint6": "ottenere la cancellazione o rimozione dei propri Dati Personali. L'Utente può richiedere la cancellazione dei propri Dati da parte del Titolare.",
+    "rightsPoint7": "ricevere i propri Dati o farli trasferire ad altro titolare. L'Utente ha diritto di ricevere i propri Dati in formato strutturato, di uso comune e leggibile da dispositivo automatico e, ove tecnicamente fattibile, di ottenerne il trasferimento senza ostacoli ad un altro titolare.",
+    "rightsPoint8": "proporre reclamo. L'Utente può proporre un reclamo all'autorità di controllo della protezione dei dati personali competente o agire in sede giudiziale.",
+    "rightsTransferInfo": "Gli Utenti hanno diritto di ottenere informazioni in merito alla base giuridica per il trasferimento di Dati all'estero incluso verso qualsiasi organizzazione internazionale regolata dal diritto internazionale o costituita da due o più paesi, come ad esempio l'ONU, nonché in merito alle misure di sicurezza adottate dal Titolare per proteggere i loro Dati.",
+    "oppositionTitle": "Dettagli sul diritto di opposizione",
+    "oppositionText1": "Quando i Dati Personali sono trattati nell'interesse pubblico, nell'esercizio di pubblici poteri di cui è investito il Titolare oppure per perseguire un interesse legittimo del Titolare, gli Utenti hanno diritto ad opporsi al trattamento per motivi connessi alla loro situazione particolare.",
+    "oppositionText2": "Si fa presente agli Utenti che, ove i loro Dati fossero trattati con finalità di marketing diretto, possono opporsi al trattamento in qualsiasi momento, gratuitamente e senza fornire alcuna motivazione. Qualora gli Utenti si oppongano al trattamento per finalità di marketing diretto, i Dati Personali non sono più oggetto di trattamento per tali finalità. Per scoprire se il Titolare tratti Dati con finalità di marketing diretto gli Utenti possono fare riferimento alle rispettive sezioni di questo documento.",
+    "exerciseTitle": "Come esercitare i diritti",
+    "exerciseText": "Eventuali richieste di esercizio dei diritti dell'Utente possono essere indirizzate al Titolare attraverso i recapiti forniti in questo documento. La richiesta è gratuita e il Titolare risponderà nel più breve tempo possibile, in ogni caso entro un mese, fornendo all'Utente tutte le informazioni previste dalla legge. Eventuali rettificazioni, cancellazioni o limitazioni del trattamento saranno comunicate dal Titolare a ciascuno dei destinatari, se esistenti, a cui sono stati trasmessi i Dati Personali, salvo che ciò si riveli impossibile o implichi uno sforzo sproporzionato. Il Titolare comunica all'Utente tali destinatari qualora egli lo richieda.",
+    "additionalProcessingTitle": "Ulteriori informazioni sul trattamento",
+    "legalDefenseTitle": "Difesa in giudizio",
+    "legalDefenseText1": "I Dati Personali dell'Utente possono essere utilizzati da parte del Titolare in giudizio o nelle fasi preparatorie alla sua eventuale instaurazione per la difesa da abusi nell'utilizzo di questa Applicazione o dei Servizi connessi da parte dell'Utente.",
+    "legalDefenseText2": "L'Utente dichiara di essere consapevole che il Titolare potrebbe essere obbligato a rivelare i Dati per ordine delle autorità pubbliche.",
+    "specificInfoTitle": "Informative specifiche",
+    "specificInfoText": "Su richiesta dell'Utente, in aggiunta alle informazioni contenute in questa privacy policy, questa Applicazione potrebbe fornire all'Utente delle informative aggiuntive e contestuali riguardanti Servizi specifici, o la raccolta ed il trattamento di Dati Personali.",
+    "systemLogsTitle": "Log di sistema e manutenzione",
+    "systemLogsText": "Per necessità legate al funzionamento ed alla manutenzione, questa Applicazione e gli eventuali servizi terzi da essa utilizzati potrebbero raccogliere log di sistema, ossia file che registrano le interazioni e che possono contenere anche Dati Personali, quali l'indirizzo IP Utente.",
+    "missingInfoTitle": "Informazioni non contenute in questa policy",
+    "missingInfoText": "Ulteriori informazioni in relazione al trattamento dei Dati Personali potranno essere richieste in qualsiasi momento al Titolare del Trattamento utilizzando gli estremi di contatto.",
+    "changesTitle": "Modifiche a questa privacy policy",
+    "changesText": "Il Titolare del Trattamento si riserva il diritto di apportare modifiche alla presente privacy policy in qualunque momento notificandolo agli Utenti su questa pagina e, se possibile, su questa Applicazione nonché, qualora tecnicamente e legalmente fattibile, inviando una notifica agli Utenti attraverso uno degli estremi di contatto di cui è in possesso. Si prega dunque di consultare con frequenza questa pagina, facendo riferimento alla data di ultima modifica indicata in fondo. Qualora le modifiche interessino trattamenti la cui base giuridica è il consenso, il Titolare provvederà a raccogliere nuovamente il consenso dell'Utente, se necessario.",
+    "personalDataTitle": "Dati Personali (o Dati)",
+    "personalDataText": "Costituisce dato personale qualunque informazione che, direttamente o indirettamente, anche in collegamento con qualsiasi altra informazione, ivi compreso un numero di identificazione personale, renda identificata o identificabile una persona fisica.",
+    "usageDataTitle": "Dati di Utilizzo",
+    "usageDataText": "Sono le informazioni raccolte automaticamente attraverso questa Applicazione (anche da applicazioni di parti terze integrate in questa Applicazione), tra cui: gli indirizzi IP o i nomi a dominio dei computer utilizzati dall'Utente che si connette con questa Applicazione, gli indirizzi in notazione URI (Uniform Resource Identifier), l'orario della richiesta, il metodo utilizzato nell'inoltrare la richiesta al server, la dimensione del file ottenuto in risposta, il codice numerico indicante lo stato della risposta dal server (buon fine, errore, ecc.) il paese di provenienza, le caratteristiche del browser e del sistema operativo utilizzati dal visitatore, le varie connotazioni temporali della visita (ad esempio il tempo di permanenza su ciascuna pagina) e i dettagli relativi all'itinerario seguito all'interno dell'Applicazione, con particolare riferimento alla sequenza delle pagine consultate, ai parametri relativi al sistema operativo e all'ambiente informatico dell'Utente.",
+    "userTitle": "Utente",
+    "userText": "L'individuo che utilizza questa Applicazione che, salvo ove diversamente specificato, coincide con l'Interessato.",
+    "dataSubjectTitle": "Interessato",
+    "dataSubjectText": "La persona fisica cui si riferiscono i Dati Personali.",
+    "processorTitle": "Responsabile del Trattamento (o Responsabile)",
+    "processorText": "La persona fisica, giuridica, la pubblica amministrazione e qualsiasi altro ente che tratta dati personali per conto del Titolare, secondo quanto esposto nella presente privacy policy.",
+    "controllerTitle": "Titolare del Trattamento (o Titolare)",
+    "controllerText": "La persona fisica o giuridica, l'autorità pubblica, il servizio o altro organismo che, singolarmente o insieme ad altri, determina le finalità e i mezzi del trattamento di dati personali e gli strumenti adottati, ivi comprese le misure di sicurezza relative al funzionamento ed alla fruizione di questa Applicazione. Il Titolare del Trattamento, salvo quanto diversamente specificato, è il titolare di questa Applicazione.",
+    "applicationTitle": "Questa Applicazione",
+    "applicationText": "Lo strumento hardware o software mediante il quale sono raccolti e trattati i Dati Personali degli Utenti.",
+    "serviceTitle": "Servizio",
+    "serviceText": "Il Servizio fornito da questa Applicazione così come definito nei relativi termini (se presenti) su questo sito/applicazione.",
+    "euTitle": "Unione Europea (o UE)",
+    "euText": "Salvo ove diversamente specificato, ogni riferimento all'Unione Europea contenuto in questo documento si intende esteso a tutti gli attuali stati membri dell'Unione Europea e dello Spazio Economico Europeo.",
+    "legalReferencesTitle": "Riferimenti legali",
+    "legalReferencesText1": "Ove non diversamente specificato, questa informativa privacy riguarda esclusivamente questa Applicazione.",
+    "legalReferencesText2": "Questo documento è stato creato con il Generatore di Privacy e Cookie Policy di iubenda. Scopri anche il Generatore di Termini e Condizioni. iubenda ospita questo contenuto e raccoglie solo i Dati Personali strettamente necessari alla sua fornitura.",
+    "legalReferencesText3": "(EN) This document has been created with the iubenda Privacy and Cookie Policy Generator. See also the Terms and Conditions Generator."
+  },
   "hero": {
-    "title": "Expertise Contabile Per il Tuo Business Globale",
-    "subtitle": "Assistiamo aziende e investitori stranieri nel gestire con successo il loro business in Italia, fornendo consulenza fiscale e commerciale d'eccellenza.",
+    "title": "Competenza Contabile Per Il Tuo Business Globale",
+    "subtitle": "Assistiamo aziende e investitori stranieri nella gestione di successo del loro business in Italia, offrendo eccellenza nella consulenza fiscale e commerciale.",
     "contactButton": "Contattaci",
     "servicesButton": "Scopri i Nostri Servizi",
-    "backgroundAlt": "Ufficio professionale di commercialisti"
+    "backgroundAlt": "Ufficio contabile professionale"
   },
   "stats": {
     "title": "La Nostra Esperienza in Numeri",
-    "subtitle": "I numeri parlano chiaro: la nostra comprovata esperienza nel supportare clienti internazionali con successo.",
+    "subtitle": "I numeri non mentono: il nostro comprovato successo nel supportare clienti internazionali.",
     "clients": {
       "title": "Clienti Soddisfatti",
-      "description": "Aziende e imprese che si affidano alla nostra consulenza"
+      "description": "Aziende e imprese che si affidano ai nostri servizi di consulenza"
     },
     "experience": {
       "title": "Anni di Esperienza",
@@ -27,76 +131,61 @@
     },
     "professionals": {
       "title": "Professionisti",
-      "description": "Commercialisti ed esperti fiscali a supporto del tuo business"
+      "description": "Commercialisti ed esperti fiscali al servizio del tuo business"
     },
     "volume": {
       "title": "Euro Gestiti",
-      "description": "Valore totale degli asset gestiti dal nostro studio"
+      "description": "Valore totale del patrimonio gestito dalla nostra società"
     }
   },
   "whyChooseUs": {
     "title": "Perché Scegliere Noi",
     "ctaButton": "Parla con un Esperto",
-    "mainImageAlt": "Riunione d'affari con clienti internazionali",
-    "smallImageAlt": "Grafici contabili",
+    "mainImageAlt": "Incontro business clienti internazionali",
+    "smallImageAlt": "Grafici contabilità",
     "features": {
       "international": {
         "title": "Competenza Internazionale",
-        "description": "Conosciamo le sfide delle aziende straniere in Italia. Forniamo assistenza principalmente in lingua inglese, ma grazie alla nostra specializzazione in tecnologie AI, siamo in grado di comunicare con i clienti nella loro lingua madre."
+        "description": "Comprendiamo le sfide che le aziende straniere affrontano in Italia. Forniamo assistenza principalmente in inglese, ma grazie alla nostra competenza nelle tecnologie AI, possiamo comunicare con i clienti nella loro lingua madre."
       },
       "excellence": {
         "title": "Eccellenza Professionale",
-        "description": "Professionisti certificati con esperienza pluriennale nella consulenza contabile e fiscale internazionale. Aggiornamento costante sulle normative."
+        "description": "Professionisti certificati con anni di esperienza nella contabilità internazionale e consulenza fiscale. Aggiornamenti costanti sulle normative."
       },
       "approach": {
         "title": "Approccio Personalizzato",
-        "description": "Ogni cliente riceve soluzioni su misura per le proprie esigenze specifiche. Siamo il vostro partner strategico, non semplici fornitori di servizi."
+        "description": "Ogni cliente riceve soluzioni su misura per le sue esigenze specifiche. Siamo il vostro partner strategico, non solo fornitori di servizi."
       },
       "reliability": {
-        "title": "Tempestività e Affidabilità",
+        "title": "Puntualità e Affidabilità",
         "description": "Rispondiamo rapidamente alle vostre richieste, rispettando scadenze e impegni. Potete contare su di noi per ogni aspetto del vostro business in Italia."
       }
     }
   },
   "services": {
     "title": "I Nostri Servizi",
-    "subtitle": "Offriamo un'ampia gamma di servizi professionali per supportare le vostre attività commerciali in Italia.",
+    "subtitle": "Offriamo una vasta gamma di servizi professionali per supportare le vostre attività commerciali in Italia.",
     "titlePrefix": "I Nostri",
     "titleMain": "Servizi",
     "description": "Offriamo soluzioni professionali su misura per le esigenze specifiche di aziende e investitori internazionali che operano in Italia.",
     "whatPrefix": "Cosa",
     "whatMain": "Offriamo",
-    "whatDescription": "Scopri la nostra gamma completa di servizi di consulenza fiscale e commerciale per clienti internazionali in Italia.",
-    "backgroundAlt": "Ufficio moderno di consulenza",
-    "categories": {
-      "corporate": {
-        "title": "Servizi per Aziende",
-        "subtitle": "Soluzioni complete per società di capitali e grandi imprese"
-      },
-      "freelancers": {
-        "title": "Servizi per Freelancer e Piccole Imprese",
-        "subtitle": "Soluzioni dedicate a professionisti e startup"
-      },
-      "private": {
-        "title": "Servizi per Privati",
-        "subtitle": "Assistenza personalizzata per clienti privati e pensionati"
-      }
-    },
+    "whatDescription": "Scoprite la nostra gamma completa di servizi di consulenza fiscale e commerciale per clienti internazionali in Italia.",
     "cta": {
       "requestConsultation": "Richiedi Consulenza",
       "discoverServices": "Scopri i Servizi",
       "requestInfo": "Richiedi informazioni",
-      "viewAll": "Visualizza tutti"
+      "viewAll": "Visualizza Tutti"
     },
     "whyUs": {
       "subtitle": "Perché sceglierci",
       "titlePrefix": "Perché",
-      "titleMain": "Scegliere Noi",
-      "description": "Cosa ci distingue come partner ideale per la tua attività in Italia",
+      "titleMain": "Sceglierci",
+      "description": "Cosa ci rende il partner ideale per il vostro business in Italia",
       "reasons": {
         "international": {
           "title": "Competenza Internazionale",
-          "description": "Forniamo assistenza principalmente in lingua inglese, ma grazie alla nostra specializzazione in tecnologie AI, possiamo comunicare con i clienti nella loro lingua madre."
+          "description": "Forniamo assistenza principalmente in inglese, ma grazie alla nostra specializzazione nelle tecnologie AI, possiamo comunicare con i clienti nella loro lingua madre."
         },
         "quality": {
           "title": "Qualità Certificata",
@@ -104,100 +193,100 @@
         },
         "custom": {
           "title": "Soluzioni Personalizzate",
-          "description": "Approccio su misura per le specifiche esigenze del tuo business internazionale."
+          "description": "Approccio su misura per le esigenze specifiche del vostro business internazionale."
         },
         "speed": {
           "title": "Reattività",
-          "description": "Risposte rapide e rispetto delle scadenze per supportarti in modo tempestivo ed efficace."
+          "description": "Risposte rapide e rispetto delle scadenze per supportarvi in modo tempestivo ed efficace."
         }
       }
     },
     "features": {
       "accountant": {
         "title": "Commercialista e consulente del lavoro",
-        "description": "Gestione fiscale e contabile per società di capitali con esperienza in operazioni straordinarie: fusioni, scissioni, trasformazioni, conferimenti di azienda e riorganizzazioni di gruppi societari."
+        "description": "Gestione fiscale e contabile per società di capitali con esperienza in operazioni straordinarie: fusioni, scissioni, trasformazioni, conferimenti d'azienda e riorganizzazione di gruppi societari."
       },
       "startup": {
         "title": "Startup e PMI innovative",
-        "description": "Costituzione e assistenza alle startup e PMI innovative con supporto per finanziamenti, crowdfunding e investimenti. Trasformiamo le tue idee in business di successo con competenza ed efficienza."
+        "description": "Costituzione e assistenza a startup e PMI innovative con supporto per finanziamenti, crowdfunding e investimenti. Trasformiamo le vostre idee in business di successo con competenza ed efficienza."
       },
       "finance": {
-        "title": "Finanza agevolata e crediti di imposta",
-        "description": "Accesso a Transizione 4.0, bonus regionali e misure di agevolazione nazionali e comunitarie. Identifichiamo le migliori opportunità di finanziamento per la tua azienda."
+        "title": "Finanza agevolata e crediti d'imposta",
+        "description": "Accesso al Transizione 4.0, bonus regionali e misure di agevolazione nazionali ed europee. Identifichiamo le migliori opportunità di finanziamento per la vostra azienda."
       },
       "ecommerce": {
         "title": "Ecommerce e web agency",
-        "description": "Gestione fiscale specializzata per ecommerce e web agency, con esperienza nei sistemi OSS/IOSS e nelle relazioni con stati europei ed extraeuropei."
+        "description": "Gestione fiscale specializzata per e-commerce e web agency, con esperienza nei sistemi OSS/IOSS e rapporti con stati europei ed extra-europei."
       },
       "business": {
         "title": "Business intelligence",
-        "description": "Ottimizzazione dei processi aziendali e supporto strategico con soluzioni personalizzate per migliorare performance e crescita del business."
+        "description": "Ottimizzazione dei processi aziendali e supporto strategico con soluzioni personalizzate per migliorare le performance e la crescita del business."
       }
     },
     "items": {
       "formation": {
         "title": "Costituzione Società in Italia",
-        "description": "Assistenza completa per l'apertura di società di capitali e di persone in Italia, inclusi tutti gli adempimenti burocratici e fiscali.",
+        "description": "Assistenza completa per la costituzione di società di capitali e di persone in Italia, inclusi tutti i requisiti burocratici e fiscali.",
         "link": "Maggiori informazioni"
       },
       "accounting": {
-        "title": "Contabilità e Bilancio",
-        "description": "Gestione completa della contabilità aziendale, redazione del bilancio d'esercizio e degli adempimenti fiscali periodici.",
+        "title": "Contabilità e Bilanci",
+        "description": "Gestione completa della contabilità aziendale, redazione bilanci e adempimenti fiscali periodici.",
         "link": "Maggiori informazioni"
       },
       "tax": {
         "title": "Consulenza Fiscale Internazionale",
-        "description": "Consulenza su trattati contro le doppie imposizioni, residenza fiscale, transfer pricing e ottimizzazione fiscale internazionale.",
+        "description": "Consulenza su convenzioni contro le doppie imposizioni, residenza fiscale, transfer pricing e ottimizzazione fiscale internazionale.",
         "link": "Maggiori informazioni"
       },
       "planning": {
-        "title": "Business Planning",
+        "title": "Pianificazione Aziendale",
         "description": "Analisi di mercato, business plan, pianificazione strategica e consulenza per l'accesso a finanziamenti e investimenti in Italia.",
         "link": "Maggiori informazioni"
       },
       "payroll": {
-        "title": "Gestione Payroll e HR",
-        "description": "Amministrazione del personale, elaborazione buste paga, consulenza su contratti di lavoro e normative italiane sul lavoro.",
+        "title": "Gestione Buste Paga e HR",
+        "description": "Amministrazione del personale, elaborazione buste paga, consulenza su contratti di lavoro e normative del lavoro italiane.",
         "link": "Maggiori informazioni"
       },
       "legal": {
         "title": "Supporto Legale",
-        "description": "Assistenza legale in materia commerciale, contrattualistica, compliance normativa e rappresentanza presso autorità italiane.",
+        "description": "Assistenza legale in materia commerciale, contratti, conformità normativa e rappresentanza con le autorità italiane.",
         "link": "Maggiori informazioni"
       },
       "private_clients": {
-        "title": "Servizi per Privati e Pensionati",
-        "description": "Assistenza fiscale e amministrativa per privati, pensionati e coloro che desiderano acquistare o fare business in Italia.",
+        "title": "Servizi per Clienti Privati e Pensionati",
+        "description": "Assistenza fiscale e amministrativa per privati, pensionati e chi desidera acquistare o fare business in Italia.",
         "link": "Maggiori informazioni"
       },
       "freelancer": {
         "title": "Servizi per Freelancer",
-        "description": "Assistenza fiscale e amministrativa completa per professionisti e lavoratori autonomi in Italia.",
+        "description": "Assistenza fiscale e amministrativa completa per professionisti e freelancer in Italia.",
         "link": "Maggiori informazioni"
       },
       "relocation": {
-        "title": "Supporto al Trasferimento in Italia",
-        "description": "Assistenza completa per individui e famiglie che si trasferiscono in Italia, inclusi aspetti fiscali e burocratici.",
+        "title": "Supporto Trasferimento in Italia",
+        "description": "Assistenza completa per privati e famiglie che si trasferiscono in Italia, inclusi aspetti fiscali e burocratici.",
         "link": "Maggiori informazioni"
       },
       "facilitated_finance": {
-        "title": "Finanziamenti Agevolati",
-        "description": "Identificazione e accesso a finanziamenti agevolati, bonus e crediti d'imposta per imprese e privati.",
+        "title": "Finanza Agevolata",
+        "description": "Identificazione e accesso a finanziamenti agevolati, bonus e crediti d'imposta per aziende e privati.",
         "link": "Maggiori informazioni"
       },
       "agriculture": {
-        "title": "Consulenza per il Settore Agricolo",
+        "title": "Consulenza Settore Agricolo",
         "description": "Assistenza fiscale, contabile e strategica specifica per aziende agricole e attività connesse.",
         "link": "Maggiori informazioni"
       },
       "partita_iva": {
         "title": "Apertura e Gestione Partita IVA",
-        "description": "Assistenza completa per l'apertura della partita IVA, scelta del regime fiscale più conveniente e gestione degli adempimenti periodici.",
+        "description": "Assistenza completa per apertura partita IVA, scelta del regime fiscale più conveniente e gestione adempimenti periodici.",
         "link": "Maggiori informazioni"
       },
       "regime_forfettario": {
         "title": "Regime Forfettario",
-        "description": "Consulenza specializzata per il regime fiscale agevolato dedicato ai freelancer e piccole imprese con fatturato fino a 85.000€.",
+        "description": "Consulenza specializzata per il regime fiscale agevolato dedicato a freelancer e piccole imprese con fatturato fino a €85.000.",
         "link": "Maggiori informazioni"
       },
       "srl_semplificata": {
@@ -207,195 +296,142 @@
       },
       "digitalizzazione": {
         "title": "Digitalizzazione Aziendale",
-        "description": "Implementazione di sistemi digitali per ottimizzare processi amministrativi, contabili e gestionali delle piccole imprese.",
+        "description": "Implementazione di sistemi digitali per ottimizzare i processi amministrativi, contabili e gestionali delle piccole imprese.",
         "link": "Maggiori informazioni"
       },
       "controllo_gestione": {
         "title": "Controllo di Gestione",
-        "description": "Analisi periodiche delle performance aziendali, KPI e supporto decisionale per la crescita del business.",
+        "description": "Analisi periodica delle performance aziendali, KPI e supporto decisionale per la crescita del business.",
         "link": "Maggiori informazioni"
       }
     }
   },
+  "testimonials": {
+    "title": "Cosa Dicono i Nostri Clienti",
+    "subtitle": "La soddisfazione dei nostri clienti è la nostra migliore referenza. Ecco alcune testimonianze di chi ha scelto i nostri servizi.",
+    "items": [
+      {
+        "quote": "Proclama SPA ci ha assistito nella costituzione della nostra filiale italiana con professionalità eccezionale. Il loro approccio internazionale e la comunicazione in inglese hanno reso tutto molto più semplice.",
+        "name": "Michael Johnson",
+        "position": "CEO, TechCorp International"
+      },
+      {
+        "quote": "Grazie al team di Proclama siamo riusciti a ottimizzare la nostra struttura fiscale italiana risparmiando significativamente. La loro competenza in materia internazionale è davvero impressionante.",
+        "name": "Elena Schmidt",
+        "position": "CFO, European Ventures Ltd"
+      },
+      {
+        "quote": "Come imprenditore straniero, trovare un partner affidabile in Italia era fondamentale. Proclama SPA ha superato le nostre aspettative in ogni aspetto del servizio.",
+        "name": "David Chen",
+        "position": "Founder, Asia-Europe Trading"
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Rimani Aggiornato",
+    "subtitle": "Iscriviti alla nostra newsletter per ricevere gli ultimi aggiornamenti su normative fiscali, opportunità di business e consigli per il tuo successo in Italia.",
+    "inputPlaceholder": "Inserisci la tua email",
+    "button": "Iscriviti",
+    "loadingButton": "Iscrizione...",
+    "success": {
+      "title": "Iscrizione completata!",
+      "message": "Ti abbiamo inviato una email di conferma."
+    },
+    "error": {
+      "title": "Errore nell'iscrizione",
+      "message": "Si è verificato un errore. Riprova più tardi."
+    }
+  },
   "media": {
     "title": "Parlano di Noi",
-    "subtitle": "Scopri cosa dicono di Dobusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.",
-    "typeArticle": "Articolo",
-    "typeProfile": "Profilo",
-    "typeMention": "Menzione",
-    "readMore": "Leggi l'articolo completo",
+    "subtitle": "Scopri cosa dicono la stampa e i media specializzati del settore economico-finanziario su Dobusinessinitaly.com.",
+    "types": {
+      "article": "Articolo",
+      "profile": "Profilo",
+      "mention": "Menzione"
+    },
+    "filters": {
+      "all": "Tutti"
+    },
+    "readMore": "Leggi articolo completo",
     "requestArticle": "Articolo disponibile su richiesta",
     "seeAll": "Vedi tutte le menzioni",
     "all": "Tutti",
     "noResults": "Nessun risultato trovato per il filtro selezionato.",
     "credentialsTitle": "Riconoscimenti e Credibilità",
-    "credentialsParagraph1": "I riconoscimenti e le menzioni che abbiamo ricevuto testimoniano il nostro impegno costante verso l'eccellenza nel servizio ai clienti internazionali e l'innovazione tecnologica applicata alla consulenza fiscale e aziendale. Siamo orgogliosi di essere riconosciuti come pionieri nella digitalizzazione dei servizi professionali, come dimostrato dal premio \"Professionista Digitale dell'anno\" ricevuto dal Politecnico di Milano e dai riconoscimenti \"100 Best in Class\" di Forbes Italia e TeamSystem.",
-    "credentialsParagraph2": "La nostra esperienza nella digitalizzazione dei processi, documentata nelle pubblicazioni del nostro fondatore Giovanni Emmi, ci permette di offrire un servizio efficiente e di qualità, superando le barriere linguistiche e burocratiche che spesso ostacolano le aziende straniere che desiderano operare in Italia. I nostri progetti digitali come Partitaiva.ai ed Evoluzione.pro sono esempi concreti del nostro approccio innovativo.",
-    "credentialsParagraph3": "Queste credenziali rafforzano la nostra posizione come partner affidabile per assistere la vostra azienda nel navigare con successo il complesso panorama fiscale e normativo italiano. La nostra reputazione è costruita su risultati concreti, pubblicazioni autorevoli e sulla soddisfazione dei nostri clienti internazionali.",
+    "credentialsParagraph1": "I riconoscimenti e le menzioni che abbiamo ricevuto testimoniano il nostro costante impegno verso l'eccellenza nel servizio ai clienti internazionali e l'innovazione tecnologica applicata alla consulenza fiscale e aziendale. Siamo orgogliosi di essere riconosciuti come pionieri nella digitalizzazione dei servizi professionali, come testimoniato dal premio \"Professionista Digitale dell'Anno\" ricevuto dal Politecnico di Milano e i riconoscimenti \"100 Best in Class\" da Forbes Italia e TeamSystem.",
+    "credentialsParagraph2": "La nostra esperienza nella digitalizzazione dei processi, documentata nelle pubblicazioni del nostro fondatore Giovanni Emmi, ci consente di offrire un servizio efficiente e di qualità, superando le barriere linguistiche e burocratiche che spesso ostacolano le aziende straniere che desiderano operare in Italia. I nostri progetti digitali come Partitaiva.ai ed Evoluzione.pro sono esempi concreti del nostro approccio innovativo.",
+    "credentialsParagraph3": "Queste credenziali rafforzano la nostra posizione come partner affidabile per assistere la vostra azienda nel navigare con successo il complesso panorama fiscale e normativo italiano. La nostra reputazione è costruita su risultati concreti, pubblicazioni autorevoli e la soddisfazione dei nostri clienti internazionali.",
     "note": "Nota",
-    "noteText": "I link in questa pagina conducono a risorse verificabili come pubblicazioni su Amazon, siti web ufficiali dei nostri progetti e pagine di riconoscimenti. Per ulteriori informazioni o dettagli su qualsiasi menzione, non esitate a",
-    "contactUs": "contattarci",
-    "items": [
-      {
-        "title": "100 Best in Class 2024 - Innovazione Digitale nei servizi professionali",
-        "date": "2024",
-        "source": "Forbes Italia / TeamSystem",
-        "excerpt": "Riconoscimento per l'eccellenza nell'innovazione digitale nei servizi professionali. Proclama SPA è stata premiata tra i migliori studi italiani per innovazione digitale, confermando il nostro impegno verso un servizio clienti moderno ed efficiente.",
-        "link": "https://www.forbes.it/100-best-in-class-2023",
-        "type": "mention"
-      },
-      {
-        "title": "Premio \"Professionista Digitale dell'anno 2014\"",
-        "date": "2014",
-        "source": "Politecnico di Milano - Osservatorio Professionisti e Innovazione Digitale",
-        "excerpt": "Nel 2014 lo Studio Emmi, oggi Proclama SPA, si è distinto in Italia per capacità innovativa a livello organizzativo e di business con l'utilizzo delle tecnologie digitali. In particolare per il progetto partitaiva.it, pioniere nella trasformazione digitale dello studio professionale.",
-        "link": "https://www.digital4.biz/executive/professionisti-e-l-obbligo-di-legge-a-guidare-l-innovazione-digitale/",
-        "type": "mention"
-      },
-      {
-        "title": "Pubblicazione: \"L'evoluzione del commercialista nell'era dell'Intelligenza Artificiale\"",
-        "date": "2024",
-        "source": "Amazon - Pubblicazioni di Giovanni Emmi",
-        "excerpt": "Libro che esplora come l'intelligenza artificiale stia trasformando la professione del commercialista. \"Essere un commercialista innovativo significa essere un pilastro per la continuità e il progresso delle aziende clienti, un punto di riferimento per il futuro, mantenendo sempre un'alta etica professionale.\"",
-        "link": "https://amzn.eu/d/4GNuret",
-        "type": "profile"
-      },
-      {
-        "title": "Partitaiva.ai - Piattaforma innovativa per commercialisti e PMI",
-        "date": "2023",
-        "source": "Progetti digitali di Proclama SPA",
-        "excerpt": "Portale che semplifica e riorganizza gli studi dei commercialisti e le aree amministrative e contabili delle PMI. Un progetto all'avanguardia che utilizza l'intelligenza artificiale per ottimizzare i processi amministrativi e contabili.",
-        "link": "https://www.partitaiva.it",
-        "type": "article"
-      }
-    ]
-  },
-  "blog": {
-    "title": "Blog e Aggiornamenti",
-    "subtitle": "Ultimi articoli e novità dal mondo fiscale e commerciale italiano.",
-    "viewAll": "Tutti gli articoli",
-    "readMore": "Leggi l'articolo",
-    "featuredArticle": "Articolo",
-    "featured": "in Evidenza",
-    "posts": [
-      {
-        "date": "12 Maggio 2023",
-        "category": "Fiscalità Internazionale",
-        "title": "Novità sul Regime Fiscale per Espatriati in Italia: Opportunità per Manager Stranieri",
-        "excerpt": "Analisi delle recenti modifiche al regime fiscale dedicato ai lavoratori impatriati e le opportunità per manager e professionisti stranieri."
-      },
-      {
-        "date": "28 Aprile 2023",
-        "category": "Investimenti",
-        "title": "Investire nel Mercato Immobiliare Italiano: Guida per Investitori Esteri",
-        "excerpt": "Una panoramica completa sulle opportunità, procedure e implicazioni fiscali per gli investitori stranieri nel settore immobiliare italiano."
-      },
-      {
-        "date": "15 Aprile 2023",
-        "category": "Legislazione",
-        "title": "E-commerce in Italia: Requisiti Legali e Fiscali per Operatori Stranieri",
-        "excerpt": "Un'analisi dettagliata degli obblighi normativi e fiscali per le aziende estere che vogliono vendere online nel mercato italiano."
-      }
-    ]
-  },
-  "newsletter": {
-    "title": "Iscriviti alla Nostra Newsletter",
-    "subtitle": "Rimani aggiornato sulle ultime novità fiscali e commerciali rilevanti per il tuo business in Italia. Ricevi consigli pratici e opportunità direttamente nella tua casella di posta.",
-    "placeholder": "Il tuo indirizzo email",
-    "subscribe": "Iscriviti",
-    "subscribing": "Iscrizione in corso...",
-    "privacy": "Ci impegniamo a rispettare la tua privacy. Puoi annullare l'iscrizione in qualsiasi momento.",
-    "success": {
-      "title": "Iscrizione completata",
-      "message": "Grazie per esserti iscritto alla nostra newsletter!"
-    },
-    "error": {
-      "title": "Errore iscrizione",
-      "message": "Si è verificato un errore durante l'iscrizione alla newsletter. Riprova."
-    }
+    "noteText": "I link presenti in questa pagina conducono a risorse verificabili come pubblicazioni Amazon, siti ufficiali dei nostri progetti e pagine di riconoscimenti. Per maggiori informazioni o dettagli su qualsiasi menzione, non esitate a",
+    "contactUs": "contattarci"
   },
   "contact": {
-    "title": "Contattaci",
-    "subtitle": "Hai domande sui nostri servizi o desideri una consulenza? Compila il modulo di contatto e il nostro team ti risponderà al più presto.",
+    "title": "Contatti",
+    "subtitle": "Siamo qui per aiutarvi. Contattateci per una consulenza personalizzata sul vostro business in Italia.",
     "contactInfo": "Informazioni di contatto",
     "form": {
-      "title": "Contattaci",
+      "title": "Inviateci un messaggio",
       "name": "Nome e Cognome",
       "company": "Azienda",
       "email": "Email",
       "phone": "Telefono",
-      "service": "Servizio di Interesse",
-      "servicePlaceholder": "Seleziona un servizio",
-      "services": {
-        "formation": "Costituzione Società in Italia",
-        "accounting": "Contabilità e Bilancio",
-        "tax": "Consulenza Fiscale Internazionale",
-        "planning": "Business Planning",
-        "payroll": "Gestione Payroll e HR",
-        "legal": "Supporto Legale",
-        "other": "Altro"
-      },
-      "message": "Il Tuo Messaggio",
-      "privacyConsent": "Acconsento al trattamento dei miei dati personali in conformità con la",
-      "privacyPolicy": "Privacy Policy",
+      "service": "Servizio di interesse",
+      "selectServicePlaceholder": "Seleziona un servizio",
+      "message": "Messaggio",
+      "privacyConsent": "Accetto l'informativa sulla",
+      "privacyPolicy": "privacy",
       "send": "Invia Messaggio",
       "sending": "Invio in corso...",
       "validation": {
-        "nameRequired": "Il nome è obbligatorio",
+        "nameRequired": "Nome e cognome sono obbligatori",
         "emailInvalid": "Inserisci un indirizzo email valido",
         "serviceRequired": "Seleziona un servizio",
         "messageLength": "Il messaggio deve contenere almeno 10 caratteri",
-        "privacyRequired": "Devi accettare la privacy policy"
+        "privacyRequired": "Devi accettare l'informativa sulla privacy"
       }
     },
-    "info": {
-      "title": "Informazioni di Contatto",
-      "address": {
-        "title": "Indirizzo",
-        "value": "Catania, Viale Africa 31",
-        "label": "Indirizzo"
-      },
-      "phone": {
-        "title": "Telefono",
-        "value": "+39 02 1234 5678",
-        "label": "Telefono"
-      },
-      "email": {
-        "title": "Email",
-        "value": "info@dobusinessinitaly.com",
-        "label": "Email"
-      },
-      "hours": {
-        "title": "Orari di Apertura",
-        "value": "Lunedì - Venerdì: 9:00 - 18:00",
-        "label": "Orari di Apertura"
-      },
-      "officeImageAlt": "Il nostro ufficio"
-    },
-    "map": {
-      "title": "Dove Siamo",
-      "titleAlt": "Mappa della nostra sede"
-    },
-    "social": {
-      "title": "Seguici"
-    },
     "success": {
-      "title": "Messaggio inviato",
-      "message": "Grazie per averci contattato! Ti risponderemo al più presto."
+      "title": "Messaggio inviato!",
+      "message": "Grazie per averci contattato. Risponderemo al più presto."
     },
     "error": {
       "title": "Messaggio non inviato",
-      "message": "Si è verificato un errore durante l'invio del messaggio. Riprova."
+      "message": "Si è verificato un errore nell'invio del messaggio. Riprova."
+    },
+    "info": {
+      "title": "Informazioni di contatto",
+      "address": {
+        "label": "Indirizzo",
+        "value": "Via Gabriele D'Annunzio, 56, Catania"
+      },
+      "phone": {
+        "label": "Telefono",
+        "value": "+39 095 2935423"
+      },
+      "email": {
+        "label": "Email",
+        "value": "amministrazione@proclama.co"
+      },
+      "hours": {
+        "label": "Orari",
+        "value": "Lun-Ven: 9:00-18:00"
+      },
+      "social": "Seguici sui social",
+      "officeImageAlt": "Ufficio Proclama SPA"
+    },
+    "map": {
+      "title": "La nostra sede",
+      "titleAlt": "Mappa ufficio Proclama SPA"
     }
   },
   "footer": {
-    "tagline": "Esperti in consulenza fiscale e commerciale per aziende e investitori internazionali in Italia.",
+    "tagline": "Esperti in consulenza fiscale e aziendale per aziende e investitori internazionali in Italia.",
     "quickLinks": "Link Rapidi",
     "services": "Servizi",
     "contact": "Contatti",
     "copyright": "Tutti i diritti riservati.",
     "privacy": "Privacy Policy",
-    "terms": "Termini e Condizioni",
     "cookies": "Cookie Policy"
   },
   "about": {
@@ -403,37 +439,37 @@
     "title": "Chi Siamo",
     "titlePrefix": "Chi",
     "titleMain": "Siamo",
-    "longDescription": "Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale. Competenze, meritocrazia, pari opportunità sono la nostra mission.",
+    "longDescription": "Una realtà giovane e dinamica che si propone di sovvertire il paradigma tradizionale dello studio professionale. Competenza, meritocrazia e pari opportunità sono la nostra missione.",
     "contactButton": "Contattaci",
     "teamButton": "Il nostro team",
     "paradigmTitle": "Un nuovo paradigma professionale",
-    "paradigmDescription1": "Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale, basato sulla figura centrale del dominus. Competenze, meritocrazia, pari opportunità sono la nostra mission.",
-    "paradigmDescription2": "Aggregazione, specializzazione, digitalizzazione, organizzazione sono i pilastri alla base della nostra cultura professionale.",
-    "diversityQuote": "Oltre il 50% dei soci, collaboratori e partner ha meno di 40 anni ed è di sesso femminile. Un mix di nuove competenze professionali e esperienza consolidata nel settore della consulenza, a disposizione dei nostri clienti.",
+    "paradigmDescription1": "Una realtà giovane e dinamica che si propone di sovvertire il paradigma tradizionale dello studio professionale, basato sulla figura centrale del dominus. Competenza, meritocrazia e pari opportunità sono la nostra missione.",
+    "paradigmDescription2": "Aggregazione, specializzazione, digitalizzazione e organizzazione sono i pilastri alla base della nostra cultura professionale.",
+    "diversityQuote": "Oltre il 50% di soci, collaboratori e personale è under 40 e di sesso femminile. Un mix di nuove competenze professionali ed esperienza consolidata nel settore della consulenza, a disposizione dei nostri clienti.",
     "teamImage": "Il nostro team",
     "stats": {
-      "partners": "Soci",
+      "partners": "Partner",
       "employees": "Dipendenti",
-      "collaborators": "Commercialisti partner",
+      "collaborators": "Commercialisti Partner",
       "womenPercentage": "Donne nel team"
     },
     "teamSection": {
       "badge": "Il nostro team",
-      "titlePrefix": "Le",
-      "titleMain": "nostre persone",
-      "description": "Professionisti altamente qualificati con esperienza e competenza nei rispettivi settori.",
+      "titlePrefix": "Le nostre",
+      "titleMain": "persone",
+      "description": "Professionisti altamente qualificati con esperienza e competenze nei rispettivi settori.",
       "roles": {
-        "founder": "Founder",
+        "founder": "Fondatore",
         "ceo": "CEO",
-        "founderCeo": "Founder & CEO",
-        "partner": "Socio"
+        "founderCeo": "Fondatore & CEO",
+        "partner": "Partner"
       },
       "specialties": {
         "accountant": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
         "consultant": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
         "labor": "Consulente del lavoro",
-        "digital": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
-        "itAccounting": "Dottore commercialista e revisore legale, specializzato in bilancio e fiscalità di società IT",
+        "digital": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione dei processi aziendali",
+        "itAccounting": "Dottore commercialista e revisore legale, specializzato in bilanci e fiscalità di aziende informatiche",
         "laborSpecialist": "Dottore commercialista specializzato in consulenza del lavoro"
       }
     },
@@ -443,7 +479,7 @@
       "values": [
         {
           "title": "Professionalità",
-          "description": "Competenza, aggiornamento continuo e rispetto delle norme etiche e legali sono alla base del nostro lavoro."
+          "description": "Competenza, aggiornamento continuo e rispetto degli standard etici e legali sono alla base del nostro lavoro."
         },
         {
           "title": "Innovazione",
@@ -451,39 +487,131 @@
         },
         {
           "title": "Integrità",
-          "description": "Trasparenza, onestà e correttezza guidano ogni nostra azione e relazione professionale."
+          "description": "Trasparenza, onestà e correttezza guidano ogni azione e rapporto professionale."
         }
       ]
     },
     "stpSection": {
-      "badge": "Società tra Professionisti",
-      "title": "Società iscritta all'Albo",
-      "description": "La nostra società, Proclama S.p.A., è una Società tra Professionisti (STP) costituita da dottori commercialisti regolarmente iscritti all'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania, un albo professionale riconosciuto dallo Stato italiano. L'iscrizione all'albo garantisce che tutti i nostri professionisti abbiano superato un rigoroso percorso di formazione e abilitazione, offrendo così ai nostri clienti la massima affidabilità e competenza.",
-      "verifyTitle": "Verifica nell'Albo dei Dottori Commercialisti di Catania",
-      "verifyDescription": "Per la massima trasparenza, tutte le informazioni relative ai professionisti e alle società iscritte sono pubbliche e consultabili nell'Albo dell'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania. Qui è possibile verificare i dati di iscrizione, le qualifiche e le informazioni di contatto dei commercialisti e delle società tra professionisti.",
+      "badge": "Società Tra Professionisti",
+      "title": "Società Regolarmente Iscritta",
+      "description": "La nostra azienda, Proclama S.p.A., è una Società Tra Professionisti (STP) composta da dottori commercialisti regolarmente iscritti all'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania, albo professionale riconosciuto dallo Stato italiano. L'iscrizione all'Ordine garantisce che tutti i nostri professionisti abbiano completato un rigoroso percorso di formazione e abilitazione, offrendo così ai nostri clienti la massima affidabilità e competenza.",
+      "verifyTitle": "Verifica nell'Albo dei Commercialisti di Catania",
+      "verifyDescription": "Per la massima trasparenza, tutte le informazioni relative ai professionisti e alle società iscritte sono pubbliche e consultabili nell'Albo dell'Ordine dei Dottori Commercialisti e degli Esperti Contabili di Catania. Qui è possibile verificare i dati di iscrizione, le qualifiche e i recapiti dei commercialisti e delle società tra professionisti.",
       "verifyLink": "Verifica nell'Albo",
       "verifyUrl": "https://odcec.ct.it/soc_tra_prof/stp-n-4-proclama-stp-spa/",
       "accountantTitle": "Chi è il Dottore Commercialista",
-      "accountantDescription": "Il dottore commercialista è un professionista altamente qualificato che offre consulenza fiscale, societaria, amministrativa e legale sia a privati che ad aziende. È una figura riconosciuta dallo Stato italiano, con competenze specifiche in ambito economico, commerciale, finanziario e tributario.",
+      "accountantDescription": "Il dottore commercialista è un professionista altamente qualificato che offre consulenza fiscale, societaria, amministrativa e legale sia a privati che ad aziende. È una figura riconosciuta dallo Stato italiano, con competenze specifiche in materia economica, commerciale, finanziaria e tributaria.",
       "pathTitle": "Il percorso per diventare dottore commercialista prevede:",
       "pathSteps": [
-        "Il conseguimento di una laurea magistrale in discipline economiche (ad esempio, Economia e Commercio o Economia Aziendale).",
-        "Un periodo di tirocinio pratico di almeno 18 mesi presso uno studio di un commercialista iscritto all'albo.",
-        "Il superamento dell'Esame di Stato, articolato in tre prove scritte (su materie come contabilità, diritto commerciale, diritto tributario, revisione aziendale) e una prova orale, che verifica anche le conoscenze deontologiche e informatiche."
+        "Conseguimento di una laurea magistrale in discipline economiche (ad esempio, Economia e Commercio o Economia Aziendale).",
+        "Un periodo di tirocinio pratico di almeno 18 mesi presso lo studio di un dottore commercialista iscritto all'Ordine.",
+        "Superamento dell'Esame di Stato, composto da tre prove scritte (su materie come ragioneria, diritto commerciale, diritto tributario, revisione aziendale) e una prova orale, che verifica anche le conoscenze deontologiche e informatiche."
       ],
-      "conclusion": "Solo chi supera l'Esame di Stato e si iscrive all'albo può esercitare legalmente la professione di dottore commercialista in Italia, offrendo così ai clienti garanzia di professionalità, aggiornamento continuo e rispetto delle norme etiche e legali."
+      "conclusion": "Solo chi supera l'Esame di Stato e si iscrive all'Ordine può esercitare legalmente la professione di dottore commercialista in Italia, offrendo così ai clienti una garanzia di professionalità, aggiornamento continuo e rispetto degli standard etici e legali."
     }
   },
   "team": {
-    "rosario_petralia_role": "Founder e chairman",
+    "rosario_petralia_role": "Fondatore & Presidente",
     "rosario_petralia_specialty": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
-    "giovanni_emmi_role": "Founder e CEO",
-    "giovanni_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
-    "rosario_emmi_role": "Founder",
-    "rosario_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in startup e PMI innovative, digitalizzazione processi aziendali",
-    "gaetana_vecchio_role": "Socio",
-    "gaetana_vecchio_specialty": "Dottore commercialista specializzato in consulenza del lavoro",
-    "rosy_fresta_role": "Socio",
-    "rosy_fresta_specialty": "Consulente del lavoro"
+    "giovanni_emmi_role": "Fondatore & CEO",
+    "giovanni_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Guide, approfondimenti e aggiornamenti su fiscalità, business e normative per aziende internazionali in Italia.",
+    "readMore": "Leggi di più",
+    "backToBlog": "Torna al Blog",
+    "relatedPosts": "Articoli correlati",
+    "noArticles": "Nessun articolo disponibile al momento.",
+    "searchPlaceholder": "Cerca articoli...",
+    "filterByCategory": "Filtra per categoria",
+    "allCategories": "Tutte le categorie",
+    "categories": {
+      "guide": "Guide",
+      "news": "Notizie",
+      "tax": "Fiscalità",
+      "business": "Business",
+      "legal": "Legale"
+    },
+    "meta": {
+      "readingTime": "min di lettura",
+      "publishedOn": "Pubblicato il"
+    }
+  },
+  "cookies": {
+    "banner": {
+      "title": "Utilizziamo i Cookie",
+      "message": "Questo sito utilizza cookie tecnici e di analisi per migliorare la tua esperienza di navigazione. Continuando a navigare accetti l'utilizzo dei cookie.",
+      "acceptAll": "Accetta Tutti",
+      "acceptNecessary": "Solo Necessari",
+      "learnMore": "Scopri di più",
+      "settings": "Impostazioni"
+    },
+    "preferences": {
+      "title": "Preferenze Cookie",
+      "description": "Personalizza le tue preferenze sui cookie. Puoi abilitare o disabilitare diverse categorie in qualsiasi momento.",
+      "necessary": {
+        "title": "Cookie Necessari",
+        "description": "Questi cookie sono essenziali per il funzionamento del sito web e non possono essere disabilitati.",
+        "enabled": "Sempre abilitati"
+      },
+      "analytics": {
+        "title": "Cookie di Analisi",
+        "description": "Ci aiutano a capire come interagisci con il nostro sito web raccogliendo e segnalando informazioni in modo anonimo."
+      },
+      "marketing": {
+        "title": "Cookie di Marketing",
+        "description": "Utilizzati per tracciare i visitatori sui siti web. L'intenzione è quella di visualizzare annunci pertinenti e coinvolgenti."
+      },
+      "savePreferences": "Salva Preferenze",
+      "acceptSelected": "Accetta Selezionati"
+    },
+    "policy": {
+      "title": "Cookie Policy",
+      "lastUpdated": "Ultimo aggiornamento: 15 dicembre 2024",
+      "intro": "Questa Cookie Policy spiega cosa sono i cookie e come li utilizziamo sul nostro sito web.",
+      "whatAreCookies": {
+        "title": "Cosa sono i Cookie",
+        "content": "I cookie sono piccoli file di testo che vengono salvati sul tuo dispositivo quando visiti un sito web. Sono ampiamente utilizzati per far funzionare i siti web, o per farli funzionare in modo più efficiente, nonché per fornire informazioni ai proprietari del sito."
+      },
+      "howWeUseCookies": {
+        "title": "Come utilizziamo i Cookie",
+        "content": "Utilizziamo i cookie per diversi motivi, tra cui:",
+        "reasons": [
+          "Garantire il corretto funzionamento del sito web",
+          "Migliorare le prestazioni e la sicurezza",
+          "Analizzare l'utilizzo del sito per migliorare i nostri servizi",
+          "Personalizzare la tua esperienza di navigazione"
+        ]
+      },
+      "typesOfCookies": {
+        "title": "Tipi di Cookie che utilizziamo",
+        "necessary": {
+          "title": "Cookie Strettamente Necessari",
+          "description": "Questi cookie sono essenziali per permetterti di navigare nel sito web e utilizzare le sue funzionalità."
+        },
+        "performance": {
+          "title": "Cookie di Prestazione",
+          "description": "Questi cookie raccolgono informazioni su come utilizzi il nostro sito web, come le pagine che visiti più spesso."
+        },
+        "functionality": {
+          "title": "Cookie di Funzionalità",
+          "description": "Questi cookie permettono al sito web di ricordare le scelte che fai e forniscono funzionalità migliorate e personalizzate."
+        }
+      },
+      "manageCookies": {
+        "title": "Gestione dei Cookie",
+        "content": "Puoi controllare e gestire i cookie in diversi modi:",
+        "methods": [
+          "Utilizzando le nostre impostazioni cookie su questo sito",
+          "Modificando le impostazioni del tuo browser",
+          "Utilizzando strumenti online di opt-out"
+        ]
+      },
+      "contact": {
+        "title": "Contattaci",
+        "content": "Se hai domande su questa Cookie Policy, puoi contattarci all'indirizzo: amministrazione@proclama.co"
+      }
+    }
   }
 }

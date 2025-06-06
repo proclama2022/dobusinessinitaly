@@ -56,9 +56,8 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Serve the app on port 3000 (changed from 5000 due to potential port conflicts)
-  // this serves both the API and the client.
-  const port = 3000;
+  // Use PORT from environment variable or default to 3000
+  const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
   server.listen(port, () => {
     log(`serving on http://localhost:${port}`);
   });

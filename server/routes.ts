@@ -9,6 +9,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { sendEmail } from './services/emailService';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -360,6 +361,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const contactData = insertContactSchema.parse(req.body);
       const submission = await storage.createContactSubmission(contactData);
+      
+      // Send email notification
+      try {
+        const emailHtml = `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${contactData.name}</p>
+          <p><strong>Email:</strong> ${contactData.email}</p>
+          <p><strong>Company:</strong> ${contactData.company || 'N/A'}</p>
+          <p><strong>Phone:</strong> ${contactData.phone || 'N/A'}</p>
+          <p><strong>Service:</strong> ${contactData.service}</p>
+          <p><strong>Message:</strong></p>
+          <p>${contactData.message}</p>
+        `;
+        
+        await sendEmail({
+          to: process.env.ADMIN_EMAIL || 'admin@dobusinessnew.it',
+          subject: `New Contact Submission from ${contactData.name}`,
+          html: emailHtml
+        });
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+        // Continue even if email fails, but log the error
+      }
+
       res.status(201).json({
         success: true,
         message: "Contact form submitted successfully",
@@ -656,7 +681,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 // Endpoint per generare la sitemap.xml
 app.get('/sitemap.xml', (req: Request, res: Response) => {
   try {
-    const baseUrl = 'https://dobusinessinitaly.com';
+    const baseUrl = 'https://yourbusinessinitaly.com';
 
     // Pagine statiche
     const staticPages = [
@@ -718,7 +743,7 @@ app.get('/sitemap.xml', (req: Request, res: Response) => {
   app.get('/robots.txt', (req: Request, res: Response) => {
     const robotsTxt = `User-agent: *
 Allow: /
-Sitemap: https://dobusinessinitaly.com/sitemap.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap.xml
 `;
     res.type('text/plain');
     res.send(robotsTxt);

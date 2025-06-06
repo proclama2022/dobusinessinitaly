@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
 import { supportedLanguages } from '@/lib/languages';
+export { supportedLanguages };
 
 /**
  * Estrae il prefisso della lingua dall'URL corrente

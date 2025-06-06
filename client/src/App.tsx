@@ -18,6 +18,9 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { supportedLanguages } from "./lib/languages";
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import CookiePolicy from '@/pages/CookiePolicy';
+import CookieBanner from '@/components/CookieBanner';
 
 function Router() {
   const { i18n } = useTranslation();
@@ -78,11 +81,20 @@ function Router() {
           {/* Pagina di amministrazione per il blog */}
           <Route path="/admin" component={Admin} />
 
+          {/* Privacy Policy */}
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/:lang/privacy-policy" component={PrivacyPolicy} />
+
+          {/* Cookie Policy */}
+          <Route path="/cookie-policy" component={CookiePolicy} />
+          <Route path="/:lang/cookie-policy" component={CookiePolicy} />
+
           {/* Pagina non trovata */}
           <Route component={NotFound} />
         </Switch>
       </main>
       <Footer />
+      <CookieBanner />
     </>
   );
 }

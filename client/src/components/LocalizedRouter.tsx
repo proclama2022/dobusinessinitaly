@@ -8,6 +8,7 @@ import About from '@/pages/About';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import Contact from '@/pages/Contact';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -122,6 +123,11 @@ export const LocalizedRouter = () => {
           
           <Route path="/:lang/contact" component={({ params }) => {
             return supportedLanguages.includes(params.lang) ? <Contact /> : <NotFound />;
+          }} />
+          
+          {/* Privacy Policy page */}
+          <Route path="/:lang/privacy-policy" component={({ params }) => {
+            return supportedLanguages.includes(params.lang) ? <PrivacyPolicy /> : <NotFound />;
           }} />
           
           {/* Fallback alla root per reindirizzare */}

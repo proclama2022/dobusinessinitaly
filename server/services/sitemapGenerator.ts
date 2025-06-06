@@ -13,20 +13,20 @@ interface SitemapEntry {
 
 const generateSitemap = (language: string, posts: BlogPost[]) => {
   const sitemapEntries: SitemapEntry[] = [
-    { loc: `https://dobusinessinitaly.com/${language}/`, lastmod: '2024-05-20', changefreq: 'weekly', priority: '1.0' },
-    { loc: `https://dobusinessinitaly.com/${language}/servizi`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://dobusinessinitaly.com/${language}/blog`, lastmod: '2024-05-20', changefreq: 'daily', priority: '0.9' },
-    { loc: `https://dobusinessinitaly.com/${language}/servizi-privati`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://dobusinessinitaly.com/${language}/nuovo-servizio`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://dobusinessinitaly.com/${language}/about`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://dobusinessinitaly.com/${language}/contact`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://dobusinessinitaly.com/${language}/media`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://dobusinessinitaly.com/${language}/admin`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.6' },
+    { loc: `https://yourbusinessinitaly.com/${language}/`, lastmod: '2024-05-20', changefreq: 'weekly', priority: '1.0' },
+    { loc: `https://yourbusinessinitaly.com/${language}/servizi`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
+    { loc: `https://yourbusinessinitaly.com/${language}/blog`, lastmod: '2024-05-20', changefreq: 'daily', priority: '0.9' },
+    { loc: `https://yourbusinessinitaly.com/${language}/servizi-privati`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
+    { loc: `https://yourbusinessinitaly.com/${language}/nuovo-servizio`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.8' },
+    { loc: `https://yourbusinessinitaly.com/${language}/about`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/contact`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/media`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/admin`, lastmod: '2024-05-20', changefreq: 'monthly', priority: '0.6' },
   ];
 
   posts.forEach(post => {
     sitemapEntries.push({
-      loc: `https://dobusinessinitaly.com/${language}/blog/${post.slug}`,
+      loc: `https://yourbusinessinitaly.com/${language}/blog/${post.slug}`,
       lastmod: post.lastmod,
       changefreq: 'daily',
       priority: '0.8',
@@ -51,11 +51,11 @@ export const updateSitemap = (language: string, post: BlogPost) => {
   const sitemapPath = path.join(SITEMAP_PATH, `sitemap-${language}.xml`);
   if (fs.existsSync(sitemapPath)) {
     const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
-    const regex = new RegExp(`<loc>https://dobusinessinitaly.com/${language}/blog/${post.slug}</loc>`, 'g');
+    const regex = new RegExp(`<loc>https://yourbusinessinitaly.com/${language}/blog/${post.slug}</loc>`, 'g');
     if (!regex.test(sitemapContent)) {
       const newEntry = `
   <url>
-    <loc>https://dobusinessinitaly.com/${language}/blog/${post.slug}</loc>
+    <loc>https://yourbusinessinitaly.com/${language}/blog/${post.slug}</loc>
     <lastmod>${post.lastmod}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

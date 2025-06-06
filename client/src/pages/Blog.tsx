@@ -122,7 +122,8 @@ const CategoryBadge = ({
 };
 
 const Blog = () => {
-  const { t, i18n } = useTranslation(); // Use useTranslation once
+  const { t: tRaw, i18n } = useTranslation();
+const t = tRaw as (key: string, options?: any) => string;
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tutte");
   const [location, setLocation] = useLocation();
