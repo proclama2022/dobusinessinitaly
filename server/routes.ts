@@ -113,7 +113,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                     const blogPost: BlogPostMeta = {
                         slug,
                         title: data.title,
-                        date: new Date(data.date).toISOString(),
+                        date: data.date,
                         category: data.category?.trim() || 'Generale',
                         excerpt: data.excerpt?.trim() || '',
                         coverImage: data.coverImage?.trim() || '',
@@ -196,7 +196,7 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
                     const blogPost: BlogPostMeta = {
                         slug,
                         title: data.title,
-                        date: new Date(data.date).toISOString(),
+                        date: data.date,
                         category: data.category?.trim() || 'Generale',
                         excerpt: data.excerpt?.trim() || '',
                         coverImage: data.coverImage?.trim() || '',
@@ -689,7 +689,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API per caricare un'immagine
-  app.post('/api/upload', simpleAdminAuth, upload.single('image'), (req: Request, res: Response) => {
+  app.post('/api/upload', simpleAdminAuth, upload.single('image'), async (req: Request, res: Response) => {
     try {
       if (!req.file) {
         return res.status(400).json({
@@ -698,15 +698,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      // Restituisci il percorso dell'immagine caricata
-      res.status(200).json({
-        success: true,
-        message: 'File uploaded successfully',
-        data: {
-          filename: req.file.filename,
-          path: `/uploads/${req.file.filename}`
-        }
-      });
+      // Se siamo in produzione, salva su Vercel Blob
+      if (process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production') {
+        const { put } = await import('@vercel/blob');
+        
+        const fileBuffer = fs.readFileSync(req.file.path);
+        const { url } = await put(`uploads/${req.file.filename}`, fileBuffer, {
+          access: 'public',
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+          addRandomSuffix: false
+        });
+
+        // Elimina il file temporaneo locale
+        fs.unlinkSync(req.file.path);
+
+        res.status(200).json({
+          success: true,
+          message: 'File uploaded successfully to cloud storage',
+          data: {
+            filename: req.file.filename,
+            path: url
+          }
+        });
+      } else {
+        // In sviluppo, usa il percorso locale
+        res.status(200).json({
+          success: true,
+          message: 'File uploaded successfully',
+          data: {
+            filename: req.file.filename,
+            path: `/uploads/${req.file.filename}`
+          }
+        });
+      }
     } catch (error: any) {
       console.error('Upload error:', error);
       res.status(500).json({

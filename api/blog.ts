@@ -69,7 +69,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
           const blogPost: BlogPostMeta = {
             slug,
             title: data.title,
-            date: new Date(data.date).toISOString(),
+            date: data.date,
             category: data.category?.trim() || 'Generale',
             excerpt: data.excerpt?.trim() || '',
             coverImage: data.coverImage?.trim() || '',
@@ -197,7 +197,7 @@ author: "${author}"
         const meta: BlogPostMeta = {
           slug,
           title: data.title.trim(),
-          date: new Date(data.date).toISOString(),
+          date: data.date,
           category: data.category?.trim() || 'Generale',
           excerpt: data.excerpt?.trim() || '',
           coverImage: data.coverImage?.trim() || '',
