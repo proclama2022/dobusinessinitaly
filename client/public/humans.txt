@@ -1,0 +1,25 @@
+# TEAM
+
+Studio: DoBusinessNew
+Sito web: https://yourbusinessinitaly.com
+Email: info@yourbusinessinitaly.com
+Località: Italia
+
+# TECNOLOGIA
+
+Frontend: React + TypeScript
+Backend: Node.js + Express
+Database: File System + MDX
+Hosting: Vercel
+Analytics: Google Analytics
+SEO: Structured Data + Sitemap multilingue
+
+# ULTIMA MODIFICA
+
+Data: 2025-01-09
+Motivo: Apertura all'indicizzazione motori di ricerca
+Versione: 2.0
+
+# RINGRAZIAMENTI
+
+Grazie a tutti i clienti che ci hanno scelto per il loro business in Italia! 

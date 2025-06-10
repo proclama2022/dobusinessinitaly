@@ -1,5 +1,15 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Ottimizzazione crawling per motori di ricerca
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
 # Blocca aree admin e sensibili
 Disallow: /admin
@@ -8,5 +18,16 @@ Disallow: /private/
 Disallow: /.env
 Disallow: /config/
 
-# Sitemap
+# Consenti specificamente aree importanti
+Allow: /blog/
+Allow: /servizi/
+Allow: /about/
+Allow: /contact/
+
+# Sitemap - aggiornata 2025
 Sitemap: https://yourbusinessinitaly.com/sitemap.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap-it.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap-en.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap-fr.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap-de.xml
+Sitemap: https://yourbusinessinitaly.com/sitemap-es.xml

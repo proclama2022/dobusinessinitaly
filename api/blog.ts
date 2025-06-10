@@ -23,6 +23,11 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  leadMagnet?: {
+    title: string;
+    description: string;
+    type: string;
+  };
 }
 
 function getAllPosts(language?: string): BlogPostMeta[] {
@@ -61,7 +66,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
             return null;
           }
-          return {
+          const blogPost: BlogPostMeta = {
             slug,
             title: data.title,
             date: new Date(data.date).toISOString(),
@@ -69,7 +74,17 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             excerpt: data.excerpt?.trim() || '',
             coverImage: data.coverImage?.trim() || '',
             author: data.author?.trim() || 'Redazione',
-          } satisfies BlogPostMeta;
+          };
+          
+          if (data.leadMagnet) {
+            blogPost.leadMagnet = {
+              title: data.leadMagnet.title || '',
+              description: data.leadMagnet.description || '',
+              type: data.leadMagnet.type || ''
+            };
+          }
+          
+          return blogPost;
         } catch (error) {
           console.log(`[Blog API] Error processing file ${filename}: ${error}`);
           return null;
@@ -187,6 +202,11 @@ author: "${author}"
           excerpt: data.excerpt?.trim() || '',
           coverImage: data.coverImage?.trim() || '',
           author: data.author?.trim() || 'Redazione',
+          leadMagnet: data.leadMagnet ? {
+            title: data.leadMagnet.title || '',
+            description: data.leadMagnet.description || '',
+            type: data.leadMagnet.type || ''
+          } : undefined,
         };
         console.log(`[Blog API] Successfully fetched post: ${slug}`);
         res.status(200).json({ success: true, data: { meta, content } });

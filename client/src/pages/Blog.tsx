@@ -310,10 +310,7 @@ const t = tRaw as (key: string, options?: any) => string;
             {/* Main title */}
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <span className="text-[#009246]">{t('blog.title')}</span>
-              <span className="relative pl-4">
-                Blog
-                <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
-              </span>
+              <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
             </h1>
 
             {/* Subtitle */}

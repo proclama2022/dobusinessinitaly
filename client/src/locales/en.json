@@ -342,6 +342,21 @@
       "message": "There was an error subscribing to the newsletter. Please try again."
     }
   },
+  "downloadGuide": {
+    "emailLabel": "Your email",
+    "emailPlaceholder": "your.email@example.com",
+    "downloadButton": "📥 Download Free Guide",
+    "sendingButton": "Sending...",
+    "successTitle": "Email sent successfully!",
+    "successMessage": "Check your email inbox for the guide download link.",
+    "errorMessage": "An error occurred. Please try again later.",
+    "privacyNote": "You will receive an email with the link to download the guide. We will never share your email.",
+    "privacyPolicyLink": "Read Privacy Policy",
+    "privacyRequired": "You must accept the privacy policy to continue.",
+    "privacyAccept": "I accept the",
+    "privacyPolicyText": "Privacy Policy",
+    "privacyAcceptEnd": "and consent to the processing of my personal data."
+  },
   "contact": {
     "title": "Book Your Free Consultation",
     "subtitle": "Get a free 30-minute consultation with our experts. We'll schedule a call within 48-72 hours in English to discuss your business project in Italy.",

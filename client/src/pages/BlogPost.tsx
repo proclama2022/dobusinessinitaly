@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
+import DownloadGuideForm from '@/components/DownloadGuideForm';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -19,6 +20,11 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  leadMagnet?: {
+    title: string;
+    description: string;
+    type: string;
+  };
 }
 
 interface BlogPostData {
@@ -89,14 +95,26 @@ const BlogPost = () => {
   const [location, setLocation] = useLocation();
   const { slug, lang } = params;
 
+  // Use the language from URL params if available, otherwise use i18n language
+  const currentLanguage = lang || i18n.language;
+  
+  console.log('[BlogPost] Params:', params);
+  console.log('[BlogPost] Current language:', currentLanguage);
+  console.log('[BlogPost] i18n language:', i18n.language);
+
   // Fetch del post del blog specifico
   const { data: postData, isLoading, error } = useQuery({
-    queryKey: ['/api/blog', lang || i18n.language, slug],
-    queryFn: () => apiRequest<{ success: boolean, data: BlogPostData }>(
-      // Handle language-specific URLs
-      lang ? `/api/blog/${lang}/${slug}` : `/api/blog/${slug}`,
-      { method: 'GET' }
-    ),
+    queryKey: ['/api/blog', currentLanguage, slug],
+    queryFn: () => {
+      const apiUrl = currentLanguage !== 'it' 
+        ? `/api/blog/${currentLanguage}/${slug}` 
+        : `/api/blog/${slug}`;
+      console.log('[BlogPost] Fetching from URL:', apiUrl);
+      return apiRequest<{ success: boolean, data: BlogPostData }>(
+        apiUrl,
+        { method: 'GET' }
+      );
+    },
   });
 
   // Fetch di tutti i post per i post correlati
@@ -167,6 +185,10 @@ const BlogPost = () => {
 
   const { meta, content } = postData.data;
 
+  // Debug: log metadata per vedere cosa arriva dall'API
+  console.log('[BlogPost] Meta data received:', meta);
+  console.log('[BlogPost] leadMagnet data:', meta.leadMagnet);
+
   // Prepara i dati strutturati per l'articolo
   const articleStructuredData = {
     '@context': 'https://schema.org',
@@ -195,6 +217,47 @@ const BlogPost = () => {
     articleSection: meta.category
   };
 
+  // FAQ Schema per articoli di tipo guida
+  const faqStructuredData = meta.category === 'guide' ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Quanto costa aprire un\'attività in Italia da straniero?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'I costi variano da 150-300€ per una ditta individuale fino a 2.500-3.000€ per una SRL, includendo spese notarili, imposte e onorari professionali.'
+        }
+      },
+      {
+        '@type': 'Question',  
+        name: 'Quanto tempo ci vuole per aprire un\'attività?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Il processo richiede generalmente 4-6 settimane se tutta la documentazione è preparata correttamente, incluse traduzioni e legalizzazioni.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Posso aprire partita IVA se sono cittadino extra-UE?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sì, ma devi ottenere un permesso di soggiorno per lavoro autonomo e dimostrare capacità economica di almeno 23.532€ annui.'
+        }
+      }
+    ]
+  } : null;
+
+  // Genera hreflang alternates per SEO internazionale
+  const hreflangAlternates = {
+    'it': `https://yourbusinessinitaly.com/blog/${meta.slug}`,
+    'en': `https://yourbusinessinitaly.com/en/blog/${meta.slug}`,
+    'fr': `https://yourbusinessinitaly.com/fr/blog/${meta.slug}`,
+    'de': `https://yourbusinessinitaly.com/de/blog/${meta.slug}`,
+    'es': `https://yourbusinessinitaly.com/es/blog/${meta.slug}`
+  };
+
   // Formatta la data per i meta tag
   const formattedDate = new Date(meta.date).toISOString();
 
@@ -212,7 +275,8 @@ const BlogPost = () => {
         publishedTime={formattedDate}
         modifiedTime={formattedDate}
         articleSection={meta.category}
-        structuredData={articleStructuredData}
+        structuredData={[articleStructuredData, faqStructuredData].filter(Boolean)}
+        alternates={hreflangAlternates}
       />
 
       {/* Hero section con immagine di copertina */}
@@ -305,25 +369,43 @@ const BlogPost = () => {
               {/* Social sharing */}
               <div className="mt-12">
                 <div className="border-t border-neutral-200 pt-6">
-                  <div className="flex flex-wrap items-center">
-                    <h4 className="text-neutral-700 font-medium mr-4">Condividi:</h4>
-                    <div className="flex space-x-3">
-                      <a href="#" className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <i className="fab fa-facebook-f"></i>
+                  <div className="flex flex-wrap items-center gap-6">
+                    <h4 className="text-neutral-700 font-medium">Condividi:</h4>
+                    <div className="flex space-x-6">
+                      <a href="#" className="w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
+                        <i className="fab fa-facebook-f text-lg"></i>
                       </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <i className="fab fa-twitter"></i>
+                      <a href="#" className="w-12 h-12 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
+                        <i className="fab fa-twitter text-lg"></i>
                       </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <i className="fab fa-linkedin-in"></i>
+                      <a href="#" className="w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
+                        <i className="fab fa-linkedin-in text-lg"></i>
                       </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition-opacity">
-                        <i className="fab fa-whatsapp"></i>
+                      <a href="#" className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
+                        <i className="fab fa-whatsapp text-lg"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Download Guide Form */}
+              {meta.leadMagnet && (
+                <DownloadGuideForm 
+                  leadMagnetType={meta.leadMagnet.type}
+                  currentLanguage={currentLanguage}
+                  blogPost={{
+                    slug: meta.slug,
+                    title: meta.title
+                  }}
+                />
+              )}
+              {!meta.leadMagnet && (
+                <div className="max-w-md mx-auto mt-12 p-6 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-600">Debug: leadMagnet non trovato nei metadati</p>
+                  <p className="text-xs text-gray-500 mt-2">Metadati disponibili: {JSON.stringify(Object.keys(meta))}</p>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
@@ -414,7 +496,6 @@ const BlogPost = () => {
           </div>
         </section>
       )}
-
 
     </>
   );

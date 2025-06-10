@@ -12,6 +12,94 @@ interface TranslationRequest {
   targetLang: string;
 }
 
+async function translateMetadata(frontmatter: any, targetLang: string): Promise<any> {
+  const languageNames: Record<string, string> = {
+    en: 'English',
+    de: 'German', 
+    fr: 'French',
+    es: 'Spanish'
+  };
+
+  const languageName = languageNames[targetLang] || 'English';
+
+  try {
+    // Traduci solo title e excerpt se esistono
+    const fieldsToTranslate: string[] = [];
+    if (frontmatter.title) fieldsToTranslate.push(`Title: ${frontmatter.title}`);
+    if (frontmatter.excerpt) fieldsToTranslate.push(`Excerpt: ${frontmatter.excerpt}`);
+    
+    if (fieldsToTranslate.length === 0) return frontmatter;
+
+    const prompt = `Translate the following metadata fields to ${languageName}. Return ONLY the translated text for each field, one per line, in the same order:
+
+${fieldsToTranslate.join('\n')}
+
+Important:
+- Maintain the same meaning and tone
+- Keep it professional and SEO-friendly
+- Return only the translated content without labels`;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.3,
+    });
+
+    const translatedText = completion.choices[0].message?.content?.trim();
+    if (!translatedText) {
+      console.warn('[Translate API] No metadata translation returned, using original');
+      return frontmatter;
+    }
+
+    const translatedLines = translatedText.split('\n').filter(line => line.trim());
+    const translatedFrontmatter = { ...frontmatter };
+
+    let lineIndex = 0;
+    if (frontmatter.title && translatedLines[lineIndex]) {
+      translatedFrontmatter.title = translatedLines[lineIndex].trim();
+      lineIndex++;
+    }
+    if (frontmatter.excerpt && translatedLines[lineIndex]) {
+      translatedFrontmatter.excerpt = translatedLines[lineIndex].trim();
+    }
+
+    // Traduci anche i leadMagnet se esistono
+    if (frontmatter.leadMagnet) {
+      const leadMagnetTranslations = {
+        en: {
+          title: "Complete Guide: How to Open a Business in Italy as a Foreigner",
+          description: "Receive the complete PDF guide with all details, necessary documents and step-by-step procedures to open your business in Italy."
+        },
+        de: {
+          title: "Vollständiger Leitfaden: Wie man als Ausländer ein Unternehmen in Italien eröffnet",
+          description: "Erhalten Sie den vollständigen PDF-Leitfaden mit allen Details, notwendigen Dokumenten und Schritt-für-Schritt-Verfahren zur Eröffnung Ihres Unternehmens in Italien."
+        },
+        fr: {
+          title: "Guide Complet : Comment Ouvrir une Entreprise en Italie en tant qu'Étranger",
+          description: "Recevez le guide PDF complet avec tous les détails, documents nécessaires et procédures étape par étape pour ouvrir votre entreprise en Italie."
+        },
+        es: {
+          title: "Guía Completa: Cómo Abrir un Negocio en Italia siendo Extranjero",
+          description: "Recibe la guía PDF completa con todos los detalles, documentos necesarios y procedimientos paso a paso para abrir tu negocio en Italia."
+        }
+      };
+
+      if (leadMagnetTranslations[targetLang as keyof typeof leadMagnetTranslations]) {
+        translatedFrontmatter.leadMagnet = {
+          ...frontmatter.leadMagnet,
+          ...leadMagnetTranslations[targetLang as keyof typeof leadMagnetTranslations]
+        };
+      }
+    }
+
+    console.log(`[Translate API] Metadata translation completed`);
+    return translatedFrontmatter;
+  } catch (error: any) {
+    console.error(`[Translate API] Metadata translation error:`, error);
+    return frontmatter; // Fallback to original if translation fails
+  }
+}
+
 async function translateContent(content: string, targetLang: string): Promise<string> {
   const languageNames = {
     'en': 'English',
@@ -199,9 +287,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log(`[Translate API] Starting translation to ${targetLang}`);
     const translatedContent = await translateContent(content, targetLang);
 
-    // Create the translated file content with original frontmatter
+    // Translate the metadata
+    console.log(`[Translate API] Starting metadata translation to ${targetLang}`);
+    const translatedFrontmatter = await translateMetadata(frontmatter, targetLang);
+
+    // Create the translated file content with translated frontmatter
     console.log(`[Translate API] Creating translated file content`);
-    const translatedFileContent = matter.stringify(translatedContent, frontmatter);
+    const translatedFileContent = matter.stringify(translatedContent, translatedFrontmatter);
 
     // Save translated file to Vercel Blob
     const translatedFileName = `${slug}.${targetLang}.mdx`;

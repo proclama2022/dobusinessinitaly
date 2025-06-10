@@ -335,6 +335,21 @@
       "message": "Une erreur s'est produite lors de l'abonnement à la newsletter. Veuillez réessayer."
     }
   },
+  "downloadGuide": {
+    "emailLabel": "Votre email",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "downloadButton": "📥 Télécharger le Guide Gratuit",
+    "sendingButton": "Envoi en cours...",
+    "successTitle": "Email envoyé avec succès!",
+    "successMessage": "Vérifiez votre boîte email pour le lien de téléchargement du guide.",
+    "errorMessage": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "privacyNote": "Vous recevrez un email avec le lien pour télécharger le guide. Nous ne partagerons jamais votre email.",
+    "privacyPolicyLink": "Lire la Politique de Confidentialité",
+    "privacyRequired": "Vous devez accepter la politique de confidentialité pour continuer.",
+    "privacyAccept": "J'accepte la",
+    "privacyPolicyText": "Politique de Confidentialité",
+    "privacyAcceptEnd": "et consens au traitement de mes données personnelles."
+  },
   "contact": {
     "title": "Réservez votre Consultation Gratuite",
     "subtitle": "Obtenez une consultation gratuite de 30 minutes avec nos experts. Nous programmerons un appel dans 48-72 heures en anglais pour discuter de votre projet d'entreprise en Italie.",

@@ -7,6 +7,11 @@
     "blog": "Blog",
     "contact": "Contatti"
   },
+  "common": {
+    "loading": "Caricamento in corso...",
+    "error": "Si è verificato un errore",
+    "tryAgain": "Riprova più tardi"
+  },
   "privacy": {
     "title": "Privacy Policy di proclama",
     "intro": "Questa Applicazione raccoglie alcuni Dati Personali dei propri Utenti.",
@@ -344,9 +349,10 @@
   "newsletter": {
     "title": "Rimani Aggiornato",
     "subtitle": "Iscriviti alla nostra newsletter per ricevere gli ultimi aggiornamenti su normative fiscali, opportunità di business e consigli per il tuo successo in Italia.",
-    "inputPlaceholder": "Inserisci la tua email",
-    "button": "Iscriviti",
-    "loadingButton": "Iscrizione...",
+    "placeholder": "Inserisci la tua email",
+    "subscribe": "Iscriviti",
+    "subscribing": "Iscrizione...",
+    "privacy": "Ci impegniamo a rispettare la tua privacy. Puoi annullare l'iscrizione in qualsiasi momento.",
     "success": {
       "title": "Iscrizione completata!",
       "message": "Ti abbiamo inviato una email di conferma."
@@ -355,6 +361,21 @@
       "title": "Errore nell'iscrizione",
       "message": "Si è verificato un errore. Riprova più tardi."
     }
+  },
+  "downloadGuide": {
+    "emailLabel": "La tua email",
+    "emailPlaceholder": "tua.email@esempio.com",
+    "downloadButton": "📥 Scarica la Guida Gratuita",
+    "sendingButton": "Invio in corso...",
+    "successTitle": "Email inviata con successo!",
+    "successMessage": "Controlla la tua casella email per il link di download della guida.",
+    "errorMessage": "Si è verificato un errore. Riprova più tardi.",
+    "privacyNote": "Riceverai una email con il link per scaricare la guida. Non condivideremo mai la tua email.",
+    "privacyPolicyLink": "Leggi la Privacy Policy",
+    "privacyRequired": "Devi accettare la privacy policy per continuare.",
+    "privacyAccept": "Accetto la",
+    "privacyPolicyText": "Privacy Policy",
+    "privacyAcceptEnd": "e acconsento al trattamento dei miei dati personali."
   },
   "media": {
     "title": "Parlano di Noi",
@@ -533,10 +554,16 @@
   "blog": {
     "title": "Blog",
     "subtitle": "Guide, approfondimenti e aggiornamenti su fiscalità, business e normative per aziende internazionali in Italia.",
+    "description": "Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell'internazionalizzazione delle imprese.",
+    "viewAll": "Visualizza Tutti",
     "readMore": "Leggi di più",
     "backToBlog": "Torna al Blog",
     "relatedPosts": "Articoli correlati",
     "noArticles": "Nessun articolo disponibile al momento.",
+    "noArticlesFound": "Nessun articolo trovato",
+    "tryDifferentSearch": "Prova una ricerca diversa o modifica i filtri.",
+    "featuredArticle": "Articolo",
+    "featured": "In Evidenza",
     "searchPlaceholder": "Cerca articoli...",
     "filterByCategory": "Filtra per categoria",
     "allCategories": "Tutte le categorie",

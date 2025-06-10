@@ -4,6 +4,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import ServicesSection from '@/components/ServicesSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
 import BlogSection from '@/components/BlogSection';
+import NewsletterSection from '@/components/NewsletterSection';
 import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
 import { useEffect } from 'react';
@@ -33,6 +34,8 @@ const Home = () => {
       <WhyChooseUs />
       <ServicesSection />
       <MediaCoverageSection maxItems={4} />
+      <BlogSection />
+      <NewsletterSection />
       <ContactSection />
     </>
   );

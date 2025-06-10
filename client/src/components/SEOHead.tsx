@@ -12,7 +12,7 @@ interface SEOHeadProps {
   publishedTime?: string;
   modifiedTime?: string;
   articleSection?: string;
-  structuredData?: Record<string, any>;
+  structuredData?: Record<string, any> | Record<string, any>[];
   lang?: string;
   alternates?: Record<string, string>; // { 'en': 'https://...', 'fr': 'https://...' }
 }
@@ -61,8 +61,8 @@ const SEOHead = ({
     );
   }
   
-  // Unisci i dati strutturati personalizzati con quelli predefiniti
-  const jsonLd = structuredData || defaultStructuredData;
+  // Gestisci dati strutturati singoli o multipli
+  const structuredDataArray = Array.isArray(structuredData) ? structuredData : [structuredData || defaultStructuredData];
 
   return (
     <Helmet htmlAttributes={{ lang }}>
@@ -72,8 +72,32 @@ const SEOHead = ({
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content={author} />
       
+      {/* Meta tag per indicizzazione */}
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="revisit-after" content="1 day" />
+      <meta name="rating" content="general" />
+      <meta name="distribution" content="global" />
+      <meta name="language" content={lang} />
+      <meta name="geo.region" content="IT" />
+      <meta name="geo.country" content="Italy" />
+      <meta name="geo.placename" content="Italy" />
+      
       {/* Canonical URL */}
       {fullCanonicalUrl && <link rel="canonical" href={fullCanonicalUrl} />}
+      
+      {/* Web App Manifest */}
+      <link rel="manifest" href="/manifest.json" />
+      
+      {/* Preconnect per performance */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      
+      {/* DNS Prefetch per servizi esterni */}
+      <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="//hook.eu1.make.com" />
       
       {/* Open Graph */}
       <meta property="og:title" content={title} />
@@ -103,10 +127,12 @@ const SEOHead = ({
       {/* Link hreflang per SEO internazionale */}
       {hreflangLinks}
       
-      {/* JSON-LD per dati strutturati */}
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
+      {/* JSON-LD per dati strutturati multipli */}
+      {structuredDataArray.map((jsonLd, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      ))}
     </Helmet>
   );
 };

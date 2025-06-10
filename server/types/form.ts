@@ -19,5 +19,10 @@ export interface FormData {
 export interface BlogPost {
   slug: string;
   lastmod: string;
-  // Other post properties
+  title?: string;
+  excerpt?: string;
+  author?: string;
+  category?: string;
+  date?: string;
+  coverImage?: string;
 }

@@ -36,6 +36,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Imposta la password admin di esempio se non presente
+if (!process.env.ADMIN_PASSWORD) {
+  process.env.ADMIN_PASSWORD = 'supersegreta';
+  console.log('ADMIN_PASSWORD non impostata, uso password di esempio: supersegreta');
+}
+
 (async () => {
   const server = await registerRoutes(app);
 
