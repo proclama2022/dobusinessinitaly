@@ -2,9 +2,23 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import ContactSection from '@/components/ContactSection';
 import GoogleMap from '@/components/GoogleMap';
+import SEOHead from '@/components/SEOHead';
+
+const organizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Yourbusinessinitaly.com',
+  url: 'https://yourbusinessinitaly.com',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+39 095643533',
+    contactType: 'customer service',
+    areaServed: 'IT'
+  }
+};
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -15,6 +29,14 @@ const Contact = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('navigation.contact')} - Yourbusinessinitaly.com`}
+        description={t('contact.subtitle')}
+        canonicalUrl="/contact"
+        structuredData={organizationStructuredData}
+        keywords="contatti, consulenza, business in Italia"
+        lang={i18n.language}
+      />
       <div className="bg-primary py-24">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center">

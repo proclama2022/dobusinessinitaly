@@ -4,6 +4,18 @@ import { Link } from 'wouter';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
+import SEOHead from '@/components/SEOHead';
+
+const organizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Yourbusinessinitaly.com',
+  url: 'https://yourbusinessinitaly.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://yourbusinessinitaly.com/logo.png'
+  }
+};
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -97,7 +109,7 @@ const StatItem = ({ number, label, icon }: { number: string; label: string; icon
 };
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -140,6 +152,14 @@ const About = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('navigation.about')} - Yourbusinessinitaly.com`}
+        description={t('about.longDescription')}
+        canonicalUrl="/about"
+        keywords="studio commercialista, consulenza, team"
+        structuredData={organizationStructuredData}
+        lang={i18n.language}
+      />
       {/* Hero section con intestazione */}
       <section className="relative py-32 overflow-hidden">
         {/* Sfondo con overlay verde-rosso */}

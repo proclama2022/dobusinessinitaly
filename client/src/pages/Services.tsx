@@ -2,6 +2,18 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { Link } from 'wouter';
 import ContactSection from '@/components/ContactSection';
+import SEOHead from '@/components/SEOHead';
+
+const organizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Yourbusinessinitaly.com',
+  url: 'https://yourbusinessinitaly.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://yourbusinessinitaly.com/logo.png'
+  }
+};
 
 // Componente per una singola sezione di servizio con immagine e testo
 const ServiceFeature = ({
@@ -78,7 +90,7 @@ const ServiceFeature = ({
 };
 
 const Services = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -200,6 +212,14 @@ const Services = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('services.title')} - Yourbusinessinitaly.com`}
+        description={t('services.subtitle')}
+        canonicalUrl="/services"
+        keywords="servizi, consulenza fiscale, consulenza aziendale"
+        structuredData={organizationStructuredData}
+        lang={i18n.language}
+      />
       {/* Header hero con introduzione */}
       <section className="relative py-32 overflow-hidden">
         {/* Background con immagine e overlay sfumato */}
