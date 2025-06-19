@@ -107,7 +107,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'POST') {
     console.log(`[Blog API] Handling POST request`);
-    const { slug, title, date, category, excerpt, coverImage, author, content, language } = req.body;
+    const {
+      slug,
+      content,
+      language,
+      // Campi eventualmente flat
+      title: flatTitle,
+      date: flatDate,
+      category: flatCategory,
+      excerpt: flatExcerpt,
+      coverImage: flatCoverImage,
+      author: flatAuthor,
+      meta,
+    } = req.body as any;
+
+    // Ricava i metadati prioritizzando l'oggetto meta se presente
+    const combinedMeta = meta ?? {};
+    const title = combinedMeta.title || flatTitle;
+    const date = combinedMeta.date || flatDate;
+    const category = combinedMeta.category || flatCategory || '';
+    const excerpt = combinedMeta.excerpt || flatExcerpt || '';
+    const coverImage = combinedMeta.coverImage || flatCoverImage || '';
+    const author = combinedMeta.author || flatAuthor || 'Redazione';
 
     if (!slug || !title || !date || !content) {
       console.log(`[Blog API] Missing required fields in POST request`);
