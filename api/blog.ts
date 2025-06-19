@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { put } from '@vercel/blob';
+import { put, list } from '@vercel/blob';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -98,6 +98,93 @@ function getAllPosts(language?: string): BlogPostMeta[] {
   } catch (error) {
     console.log(`[Blog API] Error reading blog directory: ${error}`);
     return [];
+  }
+}
+
+// Helper: recupera tutti i post dallo storage Blob (solo in produzione)
+async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
+  const targetLanguage = (language || 'it').toLowerCase();
+
+  // Richiedi lista blob (max 1000 oggetti)
+  const blobsResp = await list({ limit: 1000 });
+  const blobItems = blobsResp.blobs.filter(b => b.pathname.endsWith('.mdx'));
+
+  const posts: BlogPostMeta[] = [];
+
+  for (const b of blobItems) {
+    // Filtra per lingua
+    const filename = b.pathname;
+    const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+    const fileLanguage = langMatch?.[1] || 'it';
+    const shouldInclude = targetLanguage === 'it' ? !langMatch : fileLanguage === targetLanguage;
+    if (!shouldInclude) continue;
+
+    try {
+      const res = await fetch(b.downloadUrl);
+      if (!res.ok) continue;
+      const fileContent = await res.text();
+      const { data } = matter(fileContent);
+      if (!data.title?.trim() || !data.date) continue;
+      const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+
+      const post: BlogPostMeta = {
+        slug,
+        title: data.title,
+        date: data.date,
+        category: data.category?.trim() || 'Generale',
+        excerpt: data.excerpt?.trim() || '',
+        coverImage: data.coverImage?.trim() || '',
+        author: data.author?.trim() || 'Redazione',
+      };
+      if (data.leadMagnet) {
+        post.leadMagnet = {
+          title: data.leadMagnet.title || '',
+          description: data.leadMagnet.description || '',
+          type: data.leadMagnet.type || '',
+        };
+      }
+      posts.push(post);
+    } catch (e) {
+      console.error('[Blog API] Error fetching blob', filename, e);
+    }
+  }
+
+  // Ordina per data desc
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return posts;
+}
+
+// Helper: recupera singolo post da Blob
+async function getPostFromBlob(slug: string, lang?: string) {
+  const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';
+  const filename = `${slug}${langSuffix}.mdx`;
+  try {
+    const blobsResp = await list({ limit: 1, prefix: filename });
+    const blob = blobsResp.blobs.find(b => b.pathname === filename);
+    if (!blob) return null;
+    const res = await fetch(blob.downloadUrl);
+    if (!res.ok) return null;
+    const fileContent = await res.text();
+    const { data, content } = matter(fileContent);
+    if (!data.title?.trim() || !data.date) return null;
+    const meta: BlogPostMeta = {
+      slug,
+      title: data.title.trim(),
+      date: data.date,
+      category: data.category?.trim() || 'Generale',
+      excerpt: data.excerpt?.trim() || '',
+      coverImage: data.coverImage?.trim() || '',
+      author: data.author?.trim() || 'Redazione',
+      leadMagnet: data.leadMagnet ? {
+        title: data.leadMagnet.title || '',
+        description: data.leadMagnet.description || '',
+        type: data.leadMagnet.type || '',
+      } : undefined,
+    };
+    return { meta, content };
+  } catch (e) {
+    console.error('[Blog API] Error fetching single blob post', filename, e);
+    return null;
   }
 }
 
@@ -202,13 +289,23 @@ author: "${author}"
       const fileName = `${slug}${langSuffix}.mdx`;
       const filePath = path.join(BLOG_DIR, fileName);
       console.log(`[Blog API] Looking for file: ${filePath}`);
-      if (!fs.existsSync(filePath)) {
+      let fileContent: string | null = null;
+      if (fs.existsSync(filePath)) {
+        fileContent = fs.readFileSync(filePath, 'utf8');
+      } else if (process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production') {
+        const remote = await getPostFromBlob(slug, lang);
+        if (!remote) {
+          console.log(`[Blog API] Post not found in Blob storage: ${slug}`);
+          res.status(404).json({ success: false, message: 'Post not found' });
+          return;
+        }
+        return res.status(200).json({ success: true, data: remote });
+      } else {
         console.log(`[Blog API] Post file not found: ${filePath}`);
         res.status(404).json({ success: false, message: 'Post not found' });
         return;
       }
       try {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
         if (!data.title?.trim() || !data.date) {
           console.log(`[Blog API] Missing title or date in frontmatter: ${fileName}`);
@@ -242,7 +339,12 @@ author: "${author}"
       const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
       console.log(`[Blog API] Processing request for language: ${lang || 'default (it)'}`);
 
-      const posts = getAllPosts(lang);
+      let posts: BlogPostMeta[] = [];
+      if (process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production') {
+        posts = await getAllPostsFromBlob(lang);
+      } else {
+        posts = getAllPosts(lang);
+      }
       console.log(`[Blog API] Sending response with ${posts.length} posts`);
 
       res.status(200).json({ success: true, data: posts });
