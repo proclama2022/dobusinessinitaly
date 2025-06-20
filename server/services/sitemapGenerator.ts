@@ -74,11 +74,18 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
         // Determina la lingua dal filename
         const language = extractLanguageFromFilename(filename) || 'it';
         
-        // Estrai lo slug base rimuovendo l'estensione e la lingua
-        let slug = extractSlugFromFilename(filename);
-        if (language !== 'it') {
-          // Rimuovi il suffisso della lingua dallo slug
-          slug = slug.replace(new RegExp(`\\.${language}$`), '');
+        // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+        let slug: string;
+        if (frontmatter.slug) {
+          // Usa lo slug personalizzato dal frontmatter
+          slug = frontmatter.slug;
+        } else {
+          // Fallback: genera slug dal filename
+          slug = extractSlugFromFilename(filename);
+          if (language !== 'it') {
+            // Rimuovi il suffisso della lingua dallo slug
+            slug = slug.replace(new RegExp(`\\.${language}$`), '');
+          }
         }
         
         // Ottieni la data di modifica del file
@@ -166,11 +173,53 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
 export const generateMainSitemap = () => {
   const allBlogPosts = readBlogPosts();
   
-  // Raccogli tutti gli slug unici
-  const allSlugs = new Set<string>();
-  Object.values(allBlogPosts).forEach(posts => {
-    posts.forEach(post => allSlugs.add(post.slug));
-  });
+  // Raggruppa gli articoli per nome file base (senza lingua)
+  const articleGroups: { [baseFilename: string]: { [language: string]: BlogPost } } = {};
+  
+  // Leggi i file per identificare i gruppi di articoli correlati
+  try {
+    const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file => 
+      file.endsWith('.mdx') || file.endsWith('.md')
+    );
+    
+    files.forEach(filename => {
+      try {
+        const filePath = path.join(BLOG_CONTENT_PATH, filename);
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const { data: frontmatter } = matter(fileContent);
+        
+        const language = extractLanguageFromFilename(filename) || 'it';
+        
+        // Estrai il nome base del file (senza lingua e estensione)
+        let baseFilename = filename.replace(/\.(it|en|de|fr|es)\.mdx$/, '').replace(/\.mdx$/, '');
+        
+        // Usa lo slug dal frontmatter se disponibile
+        const slug = frontmatter.slug || extractSlugFromFilename(filename);
+        
+        if (!articleGroups[baseFilename]) {
+          articleGroups[baseFilename] = {};
+        }
+        
+        const stats = fs.statSync(filePath);
+        const lastmod = stats.mtime.toISOString().split('T')[0];
+        
+        articleGroups[baseFilename][language] = {
+          slug,
+          lastmod: frontmatter.date ? new Date(frontmatter.date).toISOString().split('T')[0] : lastmod,
+          title: frontmatter.title || '',
+          excerpt: frontmatter.excerpt || '',
+          author: frontmatter.author || '',
+          category: frontmatter.category || '',
+          date: frontmatter.date || '',
+          coverImage: frontmatter.coverImage || ''
+        };
+      } catch (error) {
+        console.error(`Errore nel processare il file ${filename}:`, error);
+      }
+    });
+  } catch (error) {
+    console.error('Errore nella lettura della cartella blog:', error);
+  }
 
   const sitemapEntries: SitemapEntry[] = [
     { 
@@ -268,38 +317,40 @@ export const generateMainSitemap = () => {
   ];
 
   // Aggiungi tutti gli articoli con le loro versioni tradotte
-  allSlugs.forEach(slug => {
+  Object.entries(articleGroups).forEach(([baseFilename, languageVariants]) => {
     const availableLanguages: { [key: string]: string } = {};
-    
-    // Trova le lingue disponibili per questo articolo
-    Object.entries(allBlogPosts).forEach(([lang, posts]) => {
-      const post = posts.find(p => p.slug === slug);
-      if (post) {
-        if (lang === 'it') {
-          availableLanguages['x-default'] = `https://yourbusinessinitaly.com/blog/${slug}`;
-        } else {
-          availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${slug}`;
-        }
-      }
-    });
-
-    // Trova la data più recente tra tutte le versioni
     let latestDate = '2025-01-09';
-    Object.values(allBlogPosts).forEach(posts => {
-      const post = posts.find(p => p.slug === slug);
-      if (post && post.lastmod > latestDate) {
+    let italianSlug = '';
+    
+    // Raccogli tutte le versioni linguistiche disponibili
+    Object.entries(languageVariants).forEach(([lang, post]) => {
+      if (post.lastmod > latestDate) {
         latestDate = post.lastmod;
       }
+      
+      if (lang === 'it') {
+        italianSlug = post.slug;
+        availableLanguages['x-default'] = `https://yourbusinessinitaly.com/blog/${post.slug}`;
+      } else {
+        availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
+      }
     });
 
-    // Aggiungi l'articolo principale (versione italiana)
-    sitemapEntries.push({
-      loc: `https://yourbusinessinitaly.com/blog/${slug}`,
-      lastmod: latestDate,
-      changefreq: 'weekly',
-      priority: '0.8',
-      alternates: availableLanguages
-    });
+    // Aggiungi l'articolo principale (versione italiana se disponibile)
+    const mainPost = languageVariants['it'] || Object.values(languageVariants)[0];
+    if (mainPost) {
+      const mainUrl = languageVariants['it'] 
+        ? `https://yourbusinessinitaly.com/blog/${mainPost.slug}`
+        : `https://yourbusinessinitaly.com/en/blog/${mainPost.slug}`;
+        
+      sitemapEntries.push({
+        loc: mainUrl,
+        lastmod: latestDate,
+        changefreq: 'weekly',
+        priority: '0.8',
+        alternates: availableLanguages
+      });
+    }
   });
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -315,7 +366,7 @@ export const generateMainSitemap = () => {
 </urlset>`;
 
   fs.writeFileSync(path.join(SITEMAP_PATH, 'sitemap.xml'), sitemap);
-  console.log(`Sitemap principale generata con ${allSlugs.size} articoli unici`);
+  console.log(`Sitemap principale generata con ${Object.keys(articleGroups).length} gruppi di articoli`);
 };
 
 /**

@@ -45,27 +45,23 @@ function parseLeadMagnet(raw: any): BlogPostMeta['leadMagnet'] | undefined {
 function getAllPosts(language?: string): BlogPostMeta[] {
   const targetLanguage = (language || 'it').toLowerCase();
   console.log(`[Blog API] Getting posts for language: ${targetLanguage}`);
-  console.log(`[Blog API] Blog directory path: ${BLOG_DIR}`);
-  console.log(`[Blog API] Does BLOG_DIR exist? ${fs.existsSync(BLOG_DIR)}`);
-
-  if (!fs.existsSync(BLOG_DIR)) {
-    console.log(`[Blog API] Blog directory does not exist: ${BLOG_DIR}`);
-    return [];
-  }
 
   try {
-    const files = fs.readdirSync(BLOG_DIR);
-    console.log(`[Blog API] Found ${files.length} files in blog directory: ${files.join(', ')}`);
+    const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
+    
+    // Filtra i file per lingua
+    let relevantFiles: string[];
+    if (targetLanguage === 'it') {
+      // Per l'italiano, prendi solo i file senza suffisso di lingua
+      relevantFiles = files.filter(file => !file.match(/\.[a-z]{2}\.mdx$/));
+    } else {
+      // Per altre lingue, prendi solo i file con il suffisso corretto
+      relevantFiles = files.filter(file => file.endsWith(`.${targetLanguage}.mdx`));
+    }
 
-    const posts = files
-      .filter((filename: string) => {
-        if (filename.startsWith('.') || filename.startsWith('~')) return false;
-        const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
-        const fileLanguage = langMatch?.[1] || 'it';
-        const shouldInclude = targetLanguage === 'it' ? !langMatch : fileLanguage === targetLanguage;
-        console.log(`[Blog API] File: ${filename}, Language: ${fileLanguage}, Include: ${shouldInclude}`);
-        return shouldInclude;
-      })
+    console.log(`[Blog API] Found ${relevantFiles.length} files for language ${targetLanguage}:`, relevantFiles);
+
+    const posts = relevantFiles
       .map((filename: string) => {
         try {
           const filePath = path.join(BLOG_DIR, filename);
@@ -73,7 +69,10 @@ function getAllPosts(language?: string): BlogPostMeta[] {
           const fileContent = fs.readFileSync(filePath, 'utf8');
           const { data } = matter(fileContent);
           console.log(`[Blog API] Successfully read file ${filename}. Metadata:`, data);
-          const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+          
+          // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+          const slug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+          
           if (!data.title?.trim() || !data.date) {
             console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
             return null;
