@@ -5,7 +5,7 @@
  * Usa: node scripts/generate-sitemaps.js
  */
 
-import { generateAllSitemaps } from '../server/services/sitemapGenerator.js';
+import { generateAllSitemaps } from '../server/services/sitemapGenerator.ts';
 
 console.log('🚀 Avvio generazione sitemap dinamiche...');
 

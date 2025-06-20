@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const PASSWORD = 'supersegreta';
 
@@ -22,6 +22,10 @@ const AdminPage = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadMsg, setUploadMsg] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  // Stato per lista articoli
+  const [posts, setPosts] = useState<{slug:string; title:string; date:string;}[]>([]);
+  const [loadingPosts, setLoadingPosts] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,6 +124,46 @@ const AdminPage = () => {
     }
   };
 
+  const fetchPosts = async () => {
+    setLoadingPosts(true);
+    try {
+      const res = await fetch('/api/blog?lang=all');
+      const data = await res.json();
+      if (data.success) {
+        setPosts(data.data);
+      }
+    } catch(err) {
+      console.error('Errore fetch posts', err);
+    } finally {
+      setLoadingPosts(false);
+    }
+  };
+
+  useEffect(() => {
+    if (authenticated) {
+      fetchPosts();
+    }
+  }, [authenticated]);
+
+  const handleDelete = async (slug:string) => {
+    if(!confirm(`Confermi eliminazione dell'articolo ${slug}?`)) return;
+    try {
+      const res = await fetch(`/api/blog/${slug}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${PASSWORD}` }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setPosts(p => p.filter(post => post.slug !== slug));
+        alert('Articolo eliminato e sitemap aggiornata');
+      } else {
+        alert('Errore: '+data.message);
+      }
+    } catch(err) {
+      alert('Errore rete');
+    }
+  };
+
   if (!authenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -145,6 +189,21 @@ const AdminPage = () => {
       <div className="max-w-xl w-full space-y-8 bg-white p-8 rounded-xl shadow text-center">
         <h2 className="text-2xl font-bold mb-4">Area Admin Blog</h2>
         <button onClick={handleLogout} className="text-sm text-red-600 underline mb-4">Logout</button>
+        {/* Lista articoli esistenti */}
+        <div className="text-left mb-8">
+          <h3 className="text-lg font-bold mb-2">Articoli esistenti</h3>
+          {loadingPosts ? <div>Caricamento...</div> : (
+            <ul className="space-y-1 max-h-64 overflow-y-auto border rounded p-2">
+              {posts.map(post => (
+                <li key={post.slug} className="flex justify-between items-center text-sm">
+                  <span>{post.title || post.slug}</span>
+                  <button onClick={() => handleDelete(post.slug)} className="text-red-600 underline">Elimina</button>
+                </li>
+              ))}
+              {posts.length===0 && <li>Nessun articolo</li>}
+            </ul>
+          )}
+        </div>
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           <div>
             <label className="block font-medium mb-1">Titolo</label>

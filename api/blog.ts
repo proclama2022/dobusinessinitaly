@@ -283,6 +283,7 @@ author: "${author}"
     // Handle single post request by slug
     const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
     const lang = typeof req.query.lang === 'string' ? req.query.lang : undefined;
+    
     if (slug) {
       console.log(`[Blog API] Fetching single post for slug: ${slug}, language: ${lang || 'default (it)'}`);
       const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';

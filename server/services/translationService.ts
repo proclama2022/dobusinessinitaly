@@ -2,7 +2,7 @@ import 'dotenv/config';
 import fs from "fs/promises";
 import path from "path";
 import { OpenAI } from "openai";
-import { put } from '@vercel/blob';
+import matter from 'gray-matter';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -45,49 +45,52 @@ export async function generateArticleTranslations(
   targetLanguages: string[]
 ): Promise<void> {
   try {
-    const originalContent = await fs.readFile(originalFilePath, "utf-8");
-
-    // Extract frontmatter and body separately
-    const frontmatterMatch = originalContent.match(/^---\n([\s\S]*?)\n---/);
-    if (!frontmatterMatch) {
-      throw new Error("Frontmatter not found in the original article.");
-    }
-    const frontmatter = frontmatterMatch[0];
-    const body = originalContent.slice(frontmatterMatch[0].length).trim();
+    const originalContent = await fs.readFile(originalFilePath, 'utf-8');
+    const { data: originalMeta, content: originalBody } = matter(originalContent);
 
     for (const lang of targetLanguages) {
-      // Prepare prompt for OpenAI to translate the body preserving markdown and structure
-      const prompt = `Translate the following Italian article content to ${lang} language, preserving the markdown and frontmatter structure. Only translate the content, do not change frontmatter keys or metadata.\n\n${body}`;
-
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+      /* ---------- TRADUCI BODY ---------- */
+      const bodyPrompt = `Translate this markdown article body from Italian to ${lang}. Keep markdown format, do NOT translate front-matter.\n\n${originalBody}`;
+      const bodyRes = await openai.chat.completions.create({
+        model: 'gpt-4o-mini',
         messages: [
-          { role: "system", content: "You are a helpful assistant that translates Italian markdown articles preserving formatting." },
-          { role: "user", content: prompt },
+          { role: 'system', content: 'You translate Italian markdown keeping formatting.' },
+          { role: 'user', content: bodyPrompt }
         ],
         temperature: 0.3,
       });
+      const translatedBody = bodyRes.choices[0].message?.content?.trim();
+      if (!translatedBody) throw new Error(`Empty body translation for ${lang}`);
 
-      const translatedBody = completion.choices[0].message?.content?.trim();
-      if (!translatedBody) {
-        throw new Error(`No translation returned for language ${lang}`);
+      /* ---------- TRADUCI METADATA (title/excerpt) ---------- */
+      const fieldsToTranslate: string[] = [];
+      if (originalMeta.title) fieldsToTranslate.push(originalMeta.title);
+      if (originalMeta.excerpt) fieldsToTranslate.push(originalMeta.excerpt);
+
+      const translatedMeta = { ...originalMeta } as any;
+      if (fieldsToTranslate.length) {
+        const metaPrompt = `Translate the following lines from Italian to ${lang}. Keep same order, return only the translations each on its own line:\n${fieldsToTranslate.join('\n')}`;
+        const metaRes = await openai.chat.completions.create({
+          model: 'gpt-4o-mini',
+          messages: [{ role: 'user', content: metaPrompt }],
+          temperature: 0.3,
+        });
+        const lines = metaRes.choices[0].message?.content?.trim().split('\n') || [];
+        let idx = 0;
+        if (originalMeta.title && lines[idx]) translatedMeta.title = lines[idx++].trim();
+        if (originalMeta.excerpt && lines[idx]) translatedMeta.excerpt = lines[idx].trim();
       }
 
-      // Compose translated article content with original frontmatter (optionally adjust frontmatter for language)
-      // Here we keep frontmatter as is, but you may want to add/update language key
-      const translatedContent = `${frontmatter}\n\n${translatedBody}\n`;
+      const translatedContent = matter.stringify(translatedBody, translatedMeta);
 
-      // Determine output path for translated article
       const dir = path.dirname(originalFilePath);
-      const baseName = path.basename(originalFilePath, ".mdx");
-      const translatedFileName = `${baseName}.${lang}.mdx`;
-      const translatedFilePath = path.join(dir, translatedFileName);
-
-      await fs.writeFile(translatedFilePath, translatedContent, "utf-8");
-      console.log(`Translated article saved: ${translatedFilePath}`);
+      const baseName = path.basename(originalFilePath, '.mdx');
+      const outPath = path.join(dir, `${baseName}.${lang}.mdx`);
+      await fs.writeFile(outPath, translatedContent, 'utf-8');
+      console.log(`✔ Saved translation ${outPath}`);
     }
-  } catch (error) {
-    console.error("Error generating translations:", error);
-    throw error;
+  } catch (err) {
+    console.error('Error generating translations:', err);
+    throw err;
   }
 }

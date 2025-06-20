@@ -13,6 +13,7 @@ import { dirname } from 'path';
 import { sendEmail } from './services/emailService';
 import { getItalianBusinessGuideContent } from './guides/italian-business-guide.js';
 import { generateArticleTranslations } from "./services/translationService";
+import { list as listBlobs, del as delBlob } from '@vercel/blob';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -366,17 +367,35 @@ function savePost(meta: Omit<BlogPostMeta, 'slug'>, content: string, slug?: stri
  * @param slug Lo slug del post da eliminare
  * @returns True se l'eliminazione è avvenuta con successo, false altrimenti
  */
-function deletePost(slug: string): boolean {
+async function deletePost(slug: string): Promise<boolean> {
   try {
-    const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+    // Regex per trovare tutte le varianti: slug.mdx, slug.en.mdx, slug.fr.mdx ecc.
+    const pattern = new RegExp(`^${slug}(?:\\.[a-z]{2})?\\.mdx$`, 'i');
+    const filesToDelete = fs.readdirSync(BLOG_DIR).filter((file) => pattern.test(file));
 
-    // Controlla se il file esiste
-    if (!fs.existsSync(filePath)) {
-      return false;
+    if (filesToDelete.length === 0) {
+      return false; // Nessun file da eliminare
     }
 
-    // Elimina il file
-    fs.unlinkSync(filePath);
+    filesToDelete.forEach((filename) => {
+      const filePath = path.join(BLOG_DIR, filename);
+      fs.unlinkSync(filePath);
+      console.log(`[deletePost] Deleted ${filename}`);
+    });
+
+    // Elimina eventuali blob remoti in produzione
+    if (process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production') {
+      try {
+        const blobsResp = await listBlobs({ token: process.env.BLOB_READ_WRITE_TOKEN, prefix: slug });
+        const targets = blobsResp.blobs.filter(b => pattern.test(b.pathname));
+        for (const b of targets) {
+          await delBlob(b.pathname, { token: process.env.BLOB_READ_WRITE_TOKEN });
+          console.log(`[deletePost] Deleted blob ${b.pathname}`);
+        }
+      } catch (blobErr) {
+        console.error('Errore eliminazione blob:', blobErr);
+      }
+    }
 
     return true;
   } catch (error) {
@@ -539,16 +558,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('/api/blog', (req: Request, res: Response) => {
       try {
           const lang = req.query.lang as string | undefined;
-          console.log(`[/api/blog] Request received for language: ${lang || 'default (it)'}`);
-          console.log(`[/api/blog] BLOG_DIR: ${BLOG_DIR}`);
-          console.log(`[/api/blog] Directory exists: ${fs.existsSync(BLOG_DIR)}`);
+          const slug = req.query.slug as string | undefined;
           
-          if (fs.existsSync(BLOG_DIR)) {
-              const files = fs.readdirSync(BLOG_DIR);
-              console.log(`[/api/blog] Files in directory: ${files.join(', ')}`);
+          console.log(`[/api/blog] ======= NEW REQUEST =======`);
+          console.log(`[/api/blog] Full query object:`, req.query);
+          console.log(`[/api/blog] URL:`, req.url);
+          console.log(`[/api/blog] Language: ${lang || 'default (it)'}`);
+          console.log(`[/api/blog] Slug: ${slug || 'none'}`);
+          console.log(`[/api/blog] Slug type:`, typeof slug);
+          console.log(`[/api/blog] Slug truthy check:`, !!slug);
+          
+          // Se è richiesto un singolo post tramite query parameter
+          if (slug) {
+              console.log(`[/api/blog] *** ENTERING SINGLE POST MODE ***`);
+              console.log(`[/api/blog] Fetching single post with slug: ${slug} and language: ${lang || 'it'}`);
+              const postObj = getPostBySlug(slug, lang);
+              if (!postObj) {
+                  console.log(`[/api/blog] Post not found: ${slug}`);
+                  return res.status(404).json({
+                      success: false,
+                      message: 'Post not found'
+                  });
+              }
+              
+              const { meta, content } = postObj;
+              console.log(`[/api/blog] Returning single post: ${meta.title}`);
+              return res.status(200).json({
+                  success: true,
+                  data: { meta, content }
+              });
           }
           
-          const posts = getAllPosts(lang);
+          // Altrimenti ritorna tutti i post
+          console.log(`[/api/blog] *** ENTERING ALL POSTS MODE ***`);
+          const posts = (lang === 'all') ? getAllPostsForAllLanguages() : getAllPosts(lang);
           console.log(`[/api/blog] Returning ${posts.length} posts`);
           res.status(200).json({
               success: true,
@@ -663,15 +706,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API per eliminare un post
-  app.delete('/api/blog/:slug', simpleAdminAuth, (req: Request, res: Response) => {
+  app.delete('/api/blog/:slug', simpleAdminAuth, async (req: Request, res: Response) => {
     try {
       const { slug } = req.params;
-      const success = deletePost(slug);
+      const success = await deletePost(slug);
 
       if (success) {
+        // Rigenera le sitemap per riflettere la cancellazione
+        try {
+          generateAllSitemaps();
+          console.log('[API DELETE] Sitemap rigenerate dopo eliminazione articolo');
+        } catch (err) {
+          console.error('Errore rigenerando sitemap:', err);
+        }
+
         res.status(200).json({
           success: true,
-          message: 'Post deleted successfully'
+          message: 'Post deleted and sitemaps regenerated'
         });
       } else {
         res.status(404).json({

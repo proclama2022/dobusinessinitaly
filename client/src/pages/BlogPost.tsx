@@ -10,6 +10,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import DownloadGuideForm from '@/components/DownloadGuideForm';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -44,6 +45,7 @@ const RelatedPostCard = ({
   excerpt: string;
   slug: string;
 }) => {
+  const { getLocalizedPath } = useLocalizedPath();
   return (
     <article className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white">
       {/* Contenitore immagine */}
@@ -76,7 +78,7 @@ const RelatedPostCard = ({
         </p>
 
         {/* Pulsante leggi di più */}
-        <Link href={`/blog/${slug}`} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
+        <Link href={getLocalizedPath(`/blog/${slug}`)} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
           Leggi l'articolo
           <i className="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
         </Link>
@@ -185,11 +187,27 @@ const BlogPost = () => {
     );
   }
 
+  if (!postData.data?.meta) {
+    return (
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
+          <p className="text-neutral-600 mb-8">L'articolo che stai cercando non ha metadati validi.</p>
+          <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
+            Torna al blog
+            <i className="fas fa-arrow-left ml-2"></i>
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
   const { meta, content } = postData.data;
+  const langPrefix = currentLanguage !== 'it' ? `/${currentLanguage}` : '';
 
   // Debug: log metadata per vedere cosa arriva dall'API
   console.log('[BlogPost] Meta data received:', meta);
-  console.log('[BlogPost] leadMagnet data:', meta.leadMagnet);
+  console.log('[BlogPost] leadMagnet data:', meta?.leadMagnet);
 
   // Prepara i dati strutturati per l'articolo
   const articleStructuredData = {
@@ -214,7 +232,7 @@ const BlogPost = () => {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://yourbusinessinitaly.com/blog/${meta.slug}`
+      '@id': `https://yourbusinessinitaly.com${langPrefix}/blog/${meta.slug}`
     },
     articleSection: meta.category
   };
@@ -252,7 +270,7 @@ const BlogPost = () => {
   } : null;
 
   // Genera hreflang alternates per SEO internazionale
-  const hreflangAlternates = {
+  const hreflangAlternates: Record<string,string> = {
     'it': `https://yourbusinessinitaly.com/blog/${meta.slug}`,
     'en': `https://yourbusinessinitaly.com/en/blog/${meta.slug}`,
     'fr': `https://yourbusinessinitaly.com/fr/blog/${meta.slug}`,
@@ -268,7 +286,7 @@ const BlogPost = () => {
       <SEOHead
         title={`${meta.title} - Yourbusinessinitaly.com`}
         description={meta.excerpt}
-        canonicalUrl={`/blog/${meta.slug}`}
+        canonicalUrl={`${langPrefix}/blog/${meta.slug}`}
         ogImage={meta.coverImage}
         ogType="article"
         twitterCard="summary_large_image"

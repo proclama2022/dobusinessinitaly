@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -36,6 +37,7 @@ const BlogPostCard = ({
   animationDelay?: number;
 }) => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   return (
     <article className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white animate-slide-up" style={{ animationDelay: `${animationDelay}s` }}>
       {/* Contenitore immagine */}
@@ -89,7 +91,7 @@ const BlogPostCard = ({
         </p>
 
         {/* Pulsante leggi di più */}
-        <Link href={`/blog/${slug}`} className="group-hover:italic-text-gradient inline-flex items-center text-sm font-medium relative">
+        <Link href={getLocalizedPath(`/blog/${slug}`)} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
           <span className="relative">
             {t('blog.readMore')}
             <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#009246] to-[#ce2b37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
@@ -123,7 +125,8 @@ const CategoryBadge = ({
 
 const Blog = () => {
   const { t: tRaw, i18n } = useTranslation();
-const t = tRaw as (key: string, options?: any) => string;
+  const t = tRaw as (key: string, options?: any) => string;
+  const { language: currentLang, getLocalizedPath } = useLocalizedPath();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tutte");
   const [location, setLocation] = useLocation();
@@ -132,11 +135,11 @@ const t = tRaw as (key: string, options?: any) => string;
   const queryClient = useQueryClient();
 
   const { data: postsData, isLoading, error } = useQuery({
-    queryKey: ['/api/blog', i18n.language], // Include language in query key
+    queryKey: ['/api/blog', currentLang],
     queryFn: async () => {
-      console.log(`[Blog] Fetching posts for language: ${i18n.language}`);
+      console.log(`[Blog] Fetching posts for language: ${currentLang}`);
       const response = await apiRequest<{ success: boolean, data: BlogPostMeta[] }>(
-        `/api/blog${i18n.language === 'it' ? '' : ('?lang=' + i18n.language)}`,
+        `/api/blog${currentLang === 'it' ? '' : ('?lang=' + currentLang)}`,
         { method: 'GET' }
       );
       console.log(`[Blog] Received ${response.data?.length || 0} posts from API`);
@@ -148,7 +151,7 @@ const t = tRaw as (key: string, options?: any) => string;
 
   // Ensure we have accurate data and UI translations when language changes
   useEffect(() => {
-    console.log(`[Blog] Language changed to: ${i18n.language}`);
+    console.log(`[Blog] Language changed to: ${currentLang}`);
     
     // Force data refetch
     queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
@@ -156,7 +159,7 @@ const t = tRaw as (key: string, options?: any) => string;
     // Update UI text
     document.title = `${t('navigation.blog')} - Yourbusinessinitaly.com`;
     
-  }, [i18n.language, queryClient, t]);
+  }, [currentLang, queryClient, t]);
 
   // Estratti tutte le categorie uniche dai post
   const uniqueCategories = postsData?.data
@@ -432,7 +435,7 @@ const t = tRaw as (key: string, options?: any) => string;
                 </p>
 
               {/* CTA */}
-              <Link href={`/blog/${featuredPost?.slug}`} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
+              <Link href={getLocalizedPath(`/blog/${featuredPost?.slug}`)} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
                 {t('blog.readMore')}
                 <i className="fas fa-arrow-right ml-2 text-sm"></i>
               </Link>

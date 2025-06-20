@@ -76,15 +76,18 @@ export const LocalizedRouter = () => {
   
   // Se l'URL contiene un prefisso linguistico, imposta quella lingua
   useEffect(() => {
-    if (lang && supportedLanguages.includes(lang)) {
-      i18n.changeLanguage(lang);
-    } else if (location === '/' || !lang) {
-      // Reindirizza alla home con la lingua corrente se non c'è un prefisso
-      setLocation(`/${i18n.language}`);
-    }
-    
-    setInitialized(true);
-  }, [lang, i18n, location, setLocation]);
+    const init = async () => {
+      if (lang && supportedLanguages.includes(lang)) {
+        await i18n.changeLanguage(lang);
+      } else if (location === '/' || !lang) {
+        // Reindirizza alla home con la lingua corrente se non c'è un prefisso
+        setLocation(`/${i18n.language}`);
+      }
+      setInitialized(true);
+    };
+    init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
   
   // Non renderizzare nulla fino a quando la lingua non è inizializzata
   if (!initialized && (location === '/' || !lang)) {
