@@ -341,7 +341,12 @@ author: "${author}"
 
       let posts: BlogPostMeta[] = [];
       if (process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production') {
-        posts = await getAllPostsFromBlob(lang);
+        const blobPosts = await getAllPostsFromBlob(lang);
+        const localPosts = getAllPosts(lang);
+        // Unisci evitando duplicati (priorità ai Blob)
+        const merged: Record<string, BlogPostMeta> = {};
+        [...blobPosts, ...localPosts].forEach(p => { merged[p.slug] = p; });
+        posts = Object.values(merged);
       } else {
         posts = getAllPosts(lang);
       }

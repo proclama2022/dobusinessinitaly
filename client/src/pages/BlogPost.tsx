@@ -106,9 +106,8 @@ const BlogPost = () => {
   const { data: postData, isLoading, error } = useQuery({
     queryKey: ['/api/blog', currentLanguage, slug],
     queryFn: () => {
-      const apiUrl = currentLanguage !== 'it' 
-        ? `/api/blog/${currentLanguage}/${slug}` 
-        : `/api/blog/${slug}`;
+      // Costruiamo l'URL con parametri di query per compatibilità con l'API
+      const apiUrl = `/api/blog?slug=${encodeURIComponent(slug)}${currentLanguage !== 'it' ? `&lang=${currentLanguage}` : ''}`;
       console.log('[BlogPost] Fetching from URL:', apiUrl);
       return apiRequest<{ success: boolean, data: BlogPostData }>(
         apiUrl,
@@ -119,8 +118,11 @@ const BlogPost = () => {
 
   // Fetch di tutti i post per i post correlati
   const { data: postsData } = useQuery({
-    queryKey: ['/api/blog'],
-    queryFn: () => apiRequest<{ success: boolean, data: BlogPostMeta[] }>('/api/blog', { method: 'GET' }),
+    queryKey: ['/api/blog', currentLanguage],
+    queryFn: () => apiRequest<{ success: boolean, data: BlogPostMeta[] }>(
+      `/api/blog${currentLanguage !== 'it' ? `?lang=${currentLanguage}` : ''}`,
+      { method: 'GET' }
+    ),
   });
 
   useEffect(() => {
