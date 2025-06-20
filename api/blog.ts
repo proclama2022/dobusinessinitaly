@@ -30,6 +30,18 @@ interface BlogPostMeta {
   };
 }
 
+// Helper per estrarre il campo leadMagnet in maniera case-insensitive
+function parseLeadMagnet(raw: any): BlogPostMeta['leadMagnet'] | undefined {
+  if (!raw) return undefined;
+  const lm = raw.leadMagnet || raw.leadmagnet || raw['lead_magnet'];
+  if (!lm) return undefined;
+  return {
+    title: lm.title || '',
+    description: lm.description || '',
+    type: lm.type || '',
+  };
+}
+
 function getAllPosts(language?: string): BlogPostMeta[] {
   const targetLanguage = (language || 'it').toLowerCase();
   console.log(`[Blog API] Getting posts for language: ${targetLanguage}`);
@@ -76,12 +88,9 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             author: data.author?.trim() || 'Redazione',
           };
           
-          if (data.leadMagnet) {
-            blogPost.leadMagnet = {
-              title: data.leadMagnet.title || '',
-              description: data.leadMagnet.description || '',
-              type: data.leadMagnet.type || ''
-            };
+          const leadMagnet = parseLeadMagnet(data);
+          if (leadMagnet) {
+            blogPost.leadMagnet = leadMagnet;
           }
           
           return blogPost;
@@ -136,13 +145,8 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
         coverImage: data.coverImage?.trim() || '',
         author: data.author?.trim() || 'Redazione',
       };
-      if (data.leadMagnet) {
-        post.leadMagnet = {
-          title: data.leadMagnet.title || '',
-          description: data.leadMagnet.description || '',
-          type: data.leadMagnet.type || '',
-        };
-      }
+      const leadMagnet = parseLeadMagnet(data);
+      if (leadMagnet) post.leadMagnet = leadMagnet;
       posts.push(post);
     } catch (e) {
       console.error('[Blog API] Error fetching blob', filename, e);
@@ -175,11 +179,7 @@ async function getPostFromBlob(slug: string, lang?: string) {
       excerpt: data.excerpt?.trim() || '',
       coverImage: data.coverImage?.trim() || '',
       author: data.author?.trim() || 'Redazione',
-      leadMagnet: data.leadMagnet ? {
-        title: data.leadMagnet.title || '',
-        description: data.leadMagnet.description || '',
-        type: data.leadMagnet.type || '',
-      } : undefined,
+      leadMagnet: parseLeadMagnet(data),
     };
     return { meta, content };
   } catch (e) {
@@ -320,11 +320,7 @@ author: "${author}"
           excerpt: data.excerpt?.trim() || '',
           coverImage: data.coverImage?.trim() || '',
           author: data.author?.trim() || 'Redazione',
-          leadMagnet: data.leadMagnet ? {
-            title: data.leadMagnet.title || '',
-            description: data.leadMagnet.description || '',
-            type: data.leadMagnet.type || ''
-          } : undefined,
+          leadMagnet: parseLeadMagnet(data),
         };
         console.log(`[Blog API] Successfully fetched post: ${slug}`);
         res.status(200).json({ success: true, data: { meta, content } });
