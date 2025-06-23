@@ -3,8 +3,8 @@
   
   <url>
     <loc>https://yourbusinessinitaly.com/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-23</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/" />
@@ -12,45 +12,68 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/" />
   </url>
   <url>
+    <loc>https://yourbusinessinitaly.com/blog</loc>
+    <lastmod>2025-06-23</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/servizi</loc>
+    <lastmod>2025-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/blog/aprire-partita-iva-freelance-italia-2025</loc>
+    <lastmod>2025-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/freiberufliche-umsatzsteuer-identifikationsnummer-italien-2025" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/opening-freelance-vat-number-italy-2025" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/abrir-numero-iva-freelance-italia-2025" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yourbusinessinitaly.com/fr/blog/ouvrir-partita-iva-freelance-italie-2025" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/blog/aprire-partita-iva-freelance-italia-2025" />
+  </url>
+  <url>
     <loc>https://yourbusinessinitaly.com/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025</loc>
     <lastmod>2025-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025</loc>
     <lastmod>2025-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://yourbusinessinitaly.com/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025</loc>
     <lastmod>2025-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/how-to-open-business-italy-foreigner-complete-guide-2025</loc>
     <lastmod>2025-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/how-to-open-business-italy-foreigner-complete-guide-2025" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/impuestos-srl-guia-2025-emprendedores-extranjeros</loc>
     <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/impuestos-srl-guia-2025-emprendedores-extranjeros" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia</loc>
     <lastmod>2025-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/impatriates-regime-2025-steuerliche-vorteile-fur-auslandische-unternehmer-in-italien" />
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/impatriate-regime-2025-tax-benefits-for-foreign-entrepreneurs-in-italy" />
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/regimen-de-impatriados-2025-ventajas-fiscales-para-empresarios-extranjeros-en-italia" />
@@ -60,36 +83,36 @@
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer</loc>
     <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri</loc>
     <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/taxes-of-an-srl-2025-guide-for-new-foreign-entrepreneurs</loc>
     <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/taxes-of-an-srl-2025-guide-for-new-foreign-entrepreneurs" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers</loc>
     <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://yourbusinessinitaly.com/fr/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025</loc>
     <lastmod>2025-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025" />
   </url>
 </urlset>

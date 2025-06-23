@@ -143,24 +143,49 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
   const allBlogPosts = posts ? { [language]: posts } : readBlogPosts();
   const languagePosts = allBlogPosts[language] || [];
 
+  // Data corrente per aggiornamenti
+  const today = new Date().toISOString().split('T')[0];
+
   const sitemapEntries: SitemapEntry[] = [
-    { loc: `https://yourbusinessinitaly.com/${language}/`, lastmod: '2025-01-09', changefreq: 'weekly', priority: '1.0' },
-    { loc: `https://yourbusinessinitaly.com/${language}/servizi`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://yourbusinessinitaly.com/${language}/blog`, lastmod: '2025-01-09', changefreq: 'daily', priority: '0.9' },
-    { loc: `https://yourbusinessinitaly.com/${language}/servizi-privati`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://yourbusinessinitaly.com/${language}/nuovo-servizio`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.8' },
-    { loc: `https://yourbusinessinitaly.com/${language}/about`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://yourbusinessinitaly.com/${language}/contact`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://yourbusinessinitaly.com/${language}/media`, lastmod: '2025-01-09', changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/`, lastmod: today, changefreq: 'daily', priority: '1.0' },
+    { loc: `https://yourbusinessinitaly.com/${language}/servizi`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+    { loc: `https://yourbusinessinitaly.com/${language}/blog`, lastmod: today, changefreq: 'hourly', priority: '0.95' },
+    { loc: `https://yourbusinessinitaly.com/${language}/servizi-privati`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
+    { loc: `https://yourbusinessinitaly.com/${language}/nuovo-servizio`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
+    { loc: `https://yourbusinessinitaly.com/${language}/about`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/contact`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
+    { loc: `https://yourbusinessinitaly.com/${language}/media`, lastmod: today, changefreq: 'weekly', priority: '0.75' },
   ];
 
   // Aggiungi tutti i post del blog per questa lingua
   languagePosts.forEach(post => {
+    // Determina la frequenza di cambiamento basata sulla data dell'articolo
+    const articleDate = new Date(post.date);
+    const daysSincePublished = Math.floor((Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    let changefreq = 'weekly';
+    let priority = '0.8';
+    
+    // Articoli più recenti hanno priorità e frequenza più alta
+    if (daysSincePublished <= 7) {
+      changefreq = 'daily';
+      priority = '0.9';
+    } else if (daysSincePublished <= 30) {
+      changefreq = 'weekly';
+      priority = '0.85';
+    } else if (daysSincePublished <= 90) {
+      changefreq = 'weekly';
+      priority = '0.8';
+    } else {
+      changefreq = 'monthly';
+      priority = '0.75';
+    }
+
     sitemapEntries.push({
       loc: `https://yourbusinessinitaly.com/${language}/blog/${post.slug}`,
       lastmod: post.lastmod,
-      changefreq: 'weekly',
-      priority: '0.8',
+      changefreq,
+      priority,
     });
   });
 
@@ -246,11 +271,14 @@ export const generateMainSitemap = () => {
     console.error('Errore nella lettura della cartella blog:', error);
   }
 
+  // Data corrente per aggiornamenti
+  const today = new Date().toISOString().split('T')[0];
+
   const sitemapEntries: SitemapEntry[] = [
     { 
       loc: `https://yourbusinessinitaly.com/`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'weekly', 
+      lastmod: today, 
+      changefreq: 'daily', 
       priority: '1.0',
       alternates: {
         'en': 'https://yourbusinessinitaly.com/en/',
@@ -259,7 +287,19 @@ export const generateMainSitemap = () => {
         'es': 'https://yourbusinessinitaly.com/es/'
       }
     },
-    // ... altre voci ...
+    // Aggiungi pagine principali con priorità alta
+    { 
+      loc: `https://yourbusinessinitaly.com/blog`, 
+      lastmod: today, 
+      changefreq: 'hourly', 
+      priority: '0.95' 
+    },
+    { 
+      loc: `https://yourbusinessinitaly.com/servizi`, 
+      lastmod: today, 
+      changefreq: 'weekly', 
+      priority: '0.9' 
+    }
   ];
 
   // Aggiungi tutti gli articoli con le loro versioni tradotte
@@ -282,12 +322,34 @@ export const generateMainSitemap = () => {
       const mainUrl = languageVariants['it'] 
         ? `https://yourbusinessinitaly.com/blog/${mainPost.slug}`
         : `https://yourbusinessinitaly.com/en/blog/${mainPost.slug}`;
+      
+      // Determina la frequenza e priorità basata sulla data dell'articolo
+      const articleDate = new Date(mainPost.date);
+      const daysSincePublished = Math.floor((Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
+      
+      let changefreq = 'weekly';
+      let priority = '0.8';
+      
+      // Articoli più recenti hanno priorità e frequenza più alta
+      if (daysSincePublished <= 7) {
+        changefreq = 'daily';
+        priority = '0.9';
+      } else if (daysSincePublished <= 30) {
+        changefreq = 'weekly';
+        priority = '0.85';
+      } else if (daysSincePublished <= 90) {
+        changefreq = 'weekly';
+        priority = '0.8';
+      } else {
+        changefreq = 'monthly';
+        priority = '0.75';
+      }
         
       sitemapEntries.push({
         loc: mainUrl,
         lastmod: latestDate,
-        changefreq: 'weekly',
-        priority: '0.8',
+        changefreq,
+        priority,
         alternates: availableLanguages
       });
     }
@@ -310,6 +372,30 @@ export const generateMainSitemap = () => {
 };
 
 /**
+* Genera il sitemap index per tutte le sitemap
+*/
+export const generateSitemapIndex = () => {
+  const today = new Date().toISOString().split('T')[0];
+  const languages = ['it', 'en', 'de', 'fr', 'es'];
+  
+  const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://yourbusinessinitaly.com/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  ${languages.map(lang => `
+  <sitemap>
+    <loc>https://yourbusinessinitaly.com/sitemap-${lang}.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>`).join('')}
+</sitemapindex>`;
+
+  fs.writeFileSync(path.join(SITEMAP_PATH, 'sitemap-index.xml'), sitemapIndexContent);
+  console.log('Sitemap index generato con successo');
+};
+
+/**
 * Genera tutte le sitemap
 */
 export const generateAllSitemaps = () => {
@@ -322,6 +408,9 @@ languages.forEach(lang => {
 
 // Genera sitemap principale
 generateMainSitemap();
+
+// Genera sitemap index
+generateSitemapIndex();
 
 console.log('Tutte le sitemap sono state generate con successo!');
 };

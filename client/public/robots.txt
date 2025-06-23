@@ -16,7 +16,10 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Sitemap
+# Sitemap principale (consigliato per Google)
+Sitemap: https://yourbusinessinitaly.com/sitemap-index.xml
+
+# Sitemap individuali (backup)
 Sitemap: https://yourbusinessinitaly.com/sitemap.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap-it.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap-en.xml

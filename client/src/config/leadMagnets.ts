@@ -35,16 +35,31 @@ export const leadMagnets: Record<string, LeadMagnet> = {
       fr: '📩 Votre guide complet pour créer une entreprise en Italie',
       es: '📩 Tu guía completa para abrir un negocio en Italia'
     }
+  },
+  'italian-freelance-guide': {
+    type: 'italian-freelance-guide',
+    title: {
+      it: 'Guida PDF: Aprire Partita IVA Freelance in Italia 2025',
+      en: 'PDF Guide: Opening a Freelance VAT Number in Italy 2025',
+      fr: 'Guide PDF: Ouvrir une Partita IVA Freelance en Italie 2025',
+      de: 'PDF-Leitfaden: Freiberufliche Umsatzsteuer-Identifikationsnummer in Italien eröffnen 2025',
+      es: 'Guía PDF: Abrir un Número de IVA Freelance en Italia 2025'
+    },
+    description: {
+      it: 'Scarica la guida completa con checklist, documenti e procedure dettagliate per avviare la tua attività da freelance in Italia.',
+      en: 'Download the complete guide with checklist, documents, and detailed procedures to start your freelance activity in Italy.',
+      fr: 'Téléchargez le guide complet avec checklist, documents et procédures détaillées pour démarrer votre activité de freelance en Italie.',
+      de: 'Laden Sie den vollständigen Leitfaden mit Checkliste, Dokumenten und detaillierten Verfahren herunter, um Ihre freiberufliche Tätigkeit in Italien zu beginnen.',
+      es: 'Descarga la guía completa con checklist, documentos y procedimientos detallados para iniciar tu actividad freelance en Italia.'
+    },
+    emailSubjects: {
+      it: '📩 La tua guida PDF per aprire Partita IVA da Freelance in Italia',
+      en: '📩 Your PDF guide to opening a Freelance VAT Number in Italy',
+      de: '📩 Ihr PDF-Leitfaden zur Eröffnung einer freiberuflichen Umsatzsteuer-Identifikationsnummer in Italien',
+      fr: '📩 Votre guide PDF pour ouvrir une Partita IVA Freelance en Italie',
+      es: '📩 Tu guía PDF para abrir un Número de IVA Freelance en Italia'
+    }
   }
-  // Qui puoi aggiungere altre guide:
-  // 'tax-optimization-guide': {
-  //   type: 'tax-optimization-guide',
-  //   title: 'Guida all\'Ottimizzazione Fiscale per PMI',
-  //   description: 'Strategie legali per ridurre le tasse della tua azienda.',
-  //   emailSubjects: {
-  //     it: '📊 La tua guida all\'ottimizzazione fiscale'
-  //   }
-  // }
 };
 
 export const getLeadMagnet = (type: string): LeadMagnet | null => {
