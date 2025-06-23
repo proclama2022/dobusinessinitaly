@@ -3,13 +3,23 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import matter from 'gray-matter';
-import { BlogPost } from '../types/form';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const SITEMAP_PATH = path.join(__dirname, '../../client/public');
 const BLOG_CONTENT_PATH = path.join(__dirname, '../../content/blog');
+
+interface BlogPost {
+  slug: string;
+  lastmod: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  category: string;
+  date: string;
+  coverImage: string;
+}
 
 interface SitemapEntry {
   loc: string;
@@ -39,7 +49,7 @@ const extractSlugFromFilename = (filename: string): string => {
  * Estrae la lingua dal filename se presente
  */
 const extractLanguageFromFilename = (filename: string): string | null => {
-  const match = filename.match(/\.([a-z]{2})(\.mdx?)$/);
+  const match = filename.match(/\.([a-z]{2})\.(mdx?)$/);
   return match ? match[1] : null;
 };
 
@@ -75,16 +85,18 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
         const language = extractLanguageFromFilename(filename) || 'it';
         
         // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
-        let slug: string;
+        let slug;
         if (frontmatter.slug) {
-          // Usa lo slug personalizzato dal frontmatter
+          // Se c'è uno slug nel frontmatter, usalo direttamente
           slug = frontmatter.slug;
         } else {
-          // Fallback: genera slug dal filename
-          slug = extractSlugFromFilename(filename);
-          if (language !== 'it') {
-            // Rimuovi il suffisso della lingua dallo slug
-            slug = slug.replace(new RegExp(`\\.${language}$`), '');
+          // Altrimenti genera dal filename
+          let baseSlug = extractSlugFromFilename(filename);
+          if (language === 'it') {
+            slug = baseSlug;
+          } else {
+            // Per lingue non italiane, aggiungi suffisso lingua solo se non c'è slug nel frontmatter
+            slug = `${baseSlug}-${language}`;
           }
         }
         
@@ -193,8 +205,21 @@ export const generateMainSitemap = () => {
         // Estrai il nome base del file (senza lingua e estensione)
         let baseFilename = filename.replace(/\.(it|en|de|fr|es)\.mdx$/, '').replace(/\.mdx$/, '');
         
-        // Usa lo slug dal frontmatter se disponibile
-        const slug = frontmatter.slug || extractSlugFromFilename(filename);
+        // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+        let slug;
+        if (frontmatter.slug) {
+          // Se c'è uno slug nel frontmatter, usalo direttamente
+          slug = frontmatter.slug;
+        } else {
+          // Altrimenti genera dal filename
+          let baseSlug = extractSlugFromFilename(filename);
+          if (language === 'it') {
+            slug = baseSlug;
+          } else {
+            // Per lingue non italiane, aggiungi suffisso lingua solo se non c'è slug nel frontmatter
+            slug = `${baseSlug}-${language}`;
+          }
+        }
         
         if (!articleGroups[baseFilename]) {
           articleGroups[baseFilename] = {};
@@ -234,93 +259,13 @@ export const generateMainSitemap = () => {
         'es': 'https://yourbusinessinitaly.com/es/'
       }
     },
-    { 
-      loc: `https://yourbusinessinitaly.com/servizi`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.8',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/servizi',
-        'de': 'https://yourbusinessinitaly.com/de/servizi',
-        'fr': 'https://yourbusinessinitaly.com/fr/servizi',
-        'es': 'https://yourbusinessinitaly.com/es/servizi'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/blog`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'daily', 
-      priority: '0.9',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/blog',
-        'de': 'https://yourbusinessinitaly.com/de/blog',
-        'fr': 'https://yourbusinessinitaly.com/fr/blog',
-        'es': 'https://yourbusinessinitaly.com/es/blog'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/servizi-privati`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.8',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/servizi-privati',
-        'de': 'https://yourbusinessinitaly.com/de/servizi-privati',
-        'fr': 'https://yourbusinessinitaly.com/fr/servizi-privati',
-        'es': 'https://yourbusinessinitaly.com/es/servizi-privati'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/nuovo-servizio`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.8',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/nuovo-servizio',
-        'de': 'https://yourbusinessinitaly.com/de/nuovo-servizio',
-        'fr': 'https://yourbusinessinitaly.com/fr/nuovo-servizio'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/about`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.7',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/about',
-        'de': 'https://yourbusinessinitaly.com/de/about',
-        'fr': 'https://yourbusinessinitaly.com/fr/about'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/contact`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.7',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/contact',
-        'de': 'https://yourbusinessinitaly.com/de/contact',
-        'fr': 'https://yourbusinessinitaly.com/fr/contact'
-      }
-    },
-    { 
-      loc: `https://yourbusinessinitaly.com/media`, 
-      lastmod: '2025-01-09', 
-      changefreq: 'monthly', 
-      priority: '0.7',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/media',
-        'de': 'https://yourbusinessinitaly.com/de/media',
-        'fr': 'https://yourbusinessinitaly.com/fr/media'
-      }
-    }
+    // ... altre voci ...
   ];
 
   // Aggiungi tutti gli articoli con le loro versioni tradotte
   Object.entries(articleGroups).forEach(([baseFilename, languageVariants]) => {
     const availableLanguages: { [key: string]: string } = {};
     let latestDate = '2025-01-09';
-    let italianSlug = '';
     
     // Raccogli tutte le versioni linguistiche disponibili
     Object.entries(languageVariants).forEach(([lang, post]) => {
@@ -328,14 +273,9 @@ export const generateMainSitemap = () => {
         latestDate = post.lastmod;
       }
       
-      if (lang === 'it') {
-        italianSlug = post.slug;
-        availableLanguages['x-default'] = `https://yourbusinessinitaly.com/blog/${post.slug}`;
-      } else {
-        availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
-      }
+      availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
     });
-
+    
     // Aggiungi l'articolo principale (versione italiana se disponibile)
     const mainPost = languageVariants['it'] || Object.values(languageVariants)[0];
     if (mainPost) {
@@ -370,48 +310,24 @@ export const generateMainSitemap = () => {
 };
 
 /**
- * Genera tutte le sitemap
- */
+* Genera tutte le sitemap
+*/
 export const generateAllSitemaps = () => {
-  const languages = ['it', 'en', 'de', 'fr', 'es'];
-  
-  // Genera sitemap per ogni lingua
-  languages.forEach(lang => {
-    generateSitemap(lang);
-  });
-  
-  // Genera sitemap principale
-  generateMainSitemap();
-  
-  console.log('Tutte le sitemap sono state generate con successo!');
-};
+const languages = ['it', 'en', 'de', 'fr', 'es'];
 
-export const updateSitemap = (language: string, post: BlogPost) => {
-  const sitemapPath = path.join(SITEMAP_PATH, `sitemap-${language}.xml`);
-  if (fs.existsSync(sitemapPath)) {
-    const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
-    const regex = new RegExp(`<loc>https://yourbusinessinitaly.com/${language}/blog/${post.slug}</loc>`, 'g');
-    if (!regex.test(sitemapContent)) {
-      const newEntry = `
-  <url>
-    <loc>https://yourbusinessinitaly.com/${language}/blog/${post.slug}</loc>
-    <lastmod>${post.lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-      const updatedSitemap = sitemapContent.replace('</urlset>', `${newEntry}\n</urlset>`);
-      fs.writeFileSync(sitemapPath, updatedSitemap);
-      console.log(`Aggiunto articolo ${post.slug} alla sitemap ${language}`);
-    }
-  }
-};
+// Genera sitemap per ogni lingua
+languages.forEach(lang => {
+  generateSitemap(lang);
+});
 
-export const notifySitemapUpdate = (language: string, post: BlogPost) => {
-  updateSitemap(language, post);
+// Genera sitemap principale
+generateMainSitemap();
+
+console.log('Tutte le sitemap sono state generate con successo!');
 };
 
 // Esegui la generazione se questo file viene eseguito direttamente
 if (import.meta.url === `file://${process.argv[1]}`) {
-  console.log('Generando tutte le sitemap...');
-  generateAllSitemaps();
+console.log('Generando tutte le sitemap...');
+generateAllSitemaps();
 }

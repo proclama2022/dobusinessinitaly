@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'wouter';
+import { Link, useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
@@ -94,7 +94,6 @@ interface BlogPostProps {
 const BlogPost = () => {
   const { t, i18n } = useTranslation();
   const params = useParams<{ slug: string; lang?: string }>();
-  const [location, setLocation] = useLocation();
   const { slug, lang } = params;
 
   // Use the language from URL params if available, otherwise use i18n language
@@ -117,6 +116,8 @@ const BlogPost = () => {
       );
     },
   });
+
+
 
   // Fetch di tutti i post per i post correlati
   const { data: postsData } = useQuery({

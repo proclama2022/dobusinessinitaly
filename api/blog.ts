@@ -42,6 +42,45 @@ function parseLeadMagnet(raw: any): BlogPostMeta['leadMagnet'] | undefined {
   };
 }
 
+// Helper per trovare un post basandosi sull'URL slug in una lingua specifica
+function findPostByUrlSlug(urlSlug: string, language: string): { filename: string; frontmatter: any } | null {
+  try {
+    const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
+    
+    // Filtra i file per lingua
+    let relevantFiles: string[];
+    if (language === 'it') {
+      // Per l'italiano, prendi solo i file senza suffisso di lingua
+      relevantFiles = files.filter(file => !file.match(/\.[a-z]{2}\.mdx$/));
+    } else {
+      // Per altre lingue, prendi solo i file con il suffisso corretto
+      relevantFiles = files.filter(file => file.endsWith(`.${language}.mdx`));
+    }
+
+    // Cerca tra tutti i file di quella lingua per trovare quello con lo slug corrispondente
+    for (const filename of relevantFiles) {
+      try {
+        const filePath = path.join(BLOG_DIR, filename);
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContent);
+        
+        // Controlla se lo slug dal frontmatter corrisponde al URL slug richiesto
+        if (data.slug === urlSlug) {
+          return { filename, frontmatter: data };
+        }
+      } catch (error) {
+        console.error(`[Blog API] Error processing file ${filename}:`, error);
+        continue;
+      }
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('[Blog API] Error searching for post by URL slug:', error);
+    return null;
+  }
+}
+
 function getAllPosts(language?: string): BlogPostMeta[] {
   const targetLanguage = (language || 'it').toLowerCase();
   console.log(`[Blog API] Getting posts for language: ${targetLanguage}`);
@@ -71,7 +110,23 @@ function getAllPosts(language?: string): BlogPostMeta[] {
           console.log(`[Blog API] Successfully read file ${filename}. Metadata:`, data);
           
           // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
-          const slug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+          let slug;
+          
+          if (data.slug) {
+            // Se c'è uno slug nel frontmatter, usalo direttamente
+            slug = data.slug;
+
+          } else {
+            // Altrimenti genera dal filename
+            let baseSlug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+            if (targetLanguage === 'it') {
+              slug = baseSlug;
+            } else {
+              // Per lingue non italiane, aggiungi suffisso lingua solo se non c'è slug nel frontmatter
+              slug = `${baseSlug}-${targetLanguage}`;
+            }
+
+          }
           
           if (!data.title?.trim() || !data.date) {
             console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
@@ -133,7 +188,14 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
       const fileContent = await res.text();
       const { data } = matter(fileContent);
       if (!data.title?.trim() || !data.date) continue;
-      const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+      
+      // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+      let slug;
+      if (data.slug) {
+        slug = data.slug;
+      } else {
+        slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+      }
 
       const post: BlogPostMeta = {
         slug,
@@ -170,8 +232,12 @@ async function getPostFromBlob(slug: string, lang?: string) {
     const fileContent = await res.text();
     const { data, content } = matter(fileContent);
     if (!data.title?.trim() || !data.date) return null;
+    
+    // Usa lo slug dal frontmatter se disponibile
+    const finalSlug = data.slug || slug;
+    
     const meta: BlogPostMeta = {
-      slug,
+      slug: finalSlug,
       title: data.title.trim(),
       date: data.date,
       category: data.category?.trim() || 'Generale',
@@ -285,10 +351,85 @@ author: "${author}"
     
     if (slug) {
       console.log(`[Blog API] Fetching single post for slug: ${slug}, language: ${lang || 'default (it)'}`);
-      const langSuffix = lang && lang.toLowerCase() !== 'it' ? `.${lang.toLowerCase()}` : '';
-      const fileName = `${slug}${langSuffix}.mdx`;
+      const currentLanguage = lang || 'it';
+      
+      // Strategia semplificata: cerca prima il file con la lingua specifica
+      const langSuffix = currentLanguage !== 'it' ? `.${currentLanguage}` : '';
+      const languageSpecificFile = `${slug}${langSuffix}.mdx`;
+      const languageFilePath = path.join(BLOG_DIR, languageSpecificFile);
+      
+      // Se il file nella lingua richiesta esiste, caricalo
+      console.log(`[Blog API] Checking for language-specific file: ${languageFilePath}`);
+      if (fs.existsSync(languageFilePath)) {
+        console.log(`[Blog API] Found language-specific file: ${languageSpecificFile}`);
+        try {
+          const fileContent = fs.readFileSync(languageFilePath, 'utf8');
+          const { data, content } = matter(fileContent);
+          
+          if (!data.title?.trim() || !data.date) {
+            console.log(`[Blog API] Missing title or date in frontmatter: ${languageSpecificFile}`);
+            res.status(400).json({ success: false, message: 'Invalid post metadata' });
+            return;
+          }
+          
+          const meta: BlogPostMeta = {
+            slug: data.slug, // Usa sempre lo slug dal frontmatter del file specifico della lingua
+            title: data.title.trim(),
+            date: data.date,
+            category: data.category?.trim() || 'Generale',
+            excerpt: data.excerpt?.trim() || '',
+            coverImage: data.coverImage?.trim() || '',
+            author: data.author?.trim() || 'Redazione',
+            leadMagnet: parseLeadMagnet(data),
+          };
+          console.log(`[Blog API] Successfully fetched language-specific post: ${languageSpecificFile}`);
+          res.status(200).json({ success: true, data: { meta, content } });
+          return;
+        } catch (error: any) {
+          console.log(`[Blog API] Error reading language-specific file: ${error}`);
+        }
+      }
+      
+      // Fallback: prova a trovare il post usando il mapping URL slug -> file
+      const foundPost = findPostByUrlSlug(slug, currentLanguage);
+      
+      if (foundPost) {
+        console.log(`[Blog API] Found post by URL slug: ${foundPost.filename}`);
+        try {
+          const filePath = path.join(BLOG_DIR, foundPost.filename);
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const { data, content } = matter(fileContent);
+          
+          if (!data.title?.trim() || !data.date) {
+            console.log(`[Blog API] Missing title or date in frontmatter: ${foundPost.filename}`);
+            res.status(400).json({ success: false, message: 'Invalid post metadata' });
+            return;
+          }
+          
+          const meta: BlogPostMeta = {
+            slug: data.slug || slug, // Usa lo slug dal frontmatter se disponibile
+            title: data.title.trim(),
+            date: data.date,
+            category: data.category?.trim() || 'Generale',
+            excerpt: data.excerpt?.trim() || '',
+            coverImage: data.coverImage?.trim() || '',
+            author: data.author?.trim() || 'Redazione',
+            leadMagnet: parseLeadMagnet(data),
+          };
+          console.log(`[Blog API] Successfully fetched post via mapping: ${slug}`);
+          res.status(200).json({ success: true, data: { meta, content } });
+          return;
+        } catch (error: any) {
+          console.log(`[Blog API] Error reading post file via mapping: ${error}`);
+          res.status(500).json({ success: false, message: error.message || 'Internal server error' });
+          return;
+        }
+      }
+      
+      // Fallback: cerca usando il metodo originale (per compatibilità)
+      const fileName = `${slug}.mdx`;
       const filePath = path.join(BLOG_DIR, fileName);
-      console.log(`[Blog API] Looking for file: ${filePath}`);
+      console.log(`[Blog API] Fallback: Looking for file: ${filePath}`);
       let fileContent: string | null = null;
       if (fs.existsSync(filePath)) {
         fileContent = fs.readFileSync(filePath, 'utf8');

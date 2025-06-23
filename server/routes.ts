@@ -98,8 +98,13 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                     console.log(`[Blog] Processing file: ${filePath}`);
                     const { data } = matter(fs.readFileSync(filePath, 'utf8'));
 
-                    // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
-                    const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+                    // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+                    let slug;
+                    if (data.slug) {
+                        slug = data.slug;
+                    } else {
+                        slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+                    }
 
                     // Validazione dei metadati
                     if (!data.title?.trim() || !data.date) {
@@ -181,8 +186,13 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
                     console.log(`[Blog] Processing file: ${filePath}`);
                     const { data } = matter(fs.readFileSync(filePath, 'utf8'));
 
-                    // Genera slug rimuovendo l'estensione .mdx e il suffisso linguistico
-                    const slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+                    // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
+                    let slug;
+                    if (data.slug) {
+                        slug = data.slug;
+                    } else {
+                        slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+                    }
 
                     // Validazione dei metadati
                     if (!data.title?.trim() || !data.date) {
@@ -232,51 +242,75 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
 }
 
 /**
- * Ottiene un singolo post per slug
+ * Ottiene un singolo post per slug cercando in tutti i file
  * @param slug Lo slug del post da cercare
  * @param lang Lingua opzionale per la traduzione
  * @returns Metadati del post e contenuto raw
  */
 function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, content: string } | null {
-  const targetLanguage = (lang || 'it').toLowerCase(); // Use provided lang or default to 'it'
-  const filePath = targetLanguage !== 'it'
-    ? path.join(BLOG_DIR, `${slug}.${targetLanguage}.mdx`)
-    : path.join(BLOG_DIR, `${slug}.mdx`);
+  const targetLanguage = (lang || 'it').toLowerCase();
+  console.log(`[getPostBySlug] Searching for slug: ${slug}, language: ${targetLanguage}`);
 
-  // Check if file exists
-  if (!fs.existsSync(filePath)) {
-    console.warn(`[getPostBySlug] File not found: ${filePath}`);
+  if (!fs.existsSync(BLOG_DIR)) {
+    console.warn('[getPostBySlug] Blog directory not found:', BLOG_DIR);
     return null;
   }
 
   try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
+    const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
+    console.log(`[getPostBySlug] Found ${files.length} MDX files to search`);
 
-    if (!data.title || !data.date) {
-      console.warn(`[getPostBySlug] Missing required metadata in file: ${filePath}`);
-      return null;
+    // Prima prova a cercare file che corrispondono alla lingua richiesta
+    for (const filename of files) {
+      try {
+        const filePath = path.join(BLOG_DIR, filename);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(fileContents);
+
+        // Determina la lingua del file
+        const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+        const fileLanguage = langMatch?.[1] || 'it';
+
+        // Verifica se questo file corrisponde alla lingua e allo slug richiesti
+        const fileSlug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+        
+        console.log(`[getPostBySlug] Checking file: ${filename}, fileSlug: ${fileSlug}, fileLanguage: ${fileLanguage}`);
+
+        if (fileSlug === slug && fileLanguage === targetLanguage) {
+          console.log(`[getPostBySlug] Found matching file: ${filename}`);
+
+          if (!data.title || !data.date) {
+            console.warn(`[getPostBySlug] Missing required metadata in file: ${filename}`);
+            continue;
+          }
+
+          const meta: BlogPostMeta = {
+            slug: fileSlug,
+            title: data.title,
+            date: data.date,
+            category: data.category || 'Uncategorized',
+            excerpt: data.excerpt || '',
+            coverImage: data.coverImage || '',
+            author: data.author || 'Admin',
+            lang: fileLanguage,
+            leadMagnet: data.leadMagnet ? {
+              title: data.leadMagnet.title || '',
+              description: data.leadMagnet.description || '',
+              type: data.leadMagnet.type || ''
+            } : undefined
+          };
+
+          return { meta, content };
+        }
+      } catch (fileError) {
+        console.error(`[getPostBySlug] Error reading file ${filename}:`, fileError);
+      }
     }
 
-    const meta: BlogPostMeta = {
-      slug,
-      title: data.title,
-      date: data.date,
-      category: data.category || 'Uncategorized',
-      excerpt: data.excerpt || '',
-      coverImage: data.coverImage || '',
-      author: data.author || 'Admin',
-      lang: targetLanguage, // Assign the language
-      leadMagnet: data.leadMagnet ? {
-        title: data.leadMagnet.title || '',
-        description: data.leadMagnet.description || '',
-        type: data.leadMagnet.type || ''
-      } : undefined
-    };
-
-    return { meta, content };
+    console.warn(`[getPostBySlug] No file found with slug: ${slug} and language: ${targetLanguage}`);
+    return null;
   } catch (err) {
-    console.error(`[getPostBySlug] Error reading file ${filePath}:`, err);
+    console.error(`[getPostBySlug] Error accessing blog directory:`, err);
     return null;
   }
 }
