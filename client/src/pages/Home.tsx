@@ -25,7 +25,8 @@ const Home = () => {
         alternates={{
           'en': 'https://yourbusinessinitaly.com/en/',
           'fr': 'https://yourbusinessinitaly.com/fr/',
-          'de': 'https://yourbusinessinitaly.com/de/'
+          'de': 'https://yourbusinessinitaly.com/de/',
+          'es': 'https://yourbusinessinitaly.com/es/'
         }}
         lang="it"
       />

@@ -15,6 +15,10 @@ interface SEOHeadProps {
   structuredData?: Record<string, any> | Record<string, any>[];
   lang?: string;
   alternates?: Record<string, string>; // { 'en': 'https://...', 'fr': 'https://...' }
+  /**
+   * Valore per il meta tag robots. Di default indicizza la pagina.
+   */
+  robots?: string;
 }
 
 /**
@@ -34,7 +38,8 @@ const SEOHead = ({
   articleSection,
   structuredData,
   lang = 'it',
-  alternates
+  alternates,
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 }: SEOHeadProps) => {
   // Costruisci l'URL canonico completo
   const siteUrl = 'https://yourbusinessinitaly.com';
@@ -73,9 +78,9 @@ const SEOHead = ({
       <meta name="author" content={author} />
       
       {/* Meta tag per indicizzazione */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="robots" content={robots} />
+      <meta name="googlebot" content={robots} />
+      <meta name="bingbot" content={robots} />
       <meta name="revisit-after" content="1 day" />
       <meta name="rating" content="general" />
       <meta name="distribution" content="global" />
