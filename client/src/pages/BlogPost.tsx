@@ -58,6 +58,8 @@ const RelatedPostCard = ({
           src={imgSrc}
           alt={title}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Linee decorative */}
@@ -252,7 +254,7 @@ const BlogPost = () => {
         }
       },
       {
-        '@type': 'Question',  
+        '@type': 'Question',
         name: 'Quanto tempo ci vuole per aprire un\'attività?',
         acceptedAnswer: {
           '@type': 'Answer',
@@ -266,6 +268,22 @@ const BlogPost = () => {
           '@type': 'Answer',
           text: 'Sì, ma devi ottenere un permesso di soggiorno per lavoro autonomo e dimostrare capacità economica di almeno 23.532€ annui.'
         }
+      },
+      {
+        '@type': 'Question',
+        name: 'Quali sono i vantaggi del regime forfettario?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Il regime forfettario offre aliquote agevolate (5% o 15%), esenzione da IVA e IRAP, e una contabilità semplificata ideale per nuovi freelance.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Come si calcolano i contributi INPS per i freelance?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'I contributi INPS si calcolano al 26,23% del reddito imponibile, con pagamento in due rate annuali (40% entro il 30 giugno/20 luglio e 60% entro il 30 novembre).'
+        }
       }
     ]
   } : null;
@@ -276,7 +294,8 @@ const BlogPost = () => {
     'en': `https://yourbusinessinitaly.com/en/blog/${meta.slug}`,
     'fr': `https://yourbusinessinitaly.com/fr/blog/${meta.slug}`,
     'de': `https://yourbusinessinitaly.com/de/blog/${meta.slug}`,
-    'es': `https://yourbusinessinitaly.com/es/blog/${meta.slug}`
+    'es': `https://yourbusinessinitaly.com/es/blog/${meta.slug}`,
+    'x-default': `https://yourbusinessinitaly.com/blog/${meta.slug}`
   };
 
   // Formatta la data per i meta tag
@@ -313,6 +332,7 @@ const BlogPost = () => {
             height="630"
             loading="eager"
             decoding="async"
+            fetchPriority="high"
             itemProp="image"
           />
         </div>
@@ -379,6 +399,20 @@ const BlogPost = () => {
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                        components={{
+                          h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-6 text-neutral-800" {...props} />,
+                          h2: ({ node, ...props }) => <h2 className="text-2xl font-bold mb-5 mt-8 text-neutral-800" {...props} />,
+                          h3: ({ node, ...props }) => <h3 className="text-xl font-bold mb-4 mt-6 text-neutral-800" {...props} />,
+                          h4: ({ node, ...props }) => <h4 className="text-lg font-bold mb-3 mt-5 text-neutral-800" {...props} />,
+                          p: ({ node, ...props }) => <p className="mb-4 text-neutral-700 leading-relaxed" {...props} />,
+                          ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-2 text-neutral-700" {...props} />,
+                          ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-2 text-neutral-700" {...props} />,
+                          li: ({ node, ...props }) => <li className="mb-2" {...props} />,
+                          blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-[#009246] pl-4 italic text-neutral-600 my-6" {...props} />,
+                          strong: ({ node, ...props }) => <strong className="font-bold text-neutral-900" {...props} />,
+                          em: ({ node, ...props }) => <em className="italic" {...props} />,
+                          a: ({ node, ...props }) => <a className="text-[#009246] hover:underline font-medium" {...props} />
+                        }}
                       >
                         {content}
                       </ReactMarkdown>
@@ -443,6 +477,8 @@ const BlogPost = () => {
                       src={`https://ui-avatars.com/api/?name=${encodeURIComponent(meta.author)}&background=random&color=fff`}
                       alt={meta.author}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div>

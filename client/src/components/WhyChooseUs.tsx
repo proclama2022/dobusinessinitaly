@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
+import OptimizedImage from './OptimizedImage';
 
 type FeatureProps = {
   icon: string;
@@ -76,16 +77,24 @@ const WhyChooseUs = () => {
           
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
-                alt={t('whyChooseUs.mainImageAlt')} 
-                className="rounded-lg shadow-xl w-full object-cover h-[500px]"
+              <OptimizedImage
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf"
+                alt={t('whyChooseUs.mainImageAlt')}
+                className="rounded-lg shadow-xl w-full h-[500px]"
+                width={1000}
+                height={500}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={80}
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
-                <img 
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
-                  alt={t('whyChooseUs.smallImageAlt')} 
-                  className="w-48 h-48 object-cover rounded"
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0"
+                  alt={t('whyChooseUs.smallImageAlt')}
+                  className="w-48 h-48 rounded"
+                  width={300}
+                  height={300}
+                  sizes="192px"
+                  quality={75}
                 />
               </div>
             </div>

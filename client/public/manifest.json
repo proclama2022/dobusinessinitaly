@@ -1,13 +1,13 @@
 {
-  "name": "Yourbusinessinitaly.com - Studio Commercialisti",
+  "name": "Commercialista per Stranieri in Italia | Yourbusinessinitaly.com",
   "short_name": "YourBusinessITALY",
-  "description": "Servizi professionali per fare business in Italia. Consulenza fiscale, contabile e legale per aziende internazionali.",
+  "description": "Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA, regime forfettario. Consulenza fiscale in inglese.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#009246",
   "orientation": "portrait-primary",
-  "categories": ["business", "finance", "productivity"],
+  "categories": ["business", "finance", "productivity", "professional"],
   "lang": "it",
   "scope": "/",
   "icons": [

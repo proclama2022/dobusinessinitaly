@@ -33,6 +33,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
+    port: 5173,
     proxy: {
       '/api': {
         target: 'https://do-business-network.vercel.app',

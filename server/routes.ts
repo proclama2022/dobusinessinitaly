@@ -14,6 +14,8 @@ import { sendEmail } from './services/emailService';
 import { getItalianBusinessGuideContent } from './guides/italian-business-guide.js';
 import { generateArticleTranslations } from "./services/translationService";
 import { list as listBlobs, del as delBlob } from '@vercel/blob';
+import { z } from "zod";
+import { log } from "./vite";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -648,9 +650,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const { slug } = req.params;
           const postObj = getPostBySlug(slug);
           if (!postObj) {
-            return res.status(500).json({
+            console.log(`[/api/blog/:slug] Post not found: ${slug}`);
+            return res.status(404).json({
               success: false,
-              message: 'Errore nel recupero del post'
+              message: 'Post not found'
             });
           }
           const { meta, content } = postObj;
@@ -663,7 +666,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.error('[/api/blog/:slug] Get blog post error:', error);
           res.status(500).json({
               success: false,
-              message: error.message || 'Internal server error'
+              message: 'Internal server error'
           });
       }
   });
@@ -677,9 +680,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const { lang, slug } = req.params;
           const postObj = getPostBySlug(slug, lang);
           if (!postObj) {
-            return res.status(500).json({
+            console.log(`[/api/blog/:lang/:slug] Post not found: ${slug} for language: ${lang}`);
+            return res.status(404).json({
               success: false,
-              message: 'Errore nel recupero del post'
+              message: 'Post not found'
             });
           }
           const { meta, content } = postObj;
@@ -692,7 +696,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.error('[/api/blog/:lang/:slug] Get translated blog post error:', error);
           res.status(500).json({
               success: false,
-              message: error.message || 'Internal server error'
+              message: 'Internal server error'
           });
       }
   });
@@ -846,6 +850,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: error.message || 'Errore interno del server durante la rigenerazione delle sitemap'
       });
     }
+  });
+
+  // Endpoint per tracciare le 404 lato client (privacy-friendly)
+  app.post('/api/track-404', (req: Request, res: Response) => {
+    const track404Schema = z.object({
+      path: z.string().min(1),
+      lang: z.string().min(2).max(5).optional(),
+      referrer: z.string().optional(),
+      userAgent: z.string().optional(),
+      ts: z.number().optional(),
+    });
+
+    const parsed = track404Schema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: 'Invalid payload' });
+    }
+
+    const { path: p, lang, referrer, userAgent, ts } = parsed.data;
+    const when = ts ? new Date(ts) : new Date();
+    const entry = {
+      type: '404',
+      path: p,
+      lang: lang || null,
+      referrer: referrer || null,
+      userAgent: userAgent || req.get('user-agent') || null,
+      ip: req.ip || null,
+      at: when.toISOString(),
+    };
+
+    try {
+      // Logging leggero: va nei log del server già aggregati
+      log(`[404-TRACK] ${entry.at} ${entry.lang ?? '-'} ${entry.path} ← ${entry.referrer ?? '-'} :: UA:${entry.userAgent ?? '-'}`);
+    } catch (e) {
+      // fallback
+      console.log('[404-TRACK]', entry);
+    }
+
+    // Nessun contenuto, per evitare CORS/cache o errori sul client
+    return res.status(204).end();
   });
 
   // API per download guide (utilizza webhook Make.com)

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
+import OptimizedImage from './OptimizedImage';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -19,10 +20,15 @@ const Hero = () => {
     <section className="relative h-[600px] md:h-[700px] overflow-hidden">
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
-      <img
-        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+      <OptimizedImage
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
         alt={t('hero.backgroundAlt')}
-        className="absolute inset-0 w-full h-full object-cover z-[1] scale-105 animate-slow-zoom"
+        className="absolute inset-0 w-full h-full scale-105 animate-slow-zoom z-[1]"
+        priority={true}
+        width={1920}
+        height={1080}
+        sizes="100vw"
+        quality={85}
       />
 
       {/* Overlay con pattern decorativo */}

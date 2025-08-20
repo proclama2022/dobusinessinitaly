@@ -13,6 +13,9 @@ import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
 import Media from "@/pages/Media";
 import Admin from "@/pages/Admin";
+import OpenCompanyItaly from "@/pages/OpenCompanyItaly";
+import OpenVATNumberItaly from "@/pages/OpenVATNumberItaly";
+import TaxAccountingExpats from "@/pages/TaxAccountingExpats";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
@@ -21,9 +24,14 @@ import { supportedLanguages } from "./lib/languages";
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import CookiePolicy from '@/pages/CookiePolicy';
 import CookieBanner from '@/components/CookieBanner';
+import { Helmet } from 'react-helmet-async';
+import useCookieConsent from '@/hooks/useCookieConsent';
 
 function Router() {
   const { i18n } = useTranslation();
+  const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = useCookieConsent();
+  const allowAnalytics = isLoaded && !!consent && hasAnalyticsConsent;
+  const allowMarketing = isLoaded && !!consent && hasMarketingConsent;
 
   // Imposta la lingua dal pathname all'avvio dell'app
   useEffect(() => {
@@ -37,6 +45,31 @@ function Router() {
 
   return (
     <>
+      {/* Conditional analytics loading based on cookie consent */}
+      <Helmet>
+        {(allowAnalytics || allowMarketing) && (
+          <script>
+            {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());`}
+          </script>
+        )}
+        {allowAnalytics && (
+          <>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-X82GKPCGB7"></script>
+            <script>
+              {`gtag('config','G-X82GKPCGB7');`}
+            </script>
+          </>
+        )}
+        {allowMarketing && (
+          <>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10798871348"></script>
+            <script>
+              {`gtag('config','AW-10798871348');`}
+            </script>
+          </>
+        )}
+      </Helmet>
+
       <Header />
       <main>
         <Switch>
@@ -51,6 +84,24 @@ function Router() {
             <Route key={`services-${lang}`} path={`/${lang}/services`} component={Services} />
           ))}
           <Route path="/services" component={Services} />
+
+          {/* Open Company in Italy landing page */}
+          {supportedLanguages.map(lang => (
+            <Route key={`open-company-${lang}`} path={`/${lang}/services/open-company-italy`} component={OpenCompanyItaly} />
+          ))}
+          <Route path="/services/open-company-italy" component={OpenCompanyItaly} />
+
+          {/* Open VAT Number in Italy landing page */}
+          {supportedLanguages.map(lang => (
+            <Route key={`open-vat-${lang}`} path={`/${lang}/services/open-vat-number-italy`} component={OpenVATNumberItaly} />
+          ))}
+          <Route path="/services/open-vat-number-italy" component={OpenVATNumberItaly} />
+
+          {/* Tax Accounting for Expats landing page */}
+          {supportedLanguages.map(lang => (
+            <Route key={`tax-accounting-${lang}`} path={`/${lang}/services/tax-accounting-expats`} component={TaxAccountingExpats} />
+          ))}
+          <Route path="/services/tax-accounting-expats" component={TaxAccountingExpats} />
 
           {supportedLanguages.map(lang => (
             <Route key={`about-${lang}`} path={`/${lang}/about`} component={About} />

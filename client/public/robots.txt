@@ -6,23 +6,50 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /.env
+Disallow: /uploads/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Blocca parametri di ricerca e filtri
+Disallow: /*?*sort=
+Disallow: /*?*page=
+Disallow: /*?*filter=
+Disallow: /*?*category=
+Disallow: /*?*tag=
+Disallow: /*?*utm_*
+Disallow: /*?*ref=
+Disallow: /*?*fbclid=
 
 # Ottimizzazione per crawler principali
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+# Rimuovo crawl-delay per permettere crawling più veloce
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
-# Sitemap principale (consigliato per Google)
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+Allow: /public/images/
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Facebookbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+# Sitemap principale
+Sitemap: https://yourbusinessinitaly.com/sitemap.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap-index.xml
 
-# Sitemap individuali (backup)
-Sitemap: https://yourbusinessinitaly.com/sitemap.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-it.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-en.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-de.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-fr.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-es.xml
+# Host specification
+Host: https://yourbusinessinitaly.com

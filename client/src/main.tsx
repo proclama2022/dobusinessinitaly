@@ -37,7 +37,11 @@ const preloadFontAwesomeIcons = () => {
 // Esegue il precaricamento delle icone
 preloadFontAwesomeIcons();
 
+import { HelmetProvider } from 'react-helmet-async';
+
 // Rendering dell'applicazione con ottimizzazioni per la nitidezza
 createRoot(document.getElementById("root")!).render(
-  <App />
+  <HelmetProvider>
+    <App />
+  </HelmetProvider>
 );

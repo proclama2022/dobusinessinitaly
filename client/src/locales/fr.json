@@ -5,7 +5,8 @@
     "about": "À Propos",
     "media": "Médias",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "learnMore": "En savoir plus"
   },
   "hero": {
     "title": "Expertise Comptable Pour Votre Business Global",
@@ -699,6 +700,353 @@
         "title": "Nous Contacter",
         "content": "Si vous avez des questions sur cette Politique de Cookies, vous pouvez nous contacter à: amministrazione@proclama.co"
       }
+    }
+  },
+  "landingPages": {
+    "openCompanyItaly": {
+      "title": "Ouvrir une Société en Italie",
+      "subtitle": "Expertise complète pour la création d'entreprise en Italie",
+      "heroTitle": "Ouvrir une Société en Italie",
+      "heroSubtitle": "Votre partenaire expert pour la création d'entreprise en Italie. Nous guidons les entrepreneurs internationaux à travers toutes les étapes de la constitution d'une société italienne.",
+      "heroCta": "Réserver une Consultation Gratuite",
+      "whyTitle": "Pourquoi Ouvrir une Société en Italie?",
+      "whySubtitle": "L'Italie offre des opportunités uniques pour les entrepreneurs internationaux",
+      "whyItems": [
+        {
+          "title": "Accès au Marché Européen",
+          "description": "Bénéficiez d'un accès stratégique au marché unique européen avec plus de 500 millions de consommateurs."
+        },
+        {
+          "title": "Avantages Fiscaux",
+          "description": "Profitez de régimes fiscaux favorables et d'accords de double imposition avec de nombreux pays."
+        },
+        {
+          "title": "Main-d'œuvre Qualifiée",
+          "description": "Accédez à une main-d'œuvre hautement qualifiée avec une forte tradition industrielle et artisanale."
+        },
+        {
+          "title": "Qualité de Vie",
+          "description": "Bénéficiez d'un excellent cadre de vie, d'une riche culture et d'une cuisine renommée mondialement."
+        }
+      ],
+      "servicesTitle": "Nos Services de Création d'Entreprise",
+      "servicesSubtitle": "Une assistance complète à chaque étape",
+      "servicesItems": [
+        {
+          "title": "Conseil sur la Structure Juridique",
+          "description": "Nous vous aidons à choisir la forme juridique la plus adaptée à votre activité : SRL, SPA, société de personnes, etc."
+        },
+        {
+          "title": "Préparation des Statuts",
+          "description": "Rédaction professionnelle des statuts et de tous les documents nécessaires à la constitution de votre société."
+        },
+        {
+          "title": "Immatriculation au Registre du Commerce",
+          "description": "Nous nous occupons de toutes les démarches d'immatriculation auprès de la Camera di Commercio et des autorités compétentes."
+        },
+        {
+          "title": "Ouverture de Compte Bancaire",
+          "description": "Assistance pour l'ouverture du compte bancaire professionnel et l'obtention du code fiscal italien."
+        },
+        {
+          "title": "Licences et Autorisations",
+          "description": "Nous vous aidons à obtenir toutes les licences et autorisations nécessaires pour exercer votre activité en Italie."
+        },
+        {
+          "title": "Support Comptable Initial",
+          "description": "Mise en place de votre comptabilité et formation sur les obligations fiscales italiennes."
+        }
+      ],
+      "processTitle": "Notre Processus de Création d'Entreprise",
+      "processSubtitle": "Simple, transparent et efficace",
+      "processSteps": [
+        {
+          "step": "1",
+          "title": "Consultation Initiale",
+          "description": "Nous analysons votre projet et vos besoins pour définir la meilleure stratégie de création d'entreprise."
+        },
+        {
+          "step": "2",
+          "title": "Préparation des Documents",
+          "description": "Nous préparons tous les documents nécessaires et vous les soumettons pour validation."
+        },
+        {
+          "step": "3",
+          "title": "Dépôt et Immatriculation",
+          "description": "Nous déposons les documents auprès des autorités compétentes et suivons l'avancement de votre dossier."
+        },
+        {
+          "step": "4",
+          "title": "Constitution Complète",
+          "description": "Une fois la société constituée, nous vous remettons tous les documents et vous expliquons les prochaines étapes."
+        }
+      ],
+      "faqTitle": "Questions Fréquentes",
+      "faqItems": [
+        {
+          "question": "Combien de temps faut-il pour ouvrir une société en Italie?",
+          "answer": "Le processus complet prend généralement entre 2 et 4 semaines, selon la complexité de la structure et la rapidité des autorités."
+        },
+        {
+          "question": "Quel est le capital minimum requis pour une SRL?",
+          "answer": "Pour une SRL standard, le capital minimum est de 10 000€, avec au moins 25% versé à la constitution. Pour une SRL Simplifiée, le capital minimum est de 1€."
+        },
+        {
+          "question": "Ai-je besoin d'un visa pour créer une entreprise en Italie?",
+          "answer": "Les citoyens de l'UE n'ont pas besoin de visa. Pour les ressortissants hors UE, un visa pour travail autonome ou investisseur est généralement requis."
+        },
+        {
+          "question": "Puis-je gérer l'entreprise depuis l'étranger?",
+          "answer": "Oui, mais vous devez nommer un représentant légal résidant en Italie. Nous pouvons vous assister dans cette démarche."
+        },
+        {
+          "question": "Quels sont les coûts associés à la création d'une société?",
+          "answer": "Les coûts incluent les honoraires notariés, les droits d'enregistrement, les taxes de timbre et nos honoraires professionnels. Nous vous fournissons un devis détaillé avant de commencer."
+        }
+      ],
+      "ctaTitle": "Prêt à Ouvrir Votre Société en Italie?",
+      "ctaSubtitle": "Notre équipe d'experts est à votre disposition pour vous guider à travers chaque étape du processus.",
+      "ctaButton": "Réserver une Consultation Gratuite",
+      "metaTitle": "Ouvrir une Société en Italie | Expertise en Création d'Entreprise",
+      "metaDescription": "Experts en création d'entreprise en Italie. Nous guidons les entrepreneurs internationaux à travers toutes les étapes de la constitution d'une société italienne. Consultation gratuite."
+    },
+    "openVATNumberItaly": {
+      "title": "Ouvrir une Partita IVA en Italie",
+      "subtitle": "Votre solution complète pour l'ouverture de Partita IVA",
+      "heroTitle": "Ouvrir une Partita IVA en Italie",
+      "heroSubtitle": "Simplifiez votre activité professionnelle en Italie avec notre service complet d'ouverture et gestion de Partita IVA pour travailleurs autonomes et freelancers.",
+      "heroCta": "Réserver une Consultation Gratuite",
+      "whyTitle": "Pourquoi Ouvrir une Partita IVA en Italie?",
+      "whySubtitle": "La Partita IVA est essentielle pour exercer une activité professionnelle en Italie",
+      "whyItems": [
+        {
+          "title": "Légalité et Conformité",
+          "description": "La Partita IVA est obligatoire pour exercer une activité professionnelle indépendante en Italie de manière légale."
+        },
+        {
+          "title": "Facturation Professionnelle",
+          "description": "Émettez des factures légales et conformes à la législation italienne et européenne."
+        },
+        {
+          "title": "Accès aux Services",
+          "description": "Bénéficiez de l'accès aux services bancaires professionnels, aux crédits et aux financements dédiés aux travailleurs autonomes."
+        },
+        {
+          "title": "Déductions Fiscales",
+          "description": "Profitez de déductions fiscales sur les dépenses professionnelles et optimisez votre charge fiscale."
+        }
+      ],
+      "servicesTitle": "Nos Services Partita IVA",
+      "servicesSubtitle": "Une assistance complète pour votre activité",
+      "servicesItems": [
+        {
+          "title": "Conseil sur le Régime Fiscal",
+          "description": "Nous vous aidons à choisir entre le régime forfaitaire, ordinaire ou simplifié selon votre situation professionnelle."
+        },
+        {
+          "title": "Préparation et Dépôt de la Demande",
+          "description": "Nous préparons et déposons votre demande d'ouverture de Partita IVA auprès de l'Agenzia delle Entrate."
+        },
+        {
+          "title": "Gestion des Obligations Fiscales",
+          "description": "Nous nous occupons de toutes vos obligations fiscales : déclarations, TVA, IRPEF, et autres taxes."
+        },
+        {
+          "title": "Facturation et Comptabilité",
+          "description": "Mise en place de votre système de facturation électronique et gestion de votre comptabilité professionnelle."
+        },
+        {
+          "title": "Conseil sur les Cotisations",
+          "description": "Nous vous conseillons sur les cotisations INPS et INAIL et optimisons votre couverture sociale."
+        },
+        {
+          "title": "Support Continu",
+          "description": "Assistance continue pour toutes vos questions concernant votre activité professionnelle en Italie."
+        }
+      ],
+      "regimeTitle": "Choisir le Bon Régime Fiscal",
+      "regimeSubtitle": "Nous vous aidons à sélectionner le régime le plus adapté à votre situation",
+      "regimeItems": [
+        {
+          "title": "Régime Forfaitaire (Forfettario)",
+          "description": "Idéal pour les débutants et petites activités. Impôt unique de 5% (5 ans) puis 15%, pas de TVA, comptabilité simplifiée. Limite de 85 000€ de revenus annuels."
+        },
+        {
+          "title": "Régime Simplifié",
+          "description": "Pour les activités de taille moyenne. Comptabilité simplifiée avec obligation de tenir des registres. TVA applicable avec taux réduits possibles."
+        },
+        {
+          "title": "Régime Ordinaire",
+          "description": "Pour les activités plus importantes. Comptabilité complète avec obligation de tenir tous les registres fiscaux. TVA applicable et déductions complètes."
+        }
+      ],
+      "requirementsTitle": "Conditions Requises",
+      "requirementsSubtitle": "Ce dont vous avez besoin pour ouvrir une Partita IVA",
+      "requirementsItems": [
+        {
+          "title": "Résidence ou Permis de Séjour",
+          "description": "Résidence italienne ou permis de séjour valide permettant l'exercice d'une activité professionnelle."
+        },
+        {
+          "title": "Code Fiscal Italien",
+          "description": "Possession d'un codice fiscale italien, que nous pouvons vous aider à obtenir si nécessaire."
+        },
+        {
+          "title": "Compte Bancaire Italien",
+          "description": "Compte bancaire italien pour les transactions professionnelles, que nous pouvons vous aider à ouvrir."
+        },
+        {
+          "title": "Adresse en Italie",
+          "description": "Adresse de résidence ou de correspondance en Italie pour les communications officielles."
+        }
+      ],
+      "faqTitle": "Questions Fréquentes",
+      "faqItems": [
+        {
+          "question": "Combien de temps faut-il pour ouvrir une Partita IVA?",
+          "answer": "Le processus d'ouverture prend généralement entre 1 et 2 semaines, selon la complexité de votre situation et la rapidité de l'Agenzia delle Entrate."
+        },
+        {
+          "question": "Quel est le coût d'ouverture d'une Partita IVA?",
+          "answer": "Les coûts incluent nos honoraires professionnels, les droits d'enregistrement et éventuellement les frais de notaire. Nous vous fournissons un devis transparent avant de commencer."
+        },
+        {
+          "question": "Puis-je ouvrir une Partita IVA en étant résident à l'étranger?",
+          "answer": "Oui, mais vous devez avoir un permis de séjour valide et une adresse en Italie. Nous pouvons vous assister dans ces démarches."
+        },
+        {
+          "question": "Quelles sont les obligations comptables d'une Partita IVA?",
+          "answer": "Les obligations varient selon le régime fiscal choisi. Le régime forfaitaire a des obligations simplifiées, tandis que le régime ordinaire nécessite une comptabilité complète."
+        },
+        {
+          "question": "Comment choisir entre les différents régimes fiscaux?",
+          "answer": "Le choix dépend de votre type d'activité, de vos revenus prévisionnels et de vos dépenses professionnelles. Nous vous conseillons le régime le plus avantageux pour votre situation."
+        }
+      ],
+      "ctaTitle": "Prêt à Ouvrir Votre Partita IVA?",
+      "ctaSubtitle": "Notre équipe d'experts fiscaux est à votre disposition pour vous guider dans l'ouverture et la gestion de votre Partita IVA.",
+      "ctaButton": "Réserver une Consultation Gratuite",
+      "metaTitle": "Ouvrir une Partita IVA en Italie | Service Complet pour Freelancers",
+      "metaDescription": "Experts en ouverture et gestion de Partita IVA en Italie. Nous assistons les travailleurs autonomes et freelancers dans toutes les démarches. Consultation gratuite."
+    },
+    "taxAccountingExpats": {
+      "title": "Expertise Comptable pour Expatriés en Italie",
+      "subtitle": "Solutions fiscales complètes pour expatriés et travailleurs internationaux",
+      "heroTitle": "Expertise Comptable pour Expatriés en Italie",
+      "heroSubtitle": "Votre partenaire spécialisé dans la gestion fiscale et comptable pour expatriés, travailleurs internationaux et investisseurs étrangers en Italie.",
+      "heroCta": "Réserver une Consultation Gratuite",
+      "whyTitle": "Pourquoi Choisir Notre Service pour Expatriés?",
+      "whySubtitle": "Une expertise dédiée aux besoins spécifiques des expatriés",
+      "whyItems": [
+        {
+          "title": "Expertise Internationale",
+          "description": "Notre équipe maîtrise les spécificités fiscales des expatriés et les conventions de double imposition entre l'Italie et votre pays d'origine."
+        },
+        {
+          "title": "Service Multilingue",
+          "description": "Nous communiquons dans votre langue maternelle pour éviter toute confusion et garantir une compréhension parfaite de votre situation fiscale."
+        },
+        {
+          "title": "Approche Personnalisée",
+          "description": "Chaque situation d'expatriation est unique. Nous adaptons nos solutions à votre situation personnelle et professionnelle spécifique."
+        },
+        {
+          "title": "Conformité Garantie",
+          "description": "Nous vous assurons une conformité totale avec la législation fiscale italienne et les obligations internationales, évitant les pénalités et les problèmes légaux."
+        }
+      ],
+      "servicesTitle": "Nos Services pour Expatriés",
+      "servicesSubtitle": "Une assistance complète pour votre vie professionnelle en Italie",
+      "servicesItems": [
+        {
+          "title": "Planification Fiscale Internationale",
+          "description": "Optimisation de votre situation fiscale en tenant compte des législations italiennes et de votre pays d'origine."
+        },
+        {
+          "title": "Déclarations Fiscales Internationales",
+          "description": "Préparation et dépôt de vos déclarations des revenus en Italie et assistance pour vos obligations fiscales dans votre pays d'origine."
+        },
+        {
+          "title": "Gestion de la Résidence Fiscale",
+          "description": "Conseil sur l'établissement et le maintien de votre résidence fiscale en Italie avec optimisation des avantages."
+        },
+        {
+          "title": "Comptabilité pour Entrepreneurs Expatriés",
+          "description": "Gestion complète de votre comptabilité d'entreprise si vous êtes entrepreneur ou travailleur indépendant en Italie."
+        },
+        {
+          "title": "Conseil sur les Investissements",
+          "description": "Assistance pour vos investissements immobiliers ou financiers en Italie avec optimisation fiscale."
+        },
+        {
+          "title": "Support Relocation",
+          "description": "Assistance complète lors de votre installation en Italie, incluant les aspects fiscaux, bancaires et administratifs."
+        }
+      ],
+      "regimeTitle": "Régimes Fiscaux pour Expatriés",
+      "regimeSubtitle": "Nous vous aidons à bénéficier des régimes fiscaux avantageux",
+      "regimeItems": [
+        {
+          "title": "Régime des Travailleurs Impatriés",
+          "description": "Pour les travailleurs qui transfèrent leur résidence en Italie. Avantages : imposition à 50% des revenus pendant 5 ans, exonération des revenus étrangers, pas d'IVIE et IVAFE sur les biens à l'étranger."
+        },
+        {
+          "title": "Régime des Pensionnés",
+          "description": "Pour les retraités qui transfèrent leur résidence en Italie. Avantages : imposition forfaitaire à 7% sur les revenus de pension étrangers pendant 10 ans."
+        },
+        {
+          "title": "Régime des Résidents Non Domiciliés",
+          "description": "Pour les riches particuliers qui s'établissent en Italie. Avantages : imposition uniquement sur les revenus de source italienne, exonération des revenus de capitaux étrangers."
+        }
+      ],
+      "expatTypesTitle": "Qui Peut Bénéficier de Nos Services?",
+      "expatTypesSubtitle": "Nous assistons différents types d'expatriés en Italie",
+      "expatTypesItems": [
+        {
+          "title": "Travailleurs Détachés",
+          "description": "Professionnels envoyés par leur entreprise pour une mission temporaire en Italie. Nous gérons votre fiscalité pendant votre détachement."
+        },
+        {
+          "title": "Entrepreneurs et Freelancers",
+          "description": "Indépendants qui lancent ou développent leur activité en Italie. Nous optimisons votre structure fiscale et gérons votre comptabilité."
+        },
+        {
+          "title": "Investisseurs et Retraités",
+          "description": "Personnes qui s'installent en Italie pour des raisons d'investissement ou de retraite. Nous optimisons votre patrimoine et vos revenus."
+        },
+        {
+          "title": "Rechercheurs et Académiques",
+          "description": "Professionnels du monde académique et de la recherche qui travaillent en Italie. Nous vous aidons à bénéficier des régimes fiscaux spécifiques."
+        }
+      ],
+      "faqTitle": "Questions Fréquentes",
+      "faqItems": [
+        {
+          "question": "Quand deviens-je résident fiscal en Italie?",
+          "answer": "Vous devenez résident fiscal en Italie si vous y séjournez plus de 183 jours par an, ou si vous avez votre domicile principal ou le centre de vos intérêts économiques en Italie."
+        },
+        {
+          "question": "Comment éviter la double imposition entre l'Italie et mon pays?",
+          "answer": "L'Italie a signé des conventions de double imposition avec de nombreux pays. Nous vous aidons à appliquer ces conventions pour éviter de payer des impôts dans les deux pays."
+        },
+        {
+          "question": "Puis-je continuer à cotiser à la sécurité sociale de mon pays d'origine?",
+          "answer": "Oui, dans certains cas, grâce aux formulaires de coordination européenne (comme le A1) ou aux accords bilatéraux de sécurité sociale. Nous vous assistons dans ces démarches."
+        },
+        {
+          "question": "Quels sont les avantages du régime des travailleurs impatriés?",
+          "answer": "Le régime offre une imposition à 50% des revenus pendant 5 ans, une exonération des revenus étrangers et une exemption d'IVIE et IVAFE sur les biens à l'étranger."
+        },
+        {
+          "question": "Comment déclarer mes revenus étrangers en Italie?",
+          "answer": "La déclaration dépend de votre régime fiscal. En général, les résidents fiscaux doivent déclarer leurs revenus mondiaux, mais les conventions de double imposition peuvent offrir des exemptions ou des crédits d'impôt."
+        }
+      ],
+      "ctaTitle": "Besoin d'Assistance Fiscale en tant qu'Expatrié?",
+      "ctaSubtitle": "Notre équipe d'experts en fiscalité internationale est à votre disposition pour optimiser votre situation fiscale en Italie.",
+      "ctaButton": "Réserver une Consultation Gratuite",
+      "metaTitle": "Expertise Comptable pour Expatriés en Italie | Services Fiscaux Internationaux",
+      "metaDescription": "Experts en fiscalité pour expatriés en Italie. Nous assistons les travailleurs internationaux avec la planification fiscale, les déclarations et la conformité. Consultation gratuite."
     }
   }
 }

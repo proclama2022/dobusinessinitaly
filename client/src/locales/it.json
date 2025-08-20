@@ -5,7 +5,8 @@
     "about": "Chi Siamo",
     "media": "Parlano di Noi",
     "blog": "Blog",
-    "contact": "Contatti"
+    "contact": "Contatti",
+    "learnMore": "Scopri di più"
   },
   "common": {
     "loading": "Caricamento in corso...",
@@ -653,6 +654,327 @@
         "title": "Contattaci",
         "content": "Se hai domande su questa Cookie Policy, puoi contattarci all'indirizzo: amministrazione@proclama.co"
       }
+    }
+  },
+  "landingPages": {
+    "openCompanyItaly": {
+      "title": "Aprire una Società in Italia",
+      "subtitle": "Assistenza completa per imprenditori stranieri che vogliono costituire una società in Italia",
+      "heroTitle": "Aprire una Società in Italia",
+      "heroSubtitle": "Guida esperta per imprenditori internazionali che stabiliscono la loro presenza aziendale in Italia. Dalla costituzione societaria alla conformità continuativa, gestiamo ogni aspetto della tua impresa italiana.",
+      "heroCta": "Prenota una consulenza gratuita",
+      "overviewTitle": "Perché Scegliere l'Italia per la Tua Azienda?",
+      "overviewDescription": "L'Italia offre accesso strategico ai mercati europei, normative aziendali favorevoli e un'economia fiorente. Il nostro team esperto assicura che il tuo processo di costituzione societaria sia fluido, efficiente e conforme a tutti i requisiti legali italiani.",
+      "overviewCta": "Inizia il Tuo Percorso Aziendale Italiano",
+      "whyTitle": "Perché Aprire una Società in Italia?",
+      "whySubtitle": "L'Italia offre opportunità uniche per gli imprenditori internazionali",
+      "whyItems": [
+        {
+          "title": "Accesso al Mercato Europeo",
+          "description": "Beneficia di un accesso strategico al mercato unico europeo con oltre 500 milioni di consumatori."
+        },
+        {
+          "title": "Vantaggi Fiscali",
+          "description": "Approfitta di regimi fiscali favorevoli e accordi di doppia imposizione con numerosi paesi."
+        },
+        {
+          "title": "Manodopera Qualificata",
+          "description": "Accedi a una forza lavoro altamente qualificata con una forte tradizione industriale e artigianale."
+        },
+        {
+          "title": "Qualità della Vita",
+          "description": "Beneficia di un eccellente stile di vita, ricca cultura e cucina rinomata a livello mondiale."
+        }
+      ],
+      "servicesTitle": "I Nostri Servizi di Costituzione Societaria",
+      "servicesSubtitle": "Assistenza completa in ogni fase del processo",
+      "servicesItems": [
+        {
+          "title": "Consulenza sulla Struttura Legale",
+          "description": "Ti aiutiamo a scegliere la forma giuridica più adatta alla tua attività: SRL, SPA, società di persone, ecc."
+        },
+        {
+          "title": "Preparazione dello Statuto",
+          "description": "Redazione professionale dello statuto e di tutti i documenti necessari per la costituzione della tua società."
+        },
+        {
+          "title": "Iscrizione al Registro delle Imprese",
+          "description": "Ci occupiamo di tutte le pratiche di iscrizione presso la Camera di Commercio e le autorità competenti."
+        },
+        {
+          "title": "Apertura Conto Bancario",
+          "description": "Assistenza per l'apertura del conto bancario aziendale e l'ottenimento del codice fiscale italiano."
+        }
+      ],
+      "companyTypesTitle": "Tipi di Società che Puoi Costituire",
+      "companyTypesSubtitle": "Scegli la struttura legale più adatta alle tue esigenze aziendali",
+      "srlTitle": "SRL (Società a Responsabilità Limitata)",
+      "srlDescription": "Il tipo più comune di società a responsabilità limitata in Italia, ideale per piccole e medie imprese. Richiede un capitale sociale minimo di €1 e offre protezione della responsabilità limitata ai soci.",
+      "srlFeatures": [
+        "Responsabilità limitata per i soci",
+        "Capitale minimo di €1",
+        "Struttura di gestione flessibile",
+        "Adatta a PMI e startup"
+      ],
+      "individualCompanyTitle": "Ditta Individuale",
+      "individualCompanyDescription": "Una struttura aziendale di proprietà e gestita da un singolo individuo. Semplice da costituire con requisiti burocratici minimi, ma il titolare ha responsabilità illimitata per i debiti aziendali.",
+      "individualCompanyFeatures": [
+        "Di proprietà e gestita da una persona",
+        "Processo di costituzione semplice",
+        "Responsabilità personale illimitata",
+        "Ideale per freelance e piccole imprese"
+      ],
+      "sncTitle": "SNC (Società in Nome Collettivo)",
+      "sncDescription": "Una società in cui tutti i soci hanno responsabilità illimitata e possono agire per conto della società. Adatta a imprese familiari e associazioni professionali.",
+      "sncFeatures": [
+        "Tutti i soci hanno responsabilità illimitata",
+        "I soci possono rappresentare la società",
+        "Minimo due soci richiesti",
+        "Comune nelle associazioni professionali"
+      ],
+      "sasTitle": "SAS (Società in Accomandita Semplice)",
+      "sasDescription": "Una società in accomandita con due tipi di soci: soci accomandatari con responsabilità illimitata e soci accomandanti con responsabilità limitata al loro apporto di capitale.",
+      "sasFeatures": [
+        "Soci accomandatari e accomandanti",
+        "Responsabilità limitata per i soci accomandanti",
+        "I soci accomandatari gestiscono la società",
+        "Adatta a partnership di investimento"
+      ],
+      "processTitle": "Processo di Costituzione Societaria",
+      "processSubtitle": "Il nostro processo semplificato in 4 fasi per costituire la tua società in Italia",
+      "processSteps": [
+        {
+          "step": "1",
+          "title": "Consultazione Iniziale",
+          "description": "Analizziamo il tuo progetto e le tue esigenze per definire la migliore strategia di costituzione societaria."
+        },
+        {
+          "step": "2",
+          "title": "Preparazione Documenti",
+          "description": "Prepariamo tutti i documenti necessari e te li sottoponiamo per la validazione."
+        },
+        {
+          "step": "3",
+          "title": "Deposito e Registrazione",
+          "description": "Depositiamo i documenti presso le autorità competenti e seguiamo l'avanzamento della tua pratica."
+        },
+        {
+          "step": "4",
+          "title": "Costituzione Completata",
+          "description": "Una volta costituita la società, ti consegniamo tutti i documenti e ti spieghiamo i prossimi passi."
+        }
+      ],
+      "step1Title": "1. Consultazione Iniziale",
+      "step1Description": "Analizziamo le tue esigenze aziendali, raccomandiamo il tipo di società più adatto e delineiamo l'intero processo di costituzione con tempi e requisiti chiari.",
+      "step2Title": "2. Preparazione Documenti",
+      "step2Description": "Il nostro team prepara tutti i documenti legali necessari, inclusi lo statuto sociale, le domande di identificazione fiscale e i moduli di registrazione.",
+      "step3Title": "3. Registrazione e Impostazione Fiscale",
+      "step3Description": "Gestiamo l'intero processo di registrazione con il Registro delle Imprese italiano, le autorità fiscali e gli enti governativi pertinenti.",
+      "step4Title": "4. Supporto Post-Costituzione",
+      "step4Description": "Dopo la registrazione, forniamo supporto continuativo per la contabilità, la conformità fiscale e i requisiti amministrativi per garantire che la tua attività operi senza problemi.",
+      "ctaTitle": "Pronto a Iniziare la Tua Attività in Italia?",
+      "ctaDescription": "Fai il primo passo verso la costituzione della tua società in Italia. I nostri esperti sono pronti a guidarti attraverso l'intero processo.",
+      "ctaButton": "Prenota una consulenza gratuita",
+      "faqTitle": "Domande Frequenti",
+      "faqSubtitle": "Risposte alle domande più comuni sulla costituzione di società in Italia",
+      "faqItems": [
+        {
+          "question": "Quanto tempo serve per costituire una società in Italia?",
+          "answer": "Il processo di costituzione societaria richiede tipicamente 2-4 settimane, a seconda del tipo di società e della complessità. Le costituzioni SRL sono generalmente completate entro 15-20 giorni lavorativi."
+        },
+        {
+          "question": "Quali sono i requisiti di capitale minimo?",
+          "answer": "L'SRL richiede un capitale minimo di €1, mentre altri tipi di società possono avere requisiti diversi. Ti aiuteremo a determinare la struttura di capitale ottimale per la tua attività."
+        },
+        {
+          "question": "È necessaria la presenza fisica in Italia?",
+          "answer": "La presenza fisica non è obbligatoria per la costituzione societaria. Possiamo gestire l'intero processo a distanza, inclusa l'ottenimento dei permessi e registrazioni necessarie."
+        },
+        {
+          "question": "Quali obblighi di conformità avrò?",
+          "answer": "Le società devono mantenere registri contabili appropriati, presentare dichiarazioni dei redditi annuali, tenere assemblee dei soci e conformarsi alla legge commerciale italiana. Forniamo supporto completo per la conformità."
+        },
+        {
+          "question": "Posso aprire una società in Italia come cittadino non UE?",
+          "answer": "Sì, i cittadini non UE possono costituire società in Italia. Tuttavia, potrebbero applicarsi requisiti aggiuntivi, come l'ottenimento di un permesso di soggiorno o il soddisfacimento di specifici criteri di investimento."
+        },
+        {
+          "question": "Quanto tempo serve per costituire una società in Italia?",
+          "answer": "Il processo di costituzione societaria richiede tipicamente 2-4 settimane, a seconda del tipo di società e della complessità. Le costituzioni SRL sono generalmente completate entro 15-20 giorni lavorativi."
+        },
+        {
+          "question": "Quali sono i requisiti di capitale minimo?",
+          "answer": "L'SRL richiede un capitale minimo di €1, mentre altri tipi di società possono avere requisiti diversi. Ti aiuteremo a determinare la struttura di capitale ottimale per la tua attività."
+        },
+        {
+          "question": "È necessaria la presenza fisica in Italia?",
+          "answer": "Il processo di costituzione può essere gestito completamente a distanza. Non è necessaria la presenza fisica per la maggior parte delle procedure, rendendo il processo accessibile anche per imprenditori internazionali."
+        }
+      ]
+    },
+    "openVATNumberItaly": {
+      "title": "Aprire Partita IVA in Italia",
+      "subtitle": "Assistenza completa per l'apertura e gestione della tua Partita IVA italiana",
+      "heroTitle": "Aprire Partita IVA in Italia",
+      "heroSubtitle": "Guida professionale per ottenere e gestire la tua Partita IVA italiana. Ti aiutiamo a scegliere il regime fiscale corretto e gestire tutti i requisiti burocratici in modo efficiente.",
+      "heroCta": "Prenota una consulenza gratuita",
+      "overviewTitle": "Perché Hai Bisogno di una Partita IVA Italiana?",
+      "overviewDescription": "La Partita IVA è essenziale per chiunque conduca attività commerciali in Italia. È richiesta per la fatturazione, la conformità fiscale e le operazioni commerciali legali. I nostri esperti assicurano che tu ottenga la Partita IVA giusta per le tue esigenze aziendali specifiche.",
+      "overviewCta": "Ottieni la Tua Partita IVA Italiana",
+      "vatTypesTitle": "Tipi di Partita IVA in Italia",
+      "vatTypesSubtitle": "Scegli la Partita IVA appropriata in base alla tua attività commerciale",
+      "individualTitle": "Partita IVA Individuale",
+      "individualDescription": "Per freelance, professionisti autonomi e lavoratori autonomi. Questo è il tipo più comune per individui che conducono attività commerciali in Italia.",
+      "individualFeatures": [
+        "Per individui e freelance",
+        "Identificazione fiscale personale",
+        "Richiesta per la fatturazione ai clienti",
+        "Multiple opzioni di regime fiscale"
+      ],
+      "companyTitle": "Partita IVA Aziendale",
+      "companyDescription": "Per società registrate, società e entità commerciali. Ogni società deve avere la propria Partita IVA separata dal proprio codice fiscale.",
+      "companyFeatures": [
+        "Per società registrate",
+        "Separata dal codice fiscale",
+        "Richiesta per operazioni commerciali",
+        "Obbligatoria per tutte le società"
+      ],
+      "agriculturalTitle": "Partita IVA Agricola",
+      "agriculturalDescription": "Partita IVA speciale per aziende agricole e agricoltori con benefici fiscali specifici e requisiti di conformità semplificati.",
+      "agriculturalFeatures": [
+        "Per aziende agricole",
+        "Benefici fiscali speciali",
+        "Conformità semplificata",
+        "Vantaggi specifici del settore"
+      ],
+      "processTitle": "Processo di Apertura Partita IVA",
+      "processSubtitle": "Il nostro efficiente processo in 4 fasi per ottenere la tua Partita IVA italiana",
+      "step1Title": "1. Consultazione e Valutazione",
+      "step1Description": "Analizziamo la tua attività, le aspettative di reddito e ti aiutiamo a scegliere il regime fiscale e il tipo di Partita IVA più appropriati.",
+      "step2Title": "2. Raccolta Documenti",
+      "step2Description": "Ti guidiamo nella raccolta di tutti i documenti necessari, inclusi identificazione, prova di residenza e dettagli sull'attività commerciale.",
+      "step3Title": "3. Domanda e Registrazione",
+      "step3Description": "Prepariamo e presentiamo la tua domanda di Partita IVA all'Agenzia delle Entrate italiana, gestendo tutte le comunicazioni con le autorità fiscali.",
+      "step4Title": "4. Attivazione e Supporto",
+      "step4Description": "Una volta approvata, ti aiutiamo ad attivare la tua Partita IVA, impostare i sistemi di fatturazione e forniamo supporto continuativo per la conformità.",
+      "ctaTitle": "Pronto ad Aprire la Tua Partita IVA Italiana?",
+      "ctaDescription": "Non navigare da solo nel sistema fiscale italiano. I nostri esperti sono pronti ad aiutarti a ottenere e gestire la tua Partita IVA in modo efficiente.",
+      "ctaButton": "Prenota una consulenza gratuita",
+      "faqTitle": "Domande Frequenti",
+      "faqItems": [
+        {
+          "question": "Quanto tempo serve per ottenere una Partita IVA in Italia?",
+          "answer": "Il processo richiede tipicamente 7-14 giorni lavorativi dalla presentazione della domanda. Gestiamo tutto in modo efficiente per renderti operativo il più rapidamente possibile."
+        },
+        {
+          "question": "Quali documenti servono per richiedere una Partita IVA?",
+          "answer": "Ti serviranno un documento d'identità valido, codice fiscale, prova di residenza e dettagli sulla tua attività commerciale. Per i cittadini non UE, potrebbe essere richiesta documentazione aggiuntiva."
+        },
+        {
+          "question": "Quali sono gli obblighi continuativi con una Partita IVA?",
+          "answer": "Gli obblighi includono dichiarazioni IVA trimestrali, dichiarazioni fiscali annuali, mantenimento di registri contabili appropriati ed emissione di fatture conformi. Forniamo supporto completo per tutti i requisiti."
+        },
+        {
+          "question": "Posso avere una Partita IVA se non sono residente italiano?",
+          "answer": "Sì, i non residenti possono ottenere una Partita IVA italiana. Il processo potrebbe richiedere documentazione aggiuntiva, ma assistiamo regolarmente clienti internazionali con questo servizio."
+        },
+        {
+          "question": "Qual è la differenza tra codice fiscale e Partita IVA?",
+          "answer": "Il codice fiscale è un numero di identificazione personale, mentre la Partita IVA è specificamente per attività commerciali. Hai bisogno di entrambi per operare un'attività in Italia."
+        },
+        {
+          "question": "Posso cambiare regime fiscale dopo aver aperto una Partita IVA?",
+          "answer": "Sì, puoi cambiare regime fiscale, ma ci sono regole specifiche e requisiti di tempistica. Possiamo aiutarti a determinare quando e come apportare modifiche per ottimizzare la tua posizione fiscale."
+        }
+      ]
+    },
+    "taxAccountingExpats": {
+      "title": "Contabilità Fiscale per Espatriati",
+      "subtitle": "Servizi fiscali specializzati per espatriati che vivono e lavorano in Italia",
+      "heroTitle": "Contabilità Fiscale per Espatriati",
+      "heroSubtitle": "Servizi fiscali e contabili completi su misura per espatriati in Italia. Navighiamo le complessità della legge fiscale italiana per garantire la tua conformità ottimizzando la tua posizione fiscale.",
+      "heroCta": "Prenota una consulenza gratuita",
+      "overviewTitle": "Perché gli Espatriati Hanno Bisogno di Servizi Fiscali Specializzati",
+      "overviewDescription": "Vivere e lavorare in Italia come espatriato presenta sfide fiscali uniche, inclusi problemi di doppia imposizione, dichiarazione di redditi esteri e requisiti di conformità internazionale. Il nostro team specializzato comprende queste complessità e fornisce soluzioni progettate specificamente per espatriati.",
+      "overviewCta": "Assicurati la Tua Tranquillità Fiscale",
+      "servicesTitle": "I Nostri Servizi Fiscali per Espatriati",
+      "servicesSubtitle": "Soluzioni fiscali complete per il tuo stile di vita internazionale",
+      "personalTaxTitle": "Dichiarazioni dei Redditi Personali",
+      "personalTaxDescription": "Preparazione e presentazione esperta di dichiarazioni dei redditi italiane per espatriati, inclusa dichiarazione di redditi esteri, ottimizzazione crediti d'imposta e conformità con trattati fiscali internazionali.",
+      "personalTaxFeatures": [
+        "Preparazione dichiarazione dei redditi italiana",
+        "Dichiarazione redditi esteri",
+        "Ottimizzazione trattati fiscali",
+        "Rilievo dalla doppia imposizione"
+      ],
+      "businessTaxTitle": "Conformità Fiscale Aziendale",
+      "businessTaxDescription": "Servizi fiscali completi per imprenditori espatriati e proprietari di attività, inclusa conformità IVA, dichiarazioni fiscali aziendali e pianificazione fiscale transfrontaliera.",
+      "businessTaxFeatures": [
+        "Conformità fiscale aziendale",
+        "Gestione IVA",
+        "Pianificazione transfrontaliera",
+        "Ottimizzazione struttura aziendale"
+      ],
+      "internationalPlanningTitle": "Pianificazione Fiscale Internazionale",
+      "internationalPlanningDescription": "Pianificazione fiscale strategica per minimizzare il tuo carico fiscale globale garantendo la piena conformità con le normative fiscali italiane e internazionali.",
+      "internationalPlanningFeatures": [
+        "Ottimizzazione fiscale globale",
+        "Pianificazione residenza",
+        "Gestione patrimoniale",
+        "Pianificazione successioni fiscali"
+      ],
+      "taxRepresentationTitle": "Rappresentanza Fiscale",
+      "taxRepresentationDescription": "Rappresentanza ufficiale presso le autorità fiscali italiane, gestione di audit, corrispondenza e negoziazioni per tuo conto.",
+      "taxRepresentationFeatures": [
+        "Rappresentanza autorità fiscali",
+        "Supporto audit",
+        "Risoluzione controversie fiscali",
+        "Monitoraggio conformità"
+      ],
+      "processTitle": "Il Nostro Processo Fiscale per Espatriati",
+      "processSubtitle": "Un approccio semplificato alla gestione delle tue obbligazioni fiscali da espatriato",
+      "step1Title": "1. Valutazione Iniziale",
+      "step1Description": "Conduciamo una revisione completa della tua situazione fiscale, inclusi stato di residenza, fonti di reddito e obblighi fiscali esistenti in più giurisdizioni.",
+      "step2Title": "2. Sviluppo Strategia",
+      "step2Description": "In base alla tua valutazione, sviluppiamo una strategia fiscale personalizzata che ottimizza la tua posizione garantendo la piena conformità con tutte le leggi fiscali applicabili.",
+      "step3Title": "3. Implementazione e Conformità",
+      "step3Description": "Implementiamo la tua strategia fiscale, prepariamo tutte le dichiarazioni necessarie e garantiamo la conformità continuativa con le autorità fiscali italiane.",
+      "step4Title": "4. Supporto Continuativo",
+      "step4Description": "Forniamo supporto continuativo durante tutto l'anno, inclusi aggiornamenti sulla pianificazione fiscale, monitoraggio della conformità e consigli proattivi per circostanze mutevoli.",
+      "ctaTitle": "Pronto a Semplificare le Tue Tasse da Espatriato?",
+      "ctaDescription": "Non lasciare che la complessità fiscale internazionale ti sopraffaccia. I nostri specialisti fiscali per espatriati sono qui per garantire la tua tranquillità e ottimizzazione fiscale.",
+      "ctaButton": "Prenota una consulenza gratuita",
+      "faqTitle": "Domande Frequenti",
+      "faqItems": [
+        {
+          "question": "Devo presentare una dichiarazione dei redditi italiana come espatriato?",
+          "answer": "Se sei un residente fiscale italiano, devi dichiarare i redditi mondiali. I non residenti dichiarano solo i redditi di fonte italiana. Ti aiutiamo a determinare il tuo stato di residenza e i requisiti di dichiarazione."
+        },
+        {
+          "question": "Come viene determinata la residenza fiscale in Italia?",
+          "answer": "La residenza fiscale si basa sulla regola dei 183 giorni, centro di interessi vitali, abituale dimora o domicilio registrato. Analizziamo la tua situazione specifica per determinare il tuo corretto stato di residenza."
+        },
+        {
+          "question": "Cosa dire riguardo alla doppia imposizione sui miei redditi?",
+          "answer": "L'Italia ha trattati fiscali con molti paesi per prevenire la doppia imposizione. Ti aiutiamo a reclamare crediti d'imposta esteri e benefici dei trattati per minimizzare il tuo carico fiscale complessivo."
+        },
+        {
+          "question": "Devo dichiarare attività e conti esteri?",
+          "answer": "Sì, i residenti fiscali italiani devono dichiarare attività finanziarie estere, conti bancari, investimenti e partecipazioni immobiliari. Assicuriamo la corretta conformità con questi requisiti di dichiarazione."
+        },
+        {
+          "question": "Posso richiedere regimi fiscali speciali come espatriato?",
+          "answer": "L'Italia offre regimi fiscali speciali per nuovi residenti, inclusi opzioni di imposta piatta e incentivi per individui ad alto patrimonio. Ti aiutiamo a determinare se qualifichi per questi programmi benefici."
+        },
+        {
+          "question": "Come gestite la comunicazione con le autorità fiscali italiane?",
+          "answer": "Forniamo servizi completi di rappresentanza fiscale, gestendo tutte le comunicazioni, audit e negoziazioni con le autorità fiscali italiane per tuo conto, sia in italiano che in inglese."
+        },
+        {
+          "question": "Cosa succede se ho obblighi fiscali in più paesi?",
+          "answer": "Coordiniamo con professionisti fiscali in altri paesi o forniamo pianificazione fiscale transfrontaliera completa per garantire che tutti i tuoi obblighi fiscali internazionali siano soddisfatti in modo efficiente."
+        }
+      ]
     }
   }
 }

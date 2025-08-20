@@ -53,14 +53,17 @@ if (!process.env.ADMIN_PASSWORD) {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
+if (process.env.NODE_ENV === 'development') {
+  const vite = await import('vite');
+  const viteDevMiddleware = await vite.createServer({
+    server: {
+      middlewareMode: true,
+    },
+  }).then((server) => server.middlewares);
+  app.use(viteDevMiddleware);
+} else {
+  app.use(express.static('dist/public'));
+}
 
   // Use PORT from environment variable or default to 3000
   const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;

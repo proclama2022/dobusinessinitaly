@@ -5,7 +5,8 @@
     "about": "About Us",
     "media": "Media",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "learnMore": "Learn More"
   },
   "hero": {
     "title": "Accounting Expertise For Your Global Business",
@@ -706,6 +707,252 @@
         "title": "Contact Us",
         "content": "If you have any questions about this Cookie Policy, you can contact us at: amministrazione@proclama.co"
       }
+    }
+  },
+  "landingPages": {
+    "openCompanyItaly": {
+      "title": "Open a Company in Italy",
+      "subtitle": "Complete assistance for foreign entrepreneurs who want to establish a company in Italy",
+      "heroTitle": "Open a Company in Italy",
+      "heroSubtitle": "Expert guidance for international entrepreneurs establishing their business presence in Italy. From company formation to ongoing compliance, we handle every aspect of your Italian business venture.",
+      "heroCta": "Book a free consultation",
+      "overviewTitle": "Why Choose Italy for Your Business?",
+      "overviewDescription": "Italy offers strategic access to European markets, favorable business regulations, and a thriving economy. Our experienced team ensures your company establishment process is smooth, efficient, and compliant with all Italian legal requirements.",
+      "overviewCta": "Start Your Italian Business Journey",
+      "companyTypesTitle": "Types of Companies You Can Establish",
+      "companyTypesSubtitle": "Choose the most suitable legal structure for your business needs",
+      "srlTitle": "SRL (Società a Responsabilità Limitata)",
+      "srlDescription": "The most common type of limited liability company in Italy, ideal for small and medium-sized businesses. It requires a minimum share capital of €1 and offers limited liability protection to shareholders.",
+      "srlFeatures": [
+        "Limited liability for shareholders",
+        "Minimum capital of €1",
+        "Flexible management structure",
+        "Suitable for SMEs and startups"
+      ],
+      "individualCompanyTitle": "Individual Company (Ditta Individuale)",
+      "individualCompanyDescription": "A business structure owned and managed by a single individual. Simple to establish with minimal bureaucratic requirements, but the owner has unlimited liability for business debts.",
+      "individualCompanyFeatures": [
+        "Owned and managed by one person",
+        "Simple establishment process",
+        "Unlimited personal liability",
+        "Ideal for freelancers and small businesses"
+      ],
+      "sncTitle": "SNC (Società in Nome Collettivo)",
+      "sncDescription": "A partnership where all partners have unlimited liability and can act on behalf of the company. Suitable for family businesses and professional partnerships.",
+      "sncFeatures": [
+        "All partners have unlimited liability",
+        "Partners can represent the company",
+        "Minimum of two partners required",
+        "Common in professional partnerships"
+      ],
+      "sasTitle": "SAS (Società in Accomandita Semplice)",
+      "sasDescription": "A limited partnership with two types of partners: general partners with unlimited liability and limited partners with liability restricted to their capital contribution.",
+      "sasFeatures": [
+        "General and limited partners",
+        "Limited liability for limited partners",
+        "General partners manage the company",
+        "Suitable for investment partnerships"
+      ],
+      "processTitle": "Company Formation Process",
+      "processSubtitle": "Our streamlined 4-step process for establishing your company in Italy",
+      "step1Title": "1. Initial Consultation",
+      "step1Description": "We analyze your business needs, recommend the most suitable company type, and outline the entire formation process with clear timelines and requirements.",
+      "step2Title": "2. Document Preparation",
+      "step2Description": "Our team prepares all necessary legal documents, including the articles of association, tax identification applications, and registration forms.",
+      "step3Title": "3. Registration and Tax Setup",
+      "step3Description": "We handle the complete registration process with the Italian Business Register, tax authorities, and relevant government agencies.",
+      "step4Title": "4. Post-Formation Support",
+      "step4Description": "After registration, we provide ongoing support for accounting, tax compliance, and administrative requirements to ensure your business operates smoothly.",
+      "ctaTitle": "Ready to Start Your Business in Italy?",
+      "ctaDescription": "Take the first step towards establishing your company in Italy. Our experts are ready to guide you through the entire process.",
+      "ctaButton": "Book a free consultation",
+      "faqTitle": "Frequently Asked Questions",
+      "faqItems": [
+        {
+          "question": "How long does it take to establish a company in Italy?",
+          "answer": "The company formation process typically takes 2-4 weeks, depending on the company type and complexity. SRL formations are usually completed within 15-20 business days."
+        },
+        {
+          "question": "What are the minimum capital requirements?",
+          "answer": "SRL requires a minimum capital of €1, while other company types may have different requirements. We'll help you determine the optimal capital structure for your business."
+        },
+        {
+          "question": "Do I need to be physically present in Italy?",
+          "answer": "Physical presence is not mandatory for company formation. We can handle the entire process remotely, including obtaining necessary permits and registrations."
+        },
+        {
+          "question": "What ongoing compliance requirements will I have?",
+          "answer": "Companies must maintain proper accounting records, file annual tax returns, hold shareholder meetings, and comply with Italian commercial law. We provide comprehensive compliance support."
+        },
+        {
+          "question": "Can I open a company in Italy as a non-EU citizen?",
+          "answer": "Yes, non-EU citizens can establish companies in Italy. However, additional requirements may apply, such as obtaining a residence permit or meeting specific investment criteria."
+        }
+      ]
+    },
+    "openVATNumberItaly": {
+      "title": "Open a VAT Number in Italy",
+      "subtitle": "Complete assistance for opening and managing your Italian VAT number",
+      "heroTitle": "Open a VAT Number in Italy",
+      "heroSubtitle": "Professional guidance for obtaining and managing your Italian Partita IVA. We help you choose the right tax regime and handle all bureaucratic requirements efficiently.",
+      "heroCta": "Book a free consultation",
+      "overviewTitle": "Why Do You Need an Italian VAT Number?",
+      "overviewDescription": "A Partita IVA is essential for anyone conducting business activities in Italy. It's required for invoicing, tax compliance, and legal business operations. Our experts ensure you get the right VAT number for your specific business needs.",
+      "overviewCta": "Get Your Italian VAT Number",
+      "vatTypesTitle": "Types of VAT Numbers in Italy",
+      "vatTypesSubtitle": "Choose the appropriate VAT number based on your business activity",
+      "individualTitle": "Individual VAT Number",
+      "individualDescription": "For freelancers, self-employed professionals, and sole traders. This is the most common type for individuals conducting business activities in Italy.",
+      "individualFeatures": [
+        "For individuals and freelancers",
+        "Personal tax identification",
+        "Required for invoicing clients",
+        "Multiple tax regime options"
+      ],
+      "companyTitle": "Company VAT Number",
+      "companyDescription": "For registered companies, corporations, and business entities. Each company must have its own VAT number separate from its tax identification number.",
+      "companyFeatures": [
+        "For registered companies",
+        "Separate from tax ID",
+        "Required for business operations",
+        "Mandatory for all companies"
+      ],
+      "agriculturalTitle": "Agricultural VAT Number",
+      "agriculturalDescription": "Special VAT number for agricultural businesses and farmers with specific tax benefits and simplified compliance requirements.",
+      "agriculturalFeatures": [
+        "For agricultural businesses",
+        "Special tax benefits",
+        "Simplified compliance",
+        "Sector-specific advantages"
+      ],
+      "processTitle": "VAT Number Opening Process",
+      "processSubtitle": "Our efficient 4-step process for obtaining your Italian VAT number",
+      "step1Title": "1. Consultation and Assessment",
+      "step1Description": "We analyze your business activity, income expectations, and help you choose the most appropriate tax regime and VAT number type.",
+      "step2Title": "2. Document Collection",
+      "step2Description": "We guide you through gathering all necessary documents, including identification, proof of residence, and business activity details.",
+      "step3Title": "3. Application and Registration",
+      "step3Description": "We prepare and submit your VAT number application to the Italian Revenue Agency, handling all communication with tax authorities.",
+      "step4Title": "4. Activation and Support",
+      "step4Description": "Once approved, we help you activate your VAT number, set up invoicing systems, and provide ongoing compliance support.",
+      "ctaTitle": "Ready to Open Your Italian VAT Number?",
+      "ctaDescription": "Don't navigate the Italian tax system alone. Our experts are ready to help you obtain and manage your VAT number efficiently.",
+      "ctaButton": "Book a free consultation",
+      "faqTitle": "Frequently Asked Questions",
+      "faqItems": [
+        {
+          "question": "How long does it take to get a VAT number in Italy?",
+          "answer": "The process typically takes 7-14 business days from application submission. We handle everything efficiently to get you operational as quickly as possible."
+        },
+        {
+          "question": "What documents do I need to apply for a VAT number?",
+          "answer": "You'll need a valid ID, tax code, proof of residence, and details about your business activity. For non-EU citizens, additional documentation may be required."
+        },
+        {
+          "question": "What are the ongoing obligations with a VAT number?",
+          "answer": "Obligations include quarterly VAT returns, annual tax declarations, maintaining proper accounting records, and issuing compliant invoices. We provide comprehensive support for all requirements."
+        },
+        {
+          "question": "Can I have a VAT number if I'm not an Italian resident?",
+          "answer": "Yes, non-residents can obtain an Italian VAT number. The process may require additional documentation, but we assist international clients regularly with this service."
+        },
+        {
+          "question": "What's the difference between a tax code and VAT number?",
+          "answer": "A tax code (codice fiscale) is a personal identification number, while a VAT number (Partita IVA) is specifically for business activities. You need both to operate a business in Italy."
+        },
+        {
+          "question": "Can I change my tax regime after opening a VAT number?",
+          "answer": "Yes, you can change your tax regime, but there are specific rules and timing requirements. We can help you determine when and how to make changes to optimize your tax position."
+        }
+      ]
+    },
+    "taxAccountingExpats": {
+      "title": "Tax Accounting for Expats",
+      "subtitle": "Specialized tax services for expatriates living and working in Italy",
+      "heroTitle": "Tax Accounting for Expats",
+      "heroSubtitle": "Comprehensive tax and accounting services tailored for expatriates in Italy. We navigate the complexities of Italian tax law to ensure your compliance while optimizing your tax position.",
+      "heroCta": "Book a free consultation",
+      "overviewTitle": "Why Expats Need Specialized Tax Services",
+      "overviewDescription": "Living and working in Italy as an expat presents unique tax challenges, including double taxation issues, foreign income reporting, and international compliance requirements. Our specialized team understands these complexities and provides solutions designed specifically for expatriates.",
+      "overviewCta": "Secure Your Tax Peace of Mind",
+      "servicesTitle": "Our Expat Tax Services",
+      "servicesSubtitle": "Comprehensive tax solutions for your international lifestyle",
+      "personalTaxTitle": "Personal Tax Returns",
+      "personalTaxDescription": "Expert preparation and filing of Italian personal tax returns for expatriates, including foreign income reporting, tax credit optimization, and compliance with international tax treaties.",
+      "personalTaxFeatures": [
+        "Italian tax return preparation",
+        "Foreign income reporting",
+        "Tax treaty optimization",
+        "Double taxation relief"
+      ],
+      "businessTaxTitle": "Business Tax Compliance",
+      "businessTaxDescription": "Complete tax services for expat entrepreneurs and business owners, including VAT compliance, business tax returns, and cross-border tax planning.",
+      "businessTaxFeatures": [
+        "Business tax compliance",
+        "VAT management",
+        "Cross-border planning",
+        "Business structure optimization"
+      ],
+      "internationalPlanningTitle": "International Tax Planning",
+      "internationalPlanningDescription": "Strategic tax planning to minimize your global tax burden while ensuring full compliance with Italian and international tax regulations.",
+      "internationalPlanningFeatures": [
+        "Global tax optimization",
+        "Residence planning",
+        "Wealth management",
+        "Inheritance tax planning"
+      ],
+      "taxRepresentationTitle": "Tax Representation",
+      "taxRepresentationDescription": "Official representation before Italian tax authorities, handling audits, correspondence, and negotiations on your behalf.",
+      "taxRepresentationFeatures": [
+        "Tax authority representation",
+        "Audit support",
+        "Tax dispute resolution",
+        "Compliance monitoring"
+      ],
+      "processTitle": "Our Expat Tax Process",
+      "processSubtitle": "A streamlined approach to managing your expat tax obligations",
+      "step1Title": "1. Initial Assessment",
+      "step1Description": "We conduct a comprehensive review of your tax situation, including residency status, income sources, and existing tax obligations in multiple jurisdictions.",
+      "step2Title": "2. Strategy Development",
+      "step2Description": "Based on your assessment, we develop a personalized tax strategy that optimizes your position while ensuring full compliance with all applicable tax laws.",
+      "step3Title": "3. Implementation and Compliance",
+      "step3Description": "We implement your tax strategy, prepare all necessary filings, and ensure ongoing compliance with Italian tax authorities.",
+      "step4Title": "4. Ongoing Support",
+      "step4Description": "We provide continuous support throughout the year, including tax planning updates, compliance monitoring, and proactive advice for changing circumstances.",
+      "ctaTitle": "Ready to Simplify Your Expat Taxes?",
+      "ctaDescription": "Don't let international tax complexity overwhelm you. Our expat tax specialists are here to ensure your peace of mind and tax optimization.",
+      "ctaButton": "Book a free consultation",
+      "faqTitle": "Frequently Asked Questions",
+      "faqItems": [
+        {
+          "question": "Do I need to file an Italian tax return as an expat?",
+          "answer": "If you're an Italian tax resident, you must declare worldwide income. Non-residents only report Italian-sourced income. We help determine your residency status and filing requirements."
+        },
+        {
+          "question": "How is tax residency determined in Italy?",
+          "answer": "Tax residency is based on the 183-day rule, center of vital interests, habitual abode, or registered domicile. We analyze your specific situation to determine your correct residency status."
+        },
+        {
+          "question": "What about double taxation on my income?",
+          "answer": "Italy has tax treaties with many countries to prevent double taxation. We help you claim foreign tax credits and treaty benefits to minimize your overall tax burden."
+        },
+        {
+          "question": "Do I need to report foreign assets and accounts?",
+          "answer": "Yes, Italian tax residents must report foreign financial assets, bank accounts, investments, and real estate holdings. We ensure proper compliance with these reporting requirements."
+        },
+        {
+          "question": "Can I claim any special tax regimes as an expat?",
+          "answer": "Italy offers special tax regimes for new residents, including flat tax options and incentives for high-net-worth individuals. We help determine if you qualify for these beneficial programs."
+        },
+        {
+          "question": "How do you handle communication with Italian tax authorities?",
+          "answer": "We provide full tax representation services, handling all communications, audits, and negotiations with Italian tax authorities on your behalf, in both Italian and English."
+        },
+        {
+          "question": "What if I have tax obligations in multiple countries?",
+          "answer": "We coordinate with tax professionals in other countries or provide comprehensive cross-border tax planning to ensure all your international tax obligations are met efficiently."
+        }
+      ]
     }
   }
 }

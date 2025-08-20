@@ -5,7 +5,8 @@
     "about": "Über Uns",
     "media": "Presse",
     "blog": "Blog",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "learnMore": "Mehr erfahren"
   },
   "hero": {
     "title": "Steuerliche Expertise für Ihr globales Unternehmen",
@@ -610,5 +611,253 @@
     "gaetana_vecchio_specialty": "Diplomierter Steuerberater, spezialisiert auf Arbeitsrechtberatung",
     "rosy_fresta_role": "Partner",
     "rosy_fresta_specialty": "Diplomierter Steuerberater, spezialisiert auf Arbeitsrechtberatung"
+  },
+  "landingPages": {
+    "openCompanyItaly": {
+      "title": "Unternehmen in Italien Gründen",
+      "subtitle": "Umfassende Unterstützung für ausländische Unternehmer, die ein Unternehmen in Italien gründen möchten",
+      "heroTitle": "Unternehmen in Italien Gründen",
+      "heroSubtitle": "Expertenführung für internationale Unternehmer bei der Etablierung ihrer Geschäftstätigkeit in Italien. Von der Unternehmensgründung bis zur laufenden Compliance übernehmen wir jeden Aspekt Ihres italienischen Unternehmensvorhabens.",
+      "heroCta": "Kostenlose Beratung buchen",
+      "overviewTitle": "Warum Italien für Ihr Unternehmen Wählen?",
+      "overviewDescription": "Italien bietet strategischen Zugang zu europäischen Märkten, günstige Geschäftsbedingungen und eine florierende Wirtschaft. Unser erfahrenes Team stellt sicher, dass Ihr Gründungsprozess reibungslos, effizient und mit allen italienischen Rechtsanforderungen konform ist.",
+      "overviewCta": "Beginnen Sie Ihre Italienische Unternehmensreise",
+      "companyTypesTitle": "Unternehmensarten, die Sie Gründen Können",
+      "companyTypesSubtitle": "Wählen Sie die passende Rechtsstruktur für Ihre Geschäftsanforderungen",
+      "srlTitle": "SRL (Società a Responsabilità Limitata)",
+      "srlDescription": "Die häufigste Form der Gesellschaft mit beschränkter Haftung in Italien, ideal für kleine und mittlere Unternehmen. Erfordert ein Mindestkapital von €1 und bietet beschränkte Haftung für die Gesellschafter.",
+      "srlFeatures": [
+        "Beschränkte Haftung für Gesellschafter",
+        "Mindestkapital von €1",
+        "Flexible Managementstruktur",
+        "Geeignet für KMUs und Startups"
+      ],
+      "individualCompanyTitle": "Einzelunternehmen (Ditta Individuale)",
+      "individualCompanyDescription": "Eine Geschäftsstruktur, die im Besitz und unter der Leitung einer Einzelperson steht. Einfach zu gründen mit minimalen bürokratischen Anforderungen, aber der Inhaber hat unbeschränkte Haftung für Unternehmensschulden.",
+      "individualCompanyFeatures": [
+        "Im Besitz und geleitet von einer Person",
+        "Einfacher Gründungsprozess",
+        "Unbeschränkte persönliche Haftung",
+        "Ideal für Freiberufler und kleine Unternehmen"
+      ],
+      "sncTitle": "SNC (Società in Nome Collettivo)",
+      "sncDescription": "Eine Personengesellschaft, bei der alle Gesellschafter unbeschränkte Haftung haben und für das Unternehmen handeln können. Geeignet für Familienunternehmen und berufliche Partnerschaften.",
+      "sncFeatures": [
+        "Alle Gesellschafter haben unbeschränkte Haftung",
+        "Gesellschafter können das Unternehmen vertreten",
+        "Mindestens zwei Gesellschafter erforderlich",
+        "Häufig bei beruflichen Partnerschaften"
+      ],
+      "sasTitle": "SAS (Società in Accomandita Semplice)",
+      "sasDescription": "Eine Kommanditgesellschaft mit zwei Arten von Gesellschaftern: Komplementäre mit unbeschränkter Haftung und Kommanditisten mit auf ihre Kapitaleinlage beschränkter Haftung.",
+      "sasFeatures": [
+        "Komplementäre und Kommanditisten",
+        "Beschränkte Haftung für Kommanditisten",
+        "Komplementäre leiten das Unternehmen",
+        "Geeignet für Investitionspartnerschaften"
+      ],
+      "processTitle": "Unternehmensgründungsprozess",
+      "processSubtitle": "Unser vereinfachter 4-Schritt-Prozess zur Gründung Ihres Unternehmens in Italien",
+      "step1Title": "1. Erstberatung",
+      "step1Description": "Wir analysieren Ihre Geschäftsanforderungen, empfehlen den passenden Unternehmenstyp und skizzieren den gesamten Gründungsprozess mit klaren Zeitplänen und Anforderungen.",
+      "step2Title": "2. Dokumentenvorbereitung",
+      "step2Description": "Unser Team bereitet alle notwendigen Rechtsdokumente vor, einschließlich Satzung, Steueridentifikationsanträgen und Anmeldeformularen.",
+      "step3Title": "3. Registrierung und Steuereinrichtung",
+      "step3Description": "Wir übernehmen den kompletten Registrierungsprozess beim italienischen Handelsregister, den Steuerbehörden und relevanten Regierungsbehörden.",
+      "step4Title": "4. Nachgründungsunterstützung",
+      "step4Description": "Nach der Registrierung bieten wir laufende Unterstützung für Buchhaltung, Steuerkonformität und Verwaltungsanforderungen, um einen reibungslosen Geschäftsbetrieb zu gewährleisten.",
+      "ctaTitle": "Bereit, Ihr Unternehmen in Italien zu Gründen?",
+      "ctaSubtitle": "Bereit, Ihr Unternehmen in Italien zu Gründen?",
+      "ctaDescription": "Machen Sie den ersten Schritt zur Gründung Ihres Unternehmens in Italien. Unsere Experten sind bereit, Sie durch den gesamten Prozess zu führen.",
+      "ctaButton": "Kostenlose Beratung buchen",
+      "ctaNote": "Kostenlose Beratung buchen",
+      "faqTitle": "Häufig Gestellte Fragen",
+      "faqItems": [
+        {
+          "question": "Wie lange dauert die Gründung eines Unternehmens in Italien?",
+          "answer": "Der Gründungsprozess dauert typischerweise 2-4 Wochen, abhängig von der Unternehmensart und Komplexität. SRL-Gründungen sind normalerweise innerhalb von 15-20 Werktagen abgeschlossen."
+        },
+        {
+          "question": "Was sind die Mindestkapitalanforderungen?",
+          "answer": "SRL erfordert ein Mindestkapital von €1, während andere Unternehmensarten unterschiedliche Anforderungen haben können. Wir helfen Ihnen, die optimale Kapitalstruktur für Ihr Unternehmen zu bestimmen."
+        },
+        {
+          "question": "Ist eine physische Anwesenheit in Italien erforderlich?",
+          "answer": "Eine physische Anwesenheit ist für die Unternehmensgründung nicht zwingend. Wir können den gesamten Prozess aus der Ferne abwickeln, einschließlich der Erlangung notwendiger Genehmigungen und Registrierungen."
+        },
+        {
+          "question": "Welche Compliance-Anforderungen habe ich?",
+          "answer": "Unternehmen müssen ordnungsgemäße Buchhaltungsunterlagen führen, jährliche Steuererklärungen einreichen, Gesellschafterversammlungen abhalten und dem italienischen Handelsrecht entsprechen. Wir bieten umfassende Compliance-Unterstützung."
+        },
+        {
+          "question": "Kann ich als Nicht-EU-Bürger ein Unternehmen in Italien gründen?",
+          "answer": "Ja, Nicht-EU-Bürger können Unternehmen in Italien gründen. Es können jedoch zusätzliche Anforderungen gelten, wie der Erhalt einer Aufenthaltsgenehmigung oder das Erfüllen spezifischer Investitionskriterien."
+        }
+      ]
+    },
+    "openVATNumberItaly": {
+      "title": "Umsatzsteuer-Identifikationsnummer in Italien Eröffnen",
+      "subtitle": "Umfassende Unterstützung für die Eröffnung und Verwaltung Ihrer italienischen Umsatzsteuer-Identifikationsnummer",
+      "heroTitle": "Umsatzsteuer-Identifikationsnummer in Italien Eröffnen",
+      "heroSubtitle": "Professionelle Anleitung für die Erlangung und Verwaltung Ihrer italienischen Partita IVA. Wir helfen Ihnen, das richtige Steuerregime zu wählen und alle bürokratischen Anforderungen effizient zu bewältigen.",
+      "heroCta": "Kostenlose Beratung buchen",
+      "overviewTitle": "Warum Brauchen Sie eine Italienische Umsatzsteuer-Identifikationsnummer?",
+      "overviewDescription": "Eine Partita IVA ist für jeden, der Geschäftstätigkeiten in Italien ausübt, unerlässlich. Sie ist für Rechnungsstellung, Steuerkonformität und legale Geschäftstätigkeiten erforderlich. Unsere Experten stellen sicher, dass Sie die richtige Umsatzsteuer-Identifikationsnummer für Ihre spezifischen Geschäftsanforderungen erhalten.",
+      "overviewCta": "Erhalten Sie Ihre Italienische Umsatzsteuer-Identifikationsnummer",
+      "vatTypesTitle": "Arten von Umsatzsteuer-Identifikationsnummern in Italien",
+      "vatTypesSubtitle": "Wählen Sie die passende Umsatzsteuer-Identifikationsnummer basierend auf Ihrer Geschäftstätigkeit",
+      "individualTitle": "Individuelle Umsatzsteuer-Identifikationsnummer",
+      "individualDescription": "Für Freiberufler, Selbstständige und Einzelunternehmer. Dies ist die häufigste Art für Personen, die Geschäftstätigkeiten in Italien ausüben.",
+      "individualFeatures": [
+        "Für Einzelpersonen und Freiberufler",
+        "Persönliche Steueridentifikation",
+        "Erforderlich für die Rechnungsstellung an Kunden",
+        "Mehrere Steuerregime-Optionen"
+      ],
+      "companyTitle": "Unternehmens-Umsatzsteuer-Identifikationsnummer",
+      "companyDescription": "Für registrierte Unternehmen, Gesellschaften und Geschäftsentitäten. Jedes Unternehmen muss seine eigene Umsatzsteuer-Identifikationsnummer haben, getrennt von seiner Steuernummer.",
+      "companyFeatures": [
+        "Für registrierte Unternehmen",
+        "Getrennt von der Steuernummer",
+        "Erforderlich für Geschäftstätigkeiten",
+        "Obligatorisch für alle Unternehmen"
+      ],
+      "agriculturalTitle": "Landwirtschaftliche Umsatzsteuer-Identifikationsnummer",
+      "agriculturalDescription": "Spezielle Umsatzsteuer-Identifikationsnummer für landwirtschaftliche Betriebe und Landwirte mit spezifischen Steuervorteilen und vereinfachten Compliance-Anforderungen.",
+      "agriculturalFeatures": [
+        "Für landwirtschaftliche Betriebe",
+        "Spezielle Steuervorteile",
+        "Vereinfachte Compliance",
+        "Sektorspezifische Vorteile"
+      ],
+      "processTitle": "Prozess der Eröffnung einer Umsatzsteuer-Identifikationsnummer",
+      "processSubtitle": "Unser effizienter 4-Schritt-Prozess zur Erlangung Ihrer italienischen Umsatzsteuer-Identifikationsnummer",
+      "step1Title": "1. Beratung und Bewertung",
+      "step1Description": "Wir analysieren Ihre Geschäftstätigkeit, Ertragserwartungen und helfen Ihnen, das passendste Steuerregime und die Art der Umsatzsteuer-Identifikationsnummer zu wählen.",
+      "step2Title": "2. Dokumentensammlung",
+      "step2Description": "Wir führen Sie durch die Sammlung aller notwendigen Dokumente, einschließlich Ausweis, Wohnsitznachweis und Details zur Geschäftstätigkeit.",
+      "step3Title": "3. Antrag und Registrierung",
+      "step3Description": "Wir bereiten und reichen Ihren Antrag auf Umsatzsteuer-Identifikationsnummer bei der italienischen Steuerbehörde ein und übernehmen die gesamte Kommunikation mit den Steuerbehörden.",
+      "step4Title": "4. Aktivierung und Unterstützung",
+      "step4Description": "Nach Genehmigung helfen wir Ihnen bei der Aktivierung Ihrer Umsatzsteuer-Identifikationsnummer, der Einrichtung von Rechnungssystemen und bieten laufende Compliance-Unterstützung.",
+      "ctaTitle": "Bereit, Ihre Italienische Umsatzsteuer-Identifikationsnummer zu Eröffnen?",
+      "ctaDescription": "Navigieren Sie nicht allein durch das italienische Steuersystem. Unsere Experten sind bereit, Ihnen bei der effizienten Erlangung und Verwaltung Ihrer Umsatzsteuer-Identifikationsnummer zu helfen.",
+      "ctaButton": "Kostenlose Beratung buchen",
+      "faqTitle": "Häufig Gestellte Fragen",
+      "faqItems": [
+        {
+          "question": "Wie lange dauert es, eine Umsatzsteuer-Identifikationsnummer in Italien zu erhalten?",
+          "answer": "Der Prozess dauert typischerweise 7-14 Werktage ab Einreichung des Antrags. Wir bearbeiten alles effizient, um Sie so schnell wie möglich betriebsbereit zu machen."
+        },
+        {
+          "question": "Welche Dokumente benötige ich für den Antrag auf eine Umsatzsteuer-Identifikationsnummer?",
+          "answer": "Sie benötigen einen gültigen Ausweis, Steuernummer, Wohnsitznachweis und Details zu Ihrer Geschäftstätigkeit. Für Nicht-EU-Bürger können zusätzliche Dokumente erforderlich sein."
+        },
+        {
+          "question": "Welche laufenden Verpflichtungen habe ich mit einer Umsatzsteuer-Identifikationsnummer?",
+          "answer": "Verpflichtungen umfassen vierteljährliche Umsatzsteuererklärungen, jährliche Steuererklärungen, Führung ordnungsgemäßer Buchhaltungsunterlagen und Ausstellung konformer Rechnungen. Wir bieten umfassende Unterstützung für alle Anforderungen."
+        },
+        {
+          "question": "Kann ich als Nicht-Italiener eine Umsatzsteuer-Identifikationsnummer erhalten?",
+          "answer": "Ja, Nicht-Italiener können eine italienische Umsatzsteuer-Identifikationsnummer erhalten. Der Prozess kann zusätzliche Dokumentation erfordern, aber wir unterstützen regelmäßig internationale Kunden mit diesem Service."
+        },
+        {
+          "question": "Was ist der Unterschied zwischen Steuernummer und Umsatzsteuer-Identifikationsnummer?",
+          "answer": "Die Steuernummer ist eine persönliche Identifikationsnummer, während die Umsatzsteuer-Identifikationsnummer spezifisch für Geschäftstätigkeiten ist. Sie benötigen beide, um in Italien geschäftlich tätig zu sein."
+        },
+        {
+          "question": "Kann ich das Steuerregime nach der Eröffnung einer Umsatzsteuer-Identifikationsnummer ändern?",
+          "answer": "Ja, Sie können das Steuerregime ändern, aber es gibt spezifische Regeln und Zeitvorgaben. Wir können Ihnen helfen zu bestimmen, wann und wie Änderungen vorgenommen werden können, um Ihre steuerliche Situation zu optimieren."
+        }
+      ]
+    },
+    "taxAccountingExpats": {
+      "title": "Steuerberatung für Expatriates",
+      "subtitle": "Spezialisierte Steuerdienstleistungen für Expatriates, die in Italien leben und arbeiten",
+      "heroTitle": "Steuerberatung für Expatriates",
+      "heroSubtitle": "Umfassende Steuer- und Buchhaltungsdienste, maßgeschneidert für Expatriates in Italien. Wir navigieren durch die Komplexität des italienischen Steuerrechts, um Ihre Compliance zu gewährleisten und Ihre steuerliche Position zu optimieren.",
+      "heroCta": "Kostenlose Beratung buchen",
+      "overviewTitle": "Warum Expatriates Spezialisierte Steuerdienstleistungen Benötigen",
+      "overviewDescription": "Als Expatriat in Italien zu leben und zu arbeiten stellt einzigartige steuerliche Herausforderungen dar, einschließlich Problemen mit doppelter Besteuerung, Deklaration ausländischer Einkünfte und internationalen Compliance-Anforderungen. Unser spezialisiertes Team versteht diese Komplexitäten und bietet Lösungen, die speziell für Expatriates entwickelt wurden.",
+      "overviewCta": "Sichern Sie sich Ihre Steuerruhe",
+      "servicesTitle": "Unsere Steuerdienstleistungen für Expatriates",
+      "servicesSubtitle": "Umfassende Steuerlösungen für Ihren internationalen Lebensstil",
+      "personalTaxTitle": "Persönliche Einkommensteuererklärungen",
+      "personalTaxDescription": "Expertenpräparation und Einreichung italienischer Einkommensteuererklärungen für Expatriates, einschließlich Deklaration ausländischer Einkünfte, Optimierung von Steuergutschriften und Compliance mit internationalen Steuerabkommen.",
+      "personalTaxFeatures": [
+        "Italienische Einkommensteuererklärung",
+        "Deklaration ausländischer Einkünfte",
+        "Optimierung von Steuerabkommen",
+        "Erleichterung bei doppelter Besteuerung"
+      ],
+      "businessTaxTitle": "Unternehmenssteuer-Compliance",
+      "businessTaxDescription": "Umfassende Steuerdienstleistungen für Unternehmer-Expatriates und Geschäftsinhaber, einschließlich Umsatzsteuer-Compliance, Unternehmenssteuererklärungen und grenzüberschreitender Steuerplanung.",
+      "businessTaxFeatures": [
+        "Unternehmenssteuer-Compliance",
+        "Umsatzsteuerverwaltung",
+        "Grenzüberschreitende Planung",
+        "Optimierung der Unternehmensstruktur"
+      ],
+      "internationalPlanningTitle": "Internationale Steuerplanung",
+      "internationalPlanningDescription": "Strategische Steuerplanung zur Minimierung Ihrer weltweiten Steuerlast bei gleichzeitiger Gewährleistung der vollen Compliance mit italienischen und internationalen Steuervorschriften.",
+      "internationalPlanningFeatures": [
+        "Globale Steueroptimierung",
+        "Residenzplanung",
+        "Vermögensverwaltung",
+        "Nachlasssteuerplanung"
+      ],
+      "taxRepresentationTitle": "Steuervertretung",
+      "taxRepresentationDescription": "Offizielle Vertretung bei den italienischen Steuerbehörden, Verwaltung von Prüfungen, Korrespondenz und Verhandlungen in Ihrem Namen.",
+      "taxRepresentationFeatures": [
+        "Vertretung bei Steuerbehörden",
+        "Unterstützung bei Prüfungen",
+        "Lösung von Steuerstreitigkeiten",
+        "Compliance-Monitoring"
+      ],
+      "processTitle": "Unser Steuerprozess für Expatriates",
+      "processSubtitle": "Ein vereinfachter Ansatz zur Verwaltung Ihrer steuerlichen Verpflichtungen als Expatriate",
+      "step1Title": "1. Ersteinschätzung",
+      "step1Description": "Wir führen eine umfassende Überprüfung Ihrer steuerlichen Situation durch, einschließlich Wohnsitzstatus, Einkommensquellen und bestehender steuerlicher Verpflichtungen in mehreren Rechtsordnungen.",
+      "step2Title": "2. Strategieentwicklung",
+      "step2Description": "Basierend auf Ihrer Einschätzung entwickeln wir eine maßgeschneiderte Steuerstrategie, die Ihre Position optimiert und gleichzeitig die volle Einhaltung aller anwendbaren Steuergesetze gewährleistet.",
+      "step3Title": "3. Implementierung und Compliance",
+      "step3Description": "Wir implementieren Ihre Steuerstrategie, bereiten alle notwendigen Erklärungen vor und gewährleisten die laufende Compliance mit den italienischen Steuerbehörden.",
+      "step4Title": "4. Laufende Unterstützung",
+      "step4Description": "Wir bieten ganzjährige Unterstützung, einschließlich Updates zur Steuerplanung, Compliance-Monitoring und proaktiver Beratung für sich ändernde Umstände.",
+      "ctaTitle": "Bereit, Ihre Expatriate-Steuern zu Vereinfachen?",
+      "ctaDescription": "Lassen Sie sich nicht von der Komplexität internationaler Steuern überwältigen. Unsere Steuerexperten für Expatriates sind hier, um Ihre Steuerruhe und Optimierung zu gewährleisten.",
+      "ctaButton": "Kostenlose Beratung buchen",
+      "faqTitle": "Häufig Gestellte Fragen",
+      "faqItems": [
+        {
+          "question": "Muss ich als Expatriate eine italienische Einkommensteuererklärung einreichen?",
+          "answer": "Wenn Sie italienischer Steueransässiger sind, müssen Sie weltweite Einkünfte deklarieren. Nichtansässige deklarieren nur italienische Einkünfte. Wir helfen Ihnen, Ihren Wohnsitzstatus und Ihre Deklarationspflichten zu bestimmen."
+        },
+        {
+          "question": "Wie wird der steuerliche Wohnsitz in Italien bestimmt?",
+          "answer": "Der steuerliche Wohnsitz basiert auf der 183-Tage-Regel, dem Ort der lebenswichtigen Interessen, dem gewöhnlichen Aufenthalt oder dem gemeldeten Wohnsitz. Wir analysieren Ihre spezifische Situation, um Ihren korrekten Wohnsitzstatus zu bestimmen."
+        },
+        {
+          "question": "Was passiert mit doppelter Besteuerung meiner Einkünfte?",
+          "answer": "Italien hat Steuerabkommen mit vielen Ländern, um doppelte Besteuerung zu vermeiden. Wir helfen Ihnen, ausländische Steuergutschriften geltend zu machen und von den Abkommen zu profitieren, um Ihre Gesamtsteuerlast zu minimieren."
+        },
+        {
+          "question": "Muss ich ausländische Vermögenswerte und Konten deklarieren?",
+          "answer": "Ja, italienische Steueransässige müssen ausländische Finanzvermögen, Bankkonten, Investitionen und Immobilienbeteiligungen deklarieren. Wir gewährleisten die korrekte Compliance mit diesen Deklarationsanforderungen."
+        },
+        {
+          "question": "Kann ich als Expatriate spezielle Steuervergünstigungen in Anspruch nehmen?",
+          "answer": "Italien bietet spezielle Steuervergünstigungen für neue Ansässige, einschließlich Optionen für Pauschalsteuern und Anreize für vermögende Personen. Wir helfen Ihnen zu bestimmen, ob Sie für diese vorteilhaften Programme qualifizieren."
+        },
+        {
+          "question": "Wie handhaben Sie die Kommunikation mit italienischen Steuerbehörden?",
+          "answer": "Wir bieten umfassende Steuervertretungsdienste und verwalten alle Kommunikation, Prüfungen und Verhandlungen mit den italienischen Steuerbehörden in Ihrem Namen, sowohl auf Italienisch als auch auf Englisch."
+        },
+        {
+          "question": "Was passiert, wenn ich steuerliche Verpflichtungen in mehreren Ländern habe?",
+          "answer": "Wir koordinieren mit Steuerexperten in anderen Ländern oder bieten umfassende grenzüberschreitende Steuerplanung, um sicherzustellen, dass alle Ihre internationalen steuerlichen Verpflichtungen effizient erfüllt werden."
+        }
+      ]
+    }
   }
 }
