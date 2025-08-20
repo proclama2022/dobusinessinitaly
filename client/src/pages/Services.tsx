@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { Link } from 'wouter';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 import ContactSection from '@/components/ContactSection';
 
 // Componente per una singola sezione di servizio con immagine e testo
@@ -20,6 +21,7 @@ const ServiceFeature = ({
   icon: string;
 }) => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   return (
     <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 lg:gap-12 items-center mb-16`}>
       {/* Contenitore immagine con effetti */}
@@ -64,7 +66,7 @@ const ServiceFeature = ({
           </p>
 
           {/* Pulsante Contact Us con effetto hover */}
-          <Link href="/contact" className="group relative inline-flex items-center px-5 py-2 text-sm overflow-hidden rounded-md bg-neutral-100 text-neutral-800 transition-all duration-300">
+          <Link href={getLocalizedPath('/contact')} className="group relative inline-flex items-center px-5 py-2 text-sm overflow-hidden rounded-md bg-neutral-100 text-neutral-800 transition-all duration-300">
             <span className="absolute left-0 top-0 bottom-0 w-0 bg-[#009246] transition-all duration-300 ease-out group-hover:w-full"></span>
             <span className="relative flex items-center gap-2 font-medium group-hover:text-white transition-all duration-300 ease-out">
               {t('services.cta.requestInfo')}
@@ -79,6 +81,7 @@ const ServiceFeature = ({
 
 const Services = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -256,7 +259,7 @@ const Services = () => {
 
             {/* Call to action */}
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <Link href="/contact" className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-[#00b956]">
+              <Link href={getLocalizedPath('/contact')} className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-[#00b956]">
                 {t('services.cta.requestConsultation')}
               </Link>
               <a href="#services-list" className="px-6 py-3 rounded-md bg-white/90 backdrop-blur-sm text-neutral-800 font-medium border border-white hover:bg-white transition-all shadow-lg hover:shadow-xl flex items-center gap-2 transform hover:-translate-y-1">

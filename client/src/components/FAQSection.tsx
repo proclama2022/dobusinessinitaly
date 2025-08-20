@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 interface FAQItem {
   question: string;
@@ -35,6 +36,7 @@ const faqData: FAQItem[] = [
 
 const FAQSection = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const { getLocalizedPath } = useLocalizedPath();
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
@@ -108,7 +110,7 @@ const FAQSection = () => {
               Non trovi la risposta che cerchi?
             </p>
             <a 
-              href="/contact" 
+              href={getLocalizedPath('/contact')} 
               className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
             >
               Contattaci per una Consulenza Gratuita

@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 interface BreadcrumbItem {
   label: string;
@@ -17,6 +18,7 @@ interface BreadcrumbsProps {
  */
 const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
 
   return (
     <nav aria-label="Breadcrumb" className={`text-sm ${className}`}>
@@ -33,7 +35,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
           itemType="https://schema.org/ListItem"
         >
           <Link 
-            href="/" 
+            href={getLocalizedPath('/')} 
             className="text-neutral-500 hover:text-[#009246] transition-colors"
             itemProp="item"
           >

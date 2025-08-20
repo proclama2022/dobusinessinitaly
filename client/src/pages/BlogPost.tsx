@@ -95,6 +95,7 @@ interface BlogPostProps {
 
 const BlogPost = () => {
   const { t, i18n } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   const params = useParams<{ slug: string; lang?: string }>();
   const { slug, lang } = params;
 
@@ -181,7 +182,7 @@ const BlogPost = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non esiste o è stato rimosso.</p>
-          <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
+          <Link href={getLocalizedPath('/blog')} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
             Torna al blog
             <i className="fas fa-arrow-left ml-2"></i>
           </Link>
@@ -196,7 +197,7 @@ const BlogPost = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non ha metadati validi.</p>
-          <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
+          <Link href={getLocalizedPath('/blog')} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
             Torna al blog
             <i className="fas fa-arrow-left ml-2"></i>
           </Link>
@@ -495,7 +496,7 @@ const BlogPost = () => {
                   Categorie
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  <Link href="/blog" className="px-3 py-1 rounded-full bg-white hover:bg-[#009246] hover:text-white text-neutral-600 text-sm transition-colors border border-neutral-200">
+                  <Link href={getLocalizedPath('/blog')} className="px-3 py-1 rounded-full bg-white hover:bg-[#009246] hover:text-white text-neutral-600 text-sm transition-colors border border-neutral-200">
                     Tutte
                   </Link>
                   <div className="px-3 py-1 rounded-full bg-[#009246] text-white text-sm border border-[#009246]">
@@ -513,7 +514,7 @@ const BlogPost = () => {
                 <p className="text-white/90 mb-4 text-sm">
                   Hai domande su questo argomento? Prenota una consulenza gratuita con i nostri esperti.
                 </p>
-                <Link href="/contact" className="inline-block w-full py-3 bg-white text-[#009246] font-medium text-center rounded-md hover:bg-opacity-90 transition-colors">
+                <Link href={getLocalizedPath('/contact')} className="inline-block w-full py-3 bg-white text-[#009246] font-medium text-center rounded-md hover:bg-opacity-90 transition-colors">
                   Contattaci Ora
                 </Link>
               </div>

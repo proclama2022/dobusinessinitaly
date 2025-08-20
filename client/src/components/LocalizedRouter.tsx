@@ -9,6 +9,9 @@ import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import Contact from '@/pages/Contact';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import OpenCompanyItaly from '@/pages/OpenCompanyItaly';
+import OpenVATNumberItaly from '@/pages/OpenVATNumberItaly';
+import TaxAccountingExpats from '@/pages/TaxAccountingExpats';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -131,6 +134,19 @@ export const LocalizedRouter = () => {
           {/* Privacy Policy page */}
           <Route path="/:lang/privacy-policy" component={({ params }) => {
             return supportedLanguages.includes(params.lang) ? <PrivacyPolicy /> : <NotFound />;
+          }} />
+          
+          {/* Landing pages */}
+          <Route path="/:lang/services/open-company-italy" component={({ params }) => {
+            return supportedLanguages.includes(params.lang) ? <OpenCompanyItaly /> : <NotFound />;
+          }} />
+          
+          <Route path="/:lang/services/open-vat-number-italy" component={({ params }) => {
+            return supportedLanguages.includes(params.lang) ? <OpenVATNumberItaly /> : <NotFound />;
+          }} />
+          
+          <Route path="/:lang/services/tax-accounting-expats" component={({ params }) => {
+            return supportedLanguages.includes(params.lang) ? <TaxAccountingExpats /> : <NotFound />;
           }} />
           
           {/* Fallback alla root per reindirizzare */}

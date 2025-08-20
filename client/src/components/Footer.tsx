@@ -144,31 +144,31 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('services.items.accounting.title')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('services.items.tax.title')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('services.items.planning.title')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('services.items.payroll.title')}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('services.items.legal.title')}
                 </Link>

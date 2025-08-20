@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { getLocalizedLeadMagnet, LocalizedLeadMagnet } from '../config/leadMagnets';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 interface DownloadGuideFormProps {
   leadMagnetType: string;
@@ -18,6 +19,7 @@ const DownloadGuideForm: React.FC<DownloadGuideFormProps> = ({
   blogPost 
 }) => {
   const { t, i18n } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   
   // Usa la lingua dal contesto i18n invece della prop se disponibile
   const effectiveLanguage = i18n.language || currentLanguage;
@@ -194,7 +196,7 @@ const DownloadGuideForm: React.FC<DownloadGuideFormProps> = ({
                 <label htmlFor="acceptPrivacy" className="text-base text-neutral-600 cursor-pointer leading-relaxed">
                   {t('downloadGuide.privacyAccept', 'Accetto la')}{' '}
                   <Link 
-                    href="/privacy-policy" 
+                    href={getLocalizedPath('/privacy-policy')} 
                     className="text-[#009246] hover:text-[#007a3a] underline font-medium"
                     target="_blank"
                   >
@@ -237,7 +239,7 @@ const DownloadGuideForm: React.FC<DownloadGuideFormProps> = ({
                 {t('downloadGuide.privacyNote')}
               </p>
               <Link 
-                href="/privacy-policy" 
+                href={getLocalizedPath('/privacy-policy')} 
                 className="inline-flex items-center text-sm text-[#009246] hover:text-[#007a3a] transition-colors"
               >
                 <i className="fas fa-shield-alt mr-2"></i>
@@ -254,4 +256,4 @@ const DownloadGuideForm: React.FC<DownloadGuideFormProps> = ({
   );
 };
 
-export default DownloadGuideForm; 
+export default DownloadGuideForm;

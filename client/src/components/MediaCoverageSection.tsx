@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 // Tipo per gli elementi media (articoli, profili, menzioni)
 type MediaItemProps = {
@@ -53,6 +54,7 @@ interface MediaCoverageSectionProps {
 
 const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   // 4 card reali, fisse, senza loghi o icone
   const mediaItems: MediaItemProps[] = [
     {
@@ -103,7 +105,7 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
         </div>
         <div className="text-center mt-12">
           <a
-            href="/media"
+            href={getLocalizedPath('/media')}
             className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1"
           >
             <span className="text-on-color">{t('media.seeAll', 'Vedi tutte le menzioni')}</span>

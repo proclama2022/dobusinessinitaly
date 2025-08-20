@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
@@ -98,6 +99,7 @@ const StatItem = ({ number, label, icon }: { number: string; label: string; icon
 
 const About = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -198,7 +200,7 @@ const About = () => {
 
             {/* Call to action */}
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <Link href="/contact" className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+              <Link href={getLocalizedPath('/contact')} className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
                 {t('about.contactButton')}
               </Link>
               <a href="#team" className="px-6 py-3 rounded-md bg-white text-neutral-800 font-medium border border-neutral-200 hover:border-neutral-300 transition-all shadow-sm hover:shadow flex items-center gap-2">

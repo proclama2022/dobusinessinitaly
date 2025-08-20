@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -92,6 +93,7 @@ const MediaItem = ({ title, date, source, excerpt, link, type }: MediaItemProps)
 // Componente principale per la sezione "Parlano di noi"
 const MediaCoverageSectionNew = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
   // Dati statici con supporto per la traduzione
@@ -251,7 +253,7 @@ const MediaCoverageSectionNew = () => {
         {/* CTA */}
         <div className="text-center mt-12">
           <Link
-            href="/media"
+            href={getLocalizedPath('/media')}
             className="inline-block px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1"
           >
             {t('media.seeAll')}

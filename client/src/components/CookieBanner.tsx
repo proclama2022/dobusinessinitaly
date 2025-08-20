@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useCookieConsent } from '@/hooks/useCookieConsent';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -11,6 +12,7 @@ interface CookiePreferences {
 
 const CookieBanner = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   const { hasConsent, isLoaded, acceptAll, acceptNecessaryOnly, saveConsent } = useCookieConsent();
   const [isVisible, setIsVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
@@ -110,7 +112,7 @@ const CookieBanner = () => {
           {/* Learn More Link */}
           <div className="mt-3 pt-3 border-t border-gray-200">
             <Link 
-              href="/privacy-policy" 
+              href={getLocalizedPath('/privacy-policy')} 
               className="text-xs text-[#009246] hover:underline inline-flex items-center gap-1"
             >
               <i className="fas fa-info-circle text-xs"></i>
@@ -237,4 +239,4 @@ const CookieBanner = () => {
   );
 };
 
-export default CookieBanner; 
+export default CookieBanner;

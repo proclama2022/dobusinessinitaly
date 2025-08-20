@@ -2,9 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
 import OptimizedImage from './OptimizedImage';
+import { useLocalizedPath } from './LocalizedRouter';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -79,7 +81,7 @@ const Hero = () => {
           {/* Pulsanti di azione */}
           <div className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
             <Link
-              href="/contact"
+              href={getLocalizedPath('/contact')}
               className="relative overflow-hidden inline-block px-8 py-3 rounded-md bg-white text-primary font-medium text-center shadow-xl hover:shadow-2xl transition-all duration-300 group"
             >
               <span className="absolute inset-0 italian-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
@@ -89,7 +91,7 @@ const Hero = () => {
               </span>
             </Link>
             <Link
-              href="/services"
+              href={getLocalizedPath('/services')}
               className="btn-outline text-center border-2 border-white/50 hover:border-white text-white hover:bg-white/10 transition-all duration-300"
             >
               {t('hero.servicesButton')}

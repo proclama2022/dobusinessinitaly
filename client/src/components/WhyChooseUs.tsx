@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
+import { useLocalizedPath } from '@/components/LocalizedRouter';
 import OptimizedImage from './OptimizedImage';
 
 type FeatureProps = {
@@ -26,6 +27,7 @@ const Feature = ({ icon, title, description }: FeatureProps) => {
 
 const WhyChooseUs = () => {
   const { t } = useTranslation();
+  const { getLocalizedPath } = useLocalizedPath();
 
   const features = [
     {
@@ -70,7 +72,7 @@ const WhyChooseUs = () => {
               ))}
             </div>
             
-            <Link href="/contact" className="btn-primary inline-block mt-8">
+            <Link href={getLocalizedPath('/contact')} className="btn-primary inline-block mt-8">
               {t('whyChooseUs.ctaButton')}
             </Link>
           </div>
