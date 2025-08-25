@@ -48,6 +48,12 @@ User-agent: Pinterest
 Allow: /
 
 # Sitemap principale
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-index.xml
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-it.xml
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-en.xml
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-de.xml
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-es.xml
+Sitemap: https://www.yourbusinessinitaly.it/sitemap-fr.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap-index.xml
 

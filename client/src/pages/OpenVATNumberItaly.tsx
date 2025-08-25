@@ -51,17 +51,17 @@ const OpenVATNumberItaly = () => {
         title={t('landingPages.openVATNumberItaly.metaTitle')}
         description={t('landingPages.openVATNumberItaly.metaDescription')}
         keywords="open VAT number Italy, Partita IVA, Italian VAT registration, flat tax regime Italy, freelance Italy, expat tax Italy, Italian tax code, business registration Italy"
-        canonicalUrl={currentLang === 'en' ? '/en/services/open-vat-number-italy' : '/services/open-vat-number-italy'}
+        canonicalUrl={`/${currentLang}/services/open-vat-number-italy`}
         ogImage="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ogType="website"
         twitterCard="summary_large_image"
         structuredData={[serviceStructuredData, faqStructuredData]}
         alternates={{
+          'it': 'https://yourbusinessinitaly.com/it/services/open-vat-number-italy',
           'en': 'https://yourbusinessinitaly.com/en/services/open-vat-number-italy',
-          'it': 'https://yourbusinessinitaly.com/it/servizi/aprire-partita-iva-italia',
-          'fr': 'https://yourbusinessinitaly.com/fr/services/ouvrir-partita-iva-italie',
-          'de': 'https://yourbusinessinitaly.com/de/services/ust-id-nummer-italien-eroeffnen',
-          'es': 'https://yourbusinessinitaly.com/es/services/abrir-partita-iva-italia',
+          'fr': 'https://yourbusinessinitaly.com/fr/services/open-vat-number-italy',
+          'de': 'https://yourbusinessinitaly.com/de/services/open-vat-number-italy',
+          'es': 'https://yourbusinessinitaly.com/es/services/open-vat-number-italy',
           'x-default': 'https://yourbusinessinitaly.com/en/services/open-vat-number-italy'
         }}
         lang={currentLang}

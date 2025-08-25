@@ -16,6 +16,7 @@ import Admin from "@/pages/Admin";
 import OpenCompanyItaly from "@/pages/OpenCompanyItaly";
 import OpenVATNumberItaly from "@/pages/OpenVATNumberItaly";
 import TaxAccountingExpats from "@/pages/TaxAccountingExpats";
+import PillarBusinessItaly from "@/pages/PillarBusinessItaly";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
@@ -102,6 +103,12 @@ function Router() {
             <Route key={`tax-accounting-${lang}`} path={`/${lang}/services/tax-accounting-expats`} component={TaxAccountingExpats} />
           ))}
           <Route path="/services/tax-accounting-expats" component={TaxAccountingExpats} />
+
+          {/* Pillar Page - How to Start a Business in Italy */}
+          {supportedLanguages.map(lang => (
+            <Route key={`pillar-${lang}`} path={`/${lang}/pillar/how-to-start-business-in-italy-2025`} component={PillarBusinessItaly} />
+          ))}
+          <Route path="/pillar/how-to-start-business-in-italy-2025" component={PillarBusinessItaly} />
 
           {supportedLanguages.map(lang => (
             <Route key={`about-${lang}`} path={`/${lang}/about`} component={About} />

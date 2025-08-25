@@ -207,7 +207,7 @@ const BlogPost = () => {
   }
 
   const { meta, content } = postData.data;
-  const langPrefix = currentLanguage !== 'it' ? `/${currentLanguage}` : '';
+  const langPrefix = `/${currentLanguage}`;
 
   // Debug: log metadata per vedere cosa arriva dall'API
   console.log('[BlogPost] Meta data received:', meta);
@@ -231,7 +231,7 @@ const BlogPost = () => {
       name: 'Yourbusinessinitaly.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://yourbusinessinitaly.com/logo.png'
+        url: 'https://yourbusinessinitaly.com/images/logo.png'
       }
     },
     mainEntityOfPage: {
@@ -291,12 +291,12 @@ const BlogPost = () => {
 
   // Genera hreflang alternates per SEO internazionale
   const hreflangAlternates: Record<string,string> = {
-    'it': `https://yourbusinessinitaly.com/blog/${meta.slug}`,
+    'it': `https://yourbusinessinitaly.com/it/blog/${meta.slug}`,
     'en': `https://yourbusinessinitaly.com/en/blog/${meta.slug}`,
     'fr': `https://yourbusinessinitaly.com/fr/blog/${meta.slug}`,
     'de': `https://yourbusinessinitaly.com/de/blog/${meta.slug}`,
     'es': `https://yourbusinessinitaly.com/es/blog/${meta.slug}`,
-    'x-default': `https://yourbusinessinitaly.com/blog/${meta.slug}`
+    'x-default': `https://yourbusinessinitaly.com/it/blog/${meta.slug}`
   };
 
   // Formatta la data per i meta tag
@@ -311,6 +311,7 @@ const BlogPost = () => {
         ogImage={meta.coverImage}
         ogType="article"
         twitterCard="summary_large_image"
+        lang={currentLanguage}
         keywords={`${meta.category}, blog, articoli, fiscale, legale, business, italia`}
         author={meta.author}
         publishedTime={formattedDate}

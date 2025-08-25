@@ -230,7 +230,7 @@ const Blog = () => {
     '@type': 'Blog',
     headline: t('navigation.blog') || 'Blog - Yourbusinessinitaly.com',
     description: t('blog.description') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.',
-    url: 'https://yourbusinessinitaly.com/blog',
+    url: `https://yourbusinessinitaly.com/${currentLang}/blog`,
     author: {
       '@type': 'Organization',
       name: 'Yourbusinessinitaly.com',
@@ -263,7 +263,7 @@ const Blog = () => {
           name: post.author
         },
         datePublished: post.date,
-        url: `https://yourbusinessinitaly.com/blog/${post.slug}`
+        url: `https://yourbusinessinitaly.com/${currentLang}/blog/${post.slug}`
       }
     }))
   };
@@ -273,9 +273,18 @@ const Blog = () => {
       <SEOHead
         title={`${t('navigation.blog')} - Yourbusinessinitaly.com`}
         description={t('blog.description') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
-        canonicalUrl="/blog"
+        canonicalUrl={`/${currentLang}/blog`}
         keywords="blog, articoli, fiscale, legale, business, italia, internazionalizzazione, imprese"
-        structuredData={blogStructuredData}
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/blog',
+          en: 'https://yourbusinessinitaly.com/en/blog',
+          fr: 'https://yourbusinessinitaly.com/fr/blog',
+          de: 'https://yourbusinessinitaly.com/de/blog',
+          es: 'https://yourbusinessinitaly.com/es/blog',
+          'x-default': 'https://yourbusinessinitaly.com/it/blog'
+        }}
+        structuredData={[blogStructuredData, blogPostsStructuredData]}
       />
 
       {/* Hero section con intestazione */}

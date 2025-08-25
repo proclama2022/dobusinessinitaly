@@ -19,7 +19,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+    <section className="relative isolate h-[600px] md:h-[700px] overflow-hidden">
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
       <OptimizedImage
@@ -42,7 +42,7 @@ const Hero = () => {
       ></div>
 
       {/* Overlay con sfumatura italiana */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] via-transparent to-[#ce2b3730] z-[4] mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] via-transparent to-[#ce2b3730] z-[4] mix-blend-normal"></div>
 
       {/* Elementi decorativi a bandiera italiana sui bordi */}
       <div className="absolute top-0 left-0 h-full w-2 bg-[#009246] z-[5] animate-slide-down"></div> {/* Verde */}
@@ -56,7 +56,10 @@ const Hero = () => {
       <div className="absolute top-[30%] right-[8%] w-24 h-24 rounded-full bg-[#ce2b3720] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '10s', animationDelay: '1s' }}></div>
       <div className="absolute bottom-[15%] left-[15%] w-20 h-20 rounded-full bg-[#ffffff20] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '12s', animationDelay: '2s' }}></div>
 
-      <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+      <div className="absolute top-4 left-4 z-[60] bg-red-600 text-white px-3 py-1 rounded-md hidden md:block">
+        DEBUG HERO (visible only in debug mode)
+      </div>
+      <div className="container mx-auto px-4 h-full flex items-center relative z-[100] mix-blend-normal">
         <div className="max-w-2xl relative">
           {/* Badge italiane */}
           <div className={`inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm mb-4 ${isLoaded ? 'animate-slide-right' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
@@ -66,35 +69,31 @@ const Hero = () => {
           </div>
 
           {/* Titolo principale */}
-          <h1 className={`text-4xl md:text-6xl font-heading font-bold text-white leading-tight mb-4 relative ${isLoaded ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 relative z-20 enhanced-text">
             <span className="relative inline-block">
-              {t('hero.title')}
-              <span className="absolute -bottom-2 left-0 right-0 h-1.5 italian-gradient opacity-90 animate-shimmer"></span>
+              {t('hero.title', 'Accounting Expertise For Your Global Business')}
+              <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-green-400 to-red-500 opacity-90"></span>
             </span>
           </h1>
 
           {/* Sottotitolo */}
-          <p className={`text-xl text-white/85 mb-8 max-w-xl leading-relaxed ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
-            {t('hero.subtitle')}
+          <p className="text-xl text-white mb-8 max-w-xl leading-relaxed z-20 relative enhanced-text">
+            {t('hero.subtitle', 'We assist foreign companies and investors in successfully managing their business in Italy, providing excellence in tax and commercial consulting.')}
           </p>
 
           {/* Pulsanti di azione */}
-          <div className={`flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 z-20 relative">
             <Link
               href={getLocalizedPath('/contact')}
-              className="relative overflow-hidden inline-block px-8 py-3 rounded-md bg-white text-primary font-medium text-center shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              className="inline-block px-8 py-3 rounded-md bg-white text-gray-800 font-medium text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-gray-50"
             >
-              <span className="absolute inset-0 italian-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-              <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center justify-center">
-                {t('hero.contactButton')}
-                <i className="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0"></i>
-              </span>
+              {t('hero.contactButton', 'Contact Us')}
             </Link>
             <Link
               href={getLocalizedPath('/services')}
-              className="btn-outline text-center border-2 border-white/50 hover:border-white text-white hover:bg-white/10 transition-all duration-300"
+              className="inline-block px-8 py-3 rounded-md border-2 border-white text-white hover:bg-white hover:text-gray-800 transition-all duration-300"
             >
-              {t('hero.servicesButton')}
+              {t('hero.servicesButton', 'Discover Our Services')}
             </Link>
           </div>
 

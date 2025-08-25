@@ -9,8 +9,12 @@ import NewsletterSection from '@/components/NewsletterSection';
 import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
+
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -24,13 +28,15 @@ const Home = () => {
         title="Commercialista per Stranieri in Italia | Apertura Società e Partita IVA"
         description="Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA, regime forfettario. Consulenza fiscale in inglese. Preventivo gratuito in 24h."
         keywords="commercialista stranieri Italia, aprire società Italia, partita iva stranieri, regime forfettario, consulenza fiscale internazionale"
+        canonicalUrl={`/${currentLang}/`}
         alternates={{
+          'it': 'https://yourbusinessinitaly.com/it/',
           'en': 'https://yourbusinessinitaly.com/en/',
           'fr': 'https://yourbusinessinitaly.com/fr/',
           'de': 'https://yourbusinessinitaly.com/de/',
           'es': 'https://yourbusinessinitaly.com/es/'
         }}
-        lang="it"
+        lang={currentLang}
       />
       <Hero />
       <StatsSection />

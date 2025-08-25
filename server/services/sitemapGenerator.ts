@@ -148,13 +148,17 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
 
   const sitemapEntries: SitemapEntry[] = [
     { loc: `https://yourbusinessinitaly.com/${language}/`, lastmod: today, changefreq: 'daily', priority: '1.0' },
-    { loc: `https://yourbusinessinitaly.com/${language}/servizi`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+    { loc: `https://yourbusinessinitaly.com/${language}/services`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
     { loc: `https://yourbusinessinitaly.com/${language}/blog`, lastmod: today, changefreq: 'hourly', priority: '0.95' },
-    { loc: `https://yourbusinessinitaly.com/${language}/servizi-privati`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
-    { loc: `https://yourbusinessinitaly.com/${language}/nuovo-servizio`, lastmod: today, changefreq: 'weekly', priority: '0.8' },
     { loc: `https://yourbusinessinitaly.com/${language}/about`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
     { loc: `https://yourbusinessinitaly.com/${language}/contact`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
     { loc: `https://yourbusinessinitaly.com/${language}/media`, lastmod: today, changefreq: 'weekly', priority: '0.75' },
+    // Pillar page - How to Start a Business in Italy
+    { loc: `https://yourbusinessinitaly.com/${language}/pillar/how-to-start-business-in-italy-2025`, lastmod: today, changefreq: 'weekly', priority: '0.95' },
+    // Service landing pages
+    { loc: `https://yourbusinessinitaly.com/${language}/services/open-company-italy`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+    { loc: `https://yourbusinessinitaly.com/${language}/services/open-vat-number-italy`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+    { loc: `https://yourbusinessinitaly.com/${language}/services/tax-accounting-expats`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
   ];
 
   // Aggiungi tutti i post del blog per questa lingua
@@ -274,31 +278,91 @@ export const generateMainSitemap = () => {
   // Data corrente per aggiornamenti
   const today = new Date().toISOString().split('T')[0];
 
+  const buildAlternatesPath = (pathNoLang: string) => {
+    const path = pathNoLang ? `/${pathNoLang}` : '/';
+    return {
+      it: `https://yourbusinessinitaly.com/it${path}`,
+      en: `https://yourbusinessinitaly.com/en${path}`,
+      de: `https://yourbusinessinitaly.com/de${path}`,
+      fr: `https://yourbusinessinitaly.com/fr${path}`,
+      es: `https://yourbusinessinitaly.com/es${path}`,
+      'x-default': `https://yourbusinessinitaly.com/it${path}`
+    };
+  };
+
   const sitemapEntries: SitemapEntry[] = [
-    { 
-      loc: `https://yourbusinessinitaly.com/`, 
-      lastmod: today, 
-      changefreq: 'daily', 
+    {
+      loc: `https://yourbusinessinitaly.com/it/`,
+      lastmod: today,
+      changefreq: 'daily',
       priority: '1.0',
-      alternates: {
-        'en': 'https://yourbusinessinitaly.com/en/',
-        'de': 'https://yourbusinessinitaly.com/de/',
-        'fr': 'https://yourbusinessinitaly.com/fr/',
-        'es': 'https://yourbusinessinitaly.com/es/'
-      }
+      alternates: buildAlternatesPath('')
     },
-    // Aggiungi pagine principali con priorità alta
-    { 
-      loc: `https://yourbusinessinitaly.com/blog`, 
-      lastmod: today, 
-      changefreq: 'hourly', 
-      priority: '0.95' 
+    // Pagine principali con hreflang
+    {
+      loc: `https://yourbusinessinitaly.com/it/blog`,
+      lastmod: today,
+      changefreq: 'hourly',
+      priority: '0.95',
+      alternates: buildAlternatesPath('blog')
     },
-    { 
-      loc: `https://yourbusinessinitaly.com/servizi`, 
-      lastmod: today, 
-      changefreq: 'weekly', 
-      priority: '0.9' 
+    {
+      loc: `https://yourbusinessinitaly.com/it/services`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.9',
+      alternates: buildAlternatesPath('services')
+    },
+    {
+      loc: `https://yourbusinessinitaly.com/it/about`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      alternates: buildAlternatesPath('about')
+    },
+    {
+      loc: `https://yourbusinessinitaly.com/it/contact`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.7',
+      alternates: buildAlternatesPath('contact')
+    },
+    {
+      loc: `https://yourbusinessinitaly.com/it/media`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.75',
+      alternates: buildAlternatesPath('media')
+    },
+    // Pillar page
+    {
+      loc: `https://yourbusinessinitaly.com/it/pillar/how-to-start-business-in-italy-2025`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.95',
+      alternates: buildAlternatesPath('pillar/how-to-start-business-in-italy-2025')
+    },
+    // Service landing pages
+    {
+      loc: `https://yourbusinessinitaly.com/it/services/open-company-italy`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.9',
+      alternates: buildAlternatesPath('services/open-company-italy')
+    },
+    {
+      loc: `https://yourbusinessinitaly.com/it/services/open-vat-number-italy`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.9',
+      alternates: buildAlternatesPath('services/open-vat-number-italy')
+    },
+    {
+      loc: `https://yourbusinessinitaly.com/it/services/tax-accounting-expats`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.9',
+      alternates: buildAlternatesPath('services/tax-accounting-expats')
     }
   ];
 
@@ -319,9 +383,7 @@ export const generateMainSitemap = () => {
     // Aggiungi l'articolo principale (versione italiana se disponibile)
     const mainPost = languageVariants['it'] || Object.values(languageVariants)[0];
     if (mainPost) {
-      const mainUrl = languageVariants['it'] 
-        ? `https://yourbusinessinitaly.com/blog/${mainPost.slug}`
-        : `https://yourbusinessinitaly.com/en/blog/${mainPost.slug}`;
+      const mainUrl = `https://yourbusinessinitaly.com/${languageVariants['it'] ? 'it' : 'en'}/blog/${mainPost.slug}`;
       
       // Determina la frequenza e priorità basata sulla data dell'articolo
       const articleDate = new Date(mainPost.date);

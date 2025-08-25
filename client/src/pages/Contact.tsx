@@ -2,9 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import ContactSection from '@/components/ContactSection';
 import GoogleMap from '@/components/GoogleMap';
+import SEOHead from '@/components/SEOHead';
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language;
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -15,6 +18,21 @@ const Contact = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('navigation.contact')} - Yourbusinessinitaly.com`}
+        description={t('contact.subtitle')}
+        canonicalUrl={`/${currentLang}/contact`}
+        keywords="contatti, consulenza, informazioni, yourbusinessinitaly"
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/contact',
+          en: 'https://yourbusinessinitaly.com/en/contact',
+          fr: 'https://yourbusinessinitaly.com/fr/contact',
+          de: 'https://yourbusinessinitaly.com/de/contact',
+          es: 'https://yourbusinessinitaly.com/es/contact',
+          'x-default': 'https://yourbusinessinitaly.com/it/contact'
+        }}
+      />
       <div className="bg-primary py-24">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center">

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import ContactSection from '@/components/ContactSection';
+import SEOHead from '@/components/SEOHead';
 
 // Componente per una singola sezione di servizio con immagine e testo
 const ServiceFeature = ({
@@ -20,8 +21,9 @@ const ServiceFeature = ({
   isReversed?: boolean;
   icon: string;
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
+  const currentLang = i18n.language;
   return (
     <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 lg:gap-12 items-center mb-16`}>
       {/* Contenitore immagine con effetti */}
@@ -80,8 +82,9 @@ const ServiceFeature = ({
 };
 
 const Services = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
+  const currentLang = i18n.language;
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -203,6 +206,21 @@ const Services = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('services.title')} - Yourbusinessinitaly.com`}
+        description={t('services.description')}
+        canonicalUrl={`/${currentLang}/services`}
+        keywords="servizi, consulenza fiscale, contabilità, apertura società, partita IVA, expat"
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/services',
+          en: 'https://yourbusinessinitaly.com/en/services',
+          fr: 'https://yourbusinessinitaly.com/fr/services',
+          de: 'https://yourbusinessinitaly.com/de/services',
+          es: 'https://yourbusinessinitaly.com/es/services',
+          'x-default': 'https://yourbusinessinitaly.com/it/services'
+        }}
+      />
       {/* Header hero con introduzione */}
       <section className="relative py-32 overflow-hidden">
         {/* Background con immagine e overlay sfumato */}

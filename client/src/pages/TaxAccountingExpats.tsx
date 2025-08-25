@@ -51,17 +51,17 @@ const TaxAccountingExpats = () => {
         title={t('landingPages.taxAccountingExpats.metaTitle')}
         description={t('landingPages.taxAccountingExpats.metaDescription')}
         keywords="tax accounting Italy, expat tax services, Italian tax returns, double taxation Italy, tax compliance expats, international tax planning, Italian tax advisor, expat tax help"
-        canonicalUrl={currentLang === 'en' ? '/en/services/tax-accounting-expats' : '/services/tax-accounting-expats'}
+        canonicalUrl={`/${currentLang}/services/tax-accounting-expats`}
         ogImage="https://images.unsplash.com/photo-1554224154-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ogType="website"
         twitterCard="summary_large_image"
         structuredData={[serviceStructuredData, faqStructuredData]}
         alternates={{
+          'it': 'https://yourbusinessinitaly.com/it/services/tax-accounting-expats',
           'en': 'https://yourbusinessinitaly.com/en/services/tax-accounting-expats',
-          'it': 'https://yourbusinessinitaly.com/it/servizi/contabilita-fiscale-espatriati',
-          'fr': 'https://yourbusinessinitaly.com/fr/services/comptabilite-fiscale-expatries',
-          'de': 'https://yourbusinessinitaly.com/de/services/steuerberatung-expats',
-          'es': 'https://yourbusinessinitaly.com/es/services/contabilidad-fiscal-expatriados',
+          'fr': 'https://yourbusinessinitaly.com/fr/services/tax-accounting-expats',
+          'de': 'https://yourbusinessinitaly.com/de/services/tax-accounting-expats',
+          'es': 'https://yourbusinessinitaly.com/es/services/tax-accounting-expats',
           'x-default': 'https://yourbusinessinitaly.com/en/services/tax-accounting-expats'
         }}
         lang={currentLang}

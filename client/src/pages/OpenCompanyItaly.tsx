@@ -101,18 +101,18 @@ const OpenCompanyItaly = () => {
         title={t('landingPages.openCompanyItaly.metaTitle')}
         description={t('landingPages.openCompanyItaly.metaDescription')}
         keywords="open company Italy, company formation Italy, start business Italy, foreign entrepreneur Italy, SRL Italy, business setup Italy"
-        canonicalUrl={currentLang === 'en' ? '/en/services/open-company-italy' : '/services/open-company-italy'}
+        canonicalUrl={`/${currentLang}/services/open-company-italy`}
         ogImage="/images/open-company-italy-og.jpg"
         ogType="website"
         twitterCard="summary_large_image"
         lang={currentLang}
         structuredData={[serviceStructuredData, faqStructuredData]}
         alternates={{
+          'it': 'https://yourbusinessinitaly.com/it/services/open-company-italy',
           'en': 'https://yourbusinessinitaly.com/en/services/open-company-italy',
-          'it': 'https://yourbusinessinitaly.com/it/servizi/aprire-societa-italia',
-          'fr': 'https://yourbusinessinitaly.com/fr/services/ouvrir-entreprise-italie',
-          'de': 'https://yourbusinessinitaly.com/de/services/unternehmen-italien-eroeffnen',
-          'es': 'https://yourbusinessinitaly.com/es/services/abrir-empresa-italia',
+          'fr': 'https://yourbusinessinitaly.com/fr/services/open-company-italy',
+          'de': 'https://yourbusinessinitaly.com/de/services/open-company-italy',
+          'es': 'https://yourbusinessinitaly.com/es/services/open-company-italy',
           'x-default': 'https://yourbusinessinitaly.com/en/services/open-company-italy'
         }}
       />

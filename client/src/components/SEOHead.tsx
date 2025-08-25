@@ -213,19 +213,27 @@ const SEOHead = ({
     <link key={langCode} rel="alternate" hrefLang={langCode} href={url} />
   )) : [];
   
-  // Aggiungi il link x-default per la versione italiana di default
-  if (lang === 'it' && fullCanonicalUrl) {
+  // Aggiungi il link x-default per la versione italiana di default (solo se non già fornito)
+  if (lang === 'it' && fullCanonicalUrl && (!alternates || !('x-default' in alternates))) {
     hreflangLinks.push(
       <link key="x-default" rel="alternate" hrefLang="x-default" href={fullCanonicalUrl} />
     );
   }
   
-  // Gestisci dati strutturati singoli o multipli
-  const baseSchemas = [structuredData || defaultStructuredData, organizationSchema, localBusinessSchema];
-  if (faqSchema) {
-    baseSchemas.push(faqSchema);
+  // Gestisci dati strutturati: includi sempre Organization e ProfessionalService,
+  // aggiungi eventuali schemi specifici della pagina e il WebSite di default quando opportuno
+  let structuredDataArray: Record<string, any>[] = [];
+  if (Array.isArray(structuredData) && structuredData.length > 0) {
+    structuredDataArray = [...structuredData];
+  } else if (structuredData) {
+    structuredDataArray = [structuredData];
+  } else {
+    structuredDataArray = [defaultStructuredData];
   }
-  const structuredDataArray = Array.isArray(structuredData) ? structuredData : baseSchemas;
+  structuredDataArray.push(organizationSchema, localBusinessSchema);
+  if (faqSchema) {
+    structuredDataArray.push(faqSchema);
+  }
 
   return (
     <Helmet htmlAttributes={{ lang }}>

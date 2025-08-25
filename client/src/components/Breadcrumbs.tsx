@@ -64,7 +64,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
             ) : (
               <>
                 <Link 
-                  href={item.path} 
+                  href={getLocalizedPath(item.path)} 
                   className="text-neutral-500 hover:text-[#009246] transition-colors"
                   itemProp="item"
                 >

@@ -5,6 +5,7 @@ import { useLocalizedPath } from '@/components/LocalizedRouter';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
+import SEOHead from '@/components/SEOHead';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -98,7 +99,8 @@ const StatItem = ({ number, label, icon }: { number: string; label: string; icon
 };
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
   const { getLocalizedPath } = useLocalizedPath();
 
   useEffect(() => {
@@ -142,6 +144,21 @@ const About = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${t('navigation.about')} - Yourbusinessinitaly.com`}
+        description={t('about.longDescription') || 'La nostra azienda e il nostro team di professionisti. Competenze, meritocrazia, pari opportunità sono la nostra mission.'}
+        canonicalUrl={`/${currentLang}/about`}
+        keywords="about, team, commercialista, consulenza fiscale, Italia, yourbusinessinitaly"
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/about',
+          en: 'https://yourbusinessinitaly.com/en/about',
+          fr: 'https://yourbusinessinitaly.com/fr/about',
+          de: 'https://yourbusinessinitaly.com/de/about',
+          es: 'https://yourbusinessinitaly.com/es/about',
+          'x-default': 'https://yourbusinessinitaly.com/it/about'
+        }}
+      />
       {/* Hero section con intestazione */}
       <section className="relative py-32 overflow-hidden">
         {/* Sfondo con overlay verde-rosso */}
