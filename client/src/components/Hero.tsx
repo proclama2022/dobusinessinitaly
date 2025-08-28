@@ -5,18 +5,33 @@ import OptimizedImage from './OptimizedImage';
 import { useLocalizedPath } from './LocalizedRouter';
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Safe defaults in case translations resolve to empty strings at runtime
+  const defaultTitle = 'Accounting Expertise For Your Global Business';
+  const defaultSubtitle =
+    'We assist foreign companies and investors in successfully managing their business in Italy, providing excellence in tax and commercial consulting.';
+
+  // Prefer explicit key lookup so we can safely fallback when i18n returns empty/null
+  const heroTitle = t('hero.title') || defaultTitle;
+  const heroSubtitle = t('hero.subtitle') || defaultSubtitle;
+
   useEffect(() => {
+    // Small debug in non-production to observe resolved translations and current language
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.debug('[Hero] language=', i18n?.language, 'heroTitle=', heroTitle, 'heroSubtitle=', heroSubtitle);
+    }
+
     // Impostiamo un breve ritardo per garantire che l'animazione venga visualizzata
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [i18n?.language, heroTitle, heroSubtitle]);
 
   return (
     <section className="relative isolate h-[600px] md:h-[700px] overflow-hidden">
@@ -56,9 +71,7 @@ const Hero = () => {
       <div className="absolute top-[30%] right-[8%] w-24 h-24 rounded-full bg-[#ce2b3720] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '10s', animationDelay: '1s' }}></div>
       <div className="absolute bottom-[15%] left-[15%] w-20 h-20 rounded-full bg-[#ffffff20] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '12s', animationDelay: '2s' }}></div>
 
-      <div className="absolute top-4 left-4 z-[60] bg-red-600 text-white px-3 py-1 rounded-md hidden md:block">
-        DEBUG HERO (visible only in debug mode)
-      </div>
+
       <div className="container mx-auto px-4 h-full flex items-center relative z-[100] mix-blend-normal">
         <div className="max-w-2xl relative">
           {/* Badge italiane */}
@@ -71,14 +84,14 @@ const Hero = () => {
           {/* Titolo principale */}
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 relative z-20 enhanced-text">
             <span className="relative inline-block">
-              {t('hero.title', 'Accounting Expertise For Your Global Business')}
+              {heroTitle}
               <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-green-400 to-red-500 opacity-90"></span>
             </span>
           </h1>
 
           {/* Sottotitolo */}
           <p className="text-xl text-white mb-8 max-w-xl leading-relaxed z-20 relative enhanced-text">
-            {t('hero.subtitle', 'We assist foreign companies and investors in successfully managing their business in Italy, providing excellence in tax and commercial consulting.')}
+            {heroSubtitle}
           </p>
 
           {/* Pulsanti di azione */}

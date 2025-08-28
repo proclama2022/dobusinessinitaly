@@ -79,16 +79,49 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-[#f5f7fa] text-neutral-800 font-[Open_Sans];
     letter-spacing: 0.01em;
+    /* Ottimizzazioni performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-[Montserrat] font-semibold;
     letter-spacing: -0.01em;
+  }
+
+  /* Ottimizzazioni per ridurre layout shift */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Lazy loading ottimizzato */
+  img[loading="lazy"] {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  img[loading="lazy"].lazy-loaded {
+    opacity: 1;
+  }
+
+  /* Placeholder per immagini lazy */
+  .image-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* GPU acceleration per elementi animati */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }
 
@@ -188,6 +221,7 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-rotate-in {
@@ -319,7 +353,7 @@
 }
 
 .animate-slow-zoom {
-  animation: slowZoom 30s ease-in-out infinite alternate;
+  animation: slowZoom 15s ease-in-out infinite alternate;
 }
 
 .animate-slide-down {
@@ -336,7 +370,8 @@
 }
 
 .animate-spin-slow {
-  animation: spinSlow 15s linear infinite;
+  animation: spinSlow 10s linear infinite;
+  will-change: transform;
 }
 
 @keyframes gradientX {

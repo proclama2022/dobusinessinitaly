@@ -38,6 +38,9 @@ i18n
     fallbackLng: 'it',
     lng: 'it', // Set default language to Italian
     debug: false,
+    // Do not return empty strings or nulls from translations so defaultValue fallback works
+    returnEmptyString: false,
+    returnNull: false,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
