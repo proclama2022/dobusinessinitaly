@@ -31,6 +31,29 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['wouter'],
+          'vendor-i18n': ['react-i18next', 'i18next', 'i18next-browser-languagedetector'],
+          'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          'vendor-icons': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome'],
+          'vendor-query': ['@tanstack/react-query'],
+          'vendor-forms': ['react-hook-form', '@hookform/resolvers'],
+          // Page chunks
+          'pages-home': ['./src/pages/Home.tsx'],
+          'pages-blog': ['./src/pages/Blog.tsx', './src/pages/BlogPost.tsx'],
+          'pages-services': ['./src/pages/Services.tsx', './src/pages/OpenCompanyItaly.tsx', './src/pages/OpenVATNumberItaly.tsx', './src/pages/TaxAccountingExpats.tsx'],
+          'pages-other': ['./src/pages/About.tsx', './src/pages/Contact.tsx', './src/pages/Media.tsx', './src/pages/Social.tsx']
+        }
+      }
+    },
+    target: 'es2020',
+    minify: 'esbuild',
+    sourcemap: false
   },
   server: {
     port: 5173,
