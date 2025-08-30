@@ -328,19 +328,20 @@ author: "${author}"
       console.log(`[Blog API] Successfully created new post at: ${url}`);
       res.status(201).json({ success: true, message: 'Post created successfully', url });
     } catch (error) {
-      console.error(`[Blog API] Detailed error creating post:`, error);
+      const err = error as Error;
+      console.error(`[Blog API] Detailed error creating post:`, err);
       console.error(`[Blog API] File path: ${filePath}`);
       console.error(`[Blog API] Directory exists: ${fs.existsSync(BLOG_DIR)}`);
       try {
         fs.accessSync(BLOG_DIR, fs.constants.W_OK);
         console.error(`[Blog API] Directory writable: yes`);
-      } catch (err) {
+      } catch (accessErr) {
         console.error(`[Blog API] Directory writable: no`);
       }
       res.status(500).json({ 
         success: false, 
         message: 'Error creating post',
-        error: error.message,
+        error: err.message || 'Unknown error',
         path: filePath
       });
     }
