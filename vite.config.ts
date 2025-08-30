@@ -31,43 +31,9 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('wouter')) {
-              return 'vendor-router';
-            }
-            if (id.includes('i18next') || id.includes('react-i18next')) {
-              return 'vendor-i18n';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'vendor-ui';
-            }
-            if (id.includes('@fortawesome')) {
-              return 'vendor-icons';
-            }
-            if (id.includes('@tanstack/react-query')) {
-              return 'vendor-query';
-            }
-            if (id.includes('react-hook-form') || id.includes('@hookform')) {
-              return 'vendor-forms';
-            }
-            return 'vendor-other';
-          }
-          // Page chunks sono gestiti automaticamente con lazy loading
-          return null;
-        }
-      }
-    },
     target: 'es2020',
-    minify: 'esbuild',
-    sourcemap: false
+    minify: false,
+    sourcemap: true
   },
   server: {
     port: 5173,

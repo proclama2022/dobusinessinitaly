@@ -288,21 +288,9 @@ const SEOHead = ({
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="preconnect" href="https://images.unsplash.com" />
       
-      {/* Preload immagine Hero per LCP - formato WebP ottimizzato */}
-      {isLikelyHome && (
-        <>
-          <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&q=85&fm=webp&fit=crop&crop=smart" />
-          <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=768&h=432&q=85&fm=webp&fit=crop&crop=smart" media="(max-width: 768px)" />
-        </>
-      )}
-      
       {/* DNS Prefetch per servizi esterni */}
       <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      
-      {/* Prefetch important resources */}
-      <link rel="prefetch" href="/images/logo.png" as="image" />
-      <link rel="prefetch" href="/favicon.ico" as="image" />
       
       {/* Open Graph */}
       <meta property="og:title" content={title} />
