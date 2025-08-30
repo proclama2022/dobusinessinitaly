@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import RelatedServices from '@/components/RelatedServices';
+import RelatedGuides from '@/components/RelatedGuides';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const TaxAccountingExpats = () => {
   const { t, i18n } = useTranslation();
@@ -13,12 +16,51 @@ const TaxAccountingExpats = () => {
   // Get translation data
   const landingPageData = t('landingPages.taxAccountingExpats', { returnObjects: true }) as any;
 
+  // Fallback-safe SEO
+  const seoTitle = landingPageData?.metaTitle || landingPageData?.title || t('landingPages.taxAccountingExpats.title');
+  const seoDescription = landingPageData?.metaDescription || landingPageData?.subtitle || t('landingPages.taxAccountingExpats.subtitle');
+
+  // Services built from explicit locale keys
+  const services = [
+    {
+      title: landingPageData?.personalTaxTitle,
+      description: landingPageData?.personalTaxDescription,
+      features: (landingPageData?.personalTaxFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.businessTaxTitle,
+      description: landingPageData?.businessTaxDescription,
+      features: (landingPageData?.businessTaxFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.internationalPlanningTitle,
+      description: landingPageData?.internationalPlanningDescription,
+      features: (landingPageData?.internationalPlanningFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.taxRepresentationTitle,
+      description: landingPageData?.taxRepresentationDescription,
+      features: (landingPageData?.taxRepresentationFeatures || []) as string[],
+    },
+  ].filter(s => s.title && s.description);
+
+  // Process steps: prefer array, else derive from step1..4
+  const processSteps = (landingPageData?.processSteps && Array.isArray(landingPageData.processSteps))
+    ? landingPageData.processSteps
+    : [1, 2, 3, 4]
+        .map((n) => ({
+          step: n,
+          title: landingPageData?.[`step${n}Title`],
+          description: landingPageData?.[`step${n}Description`],
+        }))
+        .filter(s => s.title && s.description);
+
   // Structured data for SEO
   const serviceStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: t('landingPages.taxAccountingExpats.metaTitle'),
-    description: t('landingPages.taxAccountingExpats.metaDescription'),
+    name: seoTitle,
+    description: seoDescription,
     provider: {
       '@type': 'Organization',
       name: 'Yourbusinessinitaly.com',
@@ -45,17 +87,42 @@ const TaxAccountingExpats = () => {
     }))
   };
 
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('navigation.home', 'Home'),
+        item: `https://yourbusinessinitaly.com/${currentLang}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('navigation.services', 'Services'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: t('landingPages.taxAccountingExpats.title'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services/tax-accounting-expats`
+      }
+    ]
+  };
+
   return (
     <>
       <SEOHead
-        title={t('landingPages.taxAccountingExpats.metaTitle')}
-        description={t('landingPages.taxAccountingExpats.metaDescription')}
+        title={seoTitle}
+        description={seoDescription}
         keywords="tax accounting Italy, expat tax services, Italian tax returns, double taxation Italy, tax compliance expats, international tax planning, Italian tax advisor, expat tax help"
         canonicalUrl={`/${currentLang}/services/tax-accounting-expats`}
         ogImage="https://images.unsplash.com/photo-1554224154-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ogType="website"
         twitterCard="summary_large_image"
-        structuredData={[serviceStructuredData, faqStructuredData]}
+        structuredData={[serviceStructuredData, faqStructuredData, breadcrumbStructuredData]}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/services/tax-accounting-expats',
           'en': 'https://yourbusinessinitaly.com/en/services/tax-accounting-expats',
@@ -98,17 +165,42 @@ const TaxAccountingExpats = () => {
         </div>
       </section>
 
+      {/* Breadcrumbs */}
+      <section className="bg-white py-4 border-b">
+        <div className="container mx-auto px-4">
+          <Breadcrumbs
+            items={[
+              { label: t('navigation.services'), path: '/services' },
+              { label: t('landingPages.taxAccountingExpats.title'), path: `/${currentLang}/services/tax-accounting-expats`, isLast: true }
+            ]}
+          />
+        </div>
+      </section>
+
       {/* Introduction Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.taxAccountingExpats.whyTitle')}
+                {landingPageData?.overviewTitle || t('landingPages.taxAccountingExpats.title')}
               </h2>
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                {t('landingPages.taxAccountingExpats.whySubtitle')}
-              </p>
+              {landingPageData?.overviewDescription && (
+                <p className="text-lg text-neutral-600 leading-relaxed">
+                  {landingPageData.overviewDescription}
+                </p>
+              )}
+              {landingPageData?.overviewCta && (
+                <div className="mt-6">
+                  <Link
+                    href={getLocalizedPath('/contact')}
+                    className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-semibold rounded-lg hover:bg-[#007a33] transition-colors"
+                  >
+                    {landingPageData.overviewCta}
+                    <i className="fas fa-arrow-right ml-2"></i>
+                  </Link>
+                </div>
+              )}
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -140,10 +232,17 @@ const TaxAccountingExpats = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {(Array.isArray(landingPageData.servicesItems) ? landingPageData.servicesItems : []).map((service: any, index: number) => (
+              {services.map((service: any, index: number) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                   <h3 className="text-xl font-bold mb-3 text-[#009246]">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
+                  <p className="text-gray-600 mb-3">{service.description}</p>
+                  {Array.isArray(service.features) && service.features.length > 0 && (
+                    <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
+                      {service.features.map((f: string, i: number) => (
+                        <li key={i}>{f}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
@@ -151,55 +250,71 @@ const TaxAccountingExpats = () => {
         </div>
       </section>
 
-      {/* Regime Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.taxAccountingExpats.regimeTitle')}
-              </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.taxAccountingExpats.regimeSubtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {landingPageData.regimeItems.map((regime: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{regime.title}</h3>
-                  <p className="text-gray-600">{regime.description}</p>
+      {/* Regime Section (render only if provided in locales) */}
+      {Array.isArray(landingPageData?.regimeItems) && landingPageData.regimeItems.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              {(landingPageData?.regimeTitle || landingPageData?.regimeSubtitle) && (
+                <div className="text-center mb-12">
+                  {landingPageData?.regimeTitle && (
+                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+                      {landingPageData.regimeTitle}
+                    </h2>
+                  )}
+                  {landingPageData?.regimeSubtitle && (
+                    <p className="text-lg text-neutral-600">
+                      {landingPageData.regimeSubtitle}
+                    </p>
+                  )}
                 </div>
-              ))}
+              )}
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {landingPageData.regimeItems.map((regime: any, index: number) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{regime.title}</h3>
+                    <p className="text-gray-600">{regime.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Expat Types Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.taxAccountingExpats.expatTypesTitle')}
-              </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.taxAccountingExpats.expatTypesSubtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {(Array.isArray(landingPageData.expatTypesItems) ? landingPageData.expatTypesItems : []).map((type: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{type.title}</h3>
-                  <p className="text-gray-600">{type.description}</p>
+      {/* Expat Types Section (only if provided) */}
+      {Array.isArray(landingPageData?.expatTypesItems) && landingPageData.expatTypesItems.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              {(landingPageData?.expatTypesTitle || landingPageData?.expatTypesSubtitle) && (
+                <div className="text-center mb-12">
+                  {landingPageData?.expatTypesTitle && (
+                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+                      {landingPageData.expatTypesTitle}
+                    </h2>
+                  )}
+                  {landingPageData?.expatTypesSubtitle && (
+                    <p className="text-lg text-neutral-600">
+                      {landingPageData.expatTypesSubtitle}
+                    </p>
+                  )}
                 </div>
-              ))}
+              )}
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {landingPageData.expatTypesItems.map((type: any, index: number) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{type.title}</h3>
+                    <p className="text-gray-600">{type.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Process Section */}
       <section className="py-16 bg-white">
@@ -215,7 +330,7 @@ const TaxAccountingExpats = () => {
             </div>
 
             <div className="space-y-8">
-              {(Array.isArray(landingPageData.processSteps) ? landingPageData.processSteps : []).map((step: any, index: number) => (
+              {processSteps.map((step: any, index: number) => (
                 <div key={index} className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-12 h-12 bg-[#009246] text-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="font-bold">{step.step}</span>
@@ -237,11 +352,13 @@ const TaxAccountingExpats = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.taxAccountingExpats.faqTitle')}
+                {landingPageData?.faqTitle}
               </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.taxAccountingExpats.faqSubtitle')}
-              </p>
+              {landingPageData?.faqSubtitle && (
+                <p className="text-lg text-neutral-600">
+                  {landingPageData.faqSubtitle}
+                </p>
+              )}
             </div>
 
             <div className="space-y-6">
@@ -256,21 +373,29 @@ const TaxAccountingExpats = () => {
         </div>
       </section>
 
+      {/* Related Services */}
+      <RelatedServices exclude="taxAccountingExpats" />
+
+      {/* Related Guides */}
+      <RelatedGuides context="taxAccountingExpats" />
+
       {/* CTA Section */}
       <section className="py-16 bg-[#009246] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              {t('landingPages.taxAccountingExpats.ctaTitle')}
+              {landingPageData?.ctaTitle}
             </h2>
-            <p className="text-xl mb-8 text-white/90">
-              {t('landingPages.taxAccountingExpats.ctaSubtitle')}
-            </p>
+            {landingPageData?.ctaDescription && (
+              <p className="text-xl mb-8 text-white/90">
+                {landingPageData.ctaDescription}
+              </p>
+            )}
             <Link 
               href={getLocalizedPath('/contact')}
               className="inline-flex items-center px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
             >
-              {t('landingPages.taxAccountingExpats.ctaButton')}
+              {landingPageData?.ctaButton || t('navigation.learnMore')}
               <i className="fas fa-arrow-right ml-2"></i>
             </Link>
           </div>

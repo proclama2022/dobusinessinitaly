@@ -4,9 +4,35 @@
     "services": "Services",
     "about": "About Us",
     "media": "Media",
+    "social": "Social & Video",
     "blog": "Blog",
     "contact": "Contact",
     "learnMore": "Learn More"
+  },
+  "socialPage": {
+    "title": "Social & Video - Yourbusinessinitaly.com",
+    "heading": "Social & Video",
+    "lead": "Selected content to get to know us and build trust: Giovanni Emmi’s LinkedIn and the most useful videos from our YouTube channel.",
+    "description": "Social highlights to build trust: follow Giovanni Emmi on LinkedIn and explore the most helpful videos from our YouTube channel.",
+    "linkedinTitle": "LinkedIn · Giovanni Emmi",
+    "linkedinDesc": "Follow us on LinkedIn for professional updates and insights on tax and business in Italy.",
+    "linkedinCta": "Visit profile",
+    "linkedinButton": "See latest posts",
+    "linkedinFeaturedTitle": "Featured posts",
+    "youtubeTitle": "YouTube · Featured videos",
+    "youtubeDesc": "We curate the most useful videos for doing business in Italy.",
+    "youtubeEmpty": "We’ll soon publish a curated selection of videos.",
+    "youtubeButton": "Go to YouTube channel",
+    "youtubeOnlyChannel": "We only display videos from the official channel."
+  },
+  "common": {
+    "home": "Home",
+    "blog": "Blog",
+    "contactUs": "Contact Us"
+  },
+  "notFound": {
+    "title": "404 Page Not Found",
+    "subtitle": "Did you forget to add the page to the router?"
   },
   "hero": {
     "title": "Accounting Expertise For Your Global Business",
@@ -711,6 +737,8 @@
   },
   "landingPages": {
     "openCompanyItaly": {
+      "metaTitle": "Open a Company in Italy | Formation & Compliance",
+      "metaDescription": "Experts in company formation in Italy. We guide international entrepreneurs through all steps: legal setup, tax registration, and ongoing compliance. Free consultation.",
       "title": "Open a Company in Italy",
       "subtitle": "Complete assistance for foreign entrepreneurs who want to establish a company in Italy",
       "heroTitle": "Open a Company in Italy",
@@ -787,10 +815,20 @@
         {
           "question": "Can I open a company in Italy as a non-EU citizen?",
           "answer": "Yes, non-EU citizens can establish companies in Italy. However, additional requirements may apply, such as obtaining a residence permit or meeting specific investment criteria."
+        },
+        {
+          "question": "Do I need to be physically present to open a company?",
+          "answer": "Many steps can be completed remotely via power of attorney and digital identification. We organize a fully remote setup when feasible."
+        },
+        {
+          "question": "Do I need a separate business bank account?",
+          "answer": "Yes, a dedicated business account is strongly recommended and often required for proper accounting and anti-money-laundering compliance. We provide guidance for account opening."
         }
       ]
     },
     "openVATNumberItaly": {
+      "metaTitle": "Open a VAT Number (Partita IVA) in Italy | Complete Service",
+      "metaDescription": "Professional assistance to open and manage your Italian VAT number (Partita IVA). We help choose the right tax regime and handle all bureaucracy. Free consultation.",
       "title": "Open a VAT Number in Italy",
       "subtitle": "Complete assistance for opening and managing your Italian VAT number",
       "heroTitle": "Open a VAT Number in Italy",
@@ -863,10 +901,20 @@
         {
           "question": "Can I change my tax regime after opening a VAT number?",
           "answer": "Yes, you can change your tax regime, but there are specific rules and timing requirements. We can help you determine when and how to make changes to optimize your tax position."
+        },
+        {
+          "question": "Do I need a tax code (codice fiscale) before opening a Partita IVA?",
+          "answer": "Yes. The codice fiscale is required to identify you with the Italian tax authority and must be obtained before submitting a VAT (Partita IVA) application."
+        },
+        {
+          "question": "Can non‑EU citizens open a Partita IVA remotely?",
+          "answer": "In most cases yes, but additional documentation is required (e.g., residence permit for self‑employment). We assist non‑EU clients with the full remote process."
         }
       ]
     },
     "taxAccountingExpats": {
+      "metaTitle": "Tax Accounting for Expats in Italy | International Tax Services",
+      "metaDescription": "Specialized tax services for expatriates in Italy. We handle returns, foreign income reporting, double taxation relief, and ongoing compliance. Free consultation.",
       "title": "Tax Accounting for Expats",
       "subtitle": "Specialized tax services for expatriates living and working in Italy",
       "heroTitle": "Tax Accounting for Expats",
@@ -951,6 +999,14 @@
         {
           "question": "What if I have tax obligations in multiple countries?",
           "answer": "We coordinate with tax professionals in other countries or provide comprehensive cross-border tax planning to ensure all your international tax obligations are met efficiently."
+        },
+        {
+          "question": "Do tax residents need to file the RW form for foreign assets?",
+          "answer": "Italian tax residents generally must report foreign financial assets and accounts on the RW schedule. We assess your situation and handle the required disclosures."
+        },
+        {
+          "question": "What are the main Italian tax deadlines for individuals?",
+          "answer": "Deadlines can vary each year, but personal return and balance/payment deadlines typically fall between June and November. We schedule all filings and payments for you."
         }
       ]
     }

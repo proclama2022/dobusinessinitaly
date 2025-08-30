@@ -17,18 +17,13 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "/icon-192.png",
+      "src": "/images/logo.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/images/logo.png",
       "type": "image/png", 
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -36,10 +31,10 @@
   ],
   "screenshots": [
     {
-      "src": "/og-image.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg",
-      "form_factor": "wide",
+      "src": "/images/logo.png",
+      "sizes": "600x600",
+      "type": "image/png",
+      "form_factor": "narrow",
       "label": "Homepage Yourbusinessinitaly.com"
     }
   ],
@@ -51,21 +46,21 @@
       "short_name": "Blog",
       "description": "Leggi i nostri articoli sul business in Italia",
       "url": "/blog",
-      "icons": [{"src": "/favicon.ico", "sizes": "192x192"}]
+      "icons": [{"src": "/images/logo.png", "sizes": "192x192"}]
     },
     {
       "name": "Servizi",
       "short_name": "Servizi", 
       "description": "I nostri servizi professionali",
-      "url": "/servizi",
-      "icons": [{"src": "/favicon.ico", "sizes": "192x192"}]
+      "url": "/services",
+      "icons": [{"src": "/images/logo.png", "sizes": "192x192"}]
     },
     {
       "name": "Contatti",
       "short_name": "Contatti",
       "description": "Contattaci per una consulenza",
       "url": "/contact", 
-      "icons": [{"src": "/favicon.ico", "sizes": "192x192"}]
+      "icons": [{"src": "/images/logo.png", "sizes": "192x192"}]
     }
   ]
 } 

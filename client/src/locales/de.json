@@ -4,9 +4,35 @@
     "services": "Leistungen",
     "about": "Über Uns",
     "media": "Presse",
+    "social": "Social & Videos",
     "blog": "Blog",
     "contact": "Kontakt",
     "learnMore": "Mehr erfahren"
+  },
+  "socialPage": {
+    "title": "Social & Videos - Yourbusinessinitaly.com",
+    "heading": "Social & Videos",
+    "lead": "Ausgewählte Inhalte zum Kennenlernen und Vertrauensaufbau: LinkedIn von Giovanni Emmi und die nützlichsten Videos unseres YouTube‑Kanals.",
+    "description": "Soziale Highlights zur Vertrauensbildung: Folgen Sie Giovanni Emmi auf LinkedIn und entdecken Sie die hilfreichsten Videos unseres YouTube‑Kanals.",
+    "linkedinTitle": "LinkedIn · Giovanni Emmi",
+    "linkedinDesc": "Folgen Sie uns auf LinkedIn für Updates und Einblicke zu Steuern und Unternehmertum in Italien.",
+    "linkedinCta": "Profil ansehen",
+    "linkedinButton": "Neueste Beiträge",
+    "linkedinFeaturedTitle": "Empfohlene Beiträge",
+    "youtubeTitle": "YouTube · Ausgewählte Videos",
+    "youtubeDesc": "Wir kuratieren die nützlichsten Videos für Geschäfte in Italien.",
+    "youtubeEmpty": "Bald veröffentlichen wir eine kuratierte Videoliste.",
+    "youtubeButton": "Zum YouTube‑Kanal",
+    "youtubeOnlyChannel": "Wir zeigen ausschließlich Videos des offiziellen Kanals."
+  },
+  "common": {
+    "home": "Startseite",
+    "blog": "Blog",
+    "contactUs": "Kontakt"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "subtitle": "Haben Sie vergessen, die Seite im Router einzutragen?"
   },
   "hero": {
     "title": "Steuerliche Expertise für Ihr globales Unternehmen",
@@ -614,6 +640,8 @@
   },
   "landingPages": {
     "openCompanyItaly": {
+      "metaTitle": "Firma in Italien gründen | Gründung & Compliance",
+      "metaDescription": "Experten für Firmengründung in Italien. Wir begleiten internationale Unternehmer durch alle Schritte: rechtliche Gründung, steuerliche Registrierung und laufende Compliance. Kostenlose Beratung.",
       "title": "Unternehmen in Italien Gründen",
       "subtitle": "Umfassende Unterstützung für ausländische Unternehmer, die ein Unternehmen in Italien gründen möchten",
       "heroTitle": "Unternehmen in Italien Gründen",
@@ -696,6 +724,8 @@
       ]
     },
     "openVATNumberItaly": {
+      "metaTitle": "USt-Nummer (Partita IVA) in Italien eröffnen | Komplettservice",
+      "metaDescription": "Professionelle Unterstützung bei Eröffnung und Verwaltung Ihrer italienischen USt-Nummer (Partita IVA). Wir wählen das richtige Steuerregime und übernehmen die Bürokratie. Kostenlose Beratung.",
       "title": "Umsatzsteuer-Identifikationsnummer in Italien Eröffnen",
       "subtitle": "Umfassende Unterstützung für die Eröffnung und Verwaltung Ihrer italienischen Umsatzsteuer-Identifikationsnummer",
       "heroTitle": "Umsatzsteuer-Identifikationsnummer in Italien Eröffnen",
@@ -772,6 +802,8 @@
       ]
     },
     "taxAccountingExpats": {
+      "metaTitle": "Steuerberatung für Expats in Italien | Internationale Steuerdienste",
+      "metaDescription": "Spezialisierte Steuerleistungen für Expatriates in Italien. Steuererklärungen, Auslandseinkünfte, Doppelbesteuerung und laufende Compliance. Kostenlose Beratung.",
       "title": "Steuerberatung für Expatriates",
       "subtitle": "Spezialisierte Steuerdienstleistungen für Expatriates, die in Italien leben und arbeiten",
       "heroTitle": "Steuerberatung für Expatriates",

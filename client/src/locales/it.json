@@ -4,14 +4,38 @@
     "services": "Servizi",
     "about": "Chi Siamo",
     "media": "Parlano di Noi",
+    "social": "Social & Video",
     "blog": "Blog",
     "contact": "Contatti",
     "learnMore": "Scopri di più"
   },
   "common": {
+    "home": "Home",
+    "blog": "Blog",
+    "contactUs": "Contattaci",
     "loading": "Caricamento in corso...",
     "error": "Si è verificato un errore",
     "tryAgain": "Riprova più tardi"
+  },
+  "socialPage": {
+    "title": "Social & Video - Yourbusinessinitaly.com",
+    "heading": "Social & Video",
+    "lead": "Una selezione di contenuti per conoscerci meglio e aumentare la fiducia: profilo LinkedIn di Giovanni Emmi e i video più utili del nostro canale YouTube.",
+    "description": "Approfondimenti e contenuti social per conoscerci meglio: segui i post LinkedIn di Giovanni Emmi e scopri i video più utili del nostro canale YouTube.",
+    "linkedinTitle": "LinkedIn · Giovanni Emmi",
+    "linkedinDesc": "Seguici su LinkedIn per aggiornamenti professionali e riflessioni sul mondo fiscale e d’impresa in Italia.",
+    "linkedinCta": "Visita il profilo",
+    "linkedinButton": "Vedi ultimi post",
+    "linkedinFeaturedTitle": "Post in evidenza",
+    "youtubeTitle": "YouTube · Video consigliati",
+    "youtubeDesc": "Selezioniamo i video più utili per chi vuole fare impresa in Italia.",
+    "youtubeEmpty": "A breve pubblicheremo una selezione di video consigliati.",
+    "youtubeButton": "Vai al canale YouTube",
+    "youtubeOnlyChannel": "Mostriamo esclusivamente i video del canale ufficiale."
+  },
+  "notFound": {
+    "title": "404 Pagina non trovata",
+    "subtitle": "Hai dimenticato di aggiungere la pagina al router?"
   },
   "privacy": {
     "title": "Privacy Policy di proclama",
@@ -524,6 +548,14 @@
         {
           "title": "Integrità",
           "description": "Trasparenza, onestà e correttezza guidano ogni azione e rapporto professionale."
+        },
+        {
+          "question": "Devo avere il codice fiscale prima di aprire la Partita IVA?",
+          "answer": "Sì. Il codice fiscale è necessario per identificarti presso l'Agenzia delle Entrate e va ottenuto prima di presentare la domanda di Partita IVA."
+        },
+        {
+          "question": "I cittadini extra‑UE possono aprire la Partita IVA da remoto?",
+          "answer": "Nella maggior parte dei casi sì, ma è richiesta documentazione aggiuntiva (ad es. permesso di soggiorno per lavoro autonomo). Assistiamo clienti extra‑UE in tutto il processo da remoto."
         }
       ]
     },
@@ -658,6 +690,8 @@
   },
   "landingPages": {
     "openCompanyItaly": {
+      "metaTitle": "Aprire una Società in Italia | Costituzione e Compliance",
+      "metaDescription": "Esperti nella costituzione di società in Italia. Guidiamo imprenditori internazionali in tutte le fasi: atto costitutivo, iscrizioni fiscali e adempimenti continui. Consulenza gratuita.",
       "title": "Aprire una Società in Italia",
       "subtitle": "Assistenza completa per imprenditori stranieri che vogliono costituire una società in Italia",
       "heroTitle": "Aprire una Società in Italia",
@@ -799,20 +833,18 @@
           "answer": "Sì, i cittadini non UE possono costituire società in Italia. Tuttavia, potrebbero applicarsi requisiti aggiuntivi, come l'ottenimento di un permesso di soggiorno o il soddisfacimento di specifici criteri di investimento."
         },
         {
-          "question": "Quanto tempo serve per costituire una società in Italia?",
-          "answer": "Il processo di costituzione societaria richiede tipicamente 2-4 settimane, a seconda del tipo di società e della complessità. Le costituzioni SRL sono generalmente completate entro 15-20 giorni lavorativi."
+          "question": "Posso aprire la società senza essere fisicamente presente?",
+          "answer": "Molti passaggi possono essere completati da remoto tramite procura e identificazione digitale. Organizziamo l'intero processo da remoto quando possibile."
         },
         {
-          "question": "Quali sono i requisiti di capitale minimo?",
-          "answer": "L'SRL richiede un capitale minimo di €1, mentre altri tipi di società possono avere requisiti diversi. Ti aiuteremo a determinare la struttura di capitale ottimale per la tua attività."
-        },
-        {
-          "question": "È necessaria la presenza fisica in Italia?",
-          "answer": "Il processo di costituzione può essere gestito completamente a distanza. Non è necessaria la presenza fisica per la maggior parte delle procedure, rendendo il processo accessibile anche per imprenditori internazionali."
+          "question": "Serve un conto corrente aziendale dedicato?",
+          "answer": "Sì, un conto dedicato è fortemente consigliato e spesso richiesto per la corretta contabilità e il rispetto delle norme antiriciclaggio. Possiamo assisterti nell'apertura."
         }
       ]
     },
     "openVATNumberItaly": {
+      "metaTitle": "Aprire Partita IVA in Italia | Servizio Completo",
+      "metaDescription": "Assistenza professionale per aprire e gestire la Partita IVA in Italia. Ti aiutiamo a scegliere il regime fiscale corretto e gestiamo tutta la burocrazia. Consulenza gratuita.",
       "title": "Aprire Partita IVA in Italia",
       "subtitle": "Assistenza completa per l'apertura e gestione della tua Partita IVA italiana",
       "heroTitle": "Aprire Partita IVA in Italia",
@@ -889,6 +921,8 @@
       ]
     },
     "taxAccountingExpats": {
+      "metaTitle": "Consulenza Fiscale per Espatriati in Italia | Servizi Internazionali",
+      "metaDescription": "Servizi fiscali specializzati per expat in Italia. Dichiarazioni, redditi esteri, doppia imposizione e conformità continuativa. Consulenza gratuita.",
       "title": "Contabilità Fiscale per Espatriati",
       "subtitle": "Servizi fiscali specializzati per espatriati che vivono e lavorano in Italia",
       "heroTitle": "Contabilità Fiscale per Espatriati",

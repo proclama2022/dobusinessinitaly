@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import RelatedServices from '@/components/RelatedServices';
+import RelatedGuides from '@/components/RelatedGuides';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const OpenVATNumberItaly = () => {
   const { t, i18n } = useTranslation();
@@ -13,12 +16,46 @@ const OpenVATNumberItaly = () => {
   // Get translation data
   const landingPageData = t('landingPages.openVATNumberItaly', { returnObjects: true }) as any;
 
+  // Fallback-safe SEO fields (metaTitle/metaDescription may be absent in locales)
+  const seoTitle = landingPageData?.metaTitle || landingPageData?.title || t('landingPages.openVATNumberItaly.title');
+  const seoDescription = landingPageData?.metaDescription || landingPageData?.subtitle || t('landingPages.openVATNumberItaly.subtitle');
+
+  // Build VAT types from locale keys (individual/company/agricultural)
+  const vatTypes = [
+    {
+      title: landingPageData?.individualTitle,
+      description: landingPageData?.individualDescription,
+      features: (landingPageData?.individualFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.companyTitle,
+      description: landingPageData?.companyDescription,
+      features: (landingPageData?.companyFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.agriculturalTitle,
+      description: landingPageData?.agriculturalDescription,
+      features: (landingPageData?.agriculturalFeatures || []) as string[],
+    },
+  ].filter(v => v.title && v.description);
+
+  // Build process steps from step1..step4 keys if array isn't provided
+  const processSteps = (landingPageData?.processSteps && Array.isArray(landingPageData.processSteps))
+    ? landingPageData.processSteps
+    : [1, 2, 3, 4]
+        .map((n) => ({
+          step: n,
+          title: landingPageData?.[`step${n}Title`],
+          description: landingPageData?.[`step${n}Description`],
+        }))
+        .filter(s => s.title && s.description);
+
   // Structured data for SEO
   const serviceStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: t('landingPages.openVATNumberItaly.metaTitle'),
-    description: t('landingPages.openVATNumberItaly.metaDescription'),
+    name: seoTitle,
+    description: seoDescription,
     provider: {
       '@type': 'Organization',
       name: 'Yourbusinessinitaly.com',
@@ -45,17 +82,42 @@ const OpenVATNumberItaly = () => {
     }))
   };
 
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('navigation.home', 'Home'),
+        item: `https://yourbusinessinitaly.com/${currentLang}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('navigation.services', 'Services'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: t('landingPages.openVATNumberItaly.title'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services/open-vat-number-italy`
+      }
+    ]
+  };
+
   return (
     <>
       <SEOHead
-        title={t('landingPages.openVATNumberItaly.metaTitle')}
-        description={t('landingPages.openVATNumberItaly.metaDescription')}
+        title={seoTitle}
+        description={seoDescription}
         keywords="open VAT number Italy, Partita IVA, Italian VAT registration, flat tax regime Italy, freelance Italy, expat tax Italy, Italian tax code, business registration Italy"
         canonicalUrl={`/${currentLang}/services/open-vat-number-italy`}
         ogImage="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ogType="website"
         twitterCard="summary_large_image"
-        structuredData={[serviceStructuredData, faqStructuredData]}
+        structuredData={[serviceStructuredData, faqStructuredData, breadcrumbStructuredData]}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/services/open-vat-number-italy',
           'en': 'https://yourbusinessinitaly.com/en/services/open-vat-number-italy',
@@ -98,29 +160,42 @@ const OpenVATNumberItaly = () => {
         </div>
       </section>
 
+      {/* Breadcrumbs */}
+      <section className="bg-white py-4 border-b">
+        <div className="container mx-auto px-4">
+          <Breadcrumbs
+            items={[
+              { label: t('navigation.services'), path: '/services' },
+              { label: t('landingPages.openVATNumberItaly.title'), path: `/${currentLang}/services/open-vat-number-italy`, isLast: true }
+            ]}
+          />
+        </div>
+      </section>
+
       {/* Introduction Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.openVATNumberItaly.whyTitle')}
+                {landingPageData?.overviewTitle || t('landingPages.openVATNumberItaly.title')}
               </h2>
-              <p className="text-lg text-neutral-600 leading-relaxed">
-                {t('landingPages.openVATNumberItaly.whySubtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {(Array.isArray(landingPageData.whyItems) ? landingPageData.whyItems : []).map((item: any, index: number) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-[#009246]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-star text-2xl text-[#009246]"></i>
-                  </div>
-                  <h3 className="text-xl font-bold text-neutral-800 mb-3">{item.title}</h3>
-                  <p className="text-neutral-600">{item.description}</p>
+              {landingPageData?.overviewDescription && (
+                <p className="text-lg text-neutral-600 leading-relaxed">
+                  {landingPageData.overviewDescription}
+                </p>
+              )}
+              {landingPageData?.overviewCta && (
+                <div className="mt-6">
+                  <Link
+                    href={getLocalizedPath('/contact')}
+                    className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-semibold rounded-lg hover:bg-[#007a33] transition-colors"
+                  >
+                    {landingPageData.overviewCta}
+                    <i className="fas fa-arrow-right ml-2"></i>
+                  </Link>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -132,76 +207,95 @@ const OpenVATNumberItaly = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.openVATNumberItaly.regimeTitle')}
+                {landingPageData?.vatTypesTitle}
               </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.openVATNumberItaly.regimeSubtitle')}
-              </p>
+              {landingPageData?.vatTypesSubtitle && (
+                <p className="text-lg text-neutral-600">
+                  {landingPageData.vatTypesSubtitle}
+                </p>
+              )}
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {(Array.isArray(landingPageData.regimeItems) ? landingPageData.regimeItems : []).map((regime: any, index: number) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-neutral-800 mb-3">{regime.title}</h3>
-                    <p className="text-neutral-600">{regime.description}</p>
+            {vatTypes.length > 0 && (
+              <div className="grid md:grid-cols-3 gap-8">
+                {vatTypes.map((type, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold text-neutral-800 mb-3">{type.title}</h3>
+                      <p className="text-neutral-600 mb-4">{type.description}</p>
+                      {Array.isArray(type.features) && type.features.length > 0 && (
+                        <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
+                          {type.features.map((f, i) => (
+                            <li key={i}>{f}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.openVATNumberItaly.servicesTitle')}
-              </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.openVATNumberItaly.servicesSubtitle')}
-              </p>
-            </div>
+      {/* Services Section (render only if items provided in locales) */}
+      {Array.isArray(landingPageData?.servicesItems) && landingPageData.servicesItems.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+                  {landingPageData?.servicesTitle}
+                </h2>
+                {landingPageData?.servicesSubtitle && (
+                  <p className="text-lg text-neutral-600">
+                    {landingPageData.servicesSubtitle}
+                  </p>
+                )}
+              </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {(Array.isArray(landingPageData.servicesItems) ? landingPageData.servicesItems : []).map((service: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </div>
-              ))}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {landingPageData.servicesItems.map((service: any, index: number) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Requirements Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.openVATNumberItaly.requirementsTitle')}
-              </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.openVATNumberItaly.requirementsSubtitle')}
-              </p>
-            </div>
+      {/* Requirements Section (render only if items provided in locales) */}
+      {Array.isArray(landingPageData?.requirementsItems) && landingPageData.requirementsItems.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+                  {landingPageData?.requirementsTitle}
+                </h2>
+                {landingPageData?.requirementsSubtitle && (
+                  <p className="text-lg text-neutral-600">
+                    {landingPageData.requirementsSubtitle}
+                  </p>
+                )}
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {(Array.isArray(landingPageData.requirementsItems) ? landingPageData.requirementsItems : []).map((requirement: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{requirement.title}</h3>
-                  <p className="text-gray-600">{requirement.description}</p>
-                </div>
-              ))}
+              <div className="grid md:grid-cols-2 gap-8">
+                {landingPageData.requirementsItems.map((requirement: any, index: number) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{requirement.title}</h3>
+                    <p className="text-gray-600">{requirement.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Process Section */}
       <section className="py-16 bg-white">
@@ -217,7 +311,7 @@ const OpenVATNumberItaly = () => {
             </div>
 
             <div className="space-y-8">
-              {(Array.isArray(landingPageData.processSteps) ? landingPageData.processSteps : []).map((step: any, index: number) => (
+              {processSteps.map((step: any, index: number) => (
                 <div key={index} className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-12 h-12 bg-[#009246] text-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="font-bold">{step.step}</span>
@@ -239,11 +333,13 @@ const OpenVATNumberItaly = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
-                {t('landingPages.openVATNumberItaly.faqTitle')}
+                {landingPageData?.faqTitle}
               </h2>
-              <p className="text-lg text-neutral-600">
-                {t('landingPages.openVATNumberItaly.faqSubtitle')}
-              </p>
+              {landingPageData?.faqSubtitle && (
+                <p className="text-lg text-neutral-600">
+                  {landingPageData.faqSubtitle}
+                </p>
+              )}
             </div>
 
             <div className="space-y-6">
@@ -258,21 +354,29 @@ const OpenVATNumberItaly = () => {
         </div>
       </section>
 
+      {/* Related Services */}
+      <RelatedServices exclude="openVATNumberItaly" />
+
+      {/* Related Guides */}
+      <RelatedGuides context="openVATNumberItaly" />
+
       {/* CTA Section */}
       <section className="py-16 bg-[#009246] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              {t('landingPages.openVATNumberItaly.ctaTitle')}
+              {landingPageData?.ctaTitle}
             </h2>
-            <p className="text-xl mb-8 text-white/90">
-              {t('landingPages.openVATNumberItaly.ctaSubtitle')}
-            </p>
+            {landingPageData?.ctaDescription && (
+              <p className="text-xl mb-8 text-white/90">
+                {landingPageData.ctaDescription}
+              </p>
+            )}
             <Link
               href={getLocalizedPath('/contact')}
               className="inline-flex items-center px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
             >
-              {t('landingPages.openVATNumberItaly.ctaButton')}
+              {landingPageData?.ctaButton || t('navigation.learnMore')}
               <i className="fas fa-arrow-right ml-2"></i>
             </Link>
           </div>

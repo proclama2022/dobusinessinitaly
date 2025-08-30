@@ -12,6 +12,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Contact from "@/pages/Contact";
 import Media from "@/pages/Media";
+import Social from "@/pages/Social";
 import Admin from "@/pages/Admin";
 import OpenCompanyItaly from "@/pages/OpenCompanyItaly";
 import OpenVATNumberItaly from "@/pages/OpenVATNumberItaly";
@@ -49,24 +50,21 @@ function Router() {
       {/* Conditional analytics loading based on cookie consent */}
       <Helmet>
         {(allowAnalytics || allowMarketing) && (
-          <script>
-            {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());`}
-          </script>
-        )}
-        {allowAnalytics && (
           <>
+            <script>
+              {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());`}
+            </script>
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-X82GKPCGB7"></script>
-            <script>
-              {`gtag('config','G-X82GKPCGB7');`}
-            </script>
-          </>
-        )}
-        {allowMarketing && (
-          <>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10798871348"></script>
-            <script>
-              {`gtag('config','AW-10798871348');`}
-            </script>
+            {allowAnalytics && (
+              <script>
+                {`gtag('config','G-X82GKPCGB7');`}
+              </script>
+            )}
+            {allowMarketing && (
+              <script>
+                {`gtag('config','AW-10798871348');`}
+              </script>
+            )}
           </>
         )}
       </Helmet>
@@ -135,6 +133,12 @@ function Router() {
             <Route key={`media-${lang}`} path={`/${lang}/media`} component={Media} />
           ))}
           <Route path="/media" component={Media} />
+
+          {/* Pagina Social & Video */}
+          {supportedLanguages.map(lang => (
+            <Route key={`social-${lang}`} path={`/${lang}/social`} component={Social} />
+          ))}
+          <Route path="/social" component={Social} />
 
           {/* Pagina di amministrazione per il blog */}
           <Route path="/admin" component={Admin} />

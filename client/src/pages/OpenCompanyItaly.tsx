@@ -5,6 +5,8 @@ import SEOHead from '@/components/SEOHead';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import RelatedServices from '@/components/RelatedServices';
+import RelatedGuides from '@/components/RelatedGuides';
 
 const OpenCompanyItaly = () => {
   const { t, i18n } = useTranslation();
@@ -19,11 +21,37 @@ const OpenCompanyItaly = () => {
   // Get translation data
   const landingPageData = t('landingPages.openCompanyItaly', { returnObjects: true }) as any;
 
-  // Safe fallbacks to prevent runtime errors if arrays are missing in some locales
-  const whyItems = Array.isArray(landingPageData?.whyItems) ? landingPageData.whyItems : [];
-  const servicesItems = Array.isArray(landingPageData?.servicesItems) ? landingPageData.servicesItems : [];
+  // SEO fallbacks
+  const seoTitle = landingPageData?.metaTitle || landingPageData?.title || t('landingPages.openCompanyItaly.title');
+  const seoDescription = landingPageData?.metaDescription || landingPageData?.subtitle || '';
+
+  // Safe arrays if present
   const processSteps = Array.isArray(landingPageData?.processSteps) ? landingPageData.processSteps : [];
   const faqItems = Array.isArray(landingPageData?.faqItems) ? landingPageData.faqItems : [];
+
+  // Build company types from explicit keys in locales
+  const companyTypes = [
+    {
+      title: landingPageData?.srlTitle,
+      description: landingPageData?.srlDescription,
+      features: (landingPageData?.srlFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.individualCompanyTitle,
+      description: landingPageData?.individualCompanyDescription,
+      features: (landingPageData?.individualCompanyFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.sncTitle,
+      description: landingPageData?.sncDescription,
+      features: (landingPageData?.sncFeatures || []) as string[],
+    },
+    {
+      title: landingPageData?.sasTitle,
+      description: landingPageData?.sasDescription,
+      features: (landingPageData?.sasFeatures || []) as string[],
+    },
+  ].filter(c => c.title && c.description);
 
   // Structured data for the service page
   const serviceStructuredData = {
@@ -95,18 +123,43 @@ const OpenCompanyItaly = () => {
     ]
   };
 
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('navigation.home', 'Home'),
+        item: `https://yourbusinessinitaly.com/${currentLang}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('navigation.services', 'Services'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: t('landingPages.openCompanyItaly.title'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/services/open-company-italy`
+      }
+    ]
+  };
+
   return (
     <>
       <SEOHead
-        title={t('landingPages.openCompanyItaly.metaTitle')}
-        description={t('landingPages.openCompanyItaly.metaDescription')}
+        title={seoTitle}
+        description={seoDescription}
         keywords="open company Italy, company formation Italy, start business Italy, foreign entrepreneur Italy, SRL Italy, business setup Italy"
         canonicalUrl={`/${currentLang}/services/open-company-italy`}
         ogImage="/images/open-company-italy-og.jpg"
         ogType="website"
         twitterCard="summary_large_image"
         lang={currentLang}
-        structuredData={[serviceStructuredData, faqStructuredData]}
+        structuredData={[serviceStructuredData, faqStructuredData, breadcrumbStructuredData]}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/services/open-company-italy',
           'en': 'https://yourbusinessinitaly.com/en/services/open-company-italy',
@@ -164,58 +217,69 @@ const OpenCompanyItaly = () => {
         </div>
       </section>
 
-      {/* Introduction */}
+      {/* Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-800">
-                {t('landingPages.openCompanyItaly.whyTitle')}
+                {landingPageData?.overviewTitle || t('landingPages.openCompanyItaly.title')}
               </h2>
-              <p className="text-lg text-gray-600">
-                {t('landingPages.openCompanyItaly.whySubtitle')}
-              </p>
+              {landingPageData?.overviewDescription && (
+                <p className="text-lg text-gray-600">
+                  {landingPageData.overviewDescription}
+                </p>
+              )}
+              {landingPageData?.overviewCta && (
+                <div className="mt-6">
+                  <Link
+                    href={getLocalizedPath('/contact')}
+                    className="inline-block px-6 py-3 bg-[#009246] text-white font-semibold rounded-lg hover:bg-[#007a33] transition-colors"
+                  >
+                    {landingPageData.overviewCta}
+                  </Link>
+                </div>
+              )}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              {whyItems.map((item: any, index: number) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-[#009246] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-star text-2xl"></i>
+      {/* Company Types Section */}
+      {companyTypes.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4 text-gray-800">
+                  {landingPageData?.companyTypesTitle}
+                </h2>
+                {landingPageData?.companyTypesSubtitle && (
+                  <p className="text-lg text-gray-600">
+                    {landingPageData.companyTypesSubtitle}
+                  </p>
+                )}
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {companyTypes.map((item: any, index: number) => (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{item.title}</h3>
+                    <p className="text-gray-600 mb-3">{item.description}</p>
+                    {Array.isArray(item.features) && item.features.length > 0 && (
+                      <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
+                        {item.features.map((f: string, i: number) => (
+                          <li key={i}>{f}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
-                {t('landingPages.openCompanyItaly.servicesTitle')}
-              </h2>
-              <p className="text-lg text-gray-600">
-                {t('landingPages.openCompanyItaly.servicesSubtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {servicesItems.map((item: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Process Section */}
       <section id="process" className="py-16 bg-white">
@@ -253,11 +317,13 @@ const OpenCompanyItaly = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-800">
-                {t('landingPages.openCompanyItaly.faqTitle')}
+                {landingPageData?.faqTitle}
               </h2>
-              <p className="text-lg text-gray-600">
-                {t('landingPages.openCompanyItaly.faqSubtitle')}
-              </p>
+              {landingPageData?.faqSubtitle && (
+                <p className="text-lg text-gray-600">
+                  {landingPageData.faqSubtitle}
+                </p>
+              )}
             </div>
 
             <div className="space-y-6">
@@ -272,25 +338,35 @@ const OpenCompanyItaly = () => {
         </div>
       </section>
 
+      {/* Related Services */}
+      <RelatedServices exclude="openCompanyItaly" />
+
+      {/* Related Guides */}
+      <RelatedGuides context="openCompanyItaly" />
+
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#009246] to-[#38a169] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">
-              {t('landingPages.openCompanyItaly.ctaTitle')}
+              {landingPageData?.ctaTitle}
             </h2>
-            <p className="text-xl mb-8 text-white/90">
-              {t('landingPages.openCompanyItaly.ctaSubtitle')}
-            </p>
+            {landingPageData?.ctaDescription && (
+              <p className="text-xl mb-8 text-white/90">
+                {landingPageData.ctaDescription}
+              </p>
+            )}
             <Link
               href={getLocalizedPath('/contact')}
               className="inline-block px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg text-lg"
             >
-              {t('landingPages.openCompanyItaly.ctaButton')}
+              {landingPageData?.ctaButton || t('navigation.learnMore')}
             </Link>
-            <p className="mt-4 text-white/80">
-              {t('landingPages.openCompanyItaly.ctaNote')}
-            </p>
+            {landingPageData?.ctaNote && (
+              <p className="mt-4 text-white/80">
+                {landingPageData.ctaNote}
+              </p>
+            )}
           </div>
         </div>
       </section>

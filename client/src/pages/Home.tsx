@@ -18,8 +18,6 @@ const Home = () => {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
-    // Set page title
-    document.title = 'Commercialista per Stranieri in Italia | Apertura Società e Partita IVA';
   }, []);
 
   return (

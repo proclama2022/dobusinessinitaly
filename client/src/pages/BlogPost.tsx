@@ -9,7 +9,6 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
-import DownloadGuideForm from '@/components/DownloadGuideForm';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 // Interfaccia per i metadati del blog post
@@ -446,23 +445,19 @@ const BlogPost = () => {
                 </div>
               </div>
 
-              {/* Download Guide Form */}
-              {meta.leadMagnet && (
-                <DownloadGuideForm 
-                  leadMagnetType={meta.leadMagnet.type}
-                  currentLanguage={currentLanguage}
-                  blogPost={{
-                    slug: meta.slug,
-                    title: meta.title
-                  }}
-                />
-              )}
-              {!meta.leadMagnet && (
-                <div className="max-w-md mx-auto mt-12 p-6 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-red-600">Debug: leadMagnet non trovato nei metadati</p>
-                  <p className="text-xs text-gray-500 mt-2">Metadati disponibili: {JSON.stringify(Object.keys(meta))}</p>
-                </div>
-              )}
+              {/* Contact CTA instead of download lead magnet */}
+              <div className="max-w-2xl mx-auto mt-12 p-8 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-xl text-white shadow">
+                <h3 className="text-2xl font-heading font-bold mb-3">
+                  <i className="fas fa-handshake mr-2"></i>
+                  {t('blog.contactCta.title', 'Need help on this topic?')}
+                </h3>
+                <p className="text-white/90 mb-6">
+                  {t('blog.contactCta.subtitle', 'Book a free consultation with our experts. We will review your case and suggest the best next steps.')} 
+                </p>
+                <Link href={getLocalizedPath('/contact')} className="inline-block px-6 py-3 bg-white text-[#009246] font-semibold rounded-md hover:bg-gray-100 transition-colors">
+                  {t('blog.contactCta.button', 'Contact us now')}
+                </Link>
+              </div>
             </div>
 
             {/* Sidebar */}

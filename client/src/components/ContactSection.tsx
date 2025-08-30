@@ -448,16 +448,16 @@ const ContactSection = () => {
                 </h3>
                 
                 <div className="flex space-x-3">
-                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300">
+                  <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#1DA1F2] hover:text-white transition-all duration-300">
-                    <i className="fab fa-twitter"></i>
+                  <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
+                    <i className="fab fa-tiktok"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#4267B2] hover:text-white transition-all duration-300">
-                    <i className="fab fa-facebook-f"></i>
+                  <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all duration-300">
+                    <i className="fab fa-youtube"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300">
+                  <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300">
                     <i className="fab fa-instagram"></i>
                   </a>
                 </div>

@@ -61,9 +61,10 @@ const SEOHead = ({
       }
     },
     sameAs: [
-      'https://www.linkedin.com/company/yourbusinessinitaly',
-      'https://twitter.com/yourbusinessit',
-      'https://www.facebook.com/yourbusinessinitaly'
+      'https://www.linkedin.com/company/partitaiva',
+      'https://www.instagram.com/partitaiva.it/',
+      'https://www.tiktok.com/@partitaiva.it',
+      'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg'
     ]
   };
 
@@ -75,13 +76,14 @@ const SEOHead = ({
     url: siteUrl,
     logo: 'https://yourbusinessinitaly.com/images/logo.png',
     sameAs: [
-      'https://www.linkedin.com/company/yourbusinessinitaly',
-      'https://twitter.com/yourbusinessit',
-      'https://www.facebook.com/yourbusinessinitaly'
+      'https://www.linkedin.com/company/partitaiva',
+      'https://www.instagram.com/partitaiva.it/',
+      'https://www.tiktok.com/@partitaiva.it',
+      'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg'
     ],
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+39-012-345-6789',
+      telephone: '+39 095643533',
       contactType: 'customer service',
       areaServed: 'IT',
       availableLanguage: ['it', 'en', 'fr', 'de', 'es']
@@ -145,9 +147,10 @@ const SEOHead = ({
     paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
     currenciesAccepted: 'EUR',
     sameAs: [
-      'https://www.linkedin.com/company/yourbusinessinitaly',
-      'https://twitter.com/yourbusinessit',
-      'https://www.facebook.com/yourbusinessinitaly'
+      'https://www.linkedin.com/company/partitaiva',
+      'https://www.instagram.com/partitaiva.it/',
+      'https://www.tiktok.com/@partitaiva.it',
+      'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg'
     ],
     founder: {
       '@type': 'Person',
@@ -263,12 +266,19 @@ const SEOHead = ({
       <meta name="format-detection" content="telephone=yes" />
       
       {/* Meta tag per social media */}
-      <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
       <meta name="twitter:site" content="@yourbusinessit" />
       <meta name="twitter:creator" content="@yourbusinessit" />
       
       {/* Canonical URL */}
       {fullCanonicalUrl && <link rel="canonical" href={fullCanonicalUrl} />}
+      
+      {/* Favicon e icone moderne */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+      <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
       
       {/* Web App Manifest */}
       <link rel="manifest" href="/manifest.json" />
@@ -287,9 +297,8 @@ const SEOHead = ({
       )}
       
       {/* DNS Prefetch per servizi esterni */}
-      <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//hook.eu1.make.com" />
       
       {/* Prefetch important resources */}
       <link rel="prefetch" href="/images/logo.png" as="image" />

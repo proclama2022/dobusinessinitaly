@@ -70,6 +70,7 @@ const Header = () => {
     { path: '/about', label: t('navigation.about') },
     { path: '/blog', label: t('navigation.blog') },
     { path: '/media', label: t('navigation.media') },
+    { path: '/social', label: t('navigation.social') },
     { path: '/contact', label: t('navigation.contact') }
   ];
 

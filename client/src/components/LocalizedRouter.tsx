@@ -8,6 +8,7 @@ import About from '@/pages/About';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import Contact from '@/pages/Contact';
+import Social from '@/pages/Social';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import OpenCompanyItaly from '@/pages/OpenCompanyItaly';
 import OpenVATNumberItaly from '@/pages/OpenVATNumberItaly';
@@ -129,6 +130,11 @@ export const LocalizedRouter = () => {
           
           <Route path="/:lang/contact" component={({ params }) => {
             return supportedLanguages.includes(params.lang) ? <Contact /> : <NotFound />;
+          }} />
+          
+          {/* Social & Video */}
+          <Route path="/:lang/social" component={({ params }) => {
+            return supportedLanguages.includes(params.lang) ? <Social /> : <NotFound />;
           }} />
           
           {/* Privacy Policy page */}

@@ -4,9 +4,35 @@
     "services": "Servicios",
     "about": "Nosotros",
     "media": "En los Medios",
+    "social": "Redes & Videos",
     "blog": "Blog",
     "contact": "Contacto",
     "learnMore": "Más información"
+  },
+  "socialPage": {
+    "title": "Redes & Videos - Yourbusinessinitaly.com",
+    "heading": "Redes & Videos",
+    "lead": "Contenido seleccionado para conocernos mejor y generar confianza: LinkedIn de Giovanni Emmi y los videos más útiles de nuestro canal de YouTube.",
+    "description": "Destacados sociales para generar confianza: sigue a Giovanni Emmi en LinkedIn y explora los videos más útiles de nuestro canal de YouTube.",
+    "linkedinTitle": "LinkedIn · Giovanni Emmi",
+    "linkedinDesc": "Síguenos en LinkedIn para novedades profesionales y perspectivas sobre impuestos y empresa en Italia.",
+    "linkedinCta": "Ver perfil",
+    "linkedinButton": "Ver últimas publicaciones",
+    "linkedinFeaturedTitle": "Publicaciones destacadas",
+    "youtubeTitle": "YouTube · Videos destacados",
+    "youtubeDesc": "Seleccionamos los videos más útiles para hacer negocios en Italia.",
+    "youtubeEmpty": "Pronto publicaremos una selección de videos.",
+    "youtubeButton": "Ir al canal de YouTube",
+    "youtubeOnlyChannel": "Mostramos únicamente videos del canal oficial."
+  },
+  "common": {
+    "home": "Inicio",
+    "blog": "Blog",
+    "contactUs": "Contáctanos"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "subtitle": "¿Olvidaste añadir la página al enrutador?"
   },
   "hero": {
     "title": "Expertise Contable Para Tu Negocio Global",

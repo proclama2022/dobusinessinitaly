@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useLocalizedPath } from '@/components/LocalizedRouter';
 
 // Tipo per gli elementi media (articoli, profili, menzioni)
 type MediaItemProps = {
@@ -8,6 +7,8 @@ type MediaItemProps = {
   source: string;
   excerpt: string;
   link: string;
+  category: string;
+  icon: string;
 };
 
 // Componente per un singolo elemento media
@@ -16,33 +17,66 @@ const MediaItem = ({
   date,
   source,
   excerpt,
-  link
+  link,
+  category,
+  icon
 }: MediaItemProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-      <div className="flex items-center p-4 border-b">
-        <span className="font-medium text-neutral-700">{source}</span>
-      </div>
-      <div className="p-4 flex-grow">
-        <p className="text-neutral-500 text-sm mb-2">{date}</p>
-        <h3 className="font-heading text-lg font-semibold mb-2 line-clamp-2 text-neutral-800 hover:text-[#009246] transition-colors enhanced-text">
-          {title}
-        </h3>
-        <p className="text-neutral-600 text-sm mb-4 line-clamp-3" style={{ letterSpacing: '0.01em' }}>
-          {excerpt}
-        </p>
-      </div>
-      <div className="px-4 pb-4 mt-auto">
-        {link !== '#' ? (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-[#009246] hover:text-[#ce2b37] text-sm font-medium transition-colors border-b border-[#009246] hover:border-[#ce2b37] pb-1"
-          >
-            Leggi l'articolo completo
-          </a>
-        ) : null}
+    <div className="group relative">
+      <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col overflow-hidden">
+        {/* Header con icona e categoria */}
+        <div className="relative p-6 pb-4">
+          {/* Overlay con gradiente italiano al hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500"></div>
+          
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i className={`${icon} text-white text-xl`}></i>
+            </div>
+            <div className="px-3 py-1 bg-neutral-100 group-hover:bg-gradient-to-r group-hover:from-[#009246]/10 group-hover:to-[#ce2b37]/10 text-xs font-medium text-neutral-700 rounded-full transition-all">
+              {category}
+            </div>
+          </div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-semibold text-neutral-800 group-hover:text-[#009246] transition-colors">{source}</span>
+              <span className="text-neutral-500 text-sm">{date}</span>
+            </div>
+            
+            <h3 className="font-heading text-xl font-bold mb-3 line-clamp-2 text-neutral-800 group-hover:text-[#009246] transition-colors leading-tight">
+              {title}
+            </h3>
+            
+            <p className="text-neutral-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+              {excerpt}
+            </p>
+          </div>
+          
+          {/* Bordi decorativi */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+        </div>
+        
+        {/* Footer con link */}
+        <div className="px-6 pb-6 mt-auto">
+          {link !== '#' ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#009246] to-[#38a169] text-white text-sm font-semibold rounded-md hover:scale-105 transition-transform shadow-md"
+            >
+              <i className="fas fa-external-link-alt mr-2"></i>
+              Leggi di più
+            </a>
+          ) : (
+            <div className="px-4 py-2 bg-neutral-100 text-neutral-500 text-sm font-medium rounded-md">
+              <i className="fas fa-info-circle mr-2"></i>
+              Dettagli disponibili
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -50,12 +84,13 @@ const MediaItem = ({
 
 interface MediaCoverageSectionProps {
   maxItems?: number;
+  showTitle?: boolean;
 }
 
-const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
+const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSectionProps) => {
   const { t } = useTranslation();
-  const { getLocalizedPath } = useLocalizedPath();
-  // 4 card reali, fisse, senza loghi o icone
+  
+  // Media items con categorie e icone
   const mediaItems: MediaItemProps[] = [
     {
       title: '100 Best in Class 2024 - Innovazione Digitale nei servizi professionali',
@@ -63,6 +98,8 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
       source: 'Forbes Italia / TeamSystem',
       excerpt: "Riconoscimento per l'eccellenza nell'innovazione digitale nei servizi professionali. Proclama SPA è stata premiata tra i migliori studi italiani per innovazione digitale, confermando il nostro impegno verso un servizio clienti moderno ed efficiente.",
       link: 'https://www.forbes.it/100-best-in-class-2023',
+      category: 'Premio',
+      icon: 'fas fa-trophy'
     },
     {
       title: "Pubblicazione: 'L'evoluzione del commercialista nell'era dell'Intelligenza Artificiale'",
@@ -70,6 +107,8 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
       source: 'Amazon - Pubblicazioni di Giovanni Emmi',
       excerpt: "Libro che esplora come l'intelligenza artificiale stia trasformando la professione del commercialista. 'Essere un commercialista innovativo significa essere un pilastro per la continuità e il progresso delle aziende clienti, un punto di riferimento per il futuro, mantenendo sempre un'alta etica professionale.'",
       link: 'https://amzn.eu/d/4GNuret',
+      category: 'Pubblicazione',
+      icon: 'fas fa-book'
     },
     {
       title: 'Premio "Professionista Digitale dell\'anno 2014"',
@@ -77,6 +116,8 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
       source: 'Politecnico di Milano - Osservatorio Professionisti e Innovazione Digitale',
       excerpt: "Nel 2014 lo Studio Emmi, oggi Proclama SPA, si è distinto in Italia per capacità innovativa a livello organizzativo e di business con l'utilizzo delle tecnologie digitali. In particolare per il progetto partitaiva.it, pioniere nella trasformazione digitale dello studio professionale.",
       link: 'https://www.osservatori.net/it/eventi/on-demand/convegni',
+      category: 'Riconoscimento',
+      icon: 'fas fa-medal'
     },
     {
       title: 'Partitaiva.ai - Piattaforma innovativa per commercialisti e PMI',
@@ -84,32 +125,76 @@ const MediaCoverageSection = ({ maxItems }: MediaCoverageSectionProps) => {
       source: 'Progetti digitali di Proclama SPA',
       excerpt: "Portale che semplifica e riorganizza gli studi dei commercialisti e le aree amministrative e contabili delle PMI. Un progetto all'avanguardia che utilizza l'intelligenza artificiale per ottimizzare i processi amministrativi e contabili.",
       link: 'https://www.partitaiva.it',
+      category: 'Innovazione',
+      icon: 'fas fa-rocket'
     },
   ];
 
+  const displayItems = maxItems ? mediaItems.slice(0, maxItems) : mediaItems;
+
   return (
     <section className="py-16 bg-gradient-to-br from-neutral-50 to-white relative overflow-hidden">
+      {/* Pattern di sfondo */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23009246\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
+      ></div>
+      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-heading font-semibold italian-text-gradient mb-4" style={{ textShadow: '0 0 1px rgba(0,0,0,0.05)' }}>
-            {t('media.title', 'Parlano di Noi')}
-          </h2>
-          <p className="text-neutral-700 max-w-3xl mx-auto enhanced-text" style={{ letterSpacing: '0.01em' }}>
-            {t('media.subtitle', 'Scopri cosa dicono di Yourbusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.')}
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mediaItems.slice(0, maxItems).map((item, index) => (
+        {showTitle && (
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mr-4">
+                <i className="fas fa-newspaper text-white text-2xl"></i>
+              </div>
+              <div>
+                <h2 className="text-4xl font-heading font-bold italian-text-gradient mb-2">
+                  {t('media.title', 'Parlano di Noi')}
+                </h2>
+                <div className="h-1 w-24 italian-gradient"></div>
+              </div>
+            </div>
+            <p className="text-lg text-neutral-700 max-w-3xl mx-auto leading-relaxed">
+              {t('media.subtitle', 'Riconoscimenti, pubblicazioni e menzioni che testimoniano la nostra eccellenza e innovazione nel settore dei servizi professionali.')}
+            </p>
+          </div>
+        )}
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {displayItems.map((item, index) => (
             <MediaItem key={index} {...item} />
           ))}
         </div>
-        <div className="text-center mt-12">
-          <a
-            href={getLocalizedPath('/media')}
-            className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1"
-          >
-            <span className="text-on-color">{t('media.seeAll', 'Vedi tutte le menzioni')}</span>
-          </a>
+        
+        {/* Sezione statistiche */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mx-auto mb-3">
+              <i className="fas fa-award text-white text-xl"></i>
+            </div>
+            <div className="text-2xl font-bold text-[#009246] mb-1">10+</div>
+            <div className="text-sm text-neutral-600">Anni di esperienza</div>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#ce2b37] to-[#dc2626] rounded-full flex items-center justify-center mx-auto mb-3">
+              <i className="fas fa-trophy text-white text-xl"></i>
+            </div>
+            <div className="text-2xl font-bold text-[#ce2b37] mb-1">3</div>
+            <div className="text-sm text-neutral-600">Premi nazionali</div>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mx-auto mb-3">
+              <i className="fas fa-book text-white text-xl"></i>
+            </div>
+            <div className="text-2xl font-bold text-[#009246] mb-1">1</div>
+            <div className="text-sm text-neutral-600">Libro pubblicato</div>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#ce2b37] to-[#dc2626] rounded-full flex items-center justify-center mx-auto mb-3">
+              <i className="fas fa-rocket text-white text-xl"></i>
+            </div>
+            <div className="text-2xl font-bold text-[#ce2b37] mb-1">100%</div>
+            <div className="text-sm text-neutral-600">Innovazione digitale</div>
+          </div>
         </div>
       </div>
     </section>

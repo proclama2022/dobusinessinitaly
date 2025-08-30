@@ -43,7 +43,7 @@ const Footer = () => {
             </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
             <div className="flex space-x-4">
-              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
+              <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-linkedin-in" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
@@ -52,8 +52,8 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-twitter" style={{
+              <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-black flex items-center justify-center transition-all hover:scale-110">
+                <i className="fab fa-tiktok" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -61,8 +61,8 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-facebook-f" style={{
+              <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-[#FF0000] flex items-center justify-center transition-all hover:scale-110">
+                <i className="fab fa-youtube" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -70,7 +70,7 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
+              <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-[#E1306C] flex items-center justify-center transition-all hover:scale-110">
                 <i className="fab fa-instagram" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',

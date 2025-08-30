@@ -32,6 +32,12 @@ const Contact = () => {
           es: 'https://yourbusinessinitaly.com/es/contact',
           'x-default': 'https://yourbusinessinitaly.com/it/contact'
         }}
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: t('navigation.contact'),
+          url: `https://yourbusinessinitaly.com/${currentLang}/contact`,
+        }}
       />
       <div className="bg-primary py-24">
         <div className="container mx-auto px-4">
