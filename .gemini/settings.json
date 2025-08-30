@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["@upstash/context7-mcp@latest"],
+      "env": {}
+    },
+    "perplexity-mcp": {
+      "command": "uvx",
+      "args": ["perplexity-mcp"],
+      "env": {
+        "PERPLEXITY_API_KEY": "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",
+        "PERPLEXITY_MODEL": "sonar"
+      }
+    }
+  }
+}
