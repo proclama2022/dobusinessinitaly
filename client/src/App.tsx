@@ -4,29 +4,27 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { config } from '@fortawesome/fontawesome-svg-core';
-import { lazy, Suspense } from "react";
-
-// Caricamento lazy delle pagine per code splitting
-const NotFound = lazy(() => import("@/pages/not-found"));
-const Home = lazy(() => import("@/pages/Home"));
-const Services = lazy(() => import("@/pages/Services"));
-const About = lazy(() => import("@/pages/About"));
-const Blog = lazy(() => import("@/pages/Blog"));
-const BlogPost = lazy(() => import("@/pages/BlogPost"));
-const Contact = lazy(() => import("@/pages/Contact"));
-const Media = lazy(() => import("@/pages/Media"));
-const Social = lazy(() => import("@/pages/Social"));
-const Admin = lazy(() => import("@/pages/Admin"));
-const OpenCompanyItaly = lazy(() => import("@/pages/OpenCompanyItaly"));
-const OpenVATNumberItaly = lazy(() => import("@/pages/OpenVATNumberItaly"));
-const TaxAccountingExpats = lazy(() => import("@/pages/TaxAccountingExpats"));
-const PillarBusinessItaly = lazy(() => import("@/pages/PillarBusinessItaly"));
+// Import diretto delle pagine per debugging
+import NotFound from "@/pages/not-found";
+import Home from "@/pages/Home";
+import Services from "@/pages/Services";
+import About from "@/pages/About";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
+import Contact from "@/pages/Contact";
+import Media from "@/pages/Media";
+import Social from "@/pages/Social";
+import Admin from "@/pages/Admin";
+import OpenCompanyItaly from "@/pages/OpenCompanyItaly";
+import OpenVATNumberItaly from "@/pages/OpenVATNumberItaly";
+import TaxAccountingExpats from "@/pages/TaxAccountingExpats";
+import PillarBusinessItaly from "@/pages/PillarBusinessItaly";
 
 import Header from "@/components/Header";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supportedLanguages } from "./lib/languages";
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import CookiePolicy from '@/pages/CookiePolicy';
@@ -76,8 +74,7 @@ function Router() {
 
       <Header />
       <main>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Switch>
+        <Switch>
           {/* Home per ogni lingua */}
           {supportedLanguages.map(lang => (
             <Route key={`home-${lang}`} path={`/${lang}`} component={Home} />
@@ -159,8 +156,7 @@ function Router() {
 
           {/* Pagina non trovata */}
           <Route component={NotFound} />
-          </Switch>
-        </Suspense>
+        </Switch>
       </main>
       <Footer />
       <CookieBanner />

@@ -103,6 +103,13 @@ self.addEventListener('fetch', (event) => {
 // Strategie di caching
 
 function cacheFirstStrategy(request) {
+  // Skip chrome-extension and unsupported schemes
+  if (request.url.startsWith('chrome-extension:') || 
+      request.url.startsWith('moz-extension:') ||
+      request.url.startsWith('safari-extension:')) {
+    return fetch(request).catch(() => new Response('', { status: 404 }));
+  }
+
   return caches.match(request)
     .then((cachedResponse) => {
       if (cachedResponse) {
@@ -110,11 +117,15 @@ function cacheFirstStrategy(request) {
       }
 
       return fetch(request).then((response) => {
-        // Cache solo risposte valide
-        if (response.status === 200 && response.type === 'basic') {
+        // Cache solo risposte valide da HTTP/HTTPS
+        if (response.status === 200 && 
+            (response.type === 'basic' || response.type === 'cors') &&
+            (request.url.startsWith('http:') || request.url.startsWith('https:'))) {
           const responseClone = response.clone();
           caches.open(STATIC_CACHE).then((cache) => {
-            cache.put(request, responseClone);
+            cache.put(request, responseClone).catch((err) => {
+              console.warn('[SW] Failed to cache:', request.url, err);
+            });
           });
         }
         return response;
@@ -125,6 +136,7 @@ function cacheFirstStrategy(request) {
       if (request.url.includes('/images/')) {
         return caches.match('/images/logo.png');
       }
+      return new Response('', { status: 404 });
     });
 }
 

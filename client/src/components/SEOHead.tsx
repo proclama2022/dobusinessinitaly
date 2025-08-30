@@ -302,7 +302,7 @@ const SEOHead = ({
       
       {/* Prefetch important resources */}
       <link rel="prefetch" href="/images/logo.png" as="image" />
-      <link rel="prefetch" href="https://ui-avatars.com/api/" as="image" />
+      <link rel="prefetch" href="/favicon.ico" as="image" />
       
       {/* Open Graph */}
       <meta property="og:title" content={title} />
