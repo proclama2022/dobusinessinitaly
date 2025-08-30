@@ -30,11 +30,7 @@
 }
 
 /* 4. Font loading optimizations */
-@font-face {
-  font-family: 'Inter';
-  font-display: swap; /* FOIT -> FOUT per migliori Core Web Vitals */
-  src: local('Inter'), url('/fonts/inter.woff2') format('woff2');
-}
+/* Font già caricati via Google Fonts con display=swap */
 
 /* 5. Smooth animations che rispettano prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
