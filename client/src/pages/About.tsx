@@ -6,6 +6,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
 import SEOHead from '@/components/SEOHead';
+import { authorProfile } from '@/data/author';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -150,6 +151,16 @@ const About = () => {
         canonicalUrl={`/${currentLang}/about`}
         keywords="about, team, commercialista, consulenza fiscale, Italia, yourbusinessinitaly"
         lang={currentLang}
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: authorProfile.name,
+          jobTitle: authorProfile.titles[currentLang] || authorProfile.titles.it,
+          image: `https://yourbusinessinitaly.com${authorProfile.image}`,
+          url: `https://yourbusinessinitaly.com/${currentLang}/about`,
+          affiliation: authorProfile.affiliation ? { '@type': 'Organization', name: authorProfile.affiliation } : undefined,
+          sameAs: authorProfile.sameAs || []
+        }}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/about',
           en: 'https://yourbusinessinitaly.com/en/about',

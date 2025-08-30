@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
-import OptimizedImage from '@/components/OptimizedImage';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import RelatedServices from '@/components/RelatedServices';
 import RelatedGuides from '@/components/RelatedGuides';
@@ -12,6 +11,11 @@ const OpenVATNumberItaly = () => {
   const { t, i18n } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
   const currentLang = i18n.language;
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Get translation data
   const landingPageData = t('landingPages.openVATNumberItaly', { returnObjects: true }) as any;
@@ -130,7 +134,7 @@ const OpenVATNumberItaly = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#009246] to-[#006633] text-white py-20">
+      <section className="relative bg-gradient-to-br from-[#009246] to-[#38a169] text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -165,7 +169,8 @@ const OpenVATNumberItaly = () => {
         <div className="container mx-auto px-4">
           <Breadcrumbs
             items={[
-              { label: t('navigation.services'), path: '/services' },
+              { label: t('navigation.home'), path: getLocalizedPath('/') },
+              { label: t('navigation.services'), path: getLocalizedPath('/services') },
               { label: t('landingPages.openVATNumberItaly.title'), path: `/${currentLang}/services/open-vat-number-italy`, isLast: true }
             ]}
           />
@@ -361,7 +366,7 @@ const OpenVATNumberItaly = () => {
       <RelatedGuides context="openVATNumberItaly" />
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#009246] text-white">
+      <section className="py-16 bg-gradient-to-r from-[#009246] to-[#38a169] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

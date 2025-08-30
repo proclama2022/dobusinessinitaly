@@ -32,6 +32,8 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  authorImage?: string;
+  authorTitle?: string;
   lang: string; // Add language property
   leadMagnet?: {
     title: string;
@@ -126,6 +128,8 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                         excerpt: data.excerpt?.trim() || '',
                         coverImage: data.coverImage?.trim() || '',
                         author: data.author?.trim() || 'Redazione',
+                        authorImage: data.authorImage?.trim?.() || data.authorImage || undefined,
+                        authorTitle: data.authorTitle?.trim?.() || data.authorTitle || undefined,
                         lang: fileLanguage // Assign the extracted language
                     };
                     
@@ -214,6 +218,8 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
                         excerpt: data.excerpt?.trim() || '',
                         coverImage: data.coverImage?.trim() || '',
                         author: data.author?.trim() || 'Redazione',
+                        authorImage: data.authorImage?.trim?.() || data.authorImage || undefined,
+                        authorTitle: data.authorTitle?.trim?.() || data.authorTitle || undefined,
                         lang: fileLanguage // Assign the extracted language
                     };
                     
@@ -294,6 +300,8 @@ function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, conte
             excerpt: data.excerpt || '',
             coverImage: data.coverImage || '',
             author: data.author || 'Admin',
+            authorImage: data.authorImage || undefined,
+            authorTitle: data.authorTitle || undefined,
             lang: fileLanguage,
             leadMagnet: data.leadMagnet ? {
               title: data.leadMagnet.title || '',

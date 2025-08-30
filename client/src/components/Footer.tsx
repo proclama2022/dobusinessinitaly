@@ -43,8 +43,19 @@ const Footer = () => {
             </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110">
+              {/* LinkedIn Company */}
+              <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn Company">
                 <i className="fab fa-linkedin-in" style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'auto',
+                  filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
+                  transform: 'translateZ(0)'
+                }}></i>
+              </a>
+              {/* LinkedIn Giovanni */}
+              <a href="https://www.linkedin.com/in/studioemmicommercialista/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn Giovanni Emmi">
+                <i className="fab fa-linkedin" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',

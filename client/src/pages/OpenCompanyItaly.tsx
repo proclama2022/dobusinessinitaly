@@ -209,8 +209,8 @@ const OpenCompanyItaly = () => {
         <div className="container mx-auto px-4">
           <Breadcrumbs
             items={[
-              { label: t('navigation.home'), path: '/' },
-              { label: t('navigation.services'), path: `/${currentLang}/services` },
+              { label: t('navigation.home'), path: getLocalizedPath('/') },
+              { label: t('navigation.services'), path: getLocalizedPath('/services') },
               { label: t('landingPages.openCompanyItaly.title'), path: `/${currentLang}/services/open-company-italy`, isLast: true }
             ]}
           />

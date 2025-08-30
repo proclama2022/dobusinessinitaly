@@ -10,6 +10,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import { authorProfile } from '@/data/author';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -20,6 +21,8 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  authorImage?: string;
+  authorTitle?: string;
   leadMagnet?: {
     title: string;
     description: string;
@@ -207,6 +210,25 @@ const BlogPost = () => {
 
   const { meta, content } = postData.data;
   const langPrefix = `/${currentLanguage}`;
+  
+  // Localized author title from profile (fallback to meta or IT)
+  const resolvedAuthorTitle = authorProfile.titles[currentLanguage] || meta.authorTitle || authorProfile.titles.it;
+  const resolvedAuthorImage = (meta.authorImage && meta.authorImage.trim().length > 0 ? meta.authorImage : authorProfile.image);
+  const resolvedAuthorImagePath = resolvedAuthorImage.startsWith('http') ? resolvedAuthorImage : `${resolvedAuthorImage.startsWith('/') ? '' : '/'}${resolvedAuthorImage}`;
+  const authorLinkedIn = (authorProfile.sameAs || []).find((u) => u.includes('linkedin.com/in')) || 'https://www.linkedin.com/in/studioemmicommercialista/';
+  const authorName = authorProfile.name;
+
+  // Author Person structured data
+  const authorPersonStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: authorProfile.name,
+    jobTitle: resolvedAuthorTitle,
+    image: `https://yourbusinessinitaly.com${authorProfile.image}`,
+    url: authorProfile.urlByLang[currentLanguage] || authorProfile.urlByLang.it,
+    affiliation: authorProfile.affiliation ? { '@type': 'Organization', name: authorProfile.affiliation } : undefined,
+    sameAs: authorProfile.sameAs || []
+  };
 
   // Debug: log metadata per vedere cosa arriva dall'API
   console.log('[BlogPost] Meta data received:', meta);
@@ -316,7 +338,7 @@ const BlogPost = () => {
         publishedTime={formattedDate}
         modifiedTime={formattedDate}
         articleSection={meta.category}
-        structuredData={[articleStructuredData, faqStructuredData].filter(Boolean)}
+    structuredData={[articleStructuredData, faqStructuredData, authorPersonStructuredData].filter(Boolean)}
         alternates={hreflangAlternates}
       />
 
@@ -471,7 +493,7 @@ const BlogPost = () => {
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-neutral-200 overflow-hidden mr-4">
                     <img
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(meta.author)}&background=random&color=fff`}
+                      src={resolvedAuthorImagePath}
                       alt={meta.author}
                       className="w-full h-full object-cover"
                       loading="lazy"
@@ -479,8 +501,14 @@ const BlogPost = () => {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-neutral-800">{meta.author}</h4>
-                    <p className="text-sm text-neutral-600">Consulente DoBusinessNew</p>
+                    <h4 className="font-bold text-neutral-800">{authorName}</h4>
+                    <p className="text-sm text-neutral-600">{resolvedAuthorTitle}</p>
+                    <div className="mt-2">
+                      <a href={authorLinkedIn} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#0A66C2] hover:underline text-sm">
+                        <i className="fab fa-linkedin-in mr-1"></i>
+                        Follow on LinkedIn
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -515,6 +543,64 @@ const BlogPost = () => {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Author bio footer */}
+      <section className="py-16 bg-white border-t border-neutral-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {(() => {
+              const bioTexts: Record<string, { title: string; body: string } > = {
+                it: {
+                  title: `Su ${authorName}`,
+                  body: `${authorName} è Dottore Commercialista e Revisore Legale. Si occupa di startup e PMI innovative, expat e operazioni cross‑border. Supporta imprenditori stranieri in SRL e Partita IVA, VAT/e‑invoicing e compliance fiscale. Guida Yourbusinessinitaly.com e collabora con team legali e notarili (Proclama STP) per percorsi end‑to‑end.`
+                },
+                en: {
+                  title: `About ${authorName}`,
+                  body: `${authorName} is a Chartered Accountant and Statutory Auditor focused on startups, innovative SMEs and expats in Italy. He helps foreign founders open SRLs and VAT numbers, implement VAT/e‑invoicing and manage ongoing tax compliance. He leads Yourbusinessinitaly.com and partners with legal and notary teams (Proclama STP) for end‑to‑end setups.`
+                },
+                fr: {
+                  title: `À propos de ${authorName}`,
+                  body: `${authorName} est expert‑comptable et commissaire aux comptes, spécialisé dans les start‑ups, PME innovantes et expatriés en Italie. Il accompagne les fondateurs étrangers pour la création de SRL et de Partita IVA, la TVA/e‑facturation et la conformité fiscale, avec le soutien de partenaires juridiques et notariaux (Proclama STP).`
+                },
+                de: {
+                  title: `Über ${authorName}`,
+                  body: `${authorName} ist Steuerberater und Wirtschaftsprüfer mit Schwerpunkt auf Start‑ups, innovative KMU und Expats in Italien. Er unterstützt ausländische Gründer bei SRL‑Gründung, VAT‑Registrierung, E‑Rechnung und laufender Steuer‑Compliance, gemeinsam mit juristischen und notariellen Partnern (Proclama STP).`
+                },
+                es: {
+                  title: `Sobre ${authorName}`,
+                  body: `${authorName} es asesor fiscal y auditor estatutario, especializado en startups, pymes innovadoras y expats en Italia. Ayuda a fundadores extranjeros a abrir SRL y NIF de IVA, implantar IVA/facturación electrónica y gestionar la fiscalidad continua, junto con equipos jurídicos y notariales (Proclama STP).`
+                }
+              };
+              const bio = bioTexts[currentLanguage] || bioTexts.en;
+              return (
+                <div className="flex gap-4 items-start p-6 rounded-xl border border-neutral-200 bg-neutral-50">
+                  <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                    <img src={resolvedAuthorImage} alt={meta.author} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-neutral-900 mb-1">{bio.title}</h3>
+                    <p className="text-neutral-700 mb-3">{bio.body}</p>
+                    <div className="flex flex-wrap gap-3">
+                      <Link href={getLocalizedPath('/about')} className="inline-flex items-center text-[#009246] hover:underline">
+                        {currentLanguage === 'it' ? 'Scopri il profilo' : currentLanguage === 'fr' ? 'Voir le profil' : currentLanguage === 'de' ? 'Profil ansehen' : currentLanguage === 'es' ? 'Ver perfil' : 'View profile'}
+                      </Link>
+                      <span className="text-neutral-300">•</span>
+                      <Link href={getLocalizedPath('/contact')} className="inline-flex items-center text-[#009246] hover:underline">
+                        {currentLanguage === 'it' ? 'Prenota una call' : currentLanguage === 'fr' ? 'Réserver un appel' : currentLanguage === 'de' ? 'Termin buchen' : currentLanguage === 'es' ? 'Reserva una llamada' : 'Book a call'}
+                      </Link>
+                      <span className="text-neutral-300">•</span>
+                      <a href={authorLinkedIn} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#0A66C2] hover:underline">
+                        <i className="fab fa-linkedin-in mr-1"></i>
+                        {currentLanguage === 'it' ? 'Segui su LinkedIn' : currentLanguage === 'fr' ? 'Suivre sur LinkedIn' : currentLanguage === 'de' ? 'Auf LinkedIn folgen' : currentLanguage === 'es' ? 'Seguir en LinkedIn' : 'Follow on LinkedIn'}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </section>
