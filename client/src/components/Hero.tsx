@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
-import OptimizedImage from './OptimizedImage';
+import NextGenImage from './NextGenImage';
 import { useLocalizedPath } from './LocalizedRouter';
 
 const Hero = () => {
@@ -37,19 +37,14 @@ const Hero = () => {
     <section className="relative isolate min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] overflow-hidden">
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
-      <OptimizedImage
-        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=85"
+      <NextGenImage
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
         alt={t('hero.backgroundAlt')}
         className="absolute inset-0 w-full h-full scale-105 animate-slow-zoom z-[1]"
         priority={true}
         width={1920}
         height={1080}
         sizes="100vw"
-        srcSet="
-          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1280&q=80 1280w,
-          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=85 1920w,
-          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2560&q=85 2560w
-        "
         quality={85}
       />
 

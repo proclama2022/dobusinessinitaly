@@ -22,6 +22,27 @@ export default {
       },
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#1f2937',
+            maxWidth: '68ch',
+            a: {
+              color: 'hsl(var(--primary))',
+              textDecoration: 'none',
+              fontWeight: '600',
+              '&:hover': { color: 'hsl(var(--primary-dark))' },
+            },
+            h1: { color: '#111827', fontWeight: '800' },
+            h2: { color: '#111827', fontWeight: '700' },
+            h3: { color: '#111827', fontWeight: '600' },
+            p: { color: '#374151', lineHeight: '1.7' },
+            li: { color: '#374151' },
+            blockquote: { color: '#111827', fontStyle: 'italic' },
+            strong: { color: '#111827' },
+          },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

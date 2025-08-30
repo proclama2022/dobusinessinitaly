@@ -162,15 +162,15 @@
 }
 
 .btn-primary {
-  @apply inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded-md transition duration-300;
+  @apply inline-flex items-center justify-center bg-primary text-white font-medium py-3 px-6 rounded-md transition-colors duration-200 hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30;
 }
 
 .btn-secondary {
-  @apply inline-block bg-secondary hover:bg-secondary-light text-neutral-900 font-medium py-3 px-6 rounded-md transition duration-300;
+  @apply inline-flex items-center justify-center border border-neutral-300 text-neutral-800 bg-white hover:bg-neutral-50 font-medium py-3 px-6 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
 }
 
 .btn-outline {
-  @apply inline-block bg-white hover:bg-neutral-100 text-primary font-medium py-3 px-6 rounded-md transition duration-300;
+  @apply inline-flex items-center justify-center bg-white text-primary border border-neutral-300 hover:bg-neutral-50 font-medium py-3 px-6 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
 }
 
 .testimonial-slide {
@@ -191,11 +191,24 @@
 }
 
 .italian-border-gradient {
-  @apply border-2 border-transparent;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  background-image: linear-gradient(to right, white, white),
-                    linear-gradient(to right, #009246, white, #ce2b37);
+  @apply border border-neutral-200; /* versione sobria di default */
+}
+
+/* Card e hover leggeri (modalità sobria) */
+.card {
+  @apply bg-white rounded-lg border border-neutral-200 shadow-sm;
+}
+
+.hover-lift {
+  @apply transition-transform transition-shadow duration-200 hover:-translate-y-1 hover:shadow-md;
+}
+
+.soft-divider {
+  @apply h-px w-full bg-neutral-200;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-[Montserrat] font-bold text-neutral-900;
 }
 
 /* Animazioni */

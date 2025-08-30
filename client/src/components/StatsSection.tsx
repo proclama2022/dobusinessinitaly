@@ -61,21 +61,15 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
   };
 
   return (
-    <div 
-      className={`bg-gradient-to-br ${getBackgroundColor()} p-6 rounded-lg text-center shadow-md animate-float`}
-      style={{ animationDelay: `${index * 0.2}s` }}
-    >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full relative">
-        <div className="absolute inset-0 italian-gradient rounded-full opacity-80"></div>
-        <div className="absolute inset-0 rounded-full bg-white/40 flex items-center justify-center">
-          <i className={`${icon} text-[#222] text-2xl drop-shadow-sm`}></i>
-        </div>
+    <div className="card p-6 text-center">
+      <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
+        <i className={`${icon} text-primary text-2xl`}></i>
       </div>
-      <div className="italian-text-gradient text-4xl font-bold mb-2">
+      <div className="text-4xl font-bold text-neutral-900 mb-1">
         <span ref={countRef}>{count}</span>{suffix}
       </div>
-      <h3 className="text-lg font-heading font-medium text-neutral-800">{title}</h3>
-      <p className="text-neutral-600 text-sm mt-2">{description}</p>
+      <h3 className="text-lg font-[Montserrat] font-semibold text-neutral-900">{title}</h3>
+      <p className="text-neutral-600 text-sm mt-1">{description}</p>
     </div>
   );
 };
@@ -125,13 +119,9 @@ const StatsSection = () => {
 
   return (
     <section className="section-padding bg-white relative overflow-hidden">
-      {/* Linee decorative tricolore italiano */}
-      <div className="absolute inset-x-0 top-0 h-1 italian-gradient opacity-90"></div>
-      <div className="absolute inset-x-0 bottom-0 h-1 italian-gradient opacity-90"></div>
-      
       <div className="container mx-auto px-4">
         <div className={`text-center mb-12 ${isLoaded ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="italian-text-gradient text-3xl font-heading font-semibold mb-4">
+          <h2 className="section-title mb-4">
             {t('stats.title')}
           </h2>
           <p className="text-neutral-600 max-w-3xl mx-auto">

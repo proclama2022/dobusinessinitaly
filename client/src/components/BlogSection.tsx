@@ -35,12 +35,12 @@ const BlogPost = ({
 }: BlogPost) => {
   const { i18n } = useTranslation();
   return (
-    <article className="group h-full bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+    <article className="group h-full card hover-lift overflow-hidden">
       <div className="relative h-48 overflow-hidden">
         <OptimizedImage
           src={`${imgSrc}?auto=format&fit=crop&w=1280&q=80`}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+          className="absolute inset-0 w-full h-full object-cover"
           width={1280}
           height={720}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -51,7 +51,7 @@ const BlogPost = ({
           "
           quality={80}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center text-sm text-white mb-1">
             <span>{new Date(date).toLocaleDateString()}</span>
@@ -61,13 +61,13 @@ const BlogPost = ({
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-heading font-medium text-neutral-800 mb-3 transition-colors group-hover:italian-text-gradient">
+        <h3 className="text-xl font-[Montserrat] font-semibold text-neutral-900 mb-3">
           <Link href={`/${i18n.language}/blog/${slug}`} className="hover:text-primary">{title}</Link>
         </h3>
-        <p className="text-neutral-600 mb-4">{excerpt}</p>
+        <p className="text-neutral-600 mb-4 line-clamp-3">{excerpt}</p>
         <Link 
           href={`/${i18n.language}/blog/${slug}`}
-          className="text-primary hover:text-secondary font-medium inline-flex items-center group"
+          className="text-primary hover:text-primary/80 font-medium inline-flex items-center group"
         >
           {readMoreText}
           <i className="fas fa-arrow-right ml-2 text-sm transition-transform duration-300 group-hover:translate-x-1"></i>

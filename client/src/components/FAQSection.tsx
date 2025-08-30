@@ -47,14 +47,12 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="section-padding bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Domande Frequenti
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="section-title mb-4">Domande Frequenti</h2>
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               Le risposte alle domande più comuni sui nostri servizi per stranieri che vogliono fare business in Italia
             </p>
           </div>
@@ -63,7 +61,7 @@ const FAQSection = () => {
             {faqData.map((faq, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+                className="card overflow-hidden"
                 itemScope 
                 itemProp="mainEntity" 
                 itemType="https://schema.org/Question"

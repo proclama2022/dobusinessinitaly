@@ -39,18 +39,11 @@ const NewsletterSection = () => {
 
   return (
     <section className="section-padding bg-neutral-100 relative overflow-hidden">
-      {/* Elementi decorativi con la bandiera italiana */}
-      <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
-      <div className="absolute bottom-0 inset-x-0 h-2 italian-gradient"></div>
-      
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#009246] via-[#ffffff] to-[#ce2b37] rounded-lg p-8 md:p-12 shadow-lg relative">
-          {/* Overlay per rendere il gradiente più leggero e migliorare la leggibilità */}
-          <div className="absolute inset-0 bg-white/70 rounded-lg"></div>
-          
+        <div className="max-w-4xl mx-auto card p-8 md:p-12">
           <div className="relative z-10">
             <div className="text-center mb-8 animate-fade-in">
-              <h2 className="text-3xl font-heading font-semibold italian-text-gradient mb-4">
+              <h2 className="section-title mb-4">
                 {t('newsletter.title')}
               </h2>
               <p className="text-neutral-700 max-w-2xl mx-auto">
@@ -72,7 +65,7 @@ const NewsletterSection = () => {
                 </div>
                 <button 
                   type="submit" 
-                  className="italian-gradient hover:opacity-90 text-white font-medium py-3 px-6 rounded-md transition duration-300 disabled:opacity-70 animate-pulse-scale"
+                  className="btn-primary disabled:opacity-70"
                   disabled={isPending}
                 >
                   {isPending ? t('newsletter.subscribing') : t('newsletter.subscribe')}

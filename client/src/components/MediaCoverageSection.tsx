@@ -23,55 +23,46 @@ const MediaItem = ({
 }: MediaItemProps) => {
   return (
     <div className="group relative">
-      <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col overflow-hidden">
-        {/* Header con icona e categoria */}
-        <div className="relative p-6 pb-4">
-          {/* Overlay con gradiente italiano al hover */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500"></div>
-          
-          <div className="flex items-center justify-between mb-4 relative z-10">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              <i className={`${icon} text-white text-xl`}></i>
+      <div className="card hover-lift h-full flex flex-col overflow-hidden">
+        <div className="p-6 pb-4">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center">
+              <i className={`${icon} text-primary text-xl`}></i>
             </div>
-            <div className="px-3 py-1 bg-neutral-100 group-hover:bg-gradient-to-r group-hover:from-[#009246]/10 group-hover:to-[#ce2b37]/10 text-xs font-medium text-neutral-700 rounded-full transition-all">
+            <div className="px-3 py-1 bg-neutral-100 text-xs font-medium text-neutral-700 rounded-full">
               {category}
             </div>
           </div>
-          
-          <div className="relative z-10">
+
+          <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="font-semibold text-neutral-800 group-hover:text-[#009246] transition-colors">{source}</span>
+              <span className="font-semibold text-neutral-900">{source}</span>
               <span className="text-neutral-500 text-sm">{date}</span>
             </div>
-            
-            <h3 className="font-heading text-xl font-bold mb-3 line-clamp-2 text-neutral-800 group-hover:text-[#009246] transition-colors leading-tight">
+
+            <h3 className="font-heading text-xl font-bold mb-3 line-clamp-2 text-neutral-900 leading-tight">
               {title}
             </h3>
-            
+
             <p className="text-neutral-600 text-sm mb-4 line-clamp-3 leading-relaxed">
               {excerpt}
             </p>
           </div>
-          
-          {/* Bordi decorativi */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
         </div>
-        
-        {/* Footer con link */}
+
         <div className="px-6 pb-6 mt-auto">
           {link !== '#' ? (
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#009246] to-[#38a169] text-white text-sm font-semibold rounded-md hover:scale-105 transition-transform shadow-md"
+              className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-md hover:bg-primary-dark transition-colors"
             >
               <i className="fas fa-external-link-alt mr-2"></i>
               Leggi di più
             </a>
           ) : (
-            <div className="px-4 py-2 bg-neutral-100 text-neutral-500 text-sm font-medium rounded-md">
+            <div className="px-4 py-2 bg-neutral-100 text-neutral-600 text-sm font-medium rounded-md">
               <i className="fas fa-info-circle mr-2"></i>
               Dettagli disponibili
             </div>

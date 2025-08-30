@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
@@ -10,6 +10,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [location, navigate] = useLocation();
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const { t, i18n } = useTranslation();
 
   const toggleMobileMenu = () => {
@@ -26,6 +27,68 @@ const Header = () => {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [mobileMenuOpen]);
+
+  // Chiudi menu con tasto ESC
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [mobileMenuOpen]);
+
+  // Focus trap dentro il menu mobile quando aperto
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const container = mobileMenuRef.current;
+    if (!container) return;
+
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    const getFocusable = () => Array.from(container.querySelectorAll<HTMLElement>(focusableSelectors));
+
+    // Focus al primo elemento utile
+    const focusables = getFocusable();
+    const first = focusables[0];
+    first?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const firstEl = items[0];
+      const lastEl = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey) {
+        // Shift+Tab su primo: vai all'ultimo
+        if (active === firstEl || !container.contains(active)) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        // Tab su ultimo: torna al primo
+        if (active === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
 
   // Funzione per generare un percorso con il prefisso lingua corrente
@@ -88,7 +151,7 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-0">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link 
@@ -105,13 +168,17 @@ const Header = () => {
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com"
-                className="w-28 sm:w-32 h-auto object-contain max-w-full cursor-pointer"
+                className="w-20 sm:w-24 max-h-14 h-auto object-contain max-w-full cursor-pointer"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;
+                  // Nascondi l'immagine difettosa
                   target.style.display = 'none';
-                  target.parentElement?.classList.add('text-2xl', 'font-heading', 'font-bold', 'text-primary');
-                  target.parentElement!.innerHTML = '<span>Yourbusinessinitaly.com</span>';
+                  // Crea un elemento span come fallback testuale (evita innerHTML diretto)
+                  const span = document.createElement('span');
+                  span.textContent = 'Yourbusinessinitaly.com';
+                  span.className = 'text-xl sm:text-2xl font-heading font-bold text-primary';
+                  target.parentElement?.appendChild(span);
                 }}
               />
             </Link>
@@ -122,6 +189,9 @@ const Header = () => {
             <button
               onClick={toggleMobileMenu}
               className="text-neutral-700 hover:text-primary focus:outline-none"
+              aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <i className="fas fa-bars text-xl" style={{
                 WebkitFontSmoothing: 'antialiased',
@@ -134,7 +204,7 @@ const Header = () => {
           </div>
 
           {/* Desktop menu */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-4">
             {navigationLinks.map((link) => (
               <div key={link.path} className="relative">
                 {link.dropdown ? (
@@ -149,12 +219,12 @@ const Header = () => {
                       <i className={`fas fa-chevron-down ml-1 text-xs transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
                     </button>
                     {servicesDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-md border border-neutral-200 py-2 z-50">
                         {link.dropdown.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.path}
                             href={getLocalizedPath(dropdownItem.path)}
-                            className="block px-4 py-3 text-sm text-neutral-700 hover:bg-primary hover:text-white transition-colors"
+                            className="block px-4 py-3 text-sm text-neutral-800 hover:bg-neutral-50 transition-colors"
                             onClick={() => setServicesDropdownOpen(false)}
                           >
                             {dropdownItem.label}
@@ -180,8 +250,24 @@ const Header = () => {
           </nav>
         </div>
 
+        {/* Backdrop mobile */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black/30 md:hidden z-40"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Mobile menu */}
-        <div className={`md:hidden mt-3 border-t border-neutral-200 pt-3 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div
+          id="mobile-menu"
+          className={`md:hidden mt-3 border-t border-neutral-200 pt-3 ${mobileMenuOpen ? 'block' : 'hidden'} relative z-50`}
+          role="navigation"
+          aria-label="Menu principale mobile"
+          ref={mobileMenuRef}
+          tabIndex={-1}
+        >
           <nav className="flex flex-col space-y-3">
             {navigationLinks.map((link) => (
               <div key={link.path}>

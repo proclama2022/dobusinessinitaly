@@ -57,9 +57,7 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <h2 className="text-3xl font-heading font-semibold text-neutral-800 mb-6">
-              {t('whyChooseUs.title')}
-            </h2>
+            <h2 className="section-title mb-6">{t('whyChooseUs.title')}</h2>
             
             <div className="space-y-6">
               {features.map((feature, index) => (
@@ -93,7 +91,7 @@ const WhyChooseUs = () => {
                 "
                 quality={80}
               />
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-md border border-neutral-200 hidden md:block">
                 <OptimizedImage
                   src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=300&q=75"
                   alt={t('whyChooseUs.smallImageAlt')}

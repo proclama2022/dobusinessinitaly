@@ -11,12 +11,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-[#212529] to-[#343a40] text-white pt-16 pb-8 relative overflow-hidden">
-      {/* Elementi decorativi con la bandiera italiana */}
-      <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1 bg-[#009246]"></div>
-      <div className="absolute bottom-0 left-1/3 w-1/3 h-1 bg-white"></div>
-      <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-[#ce2b37]"></div>
+    <footer className="bg-neutral-900 text-white pt-16 pb-8 relative overflow-hidden">
+      {/* Accento superiore sottile */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-[#009246] via-white/30 to-[#ce2b37]"></div>
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -97,7 +94,7 @@ const Footer = () => {
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
                 {t('footer.quickLinks')}
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-neutral-700"></span>
               </span>
             </h3>
             <ul className="space-y-2">
@@ -144,7 +141,7 @@ const Footer = () => {
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
                 {t('footer.services')}
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-neutral-700"></span>
               </span>
             </h3>
             <ul className="space-y-2">
@@ -191,7 +188,7 @@ const Footer = () => {
             <h3 className="text-xl font-heading font-medium mb-4 relative inline-block">
               <span className="relative">
                 {t('footer.contact')}
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-neutral-700"></span>
               </span>
             </h3>
             <ul className="space-y-3">

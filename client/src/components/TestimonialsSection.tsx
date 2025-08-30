@@ -84,13 +84,11 @@ const TestimonialsSection = () => {
   }, [currentSlide]);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-[#009246] via-[#ffffff] to-[#ce2b37] relative overflow-hidden">
-      {/* Overlay per rendere il gradiente più leggero e spostarlo in background */}
-      <div className="absolute inset-0 bg-white/70"></div>
+    <section className="section-padding bg-neutral-50 relative overflow-hidden">
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl font-heading font-semibold italian-text-gradient mb-4">
+          <h2 className="section-title mb-4">
             {t('testimonials.title')}
           </h2>
           <p className="text-neutral-700 max-w-3xl mx-auto">
@@ -114,7 +112,7 @@ const TestimonialsSection = () => {
           
           <button 
             onClick={prevSlide}
-            className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md text-primary hover:italian-gradient hover:text-white transition-all z-10 animate-pulse-scale"
+            className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm text-primary border border-neutral-200 hover:bg-neutral-50 transition-all z-10"
             aria-label={t('testimonials.previous')}
           >
             <i className="fas fa-chevron-left"></i>
@@ -122,7 +120,7 @@ const TestimonialsSection = () => {
           
           <button 
             onClick={nextSlide}
-            className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md text-secondary hover:italian-gradient hover:text-white transition-all z-10 animate-pulse-scale"
+            className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm text-primary border border-neutral-200 hover:bg-neutral-50 transition-all z-10"
             aria-label={t('testimonials.next')}
           >
             <i className="fas fa-chevron-right"></i>
@@ -133,9 +131,9 @@ const TestimonialsSection = () => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full italian-gradient ${
-                  index === currentSlide ? 'opacity-100 scale-125' : 'opacity-50'
-                } hover:opacity-100 transition-all duration-300`}
+                className={`w-2.5 h-2.5 rounded-full ${
+                  index === currentSlide ? 'bg-primary' : 'bg-neutral-300'
+                } hover:bg-primary transition-colors duration-200`}
                 aria-label={`${t('testimonials.goToSlide')} ${index + 1}`}
               ></button>
             ))}

@@ -34,11 +34,30 @@
 
 /* 5. Smooth animations che rispettano prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .lazy-loaded,
-  .shimmer,
-  .animate-slow-zoom {
+  /* Disattiva animazioni/transizioni globalmente per utenti sensibili */
+  *, *::before, *::after {
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Classi animate comuni nel progetto */
+  .lazy-loaded,
+  .shimmer,
+  .animate-slow-zoom,
+  .animate-float,
+  .animate-slide-up,
+  .animate-slide-right,
+  .animate-rotate-in,
+  .animate-shimmer,
+  .animate-gradient-flow,
+  .animate-pulse-scale,
+  .animate-ping,
+  .animate-bounce,
+  .animate-spin,
+  .animate-spin-slow,
+  .animate-fade-in {
+    animation: none !important;
   }
 }
 

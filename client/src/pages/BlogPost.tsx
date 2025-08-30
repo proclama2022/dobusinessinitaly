@@ -177,7 +177,7 @@ const BlogPost = () => {
   // Rendering condizionale in base allo stato
   if (isLoading) {
     return (
-      <section className="py-32 bg-white">
+      <section className="section-padding bg-white">
         <div className="container mx-auto px-4 text-center">
           <div className="w-16 h-16 mx-auto border-4 border-[#009246] border-t-transparent rounded-full animate-spin"></div>
           <p className="mt-4 text-neutral-600">Caricamento articolo in corso...</p>
@@ -188,7 +188,7 @@ const BlogPost = () => {
 
   if (error || !postData?.data) {
     return (
-      <section className="py-32 bg-white">
+      <section className="section-padding bg-white">
         <div className="container mx-auto px-4 text-center">
           <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non esiste o è stato rimosso.</p>
@@ -203,7 +203,7 @@ const BlogPost = () => {
 
   if (!postData.data?.meta) {
     return (
-      <section className="py-32 bg-white">
+      <section className="section-padding bg-white">
         <div className="container mx-auto px-4 text-center">
           <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non ha metadati validi.</p>
@@ -399,7 +399,7 @@ const BlogPost = () => {
       </section>
 
       {/* Contenuto dell'articolo */}
-      <section className="py-16 bg-white relative">
+      <section className="section-padding bg-white relative">
         <div className="container mx-auto px-4">
           {/* Breadcrumbs */}
           <Breadcrumbs
@@ -413,40 +413,19 @@ const BlogPost = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Contenuto principale */}
             <div className="lg:col-span-8">
-              {/* Articolo formattato con struttura semantica migliorata */}
-              <article className="prose prose-lg max-w-none" itemScope itemType="https://schema.org/BlogPosting">
+              {/* Articolo formattato con tipografia coerente */}
+              <article className="prose lg:prose-lg prose-neutral max-w-3xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
                 <meta itemProp="headline" content={meta.title} />
                 <meta itemProp="author" content={meta.author} />
                 <meta itemProp="datePublished" content={formattedDate} />
                 <meta itemProp="image" content={meta.coverImage} />
-                <div className="bg-white rounded-xl p-8 shadow-md">
-                  <div
-                    itemProp="articleBody"
-                    className="article-content"
+                <div itemProp="articleBody" className="article-content">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
                   >
-                    <div className="markdown-content">
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeRaw, rehypeSanitize]}
-                        components={{
-                          h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mb-6 text-neutral-800" {...props} />,
-                          h2: ({ node, ...props }) => <h2 className="text-2xl font-bold mb-5 mt-8 text-neutral-800" {...props} />,
-                          h3: ({ node, ...props }) => <h3 className="text-xl font-bold mb-4 mt-6 text-neutral-800" {...props} />,
-                          h4: ({ node, ...props }) => <h4 className="text-lg font-bold mb-3 mt-5 text-neutral-800" {...props} />,
-                          p: ({ node, ...props }) => <p className="mb-4 text-neutral-700 leading-relaxed" {...props} />,
-                          ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-2 text-neutral-700" {...props} />,
-                          ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-2 text-neutral-700" {...props} />,
-                          li: ({ node, ...props }) => <li className="mb-2" {...props} />,
-                          blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-[#009246] pl-4 italic text-neutral-600 my-6" {...props} />,
-                          strong: ({ node, ...props }) => <strong className="font-bold text-neutral-900" {...props} />,
-                          em: ({ node, ...props }) => <em className="italic" {...props} />,
-                          a: ({ node, ...props }) => <a className="text-[#009246] hover:underline font-medium" {...props} />
-                        }}
-                      >
-                        {content}
-                      </ReactMarkdown>
-                    </div>
-                  </div>
+                    {content}
+                  </ReactMarkdown>
                 </div>
               </article>
 
@@ -554,7 +533,7 @@ const BlogPost = () => {
       </section>
 
       {/* Author bio footer */}
-      <section className="py-16 bg-white border-t border-neutral-200">
+      <section className="section-padding bg-white border-t border-neutral-200">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {(() => {
@@ -613,7 +592,7 @@ const BlogPost = () => {
 
       {/* Post correlati */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 bg-neutral-50">
+        <section className="section-padding bg-neutral-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-heading font-bold mb-4">
