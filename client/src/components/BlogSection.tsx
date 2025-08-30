@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import OptimizedImage from './OptimizedImage';
 
 interface BlogPost {
   imgSrc: string;
@@ -36,12 +37,21 @@ const BlogPost = ({
   return (
     <article className="group h-full bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
       <div className="relative h-48 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
-          style={{ backgroundImage: `url(${imgSrc})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        </div>
+        <OptimizedImage
+          src={`${imgSrc}?auto=format&fit=crop&w=1280&q=80`}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+          width={1280}
+          height={720}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          srcSet="
+            ${imgSrc}?auto=format&fit=crop&w=640&q=70 640w,
+            ${imgSrc}?auto=format&fit=crop&w=960&q=75 960w,
+            ${imgSrc}?auto=format&fit=crop&w=1280&q=80 1280w
+          "
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center text-sm text-white mb-1">
             <span>{new Date(date).toLocaleDateString()}</span>
@@ -104,7 +114,7 @@ const BlogSection = () => {
   }
 
   return (
-    <section id="blog" className="py-16 bg-neutral-50 relative overflow-hidden">
+    <section id="blog" className="section-padding bg-neutral-50 relative overflow-hidden">
       {/* Elementi decorativi con la bandiera italiana */}
       <div className="absolute top-0 inset-x-0 h-1 italian-gradient"></div>
       <div className="absolute top-0 left-0 w-2 h-full bg-[#009246]"></div>

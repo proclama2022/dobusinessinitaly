@@ -38,7 +38,7 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="py-16 bg-neutral-100 relative overflow-hidden">
+    <section className="section-padding bg-neutral-100 relative overflow-hidden">
       {/* Elementi decorativi con la bandiera italiana */}
       <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
       <div className="absolute bottom-0 inset-x-0 h-2 italian-gradient"></div>

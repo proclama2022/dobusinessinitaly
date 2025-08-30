@@ -9,6 +9,7 @@ interface OptimizedImageProps {
   priority?: boolean;
   placeholder?: string;
   sizes?: string;
+  srcSet?: string;
   quality?: number;
   onLoad?: () => void;
   onError?: () => void;
@@ -27,6 +28,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   priority = false,
   placeholder,
   sizes,
+  srcSet,
   quality,
   onLoad,
   onError
@@ -104,6 +106,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     <img
       ref={imgRef}
       src={src}
+      srcSet={srcSet}
       alt={alt}
       className={`${className} ${isLoaded ? 'lazy-loaded' : ''}`}
       width={width}
@@ -114,7 +117,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       onLoad={handleLoad}
       onError={handleError}
       // SEO ottimizzazioni
-      fetchPriority={priority ? 'high' : 'auto'}
+      // React non riconosce fetchPriority in camelCase: usare attributo custom lowercase
+      // @ts-ignore
+      fetchpriority={priority ? 'high' : 'auto'}
       // Accessibilità
       role="img"
       // Performance

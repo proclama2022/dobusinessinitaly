@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { apiRequest } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
+import OptimizedImage from '@/components/OptimizedImage';
 
 import {
   Form,
@@ -98,7 +99,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-white relative overflow-hidden">
+    <section id="contact" className="section-padding bg-white relative overflow-hidden">
       {/* Elementi decorativi con la bandiera italiana */}
       <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
       <div className="absolute bottom-0 inset-x-0 h-2 italian-gradient"></div>
@@ -364,10 +365,19 @@ const ContactSection = () => {
               
               {/* Immagine dell'ufficio in posizione superiore */}
               <div className="mb-8 overflow-hidden rounded-lg shadow-md group relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                <OptimizedImage 
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1280&q=80" 
                   alt={t('contact.info.officeImageAlt')}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                  width={1280}
+                  height={384}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  srcSet="
+                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=640&q=70 640w,
+                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=960&q=75 960w,
+                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1280&q=80 1280w
+                  "
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">

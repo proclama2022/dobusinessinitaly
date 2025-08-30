@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
@@ -15,6 +15,18 @@ const Header = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  // Blocca lo scroll del body quando il menu mobile è aperto
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   // Funzione per generare un percorso con il prefisso lingua corrente
   const getLocalizedPath = (path: string) => {
@@ -93,7 +105,7 @@ const Header = () => {
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com"
-                className="w-32 h-auto object-contain max-w-full cursor-pointer"
+                className="w-28 sm:w-32 h-auto object-contain max-w-full cursor-pointer"
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;

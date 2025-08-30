@@ -7,6 +7,7 @@ import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
 import SEOHead from '@/components/SEOHead';
 import { authorProfile } from '@/data/author';
+import OptimizedImage from '@/components/OptimizedImage';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -45,6 +46,10 @@ const TeamMemberCard = ({
           src={image}
           alt={name}
           className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+          width={480}
+          height={288}
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Linee decorative */}
@@ -241,7 +246,7 @@ const About = () => {
       </section>
 
       {/* Sezione STP - Società tra Professionisti */}
-      <section className="py-12 bg-white relative overflow-hidden">
+      <section className="section-padding bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             {/* Badge e titolo */}
@@ -322,7 +327,7 @@ const About = () => {
       </section>
 
       {/* Sezione introduttiva con concetto */}
-      <section className="py-20 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Contenuto testuale */}
@@ -361,10 +366,18 @@ const About = () => {
             {/* Immagine con decorazioni */}
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="rounded-xl overflow-hidden shadow-xl border border-neutral-100 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80"
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"
                   alt={t('about.teamImage')}
                   className="w-full h-auto"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  srcSet="
+                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=70 800w,
+                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=75 1200w,
+                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80 1600w
+                  "
                 />
               </div>
 
@@ -379,7 +392,7 @@ const About = () => {
       </section>
 
       {/* Sezione Team */}
-      <section id="team" className="py-20 bg-gradient-to-b from-neutral-50 to-white">
+      <section id="team" className="section-padding bg-gradient-to-b from-neutral-50 to-white">
         <div className="container mx-auto px-4">
           {/* Header della sezione */}
           <div className="text-center mb-16 relative">
@@ -431,7 +444,7 @@ const About = () => {
       </section>
 
       {/* Sezione valori */}
-      <section className="py-20 bg-white">
+      <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-heading font-bold mb-8 relative inline-flex">

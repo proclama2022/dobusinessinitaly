@@ -4,6 +4,7 @@ import { Link, useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -56,12 +57,19 @@ const RelatedPostCard = ({
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
 
         {/* Immagine articolo */}
-        <img
-          src={imgSrc}
+        <OptimizedImage
+          src={imgSrc.includes('unsplash.com') ? `${imgSrc}?auto=format&fit=crop&w=1280&q=80` : imgSrc}
           alt={title}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-          loading="lazy"
-          decoding="async"
+          width={1280}
+          height={480}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          srcSet={imgSrc.includes('unsplash.com') ? `
+            ${imgSrc}?auto=format&fit=crop&w=640&q=70 640w,
+            ${imgSrc}?auto=format&fit=crop&w=960&q=75 960w,
+            ${imgSrc}?auto=format&fit=crop&w=1280&q=80 1280w
+          ` : undefined}
+          quality={80}
         />
 
         {/* Linee decorative */}
@@ -347,16 +355,14 @@ const BlogPost = () => {
         {/* Immagine di sfondo con overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 z-10"></div>
-          <img
+          <OptimizedImage
             src={meta.coverImage}
             alt={`${meta.title} - Yourbusinessinitaly.com`}
             className="w-full h-full object-cover"
-            width="1200"
-            height="630"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-            itemProp="image"
+            width={1920}
+            height={1080}
+            sizes="100vw"
+            priority={true}
           />
         </div>
 
@@ -492,12 +498,12 @@ const BlogPost = () => {
                 </h3>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-neutral-200 overflow-hidden mr-4">
-                    <img
+                    <OptimizedImage
                       src={resolvedAuthorImagePath}
                       alt={meta.author}
                       className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
+                      width={48}
+                      height={48}
                     />
                   </div>
                   <div>
@@ -578,7 +584,7 @@ const BlogPost = () => {
               return (
                 <div className="flex gap-4 items-start p-6 rounded-xl border border-neutral-200 bg-neutral-50">
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-                    <img src={resolvedAuthorImage} alt={meta.author} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    <OptimizedImage src={resolvedAuthorImage} alt={meta.author} className="w-full h-full object-cover" width={64} height={64} />
                   </div>
                   <div>
                     <h3 className="text-xl font-heading font-bold text-neutral-900 mb-1">{bio.title}</h3>

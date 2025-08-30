@@ -124,7 +124,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white relative overflow-hidden">
+    <section className="section-padding bg-white relative overflow-hidden">
       {/* Linee decorative tricolore italiano */}
       <div className="absolute inset-x-0 top-0 h-1 italian-gradient opacity-90"></div>
       <div className="absolute inset-x-0 bottom-0 h-1 italian-gradient opacity-90"></div>

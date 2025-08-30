@@ -171,7 +171,8 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
         decoding="async"
         onLoad={handleLoad}
         onError={handleError}
-        fetchPriority={priority ? 'high' : 'auto'}
+        // @ts-ignore: custom attribute lowercase
+        fetchpriority={priority ? 'high' : 'auto'}
         role="img"
         style={{
           aspectRatio: width && height ? `${width}/${height}` : undefined,

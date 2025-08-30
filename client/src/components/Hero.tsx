@@ -34,17 +34,22 @@ const Hero = () => {
   }, [i18n?.language, heroTitle, heroSubtitle]);
 
   return (
-    <section className="relative isolate h-[600px] md:h-[700px] overflow-hidden">
+    <section className="relative isolate min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] overflow-hidden">
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
       <OptimizedImage
-        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=85"
         alt={t('hero.backgroundAlt')}
         className="absolute inset-0 w-full h-full scale-105 animate-slow-zoom z-[1]"
         priority={true}
         width={1920}
         height={1080}
         sizes="100vw"
+        srcSet="
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1280&q=80 1280w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=85 1920w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2560&q=85 2560w
+        "
         quality={85}
       />
 
@@ -60,16 +65,16 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] via-transparent to-[#ce2b3730] z-[4] mix-blend-normal"></div>
 
       {/* Elementi decorativi a bandiera italiana sui bordi */}
-      <div className="absolute top-0 left-0 h-full w-2 bg-[#009246] z-[5] animate-slide-down"></div> {/* Verde */}
-      <div className="absolute top-0 right-0 h-full w-2 bg-[#ce2b37] z-[5] animate-slide-down"></div> {/* Rosso */}
+      <div className="hidden sm:block absolute top-0 left-0 h-full w-2 bg-[#009246] z-[5] animate-slide-down"></div> {/* Verde */}
+      <div className="hidden sm:block absolute top-0 right-0 h-full w-2 bg-[#ce2b37] z-[5] animate-slide-down"></div> {/* Rosso */}
 
       {/* Barra decorativa superiore */}
       <div className="absolute top-0 inset-x-0 h-1 italian-gradient z-[5]"></div>
 
       {/* Elementi decorativi dinamici */}
-      <div className="absolute top-[20%] left-[5%] w-16 h-16 rounded-full bg-[#00924620] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '8s' }}></div>
-      <div className="absolute top-[30%] right-[8%] w-24 h-24 rounded-full bg-[#ce2b3720] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '10s', animationDelay: '1s' }}></div>
-      <div className="absolute bottom-[15%] left-[15%] w-20 h-20 rounded-full bg-[#ffffff20] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '12s', animationDelay: '2s' }}></div>
+      <div className="hidden sm:block absolute top-[20%] left-[5%] w-16 h-16 rounded-full bg-[#00924620] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '8s' }}></div>
+      <div className="hidden sm:block absolute top-[30%] right-[8%] w-24 h-24 rounded-full bg-[#ce2b3720] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '10s', animationDelay: '1s' }}></div>
+      <div className="hidden sm:block absolute bottom-[15%] left-[15%] w-20 h-20 rounded-full bg-[#ffffff20] mix-blend-overlay animate-float z-[4]" style={{ animationDuration: '12s', animationDelay: '2s' }}></div>
 
 
       <div className="container mx-auto px-4 h-full flex items-center relative z-[100] mix-blend-normal">
@@ -82,7 +87,7 @@ const Hero = () => {
           </div>
 
           {/* Titolo principale */}
-          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 relative z-20 enhanced-text">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-4 relative z-20 enhanced-text">
             <span className="relative inline-block">
               {heroTitle}
               <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-green-400 to-red-500 opacity-90"></span>
@@ -90,7 +95,7 @@ const Hero = () => {
           </h1>
 
           {/* Sottotitolo */}
-          <p className="text-xl text-white mb-8 max-w-xl leading-relaxed z-20 relative enhanced-text">
+          <p className="text-base sm:text-xl text-white mb-8 max-w-xl leading-relaxed z-20 relative enhanced-text">
             {heroSubtitle}
           </p>
 

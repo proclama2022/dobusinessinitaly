@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
   }, [currentSlide]);
 
   return (
-    <section className="py-16 bg-gradient-to-br from-[#009246] via-[#ffffff] to-[#ce2b37] relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-[#009246] via-[#ffffff] to-[#ce2b37] relative overflow-hidden">
       {/* Overlay per rendere il gradiente più leggero e spostarlo in background */}
       <div className="absolute inset-0 bg-white/70"></div>
       
@@ -99,7 +99,7 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          <div className="relative overflow-hidden min-h-[350px]">
+          <div className="relative overflow-hidden min-h-[280px] sm:min-h-[350px]">
             {testimonials.map((testimonial, index) => (
               <Testimonial
                 key={index}

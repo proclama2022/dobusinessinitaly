@@ -143,12 +143,19 @@ function cacheFirstStrategy(request) {
 function networkFirstStrategy(request) {
   return fetch(request)
     .then((response) => {
-      // Cache la risposta per uso futuro
-      if (response.status === 200) {
-        const responseClone = response.clone();
-        caches.open(DYNAMIC_CACHE).then((cache) => {
-          cache.put(request, responseClone);
-        });
+      // Cache la risposta per uso futuro (solo tipi clonabili)
+      try {
+        if (
+          response && response.status === 200 &&
+          (response.type === 'basic' || response.type === 'cors')
+        ) {
+          const responseClone = response.clone();
+          caches.open(DYNAMIC_CACHE).then((cache) => {
+            cache.put(request, responseClone).catch(() => {});
+          });
+        }
+      } catch (e) {
+        console.warn('[SW] networkFirst clone/cache failed:', e);
       }
       return response;
     })
@@ -161,16 +168,28 @@ function networkFirstStrategy(request) {
 function staleWhileRevalidateStrategy(request) {
   return caches.match(request)
     .then((cachedResponse) => {
-      const fetchPromise = fetch(request).then((networkResponse) => {
-        if (networkResponse.status === 200) {
-          caches.open(DYNAMIC_CACHE).then((cache) => {
-            cache.put(request, networkResponse.clone());
-          });
-        }
-        return networkResponse;
-      });
+      const fetchPromise = fetch(request)
+        .then((networkResponse) => {
+          try {
+            if (
+              networkResponse && networkResponse.status === 200 &&
+              (networkResponse.type === 'basic' || networkResponse.type === 'cors')
+            ) {
+              const clone = networkResponse.clone();
+              caches.open(DYNAMIC_CACHE).then((cache) => {
+                cache.put(request, clone).catch(() => {});
+              });
+            }
+          } catch (e) {
+            console.warn('[SW] staleWhileRevalidate clone/cache failed:', e);
+          }
+          return networkResponse;
+        })
+        .catch((err) => {
+          return cachedResponse || Promise.reject(err);
+        });
 
-      // Ritorna cache se disponibile, altrimenti aspetta network
+      // Ritorna cache se disponibile, altrimenti usa network
       return cachedResponse || fetchPromise;
     });
 }

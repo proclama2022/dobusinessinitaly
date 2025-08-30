@@ -179,7 +179,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-neutral-50">
+    <section id="services" className="section-padding relative overflow-hidden bg-gradient-to-b from-white to-neutral-50">
       {/* Elementi decorativi con la bandiera italiana */}
       <div className="absolute top-0 left-0 w-1 h-full bg-[#009246]"></div>
       <div className="absolute top-0 right-0 w-1 h-full bg-[#ce2b37]"></div>
@@ -201,7 +201,7 @@ const ServicesSection = () => {
             <span className="absolute -top-8 -left-8 w-6 h-6 opacity-20 bg-[#009246] animate-ping"></span>
             <span className="absolute -bottom-8 -right-8 w-6 h-6 opacity-20 bg-[#ce2b37] animate-ping" style={{ animationDuration: '3s' }}></span>
 
-            <h2 className="text-5xl font-heading font-bold mb-4 relative inline-flex items-center">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 relative inline-flex items-center">
               <span className="text-[#009246]">Our </span>
               <span className="relative pl-4">
                 Services
@@ -212,7 +212,7 @@ const ServicesSection = () => {
 
           <div className="h-1 w-24 italian-gradient mx-auto mb-6"></div>
 
-          <p className="text-neutral-600 max-w-3xl mx-auto text-lg animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <p className="text-neutral-600 max-w-3xl mx-auto text-base md:text-lg animate-fade-in" style={{ animationDelay: '0.3s' }}>
             {t('services.subtitle')}
           </p>
         </div>
@@ -227,10 +227,10 @@ const ServicesSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {/* Elementi di sfondo decorativi */}
-          <div className="absolute -bottom-10 -left-20 w-40 h-40 rounded-full bg-[#00924610] filter blur-3xl"></div>
-          <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-[#ce2b3710] filter blur-3xl"></div>
+          <div className="hidden md:block absolute -bottom-10 -left-20 w-40 h-40 rounded-full bg-[#00924610] filter blur-3xl"></div>
+          <div className="hidden md:block absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-[#ce2b3710] filter blur-3xl"></div>
 
           {services.map((service, index) => (
             <div
