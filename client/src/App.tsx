@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { config } from '@fortawesome/fontawesome-svg-core';
-// Import diretto delle pagine per debugging
+// Critical pages (loaded immediately)
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
-import Services from "@/pages/Services";
-import About from "@/pages/About";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
-import Contact from "@/pages/Contact";
-import Media from "@/pages/Media";
-import Social from "@/pages/Social";
-import Admin from "@/pages/Admin";
-import OpenCompanyItaly from "@/pages/OpenCompanyItaly";
-import OpenVATNumberItaly from "@/pages/OpenVATNumberItaly";
-import TaxAccountingExpats from "@/pages/TaxAccountingExpats";
-import PillarBusinessItaly from "@/pages/PillarBusinessItaly";
+
+// Lazy loaded pages
+const Services = lazy(() => import("@/pages/Services"));
+const About = lazy(() => import("@/pages/About"));
+const Blog = lazy(() => import("@/pages/Blog"));
+const BlogPost = lazy(() => import("@/pages/BlogPost"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const Media = lazy(() => import("@/pages/Media"));
+const Social = lazy(() => import("@/pages/Social"));
+const Admin = lazy(() => import("@/pages/Admin"));
+const OpenCompanyItaly = lazy(() => import("@/pages/OpenCompanyItaly"));
+const OpenVATNumberItaly = lazy(() => import("@/pages/OpenVATNumberItaly"));
+const TaxAccountingExpats = lazy(() => import("@/pages/TaxAccountingExpats"));
+const PillarBusinessItaly = lazy(() => import("@/pages/PillarBusinessItaly"));
 
 import Header from "@/components/Header";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -27,11 +29,18 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { supportedLanguages } from "./lib/languages";
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
-import CookiePolicy from '@/pages/CookiePolicy';
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
+const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'));
 import CookieBanner from '@/components/CookieBanner';
 import { Helmet } from 'react-helmet-async';
 import useCookieConsent from '@/hooks/useCookieConsent';
+
+// Loading component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+  </div>
+);
 
 function Router() {
   const { i18n } = useTranslation();
@@ -56,12 +65,31 @@ function Router() {
         {(allowAnalytics || allowMarketing) && (
           <>
             <script>
-              {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());`}
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} 
+                gtag('js', new Date());
+                // Consent Mode v2: imposta stato iniziale in base al consenso
+                gtag('consent', 'default', {
+                  ad_user_data: '${allowMarketing ? 'granted' : 'denied'}',
+                  ad_personalization: '${allowMarketing ? 'granted' : 'denied'}',
+                  ad_storage: '${allowMarketing ? 'granted' : 'denied'}',
+                  analytics_storage: '${allowAnalytics ? 'granted' : 'denied'}',
+                  functionality_storage: 'granted',
+                  security_storage: 'granted',
+                  personalization_storage: 'denied'
+                });
+              `}
             </script>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-X82GKPCGB7"></script>
+            {/* Carica gtag.js UNA sola volta con l'ID consentito: GA4 se analytics è consentito, altrimenti Ads se è consentito solo marketing */}
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${allowAnalytics ? 'G-X82GKPCGB7' : 'AW-10798871348'}`}
+            ></script>
+            {/* Configura SOLO gli ID per cui c'è consenso */}
             {allowAnalytics && (
               <script>
-                {`gtag('config','G-X82GKPCGB7');`}
+                {`gtag('config','G-X82GKPCGB7', { anonymize_ip: true });`}
               </script>
             )}
             {allowMarketing && (
@@ -69,13 +97,25 @@ function Router() {
                 {`gtag('config','AW-10798871348');`}
               </script>
             )}
+            {/* Aggiorna il consenso ad ogni render (utile se l'utente cambia le preferenze) */}
+            <script>
+              {`
+                gtag('consent', 'update', {
+                  ad_user_data: '${allowMarketing ? 'granted' : 'denied'}',
+                  ad_personalization: '${allowMarketing ? 'granted' : 'denied'}',
+                  ad_storage: '${allowMarketing ? 'granted' : 'denied'}',
+                  analytics_storage: '${allowAnalytics ? 'granted' : 'denied'}'
+                });
+              `}
+            </script>
           </>
         )}
       </Helmet>
 
       <Header />
       <main>
-        <Switch>
+        <Suspense fallback={<PageLoader />}>
+          <Switch>
           {/* Home per ogni lingua */}
           {supportedLanguages.map(lang => (
             <Route key={`home-${lang}`} path={`/${lang}`} component={Home} />
@@ -158,6 +198,7 @@ function Router() {
           {/* Pagina non trovata */}
           <Route component={NotFound} />
         </Switch>
+        </Suspense>
       </main>
       <Footer />
       <CookieBanner />

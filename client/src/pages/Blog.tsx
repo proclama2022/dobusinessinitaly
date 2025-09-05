@@ -55,7 +55,7 @@ const BlogPostCard = ({
         {/* Data */}
         <div className="absolute top-3 left-3 z-10">
           <span className="px-3 py-1 bg-[#ce2b37] text-xs font-medium text-white rounded-full shadow-sm">
-            {date}
+            {date && !isNaN(new Date(date).getTime()) ? new Date(date).toLocaleDateString() : ''}
           </span>
         </div>
 

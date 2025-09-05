@@ -32,8 +32,22 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
     target: 'es2020',
-    minify: false,
-    sourcemap: true
+    minify: 'terser',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+            vendor: ['react', 'react-dom'],
+            router: ['wouter'],
+            ui: ['lucide-react', 'framer-motion'],
+            utils: ['clsx', 'tailwind-merge']
+          },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
+    },
+    chunkSizeWarningLimit: 1000
   },
   server: {
     port: 5173,

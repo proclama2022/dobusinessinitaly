@@ -54,7 +54,7 @@ const BlogPost = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center text-sm text-white mb-1">
-            <span>{new Date(date).toLocaleDateString()}</span>
+            <span>{date && !isNaN(new Date(date).getTime()) ? new Date(date).toLocaleDateString() : ''}</span>
             <span className="mx-2">•</span>
             <span className="bg-secondary/90 text-white px-2 py-0.5 rounded-full text-xs">{category}</span>
           </div>

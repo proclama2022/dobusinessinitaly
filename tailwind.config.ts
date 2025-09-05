@@ -22,6 +22,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'open-sans': ['Open Sans', 'sans-serif'],
+        'sans': ['Montserrat', 'Open Sans', 'system-ui', 'sans-serif'],
+      },
       typography: {
         DEFAULT: {
           css: {
