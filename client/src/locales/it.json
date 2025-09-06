@@ -37,6 +37,18 @@
     "title": "404 Pagina non trovata",
     "subtitle": "Hai dimenticato di aggiungere la pagina al router?"
   },
+  "team": {
+    "rosario_emmi_role": "Commercialista & Consulente Startup",
+    "rosario_emmi_specialty": "Esperto in fiscalità per e-commerce, web agency e PMI innovative. Fondatore di Commercialista24ore.com e PartitaIVAonline.com",
+    "giovanni_emmi_role": "Fondatore & CEO",
+    "giovanni_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata",
+    "gaetana_vecchio_role": "Dottore Commercialista & Revisore Legale",
+    "gaetana_vecchio_specialty": "Specializzata in fiscalità per startup innovative, e-commerce e PMI digitali. Consulente strategica per la crescita aziendale",
+    "rosy_fresta_role": "Consulente del Lavoro & Partner",
+    "rosy_fresta_specialty": "Specializzata in diritto del lavoro, gestione risorse umane e consulenza previdenziale per aziende innovative",
+    "rosario_petralia_role": "Fondatore & Presidente",
+    "rosario_petralia_specialty": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative"
+  },
   "privacy": {
     "title": "Privacy Policy di proclama",
     "intro": "Questa Applicazione raccoglie alcuni Dati Personali dei propri Utenti.",
@@ -577,12 +589,6 @@
       ],
       "conclusion": "Solo chi supera l'Esame di Stato e si iscrive all'Ordine può esercitare legalmente la professione di dottore commercialista in Italia, offrendo così ai clienti una garanzia di professionalità, aggiornamento continuo e rispetto degli standard etici e legali."
     }
-  },
-  "team": {
-    "rosario_petralia_role": "Fondatore & Presidente",
-    "rosario_petralia_specialty": "Dottore commercialista e revisore legale, specializzato in fiscalità per ecommerce, web agency, startup e PMI innovative",
-    "giovanni_emmi_role": "Fondatore & CEO",
-    "giovanni_emmi_specialty": "Dottore commercialista e revisore legale, specializzato in consulenza aziendale e direzionale, organizzazione aziendale, finanza agevolata"
   },
   "blog": {
     "title": "Blog",

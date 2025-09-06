@@ -25,6 +25,7 @@ const TeamMemberCard = ({
   isFounder?: boolean;
   isCEO?: boolean;
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl bg-white transition-all duration-500 transform hover:-translate-y-2">
       {/* Badge per founder/CEO */}
@@ -64,11 +65,11 @@ const TeamMemberCard = ({
 
         {/* Nome e ruolo */}
         <h3 className="text-xl font-heading font-bold text-neutral-800 mb-1 group-hover:italic-text-gradient transition-colors duration-300">{name}</h3>
-        <p className="text-[#009246] font-medium text-sm mb-3">{role}</p>
+        <p className="text-[#009246] font-medium text-sm mb-3">{t(role)}</p>
 
         {/* Specializzazione (opzionale) */}
         {specialty && (
-          <p className="text-neutral-600 text-sm italic">{specialty}</p>
+          <p className="text-neutral-600 text-sm italic">{t(specialty)}</p>
         )}
 
         {/* Social icons */}

@@ -197,18 +197,10 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
         slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
       }
 
-      const post: BlogPostMeta = {
-        slug,
-        title: data.title,
-        date: data.date,
-        category: data.category?.trim() || 'Generale',
-        excerpt: data.excerpt?.trim() || '',
-        coverImage: data.coverImage?.trim() || '',
-        author: data.author?.trim() || 'Redazione',
-      };
+      const meta = sanitizeMeta(slug, data);
       const leadMagnet = parseLeadMagnet(data);
-      if (leadMagnet) post.leadMagnet = leadMagnet;
-      posts.push(post);
+      if (leadMagnet) meta.leadMagnet = leadMagnet;
+      posts.push(meta);
     } catch (e) {
       console.error('[Blog API] Error fetching blob', filename, e);
     }
@@ -233,19 +225,8 @@ async function getPostFromBlob(slug: string, lang?: string) {
     const { data, content } = matter(fileContent);
     if (!data.title?.trim() || !data.date) return null;
     
-    // Usa lo slug dal frontmatter se disponibile
-    const finalSlug = data.slug || slug;
-    
-    const meta: BlogPostMeta = {
-      slug: finalSlug,
-      title: data.title.trim(),
-      date: data.date,
-      category: data.category?.trim() || 'Generale',
-      excerpt: data.excerpt?.trim() || '',
-      coverImage: data.coverImage?.trim() || '',
-      author: data.author?.trim() || 'Redazione',
-      leadMagnet: parseLeadMagnet(data),
-    };
+    const meta = sanitizeMeta(slug, data);
+    meta.leadMagnet = parseLeadMagnet(data);
     return { meta, content };
   } catch (e) {
     console.error('[Blog API] Error fetching single blob post', filename, e);
@@ -499,4 +480,33 @@ author: "${author}"
     console.log(`[Blog API] Method not allowed: ${req.method}`);
     res.status(405).json({ success: false, message: 'Method not allowed' });
   }
+}
+
+// Helper per sanificare valori stringa provenienti dal frontmatter
+function normalizeField(value: unknown, fallback: string, opts?: { field?: string; slug?: string }) {
+  if (typeof value !== 'string') return fallback;
+  const trimmed = value.trim();
+  if (!trimmed || trimmed.toLowerCase() === 'undefined') {
+    if (opts?.field && opts?.slug) {
+      console.warn(`[Blog API] Sanitized '${opts.field}' for slug '${opts.slug}' -> using fallback '${fallback}'`);
+    }
+    return fallback;
+  }
+  return trimmed;
+}
+
+function sanitizeMeta(defaultSlug: string, data: any) {
+  const safeSlug = (typeof data?.slug === 'string' && data.slug.trim() && data.slug.trim().toLowerCase() !== 'undefined')
+    ? data.slug.trim()
+    : defaultSlug;
+
+  return {
+    slug: safeSlug,
+    title: typeof data?.title === 'string' ? data.title.trim() : '',
+    date: data?.date,
+    category: normalizeField(data?.category, 'Generale', { field: 'category', slug: safeSlug }),
+    excerpt: typeof data?.excerpt === 'string' ? data.excerpt.trim() : '',
+    coverImage: normalizeField(data?.coverImage, '/images/default-blog-cover.webp', { field: 'coverImage', slug: safeSlug }), // Fallback image
+    author: normalizeField(data?.author, 'YourBusinessInItaly', { field: 'author', slug: safeSlug }),
+  } as BlogPostMeta;
 }

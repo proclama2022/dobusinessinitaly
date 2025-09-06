@@ -34,6 +34,16 @@
     "title": "404 Page Not Found",
     "subtitle": "Did you forget to add the page to the router?"
   },
+  "team": {
+    "rosario_emmi_role": "Accountant & Startup Consultant",
+    "rosario_emmi_specialty": "Expert in tax consulting for e-commerce, web agencies and innovative SMEs. Founder of Commercialista24ore.com and PartitaIVAonline.com",
+    "giovanni_emmi_role": "Founder & Senior Partner",
+    "giovanni_emmi_specialty": "Pioneer of digital consulting since 1998. Awarded 'Digital Professional of the Year 2015' - Politecnico di Milano",
+    "gaetana_vecchio_role": "Chartered Accountant & Statutory Auditor",
+    "gaetana_vecchio_specialty": "Specialized in tax consulting for innovative startups, e-commerce and digital SMEs. Strategic consultant for business growth",
+    "rosy_fresta_role": "Labor Consultant & Partner",
+    "rosy_fresta_specialty": "Specialized in labor law, human resources management and social security consulting for innovative companies"
+  },
   "hero": {
     "title": "Accounting Expertise For Your Global Business",
     "subtitle": "We assist foreign companies and investors in successfully managing their business in Italy, providing excellence in tax and commercial consulting.",

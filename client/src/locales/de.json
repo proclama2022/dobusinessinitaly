@@ -34,6 +34,14 @@
     "title": "Seite nicht gefunden",
     "subtitle": "Haben Sie vergessen, die Seite im Router einzutragen?"
   },
+  "team": {
+    "rosario_emmi_role": "Steuerberater & Startup-Berater",
+    "rosario_emmi_specialty": "Experte für Steuerberatung für E-Commerce, Webagenturen und innovative KMU. Gründer von Commercialista24ore.com und PartitaIVAonline.com",
+    "giovanni_emmi_role": "Gründer & Senior Partner",
+    "giovanni_emmi_specialty": "Pionier der digitalen Beratung seit 1998. Ausgezeichnet als 'Digital Professional of the Year 2015' - Politecnico di Milano",
+    "gaetana_vecchio_role": "Steuerberater & Rechnungsprüfer",
+    "gaetana_vecchio_specialty": "Spezialisiert auf Steuerberatung für innovative Startups, E-Commerce und digitale KMU. Strategische Beraterin für Unternehmenswachstum"
+  },
   "hero": {
     "title": "Steuerliche Expertise für Ihr globales Unternehmen",
     "subtitle": "Wir unterstützen ausländische Unternehmen und Investoren dabei, ihr Geschäft in Italien erfolgreich zu managen, mit Exzellenz in steuerlicher und kaufmännischer Beratung.",

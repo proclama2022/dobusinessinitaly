@@ -34,6 +34,14 @@
     "title": "Página no encontrada",
     "subtitle": "¿Olvidaste añadir la página al enrutador?"
   },
+  "team": {
+    "rosario_emmi_role": "Contable y Consultor de Startups",
+    "rosario_emmi_specialty": "Experto en asesoramiento fiscal para e-commerce, agencias web y PYMES innovadoras. Fundador de Commercialista24ore.com y PartitaIVAonline.com",
+    "giovanni_emmi_role": "Fundador y Socio Principal",
+    "giovanni_emmi_specialty": "Pionero de la consultoría digital desde 1998. Premiado como 'Profesional Digital del Año 2015' - Politécnico de Milán",
+    "gaetana_vecchio_role": "Contable Titulado y Auditor Jurado",
+    "gaetana_vecchio_specialty": "Especializada en asesoramiento fiscal para startups innovadoras, e-commerce y PYMES digitales. Consultora estratégica para el crecimiento empresarial"
+  },
   "hero": {
     "title": "Expertise Contable Para Tu Negocio Global",
     "subtitle": "Ayudamos a empresas e inversores extranjeros a gestionar con éxito su negocio en Italia, ofreciendo asesoramiento fiscal y comercial de excelencia.",
