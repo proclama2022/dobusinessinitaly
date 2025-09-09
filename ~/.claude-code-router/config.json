@@ -1,0 +1,22 @@
+{
+  "PORT": 3456,
+  "LOG": true,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "openrouter",
+      "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key": "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",
+      "models": [
+        "anthropic/claude-sonnet-4",
+        "anthropic/claude-3.5-sonnet",
+        "quasar/alpha",
+        "cypher/alpha",
+        "optimus/alpha"
+      ]
+    }
+  ],
+  "Router": {
+    "default": "openrouter,anthropic/claude-sonnet-4"
+  }
+}

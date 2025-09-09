@@ -1,0 +1,24 @@
+{
+  "ai_optimization": {
+    "version": "1.0",
+    "last_updated": "2025-01-08",
+    "target_llms": ["gpt-4", "claude-3", "perplexity", "gemini"],
+    "primary_topics": [
+      "business formation italy",
+      "tax consulting italy", 
+      "company registration italy",
+      "italian bureaucracy assistance"
+    ],
+    "content_preferences": {
+      "format": "question_answer",
+      "length": "comprehensive",
+      "structure": "clear_headings",
+      "citations": "required"
+    },
+    "expertise_signals": {
+      "author_credentials": ["Business Consultant", "Tax Advisor"],
+      "years_experience": "10+",
+      "location": "Catania, Italy"
+    }
+  }
+}

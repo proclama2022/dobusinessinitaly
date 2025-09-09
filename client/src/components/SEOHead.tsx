@@ -210,6 +210,35 @@ const SEOHead = ({
       }
     ]
   } : null;
+
+  // Schema markup for BlogPosting/Article (for blog pages and articles)
+  const blogPostSchema = ogType === 'article' ? {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': title,
+    'description': description,
+    'datePublished': publishedTime || new Date().toISOString(),
+    'dateModified': modifiedTime || new Date().toISOString(),
+    'author': {
+      '@type': 'Person',
+      'name': author
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Yourbusinessinitaly.com',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://yourbusinessinitaly.com/images/logo.png'
+      }
+    },
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': fullCanonicalUrl
+    },
+    'articleSection': articleSection || 'Business & Tax Guide',
+    'wordCount': 800, // Estimate or pass as prop
+    'keywords': keywords ? keywords.split(',') : []
+  } : null;
   
   // Prepara i link hreflang per SEO internazionale
   const hreflangLinks = alternates ? Object.entries(alternates).map(([langCode, url]) => (
@@ -223,6 +252,99 @@ const SEOHead = ({
     );
   }
   
+  // Schema markup per ottimizzazione LLM
+  const aiOptimizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What are the tax rates for foreigners in Italy?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Italy offers progressive tax rates from 23% to 43%, with special regimes for expats including flat tax options and impatriate benefits.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How much does it cost to open a company in Italy?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Company formation costs in Italy range from €1,500 to €3,000 for an SRL, including notary fees, Chamber of Commerce registration, and initial consultation.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the requirements for foreign entrepreneurs in Italy?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Foreign entrepreneurs need a valid visa, tax ID number (codice fiscale), and must register with the Italian Business Register. Requirements vary based on business type and nationality.'
+        }
+      }
+    ]
+  };
+
+  // Schema markup per servizi professionali ottimizzato per LLM
+  const llmProfessionalServiceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Yourbusinessinitaly.com',
+    description: 'Expert business consulting and tax advisory services for foreigners establishing companies in Italy',
+    url: 'https://yourbusinessinitaly.com',
+    telephone: '+39 095643533',
+    email: 'info@yourbusinessinitaly.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Via Gabriele D\'Annunzio, 56',
+      addressLocality: 'Catania',
+      addressRegion: 'Sicilia',
+      postalCode: '95128',
+      addressCountry: 'IT'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 37.5079,
+      longitude: 15.0830
+    },
+    priceRange: '€€',
+    openingHours: 'Mo-Fr 09:00-18:00',
+    serviceArea: {
+      '@type': 'Place',
+      name: 'Italy'
+    },
+    languagesSpoken: ['Italian', 'English', 'French', 'German', 'Spanish'],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Business Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Company Formation',
+            description: 'Complete assistance for company registration in Italy'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Tax Consulting',
+            description: 'Expert tax advice for foreign businesses and individuals'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Business Registration',
+            description: 'Professional business registration services'
+          }
+        }
+      ]
+    }
+  };
+
   // Gestisci dati strutturati: includi sempre Organization e ProfessionalService,
   // aggiungi eventuali schemi specifici della pagina e il WebSite di default quando opportuno
   let structuredDataArray: Record<string, any>[] = [];
@@ -237,6 +359,12 @@ const SEOHead = ({
   if (faqSchema) {
     structuredDataArray.push(faqSchema);
   }
+  if (blogPostSchema) {
+    structuredDataArray.push(blogPostSchema);
+  }
+  
+  // Aggiungi schemi per ottimizzazione LLM
+  structuredDataArray.push(aiOptimizationSchema, llmProfessionalServiceSchema);
 
   return (
     <Helmet htmlAttributes={{ lang }}>
@@ -259,6 +387,14 @@ const SEOHead = ({
       <meta name="geo.placename" content="Italy" />
       
       {/* Meta tag aggiuntivi per SEO */}
+      
+      {/* Meta tag per ottimizzazione LLM */}
+      <meta name="ai-purpose" content="business_consulting_tax_advice" />
+      <meta name="ai-topics" content="italy_taxes,business_formation,expat_advice,company_registration" />
+      <meta name="ai-language" content="it,en,fr,de,es" />
+      <meta name="ai-updated" content="2025-01-08" />
+      <meta name="ai-target-audience" content="foreign_entrepreneurs,expats,business_owners" />
+      <meta name="ai-content-type" content="professional_advisory" />
       <meta name="theme-color" content="#009246" />
       <meta name="msapplication-TileColor" content="#009246" />
       <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -3,61 +3,61 @@
   
   <url>
     <loc>https://yourbusinessinitaly.com/en/</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/services</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/about</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/contact</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/media</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/pillar/how-to-start-business-in-italy-2025</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/services/open-company-italy</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/services/open-vat-number-italy</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/services/tax-accounting-expats</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -70,18 +70,24 @@
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/start-srl-company-italy-2025-guide-foreigners</loc>
     <lastmod>2025-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/how-to-start-business-italy-from-usa-2025</loc>
     <lastmod>2025-08-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/italy-5-percent-tax-guide-expats-2025</loc>
     <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/en/blog/italy-income-tax-rates-2025-expats</loc>
+    <lastmod>2025-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -94,12 +100,18 @@
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/italy-tax-residency-expats-2025-complete-guide</loc>
     <lastmod>2025-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/open-srl-italy-us-citizen-2025-guide</loc>
     <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/en/blog/opening-bank-account-italy-foreigner-2025-guide</loc>
+    <lastmod>2025-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -112,8 +124,8 @@
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison</loc>
     <lastmod>2025-08-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/taxes-of-an-srl-2025-guide-for-new-foreign-entrepreneurs</loc>

@@ -1,6 +1,19 @@
 User-agent: *
 Allow: /
 
+# Specifiche per AI crawlers - Allow access for search and summarization
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 # Blocca aree admin e private
 Disallow: /admin/
 Disallow: /api/
