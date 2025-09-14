@@ -1,0 +1,44 @@
+{
+  "site": "yourbusinessinitaly.com",
+  "monitoring": {
+    "enabled": true,
+    "keywords": [
+      "italy tax for foreigners",
+      "aprire partita iva italia",
+      "italy startup visa",
+      "srl italia stranieri",
+      "regime forfettario italia",
+      "italian tax residency",
+      "impatriate regime italy",
+      "flat tax italy expats"
+    ],
+    "ai_models": [
+      "gpt-4",
+      "claude-3",
+      "gemini-1.5",
+      "perplexity"
+    ],
+    "check_frequency": "weekly",
+    "alert_threshold": 0.7
+  },
+  "optimization_targets": {
+    "min_llmrefs_score": 0.75,
+    "target_ai_visibility": 85,
+    "citation_goals": {
+      "monthly_mentions": 50,
+      "authority_sources": 10
+    }
+  },
+  "content_strategy": {
+    "entity_focus": [
+      "Regime Forfettario",
+      "Partita IVA",
+      "SRL Italy",
+      "Tax Residency Italy",
+      "Impatriate Regime"
+    ],
+    "faq_optimization": true,
+    "structured_data": true,
+    "conversational_tone": true
+  }
+}

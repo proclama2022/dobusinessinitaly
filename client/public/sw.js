@@ -1,21 +1,30 @@
 // Service Worker per Your Business in Italy
-// Ottimizzato per SEO e performance 2025
+// Ottimizzato per SEO e performance 2025 + Mobile Optimization
 
 const CACHE_NAME = 'yourbusiness-italy-v1.0.0';
 const STATIC_CACHE = 'yourbusiness-static-v1.0.0';
 const DYNAMIC_CACHE = 'yourbusiness-dynamic-v1.0.0';
+const MOBILE_CACHE = 'yourbusiness-mobile-v1.0.0';
 
 // Risorse critiche da mettere sempre in cache
 const CRITICAL_RESOURCES = [
   '/',
   '/manifest.json',
   '/images/logo.png',
+  '/images/logo-mobile.png',
   '/favicon.ico',
   '/icon-192.png',
   '/icon-512.png',
   '/apple-touch-icon.png',
   'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
+];
+
+// Risorse specifiche per mobile
+const MOBILE_RESOURCES = [
+  '/images/logo-mobile.png',
+  '/images/favicon-mobile.ico',
+  '/css/mobile-optimized.css'
 ];
 
 // Risorse da mettere in cache al primo accesso
@@ -41,6 +50,12 @@ self.addEventListener('install', (event) => {
       caches.open(STATIC_CACHE).then((cache) => {
         console.log('[SW] Caching risorse statiche');
         return cache.addAll(STATIC_RESOURCES);
+      }),
+
+      // Cache risorse mobile
+      caches.open(MOBILE_CACHE).then((cache) => {
+        console.log('[SW] Caching risorse mobile');
+        return cache.addAll(MOBILE_RESOURCES);
       })
     ]).then(() => {
       // Forza attivazione immediata
@@ -59,7 +74,7 @@ self.addEventListener('activate', (event) => {
       caches.keys().then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
-            if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
+            if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE && cacheName !== MOBILE_CACHE) {
               console.log('[SW] Eliminazione cache vecchia:', cacheName);
               return caches.delete(cacheName);
             }
@@ -77,6 +92,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
+
+  // Detect mobile user agent
+  const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(request.headers.get('user-agent') || '');
+
+  // Mobile-specific optimization:优先使用缓存
+  if (isMobile && isMobileResource(url)) {
+    event.respondWith(mobileCacheFirstStrategy(request));
+    return;
+  }
 
   // Strategia Cache First per risorse statiche
   if (isStaticResource(url)) {
@@ -101,6 +125,37 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Strategie di caching
+
+function mobileCacheFirstStrategy(request) {
+  // Mobile-specific cache first with aggressive caching
+  return caches.match(request)
+    .then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(request).then((response) => {
+        if (response.status === 200 &&
+            (response.type === 'basic' || response.type === 'cors') &&
+            (request.url.startsWith('http:') || request.url.startsWith('https:'))) {
+          const responseClone = response.clone();
+          caches.open(MOBILE_CACHE).then((cache) => {
+            cache.put(request, responseClone).catch((err) => {
+              console.warn('[SW] Failed to cache mobile resource:', request.url, err);
+            });
+          });
+        }
+        return response;
+      });
+    })
+    .catch(() => {
+      // Fallback per risorse mobile
+      if (request.url.includes('/images/')) {
+        return caches.match('/images/logo-mobile.png');
+      }
+      return new Response('', { status: 404 });
+    });
+}
 
 function cacheFirstStrategy(request) {
   // Skip chrome-extension and unsupported schemes
@@ -226,6 +281,17 @@ function isApiRequest(url) {
   return (
     url.pathname.includes('/api/') ||
     url.hostname.includes('api.')
+  );
+}
+
+function isMobileResource(url) {
+  return (
+    url.pathname.includes('mobile') ||
+    url.pathname.includes('-mobile') ||
+    url.pathname.match(/\.(png|jpg|jpeg|gif|svg|webp)/) ||
+    url.pathname.includes('/images/') ||
+    url.hostname.includes('fonts.googleapis.com') ||
+    url.hostname.includes('cdnjs.cloudflare.com')
   );
 }
 

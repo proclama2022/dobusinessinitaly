@@ -1,0 +1,80 @@
+{
+  "topic_clusters": {
+    "tax_regimes": {
+      "pillar_content": "italy-income-tax-rates-2025-expats.en.mdx",
+      "cluster_content": [
+        "tasse-al-5-per-cento-guida-flat-tax-2025.mdx",
+        "italy-5-percent-tax-guide-expats-2025.en.mdx",
+        "impots-5-pourcent-italie-guide-expat-2025.fr.mdx",
+        "impuestos-5-por-ciento-italia-guia-extranjeros-2025.es.mdx",
+        "italien-5-prozent-steuern-leitfaden-auslaender-2025.de.mdx"
+      ],
+      "internal_links": [
+        {"from": "tasse-al-5-per-cento-guida-flat-tax-2025.mdx", "to": "italy-income-tax-rates-2025-expats.mdx", "anchor": "tasse per gli expat in Italia"},
+        {"from": "italy-5-percent-tax-guide-expats-2025.en.mdx", "to": "italy-income-tax-rates-2025-expats.mdx", "anchor": "tax rates in Italy for expats"}
+      ]
+    },
+    "business_setup": {
+      "pillar_content": "come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025.mdx",
+      "cluster_content": [
+        "italy-startup-visa-2025-complete-guide-foreign-entrepreneurs.en.mdx",
+        "opening-bank-account-italy-foreigner-2025-guide.en.mdx",
+        "srl-vs-ditta-individuale-italia-2025-confronto-completo.mdx",
+        "tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri.mdx"
+      ],
+      "internal_links": [
+        {"from": "come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025.mdx", "to": "tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri.mdx", "anchor": "tassazione SRL"},
+        {"from": "srl-vs-ditta-individuale-italia-2025-confronto-completo.mdx", "to": "come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025.mdx", "anchor": "aprire attività in Italia"}
+      ]
+    },
+    "tax_residency": {
+      "pillar_content": "italy-income-tax-rates-2025-expats.en.mdx",
+      "cluster_content": [
+        "residencia-fiscal-italia-extranjeros-2025-guia-completa.es.mdx",
+        "residence-fiscale-italie-expatries-2025-guide-complet.fr.mdx",
+        "residencia-fiscal-italia-extranjeros-2025-guia-completa.en.mdx"
+      ],
+      "internal_links": [
+        {"from": "residencia-fiscal-italia-extranjeros-2025-guia-completa.es.mdx", "to": "italy-income-tax-rates-2025-expats.en.mdx", "anchor": "tax rates for expats"}
+      ]
+    }
+  },
+  "entity_network": {
+    "primary_entities": [
+      "Regime Forfettario",
+      "Partita IVA",
+      "SRL Italia",
+      "Tax Residency Italy",
+      "Impatriate Regime",
+      "Startup Visa Italy"
+    ],
+    "supporting_entities": [
+      "Codice ATECO",
+      "INPS Contributions",
+      "IRPEF Tax Brackets",
+      "IRES Corporate Tax",
+      "Flat Tax Italy"
+    ]
+  },
+  "llm_optimization": {
+    "conversational_phrases": [
+      "If you're thinking about",
+      "Many foreigners ask",
+      "The good news is",
+      "Here's what you need to know",
+      "Let me explain step by step"
+    ],
+    "question_patterns": [
+      "What is the limit for",
+      "How does it work for foreigners",
+      "Can I combine this with",
+      "What's the difference between"
+    ],
+    "authority_signals": [
+      "According to Italian law",
+      "The 2025 Budget Law states",
+      "Official Agenzia delle Entrate guidelines",
+      "Updated with latest regulations"
+    ]
+  }
+}

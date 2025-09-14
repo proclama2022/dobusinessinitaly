@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -51,6 +51,49 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Commercialista per Stranieri in Italia">
     <meta name="twitter:description" content="Apertura società e partita IVA per stranieri. Consulenza fiscale professionale.">
+
+    <!-- Mobile-specific structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "YourBusinessInItaly",
+      "url": "https://yourbusinessinitaly.com",
+      "mobileUrl": "https://yourbusinessinitaly.com/mobile/",
+      "telephone": "+39 123 456 7890",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IT"
+      },
+      "hasMobileApplication": {
+        "@type": "MobileApplication",
+        "name": "YourBusinessInItaly",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS, Android",
+        "downloadUrl": "https://yourbusinessinitaly.com/app"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+39 123 456 7890",
+        "contactType": "customer service",
+        "availableLanguage": ["Italian", "English"]
+      },
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Italy"
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Setup Services",
+          "description": "Company registration and VAT number services for foreigners in Italy"
+        }
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

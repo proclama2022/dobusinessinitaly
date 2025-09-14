@@ -168,8 +168,8 @@ const Header = () => {
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="w-20 sm:w-24 max-h-14 h-auto object-contain max-w-full cursor-pointer"
-                loading="lazy"
+                className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
+                loading="eager"
                 fetchpriority="high"
                 decoding="async"
                 onLoad={(e) => {
@@ -187,9 +187,9 @@ const Header = () => {
                   span.className = 'text-xl sm:text-2xl font-heading font-bold text-primary';
                   target.parentElement?.appendChild(span);
                 }}
-                // Aggiungi srcset per responsive images
-                srcSet={`${logoImage} 1x, ${logoImage.replace('.png', '@2x.png')} 2x`}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 96px"
+                // Aggiungi srcset ottimizzato per mobile
+                srcSet={`${logoImage}?w=64 64w, ${logoImage}?w=80 80w, ${logoImage}?w=96 96w, ${logoImage}?w=120 120w`}
+                sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
               />
             </Link>
           </div>
@@ -198,7 +198,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-2 -m-2 active:scale-95 transition-transform"
+              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-3 -m-1 min-h-[48px] min-w-[48px] active:scale-95 transition-transform"
               aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
