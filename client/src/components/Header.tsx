@@ -167,8 +167,15 @@ const Header = () => {
             >
               <img
                 src={logoImage}
-                alt="Yourbusinessinitaly.com"
+                alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="w-20 sm:w-24 max-h-14 h-auto object-contain max-w-full cursor-pointer"
+                loading="lazy"
+                fetchpriority="high"
+                decoding="async"
+                onLoad={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.classList.add('loaded');
+                }}
                 onError={(e) => {
                   // Fallback al testo se l'immagine non può essere caricata
                   const target = e.target as HTMLImageElement;
@@ -180,6 +187,9 @@ const Header = () => {
                   span.className = 'text-xl sm:text-2xl font-heading font-bold text-primary';
                   target.parentElement?.appendChild(span);
                 }}
+                // Aggiungi srcset per responsive images
+                srcSet={`${logoImage} 1x, ${logoImage.replace('.png', '@2x.png')} 2x`}
+                sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 96px"
               />
             </Link>
           </div>
@@ -188,18 +198,24 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-neutral-700 hover:text-primary focus:outline-none"
+              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-2 -m-2 active:scale-95 transition-transform"
               aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
-            >
-              <i className="fas fa-bars text-xl" style={{
+              style={{
                 WebkitFontSmoothing: 'antialiased',
                 MozOsxFontSmoothing: 'grayscale',
                 textRendering: 'auto',
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                touchAction: 'manipulation',
                 filter: 'drop-shadow(0 0 0.5px rgba(0,0,0,0.1))',
                 transform: 'translateZ(0)'
-              }}></i>
+              }}
+            >
+              <i className="fas fa-bars text-xl"></i>
             </button>
           </div>
 
@@ -277,7 +293,7 @@ const Header = () => {
                       href={getLocalizedPath(link.path)}
                       className={`font-medium ${isActiveLink(link.path)
                         ? 'text-primary'
-                        : 'text-neutral-700 hover:text-primary'}`}
+                        : 'text-neutral-700 hover:text-primary'} block py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -287,7 +303,7 @@ const Header = () => {
                         <Link
                           key={dropdownItem.path}
                           href={getLocalizedPath(dropdownItem.path)}
-                          className="block text-sm text-neutral-600 hover:text-primary"
+                          className="block text-sm text-neutral-600 hover:text-primary py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {dropdownItem.label}
@@ -301,7 +317,7 @@ const Header = () => {
                     href={getLocalizedPath(link.path)}
                     className={`font-medium ${isActiveLink(link.path)
                       ? 'text-primary'
-                      : 'text-neutral-700 hover:text-primary'}`}
+                      : 'text-neutral-700 hover:text-primary'} block py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}

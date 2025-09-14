@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "gemini_image_server": {
+      "command": "python",
+      "args": ["/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/mcp_gemini_image_server.py"],
+      "env": {
+        "GEMINI_API_KEY": "AIzaSyAglGG7WP3xBqle7Xs1h8OWD3yHUWmVbtM"
+      }
+    }
+  },
+  "claudeCommands": {
+    "generate-article-images": {
+      "path": "/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/.claude/commands/generate-article-images.md",
+      "description": "Genera immagini ottimizzate per articoli usando Gemini MCP"
+    },
+    "generate-images-with-nano-banana": {
+      "path": "/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/.claude/commands/generate-images-with-nano-banana.md",
+      "description": "Genera immagini per articoli usando Nano Banana (Gemini 2.5 Flash Image)"
+    },
+    "generate-images-with-ideogram": {
+      "path": "/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/.claude/commands/generate-images-with-ideogram.md",
+      "description": "Genera immagini reali e gratuite per articoli usando Ideogram AI"
+    },
+    "generate-images-with-nano-banana-mcp": {
+      "path": "/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/.claude/commands/generate-images-with-nano-banana-mcp.md",
+      "description": "Genera immagini reali usando Nano Banana (Gemini 2.5 Flash Image) tramite server MCP"
+    }
+  }
+}

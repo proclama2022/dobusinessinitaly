@@ -14,11 +14,13 @@ export default {
         xl: "2rem",
       },
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1320px",
+        xs: "475px", // Extra small phones
+        sm: "640px", // Small phones
+        md: "768px", // Tablets
+        lg: "1024px", // Small desktops
+        xl: "1280px", // Desktops
+        "2xl": "1320px", // Large desktops
+        "3xl": "1600px", // Extra large desktops
       },
     },
     extend: {

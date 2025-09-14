@@ -5,6 +5,94 @@
 ### Obiettivo
 Creare articoli che siano **dinamici, coinvolgenti e memorabili** attraverso la varietà strutturale, mantenendo al contempo ottimizzazione SEO e leggibilità 8-9/10.
 
+### Regole Fondamentali da Rispettare
+
+**VIETATO: Creare casi studio inventati o esempi fittizi**
+- Non inventare nomi di persone o aziende fittizie (es. "Thomas Müller", "Sarah Chen")
+- Non creare storie di successo inventate con dettagli specifici
+- Non usare esempi personali con citazioni dirette inventate
+- Non descrivere scenari specifici con persone fittizie e risultati dettagliati
+
+**CONSENTITO: Usare dati reali e statistiche generali**
+- Statistiche reali da fonti affidabili
+- Dati aggregati e trend di mercato
+- Esempi generali senza nomi specifici ("molti imprenditori tedeschi riportano")
+- Informazioni fattuali verificabili
+
+### **BILANCIAMENTO CONTENUTI: Via di Mezzo tra Testo ed Elementi Visivi**
+
+**Lunghezza Articolo:**
+- **1500-2000 parole massimo** per articoli completi
+- Mantenere il contenuto conciso e focalizzato
+- Evitare di superare le 2000 parole
+
+**Proporzione Ideale:**
+- **70% testo narrativo** - paragrafi descrittivi con flusso naturale
+- **30% elementi visivi** - tabelle, liste strategiche, box informativi
+
+**Elementi Visivi Consentiti (con moderazione):**
+- **2-3 tabelle comparativi** massime per articolo
+- **2-3 liste brevi** solo per informazioni tecniche essenziali
+- **Box informativi** con consigli esperti
+- **Separatori visivi** tra sezioni principali
+- **Emoji strategiche** per titoli di sezione
+- **Indicatori di progresso** o timeline
+
+**Quando Usare Elementi Visivi:**
+- Per confrontare opzioni (es. strutture aziendali)
+- Per elencare requisiti tecnici (es. documenti necessari)
+- Per mostrare timeline o processi step-by-step
+- Per presentare dati statistici in formato chiaro
+- Per evidenziare informazioni critiche (box callout)
+
+**Quando Evitare Elementi Visivi:**
+- Per sostituire paragrafi narrativi
+- Per elencare vantaggi/svantaggi generici
+- Per ripetere informazioni già spiegate nel testo
+- Per creare sezioni puramente di elenchi
+
+### **Link Interni: Obbligatori (3-5 per articolo)**
+
+**Requisiti:**
+- **3-5 link interni obbligatori** per ogni articolo
+- Link a articoli correlati e pertinenti
+- Integrazione naturale nel flusso del testo
+- Anchor text descrittivi e contestuali
+
+**Best Practice:**
+- Link a contenuti che approfondiscono argomenti menzionati
+- Prioritizza articoli nella stessa lingua
+- I link devono essere utili per il lettore
+- Evita link forzati o non pertinenti
+
+### **Call-to-Action (CTA): Obbligatori (3-4 per articolo)**
+
+**Requisiti:**
+- **3-4 CTA strategici obbligatori** per ogni articolo
+- Posizionamento naturale in punti di transizione del contenuto
+- Link a pagine rilevanti (/contact, /services, etc.)
+- Formato consistente con emoji e testo descrittivo
+
+**Posizionamento Strategico:**
+- Dopo introduzione (consulenza gratuita)
+- Dopo sezioni principali (servizi specifici)
+- Dopo sezioni tecniche (assistenza professionale)
+- Prima conclusione (prossimi passi)
+
+### **Immagini: Obbligatorie (4-5 per articolo)**
+
+**Requisiti:**
+- **4-5 immagini pertinenti obbligatori** per ogni articolo
+- Source: Unsplash con termini di ricerca rilevanti
+- Alt text descrittivo nella lingua dell'articolo
+- Posizionamento strategico per spezzare il testo
+
+**Scopo delle Immagini:**
+- Rompere sezioni di testo lungo
+- Illustrare concetti chiave
+- Migliorare engagement visivo
+- Fornire contesto visuale agli argomenti
+
 ### Perché la Varietà Strutturale Funziona
 - **Mantiene l'attenzione** del lettore
 - **Migliora la retention** della pagina

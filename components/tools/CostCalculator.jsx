@@ -5,6 +5,16 @@ const CostCalculator = () => {
   const [employees, setEmployees] = useState(1);
   const [revenue, setRevenue] = useState(50000);
 
+  // Funzione per ottimizzare le immagini
+  const getOptimizedImageUrl = (url, width = 400) => {
+    if (!url) return '';
+    // Se è un'immagine locale, aggiungi dimensioni
+    if (url.startsWith('/')) {
+      return `${url}?w=${width}&q=80`;
+    }
+    return url;
+  };
+
   const calculateCosts = () => {
     const costs = {
       srl_simplified: {

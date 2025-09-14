@@ -8,8 +8,53 @@ Questa guida fornisce istruzioni complete per creare articoli ottimizzati per i 
 
 - **Standardizzazione**: Tutti gli articoli seguono una struttura SEO ottimizzata
 - **Leggibilità**: Punteggio di leggibilità 8-9/10 per tutti i contenuti
-- **Linking Interno**: 3-5 link rilevanti per articolo
+- **Linking Interno**: 3-5 link rilevanti per articolo (OBBLIGATORIO)
+- **Call-to-Action**: 3-4 CTA strategici per articolo (OBBLIGATORIO)
+- **Immagini**: 4-5 immagini pertinenti per articolo (OBBLIGATORIO)
 - **Schema Markup**: Implementazione completa di dati strutturati
+- **Lunghezza Articoli**: 1500-2000 parole per guide complete
+
+## ⚠️ Regole Fondamentali da Rispettare
+
+**VIETATO: Creare casi studio inventati o esempi fittizi**
+- Non inventare nomi di persone o aziende fittizie (es. "Thomas Müller", "Marco Rossi")
+- Non creare storie di successo inventate con dettagli specifici
+- Non usare esempi personali con citazioni dirette inventate
+- Non descrivere scenari specifici con persone fittizie e risultati dettagliati
+
+**CONSENTITO: Usare dati reali e statistiche generali**
+- Statistiche reali da fonti affidabili
+- Dati aggregati e trend di mercato
+- Esempi generali senza nomi specifici ("molti imprenditori tedeschi riportano")
+- Informazioni fattuali verificabili
+- Riferimenti a dati ufficiali e studi pubblicati
+
+### **BILANCIAMENTO CONTENUTI: Via di Mezzo tra Testo ed Elementi Visivi**
+
+**Proporzione Ideale:**
+- **70% testo narrativo** - paragrafi descrittivi con flusso naturale
+- **30% elementi visivi** - tabelle, liste strategiche, box informativi
+
+**Elementi Visivi Consentiti (con moderazione):**
+- **2-3 tabelle comparativi** massime per articolo
+- **2-3 liste brevi** solo per informazioni tecniche essenziali
+- **Box informativi** con consigli esperti
+- **Separatori visivi** tra sezioni principali
+- **Emoji strategiche** per titoli di sezione
+- **Indicatori di progresso** o timeline
+
+**Quando Usare Elementi Visivi:**
+- Per confrontare opzioni (es. strutture aziendali)
+- Per elencare requisiti tecnici (es. documenti necessari)
+- Per mostrare timeline o processi step-by-step
+- Per presentare dati statistici in formato chiaro
+- Per evidenziare informazioni critiche (box callout)
+
+**Quando Evitare Elementi Visivi:**
+- Per sostituire paragrafi narrativi
+- Per elencare vantaggi/svantaggi generici
+- Per ripetere informazioni già spiegate nel testo
+- Per creare sezioni puramente di elenchi
 
 ## 🏗️ Struttura Standard dell'Articolo
 
@@ -186,12 +231,73 @@ nextReview: "YYYY-MM-DD"
 - **Meta Descrizione**: Sotto i 160 caratteri con parola chiave primaria
 - **Struttura URL**: Ricca di keyword, pulita, sotto i 100 caratteri
 - **Ottimizzazione Immagini**: Alt text, file compressi, nomi descrittivi
-- **Link Interni**: 3-5 link rilevanti per articolo
+- **Link Interni**: 3-5 link rilevanti per articolo (OBBLIGATORIO)
 - **Schema Markup**: Implementazione JSON-LD completa (Organization, Article, Person, FAQPage, HowTo, Breadcrumb)
+
+### **Link Interni: Requisiti Obbligatori**
+
+**Numero di Link:** 3-5 link interni per articolo (massimo 5)
+
+**Selezione dei Link:**
+- Link a articoli correlati e pertinenti
+- Prioritizza articoli nella stessa lingua quando possibile
+- Scegli articoli che approfondiscono argomenti menzionati nel testo
+- Evita link non pertinenti o forzati
+
+**Integrazione Naturale:**
+- Inserisci i link in contesti naturali dove l'argomento è già menzionato
+- Usa anchor text descrittivi che fluiscono con il contenuto
+- Evita di interrompere il flusso narrativo
+- I link devono essere utili per il lettore che vuole approfondire
+
+**Esempi di Buona Pratica:**
+- Quando parli di "Regime Impatriati" → link all'articolo dedicato
+- Quando menzioni tasse specifiche → link alla guida dettagliata
+- Quando confronti strutture aziendali → link all'articolo di confronto
+- Quando spieghi requisiti burocratici → link alla guida specifica
+
+### **Call-to-Action (CTA): Requisiti Obbligatori**
+
+**Numero di CTA:** 3-4 CTA strategici per articolo
+
+**Posizionamento Strategico:**
+1. **Dopo l'introduzione** - CTA per consulenza gratuita
+2. **Dopo sezioni principali** - CTA per servizi specifici
+3. **Dopo sezioni tecniche** - CTA per assistenza professionale
+4. **Prima della conclusione** - CTA per prossimi passi
+
+**Tipi di CTA Consentiti:**
+- 📞 **Kostenlose Erstberatung** - Link a /contact
+- 💼 **Professionelle Dienstleistung** - Link a /services/[specific-service]
+- 📊 **Spezialisierte Beratung** - Link a servizi specifici
+- 🚀 **Nächste Schritte** - Link a pagine di azione
+
+**Esempi di Formato:**
+"📞 **Kostenlose Erstberatung**: [Vereinbaren Sie jetzt Ihr kostenloses Beratungsgespräch](/contact) und erfahren Sie, wie wir Sie unterstützen können."
+
+### **Immagini: Requisiti Obbligatori**
+
+**Numero di Immagini:** 4-5 immagini pertinenti per articolo
+
+**Selezione delle Immagini:**
+- Usa Unsplash con termini di ricerca pertinenti
+- Immagini must be relevant al contenuto circostante
+- Aggiungi alt text descrittivo nella lingua dell'articolo
+- Posiziona strategicamente per spezzare sezioni di testo lungo
+
+**Posizionamento Tipico:**
+1. **Dopo l'introduzione** - Immagine di contesto business
+2. **In sezioni tecniche** - Immagini che illustrano concetti
+3. **In sezioni comparative** - Immagini di processi decisionali
+4. **In sezioni di servizi** - Immagini professionali
+5. **Nella conclusione** - Immagini di successo/risultati
+
+**Formato Alt Text:**
+"Descrizione dettagliata dell'immagine nella lingua dell'articolo che spiega cosa mostra e perché è rilevante"
 
 ### Qualità del Contenuto
 
-- **Conteggio Parole**: Minimo 1500 parole per guide complete
+- **Conteggio Parole**: 1500-2000 parole per guide complete (massimo 2000 parole)
 - **Originalità**: Contenuto 100% unico con ricerca originale e dati
 - **Accuratezza**: Verificato con validazione professionale e citazioni delle fonti
 - **Freschezza**: Aggiornamenti regolari per mantenere il contenuto attuale
