@@ -13,8 +13,8 @@ export default defineConfig({
       // Ottimizzazioni React per performance
       babel: {
         plugins: [
-          // Rimuove PropTypes in produzione
-          process.env.NODE_ENV === 'production' && ['babel-plugin-transform-remove-console']
+          // Rimuove console.log in produzione
+          process.env.NODE_ENV === 'production' && 'babel-plugin-transform-remove-console'
         ].filter(Boolean)
       }
     }),
