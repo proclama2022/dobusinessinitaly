@@ -60,31 +60,21 @@ export default defineConfig({
       }
     },
     rollupOptions: {
+      external: [],
       output: {
-        manualChunks: (id) => {
-          // Strategia dinamica per chunk ottimali su mobile
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-core';
-            }
-            if (id.includes('@radix-ui') || id.includes('framer-motion')) {
-              return 'ui-heavy';
-            }
-            if (id.includes('@fortawesome') || id.includes('lucide')) {
-              return 'icons';
-            }
-            if (id.includes('i18next') || id.includes('react-i18next')) {
-              return 'i18n';
-            }
-            if (id.includes('wouter') || id.includes('react-hook-form')) {
-              return 'forms-routing';
-            }
-            return 'vendor';
-          }
-          // Chunk per componenti grandi
-          if (id.includes('/components/') && id.includes('Section')) {
-            return 'sections';
-          }
+        manualChunks: {
+          // Chunk separato per React per evitare conflitti
+          'react-vendor': ['react', 'react-dom'],
+          // Chunk per le UI libraries
+          'ui-vendor': ['@radix-ui/react-accordion', '@radix-ui/react-alert-dialog', '@radix-ui/react-avatar', '@radix-ui/react-checkbox', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-hover-card', '@radix-ui/react-label', '@radix-ui/react-navigation-menu', '@radix-ui/react-popover', '@radix-ui/react-progress', '@radix-ui/react-radio-group', '@radix-ui/react-scroll-area', '@radix-ui/react-select', '@radix-ui/react-separator', '@radix-ui/react-slider', '@radix-ui/react-switch', '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-toggle', '@radix-ui/react-toggle-group', '@radix-ui/react-tooltip'],
+          // Chunk per le icone
+          'icons-vendor': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome', 'lucide-react'],
+          // Chunk per i18n
+          'i18n-vendor': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          // Chunk per routing e forms
+          'routing-vendor': ['wouter', 'react-hook-form', '@hookform/resolvers'],
+          // Altri vendor
+          'utils-vendor': ['clsx', 'tailwind-merge', 'class-variance-authority']
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
