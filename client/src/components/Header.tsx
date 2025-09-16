@@ -170,7 +170,7 @@ const Header = () => {
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
                 decoding="async"
                 onLoad={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -278,13 +278,13 @@ const Header = () => {
         {/* Mobile menu */}
         <div
           id="mobile-menu"
-          className={`md:hidden mt-3 border-t border-neutral-200 pt-3 ${mobileMenuOpen ? 'block' : 'hidden'} relative z-50`}
+          className={`md:hidden fixed left-0 right-0 top-[72px] bg-white border-t border-neutral-200 shadow-lg ${mobileMenuOpen ? 'block' : 'hidden'} z-50 max-h-[calc(100vh-72px)] overflow-y-auto`}
           role="navigation"
           aria-label="Menu principale mobile"
           ref={mobileMenuRef}
           tabIndex={-1}
         >
-          <nav className="flex flex-col space-y-3">
+          <nav className="flex flex-col space-y-3 p-4">
             {navigationLinks.map((link) => (
               <div key={link.path}>
                 {link.dropdown ? (

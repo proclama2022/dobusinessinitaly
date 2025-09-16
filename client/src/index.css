@@ -88,6 +88,9 @@
     /* Ottimizzazioni performance */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Previeni overflow orizzontale su mobile */
+    overflow-x: hidden;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -99,6 +102,20 @@
   img {
     max-width: 100%;
     height: auto;
+    /* Previeni overflow su mobile */
+    object-fit: contain;
+  }
+
+  /* Previeni overflow per tutti gli elementi */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Container sicuri per mobile */
+  .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   /* Lazy loading ottimizzato */
@@ -492,6 +509,12 @@
 
 /* Mobile-first responsive optimizations */
 @media (max-width: 768px) {
+  /* Previeni overflow orizzontale */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
   /* Hero section mobile optimization */
   .hero-section {
     min-height: 60vh;
@@ -501,23 +524,29 @@
   h1 {
     font-size: 2rem;
     line-height: 1.2;
+    word-wrap: break-word;
   }
   
   h2 {
     font-size: 1.5rem;
     line-height: 1.3;
+    word-wrap: break-word;
   }
   
   /* Button mobile optimization */
   .btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
   }
   
   /* Container mobile optimization */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   /* Grid mobile optimization */
@@ -530,6 +559,7 @@
   img {
     max-width: 100%;
     height: auto;
+    object-fit: contain;
   }
   
   /* Navigation mobile optimization */
@@ -539,6 +569,13 @@
   
   .nav-desktop {
     display: none;
+  }
+  
+  /* Previeni elementi che escono dal viewport */
+  .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
+    max-width: calc(100vw - 2rem);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

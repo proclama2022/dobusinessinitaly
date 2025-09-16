@@ -42,28 +42,49 @@ export default defineConfig({
     target: 'es2020',
     minify: 'terser',
     sourcemap: false,
-    // Ottimizzazioni per performance
+    // Ottimizzazioni aggressive per mobile
     cssCodeSplit: true,
-    assetsInlineLimit: 4096, // Inline assets < 4kb
+    assetsInlineLimit: 2048, // Ridotto per mobile (2kb invece di 4kb)
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2, // Doppio passaggio per compressione migliore
+        unsafe_arrows: true,
+        unsafe_methods: true,
+        unsafe_proto: true
+      },
+      mangle: {
+        safari10: true // Fix per Safari mobile
       }
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Chunk più granulari per migliore caching
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['wouter'],
-          'ui-components': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          'animations': ['framer-motion'],
-          'forms': ['react-hook-form', '@hookform/resolvers'],
-          'utils': ['clsx', 'tailwind-merge', 'date-fns'],
-          'icons': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome'],
-          'i18n': ['react-i18next', 'i18next', 'i18next-browser-languagedetector']
+        manualChunks: (id) => {
+          // Strategia dinamica per chunk ottimali su mobile
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-core';
+            }
+            if (id.includes('@radix-ui') || id.includes('framer-motion')) {
+              return 'ui-heavy';
+            }
+            if (id.includes('@fortawesome') || id.includes('lucide')) {
+              return 'icons';
+            }
+            if (id.includes('i18next') || id.includes('react-i18next')) {
+              return 'i18n';
+            }
+            if (id.includes('wouter') || id.includes('react-hook-form')) {
+              return 'forms-routing';
+            }
+            return 'vendor';
+          }
+          // Chunk per componenti grandi
+          if (id.includes('/components/') && id.includes('Section')) {
+            return 'sections';
+          }
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -80,7 +101,7 @@ export default defineConfig({
         }
       }
     },
-    chunkSizeWarningLimit: 500 // Ridotto per forzare chunk più piccoli
+    chunkSizeWarningLimit: 300 // Ancora più piccolo per mobile
   },
   server: {
     port: 5173,
