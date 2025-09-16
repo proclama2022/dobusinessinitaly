@@ -87,7 +87,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
 
   const urls = generateOptimizedUrls(src, width);
 
-  // Intersection Observer per lazy loading
+  // Intersection Observer per lazy loading ottimizzato
   useEffect(() => {
     if (priority || !pictureRef.current) return;
 
@@ -100,9 +100,9 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
           }
         });
       },
-      {
-        rootMargin: '50px',
-        threshold: 0.1
+      { 
+        threshold: 0.1,
+        rootMargin: '50px' // Carica l'immagine 50px prima che entri nel viewport
       }
     );
 

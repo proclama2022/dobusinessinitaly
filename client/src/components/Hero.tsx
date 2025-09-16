@@ -38,14 +38,14 @@ const Hero = () => {
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
       <NextGenImage
-        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop&crop=center&auto=format&q=85"
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
         alt={t('hero.backgroundAlt')}
         className="absolute inset-0 w-full h-full object-cover hero-image z-[1]"
         priority={true}
         width={1920}
         height={1080}
         sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px"
-        quality={90}
+        quality={75}
       />
 
       {/* Overlay con pattern decorativo */}

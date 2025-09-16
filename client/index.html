@@ -20,19 +20,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Preload hero image ottimizzato per mobile -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=480&h=320&fit=crop&crop=center&auto=format&q=85&fm=webp" fetchpriority="high" media="(max-width: 480px)">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=768&h=512&fit=crop&crop=center&auto=format&q=85&fm=webp" fetchpriority="high" media="(min-width: 481px) and (max-width: 768px)">
-    
+    <!-- Preload hero image ottimizzato per LCP -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=480&h=320&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(max-width: 480px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=768&h=512&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1024&h=683&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(min-width: 769px)" fetchpriority="high">
+
+    <!-- CSS critico inline per FCP ottimizzato -->
+    <style>
+      /* CSS critico per First Contentful Paint */
+      :root{--primary:142 43% 35%;--secondary:0 79% 48%;--background:0 0% 100%;--foreground:224 71.4% 4.1%}
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:system-ui,-apple-system,sans-serif;background:#f5f7fa;color:#495057;line-height:1.6;overflow-x:hidden}
+      .hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem}
+      .hero h1{font-size:clamp(1.5rem,4vw,3rem);font-weight:700;margin-bottom:1rem;color:#2d5016}
+      .hero p{font-size:clamp(1rem,2.5vw,1.25rem);margin-bottom:2rem;max-width:600px}
+      .btn{display:inline-block;padding:0.75rem 1.5rem;background:hsl(142 43% 35%);color:white;text-decoration:none;border-radius:0.5rem;font-weight:600;transition:background 0.2s}
+      .btn:hover{background:hsl(142 43% 25%)}
+      @media(max-width:768px){.hero{min-height:40vh;padding:0.5rem}.hero h1{font-size:1.75rem}.hero p{font-size:1rem}}
+    </style>
+
     <!-- Preload font critici per performance -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Font ottimizzato per mobile con font-display: swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Font Awesome con caricamento asincrono -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
-    <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></noscript>
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </noscript>
 
     <!-- Meta tag ottimizzati per mobile -->
     <meta name="description" content="Commercialista per stranieri in Italia. Apertura società e partita IVA. Consulenza fiscale in inglese. Preventivo gratuito in 24h.">
