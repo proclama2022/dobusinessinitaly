@@ -170,7 +170,8 @@ const Header = () => {
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
                 loading="eager"
-                fetchPriority="high"
+                // @ts-ignore: React non riconosce fetchPriority in camelCase, usa lowercase
+                fetchpriority="high"
                 decoding="async"
                 onLoad={(e) => {
                   const target = e.target as HTMLImageElement;
