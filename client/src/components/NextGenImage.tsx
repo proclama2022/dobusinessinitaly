@@ -34,7 +34,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
   const [isInView, setIsInView] = useState(priority);
   const pictureRef = useRef<HTMLElement>(null);
 
-  // Genera URLs ottimizzate per Unsplash
+  // Genera URL ottimizzati per Unsplash con supporto mobile
   const generateOptimizedUrls = (originalSrc: string, targetWidth?: number) => {
     if (!originalSrc.includes('unsplash.com')) {
       return {
@@ -58,6 +58,31 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
       webp: `${baseUrl}?${params.toString()}&fm=webp`,
       jpeg: `${baseUrl}?${params.toString()}&fm=jpg`
     };
+  };
+
+  // Genera srcset responsive per mobile
+  const generateResponsiveSrcSet = (src: string, format: 'avif' | 'webp' | 'jpeg') => {
+    if (!src.includes('unsplash.com')) {
+      return src;
+    }
+
+    const baseUrl = src.split('?')[0];
+    const formatParam = `&fm=${format}`;
+    
+    // Dimensioni ottimizzate per diversi dispositivi
+    const sizes = [
+      { width: 480, descriptor: '480w' },   // Mobile portrait
+      { width: 768, descriptor: '768w' },   // Mobile landscape / Tablet portrait
+      { width: 1024, descriptor: '1024w' }, // Tablet landscape
+      { width: 1440, descriptor: '1440w' }, // Desktop
+      { width: 1920, descriptor: '1920w' }  // Large desktop
+    ];
+
+    return sizes
+      .map(({ width, descriptor }) => 
+        `${baseUrl}?auto=format&fit=crop&q=85${formatParam}&w=${width} ${descriptor}`
+      )
+      .join(', ');
   };
 
   const urls = generateOptimizedUrls(src, width);
@@ -148,25 +173,27 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     >
       {/* AVIF per i browser moderni (miglior compressione) */}
       <source
-        srcSet={urls.avif}
+        srcSet={generateResponsiveSrcSet(src, 'avif')}
         type="image/avif"
-        sizes={sizes}
+        sizes={sizes || '(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px'}
       />
       
       {/* WebP per compatibilità estesa */}
       <source
-        srcSet={urls.webp}
+        srcSet={generateResponsiveSrcSet(src, 'webp')}
         type="image/webp"
-        sizes={sizes}
+        sizes={sizes || '(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px'}
       />
       
-      {/* JPEG fallback */}
+      {/* JPEG fallback con srcset responsive */}
       <img
         src={urls.jpeg}
+        srcSet={generateResponsiveSrcSet(src, 'jpeg')}
         alt={alt}
         className={className}
         width={width}
         height={height}
+        sizes={sizes || '(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px'}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         onLoad={handleLoad}

@@ -1,11 +1,13 @@
 /* ===== PERFORMANCE & CORE WEB VITALS OPTIMIZATIONS ===== */
 
-/* 1. Layout Stability (CLS) */
+/* 1. Layout Stability (CLS) - Prevenzione spostamenti layout */
 .image-placeholder {
   background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   min-height: 200px;
+  aspect-ratio: 16/9; /* Mantiene proporzioni stabili */
+  contain: layout style paint;
 }
 
 @keyframes shimmer {
@@ -13,20 +15,37 @@
   100% { background-position: 200% 0; }
 }
 
-/* 2. Smooth loading transitions */
+/* 2. Smooth loading transitions ottimizzate */
 .lazy-loaded {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.2s ease-out;
+  will-change: opacity;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* 3. Critical above-the-fold optimizations */
 .hero-image {
   content-visibility: auto;
   contain-intrinsic-size: 1920px 1080px;
+  contain: layout style paint;
+}
+
+/* 4. Loading spinner ottimizzato */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  contain: layout style paint;
+}
+
+/* 5. Ottimizzazioni per First Contentful Paint */
+.critical-content {
+  contain: layout style paint;
+  content-visibility: auto;
 }
 
 /* 4. Font loading optimizations */

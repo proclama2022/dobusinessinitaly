@@ -9,19 +9,49 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 
-// Lazy loaded pages
-const Services = lazy(() => import("@/pages/Services"));
-const About = lazy(() => import("@/pages/About"));
-const Blog = lazy(() => import("@/pages/Blog"));
-const BlogPost = lazy(() => import("@/pages/BlogPost"));
-const Contact = lazy(() => import("@/pages/Contact"));
-const Media = lazy(() => import("@/pages/Media"));
-const Social = lazy(() => import("@/pages/Social"));
-const Admin = lazy(() => import("@/pages/Admin"));
-const OpenCompanyItaly = lazy(() => import("@/pages/OpenCompanyItaly"));
-const OpenVATNumberItaly = lazy(() => import("@/pages/OpenVATNumberItaly"));
-const TaxAccountingExpats = lazy(() => import("@/pages/TaxAccountingExpats"));
-const PillarBusinessItaly = lazy(() => import("@/pages/PillarBusinessItaly"));
+// Lazy loaded pages con preload hints
+const Services = lazy(() => 
+  import(/* webpackChunkName: "services" */ "@/pages/Services")
+);
+const About = lazy(() => 
+  import(/* webpackChunkName: "about" */ "@/pages/About")
+);
+const Blog = lazy(() => 
+  import(/* webpackChunkName: "blog" */ "@/pages/Blog")
+);
+const BlogPost = lazy(() => 
+  import(/* webpackChunkName: "blog-post" */ "@/pages/BlogPost")
+);
+const Contact = lazy(() => 
+  import(/* webpackChunkName: "contact" */ "@/pages/Contact")
+);
+const Media = lazy(() => 
+  import(/* webpackChunkName: "media" */ "@/pages/Media")
+);
+const Social = lazy(() => 
+  import(/* webpackChunkName: "social" */ "@/pages/Social")
+);
+const Admin = lazy(() => 
+  import(/* webpackChunkName: "admin" */ "@/pages/Admin")
+);
+const OpenCompanyItaly = lazy(() => 
+  import(/* webpackChunkName: "open-company" */ "@/pages/OpenCompanyItaly")
+);
+const OpenVATNumberItaly = lazy(() => 
+  import(/* webpackChunkName: "open-vat" */ "@/pages/OpenVATNumberItaly")
+);
+const TaxAccountingExpats = lazy(() => 
+  import(/* webpackChunkName: "tax-accounting" */ "@/pages/TaxAccountingExpats")
+);
+const PillarBusinessItaly = lazy(() => 
+  import(/* webpackChunkName: "pillar-business" */ "@/pages/PillarBusinessItaly")
+);
+const PrivacyPolicy = lazy(() => 
+  import(/* webpackChunkName: "privacy" */ '@/pages/PrivacyPolicy')
+);
+const CookiePolicy = lazy(() => 
+  import(/* webpackChunkName: "cookie-policy" */ '@/pages/CookiePolicy')
+);
 
 import Header from "@/components/Header";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -29,16 +59,15 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { supportedLanguages } from "./lib/languages";
-const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
-const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'));
 import CookieBanner from '@/components/CookieBanner';
 import { Helmet } from 'react-helmet-async';
 import useCookieConsent from '@/hooks/useCookieConsent';
 
-// Loading component
+// Componente di loading ottimizzato per performance
 const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+  <div className="loading-spinner">
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    <span className="ml-2 text-sm text-gray-600">Caricamento...</span>
   </div>
 );
 

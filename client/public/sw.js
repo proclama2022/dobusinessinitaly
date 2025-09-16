@@ -1,298 +1,164 @@
-// Service Worker per Your Business in Italy
-// Ottimizzato per SEO e performance 2025 + Mobile Optimization
+// Service Worker per ottimizzazione caching e performance
+const CACHE_NAME = 'yourbusinessinitaly-v1.2';
+const STATIC_CACHE = 'static-v1.2';
+const DYNAMIC_CACHE = 'dynamic-v1.2';
 
-const CACHE_NAME = 'yourbusiness-italy-v1.0.0';
-const STATIC_CACHE = 'yourbusiness-static-v1.0.0';
-const DYNAMIC_CACHE = 'yourbusiness-dynamic-v1.0.0';
-const MOBILE_CACHE = 'yourbusiness-mobile-v1.0.0';
-
-// Risorse critiche da mettere sempre in cache
-const CRITICAL_RESOURCES = [
+// Risorse critiche da cachare immediatamente
+const CRITICAL_ASSETS = [
   '/',
-  '/manifest.json',
-  '/images/logo.png',
-  '/images/logo-mobile.png',
-  '/favicon.ico',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/apple-touch-icon.png',
-  'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
+  '/manifest.json'
 ];
 
-// Risorse specifiche per mobile
-const MOBILE_RESOURCES = [
-  '/images/logo-mobile.png',
-  '/images/favicon-mobile.ico',
-  '/css/mobile-optimized.css'
+// Risorse statiche da cachare
+const STATIC_ASSETS = [
+  '/assets/css/',
+  '/assets/js/',
+  '/assets/images/',
+  'https://fonts.googleapis.com/css2',
+  'https://fonts.gstatic.com/'
 ];
 
-// Risorse da mettere in cache al primo accesso
-const STATIC_RESOURCES = [
-  '/robots.txt',
-  '/sitemap.xml',
-  '/sitemap-index.xml'
-];
-
-// Installazione del Service Worker
-self.addEventListener('install', (event) => {
-  console.log('[SW] Installazione Service Worker');
-
+// Installazione del service worker
+self.addEventListener('install', event => {
+  console.log('[SW] Installing...');
+  
   event.waitUntil(
     Promise.all([
-      // Cache risorse critiche
-      caches.open(STATIC_CACHE).then((cache) => {
-        console.log('[SW] Caching risorse critiche');
-        return cache.addAll(CRITICAL_RESOURCES);
+      // Cache delle risorse critiche
+      caches.open(CACHE_NAME).then(cache => {
+        return cache.addAll(CRITICAL_ASSETS);
       }),
-
-      // Cache risorse statiche
-      caches.open(STATIC_CACHE).then((cache) => {
-        console.log('[SW] Caching risorse statiche');
-        return cache.addAll(STATIC_RESOURCES);
-      }),
-
-      // Cache risorse mobile
-      caches.open(MOBILE_CACHE).then((cache) => {
-        console.log('[SW] Caching risorse mobile');
-        return cache.addAll(MOBILE_RESOURCES);
+      // Preload immagini critiche ottimizzate per mobile
+      caches.open(STATIC_CACHE).then(cache => {
+        const mobileImages = [
+          'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=480&h=320&fit=crop&crop=center&auto=format&q=85&fm=webp',
+          'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=768&h=512&fit=crop&crop=center&auto=format&q=85&fm=webp',
+          'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop&crop=center&auto=format&q=85&fm=webp'
+        ];
+        return Promise.all(mobileImages.map(url => cache.add(url).catch(() => console.log(`[SW] Failed to cache: ${url}`))));
       })
     ]).then(() => {
-      // Forza attivazione immediata
+      console.log('[SW] Installation complete');
       return self.skipWaiting();
     })
   );
 });
 
-// Attivazione del Service Worker
-self.addEventListener('activate', (event) => {
-  console.log('[SW] Attivazione Service Worker');
-
+// Attivazione del service worker
+self.addEventListener('activate', event => {
+  console.log('[SW] Activating...');
+  
   event.waitUntil(
-    Promise.all([
-      // Pulizia cache vecchie
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((cacheName) => {
-            if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE && cacheName !== MOBILE_CACHE) {
-              console.log('[SW] Eliminazione cache vecchia:', cacheName);
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      }),
-
-      // Prendi controllo di tutti i client
-      self.clients.claim()
-    ])
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME && cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
+            console.log('[SW] Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => {
+      console.log('[SW] Activation complete');
+      return self.clients.claim();
+    })
   );
 });
 
-// Gestione delle richieste fetch
-self.addEventListener('fetch', (event) => {
+// Strategia di fetch con cache
+self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Detect mobile user agent
-  const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(request.headers.get('user-agent') || '');
-
-  // Mobile-specific optimization:优先使用缓存
-  if (isMobile && isMobileResource(url)) {
-    event.respondWith(mobileCacheFirstStrategy(request));
-    return;
-  }
+  // Skip per richieste non HTTP
+  if (!request.url.startsWith('http')) return;
 
   // Strategia Cache First per risorse statiche
-  if (isStaticResource(url)) {
-    event.respondWith(cacheFirstStrategy(request));
+  if (isStaticAsset(request.url)) {
+    event.respondWith(cacheFirst(request));
     return;
   }
 
-  // Strategia Network First per contenuti dinamici
-  if (isDynamicContent(url)) {
-    event.respondWith(networkFirstStrategy(request));
+  // Strategia Network First per immagini Unsplash
+  if (url.hostname === 'images.unsplash.com') {
+    event.respondWith(networkFirst(request));
     return;
   }
 
-  // Strategia Stale While Revalidate per API
-  if (isApiRequest(url)) {
-    event.respondWith(staleWhileRevalidateStrategy(request));
+  // Strategia Network First per API calls
+  if (request.url.includes('/api/')) {
+    event.respondWith(networkFirst(request));
     return;
   }
 
-  // Default: Network falling back to cache
-  event.respondWith(networkFallingBackToCache(request));
+  // Strategia Stale While Revalidate per pagine HTML
+  if (request.destination === 'document') {
+    event.respondWith(staleWhileRevalidate(request));
+    return;
+  }
+
+  // Default: Network First
+  event.respondWith(networkFirst(request));
 });
 
-// Strategie di caching
+// Strategia Cache First
+async function cacheFirst(request) {
+  try {
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
 
-function mobileCacheFirstStrategy(request) {
-  // Mobile-specific cache first with aggressive caching
-  return caches.match(request)
-    .then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request).then((response) => {
-        if (response.status === 200 &&
-            (response.type === 'basic' || response.type === 'cors') &&
-            (request.url.startsWith('http:') || request.url.startsWith('https:'))) {
-          const responseClone = response.clone();
-          caches.open(MOBILE_CACHE).then((cache) => {
-            cache.put(request, responseClone).catch((err) => {
-              console.warn('[SW] Failed to cache mobile resource:', request.url, err);
-            });
-          });
-        }
-        return response;
-      });
-    })
-    .catch(() => {
-      // Fallback per risorse mobile
-      if (request.url.includes('/images/')) {
-        return caches.match('/images/logo-mobile.png');
-      }
-      return new Response('', { status: 404 });
-    });
-}
-
-function cacheFirstStrategy(request) {
-  // Skip chrome-extension and unsupported schemes
-  if (request.url.startsWith('chrome-extension:') || 
-      request.url.startsWith('moz-extension:') ||
-      request.url.startsWith('safari-extension:')) {
-    return fetch(request).catch(() => new Response('', { status: 404 }));
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      const cache = await caches.open(STATIC_CACHE);
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    console.log('[SW] Cache First failed:', error);
+    return new Response('Offline', { status: 503 });
   }
-
-  return caches.match(request)
-    .then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request).then((response) => {
-        // Cache solo risposte valide da HTTP/HTTPS
-        if (response.status === 200 && 
-            (response.type === 'basic' || response.type === 'cors') &&
-            (request.url.startsWith('http:') || request.url.startsWith('https:'))) {
-          const responseClone = response.clone();
-          caches.open(STATIC_CACHE).then((cache) => {
-            cache.put(request, responseClone).catch((err) => {
-              console.warn('[SW] Failed to cache:', request.url, err);
-            });
-          });
-        }
-        return response;
-      });
-    })
-    .catch(() => {
-      // Fallback per risorse critiche
-      if (request.url.includes('/images/')) {
-        return caches.match('/images/logo.png');
-      }
-      return new Response('', { status: 404 });
-    });
 }
 
-function networkFirstStrategy(request) {
-  return fetch(request)
-    .then((response) => {
-      // Cache la risposta per uso futuro (solo tipi clonabili)
-      try {
-        if (
-          response && response.status === 200 &&
-          (response.type === 'basic' || response.type === 'cors')
-        ) {
-          const responseClone = response.clone();
-          caches.open(DYNAMIC_CACHE).then((cache) => {
-            cache.put(request, responseClone).catch(() => {});
-          });
-        }
-      } catch (e) {
-        console.warn('[SW] networkFirst clone/cache failed:', e);
-      }
-      return response;
-    })
-    .catch(() => {
-      // Fallback alla cache
-      return caches.match(request);
-    });
+// Strategia Network First
+async function networkFirst(request) {
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      const cache = await caches.open(DYNAMIC_CACHE);
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    console.log('[SW] Network failed, trying cache:', error);
+    const cachedResponse = await caches.match(request);
+    return cachedResponse || new Response('Offline', { status: 503 });
+  }
 }
 
-function staleWhileRevalidateStrategy(request) {
-  return caches.match(request)
-    .then((cachedResponse) => {
-      const fetchPromise = fetch(request)
-        .then((networkResponse) => {
-          try {
-            if (
-              networkResponse && networkResponse.status === 200 &&
-              (networkResponse.type === 'basic' || networkResponse.type === 'cors')
-            ) {
-              const clone = networkResponse.clone();
-              caches.open(DYNAMIC_CACHE).then((cache) => {
-                cache.put(request, clone).catch(() => {});
-              });
-            }
-          } catch (e) {
-            console.warn('[SW] staleWhileRevalidate clone/cache failed:', e);
-          }
-          return networkResponse;
-        })
-        .catch((err) => {
-          return cachedResponse || Promise.reject(err);
-        });
+// Strategia Stale While Revalidate
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(DYNAMIC_CACHE);
+  const cachedResponse = await cache.match(request);
 
-      // Ritorna cache se disponibile, altrimenti usa network
-      return cachedResponse || fetchPromise;
-    });
+  const fetchPromise = fetch(request).then(networkResponse => {
+    if (networkResponse.ok) {
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  }).catch(() => cachedResponse);
+
+  return cachedResponse || fetchPromise;
 }
 
-function networkFallingBackToCache(request) {
-  return fetch(request)
-    .catch(() => {
-      return caches.match(request);
-    });
-}
-
-// Utility functions
-
-function isStaticResource(url) {
-  return (
-    url.pathname.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$/) ||
-    url.pathname.includes('/images/') ||
-    url.pathname.includes('/favicon') ||
-    url.hostname.includes('fonts.googleapis.com') ||
-    url.hostname.includes('cdnjs.cloudflare.com')
-  );
-}
-
-function isDynamicContent(url) {
-  return (
-    url.pathname.includes('/blog/') ||
-    url.pathname.includes('/services/') ||
-    url.pathname.includes('/about') ||
-    url.pathname.includes('/contact')
-  );
-}
-
-function isApiRequest(url) {
-  return (
-    url.pathname.includes('/api/') ||
-    url.hostname.includes('api.')
-  );
-}
-
-function isMobileResource(url) {
-  return (
-    url.pathname.includes('mobile') ||
-    url.pathname.includes('-mobile') ||
-    url.pathname.match(/\.(png|jpg|jpeg|gif|svg|webp)/) ||
-    url.pathname.includes('/images/') ||
-    url.hostname.includes('fonts.googleapis.com') ||
-    url.hostname.includes('cdnjs.cloudflare.com')
-  );
+// Verifica se è una risorsa statica
+function isStaticAsset(url) {
+  return STATIC_ASSETS.some(pattern => url.includes(pattern)) ||
+         url.includes('.css') ||
+         url.includes('.js') ||
+         url.includes('.woff') ||
+         url.includes('.woff2');
 }
 
 // Gestione messaggi dal main thread
