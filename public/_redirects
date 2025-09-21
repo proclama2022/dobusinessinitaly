@@ -1,13 +1,26 @@
-# Redirect per risolvere errori Soft 404
-# Creato automaticamente per Google Search Console
+# Redirect per risolvere Soft 404
 
-# Redirect per articoli mancanti
-https://yourbusinessinitaly.com/en/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa https://yourbusinessinitaly.com/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa 301
-https://yourbusinessinitaly.com/en/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 https://yourbusinessinitaly.com/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
-https://yourbusinessinitaly.com/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr https://yourbusinessinitaly.com/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
-https://yourbusinessinitaly.com/en/blog/residence-fiscale-italie-expatries-2025-guide-complet https://yourbusinessinitaly.com/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
-https://yourbusinessinitaly.com/en/blog/impots-5-pourcent-italie-guide-expat-2025 https://yourbusinessinitaly.com/fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
-https://yourbusinessinitaly.com/it/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 https://yourbusinessinitaly.com/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
-https://yourbusinessinitaly.com/en/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 https://yourbusinessinitaly.com/de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
-https://yourbusinessinitaly.com/en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer https://yourbusinessinitaly.com/de/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer 301
-https://yourbusinessinitaly.com/en/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers https://yourbusinessinitaly.com/fr/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers 301
+# Redirect URL con doppio suffisso
+/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
+
+# Redirect per slug non corrispondenti - rimanda alle versioni esistenti
+/en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer /de/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer 301
+
+# Redirect per pagine che potrebbero avere slug leggermente diversi
+/en/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025 /de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025 301
+
+# Redirect per pagine di residenza fiscale
+/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa /es/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa 301
+
+# Redirect per pagine impuestos
+/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 /es/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
+
+# Redirect per pagine francesi
+/blog/impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
+/blog/residence-fiscale-italie-expatries-2025-guide-complet /fr/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
+
+# Redirect per pagine tedesche
+/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
+
+# Catch-all per SPA
+/* /index.html 200
