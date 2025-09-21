@@ -38,6 +38,20 @@ const FAQSection = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
   const { getLocalizedPath } = useLocalizedPath();
 
+  // Generate FAQ structured data
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
       prev.includes(index) 
@@ -48,6 +62,12 @@ const FAQSection = () => {
 
   return (
     <section className="section-padding bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData)
+        }}
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -57,24 +77,18 @@ const FAQSection = () => {
             </p>
           </div>
 
-          <div className="space-y-4" itemScope itemType="https://schema.org/FAQPage">
+          <div className="space-y-4">
             {faqData.map((faq, index) => (
-              <div 
+              <div
                 key={index}
                 className="card overflow-hidden"
-                itemScope 
-                itemProp="mainEntity" 
-                itemType="https://schema.org/Question"
               >
                 <button
                   onClick={() => toggleItem(index)}
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   aria-expanded={openItems.includes(index)}
                 >
-                  <h3 
-                    className="text-lg font-semibold text-gray-900 pr-4"
-                    itemProp="name"
-                  >
+                  <h3 className="text-lg font-semibold text-gray-900 pr-4">
                     {faq.question}
                   </h3>
                   {openItems.includes(index) ? (
@@ -85,16 +99,8 @@ const FAQSection = () => {
                 </button>
                 
                 {openItems.includes(index) && (
-                  <div 
-                    className="px-6 pb-4"
-                    itemScope 
-                    itemProp="acceptedAnswer" 
-                    itemType="https://schema.org/Answer"
-                  >
-                    <p 
-                      className="text-gray-700 leading-relaxed"
-                      itemProp="text"
-                    >
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-700 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

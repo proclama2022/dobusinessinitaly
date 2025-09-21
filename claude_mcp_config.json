@@ -6,6 +6,11 @@
       "env": {
         "GEMINI_API_KEY": "AIzaSyAglGG7WP3xBqle7Xs1h8OWD3yHUWmVbtM"
       }
+    },
+    "reddit": {
+      "command": "/Users/rosario/.local/bin/mcp-server-reddit",
+      "args": [],
+      "env": {}
     }
   },
   "claudeCommands": {

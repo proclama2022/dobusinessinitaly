@@ -2,17 +2,5 @@ User-agent: *
 Allow: /
 
 # Sitemap
+Sitemap: https://yourbusinessinitaly.com/sitemap-index.xml
 Sitemap: https://yourbusinessinitaly.com/sitemap.xml
-Sitemap: https://yourbusinessinitaly.com/sitemap-fixed.xml
-
-# Disallow problematic paths temporarily
-Disallow: /blog/residencia-fiscal-italia-extranjeros-2025-guia-completa
-Disallow: /en/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa
-Disallow: /en/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025
-Disallow: /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr
-Disallow: /en/blog/residence-fiscale-italie-expatries-2025-guide-complet
-Disallow: /en/blog/impots-5-pourcent-italie-guide-expat-2025
-Disallow: /it/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025
-Disallow: /en/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025
-Disallow: /en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer
-Disallow: /en/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers

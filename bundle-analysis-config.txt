@@ -1,0 +1,11 @@
+
+// Aggiungi questo import nel vite.config.ts
+import { visualizer } from 'rollup-plugin-visualizer';
+
+// Aggiungi questo plugin nell'array plugins
+visualizer({
+  filename: 'dist/bundle-analysis.html',
+  open: true,
+  gzipSize: true,
+  brotliSize: true,
+})

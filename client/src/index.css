@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font faces will be loaded via preload in HTML for better performance */
-
 :root {
   --background: 0 0% 100%;
   --foreground: 224 71.4% 4.1%;
@@ -15,9 +13,9 @@
   --card-foreground: 224 71.4% 4.1%;
   --border: 220 13% 91%;
   --input: 220 13% 91%;
-  --primary: 142 43% 35%; /* Verde italiano */
+  --primary: 142 43% 35%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 79% 48%; /* Rosso italiano */
+  --secondary: 0 79% 48%;
   --secondary-foreground: 0 0% 100%;
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
@@ -26,25 +24,24 @@
   --ring: 142 43% 35%;
   --radius: 0.5rem;
 
-  --primary-light: 142 43% 45%; /* Verde più chiaro */
-  --primary-dark: 142 43% 25%; /* Verde più scuro */
-  --secondary-light: 0 79% 58%; /* Rosso più chiaro */
-  --secondary-dark: 0 79% 38%; /* Rosso più scuro */
+  --primary-light: 142 43% 45%;
+  --primary-dark: 142 43% 25%;
+  --secondary-light: 0 79% 58%;
+  --secondary-dark: 0 79% 38%;
 
-  /* Italian flag colors */
   --italian-green: 142 43% 35%;
   --italian-white: 0 0% 100%;
   --italian-red: 0 79% 48%;
 
-  --neutral-100: 210 33% 96%; /* #f5f7fa */
-  --neutral-200: 210 16% 93%; /* #e9ecef */
-  --neutral-300: 210 14% 89%; /* #dee2e6 */
-  --neutral-400: 210 14% 83%; /* #ced4da */
-  --neutral-500: 210 11% 71%; /* #adb5bd */
-  --neutral-600: 208 7% 46%; /* #6c757d */
-  --neutral-700: 210 9% 31%; /* #495057 */
-  --neutral-800: 215 9% 23%; /* #343a40 */
-  --neutral-900: 210 11% 15%; /* #212529 */
+  --neutral-100: 210 33% 96%;
+  --neutral-200: 210 16% 93%;
+  --neutral-300: 210 14% 89%;
+  --neutral-400: 210 14% 83%;
+  --neutral-500: 210 11% 71%;
+  --neutral-600: 208 7% 46%;
+  --neutral-700: 210 9% 31%;
+  --neutral-800: 215 9% 23%;
+  --neutral-900: 210 11% 15%;
 }
 
 .dark {
@@ -58,9 +55,9 @@
   --card-foreground: 210 40% 98%;
   --border: 215 27.9% 16.9%;
   --input: 215 27.9% 16.9%;
-  --primary: 142 43% 35%; /* Verde italiano */
+  --primary: 142 43% 35%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 79% 48%; /* Rosso italiano */
+  --secondary: 0 79% 48%;
   --secondary-foreground: 0 0% 100%;
   --accent: 215 27.9% 16.9%;
   --accent-foreground: 210 40% 98%;
@@ -85,10 +82,10 @@
   body {
     @apply bg-[#f5f7fa] text-neutral-800 font-[Open_Sans];
     letter-spacing: 0.01em;
-    /* Ottimizzazioni performance */
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Previeni overflow orizzontale su mobile */
+
     overflow-x: hidden;
     width: 100%;
   }
@@ -98,27 +95,23 @@
     letter-spacing: -0.01em;
   }
 
-  /* Ottimizzazioni per ridurre layout shift */
   img {
     max-width: 100%;
     height: auto;
-    /* Previeni overflow su mobile */
+
     object-fit: contain;
   }
 
-  /* Previeni overflow per tutti gli elementi */
   * {
     box-sizing: border-box;
   }
 
-  /* Container sicuri per mobile */
   .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
     max-width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  /* Lazy loading ottimizzato */
   img[loading="lazy"] {
     transition: opacity 0.3s ease-in-out;
   }
@@ -127,14 +120,12 @@
     opacity: 1;
   }
 
-  /* Placeholder per immagini lazy */
   .image-placeholder {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
 
-  /* GPU acceleration per elementi animati */
   .gpu-accelerated {
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -142,15 +133,13 @@
   }
 }
 
-/* Miglioramenti per la nitidezza delle icone */
 .fa, .fas, .far, .fal, .fab, .fa-solid, .fa-regular, .fa-light, .fa-brands {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: auto;
-  transform: translateZ(0); /* Attiva l'accelerazione hardware */
+  transform: translateZ(0);
 }
 
-/* Contenitore per icone con dimensioni fisse */
 .icon-container {
   display: flex;
   align-items: center;
@@ -160,12 +149,10 @@
   position: relative;
 }
 
-/* Miglioramento del contrasto per il testo */
 .enhanced-text {
   text-shadow: 0 0 1px rgba(0,0,0,0.05);
 }
 
-/* Miglioramento della leggibilità per testo su sfondi colorati */
 .text-on-color {
   text-shadow: 0 0 1px rgba(255,255,255,0.1);
 }
@@ -198,7 +185,6 @@
   @apply opacity-100 static;
 }
 
-/* Gradiente e animazioni italiane */
 .italian-gradient {
   @apply bg-gradient-to-r from-[#009246] via-white to-[#ce2b37];
 }
@@ -208,10 +194,9 @@
 }
 
 .italian-border-gradient {
-  @apply border border-neutral-200; /* versione sobria di default */
+  @apply border border-neutral-200;
 }
 
-/* Card e hover leggeri (modalità sobria) */
 .card {
   @apply bg-white rounded-lg border border-neutral-200 shadow-sm;
 }
@@ -228,7 +213,6 @@
   @apply text-3xl md:text-4xl font-[Montserrat] font-bold text-neutral-900;
 }
 
-/* Animazioni */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-in forwards;
 }
@@ -426,7 +410,6 @@
   text-fill-color: transparent;
 }
 
-/* Stili per il contenuto Markdown */
 .markdown-content {
   @apply text-neutral-800 leading-relaxed;
 }
@@ -507,71 +490,62 @@
   @apply max-w-full h-auto my-4 rounded-md;
 }
 
-/* Mobile-first responsive optimizations */
 @media (max-width: 768px) {
-  /* Previeni overflow orizzontale */
+
   html, body {
     overflow-x: hidden;
     width: 100%;
   }
-  
-  /* Hero section mobile optimization */
+
   .hero-section {
     min-height: 60vh;
   }
-  
-  /* Typography mobile optimization */
+
   h1 {
     font-size: 2rem;
     line-height: 1.2;
     word-wrap: break-word;
   }
-  
+
   h2 {
     font-size: 1.5rem;
     line-height: 1.3;
     word-wrap: break-word;
   }
-  
-  /* Button mobile optimization */
+
   .btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     width: 100%;
     max-width: 300px;
   }
-  
-  /* Container mobile optimization */
+
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 100%;
     overflow-x: hidden;
   }
-  
-  /* Grid mobile optimization */
+
   .grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
-  /* Image mobile optimization */
+
   img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
   }
-  
-  /* Navigation mobile optimization */
+
   .nav-mobile {
     display: block;
   }
-  
+
   .nav-desktop {
     display: none;
   }
-  
-  /* Previeni elementi che escono dal viewport */
+
   .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
     max-width: calc(100vw - 2rem);
     margin-left: auto;
@@ -580,39 +554,36 @@
 }
 
 @media (max-width: 480px) {
-  /* Extra small mobile devices */
+
   h1 {
     font-size: 1.75rem;
   }
-  
+
   .hero-section {
     min-height: 50vh;
   }
-  
+
   .container {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 }
 
-/* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
   .btn:hover {
     transform: none;
   }
-  
+
   .card:hover {
     transform: none;
   }
-  
-  /* Increase touch targets */
+
   button, .btn, a {
     min-height: 44px;
     min-width: 44px;
   }
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -621,19 +592,11 @@
   }
 }
 
-@keyframes slowZoom {
-  0% {
-    transform: scale(1);
-  }
   100% {
     transform: scale(1.1);
   }
 }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-  }
   to {
     transform: translateY(0);
   }
@@ -647,10 +610,6 @@
   animation: slideDown 1.2s ease-out forwards;
 }
 
-@keyframes spinSlow {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
   }
@@ -661,10 +620,6 @@
   will-change: transform;
 }
 
-@keyframes gradientX {
-  0% {
-    transform: translateX(-100%);
-  }
   100% {
     transform: translateX(100%);
   }
@@ -683,7 +638,6 @@
   text-fill-color: transparent;
 }
 
-/* Stili per il contenuto Markdown */
 .markdown-content {
   @apply text-neutral-800 leading-relaxed;
 }
