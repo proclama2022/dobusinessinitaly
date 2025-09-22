@@ -1,16 +1,11 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./index.css";
 import "./styles/performance.css";
 import './lib/i18n';
 
-// Importazione ottimizzata di FontAwesome
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { preloadedIcons } from './lib/fontawesome';
-import './lib/fontawesome';
-
-// ✅ Ottimizzato: FontAwesome icons sono già configurate nella libreria
-// Rimossa la funzione preloadFontAwesomeIcons inefficiente che aggiungeva elementi al DOM
+// FontAwesome rimosso per migliorare performance mobile
 
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -30,6 +25,8 @@ import { HelmetProvider } from 'react-helmet-async';
 // Rendering dell'applicazione con ottimizzazioni per la nitidezza
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </HelmetProvider>
 );

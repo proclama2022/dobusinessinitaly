@@ -50,13 +50,23 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 2, // Doppio passaggio per compressione migliore
+        passes: 3, // Triplo passaggio per compressione massima
         unsafe_arrows: true,
         unsafe_methods: true,
-        unsafe_proto: true
+        unsafe_proto: true,
+        reduce_funcs: true,
+        reduce_vars: true,
+        sequences: true,
+        dead_code: true,
+        conditionals: true,
+        evaluate: true,
+        booleans: true,
+        loops: true,
+        unused: true
       },
       mangle: {
-        safari10: true // Fix per Safari mobile
+        safari10: true, // Fix per Safari mobile
+        toplevel: true // Mangle anche i nomi delle funzioni top-level
       }
     },
     rollupOptions: {
@@ -65,21 +75,18 @@ export default defineConfig({
         manualChunks: {
           // React core - separato per evitare conflitti
           'react-core': ['react', 'react-dom'],
-          
+
           // UI e componenti pesanti
           'ui-heavy': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          
-          // Icone e font
-          'icons': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome'],
-          
+
           // Internazionalizzazione
           'i18n': ['react-i18next', 'i18next'],
-          
+
           // Routing e form
           'forms-routing': ['wouter', 'react-hook-form'],
-          
+
           // Utilities e altri vendor
-          'vendor': ['@tanstack/react-query', 'react-helmet-async', 'sonner']
+          'vendor': ['@tanstack/react-query', 'react-helmet-async', 'sonner'],
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',

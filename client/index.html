@@ -20,38 +20,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Preload hero image ottimizzato per LCP -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=480&h=320&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(max-width: 480px)" fetchpriority="high">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=768&h=512&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1024&h=683&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(min-width: 769px)" fetchpriority="high">
+    <!-- Preload hero image ottimizzato per LCP con formati moderni -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=267&fit=crop&crop=center&auto=format&q=70&fm=avif" media="(max-width: 480px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&crop=center&auto=format&q=70&fm=avif" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=533&fit=crop&crop=center&auto=format&q=75&fm=avif" media="(min-width: 769px)" fetchpriority="high">
 
-    <!-- CSS critico inline per FCP ottimizzato -->
+    <!-- Fallback WebP per browser senza supporto AVIF -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=267&fit=crop&crop=center&auto=format&q=70&fm=webp" media="(max-width: 480px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&crop=center&auto=format&q=70&fm=webp" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=533&fit=crop&crop=center&auto=format&q=75&fm=webp" media="(min-width: 769px)" fetchpriority="high">
+
+    <!-- CSS critico inline per FCP ottimizzato - Minimal -->
     <style>
-      /* CSS critico per First Contentful Paint */
-      :root{--primary:142 43% 35%;--secondary:0 79% 48%;--background:0 0% 100%;--foreground:224 71.4% 4.1%}
-      *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#495057;line-height:1.6;overflow-x:hidden;font-display:optional}
-      .hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem}
-      .hero h1{font-size:clamp(1.5rem,4vw,3rem);font-weight:700;margin-bottom:1rem;color:#2d5016}
-      .hero p{font-size:clamp(1rem,2.5vw,1.25rem);margin-bottom:2rem;max-width:600px}
-      .btn{display:inline-block;padding:0.75rem 1.5rem;background:hsl(142 43% 35%);color:white;text-decoration:none;border-radius:0.5rem;font-weight:600;transition:background 0.2s}
-      .btn:hover{background:hsl(142 43% 25%)}
-      @media(max-width:768px){.hero{min-height:40vh;padding:0.5rem}.hero h1{font-size:1.75rem}.hero p{font-size:1rem}}
+      /* CSS critico essenziale per FCP - Ultra ottimizzato */
+      *{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.5;background:#f5f7fa;color:#495057;overflow-x:hidden}
+      .hero{display:flex;align-items:center;justify-content:center;text-align:center;min-height:35vh;padding:1rem}
+      .hero h1{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;color:#2d5016;max-width:90vw}
+      .hero p{font-size:1rem;margin-bottom:1.25rem;max-width:80vw;color:#6b7280}
+      .btn{display:inline-block;padding:0.625rem 1.25rem;background:#2d5016;color:#fff;text-decoration:none;border-radius:0.375rem;font-weight:600;font-size:0.875rem}
+      @media(min-width:640px){.hero{min-height:40vh}.hero h1{font-size:2rem}.hero p{font-size:1.125rem}}
     </style>
 
     <!-- Preload font critici per performance con font-display: optional -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXpsog.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Font ottimizzato con font-display: optional per performance massima -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-
-    <!-- Font Awesome con caricamento asincrono -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <!-- Font caricati asincronamente con fallback sicuro -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     </noscript>
+
+    <!-- Font Awesome completamente rimosso per migliorare performance mobile -->
+    <!-- Gli icon vengono caricati tramite SVG inline nel componente Header -->
 
     <!-- Meta tag ottimizzati per mobile -->
     <meta name="description" content="Commercialista per stranieri in Italia. Apertura società e partita IVA. Consulenza fiscale in inglese. Preventivo gratuito in 24h.">

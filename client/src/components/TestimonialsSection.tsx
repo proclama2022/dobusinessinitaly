@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
 
 type TestimonialProps = {
   imgSrc: string;
@@ -15,9 +16,11 @@ const Testimonial = ({ imgSrc, quote, name, position, isActive }: TestimonialPro
       <div className="bg-white rounded-lg p-8 shadow-lg">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="flex-shrink-0 mb-4 md:mb-0">
-            <img 
+            <NextGenImage 
               src={imgSrc} 
               alt={`${name} portrait`} 
+              width={80} 
+              height={80} 
               className="w-20 h-20 rounded-full object-cover mx-auto md:mx-0"
             />
           </div>

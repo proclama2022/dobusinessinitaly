@@ -1,41 +1,15 @@
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import ServicesSection from '@/components/ServicesSection';
+import MediaCoverageSection from '@/components/MediaCoverageSection';
+import BlogSection from '@/components/BlogSection';
+import FAQSection from '@/components/FAQSection';
+import NewsletterSection from '@/components/NewsletterSection';
+import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
-import { createLazyComponent } from '@/components/LazyComponent';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
-// Lazy loading per componenti non critici (below the fold)
-const ServicesSection = createLazyComponent(
-  () => import('@/components/ServicesSection'),
-  'h-64'
-);
-
-const MediaCoverageSection = createLazyComponent(
-  () => import('@/components/MediaCoverageSection'),
-  'h-48'
-);
-
-const BlogSection = createLazyComponent(
-  () => import('@/components/BlogSection'),
-  'h-96'
-);
-
-const FAQSection = createLazyComponent(
-  () => import('@/components/FAQSection'),
-  'h-80'
-);
-
-const NewsletterSection = createLazyComponent(
-  () => import('@/components/NewsletterSection'),
-  'h-32'
-);
-
-const ContactSection = createLazyComponent(
-  () => import('@/components/ContactSection'),
-  'h-96'
-);
 
 const Home = () => {
   const { i18n } = useTranslation();

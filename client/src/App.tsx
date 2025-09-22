@@ -4,52 +4,52 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { config } from '@fortawesome/fontawesome-svg-core';
+// FontAwesome rimosso per migliorare performance mobile
 // Critical pages (loaded immediately)
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 
-// Lazy loaded pages con preload hints
-const Services = lazy(() => 
-  import(/* webpackChunkName: "services" */ "@/pages/Services")
+// Lazy loaded pages con preload hints ottimizzati per mobile
+const Services = lazy(() =>
+  import(/* webpackChunkName: "services", webpackPrefetch: true */ "@/pages/Services")
 );
-const About = lazy(() => 
-  import(/* webpackChunkName: "about" */ "@/pages/About")
+const About = lazy(() =>
+  import(/* webpackChunkName: "about", webpackPrefetch: true */ "@/pages/About")
 );
-const Blog = lazy(() => 
-  import(/* webpackChunkName: "blog" */ "@/pages/Blog")
+const Blog = lazy(() =>
+  import(/* webpackChunkName: "blog", webpackPrefetch: true */ "@/pages/Blog")
 );
-const BlogPost = lazy(() => 
+const BlogPost = lazy(() =>
   import(/* webpackChunkName: "blog-post" */ "@/pages/BlogPost")
 );
-const Contact = lazy(() => 
-  import(/* webpackChunkName: "contact" */ "@/pages/Contact")
+const Contact = lazy(() =>
+  import(/* webpackChunkName: "contact", webpackPrefetch: true */ "@/pages/Contact")
 );
-const Media = lazy(() => 
+const Media = lazy(() =>
   import(/* webpackChunkName: "media" */ "@/pages/Media")
 );
-const Social = lazy(() => 
+const Social = lazy(() =>
   import(/* webpackChunkName: "social" */ "@/pages/Social")
 );
-const Admin = lazy(() => 
+const Admin = lazy(() =>
   import(/* webpackChunkName: "admin" */ "@/pages/Admin")
 );
-const OpenCompanyItaly = lazy(() => 
-  import(/* webpackChunkName: "open-company" */ "@/pages/OpenCompanyItaly")
+const OpenCompanyItaly = lazy(() =>
+  import(/* webpackChunkName: "open-company", webpackPrefetch: true */ "@/pages/OpenCompanyItaly")
 );
-const OpenVATNumberItaly = lazy(() => 
-  import(/* webpackChunkName: "open-vat" */ "@/pages/OpenVATNumberItaly")
+const OpenVATNumberItaly = lazy(() =>
+  import(/* webpackChunkName: "open-vat", webpackPrefetch: true */ "@/pages/OpenVATNumberItaly")
 );
-const TaxAccountingExpats = lazy(() => 
-  import(/* webpackChunkName: "tax-accounting" */ "@/pages/TaxAccountingExpats")
+const TaxAccountingExpats = lazy(() =>
+  import(/* webpackChunkName: "tax-accounting", webpackPrefetch: true */ "@/pages/TaxAccountingExpats")
 );
-const PillarBusinessItaly = lazy(() => 
-  import(/* webpackChunkName: "pillar-business" */ "@/pages/PillarBusinessItaly")
+const PillarBusinessItaly = lazy(() =>
+  import(/* webpackChunkName: "pillar-business", webpackPrefetch: true */ "@/pages/PillarBusinessItaly")
 );
-const PrivacyPolicy = lazy(() => 
+const PrivacyPolicy = lazy(() =>
   import(/* webpackChunkName: "privacy" */ '@/pages/PrivacyPolicy')
 );
-const CookiePolicy = lazy(() => 
+const CookiePolicy = lazy(() =>
   import(/* webpackChunkName: "cookie-policy" */ '@/pages/CookiePolicy')
 );
 
@@ -59,9 +59,8 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { supportedLanguages } from "./lib/languages";
-import CookieBanner from '@/components/CookieBanner';
-import { Helmet } from 'react-helmet-async';
-import useCookieConsent from '@/hooks/useCookieConsent';
+const CookieBanner = lazy(() => import('@/components/CookieBanner'));
+const Helmet = lazy(() => import('react-helmet-async').then(mod => ({ default: mod.Helmet })));
 
 // Componente di loading ottimizzato per performance
 const PageLoader = () => (
@@ -73,7 +72,26 @@ const PageLoader = () => (
 
 function Router() {
   const { i18n } = useTranslation();
-  const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = useCookieConsent();
+  const [consentData, setConsentData] = useState({
+    hasAnalyticsConsent: false,
+    hasMarketingConsent: false,
+    isLoaded: false,
+    consent: null
+  });
+
+  useEffect(() => {
+    // Carica dinamicamente gli hook del cookie solo quando necessario
+    const loadCookieHook = async () => {
+      const hook = await import('@/hooks/useCookieConsent');
+      const { default: useCookieConsentHook } = hook;
+      const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = useCookieConsentHook();
+      setConsentData({ hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent });
+    };
+
+    loadCookieHook();
+  }, []);
+
+  const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = consentData;
   const allowAnalytics = isLoaded && !!consent && hasAnalyticsConsent;
   const allowMarketing = isLoaded && !!consent && hasMarketingConsent;
 
@@ -229,16 +247,15 @@ function Router() {
         </Switch>
         </Suspense>
       </main>
-      <Footer />
-      <CookieBanner />
+      <Suspense fallback={null}>
+        <Footer />
+        <CookieBanner />
+      </Suspense>
     </>
   );
 }
 
-// Configurazione ottimizzata per FontAwesome
-// Nota: La configurazione principale è ora in fontawesome.ts
-// Questa configurazione è mantenuta qui per compatibilità
-config.autoAddCss = true; // Assicurarsi che il CSS sia aggiunto automaticamente
+// FontAwesome rimosso per migliorare performance mobile
 
 function App() {
   return (

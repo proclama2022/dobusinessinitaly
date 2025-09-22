@@ -139,50 +139,77 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
  * Genera sitemap per una lingua specifica
  */
 export const generateSitemap = (language: string, posts?: BlogPost[]) => {
-  // Se non sono forniti post specifici, leggi tutti i post dal filesystem
-  const allBlogPosts = posts ? { [language]: posts } : readBlogPosts();
-  const languagePosts = allBlogPosts[language] || [];
+  const allBlogPostsByLang = readBlogPosts();
+  const languagePosts = allBlogPostsByLang[language] || [];
 
-  // Data corrente per aggiornamenti
   const today = new Date().toISOString().split('T')[0];
 
-  const sitemapEntries: SitemapEntry[] = [
-    { loc: `https://yourbusinessinitaly.com/${language}/`, lastmod: today, changefreq: 'daily', priority: '1.0' },
-    { loc: `https://yourbusinessinitaly.com/${language}/services`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
-    { loc: `https://yourbusinessinitaly.com/${language}/blog`, lastmod: today, changefreq: 'hourly', priority: '0.95' },
-    { loc: `https://yourbusinessinitaly.com/${language}/about`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://yourbusinessinitaly.com/${language}/contact`, lastmod: today, changefreq: 'monthly', priority: '0.7' },
-    { loc: `https://yourbusinessinitaly.com/${language}/media`, lastmod: today, changefreq: 'weekly', priority: '0.75' },
-    // Pillar page - How to Start a Business in Italy
-    { loc: `https://yourbusinessinitaly.com/${language}/pillar/how-to-start-business-in-italy-2025`, lastmod: today, changefreq: 'weekly', priority: '0.95' },
-    // Service landing pages
-    { loc: `https://yourbusinessinitaly.com/${language}/services/open-company-italy`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
-    { loc: `https://yourbusinessinitaly.com/${language}/services/open-vat-number-italy`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
-    { loc: `https://yourbusinessinitaly.com/${language}/services/tax-accounting-expats`, lastmod: today, changefreq: 'weekly', priority: '0.9' },
+  const buildAlternates = (pathNoLang: string) => {
+    const alternates: { [key: string]: string } = {};
+    const languages = ['it', 'en', 'de', 'fr', 'es'];
+    languages.forEach(lang => {
+      alternates[lang] = `https://yourbusinessinitaly.com/${lang}${pathNoLang ? `/${pathNoLang}` : ''}`;
+    });
+    alternates['x-default'] = `https://yourbusinessinitaly.com/it${pathNoLang ? `/${pathNoLang}` : ''}`;
+    return alternates;
+  };
+
+  const staticPages = [
+    { path: '', changefreq: 'daily', priority: '1.0' },
+    { path: 'services', changefreq: 'weekly', priority: '0.9' },
+    { path: 'blog', changefreq: 'hourly', priority: '0.95' },
+    { path: 'about', changefreq: 'monthly', priority: '0.7' },
+    { path: 'contact', changefreq: 'monthly', priority: '0.7' },
+    { path: 'media', changefreq: 'weekly', priority: '0.75' },
+    { path: 'pillar/how-to-start-business-in-italy-2025', changefreq: 'weekly', priority: '0.95' },
+    { path: 'services/open-company-italy', changefreq: 'weekly', priority: '0.9' },
+    { path: 'services/open-vat-number-italy', changefreq: 'weekly', priority: '0.9' },
+    { path: 'services/tax-accounting-expats', changefreq: 'weekly', priority: '0.9' },
   ];
 
-  // Aggiungi tutti i post del blog per questa lingua
+  const sitemapEntries: SitemapEntry[] = staticPages.map(page => ({
+    loc: `https://yourbusinessinitaly.com/${language}${page.path ? `/${page.path}` : ''}`,
+    lastmod: today,
+    changefreq: page.changefreq,
+    priority: page.priority,
+    alternates: buildAlternates(page.path),
+  }));
+
+  const articleGroups: { [baseSlug: string]: { [lang: string]: BlogPost } } = {};
+  Object.entries(allBlogPostsByLang).forEach(([lang, posts]) => {
+    posts.forEach(post => {
+      const baseSlug = post.slug.replace(/-(it|en|de|fr|es)$/, '');
+      if (!articleGroups[baseSlug]) {
+        articleGroups[baseSlug] = {};
+      }
+      articleGroups[baseSlug][lang] = post;
+    });
+  });
+
   languagePosts.forEach(post => {
-    // Determina la frequenza di cambiamento basata sulla data dell'articolo
     const articleDate = new Date(post.date);
     const daysSincePublished = Math.floor((Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
     
     let changefreq = 'weekly';
     let priority = '0.8';
     
-    // Articoli più recenti hanno priorità e frequenza più alta
     if (daysSincePublished <= 7) {
       changefreq = 'daily';
       priority = '0.9';
     } else if (daysSincePublished <= 30) {
       changefreq = 'weekly';
       priority = '0.85';
-    } else if (daysSincePublished <= 90) {
-      changefreq = 'weekly';
-      priority = '0.8';
     } else {
       changefreq = 'monthly';
       priority = '0.75';
+    }
+
+    const baseSlug = post.slug.replace(/-(it|en|de|fr|es)$/, '');
+    const alternates: { [key: string]: string } = {};
+    if (articleGroups[baseSlug]) {
+      Object.entries(articleGroups[baseSlug]).forEach(([lang, variantPost]) => {
+        alternates[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${variantPost.slug}`;
+      });
     }
 
     sitemapEntries.push({
@@ -190,6 +217,7 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
       lastmod: post.lastmod,
       changefreq,
       priority,
+      alternates,
     });
   });
 
@@ -200,12 +228,13 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
     <loc>${entry.loc}</loc>
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
-    <priority>${entry.priority}</priority>
+    <priority>${entry.priority}</priority>${entry.alternates ? Object.entries(entry.alternates).map(([lang, url]) => `
+    <xhtml:link rel="alternate" hreflang="${lang}" href="${url}" />`).join('') : ''}
   </url>`).join('')}
 </urlset>`;
 
   fs.writeFileSync(path.join(SITEMAP_PATH, `sitemap-${language}.xml`), sitemap);
-  console.log(`Sitemap per ${language} generata con ${languagePosts.length} articoli`);
+  console.log(`Sitemap per ${language} generata con ${languagePosts.length} articoli e link alternativi.`);
 };
 
 /**

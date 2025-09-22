@@ -34,12 +34,13 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
   const [isInView, setIsInView] = useState(priority);
   const pictureRef = useRef<HTMLElement>(null);
 
-  // Genera URL ottimizzati per Unsplash con supporto mobile
+  // Genera URL ottimizzati per Unsplash e immagini locali
   const generateOptimizedUrls = (originalSrc: string, targetWidth?: number) => {
     if (!originalSrc.includes('unsplash.com')) {
+      const baseUrl = originalSrc.replace(/\.(png|jpe?g)$/i, '');
       return {
-        avif: originalSrc,
-        webp: originalSrc,
+        avif: `${baseUrl}.avif`,
+        webp: `${baseUrl}.webp`,
         jpeg: originalSrc
       };
     }
@@ -49,7 +50,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     
     if (targetWidth) params.set('w', targetWidth.toString());
     if (quality) params.set('q', quality.toString());
-    params.set('fm', 'auto'); // Auto format selection
+    params.set('fm', 'auto');
     params.set('fit', 'crop');
     params.set('crop', 'smart');
 
@@ -60,10 +61,14 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     };
   };
 
-  // Genera srcset responsive per mobile
+  // Genera srcset responsive
   const generateResponsiveSrcSet = (src: string, format: 'avif' | 'webp' | 'jpeg') => {
     if (!src.includes('unsplash.com')) {
-      return src;
+      if (format === 'jpeg') {
+        return src;
+      }
+      const baseUrl = src.replace(/\.(png|jpe?g)$/i, '');
+      return `${baseUrl}.${format}`;
     }
 
     const baseUrl = src.split('?')[0];
@@ -87,7 +92,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
 
   const urls = generateOptimizedUrls(src, width);
 
-  // Intersection Observer per lazy loading ottimizzato
+  // Intersection Observer per lazy loading
   useEffect(() => {
     if (priority || !pictureRef.current) return;
 
@@ -100,9 +105,9 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
           }
         });
       },
-      { 
-        threshold: 0.1,
-        rootMargin: '50px' // Carica l'immagine 50px prima che entri nel viewport
+      {
+        rootMargin: '50px',
+        threshold: 0.1
       }
     );
 

@@ -3,6 +3,7 @@ import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
+import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
 // Using the new 3:1 aspect ratio logo from public directory
 const logoImage = '/images/logo.png';
 
@@ -165,32 +166,13 @@ const Header = () => {
                 navigate(homePath);
               }}
             >
-              <img
+              <NextGenImage
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
-                loading="eager"
-                // @ts-ignore: React non riconosce fetchPriority in camelCase, usa lowercase
-                fetchpriority="high"
-                decoding="async"
-                onLoad={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.classList.add('loaded');
-                }}
-                onError={(e) => {
-                  // Fallback al testo se l'immagine non può essere caricata
-                  const target = e.target as HTMLImageElement;
-                  // Nascondi l'immagine difettosa
-                  target.style.display = 'none';
-                  // Crea un elemento span come fallback testuale (evita innerHTML diretto)
-                  const span = document.createElement('span');
-                  span.textContent = 'Yourbusinessinitaly.com';
-                  span.className = 'text-xl sm:text-2xl font-heading font-bold text-primary';
-                  target.parentElement?.appendChild(span);
-                }}
-                // Aggiungi srcset ottimizzato per mobile
-                srcSet={`${logoImage}?w=64 64w, ${logoImage}?w=80 80w, ${logoImage}?w=96 96w, ${logoImage}?w=120 120w`}
-                sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
+                width={150}
+                height={50}
+                priority
               />
             </Link>
           </div>
@@ -216,7 +198,9 @@ const Header = () => {
                 transform: 'translateZ(0)'
               }}
             >
-              <i className="fas fa-bars text-xl"></i>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
           </div>
 
@@ -233,7 +217,9 @@ const Header = () => {
                         : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-2 text-sm flex items-center`}
                     >
                       {link.label}
-                      <i className={`fas fa-chevron-down ml-1 text-xs transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`}></i>
+                      <svg className={`w-3 h-3 ml-1 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
                     </button>
                     {servicesDropdownOpen && (
                       <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-md border border-neutral-200 py-2 z-50">

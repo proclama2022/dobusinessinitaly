@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import compression from "compression";
 import dotenv from 'dotenv';
 // Load environment variables from .env at startup
 dotenv.config();
@@ -6,6 +7,7 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

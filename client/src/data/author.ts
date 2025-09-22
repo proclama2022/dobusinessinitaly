@@ -9,7 +9,7 @@ export type AuthorProfile = {
 
 export const authorProfile: AuthorProfile = {
   name: 'Giovanni Emmi',
-  image: '/images/team/Giovanni.jpg',
+  image: '/images/team/Giovanni.webp',
   titles: {
     it: 'Dottore Commercialista, Revisore Legale',
     en: 'Chartered Accountant, Statutory Auditor (Dottore Commercialista)',
