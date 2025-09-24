@@ -29,10 +29,10 @@ const Footer = () => {
               />
             </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               {/* LinkedIn Company */}
-              <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn Company">
-                <i className="fab fa-linkedin-in" style={{
+              <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none" aria-label="LinkedIn Company">
+                <i className="fab fa-linkedin-in text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -41,8 +41,8 @@ const Footer = () => {
                 }}></i>
               </a>
               {/* LinkedIn Giovanni */}
-              <a href="https://www.linkedin.com/in/studioemmicommercialista/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110" aria-label="LinkedIn Giovanni Emmi">
-                <i className="fab fa-linkedin" style={{
+              <a href="https://www.linkedin.com/in/studioemmicommercialista/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none" aria-label="LinkedIn Giovanni Emmi">
+                <i className="fab fa-linkedin text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -50,8 +50,8 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-black flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-tiktok" style={{
+              <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-black flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
+                <i className="fab fa-tiktok text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -59,8 +59,8 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-[#FF0000] flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-youtube" style={{
+              <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-[#FF0000] flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
+                <i className="fab fa-youtube text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -68,8 +68,8 @@ const Footer = () => {
                   transform: 'translateZ(0)'
                 }}></i>
               </a>
-              <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-neutral-700 hover:bg-[#E1306C] flex items-center justify-center transition-all hover:scale-110">
-                <i className="fab fa-instagram" style={{
+              <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-[#E1306C] flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
+                <i className="fab fa-instagram text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
@@ -89,7 +89,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href={getLocalizedPath('/')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
@@ -101,25 +101,25 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('navigation.services')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedPath('/about')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/about')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('navigation.about')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedPath('/blog')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/blog')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('navigation.blog')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedPath('/contact')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
+                <Link href={getLocalizedPath('/contact')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
                   <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
                   {t('navigation.contact')}
                 </Link>

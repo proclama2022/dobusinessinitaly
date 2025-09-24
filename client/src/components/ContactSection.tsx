@@ -339,10 +339,18 @@ const ContactSection = () => {
                   />
                   
                   <div className="pt-4">
-                    <button 
-                      type="submit" 
-                      className="relative overflow-hidden group px-8 py-3.5 rounded-md bg-[#009246] text-white font-medium shadow-md hover:shadow-lg transition duration-300 disabled:opacity-70"
+                    <button
+                      type="submit"
+                      className="relative overflow-hidden group px-8 py-4 sm:py-3.5 rounded-lg bg-[#009246] text-white font-medium shadow-md hover:shadow-lg transition duration-300 disabled:opacity-70 active:scale-[0.98] touch-manipulation min-h-[52px] sm:min-h-[48px] w-full sm:w-auto flex items-center justify-center focus:ring-2 focus:ring-[#009246]/50 outline-none"
                       disabled={isPending}
+                      style={{
+                        WebkitFontSmoothing: 'antialiased',
+                        WebkitTapHighlightColor: 'transparent',
+                        WebkitTouchCallout: 'none',
+                        WebkitUserSelect: 'none',
+                        userSelect: 'none',
+                        touchAction: 'manipulation'
+                      }}
                     >
                       <span className="absolute inset-0 w-0 bg-[#ce2b37] transition-all duration-300 ease-out group-hover:w-full"></span>
                       <span className="relative flex items-center justify-center gap-2">
@@ -393,59 +401,59 @@ const ContactSection = () => {
                 </h3>
                 
                 <div className="space-y-5">
-                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
-                        <i className="fas fa-map-marker-alt"></i>
+                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
+                        <i className="fas fa-map-marker-alt text-lg sm:text-base"></i>
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ml-4 flex-1">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.address.label')}</h4>
-                      <p className="text-neutral-600 mt-1">{t('contact.info.address.value')}</p>
+                      <p className="text-neutral-600 mt-1 text-sm leading-relaxed">{t('contact.info.address.value')}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
-                        <i className="fas fa-phone-alt"></i>
+                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
+                        <i className="fas fa-phone-alt text-lg sm:text-base"></i>
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ml-4 flex-1">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.phone.label')}</h4>
                       <p className="text-neutral-600 mt-1">
-                        <a href="tel:+39095643533" className="hover:text-[#009246] transition-colors">
+                        <a href="tel:+39095643533" className="hover:text-[#009246] transition-colors active:text-[#009246] text-sm leading-relaxed inline-block min-h-[24px]">
                           {t('contact.info.phone.value')}
                         </a>
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
-                        <i className="fas fa-envelope"></i>
+                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
+                        <i className="fas fa-envelope text-lg sm:text-base"></i>
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ml-4 flex-1">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.email.label')}</h4>
                       <p className="text-neutral-600 mt-1">
-                        <a href="mailto:amministrazione@proclama.co" className="hover:text-[#009246] transition-colors">
+                        <a href="mailto:amministrazione@proclama.co" className="hover:text-[#009246] transition-colors active:text-[#009246] text-sm leading-relaxed inline-block min-h-[24px] break-all">
                           {t('contact.info.email.value')}
                         </a>
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start p-4 rounded-md transition-all duration-300 hover:bg-neutral-50 group">
+                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white">
-                        <i className="fas fa-clock"></i>
+                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
+                        <i className="fas fa-clock text-lg sm:text-base"></i>
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ml-4 flex-1">
                       <h4 className="font-semibold text-neutral-800">{t('contact.info.hours.label')}</h4>
-                      <p className="text-neutral-600 mt-1">{t('contact.info.hours.value')}</p>
+                      <p className="text-neutral-600 mt-1 text-sm leading-relaxed">{t('contact.info.hours.value')}</p>
                     </div>
                   </div>
                 </div>
@@ -457,18 +465,18 @@ const ContactSection = () => {
                   <span>{t('contact.info.social')}</span>
                 </h3>
                 
-                <div className="flex space-x-3">
-                  <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300">
-                    <i className="fab fa-linkedin-in"></i>
+                <div className="flex space-x-3 sm:space-x-4">
+                  <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="LinkedIn">
+                    <i className="fab fa-linkedin-in text-lg sm:text-base"></i>
                   </a>
-                  <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
-                    <i className="fab fa-tiktok"></i>
+                  <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="TikTok">
+                    <i className="fab fa-tiktok text-lg sm:text-base"></i>
                   </a>
-                  <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all duration-300">
-                    <i className="fab fa-youtube"></i>
+                  <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="YouTube">
+                    <i className="fab fa-youtube text-lg sm:text-base"></i>
                   </a>
-                  <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300">
-                    <i className="fab fa-instagram"></i>
+                  <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="Instagram">
+                    <i className="fab fa-instagram text-lg sm:text-base"></i>
                   </a>
                 </div>
               </div>

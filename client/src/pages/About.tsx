@@ -7,7 +7,8 @@ import StatsSection from '@/components/StatsSection';
 import MediaCoverageSection from '@/components/MediaCoverageSection';
 import SEOHead from '@/components/SEOHead';
 import { authorProfile } from '@/data/author';
-import OptimizedImage from '@/components/OptimizedImage';
+import ResponsiveImage from '@/components/ResponsiveImage';
+import TeamMemberImage from '@/components/TeamMemberImage';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -42,15 +43,14 @@ const TeamMemberCard = ({
         {/* Overlay con gradiente italiano al hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
 
-        {/* Immagine */}
-        <img
+        {/* Immagine ottimizzata */}
+        <TeamMemberImage
           src={image}
           alt={name}
-          className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+          name={name}
           width={480}
           height={288}
-          loading="lazy"
-          decoding="async"
+          className="w-full h-full"
         />
 
         {/* Linee decorative */}
@@ -367,18 +367,16 @@ const About = () => {
             {/* Immagine con decorazioni */}
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <div className="rounded-xl overflow-hidden shadow-xl border border-neutral-100 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80"
+                <ResponsiveImage
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
                   alt={t('about.teamImage')}
                   className="w-full h-auto"
                   width={1600}
                   height={900}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  srcSet="
-                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=70 800w,
-                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=75 1200w,
-                    https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80 1600w
-                  "
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
+                  quality={85}
+                  priority={true}
+                  placeholder="blur"
                 />
               </div>
 

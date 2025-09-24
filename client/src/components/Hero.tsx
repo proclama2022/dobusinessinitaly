@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useEffect, useState } from 'react';
-import NextGenImage from './NextGenImage';
+import ResponsiveImage from './ResponsiveImage';
 import { useLocalizedPath } from './LocalizedRouter';
 
 const Hero = () => {
@@ -37,7 +37,7 @@ const Hero = () => {
     <section className="relative isolate min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] overflow-hidden">
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
-      <NextGenImage
+      <ResponsiveImage
         src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
         alt={t('hero.backgroundAlt')}
         className="absolute inset-0 w-full h-full object-cover hero-image z-[1]"
@@ -46,6 +46,7 @@ const Hero = () => {
         height={1080}
         sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px"
         quality={75}
+        placeholder="blur"
       />
 
       {/* Overlay con pattern decorativo */}
@@ -98,15 +99,35 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 z-20 relative">
             <Link
               href={getLocalizedPath('/contact')}
-              className="inline-block px-8 py-3 rounded-md bg-white text-gray-800 font-medium text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-gray-50"
+              className="inline-block px-8 py-4 sm:py-3 rounded-lg bg-white text-gray-800 font-medium text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-gray-50 active:scale-[0.98] touch-manipulation min-h-[52px] sm:min-h-[48px] flex items-center justify-center focus:ring-2 focus:ring-white/50 outline-none"
+              style={{
+                WebkitFontSmoothing: 'antialiased',
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                touchAction: 'manipulation'
+              }}
             >
-              {t('hero.contactButton', 'Contact Us')}
+              <span className="flex items-center justify-center w-full h-full">
+                {t('hero.contactButton', 'Contact Us')}
+              </span>
             </Link>
             <Link
               href={getLocalizedPath('/services')}
-              className="inline-block px-8 py-3 rounded-md border-2 border-white text-white hover:bg-white hover:text-gray-800 transition-all duration-300"
+              className="inline-block px-8 py-4 sm:py-3 rounded-lg border-2 border-white text-white hover:bg-white hover:text-gray-800 transition-all duration-300 active:scale-[0.98] touch-manipulation min-h-[52px] sm:min-h-[48px] flex items-center justify-center focus:ring-2 focus:ring-white/50 outline-none"
+              style={{
+                WebkitFontSmoothing: 'antialiased',
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                touchAction: 'manipulation'
+              }}
             >
-              {t('hero.servicesButton', 'Discover Our Services')}
+              <span className="flex items-center justify-center w-full h-full">
+                {t('hero.servicesButton', 'Discover Our Services')}
+              </span>
             </Link>
           </div>
 

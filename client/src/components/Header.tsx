@@ -3,7 +3,7 @@ import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
-import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
+import ResponsiveImage from './ResponsiveImage'; // Importa il componente ResponsiveImage
 // Using the new 3:1 aspect ratio logo from public directory
 const logoImage = '/images/logo.png';
 
@@ -166,13 +166,15 @@ const Header = () => {
                 navigate(homePath);
               }}
             >
-              <NextGenImage
+              <ResponsiveImage
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
                 width={150}
                 height={50}
-                priority
+                priority={true}
+                placeholder="blur"
+                sizes="(max-width: 480px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 150px"
               />
             </Link>
           </div>
@@ -181,7 +183,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-3 -m-1 min-h-[48px] min-w-[48px] active:scale-95 transition-transform"
+              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-4 -m-2 min-h-[48px] min-w-[48px] active:scale-95 transition-transform duration-150 focus:ring-2 focus:ring-primary/30 rounded-lg"
               aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
@@ -194,18 +196,18 @@ const Header = () => {
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
                 touchAction: 'manipulation',
-                filter: 'drop-shadow(0 0 0.5px rgba(0,0,0,0.1))',
-                transform: 'translateZ(0)'
+                transform: 'translateZ(0)',
+                WebkitTransform: 'translateZ(0)'
               }}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
 
           {/* Desktop menu */}
-          <nav className="hidden md:flex items-center space-x-4">
+          <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
             {navigationLinks.map((link) => (
               <div key={link.path} className="relative">
                 {link.dropdown ? (
@@ -214,20 +216,20 @@ const Header = () => {
                       onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
                       className={`font-medium ${isActiveLink(link.path)
                         ? 'text-primary border-b-2 border-primary'
-                        : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-2 text-sm flex items-center`}
+                        : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-3 py-3 text-sm lg:text-base flex items-center min-h-[48px] transition-colors duration-200 touch-manipulation focus:ring-2 focus:ring-primary/30 rounded-lg outline-none`}
                     >
                       {link.label}
-                      <svg className={`w-3 h-3 ml-1 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg className={`w-3 h-3 ml-1 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {servicesDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-md border border-neutral-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-neutral-200 py-2 z-50">
                         {link.dropdown.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.path}
                             href={getLocalizedPath(dropdownItem.path)}
-                            className="block px-4 py-3 text-sm text-neutral-800 hover:bg-neutral-50 transition-colors"
+                            className="block px-4 py-3 text-sm text-neutral-800 hover:bg-neutral-50 transition-colors duration-200 touch-manipulation min-h-[44px] flex items-center"
                             onClick={() => setServicesDropdownOpen(false)}
                           >
                             {dropdownItem.label}
@@ -241,7 +243,7 @@ const Header = () => {
                     href={getLocalizedPath(link.path)}
                     className={`font-medium ${isActiveLink(link.path)
                       ? 'text-primary border-b-2 border-primary'
-                      : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-1 py-2 text-sm`}
+                      : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-3 py-3 text-sm lg:text-base min-h-[48px] flex items-center transition-colors duration-200 touch-manipulation focus:ring-2 focus:ring-primary/30 rounded-lg outline-none`}
                   >
                     {link.label}
                   </Link>
@@ -249,7 +251,9 @@ const Header = () => {
               </div>
             ))}
 
-            <LanguageSelector />
+            <div className="ml-2 lg:ml-4">
+              <LanguageSelector />
+            </div>
           </nav>
         </div>
 
@@ -265,13 +269,13 @@ const Header = () => {
         {/* Mobile menu */}
         <div
           id="mobile-menu"
-          className={`md:hidden fixed left-0 right-0 top-[72px] bg-white border-t border-neutral-200 shadow-lg ${mobileMenuOpen ? 'block' : 'hidden'} z-50 max-h-[calc(100vh-72px)] overflow-y-auto`}
+          className={`md:hidden fixed left-0 right-0 top-[72px] bg-white border-t border-neutral-200 shadow-lg ${mobileMenuOpen ? 'block' : 'hidden'} z-50 max-h-[calc(100vh-72px)] overflow-y-auto touch-pan-y`}
           role="navigation"
           aria-label="Menu principale mobile"
           ref={mobileMenuRef}
           tabIndex={-1}
         >
-          <nav className="flex flex-col space-y-3 p-4">
+          <nav className="flex flex-col space-y-2 p-4">
             {navigationLinks.map((link) => (
               <div key={link.path}>
                 {link.dropdown ? (
@@ -279,18 +283,21 @@ const Header = () => {
                     <Link
                       href={getLocalizedPath(link.path)}
                       className={`font-medium ${isActiveLink(link.path)
-                        ? 'text-primary'
-                        : 'text-neutral-700 hover:text-primary'} block py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors`}
+                        ? 'text-primary bg-primary/5'
+                        : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'} block py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[48px] flex items-center justify-between outline-none focus:ring-2 focus:ring-primary/30`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {link.label}
+                      <span>{link.label}</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </Link>
-                    <div className="ml-4 space-y-2">
+                    <div className="ml-4 space-y-2 pl-2 border-l-2 border-neutral-200">
                       {link.dropdown.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.path}
                           href={getLocalizedPath(dropdownItem.path)}
-                          className="block text-sm text-neutral-600 hover:text-primary py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors"
+                          className="block text-sm text-neutral-600 hover:text-primary hover:bg-neutral-50 py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[44px] flex items-center outline-none focus:ring-2 focus:ring-primary/30"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {dropdownItem.label}
@@ -303,8 +310,8 @@ const Header = () => {
                     key={link.path}
                     href={getLocalizedPath(link.path)}
                     className={`font-medium ${isActiveLink(link.path)
-                      ? 'text-primary'
-                      : 'text-neutral-700 hover:text-primary'} block py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-50 transition-colors`}
+                      ? 'text-primary bg-primary/5'
+                      : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'} block py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[48px] flex items-center outline-none focus:ring-2 focus:ring-primary/30`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -312,7 +319,7 @@ const Header = () => {
                 )}
               </div>
             ))}
-            <div className="py-2">
+            <div className="pt-2 pb-4">
               <LanguageSelector isMobile={true} />
             </div>
           </nav>

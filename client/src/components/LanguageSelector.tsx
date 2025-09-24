@@ -64,11 +64,19 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
         {languages.map(lang => (
           <button
             key={lang.code}
-            className={`flex items-center text-neutral-700 hover:text-primary ${i18n.language === lang.code ? 'font-semibold' : ''}`}
+            className={`flex items-center text-neutral-700 hover:text-primary ${i18n.language === lang.code ? 'font-semibold text-primary bg-primary/5' : ''} py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[48px] w-full text-left outline-none focus:ring-2 focus:ring-primary/30`}
             onClick={() => handleLanguageChange(lang.code)}
+            style={{
+              WebkitFontSmoothing: 'antialiased',
+              WebkitTapHighlightColor: 'transparent',
+              WebkitTouchCallout: 'none',
+              WebkitUserSelect: 'none',
+              userSelect: 'none',
+              touchAction: 'manipulation'
+            }}
           >
-            <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" />
-            <span>{lang.name}</span>
+            <img src={lang.flag} alt={`${lang.name} flag`} className="w-6 h-auto mr-3" loading="lazy" />
+            <span className="text-base">{lang.name}</span>
           </button>
         ))}
       </div>
@@ -80,25 +88,43 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="flex items-center text-neutral-700 hover:text-primary text-sm"
+        className="flex items-center text-neutral-700 hover:text-primary text-sm px-3 py-2 rounded-lg touch-manipulation transition-colors duration-200 min-h-[40px] focus:ring-2 focus:ring-primary/30 outline-none"
         onClick={() => setDropdownOpen(!dropdownOpen)}
+        aria-label="Select language"
+        aria-expanded={dropdownOpen}
+        style={{
+          WebkitFontSmoothing: 'antialiased',
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+          touchAction: 'manipulation'
+        }}
       >
-        <img src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-4 h-auto mr-1" />
-        <span className="mr-1">{currentLang.code.toUpperCase()}</span>
-        <i className="fas fa-chevron-down text-xs"></i>
+        <img src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-5 h-auto mr-2" loading="lazy" />
+        <span className="mr-1 font-medium">{currentLang.code.toUpperCase()}</span>
+        <i className="fas fa-chevron-down text-xs ml-1 transition-transform duration-200" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none' }}></i>
       </button>
 
       {dropdownOpen && (
-        <div className="absolute right-0 mt-1 w-20 bg-white shadow-lg rounded-md py-1 z-10">
+        <div className="absolute right-0 mt-1 w-24 bg-white shadow-lg rounded-md py-2 z-50 border border-neutral-200">
           {languages
             .filter(lang => lang.code !== i18n.language)
             .map(lang => (
               <button
                 key={lang.code}
-                className="block w-full px-4 py-1.5 text-xs text-neutral-700 hover:bg-neutral-100 flex items-center"
+                className="block w-full px-4 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 active:bg-neutral-100 flex items-center transition-colors duration-200 touch-manipulation min-h-[44px] outline-none focus:bg-neutral-50 focus:ring-2 focus:ring-primary/30"
                 onClick={() => handleLanguageChange(lang.code)}
+                style={{
+                  WebkitFontSmoothing: 'antialiased',
+                  WebkitTapHighlightColor: 'transparent',
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none',
+                  touchAction: 'manipulation'
+                }}
               >
-                <img src={lang.flag} alt={`${lang.name} flag`} className="w-4 h-auto mr-2" />
+                <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" loading="lazy" />
                 {lang.code.toUpperCase()}
               </button>
             ))}

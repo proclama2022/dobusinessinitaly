@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Touch optimization styles */
+@import './styles/touch-optimization.css';
+
+/* Import responsive CSS */
+@import './styles/responsive.css';
+
 :root {
   --background: 0 0% 100%;
   --foreground: 224 71.4% 4.1%;
@@ -584,16 +590,180 @@
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .btn:hover {
+  /* Disable hover effects on touch devices */
+  .btn:hover,
+  .card:hover,
+  .hover-lift:hover,
+  .hover-scale:hover {
     transform: none;
   }
 
-  .card:hover {
-    transform: none;
-  }
-
-  button, .btn, a {
+  /* Ensure minimum touch target size */
+  button,
+  .btn,
+  a,
+  input,
+  select,
+  textarea,
+  .touch-target {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Improve form inputs for touch */
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 12px 16px;
+  }
+
+  /* Remove tap delay */
+  button,
+  .btn,
+  a,
+  .clickable {
+    touch-action: manipulation;
+  }
+
+  /* Better touch feedback */
+  button:active,
+  .btn:active,
+  .clickable:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* Remove hover states */
+  *:hover {
+    transform: none !important;
+  }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects */
+  *:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Enhance active states */
+  button:active,
+  .btn:active,
+  .clickable:active,
+  a:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* Larger touch targets */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Improve scroll performance */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea {
+    font-size: 16px;
+    touch-action: manipulation;
+  }
+
+  /* Better touch feedback for dropdowns */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 2.5rem;
+  }
+
+  /* Touch-friendly focus styles */
+  button:focus,
+  .btn:focus,
+  a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 2px solid #009246;
+    outline-offset: 2px;
+  }
+
+  /* Remove tap delay on all interactive elements */
+  button,
+  .btn,
+  a,
+  input,
+  select,
+  textarea,
+  .clickable {
+    touch-action: manipulation;
+  }
+
+  /* Better spacing for touch */
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mt-4 {
+    margin-top: 1rem;
+  }
+
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button,
+  .btn,
+  a {
+    border: 2px solid currentColor;
+  }
+
+  button:focus,
+  .btn:focus,
+  a:focus {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep essential touch feedback */
+  button:active,
+  .btn:active,
+  .clickable:active {
+    transform: scale(0.98);
   }
 }

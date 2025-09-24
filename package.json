@@ -12,7 +12,10 @@
     "db:push": "drizzle-kit push",
     "generate-sitemaps": "tsx scripts/generate-sitemaps.js",
     "migrate-image": "tsx scripts/migrate-image.js",
-    "check:covers": "tsx scripts/check-duplicate-covers.ts"
+    "check:covers": "tsx scripts/check-duplicate-covers.ts",
+    "optimize-images": "node scripts/generate-webp-avif.cjs",
+    "monitor-images": "node scripts/monitor-image-performance.cjs",
+    "build:images": "npm run optimize-images && npm run monitor-images"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -52,6 +55,7 @@
     "@radix-ui/react-toggle": "^1.1.3",
     "@radix-ui/react-toggle-group": "^1.1.3",
     "@radix-ui/react-tooltip": "^1.2.0",
+    "@rollup/plugin-image": "^3.0.3",
     "@tailwindcss/vite": "^4.1.3",
     "@tanstack/react-query": "^5.60.5",
     "@types/multer": "^1.4.12",
@@ -106,6 +110,8 @@
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.2.5",
     "vaul": "^1.1.2",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-webp": "^1.1.3",
     "wouter": "^3.3.5",
     "ws": "^8.18.0",
     "zod": "^3.24.2",
@@ -133,6 +139,7 @@
     "drizzle-kit": "^0.30.4",
     "esbuild": "^0.23.1",
     "postcss": "^8.4.47",
+    "sharp": "^0.34.4",
     "tailwindcss": "^3.4.17",
     "terser": "^5.44.0",
     "tsx": "^4.19.1",

@@ -1,0 +1,419 @@
+/* Touch Optimization Styles for Mobile Devices */
+
+/* Base touch optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Interactive elements */
+button, .btn, a, .clickable {
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Minimum touch target sizes */
+button,
+.btn,
+a,
+input,
+select,
+textarea,
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Enhanced touch feedback */
+button:active,
+.btn:active,
+.clickable:active,
+a:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Form input optimizations */
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.5rem;
+  font-size: 16px; /* Prevents iOS zoom */
+  touch-action: manipulation;
+}
+
+/* Custom dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+/* Checkbox and radio optimizations */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  min-width: 22px;
+}
+
+/* Scroll optimization */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Touch-friendly focus styles */
+button:focus,
+.btn:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #009246;
+  outline-offset: 2px;
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  *:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .btn:hover,
+  .card:hover,
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
+
+/* Mobile-specific touch optimizations */
+@media (max-width: 768px) {
+  /* Larger touch targets on mobile */
+  button,
+  .btn,
+  a {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Touch-friendly spacing */
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .mt-4 {
+    margin-top: 1rem;
+  }
+
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Improve touch target spacing */
+  .py-2 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Touch-friendly links */
+  a {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin: -0.25rem -0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+  }
+
+  a:active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  button,
+  .btn,
+  a {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.875rem 1rem;
+  }
+
+  /* Improve readability */
+  p,
+  span,
+  li {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* Touch-friendly form elements */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    padding: 0.875rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Reduce padding */
+  .p-4 {
+    padding: 1rem;
+  }
+
+  .p-3 {
+    padding: 0.75rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button,
+  .btn,
+  a {
+    border: 2px solid currentColor;
+  }
+
+  button:focus,
+  .btn:focus,
+  a:focus {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep essential touch feedback */
+  button:active,
+  .btn:active,
+  .clickable:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Performance optimizations for mobile */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* Touch-optimized animations */
+@keyframes touchPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.touch-pulse:active {
+  animation: touchPulse 0.3s ease;
+}
+
+/* Touch-friendly loading states */
+.loading-touch {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-touch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Touch-friendly tooltips */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:active::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Touch-friendly carousel indicators */
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background: #009246;
+}
+
+.carousel-indicator:active {
+  transform: scale(1.2);
+}
+
+/* Touch-friendly pagination */
+.pagination-item {
+  min-width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  margin: 0 2px;
+  transition: all 0.2s ease;
+}
+
+.pagination-item:active {
+  transform: scale(0.95);
+}
+
+/* Touch-friendly modal close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close:active {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
+
+/* Touch-friendly swipe gestures */
+.swipe-container {
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.swipe-item {
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Touch-friendly progress bars */
+.progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #009246;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* Touch-friendly accordion */
+.accordion-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.accordion-header:active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.accordion-content {
+  padding: 0 1rem 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+  padding: 0 1rem 1rem;
+}

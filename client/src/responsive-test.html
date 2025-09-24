@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Test - YourBusinessInItaly</title>
+    <style>
+        /* Import responsive styles */
+        @import './styles/responsive.css';
+
+        /* Test-specific styles */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+
+        .test-header {
+            background: #2d5016;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        .color-box {
+            height: 100px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mobile-only { background: #ef4444; }
+        .tablet-only { background: #3b82f6; }
+        .desktop-only { background: #10b981; }
+
+        .responsive-text {
+            transition: font-size 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-only { display: flex !important; }
+            .tablet-only { display: none !important; }
+            .desktop-only { display: none !important; }
+            .responsive-text { font-size: 14px; }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .mobile-only { display: none !important; }
+            .tablet-only { display: flex !important; }
+            .desktop-only { display: none !important; }
+            .responsive-text { font-size: 16px; }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-only { display: none !important; }
+            .tablet-only { display: none !important; }
+            .desktop-only { display: flex !important; }
+            .responsive-text { font-size: 18px; }
+        }
+
+        .grid-test {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .grid-test { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .grid-test { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-test { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .grid-item {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Viewport info overlay -->
+    <div class="viewport-info" id="viewportInfo">
+        Loading...
+    </div>
+
+    <!-- Test header -->
+    <div class="test-header">
+        <h1>Responsive System Test</h1>
+        <p>YourBusinessInItaly - Mobile-First Implementation</p>
+    </div>
+
+    <!-- Device type test -->
+    <div class="test-section">
+        <h2>Device Type Detection</h2>
+        <div class="color-box mobile-only">Mobile Content (< 768px)</div>
+        <div class="color-box tablet-only">Tablet Content (768px - 1023px)</div>
+        <div class="color-box desktop-only">Desktop Content (≥ 1024px)</div>
+    </div>
+
+    <!-- Typography test -->
+    <div class="test-section">
+        <h2>Responsive Typography</h2>
+        <p class="responsive-text">
+            Questo testo cambia dimensione in base al viewport.
+            Current breakpoint: <span id="currentBreakpoint">Detecting...</span>
+        </p>
+        <div style="margin-top: 20px;">
+            <h3 class="text-responsive-4xl">Heading 4XL Responsive</h3>
+            <h3 class="text-responsive-3xl">Heading 3XL Responsive</h3>
+            <h3 class="text-responsive-2xl">Heading 2XL Responsive</h3>
+            <p class="text-responsive-xl">Paragraph XL Responsive</p>
+            <p class="text-responsive-lg">Paragraph LG Responsive</p>
+            <p class="text-responsive">Paragraph Base Responsive</p>
+            <p class="text-responsive-sm">Paragraph SM Responsive</p>
+        </div>
+    </div>
+
+    <!-- Grid test -->
+    <div class="test-section">
+        <h2>Responsive Grid</h2>
+        <div class="grid-test">
+            <div class="grid-item">Grid Item 1</div>
+            <div class="grid-item">Grid Item 2</div>
+            <div class="grid-item">Grid Item 3</div>
+            <div class="grid-item">Grid Item 4</div>
+            <div class="grid-item">Grid Item 5</div>
+            <div class="grid-item">Grid Item 6</div>
+        </div>
+    </div>
+
+    <!-- Container test -->
+    <div class="test-section">
+        <h2>Container Test</h2>
+        <div class="container" style="background: #e5e7eb; padding: 20px; border-radius: 4px;">
+            <p>Standard Container - Padding responsive</p>
+        </div>
+        <div style="margin-top: 10px;">
+            <div class="container-sm" style="background: #d1d5db; padding: 20px; border-radius: 4px;">
+                <p>Small Container - Max width: 640px</p>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <div class="container-lg" style="background: #9ca3af; padding: 20px; border-radius: 4px;">
+                <p>Large Container - Max width: 1024px</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons test -->
+    <div class="test-section">
+        <h2>Responsive Buttons</h2>
+        <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+            <button class="btn btn-primary">Primary Button</button>
+            <button class="btn btn-secondary">Secondary Button</button>
+            <button class="btn btn-outline">Outline Button</button>
+            <button class="btn btn-primary btn-block">Block Button</button>
+        </div>
+    </div>
+
+    <!-- Navigation test -->
+    <div class="test-section">
+        <h2>Responsive Navigation</h2>
+        <nav class="nav-responsive">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">Logo</a>
+                <button class="nav-toggle">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero test -->
+    <div class="test-section">
+        <h2>Hero Section Test</h2>
+        <section class="hero-section" style="background: linear-gradient(135deg, #2d5016, #1e370f); margin: -20px; padding: 40px 20px;">
+            <div class="hero-content">
+                <h1 class="hero-title-responsive">Hero Title Responsive</h1>
+                <p class="hero-subtitle-responsive">This subtitle adapts to different screen sizes with optimal readability and spacing.</p>
+                <div class="hero-buttons-responsive">
+                    <button class="btn btn-primary">Action 1</button>
+                    <button class="btn btn-secondary">Action 2</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Card test -->
+    <div class="test-section">
+        <h2>Responsive Cards</h2>
+        <div class="services-grid-responsive">
+            <div class="service-card-responsive">
+                <div class="service-icon-responsive">📋</div>
+                <h3 class="service-title-responsive">Service 1</h3>
+                <p class="service-description-responsive">Description for service 1 with responsive text sizing.</p>
+            </div>
+            <div class="service-card-responsive">
+                <div class="service-icon-responsive">💰</div>
+                <h3 class="service-title-responsive">Service 2</h3>
+                <p class="service-description-responsive">Description for service 2 with responsive text sizing.</p>
+            </div>
+            <div class="service-card-responsive">
+                <div class="service-icon-responsive">📊</div>
+                <h3 class="service-title-responsive">Service 3</h3>
+                <p class="service-description-responsive">Description for service 3 with responsive text sizing.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form test -->
+    <div class="test-section">
+        <h2>Responsive Form</h2>
+        <form class="contact-form-responsive">
+            <div class="form-group-responsive">
+                <label class="form-label-responsive">Name</label>
+                <input type="text" class="form-input-responsive" placeholder="Enter your name">
+            </div>
+            <div class="form-group-responsive">
+                <label class="form-label-responsive">Email</label>
+                <input type="email" class="form-input-responsive" placeholder="Enter your email">
+            </div>
+            <div class="form-group-responsive">
+                <label class="form-label-responsive">Message</label>
+                <textarea class="form-textarea-responsive" rows="4" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Test results -->
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <p>Testing responsive features...</p>
+        </div>
+    </div>
+
+    <script>
+        // Update viewport info
+        function updateViewportInfo() {
+            const viewportInfo = document.getElementById('viewportInfo');
+            const currentBreakpoint = document.getElementById('currentBreakpoint');
+
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            let deviceType = 'Mobile';
+            let breakpoint = 'Mobile';
+
+            if (width >= 1024) {
+                deviceType = 'Desktop';
+                breakpoint = 'Desktop (≥ 1024px)';
+            } else if (width >= 768) {
+                deviceType = 'Tablet';
+                breakpoint = 'Tablet (768px - 1023px)';
+            } else {
+                breakpoint = 'Mobile (< 768px)';
+            }
+
+            viewportInfo.innerHTML = `
+                <strong>${deviceType}</strong><br>
+                ${width} × ${height}px<br>
+                ${breakpoint}
+            `;
+
+            currentBreakpoint.textContent = breakpoint;
+
+            // Update test results
+            updateTestResults(width, height, deviceType);
+        }
+
+        function updateTestResults(width, height, deviceType) {
+            const testResults = document.getElementById('testResults');
+
+            const tests = [
+                { name: 'Viewport Width', value: `${width}px`, status: '✅' },
+                { name: 'Viewport Height', value: `${height}px`, status: '✅' },
+                { name: 'Device Type', value: deviceType, status: '✅' },
+                { name: 'Orientation', value: width > height ? 'Landscape' : 'Portrait', status: '✅' },
+                { name: 'Touch Support', value: 'ontouchstart' in window ? 'Yes' : 'No', status: '✅' },
+                { name: 'CSS Grid Support', value: CSS.supports('display', 'grid') ? 'Yes' : 'No', status: '✅' },
+                { name: 'Flexbox Support', value: CSS.supports('display', 'flex') ? 'Yes' : 'No', status: '✅' },
+                { name: 'Reduced Motion', value: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'Yes' : 'No', status: '✅' }
+            ];
+
+            let html = '<table style="width: 100%; border-collapse: collapse;">';
+            html += '<thead><tr style="background: #f3f4f6;"><th style="padding: 8px; text-align: left; border: 1px solid #d1d5db;">Test</th><th style="padding: 8px; text-align: left; border: 1px solid #d1d5db;">Result</th><th style="padding: 8px; text-align: left; border: 1px solid #d1d5db;">Status</th></tr></thead><tbody>';
+
+            tests.forEach(test => {
+                html += `<tr>
+                    <td style="padding: 8px; border: 1px solid #d1d5db;">${test.name}</td>
+                    <td style="padding: 8px; border: 1px solid #d1d5db;">${test.value}</td>
+                    <td style="padding: 8px; border: 1px solid #d1d5db;">${test.status}</td>
+                </tr>`;
+            });
+
+            html += '</tbody></table>';
+
+            // Add recommendations
+            html += '<div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-radius: 4px;">';
+            html += '<h4 style="margin-top: 0;">Recommendations:</h4>';
+            html += '<ul style="margin-bottom: 0;">';
+
+            if (deviceType === 'Mobile') {
+                html += '<li>✅ Touch targets should be at least 44×44px</li>';
+                html += '<li>✅ Font sizes are optimized for mobile reading</li>';
+                html += '<li>✅ Layout uses single column for better mobile experience</li>';
+            } else if (deviceType === 'Tablet') {
+                html += '<li>✅ Two-column layout provides good balance</li>';
+                html += '<li>✅ Touch targets are appropriately sized</li>';
+                html += '<li>✅ Content density is optimized for tablet screens</li>';
+            } else {
+                html += '<li>✅ Multi-column layout maximizes screen space</li>';
+                html += '<li>✅ Hover states and animations are enabled</li>';
+                html += '<li>✅ Typography is scaled for desktop reading</li>';
+            }
+
+            html += '</ul></div>';
+
+            testResults.innerHTML = html;
+        }
+
+        // Initialize and listen for resize
+        updateViewportInfo();
+        window.addEventListener('resize', updateViewportInfo);
+
+        // Add interactive toggle for mobile menu
+        document.querySelector('.nav-toggle')?.addEventListener('click', function() {
+            const menu = document.querySelector('.nav-menu');
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+                document.querySelector('.mobile-menu-overlay')?.remove();
+            } else {
+                menu.style.display = 'flex';
+                menu.style.flexDirection = 'column';
+                menu.style.position = 'fixed';
+                menu.style.top = '0';
+                menu.style.right = '0';
+                menu.style.width = '250px';
+                menu.style.height = '100%';
+                menu.style.background = 'white';
+                menu.style.padding = '20px';
+                menu.style.boxShadow = '-2px 0 10px rgba(0,0,0,0.1)';
+                menu.style.zIndex = '1001';
+
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', function() {
+                    menu.style.display = 'none';
+                    overlay.remove();
+                });
+            }
+        });
+
+        // Test button interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const originalText = this.textContent;
+                this.textContent = 'Clicked!';
+                this.style.background = '#059669';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                }, 1000);
+            });
+        });
+
+        // Test form submission
+        document.querySelector('.contact-form-responsive')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Form Submitted!';
+            submitBtn.style.background = '#059669';
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 2000);
+        });
+
+        console.log('Responsive test page loaded successfully!');
+        console.log('Resize your browser window to see the responsive behavior in action.');
+    </script>
+</body>
+</html>
