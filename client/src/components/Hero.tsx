@@ -39,13 +39,13 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
       <ResponsiveImage
         src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
-        alt={t('hero.backgroundAlt')}
+        alt="Commercialista per stranieri in Italia che aiuta imprenditori internazionali con consulenza fiscale e apertura società"
         className="absolute inset-0 w-full h-full object-cover hero-image z-[1]"
         priority={true}
         width={1920}
         height={1080}
         sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px"
-        quality={75}
+        quality={85}
         placeholder="blur"
       />
 
@@ -82,7 +82,7 @@ const Hero = () => {
             <span className="w-2 h-2 rounded-full bg-[#ce2b37] ml-2"></span>
           </div>
 
-          {/* Titolo principale */}
+          {/* Titolo principale - Ottimizzato per SEO con parole chiave strategiche */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-4 relative z-20 enhanced-text">
             <span className="relative inline-block">
               {heroTitle}

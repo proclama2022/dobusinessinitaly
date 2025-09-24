@@ -40,7 +40,7 @@ const MediaItem = ({
               <span className="text-neutral-500 text-sm">{date}</span>
             </div>
 
-            <h3 className="font-heading text-xl font-bold mb-3 line-clamp-2 text-neutral-900 leading-tight">
+            <h3 className="font-heading text-xl font-bold mb-3 line-clamp-2 text-neutral-900 leading-tight" itemProp="headline">
               {title}
             </h3>
 

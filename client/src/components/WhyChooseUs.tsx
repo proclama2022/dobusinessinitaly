@@ -79,7 +79,7 @@ const WhyChooseUs = () => {
             <div className="relative">
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
-                alt={t('whyChooseUs.mainImageAlt')}
+                alt="Team di commercialisti esperti che assistono stranieri nell'apertura di società in Italia con consulenza fiscale specializzata"
                 className="rounded-lg shadow-xl w-full h-[500px]"
                 width={1000}
                 height={500}
@@ -89,12 +89,12 @@ const WhyChooseUs = () => {
                   https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80 1000w,
                   https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80 1600w
                 "
-                quality={80}
+                quality={85}
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-md border border-neutral-200 hidden md:block">
                 <OptimizedImage
                   src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=300&q=75"
-                  alt={t('whyChooseUs.smallImageAlt')}
+                  alt="Consulenza fiscale specializzata per stranieri che vogliono aprire partita IVA in Italia"
                   className="w-48 h-48 rounded"
                   width={300}
                   height={300}
@@ -103,7 +103,7 @@ const WhyChooseUs = () => {
                     https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=192&q=70 192w,
                     https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=384&q=75 384w
                   "
-                  quality={75}
+                  quality={85}
                 />
               </div>
             </div>

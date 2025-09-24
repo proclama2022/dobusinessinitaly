@@ -149,9 +149,9 @@ const ServicesSection = () => {
             <span className="absolute -bottom-8 -right-8 w-6 h-6 opacity-20 bg-[#ce2b37] animate-ping" style={{ animationDuration: '3s' }}></span>
 
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 relative inline-flex items-center">
-              <span className="text-[#009246]">Our </span>
+              <span className="text-[#009246]">Servizi </span>
               <span className="relative pl-4">
-                Services
+                per Stranieri in Italia
                 <span className="absolute -bottom-2 left-0 right-0 h-1.5 italian-gradient"></span>
               </span>
             </h2>

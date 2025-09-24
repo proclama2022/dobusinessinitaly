@@ -61,7 +61,7 @@ const BlogPost = ({
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-[Montserrat] font-semibold text-neutral-900 mb-3">
+        <h3 className="text-xl font-[Montserrat] font-semibold text-neutral-900 mb-3" itemProp="headline">
           <Link href={`/${i18n.language}/blog/${slug}`} className="hover:text-primary">{title}</Link>
         </h3>
         <p className="text-neutral-600 mb-4 line-clamp-3">{excerpt}</p>
