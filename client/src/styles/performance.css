@@ -23,3 +23,31 @@
 
 /* 8. Aspect ratio per CLS prevention */
 .aspect-video{aspect-ratio:16/9}.aspect-square{aspect-ratio:1/1}.aspect-portrait{aspect-ratio:3/4}
+
+/* 9. Mobile-specific performance optimizations */
+@media(max-width:768px){
+  /* Riduci animazioni su mobile per risparmiare batteria */
+  .animate-slow-zoom,.animate-float,.animate-slide-up,.animate-slide-right,.animate-rotate-in,.animate-gradient-flow{animation-duration:0.3s!important}
+
+  /* Previene reflow su mobile */
+  .mobile-optimized{will-change:transform,opacity}
+
+  /* Ottimizza immagini per mobile */
+  .mobile-image{content-visibility:auto;contain-intrinsic-size:375px 667px}
+
+  /* Riduci complessità animazioni mobile */
+  .mobile-animation{transform:none!important;transition:opacity 0.2s ease!important}
+}
+
+/* 10. Font loading optimization */
+.font-preload{font-display:swap}
+.font-loaded{font-display:block}
+
+/* 11. Critical resource hints */
+.preload-critical{rel:preload;as:image;fetchpriority:high}
+.preload-font{rel:preload;as=font;crossorigin}
+
+/* 12. Mobile touch response optimization */
+@media(hover:none) and (pointer:coarse){
+  .touch-optimized{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+}

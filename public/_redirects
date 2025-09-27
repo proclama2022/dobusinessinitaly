@@ -1,26 +1,47 @@
-# Redirect per risolvere Soft 404
+# Redirect per risolvere Soft 404 - Aggiornato 27/09/2025
 
-# Redirect URL con doppio suffisso
+# Redirect URL con doppio suffisso (lingua-lingua)
 /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
+/es/blog/aprire-partita-iva-freelance-italia-2025.es-es /es/blog/aprire-partita-iva-freelance-italia-2025 301
+/de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025.de-de /de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025 301
 
 # Redirect per slug non corrispondenti - rimanda alle versioni esistenti
-/en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer /de/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer 301
-
-# Redirect per pagine che potrebbero avere slug leggermente diversi
+/en/blog/steuern-gmbh-leitfaden-2025-auslaendische-unternehmer /de/blog/steuern-gmbh-leitfaden-2025-auslaendliche-unternehmer 301
 /en/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025 /de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025 301
 
-# Redirect per pagine di residenza fiscale
+# Redirect per pagine di residenza fiscale (correzione path senza prefisso lingua)
 /blog/residencia-fiscal-italia-extranjeros-2025-guia-completa /es/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa 301
-
-# Redirect per pagine impuestos
-/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 /es/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
-
-# Redirect per pagine francesi
-/blog/impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
 /blog/residence-fiscale-italie-expatries-2025-guide-complet /fr/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
+/residencia-fiscal-italia-extranjeros-2025-guia-completa /es/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa 301
+/residence-fiscale-italie-expatries-2025-guide-complet /fr/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
 
-# Redirect per pagine tedesche
+# Redirect per pagine impuestos (correzione path senza prefisso lingua)
+/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 /es/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
+/impuestos-5-por-ciento-italia-guia-extranjeros-2025 /es/blog/impuestos-5-por-ciento-italia-guia-extranjeros-2025 301
+
+# Redirect per pagine francesi (correzione path senza prefisso lingua)
+/blog/impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
+/impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
+
+# Redirect per pagine tedesche (correzione path senza prefisso lingua)
 /blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
+/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
+
+# Redirect per articoli duplicati o con path errati (basati sui file .mdx trovati)
+/en/blog/italian-tax-code-foreigners-complete-guide-2025 /it/blog/codice-fiscale-stranieri-italia-2025-guida-completa 301
+/en/blog/italy-5-percent-tax-guide-expats-2025 /it/blog/italia-5-percento-imposte-guida-espatriati-2025 301
+/en/blog/how-to-open-business-italy-foreigner-complete-guide-2025 /it/blog/come-aprire-attivita-italia-straniero-guida-completa-2025 301
+/en/blog/italy-startup-visa-2025-complete-guide-foreign-entrepreneurs /it/blog/visto-startup-italia-2025-guida-completa-imprenditori-stranieri 301
+/en/blog/opening-bank-account-italy-foreigner-2025-guide /it/blog/aprire-conto-bancario-italia-straniero-2025-guida 301
+/en/blog/italy-tax-residency-expats-2025-complete-guide /it/blog/residenza-fiscale-italia-espatriati-2025-guida-completa 301
+/en/blog/open-srl-italy-us-citizen-2025-guide /it/blog/aprire-srl-italia-cittadino-usa-2025-guida 301
+/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison /it/blog/srl-vs-ditta-individuale-italia-2025-confronto-completo 301
+/en/blog/how-to-start-business-italy-from-usa-2025 /it/blog/come-avviare-attivita-italia-dai-usa-2025 301
+/en/blog/italy-income-tax-rates-2025-expats /it/blog/aliquote-imposta-reddito-italia-2025-espatriati 301
+
+# Redirect per versioni tradotte con path errati
+/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025 /fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025 301
+/como-abrir-negocio-italia-extranjero-guia-completa-2025 /es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025 301
 
 # Catch-all per SPA
 /* /index.html 200

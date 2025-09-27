@@ -47,7 +47,7 @@ export default defineConfig({
     sourcemap: false,
     // Ottimizzazioni aggressive per mobile
     cssCodeSplit: true,
-    assetsInlineLimit: 2048, // Ridotto per mobile (2kb invece di 4kb)
+    assetsInlineLimit: 1024, // Ulteriormente ridotto per mobile (1kb)
     terserOptions: {
       compress: {
         drop_console: true,
@@ -65,11 +65,22 @@ export default defineConfig({
         evaluate: true,
         booleans: true,
         loops: true,
-        unused: true
+        unused: true,
+        // Ottimizzazioni aggiuntive per mobile
+        inline: 2,
+        join_vars: true,
+        collapse_vars: true,
+        cascade: true,
+        side_effects: true,
+        properties: true,
+        switches: true,
+        if_return: true,
+        inline: true
       },
       mangle: {
         safari10: true, // Fix per Safari mobile
-        toplevel: true // Mangle anche i nomi delle funzioni top-level
+        toplevel: true, // Mangle anche i nomi delle funzioni top-level
+        properties: true // Mangle anche i nomi delle proprietà
       }
     },
     rollupOptions: {
@@ -77,19 +88,24 @@ export default defineConfig({
       output: {
         manualChunks: {
           // React core - separato per evitare conflitti
-          'react-core': ['react', 'react-dom'],
+          'react-vendor': ['react', 'react-dom'],
 
-          // UI e componenti pesanti
-          'ui-heavy': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          // UI e componenti pesanti - ulteriormente divisi
+          'radix-accordion': ['@radix-ui/react-accordion'],
+          'radix-dialog': ['@radix-ui/react-dialog'],
+          'radix-dropdown': ['@radix-ui/react-dropdown-menu'],
 
           // Internazionalizzazione
           'i18n': ['react-i18next', 'i18next'],
 
           // Routing e form
-          'forms-routing': ['wouter', 'react-hook-form'],
+          'wouter': ['wouter'],
+          'forms': ['react-hook-form'],
 
-          // Utilities e altri vendor
-          'vendor': ['@tanstack/react-query', 'react-helmet-async', 'sonner'],
+          // Utilities - divisi per ridurre chunk size
+          'query': ['@tanstack/react-query'],
+          'helmet': ['react-helmet-async'],
+          'toast': ['sonner'],
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
@@ -106,7 +122,7 @@ export default defineConfig({
         }
       }
     },
-    chunkSizeWarningLimit: 300 // Ancora più piccolo per mobile
+    chunkSizeWarningLimit: 200 // Ancora più piccolo per mobile
   },
   server: {
     port: 5173,

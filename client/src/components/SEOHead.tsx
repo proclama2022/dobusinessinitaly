@@ -39,9 +39,13 @@ const SEOHead = ({
   // Costruisci l'URL canonico completo
   const siteUrl = 'https://yourbusinessinitaly.com';
   const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : undefined;
-  
+
   // Heuristica: consideriamo homepage se canonical mancante o corrisponde a /, /it, /en, /de, /fr, /es
   const isLikelyHome = !canonicalUrl || /^\/(it|en|de|fr|es)?\/?$/.test(canonicalUrl);
+
+  // Prevenzione duplicati: normalizza URL canonical
+  const normalizedCanonicalUrl = canonicalUrl ? canonicalUrl.replace(/\/+$/, '') : undefined;
+  const finalCanonicalUrl = normalizedCanonicalUrl ? `${siteUrl}${normalizedCanonicalUrl}` : undefined;
   
   // Prepara i dati strutturati JSON-LD
   const defaultStructuredData = {
@@ -244,13 +248,31 @@ const SEOHead = ({
   const hreflangLinks = alternates ? Object.entries(alternates).map(([langCode, url]) => (
     <link key={langCode} rel="alternate" hrefLang={langCode} href={url} />
   )) : [];
-  
+
   // Aggiungi il link x-default per la versione italiana di default (solo se non già fornito)
-  if (lang === 'it' && fullCanonicalUrl && (!alternates || !('x-default' in alternates))) {
+  if (lang === 'it' && finalCanonicalUrl && (!alternates || !('x-default' in alternates))) {
     hreflangLinks.push(
-      <link key="x-default" rel="alternate" hrefLang="x-default" href={fullCanonicalUrl} />
+      <link key="x-default" rel="alternate" hrefLang="x-default" href={finalCanonicalUrl} />
     );
   }
+
+  // Assicura che tutte le lingue abbiano hreflang corrispondenti
+  const supportedLanguages = ['it', 'en', 'de', 'fr', 'es'];
+  const existingLanguages = alternates ? Object.keys(alternates) : [];
+
+  // Aggiungi hreflang mancanti per lingue supportate
+  supportedLanguages.forEach(supportedLang => {
+    if (!existingLanguages.includes(supportedLang) && finalCanonicalUrl) {
+      // Costruisci URL per altre lingue basandosi sulla struttura attuale
+      const langPath = supportedLang === 'it' ? '' : `/${supportedLang}`;
+      const currentPath = canonicalUrl?.replace(/^\/[a-z]{2}/, '') || '';
+      const alternateUrl = `${siteUrl}${langPath}${currentPath}`;
+
+      hreflangLinks.push(
+        <link key={supportedLang} rel="alternate" hrefLang={supportedLang} href={alternateUrl} />
+      );
+    }
+  });
   
   // Schema markup per ottimizzazione LLM
   const aiOptimizationSchema = {
@@ -355,16 +377,31 @@ const SEOHead = ({
   } else {
     structuredDataArray = [defaultStructuredData];
   }
+
+  // Aggiungi schemi base per tutte le pagine
   structuredDataArray.push(organizationSchema, localBusinessSchema);
+
+  // Aggiungi schemi specifici per tipo di pagina
   if (faqSchema) {
     structuredDataArray.push(faqSchema);
   }
   if (blogPostSchema) {
     structuredDataArray.push(blogPostSchema);
   }
-  
-  // Aggiungi schemi per ottimizzazione LLM
+
+  // Aggiungi schemi per ottimizzazione LLM e ricerca
   structuredDataArray.push(aiOptimizationSchema, llmProfessionalServiceSchema);
+
+  // Assicura che non ci siano duplicati negli schemi
+  const uniqueStructuredData = structuredDataArray.reduce((acc, current) => {
+    const exists = acc.find(item =>
+      JSON.stringify(item) === JSON.stringify(current)
+    );
+    if (!exists) {
+      acc.push(current);
+    }
+    return acc;
+  }, []);
 
   return (
     <Helmet htmlAttributes={{ lang }}>
@@ -385,6 +422,12 @@ const SEOHead = ({
       <meta name="geo.region" content="IT" />
       <meta name="geo.country" content="Italy" />
       <meta name="geo.placename" content="Italy" />
+
+      {/* Meta tag aggiuntivi per migliore indicizzazione */}
+      <meta name="coverage" content="Worldwide" />
+      <meta name="target" content="all" />
+      <meta name="audience" content="all" />
+      <meta name="expires" content="never" />
       
       {/* Meta tag aggiuntivi per SEO */}
       
@@ -406,7 +449,7 @@ const SEOHead = ({
       <meta name="twitter:creator" content="@yourbusinessit" />
       
       {/* Canonical URL */}
-      {fullCanonicalUrl && <link rel="canonical" href={fullCanonicalUrl} />}
+      {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
       
       {/* Favicon e icone moderne */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -457,7 +500,7 @@ const SEOHead = ({
       {hreflangLinks}
       
       {/* JSON-LD per dati strutturati multipli */}
-      {structuredDataArray.map((jsonLd, index) => (
+      {uniqueStructuredData.map((jsonLd, index) => (
         <script key={index} type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
