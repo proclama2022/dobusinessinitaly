@@ -70,12 +70,10 @@ export default defineConfig({
         inline: 2,
         join_vars: true,
         collapse_vars: true,
-        cascade: true,
         side_effects: true,
         properties: true,
         switches: true,
-        if_return: true,
-        inline: true
+        if_return: true
       },
       mangle: {
         safari10: true, // Fix per Safari mobile

@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Touch optimization styles */
+/* Import all CSS files at the top */
 @import './styles/touch-optimization.css';
-
-/* Import responsive CSS */
 @import './styles/responsive.css';
+@import './styles/performance.css';
 
 :root {
   --background: 0 0% 100%;
