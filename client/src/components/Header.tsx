@@ -3,7 +3,6 @@ import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
-import ResponsiveImage from './ResponsiveImage'; // Importa il componente ResponsiveImage
 // Using the new 3:1 aspect ratio logo from public directory
 const logoImage = '/images/logo.png';
 
@@ -166,15 +165,20 @@ const Header = () => {
                 navigate(homePath);
               }}
             >
-              <ResponsiveImage
+              <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer"
+                className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer bg-white rounded"
                 width={150}
                 height={50}
-                priority={true}
-                placeholder="blur"
-                sizes="(max-width: 480px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 150px"
+                loading="eager"
+                decoding="sync"
+                fetchPriority="high"
+                style={{
+                  backgroundColor: '#ffffff',
+                  objectFit: 'contain',
+                  padding: '2px'
+                }}
               />
             </Link>
           </div>
