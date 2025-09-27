@@ -43,9 +43,9 @@
 .font-preload{font-display:swap}
 .font-loaded{font-display:block}
 
-/* 11. Critical resource hints */
-.preload-critical{rel:preload;as:image;fetchpriority:high}
-.preload-font{rel:preload;as=font;crossorigin}
+/* 11. Critical resource hints - Queste sono classi per identificare elementi, non stili CSS */
+.preload-critical{/* Elemento da preloadare come immagine critica */}
+.preload-font{/* Elemento da preloadare come font */}
 
 /* 12. Mobile touch response optimization */
 @media(hover:none) and (pointer:coarse){
