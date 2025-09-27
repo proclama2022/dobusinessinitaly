@@ -53,10 +53,10 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 3, // Triplo passaggio per compressione massima
-        unsafe_arrows: true,
-        unsafe_methods: true,
-        unsafe_proto: true,
+        passes: 2, // Ridotto passaggi per evitare problemi
+        unsafe_arrows: false,
+        unsafe_methods: false,
+        unsafe_proto: false,
         reduce_funcs: true,
         reduce_vars: true,
         sequences: true,
@@ -66,19 +66,19 @@ export default defineConfig({
         booleans: true,
         loops: true,
         unused: true,
-        // Ottimizzazioni aggiuntive per mobile
-        inline: 2,
+        // Ottimizzazioni più sicure per mobile
+        inline: 1,
         join_vars: true,
         collapse_vars: true,
         side_effects: true,
-        properties: true,
+        properties: false,
         switches: true,
         if_return: true
       },
       mangle: {
         safari10: true, // Fix per Safari mobile
-        toplevel: true, // Mangle anche i nomi delle funzioni top-level
-        properties: true // Mangle anche i nomi delle proprietà
+        toplevel: false, // Disabilitato per evitare problemi
+        properties: false // Disabilitato per evitare problemi
       }
     },
     rollupOptions: {
