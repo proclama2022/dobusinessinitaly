@@ -1,0 +1,7 @@
+# Headers for JavaScript modules to fix MIME type issues
+/assets/js/*.js
+  Content-Type: application/javascript
+
+# General headers for all assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
