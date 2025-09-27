@@ -59,6 +59,7 @@ import Footer from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { supportedLanguages } from "./lib/languages";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 const CookieBanner = lazy(() => import('@/components/CookieBanner'));
 const Helmet = lazy(() => import('react-helmet-async').then(mod => ({ default: mod.Helmet })));
 
@@ -72,26 +73,10 @@ const PageLoader = () => (
 
 function Router() {
   const { i18n } = useTranslation();
-  const [consentData, setConsentData] = useState({
-    hasAnalyticsConsent: false,
-    hasMarketingConsent: false,
-    isLoaded: false,
-    consent: null
-  });
 
-  useEffect(() => {
-    // Carica dinamicamente gli hook del cookie solo quando necessario
-    const loadCookieHook = async () => {
-      const hook = await import('@/hooks/useCookieConsent');
-      const { default: useCookieConsentHook } = hook;
-      const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = useCookieConsentHook();
-      setConsentData({ hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent });
-    };
+  // Usa direttamente il hook senza dynamic import per evitare hydration mismatch
+  const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = useCookieConsent();
 
-    loadCookieHook();
-  }, []);
-
-  const { hasAnalyticsConsent, hasMarketingConsent, isLoaded, consent } = consentData;
   const allowAnalytics = isLoaded && !!consent && hasAnalyticsConsent;
   const allowMarketing = isLoaded && !!consent && hasMarketingConsent;
 

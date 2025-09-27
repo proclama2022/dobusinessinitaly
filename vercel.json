@@ -42,5 +42,16 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/assets/js/(.*)\\.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
   ]
 }
