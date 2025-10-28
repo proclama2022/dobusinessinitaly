@@ -168,16 +168,17 @@ const Header = () => {
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer bg-white rounded"
-                width={150}
-                height={50}
+                className="w-24 sm:w-28 md:w-32 lg:w-36 max-h-16 h-auto object-contain max-w-full cursor-pointer"
+                width={200}
+                height={67}
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"
                 style={{
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'transparent',
                   objectFit: 'contain',
-                  padding: '2px'
+                  filter: 'none',
+                  imageRendering: 'crisp-edges'
                 }}
               />
             </Link>
