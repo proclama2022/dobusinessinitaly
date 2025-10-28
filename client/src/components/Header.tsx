@@ -168,9 +168,9 @@ const Header = () => {
               <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="w-24 sm:w-28 md:w-32 lg:w-36 max-h-16 h-auto object-contain max-w-full cursor-pointer"
-                width={200}
-                height={67}
+                className="w-48 sm:w-56 md:w-64 lg:w-72 h-auto object-contain max-w-full cursor-pointer"
+                width={300}
+                height={100}
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"

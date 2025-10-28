@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
-import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
 import { useLocalizedPath } from './LocalizedRouter';
 // Using the new 3:1 aspect ratio logo from public directory
 const logoImage = '/images/logo.png';
@@ -20,12 +19,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <div className="mb-6">
-              <NextGenImage
+              <img
                 src={logoImage}
                 alt="Yourbusinessinitaly.com"
-                className="h-auto w-56 mb-2 object-contain max-w-full"
-                width={224}
-                height={75}
+                className="h-auto w-64 sm:w-72 md:w-80 mb-2 object-contain max-w-full"
+                width={320}
+                height={107}
+                loading="lazy"
+                style={{
+                  backgroundColor: 'transparent',
+                  objectFit: 'contain',
+                  filter: 'none',
+                  imageRendering: 'crisp-edges'
+                }}
               />
             </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>
