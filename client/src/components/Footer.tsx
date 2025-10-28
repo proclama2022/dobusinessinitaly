@@ -27,10 +27,13 @@ const Footer = () => {
                 height={107}
                 loading="lazy"
                 style={{
-                  backgroundColor: 'transparent',
+                  backgroundColor: '#ffffff',
                   objectFit: 'contain',
                   filter: 'none',
-                  imageRendering: 'crisp-edges'
+                  imageRendering: 'crisp-edges',
+                  padding: '12px',
+                  borderRadius: '6px',
+                  border: '1px solid #e5e7eb'
                 }}
               />
             </div>

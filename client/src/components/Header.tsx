@@ -175,10 +175,13 @@ const Header = () => {
                 decoding="sync"
                 fetchPriority="high"
                 style={{
-                  backgroundColor: 'transparent',
+                  backgroundColor: '#ffffff',
                   objectFit: 'contain',
                   filter: 'none',
-                  imageRendering: 'crisp-edges'
+                  imageRendering: 'crisp-edges',
+                  padding: '8px',
+                  borderRadius: '4px',
+                  border: '1px solid #e5e7eb'
                 }}
               />
             </Link>
