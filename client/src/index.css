@@ -111,8 +111,7 @@
     box-sizing: border-box;
   }
 
-  .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
-    max-width: 100%;
+  .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -566,9 +565,8 @@
   }
 
   .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
-    max-width: calc(100vw - 2rem);
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
