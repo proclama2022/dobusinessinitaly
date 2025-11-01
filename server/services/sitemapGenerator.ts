@@ -398,7 +398,7 @@ export const generateMainSitemap = () => {
   // Aggiungi tutti gli articoli con le loro versioni tradotte
   Object.entries(articleGroups).forEach(([baseFilename, languageVariants]) => {
     const availableLanguages: { [key: string]: string } = {};
-    let latestDate = '2025-01-09';
+    let latestDate = today;
     
     // Raccogli tutte le versioni linguistiche disponibili
     Object.entries(languageVariants).forEach(([lang, post]) => {

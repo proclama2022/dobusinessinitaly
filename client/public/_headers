@@ -1,7 +1,47 @@
-# Headers for JavaScript modules to fix MIME type issues
+# Security Headers for all pages
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://www.googletagmanager.com https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'none'
+
+# HTML pages - short cache with revalidation
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# JavaScript and CSS - long cache with immutable
 /assets/js/*.js
   Content-Type: application/javascript
-
-# General headers for all assets
-/assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - long cache with immutable
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts - long cache with immutable
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static assets - long cache
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/uploads/*
+  Cache-Control: public, max-age=2592000
+
+# Service worker - must revalidate
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Sitemaps - daily revalidation
+/sitemap*.xml
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Manifest
+/manifest.json
+  Cache-Control: public, max-age=604800, must-revalidate
