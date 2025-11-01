@@ -80,7 +80,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
     };
   }, [quality]);
 
-  // Genera srcset responsive per mobile/tablet/desktop
+  // Genera srcset responsive per mobile/tablet/desktop (ridotto per performance)
   const generateResponsiveSrcSet = useCallback((src: string, format: 'avif' | 'webp' | 'jpeg') => {
     if (!src.includes('unsplash.com')) {
       // Per immagini locali, usa il formato ottimizzato
@@ -91,17 +91,19 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       return `${baseUrl}.${format}`;
     }
 
-    // Dimensioni ottimizzate per diversi dispositivi (mobile-first)
-    const breakpoints = [
-      { width: 320, descriptor: '320w' },   // Mobile piccolo
-      { width: 480, descriptor: '480w' },   // Mobile portrait
-      { width: 640, descriptor: '640w' },   // Mobile landscape
-      { width: 768, descriptor: '768w' },   // Tablet portrait
-      { width: 1024, descriptor: '1024w' }, // Tablet landscape
-      { width: 1200, descriptor: '1200w' }, // Desktop
-      { width: 1600, descriptor: '1600w' }, // Large desktop
-      { width: 1920, descriptor: '1920w' }  // 4K
-    ];
+    // Dimensioni ottimizzate ridotte per LCP performance (solo breakpoint essenziali)
+    const breakpoints = priority
+      ? [
+          { width: 640, descriptor: '640w' },   // Mobile
+          { width: 1024, descriptor: '1024w' }, // Tablet
+          { width: 1920, descriptor: '1920w' }  // Desktop
+        ]
+      : [
+          { width: 480, descriptor: '480w' },
+          { width: 768, descriptor: '768w' },
+          { width: 1200, descriptor: '1200w' },
+          { width: 1600, descriptor: '1600w' }
+        ];
 
     const baseUrl = src.split('?')[0];
     const formatParam = `&fm=${format}`;
@@ -111,7 +113,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         `${baseUrl}?auto=format&fit=crop&q=${quality}${formatParam}&w=${width} ${descriptor}`
       )
       .join(', ');
-  }, [quality]);
+  }, [quality, priority]);
 
   // Calcola sizes appropriato per mobile
   const calculateSizes = useCallback(() => {
