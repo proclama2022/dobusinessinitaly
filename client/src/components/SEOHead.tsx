@@ -175,44 +175,87 @@ const SEOHead = ({
     ]
   };
 
-  // Schema markup per FAQ (solo per homepage)
+  // Schema markup per FAQ (solo per homepage) - Multilingua
+  const getFAQByLanguage = (language: string) => {
+    const faqs: { [key: string]: any } = {
+      'it': [
+        {
+          '@type': 'Question',
+          name: 'Quanto costa aprire una società in Italia per stranieri?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'I costi per aprire una società in Italia variano da 1.500€ a 3.000€ per una SRL, includendo notaio, Camera di Commercio, e consulenza iniziale. Offriamo preventivi gratuiti personalizzati.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Posso aprire partita IVA in Italia se sono straniero?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sì, i cittadini UE possono aprire partita IVA liberamente. I cittadini extra-UE necessitano di permesso di soggiorno per lavoro autonomo. Assistiamo in tutto il processo.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Cos\'è il regime forfettario e chi può accedervi?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Il regime forfettario è un regime fiscale agevolato con tassa al 5% (primi 5 anni) o 15% per fatturati fino a 85.000€. Ideale per freelance e piccole imprese.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Offrite consulenza in inglese?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sì, offriamo consulenza principalmente in inglese e, grazie alle tecnologie AI, possiamo comunicare nella lingua madre del cliente.'
+          }
+        }
+      ],
+      'en': [
+        {
+          '@type': 'Question',
+          name: 'How much does it cost to open a company in Italy for foreigners?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Company formation costs in Italy range from €1,500 to €3,000 for an SRL, including notary fees, Chamber of Commerce registration, and initial consultation. We offer free personalized quotes.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I open a VAT number in Italy as a foreigner?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, EU citizens can freely open a VAT number. Non-EU citizens need a self-employment residence permit. We assist throughout the entire process.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the flat rate tax regime and who can access it?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The flat rate regime is a simplified tax regime with 5% tax (first 5 years) or 15% for revenues up to €85,000. Ideal for freelancers and small businesses.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you offer consultation in English?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, we primarily offer consultation in English and, thanks to AI technology, we can communicate in the client\'s native language.'
+          }
+        }
+      ]
+    };
+
+    // Default to Italian if language not found
+    return faqs[language] || faqs['it'];
+  };
+
   const faqSchema = isLikelyHome ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Quanto costa aprire una società in Italia per stranieri?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'I costi per aprire una società in Italia variano da 1.500€ a 3.000€ per una SRL, includendo notaio, Camera di Commercio, e consulenza iniziale. Offriamo preventivi gratuiti personalizzati.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Posso aprire partita IVA in Italia se sono straniero?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Sì, i cittadini UE possono aprire partita IVA liberamente. I cittadini extra-UE necessitano di permesso di soggiorno per lavoro autonomo. Assistiamo in tutto il processo.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Cos\'è il regime forfettario e chi può accedervi?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Il regime forfettario è un regime fiscale agevolato con tassa al 5% (primi 5 anni) o 15% per fatturati fino a 85.000€. Ideale per freelance e piccole imprese.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Offrite consulenza in inglese?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Sì, offriamo consulenza principalmente in inglese e, grazie alle tecnologie AI, possiamo comunicare nella lingua madre del cliente.'
-        }
-      }
-    ]
+    mainEntity: getFAQByLanguage(lang)
   } : null;
 
   // Schema markup for BlogPosting/Article (for blog pages and articles)
@@ -273,40 +316,8 @@ const SEOHead = ({
       );
     }
   });
-  
-  // Schema markup per ottimizzazione LLM
-  const aiOptimizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What are the tax rates for foreigners in Italy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Italy offers progressive tax rates from 23% to 43%, with special regimes for expats including flat tax options and impatriate benefits.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How much does it cost to open a company in Italy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Company formation costs in Italy range from €1,500 to €3,000 for an SRL, including notary fees, Chamber of Commerce registration, and initial consultation.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What are the requirements for foreign entrepreneurs in Italy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Foreign entrepreneurs need a valid visa, tax ID number (codice fiscale), and must register with the Italian Business Register. Requirements vary based on business type and nationality.'
-        }
-      }
-    ]
-  };
 
-  // Schema markup per servizi professionali ottimizzato per LLM
+  // Schema markup per servizi professionali ottimizzato per LLM (senza FAQPage duplicato)
   const llmProfessionalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -389,8 +400,8 @@ const SEOHead = ({
     structuredDataArray.push(blogPostSchema);
   }
 
-  // Aggiungi schemi per ottimizzazione LLM e ricerca
-  structuredDataArray.push(aiOptimizationSchema, llmProfessionalServiceSchema);
+  // Aggiungi schema per servizi professionali (NO duplicate FAQPage)
+  structuredDataArray.push(llmProfessionalServiceSchema);
 
   // Assicura che non ci siano duplicati negli schemi
   const uniqueStructuredData = structuredDataArray.reduce((acc, current) => {
