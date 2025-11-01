@@ -1,4 +1,16 @@
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faNewspaper,
+  faAward,
+  faExternalLinkAlt,
+  faInfoCircle,
+  type IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 
 // Tipo per gli elementi media (articoli, profili, menzioni)
 type MediaItemProps = {
@@ -8,7 +20,7 @@ type MediaItemProps = {
   excerpt: string;
   link: string;
   category: string;
-  icon: string;
+  icon: IconDefinition;
 };
 
 // Componente per un singolo elemento media
@@ -27,7 +39,7 @@ const MediaItem = ({
         <div className="p-6 pb-4">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center">
-              <i className={`${icon} text-primary text-xl`}></i>
+              <FontAwesomeIcon icon={icon} className="text-primary text-xl" />
             </div>
             <div className="px-3 py-1 bg-neutral-100 text-xs font-medium text-neutral-700 rounded-full">
               {category}
@@ -58,12 +70,12 @@ const MediaItem = ({
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-md hover:bg-primary-dark transition-colors"
             >
-              <i className="fas fa-external-link-alt mr-2"></i>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2" />
               Leggi di più
             </a>
           ) : (
             <div className="px-4 py-2 bg-neutral-100 text-neutral-600 text-sm font-medium rounded-md">
-              <i className="fas fa-info-circle mr-2"></i>
+              <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
               Dettagli disponibili
             </div>
           )}
@@ -90,7 +102,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       excerpt: "Riconoscimento per l'eccellenza nell'innovazione digitale nei servizi professionali. Proclama SPA è stata premiata tra i migliori studi italiani per innovazione digitale, confermando il nostro impegno verso un servizio clienti moderno ed efficiente.",
       link: 'https://www.forbes.it/100-best-in-class-2023',
       category: 'Premio',
-      icon: 'fas fa-trophy'
+      icon: faTrophy
     },
     {
       title: "Pubblicazione: 'L'evoluzione del commercialista nell'era dell'Intelligenza Artificiale'",
@@ -99,7 +111,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       excerpt: "Libro che esplora come l'intelligenza artificiale stia trasformando la professione del commercialista. 'Essere un commercialista innovativo significa essere un pilastro per la continuità e il progresso delle aziende clienti, un punto di riferimento per il futuro, mantenendo sempre un'alta etica professionale.'",
       link: 'https://amzn.eu/d/4GNuret',
       category: 'Pubblicazione',
-      icon: 'fas fa-book'
+      icon: faBook
     },
     {
       title: 'Premio "Professionista Digitale dell\'anno 2014"',
@@ -108,7 +120,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       excerpt: "Nel 2014 lo Studio Emmi, oggi Proclama SPA, si è distinto in Italia per capacità innovativa a livello organizzativo e di business con l'utilizzo delle tecnologie digitali. In particolare per il progetto partitaiva.it, pioniere nella trasformazione digitale dello studio professionale.",
       link: 'https://www.osservatori.net/it/eventi/on-demand/convegni',
       category: 'Riconoscimento',
-      icon: 'fas fa-medal'
+      icon: faMedal
     },
     {
       title: 'Partitaiva.ai - Piattaforma innovativa per commercialisti e PMI',
@@ -117,7 +129,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       excerpt: "Portale che semplifica e riorganizza gli studi dei commercialisti e le aree amministrative e contabili delle PMI. Un progetto all'avanguardia che utilizza l'intelligenza artificiale per ottimizzare i processi amministrativi e contabili.",
       link: 'https://www.partitaiva.it',
       category: 'Innovazione',
-      icon: 'fas fa-rocket'
+      icon: faRocket
     },
   ];
 
@@ -135,7 +147,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mr-4">
-                <i className="fas fa-newspaper text-white text-2xl"></i>
+                <FontAwesomeIcon icon={faNewspaper} className="text-white text-2xl" />
               </div>
               <div>
                 <h2 className="text-4xl font-heading font-bold italian-text-gradient mb-2">
@@ -160,28 +172,28 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="fas fa-award text-white text-xl"></i>
+              <FontAwesomeIcon icon={faAward} className="text-white text-xl" />
             </div>
             <div className="text-2xl font-bold text-[#009246] mb-1">10+</div>
             <div className="text-sm text-neutral-600">Anni di esperienza</div>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-[#ce2b37] to-[#dc2626] rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="fas fa-trophy text-white text-xl"></i>
+              <FontAwesomeIcon icon={faTrophy} className="text-white text-xl" />
             </div>
             <div className="text-2xl font-bold text-[#ce2b37] mb-1">3</div>
             <div className="text-sm text-neutral-600">Premi nazionali</div>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="fas fa-book text-white text-xl"></i>
+              <FontAwesomeIcon icon={faBook} className="text-white text-xl" />
             </div>
             <div className="text-2xl font-bold text-[#009246] mb-1">1</div>
             <div className="text-sm text-neutral-600">Libro pubblicato</div>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-[#ce2b37] to-[#dc2626] rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="fas fa-rocket text-white text-xl"></i>
+              <FontAwesomeIcon icon={faRocket} className="text-white text-xl" />
             </div>
             <div className="text-2xl font-bold text-[#ce2b37] mb-1">100%</div>
             <div className="text-sm text-neutral-600">Innovazione digitale</div>

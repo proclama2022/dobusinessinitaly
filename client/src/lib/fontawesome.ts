@@ -18,8 +18,32 @@ import {
   // Icone per i badge di tipo
   faNewspaper,
   faUser,
-  faQuoteLeft
+  faQuoteLeft,
+  // Icone per media coverage
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faAward,
+  // Icone aggiuntive per UI
+  faPaperPlane,
+  faPhoneAlt,
+  faShareAlt,
+  faCookieBite,
+  faTimes,
+  faExclamationTriangle,
+  faExclamationCircle,
+  faShieldAlt,
+  faExpand,
+  faDownload,
+  faImage
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLinkedinIn,
+  faTiktok,
+  faYoutube,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
 
 // Configurazione ottimizzata per il rendering
 config.autoAddCss = true; // Assicurarsi che il CSS sia aggiunto automaticamente
@@ -34,11 +58,17 @@ const preloadedIcons = [
   faArrowRight,
   faNewspaper,
   faUser,
-  faQuoteLeft
+  faQuoteLeft,
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faAward
 ];
 
 // Aggiunta di tutte le icone alla libreria
 library.add(
+  // Solid icons
   faExternalLinkAlt,
   faInfoCircle,
   faArrowRight,
@@ -55,7 +85,28 @@ library.add(
   faChevronUp,
   faNewspaper,
   faUser,
-  faQuoteLeft
+  faQuoteLeft,
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faAward,
+  faPaperPlane,
+  faPhoneAlt,
+  faShareAlt,
+  faCookieBite,
+  faTimes,
+  faExclamationTriangle,
+  faExclamationCircle,
+  faShieldAlt,
+  faExpand,
+  faDownload,
+  faImage,
+  // Brand icons
+  faLinkedinIn,
+  faTiktok,
+  faYoutube,
+  faInstagram
 );
 
 // Esporta sia la libreria che le icone precaricate
