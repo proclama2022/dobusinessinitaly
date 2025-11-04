@@ -3,8 +3,9 @@ import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
-// Using the new 3:1 aspect ratio logo from public directory
-const logoImage = '/images/logo.png';
+// Using responsive logos: mobile (square) and desktop (3:1 ratio)
+const logoDesktop = '/images/logo-desktop.png';
+const logoMobile = '/images/logo-mobile.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -165,19 +166,32 @@ const Header = () => {
                 navigate(homePath);
               }}
             >
+              {/* Logo Mobile - visible on small screens */}
               <img
-                src={logoImage}
+                src={logoMobile}
+                alt="YBI - Yourbusinessinitaly.com"
+                className="block sm:hidden w-10 h-10 object-contain cursor-pointer"
+                width={40}
+                height={40}
+                loading="eager"
+                decoding="sync"
+                fetchPriority="high"
+                style={{
+                  objectFit: 'contain'
+                }}
+              />
+              {/* Logo Desktop - visible on larger screens */}
+              <img
+                src={logoDesktop}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="w-16 sm:w-20 md:w-24 max-h-12 h-auto object-contain max-w-full cursor-pointer bg-white rounded"
+                className="hidden sm:block w-20 md:w-24 lg:w-32 max-h-12 h-auto object-contain cursor-pointer"
                 width={150}
                 height={50}
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"
                 style={{
-                  backgroundColor: '#ffffff',
-                  objectFit: 'contain',
-                  padding: '2px'
+                  objectFit: 'contain'
                 }}
               />
             </Link>

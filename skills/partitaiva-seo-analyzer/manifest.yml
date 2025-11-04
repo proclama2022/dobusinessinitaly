@@ -1,0 +1,13 @@
+skill_id: partitaiva_seo_analyzer
+name: PartitaIVA SEO Content Analyzer
+description: Analizza articoli del sito partitaiva.it per estrarne la struttura SEO, pattern di contenuto, metadati e strategie di ottimizzazione. Fornisce insights dettagliati per replicare il successo SEO del sito.
+author: YourBusinessInItaly Team
+dependencies:
+  - requests
+  - beautifulsoup4
+  - pandas
+  - lxml
+entrypoints:
+  - seo_analyzer.py
+security_notes: Solo per analisi di contenuti pubblici. Non salvare dati personali.
+version: 1.0.0

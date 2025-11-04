@@ -39,3 +39,9 @@ tsconfig.json
 .DS_Store
 *.env
 .vercel
+
+# Google API credentials (NON condividere mai!)
+credentials.json
+*credentials*.json
+google-credentials*.json
+search-console-*.json

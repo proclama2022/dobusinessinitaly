@@ -45,3 +45,14 @@
 
 # Catch-all per SPA
 /* /index.html 200
+# Redirect per errori Soft 404 - Aggiunti automaticamente
+/en/blog/opening-bank-account-italy-foreigner-2025-guide.en-en /en/blog/opening-bank-account-italy-foreigner-2025-guide 301
+/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025.fr-fr /fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025 301
+/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet.fr-fr /en/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
+/en/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.en-en /en/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
+/en/blog/impuestos-srl-guia-2025-emprendedores-extranjeros.es-es /es/blog/impuestos-srl-guia-2025-emprendedores-extranjeros 301
+/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison.en-en /en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison 301
+/en/blog/italy-tax-residency-expats-2025-complete-guide.en-en /en/blog/italy-tax-residency-expats-2025-complete-guide 301
+/en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025.es-es /es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025 301
+/en/blog/residence-fiscale-italie-expatries-2025-guide-complet.en-en /en/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
+/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301

@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__perplexity-mcp__perplexity_ask",
+      "Skill(partitaiva-article)",
+      "Bash(python3:*)",
+      "Bash(npm install:*)",
+      "Bash(npx mcp-asset-gen:*)",
+      "Bash(API_KEY=\"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\" npx mcp-asset-gen:*)",
+      "Bash(API_KEY=\"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\" npx mcp-asset-gen generate:*)",
+      "Bash(pip3 install:*)",
+      "Bash(find:*)",
+      "Bash(mcp generate-image:*)",
+      "Bash(mcp --help:*)",
+      "Bash(export:*)",
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(API_KEY=\"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\" python3:*)",
+      "mcp__openai-dalle__generateImage",
+      "Bash(rm:*)",
+      "Bash(sed:*)",
+      "Bash(rg:*)",
+      "Bash(sort:*)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "nano-banana"
+  ]
+}
