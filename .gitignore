@@ -45,3 +45,6 @@ credentials.json
 *credentials*.json
 google-credentials*.json
 search-console-*.json
+
+# Claude local settings (contains API keys; non pushare)
+.claude/settings.local.json
