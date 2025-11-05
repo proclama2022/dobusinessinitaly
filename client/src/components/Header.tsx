@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
 // Using responsive logos: mobile (square) and desktop (3:1 ratio)
-const logoDesktop = '/images/logo-desktop.png';
-const logoMobile = '/images/logo-mobile.png';
+const logoDesktop = '/images/logo-italia.png';
+const logoMobile = '/images/logo-italia.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

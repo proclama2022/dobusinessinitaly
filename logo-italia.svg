@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cerchio esterno -->
+  <circle cx="100" cy="100" r="95" fill="#1a365" stroke="#f97316" stroke-width="2"/>
+  
+  <!-- Forma stilizzata dell'Italia -->
+  <path d="M100,25 C85,25 75,35 70,45 65,55 60,65 55,75 50,85 45,95 40,105 35,115 30,125 25,135 20,145 15,155 10,165 5,175 L100,175" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Testo YBI -->
+  <text x="100" y="100" 
+        font-family="Arial, sans-serif" 
+        font-size="24" 
+        font-weight="bold" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        dominant-baseline="middle">YBI</text>
+</svg>
