@@ -48,6 +48,20 @@ export default defineConfig({
     // Ottimizzazioni aggressive per mobile
     cssCodeSplit: true,
     assetsInlineLimit: 1024, // Ulteriormente ridotto per mobile (1kb)
+    // Assicura che le immagini vengano copiate correttamente
+    copyPublicDir: true,
+    rollupOptions: {
+      output: {
+        // Mappa i percorsi delle immagini per Vercel
+        assetFileNames: (assetInfo) => {
+          // Se è un'immagine dalla cartella articles, mantieni il percorso originale
+          if (assetInfo.name && assetInfo.name.includes('articles/')) {
+            return `images/articles/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        }
+      }
+    },
     terserOptions: {
       compress: {
         drop_console: true,

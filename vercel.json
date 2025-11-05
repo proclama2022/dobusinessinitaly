@@ -37,7 +37,7 @@
     },
     {
       "src": "^/images/articles/(.*)$",
-      "dest": "/client/public/images/articles/$1"
+      "dest": "/images/articles/$1"
     },
     {
       "handle": "filesystem"
