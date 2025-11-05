@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script per correggere i percorsi delle immagini nei file MDX del blog.
-Converte i percorsi da /images/articles/ a /client/public/images/articles/
+Converte i percorsi da /client/public/images/articles/ a /images/articles/
 """
 
 import os
@@ -19,7 +19,7 @@ def fix_image_paths():
         return
     
     # Pattern per trovare i percorsi delle immagini da correggere
-    pattern = re.compile(r'coverImage:\s*"?/images/articles/([^"]+)"?')
+    pattern = re.compile(r'coverImage:\s*"?/client/public/images/articles/([^"]+)"?')
     
     # Contatori per le statistiche
     files_fixed = 0
@@ -39,8 +39,8 @@ def fix_image_paths():
                 print(f"\nCorreggendo il file: {mdx_file.name}")
                 
                 for match in matches:
-                    wrong_path = f"/images/articles/{match}"
-                    correct_path = f"/client/public/images/articles/{match}"
+                    wrong_path = f"/client/public/images/articles/{match}"
+                    correct_path = f"/images/articles/{match}"
                     
                     print(f"  Percorso attuale: {wrong_path}")
                     print(f"  Percorso corretto: {correct_path}")

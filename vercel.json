@@ -36,6 +36,10 @@
       "dest": "/api/$1.ts"
     },
     {
+      "src": "^/images/articles/(.*)$",
+      "dest": "/client/public/images/articles/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
