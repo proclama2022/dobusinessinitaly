@@ -66,7 +66,7 @@ export default defineConfig({
           }
           if (/css/i.test(ext)) {
             return `assets/css/[name]-[hash].[ext]`;
-          }
+        }
           return `assets/[name]-[hash].[extname]`;
         },
         manualChunks: {

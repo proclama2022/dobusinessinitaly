@@ -61,13 +61,16 @@ const BlogPostCard = ({
 
         {/* Immagine articolo con attributi SEO migliorati */}
         <img
-          src={imgSrc}
-                          alt={`${title} - Yourbusinessinitaly.com`}
+          src={imgSrc || '/images/default-blog-cover.webp'}
+          alt={`${title} - Yourbusinessinitaly.com`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
           width="600"
           height="400"
           loading="lazy"
           decoding="async"
+          onError={(e) => {
+            e.currentTarget.src = '/images/default-blog-cover.webp';
+          }}
         />
 
         {/* Linee decorative */}
@@ -418,9 +421,12 @@ const Blog = () => {
 
                 {/* Immagine */}
                 <img
-                  src={featuredPost?.coverImage}
+                  src={featuredPost?.coverImage || '/images/default-blog-cover.webp'}
                   alt={featuredPost?.title}
                   className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/default-blog-cover.webp';
+                  }}
                 />
 
                 {/* Bordi decorativi */}
