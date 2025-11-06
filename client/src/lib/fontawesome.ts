@@ -18,7 +18,12 @@ import {
   // Icone per i badge di tipo
   faNewspaper,
   faUser,
-  faQuoteLeft
+  faQuoteLeft,
+  // Icone per le statistiche
+  faGlobeEurope,
+  faCalendarCheck,
+  faUserTie,
+  faEuroSign
 } from '@fortawesome/free-solid-svg-icons';
 
 // Configurazione ottimizzata per il rendering
@@ -55,7 +60,12 @@ library.add(
   faChevronUp,
   faNewspaper,
   faUser,
-  faQuoteLeft
+  faQuoteLeft,
+  // Icone per le statistiche
+  faGlobeEurope,
+  faCalendarCheck,
+  faUserTie,
+  faEuroSign
 );
 
 // Esporta sia la libreria che le icone precaricate

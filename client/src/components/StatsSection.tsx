@@ -1,5 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faGlobeEurope,
+  faCalendarCheck,
+  faUserTie,
+  faEuroSign
+} from '@fortawesome/free-solid-svg-icons';
 
 type StatItemProps = {
   value: number;
@@ -7,7 +14,7 @@ type StatItemProps = {
   title: string;
   description: string;
   index: number;
-  icon: string;
+  icon: any; // Icona FontAwesome
 };
 
 const StatItem = ({ value, suffix, title, description, index, icon }: StatItemProps) => {
@@ -63,7 +70,7 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
   return (
     <div className="card p-6 text-center">
       <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
-        <i className={`${icon} text-primary text-2xl`}></i>
+        <FontAwesomeIcon icon={icon} className="text-primary text-2xl" />
       </div>
       <div className="text-4xl font-bold text-neutral-900 mb-1">
         <span ref={countRef}>{count}</span>{suffix}
@@ -92,28 +99,28 @@ const StatsSection = () => {
       suffix: '+',
       title: t('stats.clients.title'),
       description: t('stats.clients.description'),
-      icon: 'fas fa-globe-europe'
+      icon: faGlobeEurope
     },
     {
       value: 25,
       suffix: '+',
       title: t('stats.experience.title'),
       description: t('stats.experience.description'),
-      icon: 'fas fa-calendar-check'
+      icon: faCalendarCheck
     },
     {
       value: 12,
       suffix: '+',
       title: t('stats.professionals.title'),
       description: t('stats.professionals.description'),
-      icon: 'fas fa-user-tie'
+      icon: faUserTie
     },
     {
       value: 50,
       suffix: 'M+',
       title: t('stats.volume.title'),
       description: t('stats.volume.description'),
-      icon: 'fas fa-euro-sign'
+      icon: faEuroSign
     }
   ];
 
