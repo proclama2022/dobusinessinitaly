@@ -6,6 +6,7 @@ import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import ResponsiveImage from '@/components/ResponsiveImage';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -60,16 +61,17 @@ const BlogPostCard = ({
         </div>
 
         {/* Immagine articolo con attributi SEO migliorati */}
-        <img
+        <ResponsiveImage
           src={imgSrc || '/images/default-blog-cover.webp'}
           alt={`${title} - Yourbusinessinitaly.com`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-          width="600"
-          height="400"
-          loading="lazy"
-          decoding="async"
-          onError={(e) => {
-            e.currentTarget.src = '/images/default-blog-cover.webp';
+          width={1200}
+          height={800}
+          quality={90}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          lazyLoadMethod="intersection"
+          onError={() => {
+            // Fallback gestito automaticamente dal componente
           }}
         />
 
@@ -420,13 +422,15 @@ const Blog = () => {
                 </div>
 
                 {/* Immagine */}
-                <img
+                <ResponsiveImage
                   src={featuredPost?.coverImage || '/images/default-blog-cover.webp'}
-                  alt={featuredPost?.title}
+                  alt={featuredPost?.title || ''}
                   className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/default-blog-cover.webp';
-                  }}
+                  width={1920}
+                  height={1080}
+                  quality={90}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority={true}
                 />
 
                 {/* Bordi decorativi */}
