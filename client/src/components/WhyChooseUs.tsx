@@ -2,9 +2,16 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import OptimizedImage from './OptimizedImage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faGlobe,
+  faCertificate,
+  faHandshake,
+  faBolt
+} from '@fortawesome/free-solid-svg-icons';
 
 type FeatureProps = {
-  icon: string;
+  icon: any; // Icona FontAwesome
   title: string;
   description: string;
 };
@@ -14,7 +21,7 @@ const Feature = ({ icon, title, description }: FeatureProps) => {
     <div className="flex">
       <div className="flex-shrink-0 mt-1">
         <span className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white">
-          <i className={icon}></i>
+          <FontAwesomeIcon icon={icon} />
         </span>
       </div>
       <div className="ml-4">
@@ -31,22 +38,22 @@ const WhyChooseUs = () => {
 
   const features = [
     {
-      icon: 'fas fa-globe',
+      icon: faGlobe,
       title: t('whyChooseUs.features.international.title'),
       description: t('whyChooseUs.features.international.description')
     },
     {
-      icon: 'fas fa-certificate',
+      icon: faCertificate,
       title: t('whyChooseUs.features.excellence.title'),
       description: t('whyChooseUs.features.excellence.description')
     },
     {
-      icon: 'fas fa-handshake',
+      icon: faHandshake,
       title: t('whyChooseUs.features.approach.title'),
       description: t('whyChooseUs.features.approach.description')
     },
     {
-      icon: 'fas fa-bolt',
+      icon: faBolt,
       title: t('whyChooseUs.features.reliability.title'),
       description: t('whyChooseUs.features.reliability.description')
     }

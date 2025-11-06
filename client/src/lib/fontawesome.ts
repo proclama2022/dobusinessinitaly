@@ -23,7 +23,18 @@ import {
   faGlobeEurope,
   faCalendarCheck,
   faUserTie,
-  faEuroSign
+  faEuroSign,
+  // Icone per media coverage
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faAward,
+  // Icone per WhyChooseUs
+  faGlobe,
+  faCertificate,
+  faHandshake,
+  faBolt
 } from '@fortawesome/free-solid-svg-icons';
 
 // Configurazione ottimizzata per il rendering
@@ -65,7 +76,18 @@ library.add(
   faGlobeEurope,
   faCalendarCheck,
   faUserTie,
-  faEuroSign
+  faEuroSign,
+  // Icone per media coverage
+  faTrophy,
+  faBook,
+  faMedal,
+  faRocket,
+  faAward,
+  // Icone per WhyChooseUs
+  faGlobe,
+  faCertificate,
+  faHandshake,
+  faBolt
 );
 
 // Esporta sia la libreria che le icone precaricate
