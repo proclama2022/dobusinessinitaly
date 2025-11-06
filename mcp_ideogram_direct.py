@@ -11,6 +11,7 @@ import json
 import argparse
 import subprocess
 import requests
+from pathlib import Path
 from typing import Dict, Optional
 
 
@@ -19,7 +20,7 @@ class IdeogramGenerator:
     
     def __init__(self):
         self.api_key = None
-        self.base_url = "https://api.ideogram.ai/v1/2"
+        self.base_url = "https://api.ideogram.ai/api/v1"
         
     def generate_cover(self, prompt: str, style: str = "professional", output_path: str = None) -> Optional[str]:
         """
@@ -42,15 +43,17 @@ class IdeogramGenerator:
             
             data = {
                 "prompt": prompt,
-                "style": style,
                 "aspect_ratio": "16:9",
-                "magic_prompt_option": "auto",
-                "seed": -1
+                "style": style if style in ["photography", "cinematic", "illustration", "anime", "3d-render"] else "photography",
+                "model": "ideogram-3.0",
+                "magic_prompt": True,
+                "negative_prompt": "blurry, low quality, unprofessional, amateur, text, watermark",
+                "private": False
             }
             
             # Chiama l'API di Ideogram
             response = requests.post(
-                f"{self.base_url}/generate",
+                f"{self.base_url}/images/generate",
                 headers=headers,
                 json=data,
                 timeout=60
@@ -73,7 +76,13 @@ class IdeogramGenerator:
                             timestamp = subprocess.check_output(["date", "+%Y%m%d_%H%M%S"], text=True).decode().strip()
                             safe_prompt = prompt[:20].replace(" ", "_").replace("/", "_").replace("\\", "_").replace('"', "").replace("'", "")
                             filename = f"ideogram_{safe_prompt}_{timestamp}.png"
-                            output_path = f"/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/client/public/images/articles/{filename}"
+                            output_path = Path("public/images/articles") / filename
+                        else:
+                            output_path = Path(output_path)
+                            filename = output_path.name
+                        
+                        # Crea la directory se non esiste
+                        output_path.parent.mkdir(parents=True, exist_ok=True)
                         
                         # Salva l'immagine
                         with open(output_path, 'wb') as f:
