@@ -58,11 +58,11 @@ const Hero = () => {
       ></div>
 
       {/* Overlay con sfumatura italiana */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] via-transparent to-[#ce2b3730] z-[4] mix-blend-normal"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#00924610] via-transparent to-[#ce2b3730] z-[4] opacity-30 mix-blend-normal"></div>
 
       {/* Elementi decorativi a bandiera italiana sui bordi */}
-      <div className="hidden sm:block absolute top-0 left-0 h-full w-2 bg-[#009246] z-[5] animate-slide-down"></div> {/* Verde */}
-      <div className="hidden sm:block absolute top-0 right-0 h-full w-2 bg-[#ce2b37] z-[5] animate-slide-down"></div> {/* Rosso */}
+      <div className="hidden sm:block absolute top-0 left-0 h-full w-1 bg-[#00924610] z-[5] animate-slide-down"></div> {/* Verde */}
+      <div className="hidden sm:block absolute top-0 right-0 h-full w-1 bg-[#ce2b3710] z-[5] animate-slide-down"></div> {/* Rosso */}
 
       {/* Barra decorativa superiore */}
       <div className="absolute top-0 inset-x-0 h-1 italian-gradient z-[5]"></div>

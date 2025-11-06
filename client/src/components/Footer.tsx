@@ -2,8 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
 import { useLocalizedPath } from './LocalizedRouter';
-// Using the new 3:1 aspect ratio logo from public directory
-const logoImage = '/images/logo.png';
+// Using new 3:1 aspect ratio logo from public directory with aggressive cache busting
+const timestamp = Date.now();
+const logoImage = `/images/logo.png?v=${timestamp}&t=${timestamp}`;
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -23,9 +24,9 @@ const Footer = () => {
               <NextGenImage
                 src={logoImage}
                 alt="Yourbusinessinitaly.com"
-                className="h-auto w-56 mb-2 object-contain max-w-full"
-                width={224}
-                height={75}
+                className="h-auto w-64 mb-2 object-contain max-w-full"
+                width={256}
+                height={85}
               />
             </div>
             <p className="text-neutral-400 mb-6">{t('footer.tagline')}</p>

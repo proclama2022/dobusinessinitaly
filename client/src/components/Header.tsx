@@ -3,9 +3,10 @@ import { Link, useLocation, useRouter } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import { supportedLanguages } from '@/lib/languages';
-// Using responsive logos: mobile (square) and desktop (3:1 ratio)
-const logoDesktop = '/images/logo-italia.png';
-const logoMobile = '/images/logo-italia.png';
+// Using responsive logos: mobile (square) and desktop (3:1 ratio) with aggressive cache busting
+const timestamp = Date.now();
+const logoDesktop = `/images/logo.png?v=${timestamp}&t=${timestamp}`;
+const logoMobile = `/images/logo_mobile.png?v=${timestamp}&t=${timestamp}`;
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -170,28 +171,30 @@ const Header = () => {
               <img
                 src={logoMobile}
                 alt="YBI - Yourbusinessinitaly.com"
-                className="block sm:hidden w-10 h-10 object-contain cursor-pointer"
-                width={40}
-                height={40}
+                className="block sm:hidden w-12 h-12 object-contain cursor-pointer"
+                width={48}
+                height={48}
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"
                 style={{
-                  objectFit: 'contain'
+                  objectFit: 'contain',
+                  filter: 'contrast(1.2) brightness(1.1)'
                 }}
               />
               {/* Logo Desktop - visible on larger screens */}
               <img
                 src={logoDesktop}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="hidden sm:block w-20 md:w-24 lg:w-32 max-h-12 h-auto object-contain cursor-pointer"
-                width={150}
-                height={50}
+                className="hidden sm:block w-24 md:w-32 lg:w-40 max-h-16 h-auto object-contain cursor-pointer"
+                width={200}
+                height={67}
                 loading="eager"
                 decoding="sync"
                 fetchPriority="high"
                 style={{
-                  objectFit: 'contain'
+                  objectFit: 'contain',
+                  filter: 'contrast(1.2) brightness(1.1)'
                 }}
               />
             </Link>
