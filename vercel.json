@@ -20,31 +20,106 @@
       "dest": "/server/index.ts"
     },
     {
-      "src": "^/api/blog/([a-z]{2})/(.+)$",
-      "dest": "/api/blog.ts?lang=$1&slug=$2"
+      "src": "^/api/blog/(.*)",
+      "dest": "/server/index.ts"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/en/blog/italy-startup-visa-2025-complete-guide-foreign-entrepreneurs.en-en",
+      "destination": "/en/blog/italy-startup-visa-2025-complete-guide-foreign-entrepreneurs"
     },
     {
-      "src": "^/api/blog$",
-      "dest": "/api/blog.ts"
+      "source": "/de/blog/italien-buerokratie-fuer-deutsche-5-toedliche-fehler.de-de",
+      "destination": "/de/blog/italien-buerokratie-fuer-deutsche-5-toedliche-fehler"
     },
     {
-      "src": "^/api/blog/([^/]+)$",
-      "dest": "/api/blog.ts?slug=$1"
+      "source": "/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr",
+      "destination": "/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia"
     },
     {
-      "src": "^/api/(.*)$",
-      "dest": "/api/$1.ts"
+      "source": "/en/blog/5-ventajas-fiscales-italia-emprendedores-espanoles-desconocen",
+      "destination": "/es/blog/5-ventajas-fiscales-italia-emprendedores-espanoles-desconocen"
     },
     {
-      "src": "^/images/articles/(.*)$",
-      "dest": "/images/articles/$1"
+      "source": "/de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden",
+      "destination": "/de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden"
     },
     {
-      "handle": "filesystem"
+      "source": "/fr/blog/impots-5-pourcent-italie-guide-expat-2025.fr-fr",
+      "destination": "/fr/blog/impots-5-pourcent-italie-guide-expat-2025"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/es/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.es-es",
+      "destination": "/es/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia"
+    },
+    {
+      "source": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet",
+      "destination": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet"
+    },
+    {
+      "source": "/en/blog/impuestos-srl-guia-2025-emprendedores-extranjeros.es-es",
+      "destination": "/es/blog/impuestos-srl-guia-2025-emprendedores-extranjeros"
+    },
+    {
+      "source": "/en/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.en-en",
+      "destination": "/it/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia"
+    },
+    {
+      "source": "/en/blog/italy-tax-residency-expats-2025-complete-guide.en-en",
+      "destination": "/it/blog/italy-tax-residency-expats-2025-complete-guide"
+    },
+    {
+      "source": "/en/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025.en-en",
+      "destination": "/de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025"
+    },
+    {
+      "source": "/en/blog/italien-buerokratie-fuer-deutsche-5-toedliche-fehler.de-en",
+      "destination": "/de/blog/italien-buerokratie-fuer-deutsche-5-toedliche-fehler"
+    },
+    {
+      "source": "/en/blog/aprire-partita-iva-freelance-italia-2025.en-en",
+      "destination": "/it/blog/aprire-partita-iva-freelance-italia-2025"
+    },
+    {
+      "source": "/en/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025.de-de",
+      "destination": "/de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025"
+    },
+    {
+      "source": "/fr/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers.fr-fr",
+      "destination": "/fr/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers"
+    },
+    {
+      "source": "/de/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.de-de",
+      "destination": "/de/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia"
+    },
+    {
+      "source": "/en/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa.en-en",
+      "destination": "/es/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa"
+    },
+    {
+      "source": "/en/blog/impots-5-pourcent-italie-guide-expat-2025",
+      "destination": "/fr/blog/impots-5-pourcent-italie-guide-expat-2025"
+    },
+    {
+      "source": "/en/blog/italy-5-percent-tax-guide-expats-2025.en-en",
+      "destination": "/it/blog/italy-5-percent-tax-guide-expats-2025"
+    },
+    {
+      "source": "/en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025.es-es",
+      "destination": "/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025"
+    },
+    {
+      "source": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet.en-en",
+      "destination": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet"
+    },
+    {
+      "source": "/en/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025.en-en",
+      "destination": "/de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025"
+    },
+    {
+      "source": "/en/blog/aprire-partita-iva-freelance-italia-2025.en-en",
+      "destination": "/it/blog/aprire-partita-iva-freelance-italia-2025"
     }
   ]
 }

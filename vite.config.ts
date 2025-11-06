@@ -51,6 +51,7 @@ export default defineConfig({
     // Assicura che le immagini vengano copiate correttamente
     copyPublicDir: true,
     rollupOptions: {
+      external: [],
       output: {
         // Mappa i percorsi delle immagini per Vercel
         assetFileNames: (assetInfo) => {
@@ -58,8 +59,39 @@ export default defineConfig({
           if (assetInfo.name && assetInfo.name.includes('articles/')) {
             return `images/articles/[name]-[hash][extname]`;
           }
-          return `assets/[name]-[hash][extname]`;
-        }
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash].[ext]`;
+          }
+          if (/css/i.test(ext)) {
+            return `assets/css/[name]-[hash].[ext]`;
+          }
+          return `assets/[name]-[hash].[extname]`;
+        },
+        manualChunks: {
+          // React core - separato per evitare conflitti
+          'react-vendor': ['react', 'react-dom'],
+
+          // UI e componenti pesanti - ulteriormente divisi
+          'radix-accordion': ['@radix-ui/react-accordion'],
+          'radix-dialog': ['@radix-ui/react-dialog'],
+          'radix-dropdown': ['@radix-ui/react-dropdown-menu'],
+
+          // Internazionalizzazione
+          'i18n': ['react-i18next', 'i18next'],
+
+          // Routing e form
+          'wouter': ['wouter'],
+          'forms': ['react-hook-form'],
+
+          // Utilities - divisi per ridurre chunk size
+          'query': ['@tanstack/react-query'],
+          'helmet': ['react-helmet-async'],
+          'toast': ['sonner'],
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
       }
     },
     terserOptions: {
@@ -93,45 +125,6 @@ export default defineConfig({
         safari10: true, // Fix per Safari mobile
         toplevel: false, // Disabilitato per evitare problemi
         properties: false // Disabilitato per evitare problemi
-      }
-    },
-    rollupOptions: {
-      external: [],
-      output: {
-        manualChunks: {
-          // React core - separato per evitare conflitti
-          'react-vendor': ['react', 'react-dom'],
-
-          // UI e componenti pesanti - ulteriormente divisi
-          'radix-accordion': ['@radix-ui/react-accordion'],
-          'radix-dialog': ['@radix-ui/react-dialog'],
-          'radix-dropdown': ['@radix-ui/react-dropdown-menu'],
-
-          // Internazionalizzazione
-          'i18n': ['react-i18next', 'i18next'],
-
-          // Routing e form
-          'wouter': ['wouter'],
-          'forms': ['react-hook-form'],
-
-          // Utilities - divisi per ridurre chunk size
-          'query': ['@tanstack/react-query'],
-          'helmet': ['react-helmet-async'],
-          'toast': ['sonner'],
-        },
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
-            return `assets/images/[name]-[hash].[ext]`;
-          }
-          if (/css/i.test(ext)) {
-            return `assets/css/[name]-[hash].[ext]`;
-          }
-          return `assets/[name]-[hash].[ext]`;
-        }
       }
     },
     chunkSizeWarningLimit: 200 // Ancora più piccolo per mobile
