@@ -17,12 +17,13 @@ def get_file_hash(file_path):
         return None
 
 def find_placeholder_images():
-    """Trova tutte le immagini placeholder (hash identico)"""
+    """Trova tutte le immagini placeholder (hash identico) - tutte le lingue"""
     images_dir = Path('client/public/images/articles')
     placeholder_hash = '18e51276b25127e72653bf3eca42db94'
     
     placeholder_images = []
-    for img in images_dir.glob('en_cover_*.webp'):
+    # Cerca in tutte le lingue
+    for img in images_dir.glob('*_cover_*.webp'):
         hash_value = get_file_hash(img)
         if hash_value == placeholder_hash:
             placeholder_images.append(img.name)
@@ -31,30 +32,37 @@ def find_placeholder_images():
 
 def extract_slug_from_filename(filename):
     """Estrae lo slug base dal nome del file"""
-    # Rimuovi prefisso lingua e suffisso timestamp
-    match = re.match(r'en_cover_(.+?)_\d{8}_\d{6}\.webp', filename)
+    # Rimuovi prefisso lingua e suffisso timestamp (supporta tutte le lingue)
+    match = re.match(r'([a-z]{2})_cover_(.+?)_\d{8}_\d{6}\.webp', filename)
     if match:
-        return match.group(1)
+        return match.group(2)  # Ritorna solo lo slug senza prefisso lingua
     return None
 
-def find_correct_image(slug, article_title=None):
-    """Trova un'immagine corretta per uno slug"""
+def get_language_from_filename(filename):
+    """Estrae la lingua dal nome del file"""
+    match = re.match(r'([a-z]{2})_cover_', filename)
+    if match:
+        return match.group(1)
+    return 'en'
+
+def find_correct_image(slug, language='en', article_title=None):
+    """Trova un'immagine corretta per uno slug e lingua"""
     images_dir = Path('client/public/images/articles')
     placeholder_hash = '18e51276b25127e72653bf3eca42db94'
     
     candidates = []
     
-    # Strategia 1: Cerca immagini che corrispondono esattamente allo slug
-    pattern = f'en_cover_*{slug}*.webp'
+    # Strategia 1: Cerca immagini nella stessa lingua che corrispondono esattamente allo slug
+    pattern = f'{language}_cover_*{slug}*.webp'
     for img in images_dir.glob(pattern):
         hash_value = get_file_hash(img)
         if hash_value != placeholder_hash:
-            candidates.append((img.name, 100))  # Score 100 per match esatto
+            candidates.append((img.name, 100))  # Score 100 per match esatto stessa lingua
     
-    # Strategia 2: Cerca immagini con slug parzialmente corrispondente
+    # Strategia 2: Cerca immagini nella stessa lingua con slug parzialmente corrispondente
     if not candidates:
         slug_parts = slug.split('-')
-        for img in images_dir.glob('en_cover_*.webp'):
+        for img in images_dir.glob(f'{language}_cover_*.webp'):
             hash_value = get_file_hash(img)
             if hash_value != placeholder_hash:
                 img_name_lower = img.name.lower()
@@ -65,6 +73,14 @@ def find_correct_image(slug, article_title=None):
                 # Richiedi almeno 40% di match e almeno 2 parti
                 if score >= 40 and matches >= 2:
                     candidates.append((img.name, score))
+    
+    # Strategia 3: Se non trovato nella stessa lingua, cerca in inglese come fallback
+    if not candidates and language != 'en':
+        pattern = f'en_cover_*{slug}*.webp'
+        for img in images_dir.glob(pattern):
+            hash_value = get_file_hash(img)
+            if hash_value != placeholder_hash:
+                candidates.append((img.name, 80))  # Score 80 per match inglese
     
     # Ordina per score (più alto prima), poi per timestamp
     candidates.sort(key=lambda x: (-x[1], x[0]))
@@ -96,11 +112,11 @@ def main():
     placeholder_images = find_placeholder_images()
     print(f"Trovate {len(placeholder_images)} immagini placeholder\n")
     
-    # Trova articoli che usano placeholder
+    # Trova articoli che usano placeholder (tutte le lingue)
     blog_dir = Path('content/blog')
     articles_to_fix = []
     
-    for mdx_file in blog_dir.glob('*.en.mdx'):
+    for mdx_file in blog_dir.glob('*.mdx'):
         with open(mdx_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
@@ -115,14 +131,25 @@ def main():
         # Se è una placeholder, trova immagine corretta
         if cover_filename in placeholder_images:
             slug = extract_slug_from_filename(cover_filename)
+            language = get_language_from_filename(cover_filename)
+            
+            # Estrai lingua anche dal nome del file MDX
+            mdx_lang_match = re.search(r'\.([a-z]{2})\.mdx$', mdx_file.name)
+            if mdx_lang_match:
+                language = mdx_lang_match.group(1)
+            elif not mdx_file.name.endswith('.en.mdx'):
+                # Se non ha suffisso lingua, è italiano
+                language = 'it'
+            
             if slug:
-                correct_image = find_correct_image(slug)
+                correct_image = find_correct_image(slug, language)
                 if correct_image:
                     articles_to_fix.append({
                         'file': mdx_file,
                         'current_cover': cover_image,
                         'new_cover': f'/images/articles/{correct_image}',
-                        'slug': slug
+                        'slug': slug,
+                        'language': language
                     })
     
     if not articles_to_fix:
