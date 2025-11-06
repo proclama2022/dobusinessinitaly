@@ -190,30 +190,40 @@ class LogoGeneratorMCP:
             # Copia semplicemente il file
             shutil.copy(input_path, output_path)
 
-def main():
-    """Funzione principale per generare il logo"""
+def generate_article_cover():
+    """Genera una copertina per l'articolo sulla guida per imprenditori britannici"""
     # Usa la chiave API dal file di configurazione MCP
     api_key = "Gqnr2E-zburmUOzxodWLymPeJDeONgm4A53ZVT76rmE81y7JO6kRFa9umr5Y_Agq48jOEJ6C2ujcZpj7qA5jDw"
     
     # Crea il generatore
-    generator = LogoGeneratorMCP(api_key)
+    generator = LogoGeneratorMCP(api_key, output_dir="public/images/articles")
     
-    # Genera logo di stile bold (più semplice e leggibile)
-    print("🚀 Inizio generazione logo per YourBusinessInItaly...")
-    logo_info = generator.generate_logo(style="bold")
+    # Prompt specifico per la copertina dell'articolo
+    prompt = """Professional cover image for article "UK Business Owners in Italy Post-Brexit: Complete 2025 Guide for Success".
+    Business and finance theme with Italian flag colors (vibrant green #009246, white, vibrant red #ce2b37).
+    Clean, modern design with subtle UK and Italy elements.
+    High quality, professional business magazine style.
+    No text on image, just visual elements representing UK-Italy business connection."""
+    
+    print("🎨 Generando copertina per l'articolo su UK Business in Italy...")
+    
+    # Usa direttamente il metodo generate_image della classe IdeogramDirectMCPServer
+    logo_info = generator.ideogram_server.generate_image(
+        prompt=prompt,
+        filename="uk_italy_business_cover_v2",
+        width=1200,
+        height=630,
+        magic_prompt_option="auto",
+        style="professional"
+    )
     
     if "error" not in logo_info:
-        # Aggiorna i loghi del sito
-        generator.update_site_logos(logo_info)
-        
-        print("\n🎉 Logo generato e installato con successo!")
-        print("📋 Riepilogo:")
-        print(f"   - Stile: {logo_info['style']}")
-        print(f"   - File desktop: client/public/images/logo.png")
-        print(f"   - File mobile: client/public/images/logo_mobile.png")
-        print(f"   - Versioni WebP create")
+        print(f"✅ Copertina generata con successo!")
+        print(f"📁 File: {logo_info.get('filepath', 'N/A')}")
+        return logo_info
     else:
-        print(f"\n❌ Errore durante la generazione: {logo_info['error']}")
+        print(f"❌ Errore durante la generazione: {logo_info.get('error', 'Errore sconosciuto')}")
+        return logo_info
 
 if __name__ == "__main__":
-    main()
+    generate_article_cover()
