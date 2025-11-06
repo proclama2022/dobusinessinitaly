@@ -85,7 +85,7 @@ Ottimizzare articoli esistenti YourBusinessInItaly trasformandoli in contenuti c
 
 **Dopo (Discorsivo):**
 ```markdown
-Il regime forfettario è la scelta migliore per molti professionisti: con un'imposta sostitutiva del 5% per i primi cinque anni e un limite di 85.000 euro di ricavi, offre un vantaggio fiscale significativo rispetto al regime ordinario, dove le aliquote IRPEF possono arrivare fino al 43%.
+Il regime forfettario è la scelta migliore per molti professionisti: con un'imposta sostitutiva del 5% per i primi cinque anni e un limite di 85.000 euro di ricavi, offre un vantaggio fiscale significativo rispetto al regime ordinario, dove le aliquote IRPEF possono arrivare fino al 43% senza limiti di fatturato.
 ```
 
 ### Trasformazione Checklist → Consigli Pratici
@@ -100,7 +100,44 @@ Il regime forfettario è la scelta migliore per molti professionisti: con un'imp
 
 **Dopo (Discorsivo):**
 ```markdown
-Per avviare la tua attività, ti consiglio di seguire un percorso ordinato. Prima di tutto verifica di avere tutti i requisiti necessari, specialmente se sei un cittadino extra-UE. Subito dopo richiedi il codice fiscale - è il tuo identificativo fondamentale in Italia. A questo punto, il passo più importante è scegliere un buon commercialista...
+Per avviare la tua attività, ti consiglio di seguire un percorso ordinato. Prima di tutto verifica di avere tutti i requisiti necessari, specialmente se sei un cittadino extra-UE. Subito dopo, richiedi il codice fiscale - è il tuo identificativo fondamentale in Italia. A questo punto, il passo più importante è scegliere un buon commercialista...
+```
+
+### Trasformazione Sezione Schematica → Paragrafo Discorsivo
+
+**Prima (Schematica):**
+```markdown
+## Requisiti per Stranieri
+### Cittadini UE
+- Documento identità valido
+- Iscrizione anagrafe
+- Nessun visto richiesto
+
+### Cittadini Extra-UE
+- Visto di lavoro
+- Permesso di soggiorno
+- Iscrizione anagrafe
+```
+
+**Dopo (Discorsivo):**
+```markdown
+## Requisiti per Stranieri
+
+La tua nazionalità è il primo fattore da considerare quando decidi di avviare un'attività in Italia. Se sei cittadino dell'Unione Europea, il processo è notevolmente semplificato: ti basterà presentare un documento di identità valido e iscriverti all'anagrafe del comune dove intendi risiedere. 
+
+Per i cittadini extra-UE, invece, il percorso richiede qualche passaggio aggiuntivo. Oltre al documento di identità, dovrai ottenere un visto di lavoro e un permesso di soggiorno che ti autorizzi a esercitare attività professionale nel nostro Paese. Una volta ottenuti questi documenti, potrai procedere con l'iscrizione all'anagrafe, esattamente come i cittadini europei.
+```
+
+### Trasformazione Link Interno Forzato → Link Naturale
+
+**Prima (Forzato):**
+```markdown
+Scopri di più su [aprire partita IVA in Italia](/blog/aprire-partita-iva-freelance-italia-2025) con la nostra guida completa.
+```
+
+**Dopo (Naturale):**
+```markdown
+Se vuoi approfondire questi argomenti, ti consiglio di leggere la nostra [guida completa su come aprire partita IVA in Italia](/blog/aprire-partita-iva-freelance-italia-2025), dove troverai tutti i dettagli pratici e i consigli di un esperto.
 ```
 
 ## Output Atteso
@@ -135,6 +172,28 @@ Per avviare la tua attività, ti consiglio di seguire un percorso ordinato. Prim
 - Le informazioni sono utili e applicabili?
 - Il linguaggio è comprensibile per stranieri?
 
+## Script di Ottimizzazione Automatica
+
+### Utilizzo dello Script Transformer
+Per applicare automaticamente queste trasformazioni, usa lo script Python incluso:
+
+```bash
+python3 skills/partitaiva-style-translator/transformer.py input.md output.md
+```
+
+Lo script applicherà automaticamente:
+- Trasformazione tabelle in testo discorsivo
+- Conversione checklist in consigli pratici
+- Rimozione elementi SEO eccessivi
+- Ottimizzazione tono e stile
+- Generazione report delle modifiche
+
+### Integrazione con Workflow Esistente
+1. Analizza l'articolo con le linee guida sopra
+2. Applica le trasformazioni necessarie
+3. Verifica il mantenimento delle informazioni essenziali
+4. Genera report delle modifiche applicate
+
 ## Note Importanti
 
 ### Mantenimento Informazioni
@@ -145,4 +204,10 @@ Per avviare la tua attività, ti consiglio di seguire un percorso ordinato. Prim
 ### Focus sul Lettore
 - **Utilità prima di tutto**: Ogni modifica deve migliorare l'utilità per il lettore
 - **Chiarezza**: Il testo deve essere più chiaro dopo l'ottimizzazione
-- **Accessibilità**: Linguaggio comprensibile per professionisti stranieri
+- **Accessibilità**: Linguaggio comprensibile per stranieri
+
+### Processo Iterativo
+1. **Prima trasformazione**: Applica le regole base
+2. **Revisione critica**: Verifica qualità e coerenza
+3. **Secondo passaggio**: Rifinisci tono e stile
+4. **Validazione finale**: Controlla tutti i requisiti

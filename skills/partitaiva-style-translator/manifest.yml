@@ -1,0 +1,39 @@
+name: partitaiva-style-translator
+description: Trasforma articoli schematici in contenuti discorsivi professionali come PartitaIVA.it e genera copertine con Ideogram
+version: 1.1.0
+author: Giovanni Emmi
+category: content-optimization
+tags:
+  - content-transformation
+  - style-optimization
+  - partitaiva
+  - writing-improvement
+  - cover-generation
+dependencies: []
+parameters:
+  - name: input_file
+    type: string
+    description: Path dell'articolo da trasformare
+    required: true
+  - name: output_file
+    type: string
+    description: Path dove salvare l'articolo trasformato
+    required: true
+  - name: generate_report
+    type: boolean
+    description: Genera report delle modifiche applicate
+    default: true
+  - name: generate_cover
+    type: boolean
+    description: Genera copertina professionale con Ideogram
+    default: false
+  - name: cover_style
+    type: string
+    description: Stile della copertina (professional, modern, minimal)
+    default: professional
+entrypoint: skill.md
+icon: 📝
+examples:
+  - description: Trasforma un articolo schematico in stile PartitaIVA.it e genera copertina
+    usage: |
+      Applica la skill partitaiva-style-translator all'articolo esistente per trasformarlo in stile discorsivo professionale come PartitaIVA.it e generare una copertina professionale con Ideogram.
