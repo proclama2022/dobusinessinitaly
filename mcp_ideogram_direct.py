@@ -12,15 +12,169 @@ import argparse
 import subprocess
 import requests
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
+from datetime import datetime
+import re
+
+
+class IdeogramDirectMCPServer:
+    """Server MCP per Ideogram API - Versione completa con metodi per copertine articoli"""
+    
+    def __init__(self, api_key: str, output_dir: str = "client/public/images/articles"):
+        """
+        Inizializza il generatore con API diretta Ideogram
+        
+        Args:
+            api_key: Chiave API Ideogram
+            output_dir: Percorso dove salvare le immagini (default: client/public/images/articles)
+                       IMPORTANTE: Deve essere client/public/images/articles per Vercel!
+        """
+        self.api_key = api_key
+        # API diretta di Ideogram (non Together AI)
+        self.base_url = "https://api.ideogram.ai/v1/ideogram-v3/generate"
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+    
+    def _create_article_prompt(self, article_title: str, article_topic: str, locale: str = "it", style: str = "professional") -> str:
+        """Crea un prompt ottimizzato per copertine articoli (stesso metodo di mcp_ideogram.py)"""
+        # Usa lo stesso metodo di enhancement di mcp_ideogram.py
+        prompt_base = f"{article_title}"
+        if article_topic:
+            prompt_base += f" - {article_topic}"
+        
+        # Template ottimizzato per business article covers
+        style_prompts = {
+            "professional": "professional business illustration, modern, clean design, Italian business context, corporate colors (blue, green, gold), high quality, web-ready",
+            "modern": "modern minimalist design, contemporary business style, sleek and professional, Italian context",
+            "minimal": "minimalist design, clean lines, simple composition, professional business style"
+        }
+        
+        style_text = style_prompts.get(style, style_prompts["professional"])
+        
+        enhanced_prompt = f"{prompt_base}. {style_text}. No text overlay, no watermark, suitable for article cover, 16:9 aspect ratio"
+        
+        return enhanced_prompt
+    
+    def generate_article_cover(self, article_title: str, article_topic: str = "", locale: str = "it", style: str = "professional") -> Dict[str, Any]:
+        """
+        Genera una copertina per un articolo
+        
+        Args:
+            article_title: Titolo dell'articolo
+            article_topic: Argomento/topic dell'articolo
+            locale: Lingua (it, en, de, fr, es)
+            style: Stile (professional, modern, minimal)
+            
+        Returns:
+            Dict con success, filename, error, etc.
+        """
+        try:
+            # Crea prompt ottimizzato
+            prompt = self._create_article_prompt(article_title, article_topic, locale, style)
+            
+            # Prepara la richiesta API - Ideogram diretto usa Api-Key header
+            headers = {
+                "Content-Type": "application/json",
+                "Api-Key": self.api_key  # Ideogram usa Api-Key, non Authorization Bearer
+            }
+            
+            # Payload per API diretta di Ideogram
+            payload = {
+                "prompt": prompt,
+                "rendering_speed": "TURBO",  # TURBO o QUALITY
+                "aspect_ratio": "16x9"  # Ideogram usa formato "16x9" non "16:9"
+            }
+            
+            print(f"🎨 Chiamando API diretta di Ideogram...")
+            print(f"📝 Prompt: {prompt[:100]}...")
+            
+            # Chiama l'API diretta di Ideogram
+            response = requests.post(
+                self.base_url,
+                headers=headers,
+                json=payload,
+                timeout=120
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                
+                # Estrai l'URL dell'immagine generata (Ideogram usa 'data')
+                if "data" in result and len(result["data"]) > 0:
+                    image_url = result["data"][0]["url"]
+                    
+                    # Scarica l'immagine
+                    print(f"⬇️  Downloading image from {image_url[:50]}...")
+                    img_response = requests.get(image_url, timeout=60)
+                    
+                    if img_response.status_code == 200:
+                        # Crea nome file con timestamp
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                        safe_title = re.sub(r'[^\w\s-]', '', article_title.lower())[:30].replace(" ", "-")
+                        locale_prefix = locale if locale != "it" else ""
+                        filename = f"{locale_prefix}_cover_{safe_title}_{timestamp}.png" if locale_prefix else f"it_cover_{safe_title}_{timestamp}.png"
+                        output_path = self.output_dir / filename
+                        
+                        # Salva l'immagine
+                        with open(output_path, 'wb') as f:
+                            f.write(img_response.content)
+                        
+                        print(f"✅ Immagine salvata: {output_path}")
+                        
+                        return {
+                            "success": True,
+                            "filename": filename,
+                            "path": str(output_path),
+                            "url": image_url,
+                            "prompt": prompt
+                        }
+                    else:
+                        error_msg = f"Errore nel download dell'immagine: {img_response.status_code}"
+                        print(f"❌ {error_msg}")
+                        return {
+                            "success": False,
+                            "error": error_msg
+                        }
+                else:
+                    error_msg = f"Nessuna immagine nella risposta: {response.text}"
+                    print(f"❌ {error_msg}")
+                    return {
+                        "success": False,
+                        "error": error_msg
+                    }
+            else:
+                error_msg = f"Errore API: {response.status_code} - {response.text}"
+                print(f"❌ {error_msg}")
+                return {
+                    "success": False,
+                    "error": error_msg
+                }
+                
+        except Exception as e:
+            error_msg = f"Errore durante la generazione: {str(e)}"
+            print(f"❌ {error_msg}")
+            return {
+                "success": False,
+                "error": error_msg
+            }
+    
+    def generate_image(self, prompt: str, filename: Optional[str] = None, width: int = 1024, height: int = 768, style: str = "professional") -> Dict[str, Any]:
+        """Metodo generico per generare immagini"""
+        return self.generate_article_cover(
+            article_title=prompt,
+            article_topic="",
+            locale="it",
+            style=style
+        )
 
 
 class IdeogramGenerator:
-    """Generatore di copertine professionali con Ideogram"""
+    """Generatore di copertine professionali con Ideogram (CLI)"""
     
     def __init__(self):
         self.api_key = None
-        self.base_url = "https://api.ideogram.ai/api/v1"
+        # API diretta di Ideogram
+        self.base_url = "https://api.ideogram.ai/v1/ideogram-v3/generate"
         
     def generate_cover(self, prompt: str, style: str = "professional", output_path: str = None) -> Optional[str]:
         """
@@ -76,7 +230,7 @@ class IdeogramGenerator:
                             timestamp = subprocess.check_output(["date", "+%Y%m%d_%H%M%S"], text=True).decode().strip()
                             safe_prompt = prompt[:20].replace(" ", "_").replace("/", "_").replace("\\", "_").replace('"', "").replace("'", "")
                             filename = f"ideogram_{safe_prompt}_{timestamp}.png"
-                            output_path = Path("public/images/articles") / filename
+                            output_path = Path("client/public/images/articles") / filename
                         else:
                             output_path = Path(output_path)
                             filename = output_path.name
@@ -105,12 +259,38 @@ class IdeogramGenerator:
             return None
     
     def load_api_key(self) -> bool:
-        """Carica la chiave API di Ideogram"""
+        """Carica la chiave API di Ideogram (Together AI)"""
         try:
             # Cerca la chiave API in variabili d'ambiente
             if "IDEOGRAM_API_KEY" in os.environ:
                 self.api_key = os.environ["IDEOGRAM_API_KEY"]
                 return True
+            
+            # Cerca la chiave API in .mcp.json (Together AI)
+            # Prova prima "ideogram" (chiave NP), poi "ideogram-direct"
+            mcp_file = Path(".mcp.json")
+            if mcp_file.exists():
+                with open(mcp_file, 'r') as f:
+                    mcp_config = json.load(f)
+                    servers = mcp_config.get('mcpServers', {})
+                    
+                    # Prova prima con "ideogram" (chiave NP)
+                    ideogram_server = servers.get('ideogram', {})
+                    if ideogram_server:
+                        env = ideogram_server.get('env', {})
+                        api_key = env.get('IDEOGRAM_API_KEY')
+                        if api_key and api_key != "insert-ideogram-api-key-here":
+                            self.api_key = api_key
+                            return True
+                    
+                    # Fallback: "ideogram-direct"
+                    ideogram_direct = servers.get('ideogram-direct', {})
+                    if ideogram_direct:
+                        env = ideogram_direct.get('env', {})
+                        api_key = env.get('IDEOGRAM_API_KEY')
+                        if api_key and api_key != "insert-ideogram-api-key-here":
+                            self.api_key = api_key
+                            return True
             
             # Cerca la chiave API in un file di configurazione
             config_file = "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/ideogram_config.json"

@@ -35,10 +35,15 @@ Trasformare completamente articoli schematici e "da manuale SEO" in contenuti co
 - **Validazione finale**: Checklist qualità specifica PartitaIVA.it
 
 ### 5. Generatore Copertine Ideogram
-- **Analisi contenuto**: Estrae parole chiave e concetti principali
-- **Generazione prompt**: Crea prompt professionali per Ideogram
-- **Integrazione automatica**: Salva copertine nella cartella corretta
-- **Ottimizzazione formati**: Genera PNG e WebP ottimizzati
+**⚠️ IMPORTANTE: Usa sempre lo script `generate_article_covers.py` per generare copertine!**
+
+- **Script da usare**: `generate_article_covers.py` nella root del progetto
+- **Analisi contenuto**: Estrae parole chiave e concetti principali dal titolo e topic
+- **Generazione prompt**: Crea prompt professionali ottimizzati per Ideogram API
+- **Integrazione automatica**: Salva copertine in `client/public/images/articles/` (per Vercel)
+- **Ottimizzazione formati**: Genera PNG e WebP ottimizzati automaticamente
+- **Configurazione**: Chiave API in `.mcp.json` sezione `"ideogram"` -> `"env"` -> `"IDEOGRAM_API_KEY"`
+- **API diretta**: Usa endpoint `https://api.ideogram.ai/v1/ideogram-v3/generate` con header `Api-Key`
 
 ## Processo di Trasformazione
 
@@ -67,11 +72,24 @@ Trasformare completamente articoli schematici e "da manuale SEO" in contenuti co
 4. **Validazione informazioni**: Tutti i dati essenziali mantenuti
 
 ### Fase 5: Generazione Copertina (Opzionale)
-1. **Analisi contenuto**: Estrae concetti chiave per la copertina
-2. **Creazione prompt Ideogram**: Genera prompt professionale
-3. **Generazione immagine**: Crea copertina con Ideogram API
-4. **Salvataggio ottimizzato**: Salva in formato PNG e WebP
-5. **Aggiornamento frontmatter**: Aggiorna percorso copertina nell'articolo
+**⚠️ Usa sempre lo script `generate_article_covers.py` per generare copertine!**
+
+1. **Analisi contenuto**: Estrae concetti chiave dal titolo e topic dell'articolo
+2. **Chiamata script**: Usa `generate_article_covers.py` con parametri appropriati:
+   ```bash
+   python3 -c "
+   from generate_article_covers import generate_single_cover
+   generate_single_cover(
+       title='Titolo Articolo',
+       topic='Topic principale',
+       locale='it',  # it, en, de, fr, es
+       style='professional'  # professional, modern, minimal
+   )
+   "
+   ```
+3. **Generazione immagine**: Lo script crea automaticamente copertina con Ideogram API diretta
+4. **Salvataggio ottimizzato**: Salva automaticamente in `client/public/images/articles/` in formato PNG e WebP
+5. **Aggiornamento frontmatter**: Aggiorna percorso copertina nell'articolo con il filename generato
 
 ## Esempi di Trasformazione
 

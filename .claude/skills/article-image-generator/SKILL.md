@@ -62,15 +62,47 @@ allowed-tools: Write, Bash, Read, Glob
    - `es_cover_como-abrir-negocio-italia-extranjero_20251103_190200.webp`
 
 ### 5. Generazione con Ideogram
-1. **Usa script mcp_ideogram_direct.py**:
+**⚠️ IMPORTANTE: Usa sempre lo script `generate_article_covers.py` per generare copertine!**
+
+1. **Script principale da usare**: `generate_article_covers.py`
    ```bash
-   python3 mcp_ideogram_direct.py "Titolo articolo" --style professional --output "public/images/articles/{language}_cover_{slug}_{timestamp}.webp"
+   # Genera una singola copertina
+   python3 generate_article_covers.py
+   
+   # Oppure usa direttamente la funzione Python
+   python3 -c "
+   from generate_article_covers import generate_single_cover
+   generate_single_cover(
+       title='Il Tuo Titolo Articolo',
+       topic='Business in Italia',
+       locale='it',
+       style='professional'
+   )
+   "
    ```
-2. **Script requirements**:
-   - API key Ideogram configurata in `.mcp.json`
-   - **Percorso output OBBLIGATORIO**: `public/images/articles/`
-   - Stile supportati: professional, modern, minimal
-3. **Naming automatico**: Lo script deve generare automaticamente il timestamp e usare la struttura corretta
+
+2. **Configurazione API**:
+   - La chiave API Ideogram è configurata in `.mcp.json` nella sezione `"ideogram"` -> `"env"` -> `"IDEOGRAM_API_KEY"`
+   - Lo script carica automaticamente la chiave NP da `.mcp.json`
+   - **API diretta di Ideogram**: `https://api.ideogram.ai/v1/ideogram-v3/generate`
+   - **Autenticazione**: Header `Api-Key` (non `Authorization: Bearer`)
+
+3. **Percorso output OBBLIGATORIO**: 
+   - **SEMPRE salva in**: `client/public/images/articles/` (per Vercel)
+   - Lo script `generate_article_covers.py` salva automaticamente nel percorso corretto
+
+4. **Stili supportati**: professional, modern, minimal
+
+5. **Naming automatico**: 
+   - Lo script genera automaticamente: `{locale}_cover_{slug-safe-title}_{timestamp}.png`
+   - Esempio: `it_cover_aprire-partita-iva-freelance_20251106_143022.png`
+   - Il file viene poi convertito in WebP automaticamente
+
+6. **Come funziona lo script**:
+   - Usa `IdeogramDirectMCPServer` da `mcp_ideogram_direct.py`
+   - Crea prompt ottimizzati per copertine business
+   - Gestisce automaticamente download e salvataggio
+   - Restituisce il percorso dell'immagine generata
 
 ### 6. Fallback strategies se Ideogram non disponibile:
    - Usa immagini esistenti appropriate da `public/images/articles/`
@@ -158,16 +190,18 @@ Per generare copertine mancanti:
 ## Error Handling
 
 ### Common Issues e Soluzioni:
-1. **API Ideogram non configurata**:
-   - Verifica configurazione in `.mcp.json`
-   - Esegui setup con `python3 mcp_ideogram_direct.py --setup`
+1. **API Ideogram non configurata o chiave non valida**:
+   - Verifica configurazione in `.mcp.json` sezione `"ideogram"` -> `"env"` -> `"IDEOGRAM_API_KEY"`
+   - La chiave deve essere valida per API diretta Ideogram (non Together AI)
+   - Se errore 401, la chiave potrebbe essere scaduta - ottieni nuova chiave su https://ideogram.ai/api
    - Usa immagini esistenti appropriate come fallback
    - Notifica utente per completare configurazione API
 
-2. **Script mcp_ideogram_direct.py non trovato**:
-   - Verifica percorso script nella directory root
-   - Controlla permessi esecuzione script
-   - Assicurati che Python 3 sia installato
+2. **Script generate_article_covers.py non trovato**:
+   - Verifica che lo script sia nella directory root del progetto
+   - Controlla permessi esecuzione script: `chmod +x generate_article_covers.py`
+   - Assicurati che Python 3 sia installato: `python3 --version`
+   - Verifica che `mcp_ideogram_direct.py` esista nella stessa directory
 
 3. **Output directory non esistente**:
    - Crea directory `public/images/articles/` se mancante

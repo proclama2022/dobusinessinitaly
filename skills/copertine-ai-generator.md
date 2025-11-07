@@ -19,16 +19,37 @@ Cerca articoli con:
 - Articoli senza immagine di copertina
 
 ### 2. Usa lo script di generazione esistente
+**⚠️ IMPORTANTE: Usa SEMPRE `generate_article_covers.py` per generare copertine!**
+
 ```bash
+# Genera copertine per tutti gli articoli predefiniti
 python3 generate_article_covers.py
+
+# Oppure genera una singola copertina programmaticamente
+python3 -c "
+from generate_article_covers import generate_single_cover
+generate_single_cover(
+    title='Il Tuo Titolo Articolo',
+    topic='Business in Italia',
+    locale='it',
+    style='professional'
+)
+"
 ```
 
-Lo script:
+**Configurazione API:**
+- La chiave API Ideogram è in `.mcp.json` sezione `"ideogram"` -> `"env"` -> `"IDEOGRAM_API_KEY"`
+- Lo script carica automaticamente la chiave NP
+- **API diretta Ideogram**: `https://api.ideogram.ai/v1/ideogram-v3/generate`
+- **Autenticazione**: Header `Api-Key` (non `Authorization: Bearer`)
+
+**Lo script:**
+- Usa `IdeogramDirectMCPServer` da `mcp_ideogram_direct.py`
 - Genera automaticamente copertine per gli articoli principali
-- Usa Ideogram API con prompt professionali
+- Crea prompt ottimizzati per copertine business professionali
 - Salva immagini in formato PNG e WebP ottimizzato
-- Crea nomi file con timestamp univoci
-- Salva in `client/public/images/articles/`
+- Crea nomi file con timestamp univoci: `{locale}_cover_{slug}_{timestamp}.png`
+- **SALVA SEMPRE in**: `client/public/images/articles/` (per Vercel)
 
 ### 3. Aggiorna i percorsi negli articoli
 Dopo la generazione, aggiorna i file MDX con i nuovi percorsi:

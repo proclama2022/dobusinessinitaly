@@ -8,6 +8,7 @@ import os
 import sys
 import json
 from pathlib import Path
+# Usa IdeogramDirectMCPServer per API diretta di Ideogram (chiave NP)
 from mcp_ideogram_direct import IdeogramDirectMCPServer
 
 def get_api_key():
@@ -19,19 +20,29 @@ def get_api_key():
     if api_key and api_key != "insert-ideogram-api-key-here":
         return api_key
     
-    # Fallback: leggi da .mcp.json
+    # Fallback: leggi da .mcp.json - usa la chiave NP da "ideogram"
     try:
         mcp_path = Path(".mcp.json")
         if mcp_path.exists():
             with open(mcp_path, 'r') as f:
                 mcp_config = json.load(f)
                 servers = mcp_config.get('mcpServers', {})
-                ideogram_direct = servers.get('ideogram-direct', {})
-                env = ideogram_direct.get('env', {})
-                api_key = env.get('IDEOGRAM_API_KEY')
                 
-                if api_key and api_key != "insert-ideogram-api-key-here":
-                    return api_key
+                # Prova prima con "ideogram" (chiave NP)
+                ideogram_server = servers.get('ideogram', {})
+                if ideogram_server:
+                    env = ideogram_server.get('env', {})
+                    api_key = env.get('IDEOGRAM_API_KEY')
+                    if api_key and api_key != "insert-ideogram-api-key-here":
+                        return api_key
+                
+                # Fallback: "ideogram-direct"
+                ideogram_direct = servers.get('ideogram-direct', {})
+                if ideogram_direct:
+                    env = ideogram_direct.get('env', {})
+                    api_key = env.get('IDEOGRAM_API_KEY')
+                    if api_key and api_key != "insert-ideogram-api-key-here":
+                        return api_key
     except Exception as e:
         print(f"⚠️  Errore lettura .mcp.json: {e}")
     
@@ -88,18 +99,19 @@ def generate_single_cover(title, topic, locale="it", style="professional"):
     print(f"🎨 Generando copertina: {title[:50]}...")
     print("="*60)
     
+    # IdeogramDirectMCPServer.generate_article_cover restituisce già il path WebP
     result = generator.generate_article_cover(
         article_title=title,
         article_topic=topic,
-        locale=locale,
-        style=style
+        locale=locale
     )
     
     if result['success']:
-        webp_file = Path(result['filename']).with_suffix('.webp')
-        print(f"\n✅ Copertina generata: {webp_file}")
+        # Il filename è già WebP
+        filename = Path(result['filename']).name
+        print(f"\n✅ Copertina generata: {filename}")
         print(f"\n📝 Aggiorna il file MDX con:")
-        print(f'   coverImage: "/images/articles/{webp_file.name}"')
+        print(f'   coverImage: "/images/articles/{filename}"')
         return True
     else:
         print(f"❌ Errore: {result.get('error', 'Errore sconosciuto')}")
