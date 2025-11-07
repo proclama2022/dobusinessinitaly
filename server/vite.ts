@@ -94,6 +94,25 @@ function isValidSPARoute(url: string): boolean {
     return true;
   }
   
+  // Controlla route localizzate (con prefisso lingua) PRIMA delle route senza prefisso
+  // Questo è importante per evitare falsi positivi
+  for (const lang of supportedLanguages) {
+    // Route localizzate base (incluso /{lang} e /{lang}/blog)
+    for (const route of baseRoutes) {
+      if (cleanUrl === `/${lang}${route}` || cleanUrl === `/${lang}`) {
+        return true;
+      }
+    }
+
+    // Route blog localizzate: /{lang}/blog/{slug}
+    const blogLangMatch = cleanUrl.match(new RegExp(`^/${lang}/blog/([^/]+)$`));
+    if (blogLangMatch) {
+      const slug = blogLangMatch[1];
+      const exists = doesPostExist(slug, lang);
+      return exists; // true -> 200, false -> 404 hard
+    }
+  }
+  
   // Gestione route blog senza lingua: /blog/{slug}
   // NOTA: Queste route sono permesse per retrocompatibilità, ma dovrebbero essere reindirizzate
   // con redirect 301 alla versione con prefisso lingua per SEO
@@ -128,24 +147,6 @@ function isValidSPARoute(url: string): boolean {
       }
       // Se non è un post del blog, non è una route valida
       return false;
-    }
-  }
-
-  // Controlla route localizzate (con prefisso lingua)
-  for (const lang of supportedLanguages) {
-    // Route localizzate base (incluso /{lang} e /{lang}/blog)
-    for (const route of baseRoutes) {
-      if (cleanUrl === `/${lang}${route}` || cleanUrl === `/${lang}`) {
-        return true;
-      }
-    }
-
-    // Route blog localizzate: /{lang}/blog/{slug}
-    const blogLangMatch = cleanUrl.match(new RegExp(`^/${lang}/blog/([^/]+)$`));
-    if (blogLangMatch) {
-      const slug = blogLangMatch[1];
-      const exists = doesPostExist(slug, lang);
-      return exists; // true -> 200, false -> 404 hard
     }
   }
   
