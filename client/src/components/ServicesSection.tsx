@@ -1,9 +1,30 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { useLocalizedPath } from './LocalizedRouter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import {
+  faBuilding,
+  faCalculator,
+  faFileInvoiceDollar,
+  faChartLine,
+  faUsers,
+  faBalanceScale,
+  faUserTie,
+  faSuitcaseRolling,
+  faHandHoldingUsd,
+  faLeaf,
+  faIdCard,
+  faPercentage,
+  faRocket,
+  faLaptopCode,
+  faChartPie,
+  faArrowRight,
+  faChevronRight
+} from '@fortawesome/free-solid-svg-icons';
 
 type ServiceCardProps = {
-  icon: string;
+  icon: IconDefinition;
   title: string;
   description: string;
   linkText: string;
@@ -15,7 +36,7 @@ const ServiceCard = ({ icon, title, description, linkText }: ServiceCardProps) =
     <div className="card hover-lift overflow-hidden group">
       <div className="p-8">
         <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
-          <i className={`${icon} text-primary text-2xl`}></i>
+          <FontAwesomeIcon icon={icon} className="text-primary text-2xl" />
         </div>
 
         <h3 className="text-xl font-heading font-bold text-neutral-900 mb-3">
@@ -28,7 +49,7 @@ const ServiceCard = ({ icon, title, description, linkText }: ServiceCardProps) =
 
         <Link href={getLocalizedPath('/contact')} className="text-primary font-medium inline-flex items-center">
           {linkText}
-          <i className="fas fa-arrow-right ml-2 text-sm transition-transform duration-200 group-hover:translate-x-1"></i>
+          <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-sm transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
       </div>
     </div>
@@ -41,91 +62,91 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: 'fas fa-building',
+      icon: faBuilding,
       title: t('services.items.formation.title'),
       description: t('services.items.formation.description'),
       linkText: t('services.items.formation.link')
     },
     {
-      icon: 'fas fa-calculator',
+      icon: faCalculator,
       title: t('services.items.accounting.title'),
       description: t('services.items.accounting.description'),
       linkText: t('services.items.accounting.link')
     },
     {
-      icon: 'fas fa-file-invoice-dollar',
+      icon: faFileInvoiceDollar,
       title: t('services.items.tax.title'),
       description: t('services.items.tax.description'),
       linkText: t('services.items.tax.link')
     },
     {
-      icon: 'fas fa-chart-line',
+      icon: faChartLine,
       title: t('services.items.planning.title'),
       description: t('services.items.planning.description'),
       linkText: t('services.items.planning.link')
     },
     {
-      icon: 'fas fa-users',
+      icon: faUsers,
       title: t('services.items.payroll.title'),
       description: t('services.items.payroll.description'),
       linkText: t('services.items.payroll.link')
     },
     {
-      icon: 'fas fa-balance-scale',
+      icon: faBalanceScale,
       title: t('services.items.legal.title'),
       description: t('services.items.legal.description'),
       linkText: t('services.items.legal.link')
     },
     {
-      icon: 'fas fa-user-tie',
+      icon: faUserTie,
       title: t('services.items.freelancer.title'),
       description: t('services.items.freelancer.description'),
       linkText: t('services.items.freelancer.link')
     },
     {
-      icon: 'fas fa-suitcase-rolling',
+      icon: faSuitcaseRolling,
       title: t('services.items.relocation.title'),
       description: t('services.items.relocation.description'),
       linkText: t('services.items.relocation.link')
     },
     {
-      icon: 'fas fa-hand-holding-usd',
+      icon: faHandHoldingUsd,
       title: t('services.items.facilitated_finance.title'),
       description: t('services.items.facilitated_finance.description'),
       linkText: t('services.items.facilitated_finance.link')
     },
     {
-      icon: 'fas fa-leaf',
+      icon: faLeaf,
       title: t('services.items.agriculture.title'),
       description: t('services.items.agriculture.description'),
       linkText: t('services.items.agriculture.link')
     },
     {
-      icon: 'fas fa-id-card',
+      icon: faIdCard,
       title: t('services.items.partita_iva.title'),
       description: t('services.items.partita_iva.description'),
       linkText: t('services.items.partita_iva.link')
     },
     {
-      icon: 'fas fa-percentage',
+      icon: faPercentage,
       title: t('services.items.regime_forfettario.title'),
       description: t('services.items.regime_forfettario.description'),
       linkText: t('services.items.regime_forfettario.link')
     },
     {
-      icon: 'fas fa-rocket',
+      icon: faRocket,
       title: t('services.items.srl_semplificata.title'),
       description: t('services.items.srl_semplificata.description'),
       linkText: t('services.items.srl_semplificata.link')
     },
     {
-      icon: 'fas fa-laptop-code',
+      icon: faLaptopCode,
       title: t('services.items.digitalizzazione.title'),
       description: t('services.items.digitalizzazione.description'),
       linkText: t('services.items.digitalizzazione.link')
     },
     {
-      icon: 'fas fa-chart-pie',
+      icon: faChartPie,
       title: t('services.items.controllo_gestione.title'),
       description: t('services.items.controllo_gestione.description'),
       linkText: t('services.items.controllo_gestione.link')
@@ -203,7 +224,7 @@ const ServicesSection = () => {
             <span className="absolute inset-0 italian-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out rounded-lg"></span>
             <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-out">
               {t('services.cta.viewAll')}
-              <i className="fas fa-chevron-right text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+              <FontAwesomeIcon icon={faChevronRight} className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Link>
         </div>

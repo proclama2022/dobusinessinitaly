@@ -2,6 +2,20 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
 import { useLocalizedPath } from './LocalizedRouter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faLinkedinIn,
+  faLinkedin,
+  faTiktok,
+  faYoutube,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
+import {
+  faChevronRight,
+  faMapMarkerAlt,
+  faPhoneAlt,
+  faEnvelope
+} from '@fortawesome/free-solid-svg-icons';
 // Using new 3:1 aspect ratio logo from public directory with aggressive cache busting
 const timestamp = Date.now();
 const logoImage = `/images/logo.png?v=${timestamp}&t=${timestamp}`;
@@ -33,50 +47,50 @@ const Footer = () => {
             <div className="flex space-x-3 sm:space-x-4">
               {/* LinkedIn Company */}
               <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none" aria-label="LinkedIn Company">
-                <i className="fab fa-linkedin-in text-lg sm:text-base" style={{
+                <FontAwesomeIcon icon={faLinkedinIn} className="text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
                   filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
                   transform: 'translateZ(0)'
-                }}></i>
+                }} />
               </a>
               {/* LinkedIn Giovanni */}
               <a href="https://www.linkedin.com/in/studioemmicommercialista/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:italian-gradient flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none" aria-label="LinkedIn Giovanni Emmi">
-                <i className="fab fa-linkedin text-lg sm:text-base" style={{
+                <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
                   filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
                   transform: 'translateZ(0)'
-                }}></i>
+                }} />
               </a>
               <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-black flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
-                <i className="fab fa-tiktok text-lg sm:text-base" style={{
+                <FontAwesomeIcon icon={faTiktok} className="text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
                   filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
                   transform: 'translateZ(0)'
-                }}></i>
+                }} />
               </a>
               <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-[#FF0000] flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
-                <i className="fab fa-youtube text-lg sm:text-base" style={{
+                <FontAwesomeIcon icon={faYoutube} className="text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
                   filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
                   transform: 'translateZ(0)'
-                }}></i>
+                }} />
               </a>
               <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-8 sm:h-8 rounded-full bg-neutral-700 hover:bg-[#E1306C] flex items-center justify-center transition-all hover:scale-110 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-500 outline-none">
-                <i className="fab fa-instagram text-lg sm:text-base" style={{
+                <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-base" style={{
                   WebkitFontSmoothing: 'antialiased',
                   MozOsxFontSmoothing: 'grayscale',
                   textRendering: 'auto',
                   filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.2))',
                   transform: 'translateZ(0)'
-                }}></i>
+                }} />
               </a>
             </div>
           </div>
@@ -91,37 +105,37 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link href={getLocalizedPath('/')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" style={{
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'auto',
                     filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
                     transform: 'translateZ(0)'
-                  }}></i>
+                  }} />
                   {t('navigation.home')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('navigation.services')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/about')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('navigation.about')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/blog')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('navigation.blog')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/contact')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group py-2 px-3 rounded-lg touch-manipulation active:bg-neutral-800 min-h-[44px] w-full outline-none focus:bg-neutral-800 focus:ring-2 focus:ring-neutral-600">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('navigation.contact')}
                 </Link>
               </li>
@@ -138,37 +152,37 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.formation.title')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.accounting.title')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.tax.title')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.planning.title')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.payroll.title')}
                 </Link>
               </li>
               <li>
                 <Link href={getLocalizedPath('/services')} className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group">
-                  <i className="fas fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all"></i>
+                  <FontAwesomeIcon icon={faChevronRight} className="text-xs mr-2 opacity-0 group-hover:opacity-100 transition-all" />
                   {t('services.items.legal.title')}
                 </Link>
               </li>
@@ -185,13 +199,13 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-map-marker-alt text-neutral-300" style={{
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-neutral-300" style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'auto',
                     filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
                     transform: 'translateZ(0)'
-                  }}></i>
+                  }} />
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.address.value')}
@@ -199,13 +213,13 @@ const Footer = () => {
               </li>
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-phone-alt text-neutral-300" style={{
+                  <FontAwesomeIcon icon={faPhoneAlt} className="text-neutral-300" style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'auto',
                     filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
                     transform: 'translateZ(0)'
-                  }}></i>
+                  }} />
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.phone.value')}
@@ -213,13 +227,13 @@ const Footer = () => {
               </li>
               <li className="flex items-start group">
                 <div className="w-8 h-8 rounded-full bg-neutral-700 group-hover:italian-gradient flex items-center justify-center mr-3 transition-all">
-                  <i className="fas fa-envelope text-neutral-300" style={{
+                  <FontAwesomeIcon icon={faEnvelope} className="text-neutral-300" style={{
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'auto',
                     filter: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
                     transform: 'translateZ(0)'
-                  }}></i>
+                  }} />
                 </div>
                 <span className="text-neutral-400 group-hover:text-white transition-colors pt-1">
                   {t('contact.info.email.value')}

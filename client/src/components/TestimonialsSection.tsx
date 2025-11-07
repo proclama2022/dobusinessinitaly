@@ -1,6 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import NextGenImage from './NextGenImage'; // Importa il componente NextGenImage
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faStar,
+  faChevronLeft,
+  faChevronRight
+} from '@fortawesome/free-solid-svg-icons';
 
 type TestimonialProps = {
   imgSrc: string;
@@ -27,7 +33,7 @@ const Testimonial = ({ imgSrc, quote, name, position, isActive }: TestimonialPro
           <div className="md:ml-6 text-center md:text-left">
             <div className="mb-2">
               {[1, 2, 3, 4, 5].map((star) => (
-                <i key={star} className="fas fa-star text-secondary"></i>
+                <FontAwesomeIcon key={star} icon={faStar} className="text-secondary" />
               ))}
             </div>
             <blockquote className="text-neutral-700 italic mb-4">
@@ -118,7 +124,7 @@ const TestimonialsSection = () => {
             className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm text-primary border border-neutral-200 hover:bg-neutral-50 transition-all z-10"
             aria-label={t('testimonials.previous')}
           >
-            <i className="fas fa-chevron-left"></i>
+            <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           
           <button 
@@ -126,7 +132,7 @@ const TestimonialsSection = () => {
             className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm text-primary border border-neutral-200 hover:bg-neutral-50 transition-all z-10"
             aria-label={t('testimonials.next')}
           >
-            <i className="fas fa-chevron-right"></i>
+            <FontAwesomeIcon icon={faChevronRight} />
           </button>
           
           <div className="flex justify-center mt-6 space-x-2">

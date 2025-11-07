@@ -32,9 +32,13 @@ const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
  * Controlla se esiste un post con lo slug e la lingua richiesti, leggendo il frontmatter se necessario
  */
 function doesPostExist(slug: string, lang: string): boolean {
-  if (!fs.existsSync(BLOG_DIR)) return false;
+  if (!fs.existsSync(BLOG_DIR)) {
+    log(`[doesPostExist] BLOG_DIR not found: ${BLOG_DIR}`, "vite");
+    return false;
+  }
   try {
     const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx'));
+    log(`[doesPostExist] Searching for slug: ${slug}, lang: ${lang}, found ${files.length} files`, "vite");
     for (const filename of files) {
       const filePath = path.join(BLOG_DIR, filename);
       try {
@@ -44,14 +48,18 @@ function doesPostExist(slug: string, lang: string): boolean {
         const fileLanguage = langMatch?.[1] || 'it';
         const fileSlug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
         if (fileSlug === slug && fileLanguage === lang) {
+          log(`[doesPostExist] ✅ Found match: ${filename}`, "vite");
           return true;
         }
-      } catch {
-        // ignora file corrotti o leggibili
+      } catch (error: any) {
+        // Log errori di parsing per debug, ma continua la ricerca
+        log(`[doesPostExist] ⚠️ Error parsing ${filename}: ${error.message}`, "vite");
       }
     }
+    log(`[doesPostExist] ❌ No match found for slug: ${slug}, lang: ${lang}`, "vite");
     return false;
-  } catch {
+  } catch (error: any) {
+    log(`[doesPostExist] ❌ Error accessing BLOG_DIR: ${error.message}`, "vite");
     return false;
   }
 }

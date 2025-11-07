@@ -7,6 +7,21 @@ import { apiRequest } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
 import OptimizedImage from '@/components/OptimizedImage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faPaperPlane,
+  faMapMarkerAlt,
+  faPhoneAlt,
+  faEnvelope,
+  faClock,
+  faShareAlt
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faLinkedinIn,
+  faTiktok,
+  faYoutube,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons';
 
 import {
   Form,
@@ -355,7 +370,7 @@ const ContactSection = () => {
                       <span className="absolute inset-0 w-0 bg-[#ce2b37] transition-all duration-300 ease-out group-hover:w-full"></span>
                       <span className="relative flex items-center justify-center gap-2">
                         {isPending ? t('contact.form.sending') : t('contact.form.send')}
-                        <i className="fas fa-paper-plane text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+                        <FontAwesomeIcon icon={faPaperPlane} className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
                       </span>
                     </button>
                   </div>
@@ -404,7 +419,7 @@ const ContactSection = () => {
                   <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <i className="fas fa-map-marker-alt text-lg sm:text-base"></i>
+                        <FontAwesomeIcon icon={faMapMarkerAlt} className="text-lg sm:text-base" />
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
@@ -416,7 +431,7 @@ const ContactSection = () => {
                   <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <i className="fas fa-phone-alt text-lg sm:text-base"></i>
+                        <FontAwesomeIcon icon={faPhoneAlt} className="text-lg sm:text-base" />
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
@@ -432,7 +447,7 @@ const ContactSection = () => {
                   <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <i className="fas fa-envelope text-lg sm:text-base"></i>
+                        <FontAwesomeIcon icon={faEnvelope} className="text-lg sm:text-base" />
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
@@ -448,7 +463,7 @@ const ContactSection = () => {
                   <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <i className="fas fa-clock text-lg sm:text-base"></i>
+                        <FontAwesomeIcon icon={faClock} className="text-lg sm:text-base" />
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
@@ -461,22 +476,22 @@ const ContactSection = () => {
               
               <div>
                 <h3 className="text-lg font-heading font-semibold mb-4 relative inline-flex items-center">
-                  <i className="fas fa-share-alt text-[#ce2b37] mr-2"></i>
+                  <FontAwesomeIcon icon={faShareAlt} className="text-[#ce2b37] mr-2" />
                   <span>{t('contact.info.social')}</span>
                 </h3>
                 
                 <div className="flex space-x-3 sm:space-x-4">
                   <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="LinkedIn">
-                    <i className="fab fa-linkedin-in text-lg sm:text-base"></i>
+                    <FontAwesomeIcon icon={faLinkedinIn} className="text-lg sm:text-base" />
                   </a>
                   <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="TikTok">
-                    <i className="fab fa-tiktok text-lg sm:text-base"></i>
+                    <FontAwesomeIcon icon={faTiktok} className="text-lg sm:text-base" />
                   </a>
                   <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="YouTube">
-                    <i className="fab fa-youtube text-lg sm:text-base"></i>
+                    <FontAwesomeIcon icon={faYoutube} className="text-lg sm:text-base" />
                   </a>
                   <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="Instagram">
-                    <i className="fab fa-instagram text-lg sm:text-base"></i>
+                    <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-base" />
                   </a>
                 </div>
               </div>
