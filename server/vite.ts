@@ -95,11 +95,37 @@ function isValidSPARoute(url: string): boolean {
   }
   
   // Gestione route blog senza lingua: /blog/{slug}
+  // NOTA: Queste route sono permesse per retrocompatibilità, ma dovrebbero essere reindirizzate
+  // con redirect 301 alla versione con prefisso lingua per SEO
   const blogNoLangMatch = cleanUrl.match(/^\/blog\/([^/]+)$/);
   if (blogNoLangMatch) {
     const slug = blogNoLangMatch[1];
-    const exists = doesPostExist(slug, 'it');
-    return exists; // true -> 200, false -> 404 hard
+    // Cerca in tutte le lingue per determinare quale lingua usare
+    for (const lang of supportedLanguages) {
+      if (doesPostExist(slug, lang)) {
+        log(`[isValidSPARoute] Found post ${slug} in language ${lang}, should redirect to /${lang}/blog/${slug}`, "vite");
+        return true; // Permetti la route ma dovrebbe essere reindirizzata
+      }
+    }
+    return false; // 404 hard se non trovato in nessuna lingua
+  }
+  
+  // Gestione route blog senza /blog/ e senza lingua: /{slug}
+  // Queste route NON dovrebbero essere permesse - devono essere reindirizzate
+  // Controlla se potrebbe essere uno slug di blog (non inizia con lingua supportata)
+  const possibleBlogSlugMatch = cleanUrl.match(/^\/([^/]+)$/);
+  if (possibleBlogSlugMatch) {
+    const possibleSlug = possibleBlogSlugMatch[1];
+    // Se non è una lingua supportata e non è una route base, potrebbe essere uno slug
+    if (!supportedLanguages.includes(possibleSlug) && !baseRoutes.includes(`/${possibleSlug}`)) {
+      // Cerca se esiste come post del blog
+      for (const lang of supportedLanguages) {
+        if (doesPostExist(possibleSlug, lang)) {
+          log(`[isValidSPARoute] Found blog post ${possibleSlug} without /blog/ prefix, should redirect to /${lang}/blog/${possibleSlug}`, "vite");
+          return true; // Permetti ma dovrebbe essere reindirizzato
+        }
+      }
+    }
   }
 
   // Controlla route localizzate (con prefisso lingua)

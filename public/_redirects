@@ -23,12 +23,16 @@
 /blog/impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
 /impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
 
+# Redirect per italian-tax-code (senza prefisso lingua o /blog/) - IMPORTANTE per SEO
+/blog/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
+/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
+
 # Redirect per pagine tedesche (correzione path senza prefisso lingua)
 /blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
 /wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
 
 # Redirect per articoli duplicati o con path errati (basati sui file .mdx trovati)
-/en/blog/italian-tax-code-foreigners-complete-guide-2025 /it/blog/codice-fiscale-stranieri-italia-2025-guida-completa 301
+# NOTA: italian-tax-code-foreigners-complete-guide-2025 esiste in inglese, NON reindirizzare
 /en/blog/italy-5-percent-tax-guide-expats-2025 /it/blog/italia-5-percento-imposte-guida-espatriati-2025 301
 /en/blog/how-to-open-business-italy-foreigner-complete-guide-2025 /it/blog/come-aprire-attivita-italia-straniero-guida-completa-2025 301
 /en/blog/italy-startup-visa-2025-complete-guide-foreign-entrepreneurs /it/blog/visto-startup-italia-2025-guida-completa-imprenditori-stranieri 301
