@@ -112,19 +112,22 @@ function isValidSPARoute(url: string): boolean {
   
   // Gestione route blog senza /blog/ e senza lingua: /{slug}
   // Queste route NON dovrebbero essere permesse - devono essere reindirizzate
-  // Controlla se potrebbe essere uno slug di blog (non inizia con lingua supportata)
+  // Controlla SOLO se potrebbe essere uno slug di blog (non inizia con lingua supportata)
+  // MA solo dopo aver verificato che non è una route base valida
   const possibleBlogSlugMatch = cleanUrl.match(/^\/([^/]+)$/);
   if (possibleBlogSlugMatch) {
     const possibleSlug = possibleBlogSlugMatch[1];
     // Se non è una lingua supportata e non è una route base, potrebbe essere uno slug
     if (!supportedLanguages.includes(possibleSlug) && !baseRoutes.includes(`/${possibleSlug}`)) {
-      // Cerca se esiste come post del blog
+      // Cerca se esiste come post del blog SOLO se non è già gestito dalle route base
       for (const lang of supportedLanguages) {
         if (doesPostExist(possibleSlug, lang)) {
           log(`[isValidSPARoute] Found blog post ${possibleSlug} without /blog/ prefix, should redirect to /${lang}/blog/${possibleSlug}`, "vite");
-          return true; // Permetti ma dovrebbe essere reindirizzato
+          return true; // Permetti ma dovrebbe essere reindirizzato tramite _redirects
         }
       }
+      // Se non è un post del blog, non è una route valida
+      return false;
     }
   }
 
