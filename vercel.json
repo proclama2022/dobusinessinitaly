@@ -2712,11 +2712,11 @@
     { "source": "/services/open-vat-number-italy", "destination": "/it/services/open-vat-number-italy", "permanent": true },
     { "source": "/en/blog/opening-bank-account-italy-foreigner-2025-guide.en-en", "destination": "/en/blog/opening-bank-account-italy-foreigner-2025-guide", "permanent": true },
     { "source": "/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025.fr-fr", "destination": "/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025", "permanent": true },
-    { "source": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet.fr-fr", "destination": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet", "permanent": true },
+    { "source": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet.fr-fr", "destination": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet", "permanent": true },
     { "source": "/en/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.en-en", "destination": "/en/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia", "permanent": true },
     { "source": "/en/blog/impuestos-srl-guia-2025-emprendedores-extranjeros.es-es", "destination": "/es/blog/impuestos-srl-guia-2025-emprendedores-extranjeros", "permanent": true },
     { "source": "/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison.en-en", "destination": "/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison", "permanent": true },
-    { "source": "/en/blog/italy-tax-residency-expats-2025-complete-guide.en-en", "destination": "/en/blog/italy-tax-residency-expats-2025-complete-guide", "permanent": true },
+    { "source": "/en/blog/italy-tax-residency-expats-2025-complete-guide.en-en", "destination": "/it/blog/residenza-fiscale-italia-espatriati-2025-guida-completa", "permanent": true },
     { "source": "/en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025.es-es", "destination": "/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025", "permanent": true },
     { "source": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet.en-en", "destination": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet", "permanent": true },
     { "source": "/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025", "destination": "/de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden", "permanent": true }

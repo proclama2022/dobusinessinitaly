@@ -113,6 +113,17 @@ function isValidSPARoute(url: string): boolean {
     }
   }
   
+  // Gestione route services senza prefisso lingua: /services/{slug}
+  // Queste route sono permesse per retrocompatibilità, ma dovrebbero essere reindirizzate
+  // con redirect 301 alla versione con prefisso lingua per SEO
+  const servicesNoLangMatch = cleanUrl.match(/^\/services\/([^/]+)$/);
+  if (servicesNoLangMatch) {
+    // Route services valide senza prefisso lingua (es: /services/open-vat-number-italy)
+    // Permettiamo queste route per evitare 404, il redirect nel file _redirects farà il resto
+    log(`[isValidSPARoute] Found services route without language prefix: ${cleanUrl}, should redirect`, "vite");
+    return true; // Permetti la route ma dovrebbe essere reindirizzata
+  }
+
   // Gestione route blog senza lingua: /blog/{slug}
   // NOTA: Queste route sono permesse per retrocompatibilità, ma dovrebbero essere reindirizzate
   // con redirect 301 alla versione con prefisso lingua per SEO
@@ -153,6 +164,28 @@ function isValidSPARoute(url: string): boolean {
   // Se arriviamo qui, la route non è riconosciuta come SPA valida
   log(`[404 Detection] Invalid route detected: ${cleanUrl}`, "vite");
   return false;
+}
+
+function buildHeadTags(url: string): string {
+  const baseUrl = 'https://yourbusinessinitaly.com';
+  const cleanUrl = url.split('?')[0];
+  const match = cleanUrl.match(/^\/(it|en|de|fr|es)(\/.+)?$/);
+  const lang = match ? match[1] : 'it';
+  const canonical = cleanUrl === '/' ? baseUrl : `${baseUrl}${cleanUrl}`;
+  const routes = ['', '/services', '/about', '/blog', '/contact', '/media'];
+  const isBase = routes.some(r => cleanUrl === `/${lang}${r}` || cleanUrl === '/' || cleanUrl === r);
+  const alt = ['it','en','de','fr','es']
+    .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}${isBase && cleanUrl !== '/' ? cleanUrl.replace(/^\/[a-z]{2}/, '') : ''}" />`)
+    .join('');
+  const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}/it${isBase && cleanUrl !== '/' ? cleanUrl.replace(/^\/[a-z]{2}/, '') : ''}" />`;
+  const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
+  return `${canonicalTag}${isBase ? alt + xdef : ''}`;
+}
+
+function applyHeadTags(html: string, url: string): string {
+  const sanitized = html.replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '').replace(/<link[^>]+rel=["']alternate["'][^>]*>/gi, '');
+  const tags = buildHeadTags(url);
+  return sanitized.replace('</head>', `${tags}\n</head>`);
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -203,7 +236,8 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`,
       );
-      const page = await vite.transformIndexHtml(url, template);
+      const transformed = await vite.transformIndexHtml(url, template);
+      const page = applyHeadTags(transformed, url);
       res.status(statusCode).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
@@ -222,16 +256,18 @@ export function serveStatic(app: Express) {
   }
 
   app.use(express.static(distPath));
-
-  // Fallback intelligente per la produzione
   app.use("*", (req, res) => {
     const isValidRoute = isValidSPARoute(req.originalUrl);
     const statusCode = isValidRoute ? 200 : 404;
-    
     if (!isValidRoute) {
       log(`[404] Serving 404 status for: ${req.originalUrl}`, "static");
     }
-    
-    res.status(statusCode).sendFile(path.resolve(distPath, "index.html"));
+    try {
+      const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf-8");
+      const page = applyHeadTags(template, req.originalUrl);
+      res.status(statusCode).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e: any) {
+      res.status(500).end('Internal Server Error');
+    }
   });
 }
