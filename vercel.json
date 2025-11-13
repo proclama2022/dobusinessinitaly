@@ -2673,6 +2673,10 @@
     {
       "source": "/en/blog/aprire-partita-iva-freelance-italia-2025.en-en",
       "destination": "/it/blog/aprire-partita-iva-freelance-italia-2025"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
