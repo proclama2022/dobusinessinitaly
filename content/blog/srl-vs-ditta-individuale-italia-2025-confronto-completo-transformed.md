@@ -18,7 +18,7 @@ schemaMarkup:
   author:
     "@type": "Organization"
     name: "Yourbusinessinitaly.com"
-  image: "client/public/images/articles/i"t_cover_srl-vs-ditta-individuale-in-italia-2025-confronto-_20251105_180804.webp"
+  image: "client/public/images/articles/it_cover_srl-vs-ditta-individuale-in-italia-2025-confronto-_20251105_180804.webp"
   mainEntityOfPage: "https://yourbusinessinitaly.com/it/blog/srl-vs-ditta-individuale-italia-2025-confronto-completo"
 ---
 

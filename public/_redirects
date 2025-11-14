@@ -26,6 +26,7 @@
 # Redirect per italian-tax-code (senza prefisso lingua o /blog/) - IMPORTANTE per SEO
 /blog/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
 /italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
+/de/blog/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
 
 # Redirect per pagine tedesche (correzione path senza prefisso lingua)
 /blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
@@ -47,6 +48,9 @@
 /comment-ouvrir-entreprise-italie-etranger-guide-complet-2025 /fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025 301
 /como-abrir-negocio-italia-extranjero-guia-completa-2025 /es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025 301
 
+# Redirect per pagine services senza prefisso lingua
+/services/open-vat-number-italy /it/services/open-vat-number-italy 301
+
 # Catch-all per SPA
 /* /index.html 200
 # Redirect per errori Soft 404 - Aggiunti automaticamente
@@ -59,4 +63,4 @@
 /en/blog/italy-tax-residency-expats-2025-complete-guide.en-en /en/blog/italy-tax-residency-expats-2025-complete-guide 301
 /en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025.es-es /es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025 301
 /en/blog/residence-fiscale-italie-expatries-2025-guide-complet.en-en /en/blog/residence-fiscale-italie-expatries-2025-guide-complet 301
-/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
+/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025 /de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden 301
