@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useRouter } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
+import OptimizedImage from './OptimizedImage';
 import { supportedLanguages } from '@/lib/languages';
 // Using responsive logos: mobile (square) and desktop (3:1 ratio) with aggressive cache busting
 const timestamp = Date.now();
@@ -11,7 +12,8 @@ const logoMobile = `/images/logo_mobile.png?v=${timestamp}&t=${timestamp}`;
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [location, navigate] = useLocation();
+  const [location] = useLocation();
+  const [, navigate] = useLocation();
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const { t, i18n } = useTranslation();
 
@@ -160,7 +162,7 @@ const Header = () => {
               href={getLocalizedPath('/')} 
               className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
               aria-label="Torna alla homepage"
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.preventDefault();
                 const homePath = getLocalizedPath('/');
                 console.log('Logo clicked! Navigating to:', homePath);
@@ -168,30 +170,26 @@ const Header = () => {
               }}
             >
               {/* Logo Mobile - visible on small screens */}
-              <img
+              <OptimizedImage
                 src={logoMobile}
                 alt="YBI - Yourbusinessinitaly.com"
                 className="block sm:hidden w-12 h-12 object-contain cursor-pointer"
                 width={48}
                 height={48}
-                loading="eager"
-                decoding="sync"
-                fetchPriority="high"
+                priority={true}
                 style={{
                   objectFit: 'contain',
                   filter: 'contrast(1.2) brightness(1.1)'
                 }}
               />
               {/* Logo Desktop - visible on larger screens */}
-              <img
+              <OptimizedImage
                 src={logoDesktop}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
                 className="hidden sm:block w-24 md:w-32 lg:w-40 max-h-16 h-auto object-contain cursor-pointer"
                 width={200}
                 height={67}
-                loading="eager"
-                decoding="sync"
-                fetchPriority="high"
+                priority={true}
                 style={{
                   objectFit: 'contain',
                   filter: 'contrast(1.2) brightness(1.1)'

@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { Link } from 'wouter';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import OptimizedImage from '@/components/OptimizedImage';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -60,17 +61,12 @@ const BlogPostCard = ({
         </div>
 
         {/* Immagine articolo con attributi SEO migliorati */}
-        <img
+        <OptimizedImage
           src={imgSrc || '/images/default-blog-cover.webp'}
           alt={`${title} - Yourbusinessinitaly.com`}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-          width="600"
-          height="400"
-          loading="lazy"
-          decoding="async"
-          onError={(e) => {
-            e.currentTarget.src = '/images/default-blog-cover.webp';
-          }}
+          width={600}
+          height={400}
         />
 
         {/* Linee decorative */}
@@ -127,12 +123,11 @@ const CategoryBadge = ({
 };
 
 const Blog = () => {
-  const { t: tRaw, i18n } = useTranslation();
+  const { t: tRaw } = useTranslation();
   const t = tRaw as (key: string, options?: any) => string;
   const { language: currentLang, getLocalizedPath } = useLocalizedPath();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tutte");
-  const [location, setLocation] = useLocation();
 
   // Fetch dei post del blog dall'API, filtrando per lingua
   const queryClient = useQueryClient();
@@ -420,17 +415,13 @@ const Blog = () => {
                 </div>
 
                 {/* Immagine */}
-                <img
+                <OptimizedImage
                   src={featuredPost?.coverImage || '/images/default-blog-cover.webp'}
                   alt={featuredPost?.title || ''}
                   className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  width="1200"
-                  height="400"
-                  loading="eager"
-                  decoding="async"
-                  onError={(e) => {
-                    e.currentTarget.src = '/images/default-blog-cover.webp';
-                  }}
+                  width={1200}
+                  height={400}
+                  priority={true}
                 />
 
                 {/* Bordi decorativi */}

@@ -7,12 +7,11 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   priority?: boolean;
-  placeholder?: string;
   sizes?: string;
   srcSet?: string;
-  quality?: number;
   onLoad?: () => void;
   onError?: () => void;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -26,12 +25,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   width,
   height,
   priority = false,
-  placeholder,
   sizes,
   srcSet,
-  quality,
   onLoad,
-  onError
+  onError,
+  style
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -80,7 +78,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       <div
         ref={imgRef}
         className={`image-placeholder ${className}`}
-        style={{ width, height }}
+        style={{ width, height, ...style }}
         role="img"
         aria-label={alt}
       />
@@ -92,7 +90,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return (
       <div
         className={`bg-gray-200 flex items-center justify-center text-gray-500 text-sm ${className}`}
-        style={{ width, height }}
+        style={{ width, height, ...style }}
         role="img"
         aria-label={`Errore caricamento immagine: ${alt}`}
       >
@@ -125,7 +123,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       // Performance
       style={{
         contentVisibility: 'auto',
-        containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined
+        containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined,
+        ...style
       }}
     />
   );

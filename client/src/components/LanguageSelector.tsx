@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from '@tanstack/react-query';
 import { supportedLanguages } from '@/lib/languages';
+import OptimizedImage from './OptimizedImage';
 
 type LanguageSelectorProps = {
   isMobile?: boolean;
@@ -75,7 +76,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
               touchAction: 'manipulation'
             }}
           >
-            <img src={lang.flag} alt={`${lang.name} flag`} className="w-6 h-auto mr-3" loading="lazy" />
+            <OptimizedImage src={lang.flag} alt={`${lang.name} flag`} className="w-6 h-auto mr-3" width={24} height={16} />
             <span className="text-base">{lang.name}</span>
           </button>
         ))}
@@ -101,7 +102,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
           touchAction: 'manipulation'
         }}
       >
-        <img src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-5 h-auto mr-2" loading="lazy" />
+        <OptimizedImage src={currentLang.flag} alt={`${currentLang.name} flag`} className="w-5 h-auto mr-2" width={20} height={13} />
         <span className="mr-1 font-medium">{currentLang.code.toUpperCase()}</span>
         <i className="fas fa-chevron-down text-xs ml-1 transition-transform duration-200" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none' }}></i>
       </button>
@@ -124,7 +125,7 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
                   touchAction: 'manipulation'
                 }}
               >
-                <img src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" loading="lazy" />
+                <OptimizedImage src={lang.flag} alt={`${lang.name} flag`} className="w-5 h-auto mr-2" width={20} height={13} />
                 {lang.code.toUpperCase()}
               </button>
             ))}

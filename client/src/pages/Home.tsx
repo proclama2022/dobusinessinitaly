@@ -26,7 +26,7 @@ const Home = () => {
         title="Commercialista per Stranieri in Italia | Apertura Società e Partita IVA"
         description="Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA, regime forfettario. Consulenza fiscale in inglese. Preventivo gratuito in 24h."
         keywords="commercialista stranieri Italia, aprire società Italia, partita iva stranieri, regime forfettario, consulenza fiscale internazionale"
-        canonicalUrl={`/${currentLang}/`}
+        canonicalUrl={currentLang === 'it' ? '/' : `/${currentLang}/`}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/',
           'en': 'https://yourbusinessinitaly.com/en/',
@@ -37,14 +37,30 @@ const Home = () => {
         lang={currentLang}
       />
       <Hero />
-      <StatsSection />
-      <WhyChooseUs />
-      <ServicesSection />
-      <MediaCoverageSection maxItems={4} />
-      <BlogSection />
-      <FAQSection />
-      <NewsletterSection />
-      <ContactSection />
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <StatsSection />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <WhyChooseUs />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <ServicesSection />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <MediaCoverageSection maxItems={4} />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <BlogSection />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <FAQSection />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <NewsletterSection />
+      </div>
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}>
+        <ContactSection />
+      </div>
     </>
   );
 };
