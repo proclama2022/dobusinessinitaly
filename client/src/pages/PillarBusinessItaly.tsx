@@ -141,8 +141,8 @@ const PillarBusinessItaly = () => {
   return (
     <>
       <SEOHead
-        title={isEnglish ? "How to Start a Business in Italy 2025 - Complete Guide for Foreigners" : "Come Aprire un'Attività in Italia 2025 - Guida Completa per Stranieri"}
-        description={isEnglish ? "Complete step-by-step guide to start a business in Italy for foreigners in 2025. Learn about company formation, VAT registration, taxes, and legal requirements." : "Guida completa passo dopo passo per aprire un'attività in Italia per stranieri nel 2025. Scopri come costituire società, aprire partita IVA, tasse e requisiti legali."}
+        title={isEnglish ? "Start a Business in Italy 2025: Complete Guide for Foreigners" : "Aprire Attività in Italia 2025: Guida Completa per Stranieri"}
+        description={isEnglish ? "Step-by-step guide to start a business in Italy in 2025. Learn about company formation, VAT registration, taxes, and legal requirements for foreigners." : "Guida passo dopo passo per aprire un'attività in Italia nel 2025. Costituzione società, partita IVA, tasse e requisiti legali per stranieri."}
         keywords="start business Italy, company formation Italy, open business Italy foreigner, Italian business registration, aprire attività Italia straniero"
         canonicalUrl={`/${lang}/pillar/how-to-start-business-in-italy-2025`}
         ogType="article"

@@ -7,7 +7,7 @@ interface ResponsiveImageProps {
   width?: number;
   height?: number;
   priority?: boolean;
-  placeholder?: 'blur' | 'skeleton' | 'color';
+  placeholder?: 'blur' | 'skeleton' | 'color' | 'none';
   blurDataURL?: string;
   sizes?: string;
   quality?: number;
@@ -211,7 +211,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         {placeholder === 'skeleton' && (
           <div className="w-full h-full flex items-center justify-center">
             <div className="animate-pulse">
-              <i className="fas fa-image text-gray-400 text-2xl" aria-hidden="true"></i>
+              <i className="fas fa-image text-gray-600 text-2xl" aria-hidden="true"></i>
             </div>
           </div>
         )}
@@ -243,7 +243,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   return (
     <>
       {/* Animazione skeleton */}
-      <style jsx>{`
+      <style>{`
         @keyframes skeleton-loading {
           0% { background-position: 200% 0; }
           100% { background-position: -200% 0; }

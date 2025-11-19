@@ -24,7 +24,7 @@ const SEOHead = ({
   title,
   description,
   canonicalUrl,
-  ogImage = 'https://yourbusinessinitaly.com/images/logo.png',
+  ogImage = 'https://yourbusinessinitaly.com/images/logonew.png',
   ogType = 'website',
   twitterCard = 'summary_large_image',
   keywords,
@@ -59,7 +59,7 @@ const SEOHead = ({
       name: 'Yourbusinessinitaly.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://yourbusinessinitaly.com/images/logo.png',
+        url: 'https://yourbusinessinitaly.com/images/logonew.png',
         width: 600,
         height: 600
       }
@@ -78,7 +78,7 @@ const SEOHead = ({
     '@type': 'Organization',
     name: 'Yourbusinessinitaly.com',
     url: siteUrl,
-    logo: 'https://yourbusinessinitaly.com/images/logo.png',
+    logo: 'https://yourbusinessinitaly.com/images/logonew.png',
     sameAs: [
       'https://www.linkedin.com/company/partitaiva',
       'https://www.instagram.com/partitaiva.it/',
@@ -104,11 +104,11 @@ const SEOHead = ({
     url: siteUrl,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://yourbusinessinitaly.com/images/logo.png',
+      url: 'https://yourbusinessinitaly.com/images/logonew.png',
       width: 600,
       height: 600
     },
-    image: 'https://yourbusinessinitaly.com/images/logo.png',
+    image: 'https://yourbusinessinitaly.com/images/logonew.png',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Via Gabriele D\'Annunzio, 56',
@@ -232,7 +232,7 @@ const SEOHead = ({
       'name': 'Yourbusinessinitaly.com',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://yourbusinessinitaly.com/images/logo.png'
+        'url': 'https://yourbusinessinitaly.com/images/logonew.png'
       }
     },
     'mainEntityOfPage': {

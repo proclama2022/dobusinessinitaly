@@ -24,6 +24,7 @@ interface BlogPostMeta {
   author: string;
   authorImage?: string;
   authorTitle?: string;
+  lang?: string;
   leadMagnet?: {
     title: string;
     description: string;
@@ -69,7 +70,6 @@ const RelatedPostCard = ({
             ${imgSrc}?auto=format&fit=crop&w=960&q=75 960w,
             ${imgSrc}?auto=format&fit=crop&w=1280&q=80 1280w
           ` : undefined}
-          quality={80}
         />
 
         {/* Linee decorative */}
@@ -111,7 +111,7 @@ const BlogPost = () => {
 
   // Use the language from URL params if available, otherwise use i18n language
   const currentLanguage = lang || i18n.language;
-  
+
   console.log('[BlogPost] Params:', params);
   console.log('[BlogPost] Current language:', currentLanguage);
   console.log('[BlogPost] i18n language:', i18n.language);
@@ -141,6 +141,14 @@ const BlogPost = () => {
     ),
   });
 
+  const { data: allLangPostsData } = useQuery({
+    queryKey: ['/api/blog', 'all-langs'],
+    queryFn: () => apiRequest<{ success: boolean, data: BlogPostMeta[] }>(
+      `/api/blog?lang=all`,
+      { method: 'GET' }
+    ),
+  });
+
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -149,29 +157,29 @@ const BlogPost = () => {
     if (postData?.data?.meta?.title) {
       document.title = `${postData.data.meta.title} - Yourbusinessinitaly.com`;
     } else {
-              document.title = `Blog - Yourbusinessinitaly.com`;
+      document.title = `Blog - Yourbusinessinitaly.com`;
     }
   }, [postData]);
 
   // Ottieni post correlati con strategia migliorata per SEO
   const relatedPosts = postsData?.data
     ? (() => {
-        // Prima cerca post nella stessa categoria
-        const sameCategoryPosts = postsData.data
-          .filter(post => post.category === postData?.data?.meta?.category && post.slug !== slug);
+      // Prima cerca post nella stessa categoria
+      const sameCategoryPosts = postsData.data
+        .filter(post => post.category === postData?.data?.meta?.category && post.slug !== slug);
 
-        // Se abbiamo abbastanza post nella stessa categoria, usiamo quelli
-        if (sameCategoryPosts.length >= 3) {
-          return sameCategoryPosts.slice(0, 3);
-        }
+      // Se abbiamo abbastanza post nella stessa categoria, usiamo quelli
+      if (sameCategoryPosts.length >= 3) {
+        return sameCategoryPosts.slice(0, 3);
+      }
 
-        // Altrimenti, aggiungiamo altri post recenti di categorie diverse
-        const otherPosts = postsData.data
-          .filter(post => post.category !== postData?.data?.meta?.category && post.slug !== slug)
-          .slice(0, 3 - sameCategoryPosts.length);
+      // Altrimenti, aggiungiamo altri post recenti di categorie diverse
+      const otherPosts = postsData.data
+        .filter(post => post.category !== postData?.data?.meta?.category && post.slug !== slug)
+        .slice(0, 3 - sameCategoryPosts.length);
 
-        return [...sameCategoryPosts, ...otherPosts];
-      })()
+      return [...sameCategoryPosts, ...otherPosts];
+    })()
     : [];
 
   // Rendering condizionale in base allo stato
@@ -218,7 +226,7 @@ const BlogPost = () => {
 
   const { meta, content } = postData.data;
   const langPrefix = `/${currentLanguage}`;
-  
+
   // Localized author title from profile (fallback to meta or IT)
   const resolvedAuthorTitle = authorProfile.titles[currentLanguage] || meta.authorTitle || authorProfile.titles.it;
   const resolvedAuthorImage = (meta.authorImage && meta.authorImage.trim().length > 0 ? meta.authorImage : authorProfile.image);
@@ -319,17 +327,48 @@ const BlogPost = () => {
   } : null;
 
   // Genera hreflang alternates per SEO internazionale
-  const hreflangAlternates: Record<string,string> = {
-    'it': `https://yourbusinessinitaly.com/it/blog/${meta.slug}`,
-    'en': `https://yourbusinessinitaly.com/en/blog/${meta.slug}`,
-    'fr': `https://yourbusinessinitaly.com/fr/blog/${meta.slug}`,
-    'de': `https://yourbusinessinitaly.com/de/blog/${meta.slug}`,
-    'es': `https://yourbusinessinitaly.com/es/blog/${meta.slug}`,
-    'x-default': `https://yourbusinessinitaly.com/it/blog/${meta.slug}`
-  };
+  const baseSlug = meta.slug.replace(/-(it|en|de|fr|es)$/, '');
+  const hreflangAlternates: Record<string, string> = (() => {
+    const map: Record<string, string> = {};
+    const variants = (allLangPostsData?.data || []).filter(p => p.slug.replace(/-(it|en|de|fr|es)$/, '') === baseSlug);
+    const langs = ['it', 'en', 'fr', 'de', 'es'];
+    langs.forEach(l => {
+      const v = variants.find(p => p.lang === l);
+      if (v) map[l] = `https://yourbusinessinitaly.com/${l}/blog/${v.slug}`;
+    });
+    if (!map['it']) map['it'] = `https://yourbusinessinitaly.com/it/blog/${meta.slug}`;
+    map['x-default'] = map['it'];
+    return map;
+  })();
 
   // Formatta la data per i meta tag
   const formattedDate = new Date(meta.date).toISOString();
+
+  // Breadcrumb structured data
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('navigation.home', 'Home'),
+        item: `https://yourbusinessinitaly.com/${currentLanguage}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('navigation.blog', 'Blog'),
+        item: `https://yourbusinessinitaly.com/${currentLanguage}/blog`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: meta.title,
+        item: `https://yourbusinessinitaly.com${langPrefix}/blog/${meta.slug}`
+      }
+    ]
+  };
 
   return (
     <>
@@ -346,7 +385,7 @@ const BlogPost = () => {
         publishedTime={formattedDate}
         modifiedTime={formattedDate}
         articleSection={meta.category}
-    structuredData={[articleStructuredData, faqStructuredData, authorPersonStructuredData].filter(Boolean)}
+        structuredData={[articleStructuredData, faqStructuredData, authorPersonStructuredData, breadcrumbStructuredData].filter(Boolean)}
         alternates={hreflangAlternates}
       />
 
@@ -459,7 +498,7 @@ const BlogPost = () => {
                   {t('blog.contactCta.title', 'Need help on this topic?')}
                 </h3>
                 <p className="text-white/90 mb-6">
-                  {t('blog.contactCta.subtitle', 'Book a free consultation with our experts. We will review your case and suggest the best next steps.')} 
+                  {t('blog.contactCta.subtitle', 'Book a free consultation with our experts. We will review your case and suggest the best next steps.')}
                 </p>
                 <Link href={getLocalizedPath('/contact')} className="inline-block px-6 py-3 bg-white text-[#009246] font-semibold rounded-md hover:bg-gray-100 transition-colors">
                   {t('blog.contactCta.button', 'Contact us now')}
@@ -537,7 +576,7 @@ const BlogPost = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {(() => {
-              const bioTexts: Record<string, { title: string; body: string } > = {
+              const bioTexts: Record<string, { title: string; body: string }> = {
                 it: {
                   title: `Su ${authorName}`,
                   body: `${authorName} è Dottore Commercialista e Revisore Legale. Si occupa di startup e PMI innovative, expat e operazioni cross‑border. Supporta imprenditori stranieri in SRL e Partita IVA, VAT/e‑invoicing e compliance fiscale. Guida Yourbusinessinitaly.com e collabora con team legali e notarili (Proclama STP) per percorsi end‑to‑end.`

@@ -1,5 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import compression from "compression";
+import path from "path";
 import dotenv from 'dotenv';
 // Load environment variables from .env at startup
 dotenv.config();
@@ -58,17 +59,22 @@ if (!process.env.ADMIN_PASSWORD) {
     throw err;
   });
 
-if (process.env.NODE_ENV === 'development') {
-  const vite = await import('vite');
-  const viteDevMiddleware = await vite.createServer({
-    server: {
-      middlewareMode: true,
-    },
-  }).then((server) => server.middlewares);
-  app.use(viteDevMiddleware);
-} else {
-  app.use(express.static('dist/public'));
-}
+  if (process.env.NODE_ENV === 'development') {
+    const vite = await import('vite');
+    const viteDevMiddleware = await vite.createServer({
+      server: {
+        middlewareMode: true,
+      },
+    }).then((server) => server.middlewares);
+    app.use(viteDevMiddleware);
+  } else {
+    app.use(express.static('dist/public'));
+
+    // SPA fallback: serve index.html for any unknown route
+    app.use('*', (_req, res) => {
+      res.sendFile(path.resolve('dist/public/index.html'));
+    });
+  }
 
   // Use PORT from environment variable or default to 3000
   const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;

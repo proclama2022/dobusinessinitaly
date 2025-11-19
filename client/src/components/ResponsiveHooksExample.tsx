@@ -161,9 +161,8 @@ const ResponsiveHooksExample = () => {
       {/* Intersection Observer Demo */}
       <section
         ref={sectionRef}
-        className={`container mb-8 transition-all duration-1000 ${
-          isInViewport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
+        className={`container mb-8 transition-all duration-1000 ${isInViewport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
       >
         <h2 className="text-2xl font-bold mb-4">Intersection Observer Demo</h2>
         <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -337,7 +336,7 @@ const ResponsiveHooksExample = () => {
       <footer className="bg-gray-800 text-white py-8 mt-12">
         <div className="container text-center">
           <h3 className="text-lg font-semibold mb-2">YourBusinessInItaly</h3>
-          <p className="text-gray-400 mb-4">
+          <p className="text-gray-600 mb-4">
             Demo responsive hooks - Dimensione viewport: {width}x{height}px
           </p>
           <div className="flex justify-center space-x-4 text-sm">

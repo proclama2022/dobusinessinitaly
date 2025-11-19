@@ -54,18 +54,16 @@ const CookieBanner = () => {
   return (
     <>
       {/* Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${
-          showPreferences ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${showPreferences ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setShowPreferences(false)}
       />
 
       {/* Cookie Banner */}
-      <div 
-        className={`fixed top-0 left-0 right-0 bg-white shadow-lg border-b-2 border-[#009246] z-50 transform transition-transform duration-500 ease-out ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
+      <div
+        className={`fixed top-0 left-0 right-0 bg-white shadow-lg border-b-2 border-[#009246] z-50 transform transition-transform duration-500 ease-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
+          }`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -111,8 +109,8 @@ const CookieBanner = () => {
 
           {/* Learn More Link */}
           <div className="mt-3 pt-3 border-t border-gray-200">
-            <Link 
-              href={getLocalizedPath('/privacy-policy')} 
+            <Link
+              href={getLocalizedPath('/privacy-policy')}
               className="text-xs text-[#009246] hover:underline inline-flex items-center gap-1"
             >
               <i className="fas fa-info-circle text-xs"></i>
@@ -134,7 +132,8 @@ const CookieBanner = () => {
                 </h3>
                 <button
                   onClick={() => setShowPreferences(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-500 hover:text-gray-700 transition-colors"
+                  aria-label="Close preferences modal"
                 >
                   <i className="fas fa-times text-xl"></i>
                 </button>
@@ -179,13 +178,11 @@ const CookieBanner = () => {
                 <div className="flex-shrink-0">
                   <button
                     onClick={() => setPreferences(prev => ({ ...prev, analytics: !prev.analytics }))}
-                    className={`w-12 h-6 rounded-full relative transition-colors duration-200 ${
-                      preferences.analytics ? 'bg-[#009246]' : 'bg-gray-300'
-                    }`}
+                    className={`w-12 h-6 rounded-full relative transition-colors duration-200 ${preferences.analytics ? 'bg-[#009246]' : 'bg-gray-300'
+                      }`}
                   >
-                    <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform duration-200 ${
-                      preferences.analytics ? 'translate-x-6' : 'translate-x-0.5'
-                    }`}></div>
+                    <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform duration-200 ${preferences.analytics ? 'translate-x-6' : 'translate-x-0.5'
+                      }`}></div>
                   </button>
                 </div>
               </div>
@@ -203,13 +200,11 @@ const CookieBanner = () => {
                 <div className="flex-shrink-0">
                   <button
                     onClick={() => setPreferences(prev => ({ ...prev, marketing: !prev.marketing }))}
-                    className={`w-12 h-6 rounded-full relative transition-colors duration-200 ${
-                      preferences.marketing ? 'bg-[#009246]' : 'bg-gray-300'
-                    }`}
+                    className={`w-12 h-6 rounded-full relative transition-colors duration-200 ${preferences.marketing ? 'bg-[#009246]' : 'bg-gray-300'
+                      }`}
                   >
-                    <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform duration-200 ${
-                      preferences.marketing ? 'translate-x-6' : 'translate-x-0.5'
-                    }`}></div>
+                    <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform duration-200 ${preferences.marketing ? 'translate-x-6' : 'translate-x-0.5'
+                      }`}></div>
                   </button>
                 </div>
               </div>

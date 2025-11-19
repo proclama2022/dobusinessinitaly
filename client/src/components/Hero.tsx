@@ -40,7 +40,7 @@ const Hero = () => {
       {/* Background con immagine e overlay sfumato */}
       <div className="absolute inset-0 bg-black opacity-50 z-[2]"></div>
       <OptimizedImage
-        src="/images/articles/uk_italy_business_cover_v2.webp"
+        src="/images/heronew.png"
         alt="Commercialista per stranieri in Italia che aiuta imprenditori internazionali con consulenza fiscale e apertura società"
         className="absolute inset-0 w-full h-full object-cover hero-image z-[1]"
         priority={true}

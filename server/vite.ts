@@ -172,8 +172,37 @@ function buildHeadTags(url: string): string {
   const match = cleanUrl.match(/^\/(it|en|de|fr|es)(\/.+)?$/);
   const lang = match ? match[1] : 'it';
   const canonical = cleanUrl === '/' ? baseUrl : `${baseUrl}${cleanUrl}`;
-  const routes = ['', '/services', '/about', '/blog', '/contact', '/media'];
+  const routes = ['', '/services', '/about', '/blog', '/contact', '/media', '/privacy-policy', '/cookie-policy', '/social'];
   const isBase = routes.some(r => cleanUrl === `/${lang}${r}` || cleanUrl === '/' || cleanUrl === r);
+
+  const blogMatch = cleanUrl.match(/^\/(it|en|de|fr|es)\/blog\/([^/]+)$/);
+  if (blogMatch) {
+    const slug = blogMatch[2];
+    const files = fs.existsSync(BLOG_DIR) ? fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx')) : [];
+    const variants: Record<string,string> = {};
+    for (const filename of files) {
+      try {
+        const fileContents = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf8');
+        const { data } = matter(fileContents);
+        const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
+        const fileLanguage = langMatch?.[1] || 'it';
+        const fileSlug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
+        const baseSlug = fileSlug.replace(/-(it|en|de|fr|es)$/, '');
+        const requestedBase = slug.replace(/-(it|en|de|fr|es)$/, '');
+        if (baseSlug === requestedBase) {
+          variants[fileLanguage] = fileSlug;
+        }
+      } catch {}
+    }
+    const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
+    const alt = ['it','en','de','fr','es']
+      .filter(l => variants[l])
+      .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}/blog/${variants[l]}" />`)
+      .join('');
+    const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}/it/blog/${variants['it'] ?? slug}" />`;
+    return `${canonicalTag}${alt}${xdef}`;
+  }
+
   const alt = ['it','en','de','fr','es']
     .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}${isBase && cleanUrl !== '/' ? cleanUrl.replace(/^\/[a-z]{2}/, '') : ''}" />`)
     .join('');

@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const SITEMAP_PATH = path.join(__dirname, '../../client/public');
+const DIST_SITEMAP_PATH = path.join(__dirname, '../../dist/public');
 const BLOG_CONTENT_PATH = path.join(__dirname, '../../content/blog');
 
 interface BlogPost {
@@ -148,9 +149,9 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
     const alternates: { [key: string]: string } = {};
     const languages = ['it', 'en', 'de', 'fr', 'es'];
     languages.forEach(lang => {
-      alternates[lang] = `https://yourbusinessinitaly.com/${lang}${pathNoLang ? `/${pathNoLang}` : ''}`;
+      alternates[lang] = `https://yourbusinessinitaly.com/${lang}${pathNoLang ? `/${pathNoLang}` : '/'}`;
     });
-    alternates['x-default'] = `https://yourbusinessinitaly.com/it${pathNoLang ? `/${pathNoLang}` : ''}`;
+    alternates['x-default'] = `https://yourbusinessinitaly.com/it${pathNoLang ? `/${pathNoLang}` : '/'}`;
     return alternates;
   };
 
@@ -168,7 +169,7 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
   ];
 
   const sitemapEntries: SitemapEntry[] = staticPages.map(page => ({
-    loc: `https://yourbusinessinitaly.com/${language}${page.path ? `/${page.path}` : ''}`,
+    loc: `https://yourbusinessinitaly.com/${language}${page.path ? `/${page.path}` : '/'}`,
     lastmod: today,
     changefreq: page.changefreq,
     priority: page.priority,
@@ -234,6 +235,11 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
 </urlset>`;
 
   fs.writeFileSync(path.join(SITEMAP_PATH, `sitemap-${language}.xml`), sitemap);
+  try {
+    if (fs.existsSync(DIST_SITEMAP_PATH)) {
+      fs.writeFileSync(path.join(DIST_SITEMAP_PATH, `sitemap-${language}.xml`), sitemap);
+    }
+  } catch {}
   console.log(`Sitemap per ${language} generata con ${languagePosts.length} articoli e link alternativi.`);
 };
 
@@ -459,6 +465,11 @@ export const generateMainSitemap = () => {
 </urlset>`;
 
   fs.writeFileSync(path.join(SITEMAP_PATH, 'sitemap.xml'), sitemap);
+  try {
+    if (fs.existsSync(DIST_SITEMAP_PATH)) {
+      fs.writeFileSync(path.join(DIST_SITEMAP_PATH, 'sitemap.xml'), sitemap);
+    }
+  } catch {}
   console.log(`Sitemap principale generata con ${Object.keys(articleGroups).length} gruppi di articoli`);
 };
 
@@ -483,6 +494,11 @@ export const generateSitemapIndex = () => {
 </sitemapindex>`;
 
   fs.writeFileSync(path.join(SITEMAP_PATH, 'sitemap-index.xml'), sitemapIndexContent);
+  try {
+    if (fs.existsSync(DIST_SITEMAP_PATH)) {
+      fs.writeFileSync(path.join(DIST_SITEMAP_PATH, 'sitemap-index.xml'), sitemapIndexContent);
+    }
+  } catch {}
   console.log('Sitemap index generato con successo');
 };
 

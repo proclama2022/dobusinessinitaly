@@ -5,7 +5,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import PrivacyPolicyContent from '@/components/PrivacyPolicyContent';
 
 const PrivacyPolicy = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,8 +18,17 @@ const PrivacyPolicy = () => {
       <SEOHead
         title={`${t('privacy.title')} - Yourbusinessinitaly.com`}
         description={t('privacy.intro')}
-        canonicalUrl="/privacy-policy"
+        canonicalUrl={`/${currentLang}/privacy-policy`}
         keywords="privacy policy, privacy, protezione dati, GDPR, dati personali"
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/privacy-policy',
+          en: 'https://yourbusinessinitaly.com/en/privacy-policy',
+          fr: 'https://yourbusinessinitaly.com/fr/privacy-policy',
+          de: 'https://yourbusinessinitaly.com/de/privacy-policy',
+          es: 'https://yourbusinessinitaly.com/es/privacy-policy',
+          'x-default': 'https://yourbusinessinitaly.com/it/privacy-policy'
+        }}
       />
 
       {/* Hero section */}

@@ -6,8 +6,8 @@ import OptimizedImage from './OptimizedImage';
 import { supportedLanguages } from '@/lib/languages';
 // Using responsive logos: mobile (square) and desktop (3:1 ratio) with aggressive cache busting
 const timestamp = Date.now();
-const logoDesktop = `/images/logo.png?v=${timestamp}&t=${timestamp}`;
-const logoMobile = `/images/logo_mobile.png?v=${timestamp}&t=${timestamp}`;
+const logoDesktop = `/images/logonew.png?v=${timestamp}&t=${timestamp}`;
+const logoMobile = `/images/logonew.png?v=${timestamp}&t=${timestamp}`;
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -173,9 +173,9 @@ const Header = () => {
               <OptimizedImage
                 src={logoMobile}
                 alt="YBI - Yourbusinessinitaly.com"
-                className="block sm:hidden w-12 h-12 object-contain cursor-pointer"
-                width={48}
-                height={48}
+                className="block sm:hidden w-14 h-14 object-contain cursor-pointer"
+                width={56}
+                height={56}
                 priority={true}
                 style={{
                   objectFit: 'contain',
@@ -186,9 +186,9 @@ const Header = () => {
               <OptimizedImage
                 src={logoDesktop}
                 alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="hidden sm:block w-24 md:w-32 lg:w-40 max-h-16 h-auto object-contain cursor-pointer"
-                width={200}
-                height={67}
+                className="hidden sm:block w-28 md:w-40 lg:w-52 max-h-20 h-auto object-contain cursor-pointer"
+                width={208}
+                height={75}
                 priority={true}
                 style={{
                   objectFit: 'contain',

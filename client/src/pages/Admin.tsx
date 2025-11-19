@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const PASSWORD = 'supersegreta';
 
@@ -24,7 +25,7 @@ const AdminPage = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   // Stato per lista articoli
-  const [posts, setPosts] = useState<{slug:string; title:string; date:string;}[]>([]);
+  const [posts, setPosts] = useState<{ slug: string; title: string; date: string; }[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -132,7 +133,7 @@ const AdminPage = () => {
       if (data.success) {
         setPosts(data.data);
       }
-    } catch(err) {
+    } catch (err) {
       console.error('Errore fetch posts', err);
     } finally {
       setLoadingPosts(false);
@@ -145,8 +146,8 @@ const AdminPage = () => {
     }
   }, [authenticated]);
 
-  const handleDelete = async (slug:string) => {
-    if(!confirm(`Confermi eliminazione dell'articolo ${slug}?`)) return;
+  const handleDelete = async (slug: string) => {
+    if (!confirm(`Confermi eliminazione dell'articolo ${slug}?`)) return;
     try {
       const res = await fetch(`/api/blog/${slug}`, {
         method: 'DELETE',
@@ -157,9 +158,9 @@ const AdminPage = () => {
         setPosts(p => p.filter(post => post.slug !== slug));
         alert('Articolo eliminato e sitemap aggiornata');
       } else {
-        alert('Errore: '+data.message);
+        alert('Errore: ' + data.message);
       }
-    } catch(err) {
+    } catch (err) {
       alert('Errore rete');
     }
   };
@@ -200,7 +201,7 @@ const AdminPage = () => {
                   <button onClick={() => handleDelete(post.slug)} className="text-red-600 underline">Elimina</button>
                 </li>
               ))}
-              {posts.length===0 && <li>Nessun articolo</li>}
+              {posts.length === 0 && <li>Nessun articolo</li>}
             </ul>
           )}
         </div>
@@ -224,24 +225,30 @@ const AdminPage = () => {
           <div>
             <label className="block font-medium mb-1">Immagine di copertina</label>
             <div className="space-y-2">
-              <input 
-                type="file" 
-                accept="image/*" 
+              <input
+                type="file"
+                accept="image/*"
                 onChange={handleImageUpload}
                 className="w-full border rounded px-3 py-2"
                 disabled={uploadingImage}
               />
               {uploadingImage && <div className="text-blue-600 text-sm">Caricamento immagine...</div>}
-              <input 
-                name="coverImage" 
-                value={form.coverImage} 
-                onChange={handleChange} 
-                className="w-full border rounded px-3 py-2" 
+              <input
+                name="coverImage"
+                value={form.coverImage}
+                onChange={handleChange}
+                className="w-full border rounded px-3 py-2"
                 placeholder="URL immagine (si popola automaticamente dopo upload)"
                 readOnly
               />
               {form.coverImage && (
-                <img src={form.coverImage} alt="Preview" className="w-20 h-20 object-cover rounded mt-2" />
+                <OptimizedImage
+                  src={form.coverImage}
+                  alt="Preview"
+                  className="w-20 h-20 object-cover rounded mt-2"
+                  width={80}
+                  height={80}
+                />
               )}
             </div>
           </div>

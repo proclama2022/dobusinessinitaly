@@ -4,7 +4,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import SEOHead from '@/components/SEOHead';
 
 const CookiePolicy = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
   useEffect(() => {
     document.title = `${t('cookies.policy.title')} - Yourbusinessinitaly.com`;
@@ -15,7 +16,16 @@ const CookiePolicy = () => {
       <SEOHead 
         title={`${t('cookies.policy.title')} - Yourbusinessinitaly.com`}
         description={t('cookies.policy.intro')}
-        canonicalUrl="/cookie-policy"
+        canonicalUrl={`/${currentLang}/cookie-policy`}
+        lang={currentLang}
+        alternates={{
+          it: 'https://yourbusinessinitaly.com/it/cookie-policy',
+          en: 'https://yourbusinessinitaly.com/en/cookie-policy',
+          fr: 'https://yourbusinessinitaly.com/fr/cookie-policy',
+          de: 'https://yourbusinessinitaly.com/de/cookie-policy',
+          es: 'https://yourbusinessinitaly.com/es/cookie-policy',
+          'x-default': 'https://yourbusinessinitaly.com/it/cookie-policy'
+        }}
       />
       
       <main className="min-h-screen bg-white">
@@ -180,4 +190,4 @@ const CookiePolicy = () => {
   );
 };
 
-export default CookiePolicy; 
+export default CookiePolicy;

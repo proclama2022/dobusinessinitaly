@@ -23,8 +23,8 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title="Commercialista per Stranieri in Italia | Apertura Società e Partita IVA"
-        description="Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA, regime forfettario. Consulenza fiscale in inglese. Preventivo gratuito in 24h."
+        title="Commercialista per Stranieri | Apertura Società Italia"
+        description="Commercialista per stranieri in Italia. Apertura società, partita IVA e regime forfettario. Consulenza fiscale in inglese. Richiedi preventivo in 24h."
         keywords="commercialista stranieri Italia, aprire società Italia, partita iva stranieri, regime forfettario, consulenza fiscale internazionale"
         canonicalUrl={currentLang === 'it' ? '/' : `/${currentLang}/`}
         alternates={{

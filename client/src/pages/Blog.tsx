@@ -150,30 +150,30 @@ const Blog = () => {
   // Ensure we have accurate data and UI translations when language changes
   useEffect(() => {
     console.log(`[Blog] Language changed to: ${currentLang}`);
-    
+
     // Force data refetch
     queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
 
     // Update UI text
     document.title = `${t('navigation.blog')} - Yourbusinessinitaly.com`;
-    
+
   }, [currentLang, queryClient, t]);
 
   // Estratti tutte le categorie uniche dai post
   const uniqueCategories = postsData?.data
     ? (() => {
-        // Utilizziamo un approccio senza Set per evitare problemi con TypeScript
-        const categories = new Array<string>();
-        categories.push('Tutte');
+      // Utilizziamo un approccio senza Set per evitare problemi con TypeScript
+      const categories = new Array<string>();
+      categories.push('Tutte');
 
-        postsData.data.forEach(post => {
-          if (!categories.includes(post.category)) {
-            categories.push(post.category);
-          }
-        });
+      postsData.data.forEach(post => {
+        if (!categories.includes(post.category)) {
+          categories.push(post.category);
+        }
+      });
 
-        return categories;
-      })()
+      return categories;
+    })()
     : ['Tutte'];
 
   // Categorie per il filtro con stato attivo
@@ -185,15 +185,15 @@ const Blog = () => {
   // Filtra i post in base alla ricerca e alla categoria selezionata
   const filteredPosts = postsData?.data
     ? postsData.data.filter(post => {
-        const matchesSearch = searchTerm === "" ||
-          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = searchTerm === "" ||
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const matchesCategory = selectedCategory === "Tutte" ||
-          post.category === selectedCategory;
+      const matchesCategory = selectedCategory === "Tutte" ||
+        post.category === selectedCategory;
 
-        return matchesSearch && matchesCategory;
-      })
+      return matchesSearch && matchesCategory;
+    })
     : [];
 
 
@@ -266,6 +266,26 @@ const Blog = () => {
     }))
   };
 
+  // Breadcrumb structured data
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('navigation.home', 'Home'),
+        item: `https://yourbusinessinitaly.com/${currentLang}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('navigation.blog', 'Blog'),
+        item: `https://yourbusinessinitaly.com/${currentLang}/blog`
+      }
+    ]
+  };
+
   return (
     <>
       <SEOHead
@@ -282,7 +302,7 @@ const Blog = () => {
           es: 'https://yourbusinessinitaly.com/es/blog',
           'x-default': 'https://yourbusinessinitaly.com/it/blog'
         }}
-        structuredData={[blogStructuredData, blogPostsStructuredData]}
+        structuredData={[blogStructuredData, blogPostsStructuredData, breadcrumbStructuredData]}
       />
 
       {/* Hero section con intestazione */}
@@ -444,11 +464,11 @@ const Blog = () => {
                   <i className="fas fa-user mr-2"></i> {featuredPost?.author}
                 </p>
 
-              {/* CTA */}
-              <Link href={getLocalizedPath(`/blog/${featuredPost?.slug}`)} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
-                {t('blog.readMore')}
-                <i className="fas fa-arrow-right ml-2 text-sm"></i>
-              </Link>
+                {/* CTA */}
+                <Link href={getLocalizedPath(`/blog/${featuredPost?.slug}`)} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
+                  {t('blog.readMore')}
+                  <i className="fas fa-arrow-right ml-2 text-sm"></i>
+                </Link>
               </div>
             </div>
           </div>

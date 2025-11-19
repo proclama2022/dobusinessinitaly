@@ -985,5 +985,82 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Rotte esplicite per servire sitemap come XML, bypassando eventuali fallback SPA
+  const PUBLIC_DIR_DEV = path.join(process.cwd(), 'client', 'public');
+  const PUBLIC_DIR_DIST = path.join(process.cwd(), 'dist', 'public');
+
+  function getPublicDir(): string {
+    const isProd = process.env.NODE_ENV === 'production';
+    const dir = isProd ? PUBLIC_DIR_DIST : PUBLIC_DIR_DEV;
+    return dir;
+  }
+
+  app.get('/sitemap.xml', (req: Request, res: Response) => {
+    const filePath = path.join(getPublicDir(), 'sitemap.xml');
+    res.type('application/xml');
+    res.sendFile(filePath);
+  });
+
+  app.get('/sitemap-index.xml', (req: Request, res: Response) => {
+    const filePath = path.join(getPublicDir(), 'sitemap-index.xml');
+    res.type('application/xml');
+    res.sendFile(filePath);
+  });
+
+  app.get('/sitemap-:lang.xml', (req: Request, res: Response) => {
+    const lang = (req.params.lang || '').toLowerCase();
+    const fileName = `sitemap-${lang}.xml`;
+    const filePath = path.join(getPublicDir(), fileName);
+    res.type('application/xml');
+    res.sendFile(filePath);
+  });
+
+  // Redirect SEO: servizi senza prefisso lingua -> versione italiana
+  app.get('/services/:slug', (req: Request, res: Response) => {
+    const { slug } = req.params;
+    const target = `/it/services/${slug}`;
+    res.redirect(301, target);
+  });
+
+  // Helper: trova varianti linguistiche di un post
+  function findPostVariants(baseSlug: string): Record<string, string> {
+    const posts = getAllPostsForAllLanguages();
+    const map: Record<string, string> = {};
+    for (const p of posts) {
+      const b = p.slug.replace(/-(it|en|de|fr|es)$/,'');
+      if (b === baseSlug) {
+        map[p.lang] = p.slug;
+      }
+    }
+    return map;
+  }
+
+  // Redirect SEO: /blog/:slug senza lingua -> versione esistente (preferenza IT)
+  app.get('/blog/:slug', (req: Request, res: Response) => {
+    const { slug } = req.params;
+    const base = slug.replace(/-(it|en|de|fr|es)$/,'');
+    const variants = findPostVariants(base);
+    const targetLang = variants['it'] ? 'it' : (variants['en'] ? 'en' : (Object.keys(variants)[0] || 'it'));
+    const targetSlug = variants[targetLang] || slug;
+    const target = `/${targetLang}/blog/${targetSlug}`;
+    res.redirect(301, target);
+  });
+
+  // Redirect SEO: /:slug (senza /blog) che è probabilmente un post -> alla variante con lingua
+  app.get('/:slug', (req: Request, res: Response, next: NextFunction) => {
+    const { slug } = req.params;
+    // ignora se slug è una lingua o route base
+    const baseRoutes = new Set(['', 'services', 'about', 'blog', 'contact', 'media', 'admin', 'privacy-policy', 'cookie-policy', 'social']);
+    const supportedLanguages = new Set(['it','en','de','fr','es']);
+    if (supportedLanguages.has(slug) || baseRoutes.has(slug)) return next();
+    const base = slug.replace(/-(it|en|de|fr|es)$/,'');
+    const variants = findPostVariants(base);
+    if (Object.keys(variants).length === 0) return next();
+    const targetLang = variants['it'] ? 'it' : (variants['en'] ? 'en' : (Object.keys(variants)[0] || 'it'));
+    const targetSlug = variants[targetLang] || slug;
+    const target = `/${targetLang}/blog/${targetSlug}`;
+    res.redirect(301, target);
+  });
+
   return createServer(app);
 }

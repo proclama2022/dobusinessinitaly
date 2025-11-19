@@ -1,268 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="YourBusinessInItaly">
-    <meta name="theme-color" content="#2563eb">
+<html>
 
-    <!-- Additional mobile optimization -->
-    <meta name="format-detection" content="telephone=yes">
-    <meta name="format-detection" content="email=yes">
-    <meta name="format-detection" content="address=no">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <title>Commercialista per Stranieri in Italia 2025 | Apertura Società & Partita IVA</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="YourBusinessInItaly">
+  <meta name="theme-color" content="#2563eb">
 
-    <!-- DNS prefetch per domini esterni -->
-    <link rel="dns-prefetch" href="//images.unsplash.com">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
-    <!-- Preconnect per fonts con priorità alta -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Additional mobile optimization -->
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="format-detection" content="email=yes">
+  <meta name="format-detection" content="address=no">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <!-- Title will be set dynamically by React -->
+  <title>YourBusinessInItaly - Business and Tax Services for Foreigners in Italy</title>
 
-    <!-- Preload hero image locale per LCP -->
-    <link rel="preload" as="image" href="/images/articles/uk_italy_business_cover_v2.webp" fetchpriority="high">
+  <!-- DNS prefetch per domini esterni -->
+  <link rel="dns-prefetch" href="//images.unsplash.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 
-    <!-- CSS critico inline per FCP ottimizzato - Minimal -->
-    <style>
-      /* CSS critico essenziale per FCP - Ultra ottimizzato */
-      *{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.5;background:#f5f7fa;color:#495057;overflow-x:hidden}
-      .hero{display:flex;align-items:center;justify-content:center;text-align:center;min-height:35vh;padding:1rem}
-      .hero h1{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;color:#2d5016;max-width:90vw}
-      .hero p{font-size:1rem;margin-bottom:1.25rem;max-width:80vw;color:#6b7280}
-      .btn{display:inline-block;padding:0.625rem 1.25rem;background:#2d5016;color:#fff;text-decoration:none;border-radius:0.375rem;font-weight:600;font-size:0.875rem}
-      @media(min-width:640px){.hero{min-height:40vh}.hero h1{font-size:2rem}.hero p{font-size:1.125rem}}
-    </style>
+  <!-- Preconnect per fonts con priorità alta -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Preload font critici per performance con font-display: optional -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXpsog.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Preload hero image locale per LCP -->
+  <link rel="preload" as="image" href="/images/articles/uk_italy_business_cover_v2.webp" fetchpriority="high">
 
-    <!-- Font caricati asincronamente con fallback sicuro -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-    </noscript>
+  <!-- CSS critico inline per FCP ottimizzato - Minimal -->
+  <style>
+    /* CSS critico per App Shell (FCP) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-    <!-- Font Awesome completamente rimosso per migliorare performance mobile -->
-    <!-- Gli icon vengono caricati tramite SVG inline nel componente Header -->
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      background: #f5f7fa;
+      color: #495057;
+      overflow-x: hidden
+    }
 
-    <!-- Meta tag ottimizzati per mobile -->
-    <meta name="description" content="Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA e consulenza fiscale in inglese. Preventivo gratuito in 24h. Esperto in regime forfettario e start-up.">
-    <meta name="keywords" content="commercialista stranieri, aprire società Italia, partita IVA stranieri, regime forfettario, consulenza fiscale, dottore commercialista inglese, startup Italia, impresa in Italia, fiscalità stranieri, apertura ditta individuale, SRL Italia, commercialista milano, commercialista roma, commercialista firenze">
-    <meta name="author" content="Giovanni Emmi - Dottore Commercialista">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yourbusinessinitaly.com/">
+    .app-shell-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      background-color: #111;
+      background-image: linear-gradient(to right, rgba(0, 146, 70, 0.1), transparent, rgba(206, 43, 55, 0.2));
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
 
-    <!-- Additional SEO meta tags -->
-    <meta name="language" content="it">
-    <meta name="geo.region" content="IT">
-    <meta name="geo.placename" content="Italy">
-    <meta name="msvalidate.01" content="YOUR-BING-WEBMASTER-TOOL-CODE">
-    <meta name="google-site-verification" content="YOUR-GOOGLE-SITE-VERIFICATION">
-    <meta name="yandex-verification" content="YOUR-YANDEX-VERIFICATION">
+    .app-shell-content {
+      max-width: 800px;
+      z-index: 10;
+    }
 
-    <!-- Additional meta tags for user experience -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="referrer" content="origin-when-cross-origin">
+    .app-shell-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fade-in 0.5s ease-out forwards 0.1s;
+    }
 
-    <!-- Open Graph per social sharing ottimizzato -->
-    <meta property="og:title" content="Commercialista per Stranieri in Italia 2025 | Apertura Società & Partita IVA">
-    <meta property="og:description" content="Commercialista specializzato per stranieri. Apertura società, partita IVA e consulenza fiscale in inglese. Preventivo gratuito in 24h.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourbusinessinitaly.com/">
-    <meta property="og:image" content="https://yourbusinessinitaly.com/images/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Commercialista per stranieri in Italia">
-    <meta property="og:site_name" content="YourBusinessInItaly">
-    <meta property="og:locale" content="it_IT">
-    <meta property="article:author" content="Giovanni Emmi">
-    <meta property="article:publisher" content="YourBusinessInItaly">
+    .app-shell-subtitle {
+      font-size: 1.125rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fade-in 0.5s ease-out forwards 0.3s;
+    }
 
-    <!-- Twitter Card ottimizzato -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@YourBusinessItaly">
-    <meta name="twitter:creator" content="@GiovanniEmmi">
-    <meta name="twitter:title" content="Commercialista per Stranieri in Italia 2025 | Apertura Società & Partita IVA">
-    <meta name="twitter:description" content="Commercialista specializzato per stranieri. Apertura società, partita IVA e consulenza fiscale in inglese. Preventivo gratuito in 24h.">
-    <meta name="twitter:image" content="https://yourbusinessinitaly.com/images/og-image.jpg">
-    <meta name="twitter:image:alt" content="Commercialista per stranieri in Italia">
-    <meta name="twitter:domain" content="yourbusinessinitaly.com">
+    .app-shell-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      opacity: 0;
+      animation: fade-in 0.5s ease-out forwards 0.5s;
+    }
 
-    <!-- Comprehensive Schema Markup for SEO and Local Search -->
-    <script type="application/ld+json">
+    .app-shell-btn {
+      height: 50px;
+      width: 180px;
+      border-radius: 0.5rem;
+    }
+
+    .app-shell-btn-primary {
+      background: white;
+    }
+
+    .app-shell-btn-secondary {
+      border: 2px solid white;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .app-shell-title {
+        font-size: 2rem;
+      }
+
+      .app-shell-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .app-shell-btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+
+  <!-- Preload font critici per performance con font-display: optional -->
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font"
+    type="font/woff2" crossorigin>
+  <link rel="preload"
+    href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXpsog.woff2" as="font"
+    type="font/woff2" crossorigin>
+
+  <!-- Font caricati asincronamente con fallback sicuro -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Font Awesome completamente rimosso per migliorare performance mobile -->
+  <!-- Gli icon vengono caricati tramite SVG inline nel componente Header -->
+
+  <!-- Basic meta tags - content will be set dynamically by React -->
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="YourBusinessInItaly">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Additional meta tags for user experience -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="origin-when-cross-origin">
+
+  <!-- Open Graph - will be set dynamically -->
+  <meta property="og:title" content="YourBusinessInItaly">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://yourbusinessinitaly.com/images/logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="YourBusinessInItaly">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YourBusinessInItaly">
+  <meta name="twitter:description" content="">
+
+  <!-- Basic structured data - will be enhanced dynamically -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "ProfessionalService",
-          "name": "YourBusinessInItaly",
-          "url": "https://yourbusinessinitaly.com",
-          "telephone": "+39 123 456 7890",
-          "email": "info@yourbusinessinitaly.com",
-          "priceRange": "€€",
-          "image": "https://yourbusinessinitaly.com/images/logo.png",
-          "description": "Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA e consulenza fiscale in inglese.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via Roma 1",
-            "addressLocality": "Milano",
-            "addressRegion": "MI",
-            "postalCode": "20121",
-            "addressCountry": "IT"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 45.4642,
-            "longitude": 9.1900
-          },
-          "openingHours": [
-            "Monday 09:00-18:00",
-            "Tuesday 09:00-18:00",
-            "Wednesday 09:00-18:00",
-            "Thursday 09:00-18:00",
-            "Friday 09:00-18:00"
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+39 123 456 7890",
-            "contactType": "customer service",
-            "availableLanguage": ["Italian", "English"],
-            "email": "info@yourbusinessinitaly.com"
-          },
-          "serviceArea": {
-            "@type": "Country",
-            "name": "Italy"
-          },
-          "knowsAbout": [
-            "commercialista stranieri",
-            "apertura società Italia",
-            "partita IVA stranieri",
-            "regime forfettario",
-            "consulenza fiscale",
-            "start-up Italia"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Servizi per Stranieri in Italia",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Apertura Società SRL",
-                  "description": "Assistenza completa per apertura società a responsabilità limitata per stranieri"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Apertura Partita IVA",
-                  "description": "Apertura partita IVA e consulenza regime fiscale per stranieri"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Consulenza Regime Forfettario",
-                  "description": "Analisi e gestione regime forfettario per professionisti stranieri"
-                }
-              }
-            ]
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "127"
-          },
-          "areaServed": [
-            "Milano",
-            "Roma",
-            "Torino",
-            "Bologna",
-            "Firenze",
-            "Napoli"
-          ]
-        },
-        {
-          "@type": "Person",
-          "name": "Giovanni Emmi",
-          "jobTitle": "Dottore Commercialista",
-          "description": "Commercialista specializzato in assistenza a stranieri che vogliono aprire attività in Italia",
-          "url": "https://yourbusinessinitaly.com/about",
-          "image": "https://yourbusinessinitaly.com/images/giovanni-emmi.jpg",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "YourBusinessInItaly"
-          },
-          "knowsLanguage": ["Italian", "English"],
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IT"
-          },
-          "sameAs": [
-            "https://linkedin.com/in/giovanni-emmi",
-            "https://twitter.com/GiovanniEmmi"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "name": "YourBusinessInItaly",
-          "url": "https://yourbusinessinitaly.com",
-          "description": "Guida completa per stranieri che vogliono fare business in Italia",
-          "inLanguage": "it-IT",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://yourbusinessinitaly.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "YourBusinessInItaly",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://yourbusinessinitaly.com/images/logo.png"
-            }
-          }
+      "@type": "WebSite",
+      "name": "YourBusinessInItaly",
+      "url": "https://yourbusinessinitaly.com",
+      "description": "Business and tax services for foreigners in Italy",
+      "publisher": {
+        "@type": "Organization",
+        "name": "YourBusinessInItaly",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourbusinessinitaly.com/images/logo.png"
         }
-      ]
+      }
     }
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- Replit banner rimosso per migliorare performance mobile -->
-    
-    <!-- Service Worker Registration -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('SW registered: ', registration);
-              // Forza aggiornamento se disponibile
-              if (registration.waiting) {
-                registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-              }
-            })
-            .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-    </script>
-  </body>
+
+  <!-- Preconnect per performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+
+  <!-- DNS Prefetch per servizi esterni -->
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+  <!-- Favicon e icone moderne -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+  <div id="root">
+    <div class="app-shell-hero">
+      <div class="app-shell-content">
+        <h1 class="app-shell-title">Accounting Expertise For Your Global Business</h1>
+        <p class="app-shell-subtitle">We assist foreign companies and investors in successfully managing their business
+          in Italy.</p>
+        <div class="app-shell-buttons">
+          <div class="app-shell-btn app-shell-btn-primary"></div>
+          <div class="app-shell-btn app-shell-btn-secondary"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.tsx"></script>
+  <!-- Replit banner rimosso per migliorare performance mobile -->
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+            // Forza aggiornamento se disponibile
+            if (registration.waiting) {
+              registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+            }
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+</body>
+
 </html>

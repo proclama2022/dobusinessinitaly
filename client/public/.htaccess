@@ -37,9 +37,13 @@ Header unset X-Powered-By
     # Blocca accesso diretto a admin
     RewriteRule ^admin/?$ / [R=301,L]
     
+    # Escludi sitemap XML dal fallback SPA
+    RewriteRule ^sitemap-index\.xml$ - [L]
+    RewriteRule ^sitemap(-[a-z]{2})?\.xml$ - [L]
+
     # Gestione SPA - redirect tutto a index.html eccetto file esistenti
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !^/api/
     RewriteRule . /index.html [L]
-</IfModule> 
+</IfModule>

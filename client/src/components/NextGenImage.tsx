@@ -11,6 +11,8 @@ interface NextGenImageProps {
   quality?: number;
   onLoad?: () => void;
   onError?: () => void;
+  style?: React.CSSProperties;
+  objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
 }
 
 /**
@@ -27,7 +29,9 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
   sizes,
   quality = 85,
   onLoad,
-  onError
+  onError,
+  style,
+  objectFit = 'contain'
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -47,7 +51,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
 
     const baseUrl = originalSrc.split('?')[0];
     const params = new URLSearchParams();
-    
+
     if (targetWidth) params.set('w', targetWidth.toString());
     if (quality) params.set('q', quality.toString());
     params.set('fm', 'auto');
@@ -73,7 +77,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
 
     const baseUrl = src.split('?')[0];
     const formatParam = `&fm=${format}`;
-    
+
     // Dimensioni ottimizzate per diversi dispositivi
     const sizes = [
       { width: 480, descriptor: '480w' },   // Mobile portrait
@@ -84,7 +88,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     ];
 
     return sizes
-      .map(({ width, descriptor }) => 
+      .map(({ width, descriptor }) =>
         `${baseUrl}?auto=format&fit=crop&q=85${formatParam}&w=${width} ${descriptor}`
       )
       .join(', ');
@@ -134,8 +138,8 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
       <div
         ref={pictureRef as React.RefObject<HTMLDivElement>}
         className={`bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse ${className}`}
-        style={{ 
-          width: width || '100%', 
+        style={{
+          width: width || '100%',
           height: height || 'auto',
           aspectRatio: width && height ? `${width}/${height}` : undefined
         }}
@@ -143,7 +147,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
         aria-label={`Caricamento: ${alt}`}
       >
         <div className="w-full h-full flex items-center justify-center">
-          <i className="fas fa-image text-gray-400 text-2xl" aria-hidden="true"></i>
+          <i className="fas fa-image text-gray-600 text-2xl" aria-hidden="true"></i>
         </div>
       </div>
     );
@@ -154,8 +158,8 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     return (
       <div
         className={`bg-gray-200 flex items-center justify-center text-gray-500 text-sm ${className}`}
-        style={{ 
-          width: width || '100%', 
+        style={{
+          width: width || '100%',
           height: height || 'auto',
           aspectRatio: width && height ? `${width}/${height}` : undefined
         }}
@@ -182,14 +186,14 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
         type="image/avif"
         sizes={sizes || '(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px'}
       />
-      
+
       {/* WebP per compatibilità estesa */}
       <source
         srcSet={generateResponsiveSrcSet(src, 'webp')}
         type="image/webp"
         sizes={sizes || '(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px'}
       />
-      
+
       {/* JPEG fallback con srcset responsive */}
       <img
         src={urls.jpeg}
@@ -208,9 +212,10 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
         role="img"
         style={{
           aspectRatio: width && height ? `${width}/${height}` : undefined,
-          objectFit: 'cover',
+          objectFit,
           contentVisibility: 'auto',
-          containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined
+          containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined,
+          ...style
         }}
       />
     </picture>

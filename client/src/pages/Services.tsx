@@ -4,6 +4,8 @@ import { Link } from 'wouter';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
+import ResponsiveImage from '@/components/ResponsiveImage';
+import OptimizedImage from '@/components/OptimizedImage';
 
 // Componente per una singola sezione di servizio con immagine e testo
 const ServiceFeature = ({
@@ -32,10 +34,13 @@ const ServiceFeature = ({
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
 
         {/* Immagine principale con zoom effect */}
-        <img
+        {/* Immagine principale con zoom effect */}
+        <ResponsiveImage
           src={imageSrc}
           alt={imageAlt}
           className="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          objectFit="cover"
         />
 
         {/* Badge con categoria nel corner */}
@@ -220,16 +225,35 @@ const Services = () => {
           es: 'https://yourbusinessinitaly.com/es/services',
           'x-default': 'https://yourbusinessinitaly.com/it/services'
         }}
+        structuredData={[{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: t('navigation.home', 'Home'),
+              item: `https://yourbusinessinitaly.com/${currentLang}`
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: t('services.title'),
+              item: `https://yourbusinessinitaly.com/${currentLang}/services`
+            }
+          ]
+        }]}
       />
       {/* Header hero con introduzione */}
       <section className="relative py-32 overflow-hidden">
         {/* Background con immagine e overlay sfumato */}
         <div className="absolute inset-0 bg-black opacity-65 z-[2]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-[3]"></div>
-        <img
+        <OptimizedImage
           src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
           alt={t('services.backgroundAlt')}
           className="absolute inset-0 w-full h-full object-cover z-[1] scale-105 animate-slow-zoom filter blur-[6px]"
+          priority={true}
         />
 
         {/* Pattern di sfondo e decorazioni */}

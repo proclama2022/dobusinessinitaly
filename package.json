@@ -12,6 +12,7 @@
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "generate-sitemaps": "tsx scripts/generate-sitemaps.js",
+    "audit-indexing": "tsx scripts/audit-indexing.ts",
     "migrate-image": "tsx scripts/migrate-image.js",
     "check:covers": "tsx scripts/check-duplicate-covers.ts",
     "optimize-images": "node scripts/generate-webp-avif.cjs",
