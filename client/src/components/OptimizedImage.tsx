@@ -106,7 +106,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       src={src}
       srcSet={srcSet}
       alt={alt}
-      className={`${className} ${isLoaded ? 'lazy-loaded' : ''}`}
+      className={`${className} ${isLoaded && !priority ? 'lazy-loaded' : ''}`}
       width={width}
       height={height}
       loading={priority ? 'eager' : 'lazy'}
@@ -122,7 +122,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       role="img"
       // Performance
       style={{
-        contentVisibility: 'auto',
+        contentVisibility: priority ? 'visible' : 'auto',
         containIntrinsicSize: width && height ? `${width}px ${height}px` : undefined,
         ...style
       }}
