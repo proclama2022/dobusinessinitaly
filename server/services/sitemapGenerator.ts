@@ -72,7 +72,7 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
       return blogPosts;
     }
 
-    const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file => 
+    const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file =>
       file.endsWith('.mdx') || file.endsWith('.md')
     );
 
@@ -81,10 +81,10 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
         const filePath = path.join(BLOG_CONTENT_PATH, filename);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const { data: frontmatter } = matter(fileContent);
-        
+
         // Determina la lingua dal filename
         const language = extractLanguageFromFilename(filename) || 'it';
-        
+
         // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
         let slug;
         if (frontmatter.slug) {
@@ -100,7 +100,7 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
             slug = `${baseSlug}-${language}`;
           }
         }
-        
+
         // Ottieni la data di modifica del file
         const stats = fs.statSync(filePath);
         const lastmod = stats.mtime.toISOString().split('T')[0];
@@ -125,7 +125,7 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
       }
     });
 
-    console.log('Articoli caricati per sitemap:', Object.keys(blogPosts).map(lang => 
+    console.log('Articoli caricati per sitemap:', Object.keys(blogPosts).map(lang =>
       `${lang}: ${blogPosts[lang].length} articoli`
     ).join(', '));
 
@@ -190,10 +190,10 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
   languagePosts.forEach(post => {
     const articleDate = new Date(post.date);
     const daysSincePublished = Math.floor((Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
-    
+
     let changefreq = 'weekly';
     let priority = '0.8';
-    
+
     if (daysSincePublished <= 7) {
       changefreq = 'daily';
       priority = '0.9';
@@ -239,7 +239,7 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
     if (fs.existsSync(DIST_SITEMAP_PATH)) {
       fs.writeFileSync(path.join(DIST_SITEMAP_PATH, `sitemap-${language}.xml`), sitemap);
     }
-  } catch {}
+  } catch { }
   console.log(`Sitemap per ${language} generata con ${languagePosts.length} articoli e link alternativi.`);
 };
 
@@ -248,27 +248,27 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
  */
 export const generateMainSitemap = () => {
   const allBlogPosts = readBlogPosts();
-  
+
   // Raggruppa gli articoli per nome file base (senza lingua)
   const articleGroups: { [baseFilename: string]: { [language: string]: BlogPost } } = {};
-  
+
   // Leggi i file per identificare i gruppi di articoli correlati
   try {
-    const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file => 
+    const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file =>
       file.endsWith('.mdx') || file.endsWith('.md')
     );
-    
+
     files.forEach(filename => {
       try {
         const filePath = path.join(BLOG_CONTENT_PATH, filename);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const { data: frontmatter } = matter(fileContent);
-        
+
         const language = extractLanguageFromFilename(filename) || 'it';
-        
+
         // Estrai il nome base del file (senza lingua e estensione)
         let baseFilename = filename.replace(/\.(it|en|de|fr|es)\.mdx$/, '').replace(/\.mdx$/, '');
-        
+
         // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
         let slug;
         if (frontmatter.slug) {
@@ -276,22 +276,26 @@ export const generateMainSitemap = () => {
           slug = frontmatter.slug;
         } else {
           // Altrimenti genera dal filename
+          // extractSlugFromFilename rimuove già l'estensione .mdx
+          // Dobbiamo rimuovere anche il suffisso lingua se presente nel filename base
           let baseSlug = extractSlugFromFilename(filename);
-          if (language === 'it') {
-            slug = baseSlug;
-          } else {
-            // Per lingue non italiane, aggiungi suffisso lingua solo se non c'è slug nel frontmatter
-            slug = `${baseSlug}-${language}`;
+
+          // Se il baseSlug finisce con .it, .en, etc., rimuovilo
+          const langSuffixMatch = baseSlug.match(/\.([a-z]{2})$/);
+          if (langSuffixMatch) {
+            baseSlug = baseSlug.substring(0, baseSlug.lastIndexOf('.'));
           }
+
+          slug = baseSlug;
         }
-        
+
         if (!articleGroups[baseFilename]) {
           articleGroups[baseFilename] = {};
         }
-        
+
         const stats = fs.statSync(filePath);
         const lastmod = stats.mtime.toISOString().split('T')[0];
-        
+
         articleGroups[baseFilename][language] = {
           slug,
           lastmod: frontmatter.date ? new Date(frontmatter.date).toISOString().split('T')[0] : lastmod,
@@ -405,28 +409,28 @@ export const generateMainSitemap = () => {
   Object.entries(articleGroups).forEach(([baseFilename, languageVariants]) => {
     const availableLanguages: { [key: string]: string } = {};
     let latestDate = '2025-01-09';
-    
+
     // Raccogli tutte le versioni linguistiche disponibili
     Object.entries(languageVariants).forEach(([lang, post]) => {
       if (post.lastmod > latestDate) {
         latestDate = post.lastmod;
       }
-      
+
       availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
     });
-    
+
     // Aggiungi l'articolo principale (versione italiana se disponibile)
     const mainPost = languageVariants['it'] || Object.values(languageVariants)[0];
     if (mainPost) {
       const mainUrl = `https://yourbusinessinitaly.com/${languageVariants['it'] ? 'it' : 'en'}/blog/${mainPost.slug}`;
-      
+
       // Determina la frequenza e priorità basata sulla data dell'articolo
       const articleDate = new Date(mainPost.date);
       const daysSincePublished = Math.floor((Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24));
-      
+
       let changefreq = 'weekly';
       let priority = '0.8';
-      
+
       // Articoli più recenti hanno priorità e frequenza più alta
       if (daysSincePublished <= 7) {
         changefreq = 'daily';
@@ -441,7 +445,7 @@ export const generateMainSitemap = () => {
         changefreq = 'monthly';
         priority = '0.75';
       }
-        
+
       sitemapEntries.push({
         loc: mainUrl,
         lastmod: latestDate,
@@ -469,7 +473,7 @@ export const generateMainSitemap = () => {
     if (fs.existsSync(DIST_SITEMAP_PATH)) {
       fs.writeFileSync(path.join(DIST_SITEMAP_PATH, 'sitemap.xml'), sitemap);
     }
-  } catch {}
+  } catch { }
   console.log(`Sitemap principale generata con ${Object.keys(articleGroups).length} gruppi di articoli`);
 };
 
@@ -479,7 +483,7 @@ export const generateMainSitemap = () => {
 export const generateSitemapIndex = () => {
   const today = new Date().toISOString().split('T')[0];
   const languages = ['it', 'en', 'de', 'fr', 'es'];
-  
+
   const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
@@ -498,7 +502,7 @@ export const generateSitemapIndex = () => {
     if (fs.existsSync(DIST_SITEMAP_PATH)) {
       fs.writeFileSync(path.join(DIST_SITEMAP_PATH, 'sitemap-index.xml'), sitemapIndexContent);
     }
-  } catch {}
+  } catch { }
   console.log('Sitemap index generato con successo');
 };
 
@@ -506,24 +510,24 @@ export const generateSitemapIndex = () => {
 * Genera tutte le sitemap
 */
 export const generateAllSitemaps = () => {
-const languages = ['it', 'en', 'de', 'fr', 'es'];
+  const languages = ['it', 'en', 'de', 'fr', 'es'];
 
-// Genera sitemap per ogni lingua
-languages.forEach(lang => {
-  generateSitemap(lang);
-});
+  // Genera sitemap per ogni lingua
+  languages.forEach(lang => {
+    generateSitemap(lang);
+  });
 
-// Genera sitemap principale
-generateMainSitemap();
+  // Genera sitemap principale
+  generateMainSitemap();
 
-// Genera sitemap index
-generateSitemapIndex();
+  // Genera sitemap index
+  generateSitemapIndex();
 
-console.log('Tutte le sitemap sono state generate con successo!');
+  console.log('Tutte le sitemap sono state generate con successo!');
 };
 
 // Esegui la generazione se questo file viene eseguito direttamente
 if (import.meta.url === `file://${process.argv[1]}`) {
-console.log('Generando tutte le sitemap...');
-generateAllSitemaps();
+  console.log('Generando tutte le sitemap...');
+  generateAllSitemaps();
 }

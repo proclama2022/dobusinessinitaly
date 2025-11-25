@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
@@ -194,9 +195,29 @@ const BlogPost = () => {
     );
   }
 
+
+
   if (error || !postData?.data) {
+    // Smart Redirect: Se il post non esiste nella lingua corrente, controlla se esiste in altre lingue
+    if (allLangPostsData?.data) {
+      // Cerca un post con lo stesso slug
+      const foundPost = allLangPostsData.data.find(p => p.slug === slug);
+
+      // Se trovato e la lingua è diversa, reindirizza
+      if (foundPost && foundPost.lang !== currentLanguage) {
+        const newPath = `/${foundPost.lang}/blog/${foundPost.slug}`;
+        console.log(`[BlogPost] Redirecting to correct language: ${newPath}`);
+        window.location.replace(newPath);
+        return null;
+      }
+    }
+
     return (
       <section className="section-padding bg-white">
+        <Helmet>
+          <title>Articolo non trovato - Yourbusinessinitaly.com</title>
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <div className="container mx-auto px-4 text-center">
           <div className="text-[#ce2b37] text-2xl mb-4">Articolo non trovato</div>
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non esiste o è stato rimosso.</p>

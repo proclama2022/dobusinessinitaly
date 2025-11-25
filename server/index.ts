@@ -39,6 +39,15 @@ app.use((req, res, next) => {
     }
   });
 
+  // Middleware per correggere URL malformati (Soft 404 fix)
+  // Rileva URL che finiscono con .en-en, .fr-fr, etc. o .en.en
+  const malformedUrlPattern = /(\/blog\/.*?)(\.[a-z]{2}-[a-z]{2}|\.[a-z]{2}\.[a-z]{2})$/i;
+  if (malformedUrlPattern.test(path)) {
+    const cleanUrl = path.replace(malformedUrlPattern, '$1');
+    console.log(`[Redirect] Redirecting malformed URL: ${path} -> ${cleanUrl}`);
+    return res.redirect(301, cleanUrl);
+  }
+
   next();
 });
 

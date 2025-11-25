@@ -1,18 +1,5 @@
 {
-  "mcpServers": {
-    "gemini_image_server": {
-      "command": "python",
-      "args": ["/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/mcp_gemini_image_server.py"],
-      "env": {
-        "GEMINI_API_KEY": "AIzaSyAglGG7WP3xBqle7Xs1h8OWD3yHUWmVbtM"
-      }
-    },
-    "reddit": {
-      "command": "/Users/rosario/.local/bin/mcp-server-reddit",
-      "args": [],
-      "env": {}
-    }
-  },
+  "mcpServers": {},
   "claudeCommands": {
     "generate-article-images": {
       "path": "/Users/rosario/DOCUMENTI MACBOOK da 1910/Yourbusinessinitaly/.claude/commands/generate-article-images.md",
