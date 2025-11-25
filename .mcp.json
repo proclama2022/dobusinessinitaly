@@ -1,57 +1,17 @@
 {
   "mcpServers": {
-    "ideogram-direct": {
-      "type": "stdio",
-      "command": "python3",
-      "args": ["/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/mcp_ideogram_direct.py"],
-      "cwd": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly",
-      "env": {
-        "IDEOGRAM_API_KEY": "Gqnr2E-zburmUOzxodWLymPeJDeONgm4A53ZVT76rmE81y7JO6kRFa9umr5Y_Agq48jOEJ6C2ujcZpj7qA5jDw",
-        "OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/public/images/articles"
-      }
+    "Parallel Task MCP": {
+      "type": "http",
+      "url": "https://task-mcp.parallel.ai/mcp"
     },
-    "ideogram": {
-      "type": "stdio",
-      "command": "python3",
-      "args": ["/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/mcp_ideogram.py"],
-      "cwd": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly",
-      "env": {
-        "IDEOGRAM_API_KEY": "fSPwtNShqXWti7MnXy8CpmKFqgFhppsPdU4n8-CuSvSBvmeiTaoHDkNDdS9K1XjUS0oyeNWAwMDTX9Hre7Pbfw",
-        "OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/public/images/articles"
-      }
-    },
-    "stable-diffusion": {
-      "type": "stdio",
-      "command": "python3",
-      "args": ["/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/mcp_stable_diffusion.py"],
-      "cwd": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly",
-      "env": {
-        "OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/generated_images"
-      }
-    },
-    "openai-dalle": {
+    "mcp-image": {
       "type": "stdio",
       "command": "npx",
-      "args": ["mcp-asset-gen"],
+      "args": ["-y", "mcp-image"],
       "env": {
-        "API_KEY": "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"
-      }
-    },
-    "nano-banana": {
-      "type": "stdio",
-      "command": "/usr/bin/env",
-      "args": [
-        "python3",
-        "-m",
-        "mcp_nano_banana"
-      ],
-      "cwd": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly",
-      "env": {
-        "GEMINI_API_KEY": "AIzaSyAglGG7WP3xBqle7Xs1h8OWD3yHUWmVbtM",
-        "NANO_BANANA_OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/article_images"
+        "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY_HERE",
+        "IMAGE_OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/article_images"
       }
     }
   }
 }
-
-
