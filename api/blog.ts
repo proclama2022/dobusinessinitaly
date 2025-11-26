@@ -132,13 +132,22 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
             return null;
           }
+          
+          // Debug: verifica coverImage
+          const coverImageValue = data.coverImage;
+          if (!coverImageValue || (typeof coverImageValue === 'string' && !coverImageValue.trim())) {
+            console.warn(`[Blog API] Missing or empty coverImage in: ${filename}. Raw value:`, coverImageValue);
+          } else {
+            console.log(`[Blog API] coverImage found for ${filename}:`, coverImageValue);
+          }
+          
           const blogPost: BlogPostMeta = {
             slug,
             title: data.title,
             date: data.date,
             category: data.category?.trim() || 'Generale',
             excerpt: data.excerpt?.trim() || '',
-            coverImage: data.coverImage?.trim() || '',
+            coverImage: (coverImageValue && typeof coverImageValue === 'string') ? coverImageValue.trim() : '',
             author: data.author?.trim() || 'Redazione',
           };
           
