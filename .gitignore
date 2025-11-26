@@ -48,3 +48,6 @@ search-console-*.json
 
 # Claude local settings (contains API keys; non pushare)
 .claude/settings.local.json
+
+# MCP configuration (contains API keys; non pushare)
+.mcp.json

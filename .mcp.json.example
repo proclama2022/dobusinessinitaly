@@ -6,7 +6,7 @@
       "timeout": 60000,
       "retries": 3,
       "headers": {
-        "Authorization": "Bearer Q60XOaX-HqoOR2-nxMk7e4M7lGxz6Y9uAzceevha"
+        "Authorization": "Bearer YOUR_TOKEN_HERE"
       }
     },
     "Parallel Search MCP": {
@@ -15,7 +15,7 @@
       "timeout": 60000,
       "retries": 3,
       "headers": {
-        "Authorization": "Bearer Q60XOaX-HqoOR2-nxMk7e4M7lGxz6Y9uAzceevha"
+        "Authorization": "Bearer YOUR_TOKEN_HERE"
       }
     },
     "mcp-image": {
@@ -23,9 +23,10 @@
       "command": "npx",
       "args": ["-y", "mcp-image"],
       "env": {
-        "GEMINI_API_KEY": "AIzaSyBQxidBaam7CDQGgaMR1HwTNhcajSUJhCI",
-        "IMAGE_OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/article_images"
+        "GEMINI_API_KEY": "${GEMINI_API_KEY}",
+        "IMAGE_OUTPUT_DIR": "/path/to/article_images"
       }
     }
   }
 }
+
