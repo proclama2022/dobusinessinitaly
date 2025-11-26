@@ -2,14 +2,28 @@
   "mcpServers": {
     "Parallel Task MCP": {
       "type": "http",
-      "url": "https://task-mcp.parallel.ai/mcp"
+      "url": "https://task-mcp.parallel.ai/mcp",
+      "timeout": 60000,
+      "retries": 3,
+      "headers": {
+        "Authorization": "Bearer Q60XOaX-HqoOR2-nxMk7e4M7lGxz6Y9uAzceevha"
+      }
+    },
+    "Parallel Search MCP": {
+      "type": "http",
+      "url": "https://search-mcp.parallel.ai/mcp",
+      "timeout": 60000,
+      "retries": 3,
+      "headers": {
+        "Authorization": "Bearer Q60XOaX-HqoOR2-nxMk7e4M7lGxz6Y9uAzceevha"
+      }
     },
     "mcp-image": {
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "mcp-image"],
       "env": {
-        "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY_HERE",
+        "GEMINI_API_KEY": "AIzaSyBQxidBaam7CDQGgaMR1HwTNhcajSUJhCI",
         "IMAGE_OUTPUT_DIR": "/Users/martha2022/Library/Mobile Documents/com~apple~CloudDocs/Documents/Siti internet/Yourbusinessinitaly/dobusinessinitaly/article_images"
       }
     }

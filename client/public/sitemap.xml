@@ -3,7 +3,7 @@
   
   <url>
     <loc>https://yourbusinessinitaly.com/it/</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/" />
@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/blog</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/blog" />
@@ -27,7 +27,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/services</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/services" />
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/about</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/about" />
@@ -51,7 +51,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/contact</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/contact" />
@@ -63,7 +63,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/media</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/media" />
@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/pillar/how-to-start-business-in-italy-2025</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/pillar/how-to-start-business-in-italy-2025" />
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/services/open-company-italy</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/services/open-company-italy" />
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/services/open-vat-number-italy</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/services/open-vat-number-italy" />
@@ -111,7 +111,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/it/services/tax-accounting-expats</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://yourbusinessinitaly.com/it/services/tax-accounting-expats" />
@@ -123,7 +123,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/5-ventajas-fiscales-italia-emprendedores-espanoles-desconocen</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/5-ventajas-fiscales-italia-emprendedores-espanoles-desconocen" />
@@ -137,7 +137,7 @@
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/americans-moving-italy-financial-planning-guide-2025</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/americans-moving-italy-financial-planning-guide-2025" />
@@ -193,6 +193,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025" />
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/en/blog/deutscher-italien-remote-arbeit-deutschland-steuern-2025</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/deutscher-italien-remote-arbeit-deutschland-steuern-2025" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/doppelbesteuerungsabkommen-italien-deutschland</loc>
@@ -402,6 +409,13 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://yourbusinessinitaly.com/es/blog/residencia-fiscal-italia-extranjeros-2025-guia-completa" />
   </url>
   <url>
+    <loc>https://yourbusinessinitaly.com/en/blog/short-term-rentals-italy-cin-code-2025</loc>
+    <lastmod>2025-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/short-term-rentals-italy-cin-code-2025" />
+  </url>
+  <url>
     <loc>https://yourbusinessinitaly.com/it/blog/srl-vs-ditta-individuale-consiglio-commercialista-2025</loc>
     <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -428,6 +442,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://yourbusinessinitaly.com/en/blog/srl-vs-sole-proprietorship-italy-2025-complete-comparison" />
+  </url>
+  <url>
+    <loc>https://yourbusinessinitaly.com/en/blog/steuerflucht-italien-2025-deutsche-selbstaendige-sparen-50-70-prozent-steuern</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://yourbusinessinitaly.com/de/blog/steuerflucht-italien-2025-deutsche-selbstaendige-sparen-50-70-prozent-steuern" />
   </url>
   <url>
     <loc>https://yourbusinessinitaly.com/en/blog/taxes-srl-guide-2025-nouveaux-entrepreneurs-etrangers</loc>
