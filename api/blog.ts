@@ -99,6 +99,10 @@ function getAllPosts(language?: string): BlogPostMeta[] {
     }
 
     console.log(`[Blog API] Found ${relevantFiles.length} files for language ${targetLanguage}:`, relevantFiles);
+    console.log(`[Blog API] Looking for files ending with .${targetLanguage}.mdx`);
+    const allFiles = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
+    const enFiles = allFiles.filter(file => file.endsWith('.en.mdx'));
+    console.log(`[Blog API] Total .en.mdx files found: ${enFiles.length}`, enFiles);
 
     const posts = relevantFiles
       .map((filename: string) => {
