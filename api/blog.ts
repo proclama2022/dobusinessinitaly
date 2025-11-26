@@ -107,7 +107,8 @@ function getAllPosts(language?: string): BlogPostMeta[] {
           console.log(`[Blog API] Attempting to read file: ${filePath}`);
           const fileContent = fs.readFileSync(filePath, 'utf8');
           const { data } = matter(fileContent);
-          console.log(`[Blog API] Successfully read file ${filename}. Metadata:`, data);
+          console.log(`[Blog API] Successfully read file ${filename}`);
+          console.log(`[Blog API] Title: ${data.title}, Date: ${data.date}, CoverImage: ${data.coverImage}`);
           
           // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
           let slug;
@@ -129,7 +130,15 @@ function getAllPosts(language?: string): BlogPostMeta[] {
           }
           
           if (!data.title?.trim() || !data.date) {
-            console.log(`[Blog API] Skipping file due to missing title or date: ${filename}`);
+            console.log(`[Blog API] ⚠️ SKIPPING file due to missing title or date: ${filename}`);
+            console.log(`[Blog API] Title exists: ${!!data.title}, Date exists: ${!!data.date}`);
+            return null;
+          }
+          
+          // Verifica che la data sia valida
+          const dateObj = new Date(data.date);
+          if (isNaN(dateObj.getTime())) {
+            console.log(`[Blog API] ⚠️ SKIPPING file due to invalid date: ${filename}, date: ${data.date}`);
             return null;
           }
           
