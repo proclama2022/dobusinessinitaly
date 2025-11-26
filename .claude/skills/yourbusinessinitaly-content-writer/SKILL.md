@@ -10,6 +10,12 @@ dependencies: python>=3.8, requests>=2.25.0
 ## Purpose
 Creates high-quality, SEO-optimized articles for YourBusinessInItaly.com focused on Italian business formation, tax planning, and bureaucracy for foreign entrepreneurs and expats.
 
+## 🚨 CRITICAL RULES (MUST FOLLOW)
+1. **NARRATIVE FIRST**: The article must be 70% narrative text and max 30% lists/tables.
+2. **NO "SHOPPING LIST" ARTICLES**: Never create an article that is just a sequence of H2 headers followed by bullet points.
+3. **EXPLAIN "WHY" AND "HOW"**: Don't just list steps. Explain the context, the reasoning, and the experience.
+4. **HUMAN TONE**: Write as a consultant talking to a client, not a robot reading a manual.
+
 ## Core Philosophy
 - **People-First Content**: Create valuable, original content for real users
 - **Semantic SEO**: Focus on entities, topic clusters, and contextual relevance
@@ -33,7 +39,9 @@ Use this skill when you need to:
 3. **Entity Mapping**: Primary entities (partita IVA, SRL), related entities (Agenzia Entrate)
 4. **Content Architecture**: Choose format (deep guide, quick answer, case study)
 
-### Phase 2: Content Structure - ANTI-BULLET POINTS METHODOLOGY
+### Phase 2: Content Structure - STRICT NARRATIVE FLOW
+
+**CRITICAL**: You are prohibited from writing "listicles" or "shopping list" style articles.
 
 ```markdown
 # H1: Primary Question Answer + Unique Angle
@@ -41,52 +49,53 @@ Use this skill when you need to:
 **Immediate Value Hook (40-60 words)**
 Write conversational paragraph that answers the main question directly. NEVER start with bullet points.
 
-**Example WRONG:**
+**Example WRONG (Forbidden):**
 - Remote workers can save $25,000
 - 5% flat tax available
 - 183-day residency required
 
-**Example CORRECT:**
+**Example CORRECT (Required):**
 "Remote workers can legally save $25,000-$65,000 annually by relocating to Italy under the 5% flat tax regime, a legitimate tax optimization strategy that hundreds of US and UK professionals are already using while maintaining their international client base and work arrangements."
 
-## Narrative Content Structure (NO BULLET POINTS)
+## Narrative Content Structure (NO BULLET POINTS HERE)
 
 ### Section 1: The Core Problem/Solution
-Write 2-3 paragraphs explaining the challenge and solution in narrative form.
+Write 2-3 paragraphs explaining the challenge and solution in narrative form. Connect with the reader's pain points.
 
 **Example Structure:**
-Paragraph 1: Present the tax burden problem naturally
-Paragraph 2: Introduce the Italian solution
-Paragraph 3: Explain why it's legitimate and achievable
+Paragraph 1: Present the tax burden problem naturally ("Many US professionals feel trapped by high taxes...")
+Paragraph 2: Introduce the Italian solution ("Italy has introduced a specific regime to attract talent...")
+Paragraph 3: Explain why it's legitimate and achievable ("Unlike tax havens, this is a fully compliant EU status...")
 
 ### Section 2: Real Stories, Not Data Tables
-Transform case studies into stories, not bullet lists.
+Transform case studies into stories.
 
-**Example WRONG:**
+**Example WRONG (Forbidden):**
 - Sarah, Developer: $180k income → $57k savings
 - Lives in Milan
 - Maintains US clients
 
-**Example CORRECT:**
-"When Sarah Mitchell first heard about Italy's 5% flat tax, she was skeptical. The 35-year-old software developer was earning $180,000 from her Silicon Valley clients while paying $81,140 annually in California taxes. 'I thought it was too good to be true,' she recalls. Six months after relocating to Milan, Sarah's tax bill dropped to $23,760, saving her $57,380. 'I now pay less in taxes than my San Francisco rent,' she says, 'and I work with the same clients from a beautiful apartment overlooking the Duomo.'"
+**Example CORRECT (Required):**
+"When Sarah Mitchell first heard about Italy's 5% flat tax, she was skeptical. The 35-year-old software developer was earning $180,000 from her Silicon Valley clients while paying $81,140 annually in California taxes. 'I thought it was too good to be true,' she recalls. Six months after relocating to Milan, Sarah's tax bill dropped to $23,760, saving her $57,380. 'I now pay less in taxes than my San Francisco rent,' she says."
 
-### Section 3: How It Actually Works
-Explain processes in narrative paragraphs, not numbered steps.
+### Section 3: How It Actually Works (The Process)
+Explain processes in narrative paragraphs. Use bullet points ONLY for a final summary checklist, NOT for the main explanation.
 
-**Example WRONG:**
+**Example WRONG (Forbidden):**
 1. Get Italian tax code
 2. Register Partita IVA
 3. Apply Forfettario regime
 4. Move to Italy
 
-**Example CORRECT:**
-"The process begins with obtaining your Italian tax code, a straightforward procedure that can be completed at the Italian consulate in your home country or online. Once you have your codice fiscale, you'll register for a Partita IVA - Italy's equivalent of a VAT number - and specifically select the Regime Forfettario option. This designation is crucial as it activates your eligibility for the 5% rate. The entire registration can be completed online in about 30 minutes, though most people work with an Italian accountant to ensure optimal structure."
+**Example CORRECT (Required):**
+"The process begins with obtaining your Italian tax code, a straightforward procedure that can be completed at the Italian consulate in your home country. Once you have your unique fiscal identifier, the next step is registering your Partita IVA. This isn't just a form; it's the moment you officially become a business entity in Italy. You must specifically select the 'Regime Forfettario' option during registration to activate the 5% tax rate."
 
 ### Section 4: Strategic Implementation
-Write as flowing advice, not checklists.
+Write as flowing advice from an expert ("I recommend starting with..."), not robotic checklists.
 
 ### Section 5: Common Mistakes and Solutions
-Use paragraph format to explain pitfalls.
+Use paragraph format to explain pitfalls and how to avoid them.
+```
 
 ## Writing Style Rules - BALANCED APPROACH
 

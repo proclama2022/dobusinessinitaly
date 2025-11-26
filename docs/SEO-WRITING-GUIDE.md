@@ -14,7 +14,17 @@ Questa guida fornisce istruzioni complete per creare articoli ottimizzati per i 
 - **Schema Markup**: Implementazione completa di dati strutturati
 - **Lunghezza Articoli**: 1500-2000 parole per guide complete
 
-## ⚠️ Regole Fondamentali da Rispettare
+## ⚠️ Regole Fondamentali da Rispettare (CRITICAL)
+
+### 🚫 DIVIETO ASSOLUTO: STILE "LISTA DELLA SPESA"
+È severamente vietato produrre articoli composti principalmente da elenchi puntati (bullet points).
+- **NON** usare elenchi puntati per spiegare processi complessi.
+- **NON** creare sezioni che contengono solo un titolo e una lista.
+- **USA** la narrazione per collegare i punti e dare contesto.
+
+### ✅ APPROCCIO NARRATIVO (70/30)
+- **70% Testo Narrativo**: Spiega il "perché" e il "come". Racconta il processo come se lo spiegassi a un cliente seduto di fronte a te.
+- **30% Elementi Visivi/Schematici**: Usa elenchi, tabelle e box solo per dati, checklist e riepiloghi.
 
 **VIETATO: Creare casi studio inventati o esempi fittizi**
 - Non inventare nomi di persone o aziende fittizie (es. "Thomas Müller", "Marco Rossi")
