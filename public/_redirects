@@ -51,6 +51,27 @@
 # Redirect per pagine services senza prefisso lingua
 /services/open-vat-number-italy /it/services/open-vat-number-italy 301
 
+# Redirect per URL vecchi senza prefisso lingua (da Search Console)
+/servizi /it/services 301
+/servizi-privati /it/services 301
+/nuovo-servizio /it/services 301
+/services /it/services 301
+/blog /it/blog 301
+/blog/aprire-partita-iva-freelance-italia-2025 /it/blog/aprire-partita-iva-freelance-italia-2025 301
+/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia /it/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
+/blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri /it/blog/impuestos-srl-guia-2025-emprendedores-extranjeros 301
+
+# Redirect per URL multilingua senza slug corretto
+/de/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025 /it/blog/aprire-srl-italia-2025-guida-completa-stranieri 301
+/en/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025 /it/blog/aprire-srl-italia-2025-guida-completa-stranieri 301
+/es/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025 /it/blog/aprire-srl-italia-2025-guida-completa-stranieri 301
+/fr/blog/come-aprire-unattivita-in-italia-da-straniero-guida-completa-2025 /it/blog/aprire-srl-italia-2025-guida-completa-stranieri 301
+
+# Redirect lingue per servizi vari (da errori Search Console)
+/*/servizi /it/services 301
+/*/servizi-privati /it/services 301
+/*/nuovo-servizio /it/services 301
+
 # Catch-all per SPA
 /* /index.html 200
 # Redirect per errori Soft 404 - Aggiunti automaticamente
