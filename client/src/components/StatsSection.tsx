@@ -7,6 +7,7 @@ import {
   faUserTie,
   faEuroSign
 } from '@fortawesome/free-solid-svg-icons';
+import { cn } from '@/lib/utils';
 
 type StatItemProps = {
   value: number;
@@ -60,23 +61,22 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
     window.requestAnimationFrame(step);
   };
 
-  // Colore in base all'indice, alternando i colori della bandiera italiana
-  const getBackgroundColor = () => {
-    if (index % 3 === 0) return 'from-[#009246]/10 to-[#009246]/5'; // Verde
-    if (index % 3 === 1) return 'from-neutral-100 to-white'; // Bianco
-    return 'from-[#ce2b37]/10 to-[#ce2b37]/5'; // Rosso
-  };
-
   return (
-    <div className="card p-6 text-center">
-      <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
-        <FontAwesomeIcon icon={icon} className="text-primary text-2xl" />
+    <div className="group relative p-8 text-center bg-white border border-neutral-100 rounded shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-500">
+      
+      <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-500">
+        <FontAwesomeIcon icon={icon} className="text-primary text-2xl group-hover:scale-110 transition-transform duration-500" />
       </div>
-      <div className="text-4xl font-bold text-neutral-900 mb-1">
+      
+      <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
         <span ref={countRef}>{count}</span>{suffix}
       </div>
-      <h3 className="text-lg font-[Montserrat] font-semibold text-neutral-900">{title}</h3>
-      <p className="text-neutral-600 text-sm mt-1">{description}</p>
+      
+      <h3 className="text-lg font-semibold text-neutral-900 uppercase tracking-wide mb-3">{title}</h3>
+      
+      <div className="w-12 h-px bg-neutral-200 mx-auto mb-4 group-hover:bg-primary/50 transition-colors duration-500"></div>
+      
+      <p className="text-neutral-600 text-sm leading-relaxed">{description}</p>
     </div>
   );
 };
@@ -126,12 +126,14 @@ const StatsSection = () => {
 
   return (
     <section className="section-padding bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className={`text-center mb-12 ${isLoaded ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="section-title mb-4">
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className={cn("text-center mb-16 transition-all duration-700", isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')}>
+          <span className="text-primary font-semibold tracking-widest text-sm uppercase mb-2 block">Trusted by Leaders</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
             {t('stats.title')}
           </h2>
-          <p className="text-neutral-600 max-w-3xl mx-auto">
+          <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
             {t('stats.subtitle')}
           </p>
         </div>

@@ -419,10 +419,21 @@ export const generateMainSitemap = () => {
       availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
     });
 
-    // Aggiungi l'articolo principale (versione italiana se disponibile)
-    const mainPost = languageVariants['it'] || Object.values(languageVariants)[0];
+    // Aggiungi l'articolo principale (versione italiana se disponibile, altrimenti la prima disponibile)
+    let mainLang = 'it';
+    let mainPost = languageVariants['it'];
+    
+    // Se non esiste versione italiana, prendi la prima disponibile e usa la sua lingua reale
+    if (!mainPost) {
+      const firstEntry = Object.entries(languageVariants)[0];
+      if (firstEntry) {
+        mainLang = firstEntry[0];
+        mainPost = firstEntry[1];
+      }
+    }
+    
     if (mainPost) {
-      const mainUrl = `https://yourbusinessinitaly.com/${languageVariants['it'] ? 'it' : 'en'}/blog/${mainPost.slug}`;
+      const mainUrl = `https://yourbusinessinitaly.com/${mainLang}/blog/${mainPost.slug}`;
 
       // Determina la frequenza e priorità basata sulla data dell'articolo
       const articleDate = new Date(mainPost.date);

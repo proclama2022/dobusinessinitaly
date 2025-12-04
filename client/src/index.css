@@ -9,36 +9,38 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 224 71.4% 4.1%;
-  --muted: 220 14.3% 95.9%;
-  --muted-foreground: 220 8.9% 46.1%;
+  --foreground: 215 27.9% 16.9%; /* Darker gray for better contrast */
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215 16.3% 46.9%;
   --popover: 0 0% 100%;
-  --popover-foreground: 224 71.4% 4.1%;
+  --popover-foreground: 215 27.9% 16.9%;
   --card: 0 0% 100%;
-  --card-foreground: 224 71.4% 4.1%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --primary: 142 43% 35%;
+  --card-foreground: 215 27.9% 16.9%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  
+  /* Modern Business Palette */
+  --primary: 210 29% 24%; /* Deep Slate Blue */
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 79% 48%;
+  
+  --secondary: 145 63% 42%; /* Emerald Green - Business Growth */
   --secondary-foreground: 0 0% 100%;
+  
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
+  
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 142 43% 35%;
-  --radius: 0.5rem;
+  
+  --ring: 210 29% 24%;
+  --radius: 0.25rem; /* Sharper corners for modern look */
 
-  --primary-light: 142 43% 45%;
-  --primary-dark: 142 43% 25%;
-  --secondary-light: 0 79% 58%;
-  --secondary-dark: 0 79% 38%;
+  --primary-light: 210 29% 34%;
+  --primary-dark: 210 29% 14%;
+  --secondary-light: 145 63% 52%;
+  --secondary-dark: 145 63% 32%;
 
-  --italian-green: 142 43% 35%;
-  --italian-white: 0 0% 100%;
-  --italian-red: 0 79% 48%;
-
-  --neutral-100: 210 33% 96%;
+  --neutral-100: 210 33% 98%;
   --neutral-200: 210 16% 93%;
   --neutral-300: 210 14% 89%;
   --neutral-400: 210 14% 83%;
@@ -60,16 +62,16 @@
   --card-foreground: 210 40% 98%;
   --border: 215 27.9% 16.9%;
   --input: 215 27.9% 16.9%;
-  --primary: 142 43% 35%;
+  --primary: 210 29% 24%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 79% 48%;
+  --secondary: 145 63% 42%;
   --secondary-foreground: 0 0% 100%;
   --accent: 215 27.9% 16.9%;
   --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 142 43% 35%;
-  --radius: 0.5rem;
+  --ring: 210 29% 24%;
+  --radius: 0.25rem;
 }
 
 @layer base {
@@ -171,15 +173,15 @@
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center bg-primary text-white font-medium py-3 px-6 rounded-md transition-colors duration-200 hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30;
+  @apply inline-flex items-center justify-center bg-primary text-white font-medium py-3 px-6 rounded transition-all duration-200 hover:bg-primary-light hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center border border-neutral-300 text-neutral-800 bg-white hover:bg-neutral-50 font-medium py-3 px-6 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
+  @apply inline-flex items-center justify-center border border-neutral-300 text-neutral-800 bg-white hover:bg-neutral-50 font-medium py-3 px-6 rounded transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
 }
 
 .btn-outline {
-  @apply inline-flex items-center justify-center bg-white text-primary border border-neutral-300 hover:bg-neutral-50 font-medium py-3 px-6 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
+  @apply inline-flex items-center justify-center bg-transparent text-primary border border-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20;
 }
 
 .testimonial-slide {
@@ -190,24 +192,12 @@
   @apply opacity-100 static;
 }
 
-.italian-gradient {
-  @apply bg-gradient-to-r from-[#009246] via-white to-[#ce2b37];
-}
-
-.italian-text-gradient {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#009246] via-neutral-800 to-[#ce2b37];
-}
-
-.italian-border-gradient {
-  @apply border border-neutral-200;
-}
-
 .card {
-  @apply bg-white rounded-lg border border-neutral-200 shadow-sm;
+  @apply bg-white rounded border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-200;
 }
 
 .hover-lift {
-  @apply transition-transform transition-shadow duration-200 hover:-translate-y-1 hover:shadow-md;
+  @apply transition-transform duration-200 hover:-translate-y-0.5;
 }
 
 .soft-divider {
@@ -215,7 +205,7 @@
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-[Montserrat] font-bold text-neutral-900;
+  @apply text-3xl md:text-4xl font-[Montserrat] font-bold text-neutral-900 tracking-tight;
 }
 
 .animate-fade-in {

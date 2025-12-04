@@ -1,0 +1,569 @@
+/* Italian Layout System - Refined Architectural Design */
+/* Layout patterns inspired by Italian architecture, art, and design principles */
+
+:root {
+  /* Italian Golden Ratio & Proportions */
+  --golden-ratio: 1.618;
+  --golden-ratio-inverse: 0.618;
+  --phi-large: 1.9rem;
+  --phi-medium: 1.2rem;
+  --phi-small: 0.74rem;
+  --phi-xs: 0.46rem;
+
+  /* Italian Spacing System - Based on Fibonacci and architectural proportions */
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+
+  /* Italian Container Widths - Based on classical proportions */
+  --container-italian-xs: 20rem;   /* 320px */
+  --container-italian-sm: 24rem;   /* 384px */
+  --container-italian-md: 28rem;   /* 448px */
+  --container-italian-lg: 32rem;   /* 512px */
+  --container-italian-xl: 36rem;   /* 576px */
+  --container-italian-2xl: 42rem;  /* 672px */
+  --container-italian-3xl: 48rem;  /* 768px */
+  --container-italian-4xl: 56rem;  /* 896px */
+  --container-italian-5xl: 64rem;  /* 1024px */
+  --container-italian-6xl: 72rem;  /* 1152px */
+  --container-italian-7xl: 80rem;  /* 1280px */
+
+  /* Italian Grid Systems */
+  --grid-columns-italian: 12;
+  --grid-gutter-italian: var(--space-6);
+  --grid-margin-italian: var(--space-4);
+
+  /* Italian Layout Patterns */
+  --layout-header-height: 4.5rem;
+  --layout-footer-height: 6rem;
+  --layout-sidebar-width: 16rem;
+  --layout-aspect-golden: calc(100% / var(--golden-ratio));
+  --layout-aspect-golden-vertical: calc(100% * var(--golden-ratio));
+}
+
+/* Italian Container System */
+.italian-container {
+  width: 100%;
+  max-width: var(--container-italian-7xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.italian-container-sm {
+  max-width: var(--container-italian-5xl);
+}
+
+.italian-container-md {
+  max-width: var(--container-italian-6xl);
+}
+
+.italian-container-lg {
+  max-width: var(--container-italian-7xl);
+}
+
+.italian-container-xl {
+  max-width: var(--container-italian-8xl);
+  width: var(--container-italian-8xl);
+}
+
+.italian-container-fluid {
+  max-width: 100%;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* Italian Section Layouts */
+.italian-section {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+.italian-section-sm {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+.italian-section-lg {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+
+.italian-section-xl {
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-32);
+}
+
+/* Italian Grid Systems - Asymmetrical and sophisticated */
+.italian-grid {
+  display: grid;
+  gap: var(--grid-gutter-italian);
+}
+
+.italian-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.italian-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.italian-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Golden Ratio Grid - Asymmetrical elegance */
+.italian-grid-golden {
+  grid-template-columns: calc(100% / var(--golden-ratio)) 1fr;
+}
+
+.italian-grid-golden-reverse {
+  grid-template-columns: 1fr calc(100% / var(--golden-ratio));
+}
+
+/* Italian Architectural Grid - Based on classical proportions */
+.italian-grid-architectural {
+  grid-template-columns: 2fr 3fr 2fr;
+}
+
+.italian-grid-renaissance {
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.italian-grid-baroque {
+  grid-template-columns: 1fr 1.5fr 1fr;
+}
+
+/* Italian Asymmetrical Layouts */
+.italian-grid-asymmetrical-left {
+  grid-template-columns: 2fr 1fr;
+}
+
+.italian-grid-asymmetrical-right {
+  grid-template-columns: 1fr 2fr;
+}
+
+.italian-grid-dynamic {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.italian-grid-premium {
+  grid-template-columns: 3fr 2fr 1fr;
+}
+
+/* Italian Flexbox Layouts */
+.italian-flex {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.italian-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.italian-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.italian-flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-4);
+}
+
+.italian-flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-4);
+}
+
+/* Italian Card Layouts */
+.italian-card-layout {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.italian-card-layout-featured {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 2fr 1fr;
+}
+
+.italian-card-layout-magazine {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+/* Italian Hero Layouts */
+.italian-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.italian-hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+
+.italian-hero-asymmetrical {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 80vh;
+}
+
+.italian-hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh;
+  padding: var(--space-8);
+}
+
+/* Italian Article Layouts */
+.italian-article {
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-8);
+}
+
+.italian-article-wide {
+  max-width: 80ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-8);
+}
+
+.italian-article-magazine {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-12);
+  padding: var(--space-8);
+}
+
+.italian-article-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 16rem;
+  gap: var(--space-12);
+  padding: var(--space-8);
+}
+
+/* Italian Gallery Layouts */
+.italian-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--space-4);
+}
+
+.italian-gallery-masonry {
+  column-count: 3;
+  column-gap: var(--space-4);
+  column-fill: balance;
+}
+
+.italian-gallery-masonry > * {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
+}
+
+.italian-gallery-featured {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-4);
+  height: 600px;
+}
+
+.italian-gallery-featured > *:first-child {
+  grid-row: span 2;
+}
+
+/* Italian Navigation Layouts */
+.italian-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  position: relative;
+}
+
+.italian-nav-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) 0;
+}
+
+.italian-nav-split {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-4) 0;
+}
+
+.italian-nav-split > *:first-child {
+  justify-self: start;
+}
+
+.italian-nav-split > *:last-child {
+  justify-self: end;
+}
+
+/* Italian Footer Layouts */
+.italian-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--space-8);
+  padding: var(--space-12) 0;
+  border-top: 1px solid hsl(var(--roman-marble));
+}
+
+.italian-footer-minimal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-8) 0;
+  border-top: 1px solid hsl(var(--roman-marble));
+}
+
+.italian-footer-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-10) 0;
+  gap: var(--space-6);
+}
+
+/* Italian Form Layouts */
+.italian-form {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+.italian-form-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+.italian-form-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.italian-form-grid-asymmetrical {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* Italian Spacing Utilities */
+.italian-space-y-1 > * + * { margin-top: var(--space-1); }
+.italian-space-y-2 > * + * { margin-top: var(--space-2); }
+.italian-space-y-3 > * + * { margin-top: var(--space-3); }
+.italian-space-y-4 > * + * { margin-top: var(--space-4); }
+.italian-space-y-6 > * + * { margin-top: var(--space-6); }
+.italian-space-y-8 > * + * { margin-top: var(--space-8); }
+.italian-space-y-12 > * + * { margin-top: var(--space-12); }
+.italian-space-y-16 > * + * { margin-top: var(--space-16); }
+.italian-space-y-20 > * + * { margin-top: var(--space-20); }
+.italian-space-y-24 > * + * { margin-top: var(--space-24); }
+
+.italian-space-x-1 > * + * { margin-left: var(--space-1); }
+.italian-space-x-2 > * + * { margin-left: var(--space-2); }
+.italian-space-x-3 > * + * { margin-left: var(--space-3); }
+.italian-space-x-4 > * + * { margin-left: var(--space-4); }
+.italian-space-x-6 > * + * { margin-left: var(--space-6); }
+.italian-space-x-8 > * + * { margin-left: var(--space-8); }
+.italian-space-x-12 > * + * { margin-left: var(--space-12); }
+.italian-space-x-16 > * + * { margin-left: var(--space-16); }
+
+/* Italian Aspect Ratios */
+.italian-aspect-square {
+  aspect-ratio: 1;
+}
+
+.italian-aspect-golden {
+  aspect-ratio: var(--golden-ratio);
+}
+
+.italian-aspect-golden-vertical {
+  aspect-ratio: calc(1 / var(--golden-ratio));
+}
+
+.italian-aspect-video {
+  aspect-ratio: 16/9;
+}
+
+.italian-aspect-cinema {
+  aspect-ratio: 21/9;
+}
+
+.italian-aspect-photo {
+  aspect-ratio: 4/3;
+}
+
+/* Italian Positioning */
+.italian-absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.italian-absolute-top-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.italian-absolute-bottom-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Italian Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --grid-gutter-italian: var(--space-4);
+    --grid-margin-italian: var(--space-3);
+  }
+
+  .italian-container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .italian-grid-golden,
+  .italian-grid-golden-reverse,
+  .italian-grid-architectural,
+  .italian-grid-renaissance,
+  .italian-grid-baroque,
+  .italian-grid-asymmetrical-left,
+  .italian-grid-asymmetrical-right,
+  .italian-grid-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .italian-hero-split,
+  .italian-hero-asymmetrical,
+  .italian-article-magazine,
+  .italian-article-sidebar,
+  .italian-form-grid-2,
+  .italian-form-grid-asymmetrical {
+    grid-template-columns: 1fr;
+  }
+
+  .italian-gallery-masonry {
+    column-count: 2;
+  }
+
+  .italian-nav-split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .italian-footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .italian-section,
+  .italian-section-lg,
+  .italian-section-xl {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .italian-hero {
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --grid-gutter-italian: var(--space-3);
+    --grid-margin-italian: var(--space-2);
+  }
+
+  .italian-container {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+
+  .italian-gallery-masonry {
+    column-count: 1;
+  }
+
+  .italian-gallery-featured {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .italian-gallery-featured > *:first-child {
+    grid-row: span 1;
+  }
+
+  .italian-hero {
+    min-height: 50vh;
+  }
+
+  .italian-hero-centered {
+    padding: var(--space-6);
+  }
+
+  .italian-article {
+    padding: var(--space-6);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .italian-section,
+  .italian-section-lg,
+  .italian-section-xl {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .italian-grid-golden,
+  .italian-grid-golden-reverse,
+  .italian-grid-asymmetrical-left,
+  .italian-grid-asymmetrical-right {
+    grid-template-columns: 1fr;
+  }
+}

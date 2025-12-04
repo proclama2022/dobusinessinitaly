@@ -19,8 +19,7 @@ import {
   faRocket,
   faLaptopCode,
   faChartPie,
-  faArrowRight,
-  faChevronRight
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
 
 type ServiceCardProps = {
@@ -33,23 +32,26 @@ type ServiceCardProps = {
 const ServiceCard = ({ icon, title, description, linkText }: ServiceCardProps) => {
   const { getLocalizedPath } = useLocalizedPath();
   return (
-    <div className="card hover-lift overflow-hidden group">
-      <div className="p-8">
-        <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
-          <FontAwesomeIcon icon={icon} className="text-primary text-2xl" />
+    <div className="group relative bg-white p-8 rounded border border-neutral-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+      
+      <div className="relative z-10">
+        <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors duration-500">
+          <FontAwesomeIcon icon={icon} className="text-primary text-2xl group-hover:scale-110 transition-transform duration-500" />
         </div>
 
-        <h3 className="text-xl font-heading font-bold text-neutral-900 mb-3">
+        <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
 
-        <p className="text-neutral-600 mb-6">
+        <p className="text-neutral-600 mb-6 leading-relaxed">
           {description}
         </p>
 
-        <Link href={getLocalizedPath('/contact')} className="text-primary font-medium inline-flex items-center">
+        <Link href={getLocalizedPath('/contact')} className="text-primary font-semibold text-sm uppercase tracking-wider inline-flex items-center group/link">
           {linkText}
-          <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-sm transition-transform duration-200 group-hover:translate-x-1" />
+          <span className="ml-2 w-5 h-5 rounded-full border border-primary/30 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all duration-300">
+            <FontAwesomeIcon icon={faArrowRight} className="text-[10px] transform group-hover/link:-rotate-45 transition-transform duration-300" />
+          </span>
         </Link>
       </div>
     </div>
@@ -154,58 +156,29 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="section-padding relative overflow-hidden bg-gradient-to-b from-white to-neutral-50">
-      {/* Sezione pulita, senza ornamenti invadenti */}
-
+    <section id="services" className="section-padding relative overflow-hidden bg-neutral-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 relative">
-          {/* Decorazioni animate dell'header */}
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 opacity-10 bg-[#009246] rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute -top-10 left-1/3 -translate-x-1/2 w-32 h-32 opacity-10 bg-[#ce2b37] rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDuration: '7s' }}></div>
-          <div className="absolute -top-10 right-1/3 translate-x-1/2 w-32 h-32 opacity-10 bg-[#009246] rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{ animationDuration: '4s' }}></div>
-
-          {/* Titolo con effetti */}
+          
           <div className="relative inline-block animate-fade-in">
-            <span className="absolute -top-8 -left-8 w-6 h-6 opacity-20 bg-[#009246] animate-ping"></span>
-            <span className="absolute -bottom-8 -right-8 w-6 h-6 opacity-20 bg-[#ce2b37] animate-ping" style={{ animationDuration: '3s' }}></span>
-
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 relative inline-flex items-center">
-              <span className="text-[#009246]">Servizi </span>
-              <span className="relative pl-4">
-                per Stranieri in Italia
-                <span className="absolute -bottom-2 left-0 right-0 h-1.5 italian-gradient"></span>
-              </span>
+             <span className="text-primary font-semibold tracking-widest text-sm uppercase mb-2 block">Our Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block text-neutral-900">
+              <span className="relative z-10">Services for Foreigners in Italy</span>
             </h2>
           </div>
 
-          <div className="h-1 w-24 italian-gradient mx-auto mb-6"></div>
-
-          <p className="text-neutral-600 max-w-3xl mx-auto text-base md:text-lg animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <p className="text-neutral-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             {t('services.subtitle')}
           </p>
         </div>
 
-        {/* Aggiungiamo divisore decorativo italiano prima dei servizi */}
-        <div className="relative flex items-center justify-center mb-12">
-          <div className="h-px w-full bg-neutral-200"></div>
-          <div className="absolute flex space-x-1">
-            <div className="w-3 h-3 rounded-full bg-[#009246] animate-bounce" style={{ animationDelay: '0s' }}></div>
-            <div className="w-3 h-3 rounded-full bg-white border border-neutral-300 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-3 h-3 rounded-full bg-[#ce2b37] animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {/* Ornamenti rimossi per una resa più pulita */}
-
           {services.map((service, index) => (
             <div
               key={index}
-              className="animate-slide-up hover:z-10"
+              className="animate-slide-up"
               style={{
-                animationDelay: `${0.1 + index * 0.15}s`,
-                transform: `perspective(1000px) rotateY(${Math.sin(index * 0.3) * 2}deg) rotateX(${Math.cos(index * 0.5) * 1}deg)`,
-                transition: 'all 0.5s ease-in-out'
+                animationDelay: `${0.1 + index * 0.1}s`,
               }}
             >
               <ServiceCard
@@ -218,13 +191,12 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Aggiungiamo un bottone animato per vedere tutti i servizi */}
-        <div className="text-center mt-12">
-          <Link href={getLocalizedPath('/services')} className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 py-3 font-medium text-neutral-800 shadow-md transition duration-300 ease-out border border-neutral-200 hover:border-neutral-300">
-            <span className="absolute inset-0 italian-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out rounded-lg"></span>
-            <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-out">
+        {/* View All Button */}
+        <div className="text-center mt-16">
+          <Link href={getLocalizedPath('/services')} className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-neutral-900 rounded hover:bg-primary shadow-lg hover:shadow-primary/40 overflow-hidden">
+             <span className="relative flex items-center gap-3">
               {t('services.cta.viewAll')}
-              <FontAwesomeIcon icon={faChevronRight} className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
+              <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Link>
         </div>

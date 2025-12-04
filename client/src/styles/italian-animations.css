@@ -1,0 +1,458 @@
+/* Italian Motion Design - Refined Elegance */
+/* Sophisticated animations inspired by Italian craftsmanship and luxury */
+
+:root {
+  /* Italian Timing Functions - Elegance and refinement */
+  --ease-italian-ease: cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth, refined */
+  --ease-italian-luxury: cubic-bezier(0.2, 0, 0.2, 1); /* Premium feel */
+  --ease-italian-craft: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Artisan bounce */
+  --ease-italian-sophisticated: cubic-bezier(0.23, 1, 0.32, 1); /* Elegant overshoot */
+  --ease-italian-graceful: cubic-bezier(0.4, 0, 0.6, 1); /* Gentle flow */
+  --ease-italian-prestige: cubic-bezier(0.11, 0, 0.5, 0); /* Premium entrance */
+
+  /* Italian Durations - Refined pacing */
+  --duration-instant: 0.15s;
+  --duration-quick: 0.25s;
+  --duration-elegant: 0.4s;
+  --duration-sophisticated: 0.6s;
+  --duration-grand: 0.8s;
+  --duration-majestic: 1.2s;
+  --duration-opulent: 1.8s;
+
+  /* Italian Stagger Delays - Rhythm and flow */
+  --stagger-quick: 0.1s;
+  --stagger-elegant: 0.15s;
+  --stagger-sophisticated: 0.2s;
+  --stagger-grand: 0.3s;
+
+  /* Italian Animation Delays */
+  --delay-immediate: 0s;
+  --delay-brief: 0.2s;
+  --delay-elegant: 0.4s;
+  --delay-grand: 0.6s;
+  --delay-majestic: 0.8s;
+
+  /* Italian Transforms - Elegant movements */
+  --transform-subtle: translateX(-10px);
+  --transform-elegant: translateX(-20px);
+  --transform-grand: translateX(-30px);
+  --transform-scale-subtle: scale(0.95);
+  --transform-scale-elegant: scale(0.85);
+  --transform-scale-grand: scale(0.8);
+  --transform-rotate-elegant: rotateZ(-2deg);
+  --transform-rotate-grand: rotateZ(-4deg);
+}
+
+/* Italian Page Load Animations */
+
+/* Elegant fade in with upward motion */
+@keyframes italianFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sophisticated fade in with scale */
+@keyframes italianFadeInScale {
+  0% {
+    opacity: 0;
+    transform: var(--transform-scale-elegant);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Luxury slide in from left with rotation */
+@keyframes italianSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: var(--transform-elegant) rotateZ(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0);
+  }
+}
+
+/* Craft entrance with subtle bounce */
+@keyframes italianSlideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Prestige reveal with blur to focus */
+@keyframes italianReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(10px);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Grand entrance with elegant sweep */
+@keyframes italianSweepIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotateZ(-5deg);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(10px) rotateZ(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0);
+  }
+}
+
+/* Italian Micro-interactions */
+
+/* Hover lift with shadow */
+.italian-hover-lift {
+  transition: transform var(--duration-elegant) var(--ease-italian-luxury),
+              box-shadow var(--duration-elegant) var(--ease-italian-luxury);
+  will-change: transform, box-shadow;
+}
+
+.italian-hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Sophisticated scale on hover */
+.italian-hover-scale {
+  transition: transform var(--duration-elegant) var(--ease-italian-sophisticated);
+  will-change: transform;
+}
+
+.italian-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Luxury color transition */
+.italian-hover-color {
+  transition: color var(--duration-elegant) var(--ease-italian-graceful),
+              background-color var(--duration-elegant) var(--ease-italian-graceful);
+  will-change: color, background-color;
+}
+
+.italian-hover-color:hover {
+  color: hsl(var(--venetian-gold));
+  background-color: hsl(var(--tuscan-terracotta-light));
+}
+
+/* Craft entrance with subtle glow */
+.italian-hover-glow {
+  transition: transform var(--duration-elegant) var(--ease-italian-craft),
+              box-shadow var(--duration-elegant) var(--ease-italian-craft);
+  will-change: transform, box-shadow;
+}
+
+.italian-hover-glow:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3),
+              0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* Italian Scroll Animations */
+
+/* Elegant scroll fade in */
+.italian-scroll-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-sophisticated) var(--ease-italian-ease),
+              transform var(--duration-sophisticated) var(--ease-italian-ease);
+}
+
+.italian-scroll-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sophisticated scroll slide */
+.italian-scroll-slide-left {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--duration-sophisticated) var(--ease-italian-luxury),
+              transform var(--duration-sophisticated) var(--ease-italian-luxury);
+}
+
+.italian-scroll-slide-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Grand scroll reveal */
+.italian-scroll-reveal {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--duration-grand) var(--ease-italian-prestige),
+              transform var(--duration-grand) var(--ease-italian-prestige);
+}
+
+.italian-scroll-reveal.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Italian Loading States */
+
+/* Elegant shimmer effect */
+@keyframes italianShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.italian-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--roman-marble)) 0%,
+    hsl(var(--venetian-gold-light)) 50%,
+    hsl(var(--roman-marble)) 100%
+  );
+  background-size: 200% 100%;
+  animation: italianShimmer 2s infinite;
+}
+
+/* Sophisticated pulse */
+@keyframes italianPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.italian-pulse {
+  animation: italianPulse var(--duration-majestic) infinite;
+}
+
+/* Italian Text Animations */
+
+/* Elegant typewriter effect */
+@keyframes italianTypewriter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.italian-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: italianTypewriter var(--duration-grand) var(--ease-italian-graceful) steps(40, end);
+}
+
+/* Luxury text gradient animation */
+@keyframes italianGradientText {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.italian-gradient-text {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--italian-green)) 0%,
+    hsl(var(--venetian-gold)) 25%,
+    hsl(var(--italian-red)) 50%,
+    hsl(var(--tuscan-terracotta)) 75%,
+    hsl(var(--mediterranean-blue)) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  animation: italianGradientText 4s ease infinite;
+}
+
+/* Italian Utility Classes */
+
+/* Fade animations */
+.italian-fade-in-up {
+  animation: italianFadeInUp var(--duration-sophisticated) var(--ease-italian-ease) forwards;
+}
+
+.italian-fade-in-scale {
+  animation: italianFadeInScale var(--duration-elegant) var(--ease-italian-luxury) forwards;
+}
+
+.italian-slide-in-left {
+  animation: italianSlideInLeft var(--duration-sophisticated) var(--ease-italian-graceful) forwards;
+}
+
+.italian-slide-in-down {
+  animation: italianSlideInDown var(--duration-elegant) var(--ease-italian-craft) forwards;
+}
+
+.italian-reveal {
+  animation: italianReveal var(--duration-grand) var(--ease-italian-prestige) forwards;
+}
+
+.italian-sweep-in {
+  animation: italianSweepIn var(--duration-opulent) var(--ease-italian-sophisticated) forwards;
+}
+
+/* Stagger animations */
+.italian-stagger-children > * {
+  opacity: 0;
+  animation: italianFadeInUp var(--duration-elegant) var(--ease-italian-ease) forwards;
+}
+
+.italian-stagger-children > *:nth-child(1) { animation-delay: var(--delay-immediate); }
+.italian-stagger-children > *:nth-child(2) { animation-delay: var(--stagger-quick); }
+.italian-stagger-children > *:nth-child(3) { animation-delay: calc(var(--stagger-quick) * 2); }
+.italian-stagger-children > *:nth-child(4) { animation-delay: calc(var(--stagger-quick) * 3); }
+.italian-stagger-children > *:nth-child(5) { animation-delay: calc(var(--stagger-quick) * 4); }
+.italian-stagger-children > *:nth-child(6) { animation-delay: calc(var(--stagger-quick) * 5); }
+.italian-stagger-children > *:nth-child(7) { animation-delay: calc(var(--stagger-quick) * 6); }
+.italian-stagger-children > *:nth-child(8) { animation-delay: calc(var(--stagger-quick) * 7); }
+
+/* Elegant stagger for premium elements */
+.italian-stagger-elegant > * {
+  opacity: 0;
+  animation: italianReveal var(--duration-sophisticated) var(--ease-italian-luxury) forwards;
+}
+
+.italian-stagger-elegant > *:nth-child(1) { animation-delay: var(--delay-immediate); }
+.italian-stagger-elegant > *:nth-child(2) { animation-delay: var(--stagger-elegant); }
+.italian-stagger-elegant > *:nth-child(3) { animation-delay: calc(var(--stagger-elegant) * 2); }
+.italian-stagger-elegant > *:nth-child(4) { animation-delay: calc(var(--stagger-elegant) * 3); }
+.italian-stagger-elegant > *:nth-child(5) { animation-delay: calc(var(--stagger-elegant) * 4); }
+
+/* Page transitions */
+.italian-page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+.italian-page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all var(--duration-sophisticated) var(--ease-italian-prestige);
+}
+
+.italian-page-transition-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.italian-page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px) scale(1.02);
+  transition: all var(--duration-quick) var(--ease-italian-graceful);
+}
+
+/* Italian Scroll Parallax */
+.italian-parallax {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0s;
+    --duration-quick: 0s;
+    --duration-elegant: 0s;
+    --duration-sophisticated: 0s;
+    --duration-grand: 0s;
+    --duration-majestic: 0s;
+    --duration-opulent: 0s;
+  }
+
+  .italian-hover-lift,
+  .italian-hover-scale,
+  .italian-hover-color,
+  .italian-hover-glow {
+    transition: none;
+  }
+
+  .italian-hover-lift:hover,
+  .italian-hover-scale:hover,
+  .italian-hover-color:hover,
+  .italian-hover-glow:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .italian-gradient-text {
+    animation: none;
+    background: hsl(var(--italian-green));
+    -webkit-text-fill-color: hsl(var(--italian-white));
+  }
+
+  .italian-shimmer,
+  .italian-pulse {
+    animation: none;
+  }
+}
+
+/* High Performance Mode */
+@media (prefers-reduced-motion: no-preference) {
+  .italian-hover-lift,
+  .italian-hover-scale,
+  .italian-hover-color,
+  .italian-hover-glow {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .italian-hover-lift,
+  .italian-hover-scale,
+  .italian-hover-color,
+  .italian-hover-glow,
+  .italian-gradient-text,
+  .italian-shimmer,
+  .italian-pulse {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}

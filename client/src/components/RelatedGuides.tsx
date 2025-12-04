@@ -2,6 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Link } from 'wouter';
+import OptimizedImage from '@/components/OptimizedImage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 interface BlogPostMeta {
   slug: string;
@@ -38,23 +41,44 @@ export default function RelatedGuides({ context }: { context: Context }) {
   if (!posts.length) return null;
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-800">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
               {t('blog.related', 'Related Guides')}
             </h2>
+            <p className="text-neutral-600">
+              {t('blog.relatedDescription', 'Learn more from our guides')}
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {posts.map((p) => (
-              <Link key={p.slug} href={`/${i18n.language}/blog/${p.slug}`} className="block bg-neutral-50 hover:bg-white p-6 rounded-lg shadow transition-shadow">
-                <h3 className="text-lg font-semibold text-neutral-800">{p.title}</h3>
-                <p className="text-neutral-600 mt-2 line-clamp-3">{p.excerpt}</p>
-                <span className="inline-flex items-center mt-3 text-primary">
-                  {t('blog.readMore', 'Read more')}
-                  <i className="fas fa-arrow-right ml-2 text-sm"></i>
-                </span>
+              <Link key={p.slug} href={`/${i18n.language}/blog/${p.slug}`} className="group block bg-white rounded border border-neutral-200 overflow-hidden hover:shadow-md transition-shadow">
+                {/* Cover Image */}
+                {p.coverImage && (
+                  <div className="aspect-video overflow-hidden bg-neutral-100">
+                    <OptimizedImage
+                      src={p.coverImage}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      width={400}
+                      height={225}
+                    />
+                  </div>
+                )}
+                
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-neutral-600 text-sm mb-4 line-clamp-2">{p.excerpt}</p>
+                  <span className="inline-flex items-center text-primary font-medium text-sm">
+                    {t('blog.readMore', 'Read more')}
+                    <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-xs group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

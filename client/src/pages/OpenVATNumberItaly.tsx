@@ -2,10 +2,13 @@ import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
+import OptimizedImage from '@/components/OptimizedImage';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import RelatedServices from '@/components/RelatedServices';
 import RelatedGuides from '@/components/RelatedGuides';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faChevronDown, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const OpenVATNumberItaly = () => {
   const { t, i18n } = useTranslation();
@@ -133,31 +136,44 @@ const OpenVATNumberItaly = () => {
         lang={currentLang}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#009246] to-[#38a169] text-white py-20">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Hero Section - Minimalist Style */}
+      <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white py-24">
+        {/* Background Image */}
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="VAT Registration Italy"
+          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          priority={true}
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 bg-neutral-900/70 z-[2]"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
+              {t('landingPages.openVATNumberItaly.title')}
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
               {t('landingPages.openVATNumberItaly.heroTitle')}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
+            <p className="text-xl md:text-2xl mb-10 text-neutral-300 leading-relaxed">
               {t('landingPages.openVATNumberItaly.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={getLocalizedPath('/contact')}
-                className="inline-flex items-center px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
+                className="btn-primary text-lg py-4 px-8"
               >
                 {t('landingPages.openVATNumberItaly.heroCta')}
-                <i className="fas fa-arrow-right ml-2"></i>
+                <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
               </Link>
               <Link
                 href="#vat-types"
-                className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-[#009246] transition-colors text-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/10 transition-colors text-lg"
               >
                 {t('navigation.learnMore')}
-                <i className="fas fa-chevron-down ml-2"></i>
+                <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
               </Link>
             </div>
           </div>
@@ -178,26 +194,26 @@ const OpenVATNumberItaly = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                 {landingPageData?.overviewTitle || t('landingPages.openVATNumberItaly.title')}
               </h2>
               {landingPageData?.overviewDescription && (
-                <p className="text-lg text-neutral-600 leading-relaxed">
+                <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto">
                   {landingPageData.overviewDescription}
                 </p>
               )}
               {landingPageData?.overviewCta && (
-                <div className="mt-6">
+                <div className="mt-8">
                   <Link
                     href={getLocalizedPath('/contact')}
-                    className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-semibold rounded-lg hover:bg-[#007a33] transition-colors"
+                    className="btn-primary"
                   >
                     {landingPageData.overviewCta}
-                    <i className="fas fa-arrow-right ml-2"></i>
+                    <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
                   </Link>
                 </div>
               )}
@@ -207,35 +223,36 @@ const OpenVATNumberItaly = () => {
       </section>
 
       {/* VAT Types Section */}
-      <section id="vat-types" className="py-16 bg-gray-50">
+      <section id="vat-types" className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                 {landingPageData?.vatTypesTitle}
               </h2>
               {landingPageData?.vatTypesSubtitle && (
-                <p className="text-lg text-neutral-600">
+                <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                   {landingPageData.vatTypesSubtitle}
                 </p>
               )}
             </div>
 
             {vatTypes.length > 0 && (
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-6">
                 {vatTypes.map((type, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-                    <div className="mb-6">
-                      <h3 className="text-xl font-bold text-neutral-800 mb-3">{type.title}</h3>
-                      <p className="text-neutral-600 mb-4">{type.description}</p>
-                      {Array.isArray(type.features) && type.features.length > 0 && (
-                        <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
-                          {type.features.map((f, i) => (
-                            <li key={i}>{f}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
+                  <div key={index} className="bg-white rounded border border-neutral-200 p-6 hover:shadow-md transition-shadow">
+                    <h3 className="text-xl font-bold text-primary mb-3">{type.title}</h3>
+                    <p className="text-neutral-600 mb-4">{type.description}</p>
+                    {Array.isArray(type.features) && type.features.length > 0 && (
+                      <ul className="text-neutral-600 space-y-2 text-sm">
+                        {type.features.map((f, i) => (
+                          <li key={i} className="flex items-start">
+                            <FontAwesomeIcon icon={faCheck} className="text-primary text-xs mt-1.5 mr-2" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </div>
@@ -246,25 +263,25 @@ const OpenVATNumberItaly = () => {
 
       {/* Services Section (render only if items provided in locales) */}
       {Array.isArray(landingPageData?.servicesItems) && landingPageData.servicesItems.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                   {landingPageData?.servicesTitle}
                 </h2>
                 {landingPageData?.servicesSubtitle && (
-                  <p className="text-lg text-neutral-600">
+                  <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                     {landingPageData.servicesSubtitle}
                   </p>
                 )}
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {landingPageData.servicesItems.map((service: any, index: number) => (
-                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{service.title}</h3>
-                    <p className="text-gray-600">{service.description}</p>
+                  <div key={index} className="bg-white rounded border border-neutral-200 p-6 hover:shadow-md transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-primary">{service.title}</h3>
+                    <p className="text-neutral-600">{service.description}</p>
                   </div>
                 ))}
               </div>
@@ -275,25 +292,25 @@ const OpenVATNumberItaly = () => {
 
       {/* Requirements Section (render only if items provided in locales) */}
       {Array.isArray(landingPageData?.requirementsItems) && landingPageData.requirementsItems.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-20 bg-neutral-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                   {landingPageData?.requirementsTitle}
                 </h2>
                 {landingPageData?.requirementsSubtitle && (
-                  <p className="text-lg text-neutral-600">
+                  <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                     {landingPageData.requirementsSubtitle}
                   </p>
                 )}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 {landingPageData.requirementsItems.map((requirement: any, index: number) => (
-                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{requirement.title}</h3>
-                    <p className="text-gray-600">{requirement.description}</p>
+                  <div key={index} className="bg-white rounded border border-neutral-200 p-6 hover:shadow-md transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-primary">{requirement.title}</h3>
+                    <p className="text-neutral-600">{requirement.description}</p>
                   </div>
                 ))}
               </div>
@@ -303,27 +320,27 @@ const OpenVATNumberItaly = () => {
       )}
 
       {/* Process Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                 {t('landingPages.openVATNumberItaly.processTitle')}
               </h2>
-              <p className="text-lg text-neutral-600">
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                 {t('landingPages.openVATNumberItaly.processSubtitle')}
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {processSteps.map((step: any, index: number) => (
-                <div key={index} className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-12 h-12 bg-[#009246] text-white rounded-full flex items-center justify-center flex-shrink-0">
+                <div key={index} className="flex flex-col md:flex-row items-start gap-6 p-6 bg-neutral-50 rounded border border-neutral-100">
+                  <div className="w-12 h-12 bg-primary text-white rounded flex items-center justify-center flex-shrink-0">
                     <span className="font-bold">{step.step}</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-neutral-900">{step.title}</h3>
+                    <p className="text-neutral-600">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -333,24 +350,24 @@ const OpenVATNumberItaly = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                 {landingPageData?.faqTitle}
               </h2>
               {landingPageData?.faqSubtitle && (
-                <p className="text-lg text-neutral-600">
+                <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                   {landingPageData.faqSubtitle}
                 </p>
               )}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {(Array.isArray(landingPageData.faqItems) ? landingPageData.faqItems : []).map((faq: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-lg font-bold text-neutral-800 mb-3">{faq.question}</h3>
+                <div key={index} className="bg-white rounded border border-neutral-200 p-6">
+                  <h3 className="text-lg font-bold text-neutral-900 mb-3">{faq.question}</h3>
                   <p className="text-neutral-600">{faq.answer}</p>
                 </div>
               ))}
@@ -366,23 +383,23 @@ const OpenVATNumberItaly = () => {
       <RelatedGuides context="openVATNumberItaly" />
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#009246] to-[#38a169] text-white">
+      <section className="py-20 bg-neutral-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {landingPageData?.ctaTitle}
             </h2>
             {landingPageData?.ctaDescription && (
-              <p className="text-xl mb-8 text-white/90">
+              <p className="text-xl mb-10 text-neutral-300">
                 {landingPageData.ctaDescription}
               </p>
             )}
             <Link
               href={getLocalizedPath('/contact')}
-              className="inline-flex items-center px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
+              className="btn-primary text-lg py-4 px-8"
             >
               {landingPageData?.ctaButton || t('navigation.learnMore')}
-              <i className="fas fa-arrow-right ml-2"></i>
+              <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
             </Link>
           </div>
         </div>

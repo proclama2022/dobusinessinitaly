@@ -1,10 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import { useTranslation } from 'react-i18next';
 import { featuredLinkedinPosts } from '@/data/featuredLinkedin';
 import { featuredVideos } from '@/data/featuredVideos';
 import OptimizedImage from '@/components/OptimizedImage';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const linkedinProfileUrl = 'https://www.linkedin.com/in/studioemmicommercialista/';
 const linkedinActivityUrl = `${linkedinProfileUrl}recent-activity/`;
@@ -13,6 +20,124 @@ const youtubeChannelUrl = 'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcL
 const Social = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Convert videos for lightbox (images for lightbox compatibility)
+  const lightboxVideos = featuredVideos.map(video => ({
+    src: `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
+    title: video.title
+  }));
+
+  useEffect(() => {
+    // Simulate loading state
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Animated Video Card Component
+  const AnimatedVideoCard = ({ video, index }: { video: any; index: number }) => {
+    const { ref, inView } = useInView({
+      triggerOnce: true,
+      threshold: 0.1
+    });
+
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="group relative cursor-pointer"
+        onClick={() => setLightboxIndex(index)}
+      >
+        <div className="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
+          {/* Overlay con gradiente italiano al hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10 rounded-xl"></div>
+
+          {/* Skeleton loader */}
+          {isLoading && (
+            <div className="absolute inset-0 bg-neutral-200 animate-pulse z-20"></div>
+          )}
+
+          <iframe
+            className="w-full h-full transform group-hover:scale-[1.02] transition-transform duration-300"
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title={video.title || 'YouTube video'}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            loading="lazy"
+          />
+
+          {/* Play button overlay */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+          >
+            <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+              <i className="fas fa-play text-[#ce2b37] text-xl ml-1"></i>
+            </div>
+          </motion.div>
+
+          {/* Badge YouTube con animazione */}
+          <motion.div
+            className="absolute top-2 right-2 w-8 h-6 bg-[#FF0000] rounded-sm flex items-center justify-center opacity-80"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+          >
+            <i className="fab fa-youtube text-white text-xs"></i>
+          </motion.div>
+
+          {/* Video title on hover */}
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+            initial={{ y: 20 }}
+            whileHover={{ y: 0 }}
+          >
+            <p className="text-white text-sm font-medium line-clamp-2">{video.title}</p>
+          </motion.div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  // Animated LinkedIn Post Component
+  const AnimatedLinkedInPost = ({ post, index }: { post: any; index: number }) => {
+    const { ref, inView } = useInView({
+      triggerOnce: true,
+      threshold: 0.1
+    });
+
+    return (
+      <motion.li
+        ref={ref}
+        initial={{ opacity: 0, x: -20 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="group"
+      >
+        <motion.a
+          href={post.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-start p-4 rounded-xl border border-neutral-200 hover:border-[#0A66C2] hover:bg-gradient-to-r hover:from-[#009246]/5 hover:to-[#ce2b37]/5 transition-all duration-500 hover:shadow-lg"
+          whileHover={{ x: 5, scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <motion.div
+            className="text-[#0A66C2] mt-1 mr-3 text-lg"
+            whileHover={{ rotate: 15, scale: 1.2 }}
+          >
+            <i className="fab fa-linkedin-in"></i>
+          </motion.div>
+          <span className="text-neutral-800 group-hover:text-[#0A66C2] font-medium transition-colors duration-300">
+            {post.title}
+          </span>
+        </motion.a>
+      </motion.li>
+    );
+  };
 
   useEffect(() => {
     // Load LinkedIn badge script once when component mounts
@@ -56,7 +181,6 @@ const Social = () => {
           width={1920}
           height={1080}
           sizes="100vw"
-          quality={85}
         />
         
         {/* Contenuto Hero */}
@@ -125,24 +249,24 @@ const Social = () => {
 
               {/* Featured posts list */}
               {featuredLinkedinPosts.length > 0 && (
-                <div className="mt-8">
-                  <h3 className="text-xl font-heading font-semibold mb-4">{t('socialPage.linkedinFeaturedTitle', 'Post in evidenza')}</h3>
+                <motion.div
+                  className="mt-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <motion.h3
+                    className="text-xl font-heading font-semibold mb-4"
+                    whileHover={{ x: 5 }}
+                  >
+                    {t('socialPage.linkedinFeaturedTitle', 'Post in evidenza')}
+                  </motion.h3>
                   <ul className="space-y-3">
-                    {featuredLinkedinPosts.map((p) => (
-                      <li key={p.url} className="group">
-                        <a
-                          href={p.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-start p-4 rounded-lg border border-neutral-200 hover:border-[#0A66C2] hover:bg-gradient-to-r hover:from-[#009246]/5 hover:to-[#ce2b37]/5 transition-all duration-300 hover:shadow-md"
-                        >
-                          <i className="fab fa-linkedin-in text-[#0A66C2] mt-1 mr-3 text-lg"></i>
-                          <span className="text-neutral-800 group-hover:text-[#0A66C2] font-medium">{p.title}</span>
-                        </a>
-                      </li>
+                    {featuredLinkedinPosts.map((p, index) => (
+                      <AnimatedLinkedInPost key={p.url} post={p} index={index} />
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               )}
             </div>
             
@@ -221,37 +345,63 @@ const Social = () => {
             </div>
             
             {/* Video grid */}
-            <div className="w-full lg:w-1/2">
+            <motion.div
+              className="w-full lg:w-1/2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+            >
               {featuredVideos.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {featuredVideos.slice(0, 4).map((v) => (
-                    <div key={v.id} className="group relative">
-                      <div className="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
-                        {/* Overlay con gradiente italiano al hover */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-tr from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10 rounded-xl"></div>
-                        
-                        <iframe
-                          className="w-full h-full transform group-hover:scale-[1.02] transition-transform duration-300"
-                          src={`https://www.youtube.com/embed/${v.id}`}
-                          title={v.title || 'YouTube video'}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                          allowFullScreen
-                        ></iframe>
-                        
-                        {/* Badge YouTube */}
-                        <div className="absolute top-2 right-2 w-8 h-6 bg-[#FF0000] rounded-sm flex items-center justify-center opacity-80">
-                          <i className="fab fa-youtube text-white text-xs"></i>
-                        </div>
-                      </div>
-                    </div>
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        delayChildren: 0.2,
+                        staggerChildren: 0.1
+                      }
+                    }
+                  }}
+                >
+                  {featuredVideos.slice(0, 4).map((v, index) => (
+                    <motion.div
+                      key={v.id}
+                      variants={{
+                        hidden: { opacity: 0, scale: 0.9 },
+                        visible: { opacity: 1, scale: 1 }
+                      }}
+                    >
+                      <AnimatedVideoCard video={v} index={index} />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Lightbox for videos */}
+      {lightboxIndex >= 0 && (
+        <Lightbox
+          open={lightboxIndex >= 0}
+          close={() => setLightboxIndex(-1)}
+          slides={lightboxVideos}
+          index={lightboxIndex}
+          plugins={[]}
+          carousel={{
+            finite: true,
+            preload: 2
+          }}
+          on={{
+            click: () => setLightboxIndex(-1)
+          }}
+        />
+      )}
 
       <ContactSection />
     </>

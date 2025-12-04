@@ -1,0 +1,402 @@
+/* Italian Design System - Performance & Accessibility Optimization */
+/* Ensuring the Italian elegance maintains high performance and accessibility standards */
+
+/* Font Loading Optimization */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap; /* Improves perceived performance */
+  src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+}
+
+/* Performance Optimizations */
+
+/* GPU Acceleration for Italian Animations */
+.italian-gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* Contain paint for complex Italian components */
+.italian-contain-paint {
+  contain: paint;
+}
+
+/* Contain layout for stable positioning */
+.italian-contain-layout {
+  contain: layout;
+}
+
+/* Optimize image loading with Italian placeholders */
+.italian-image-placeholder {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--roman-marble)) 25%,
+    hsl(var(--travertine-light)) 50%,
+    hsl(var(--roman-marble)) 75%
+  );
+  background-size: 200% 100%;
+  animation: italianShimmer 2s infinite;
+}
+
+/* Optimize Italian gradients for performance */
+.italian-gradient-optimized {
+  background-attachment: fixed;
+  will-change: background-position;
+}
+
+/* Reduce complexity for lower-end devices */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .italian-mobile-optimized {
+    background: none !important;
+    background-color: hsl(var(--background)) !important;
+  }
+
+  .italian-text-gradient-optimized {
+    -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+    color: hsl(var(--italian-green)) !important;
+  }
+}
+
+/* Accessibility Enhancements */
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --italian-green: 142 60% 30%;
+    --italian-red: 0 85% 40%;
+    --venetian-gold: 40 90% 45%;
+    --tuscan-terracotta: 15 75% 45%;
+  }
+
+  .italian-button,
+  .italian-card {
+    border: 2px solid currentColor;
+  }
+
+  .italian-text-gradient {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+}
+
+/* Enhanced Focus Management */
+.italian-focus-visible:focus-visible {
+  outline: 3px solid hsl(var(--italian-green));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip links for keyboard navigation */
+.italian-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: hsl(var(--italian-green));
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.italian-skip-link:focus {
+  top: 6px;
+}
+
+/* Screen Reader Optimizations */
+.italian-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Announce dynamic content to screen readers */
+.italian-live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Italian ARIA Labels */
+.italian-aria-label {
+  /* Use for decorative Italian elements */
+  aria-label: "";
+  role: "presentation";
+}
+
+/* Reduced Motion Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0s;
+    --duration-quick: 0s;
+    --duration-elegant: 0s;
+    --duration-sophisticated: 0s;
+    --duration-grand: 0s;
+    --duration-majestic: 0s;
+    --duration-opulent: 0s;
+  }
+
+  .italian-hover-lift,
+  .italian-hover-scale,
+  .italian-hover-color,
+  .italian-hover-glow,
+  .italian-float,
+  .italian-pulse,
+  .italian-shimmer {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .italian-gradient-text {
+    animation: none !important;
+    background: hsl(var(--italian-green)) !important;
+    -webkit-text-fill-color: hsl(var(--italian-white)) !important;
+  }
+
+  .italian-parallax {
+    transform: none !important;
+  }
+}
+
+/* Color Blindness Support */
+@media (prefers-color-scheme: dark) {
+  .italian-color-blind-safe {
+    --italian-green: 120 50% 40%;
+    --italian-red: 0 70% 50%;
+    --tuscan-terracotta: 25 60% 50%;
+  }
+}
+
+/* Touch Accessibility Improvements */
+@media (hover: none) and (pointer: coarse) {
+  .italian-touch-optimized {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+
+  .italian-button,
+  .italian-card {
+    touch-action: manipulation;
+  }
+
+  /* Disable hover effects on touch */
+  .italian-hover-lift:hover,
+  .italian-hover-scale:hover,
+  .italian-hover-color:hover,
+  .italian-hover-glow:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Print Optimizations */
+@media print {
+  .italian-print-hidden {
+    display: none !important;
+  }
+
+  .italian-print-optimized {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .italian-gradient-text,
+  .italian-text-gradient {
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+  }
+
+  .italian-button {
+    border: 1px solid black !important;
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Performance Monitoring */
+.italian-performance-monitor {
+  /* Development only - remove in production */
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 9999;
+}
+
+/* Critical CSS Inlining Helper */
+.italian-critical-above-fold {
+  /* These styles should be inlined in HTML */
+  font-family: var(--font-display);
+}
+
+/* Font Face Fallbacks */
+@supports not (font-variation-settings: normal) {
+  .italian-display {
+    font-family: Georgia, serif;
+  }
+
+  .italian-body {
+    font-family: Georgia, serif;
+  }
+}
+
+/* Low Bandwidth Optimizations */
+@media (prefers-reduced-data: reduce) {
+  .italian-low-bandwidth {
+    background-image: none !important;
+    background-color: hsl(var(--background)) !important;
+  }
+
+  .italian-shimmer,
+  .italian-pulse,
+  .italian-gradient-text {
+    animation: none !important;
+    background: none !important;
+  }
+}
+
+/* Memory Optimization */
+.italian-memory-optimized {
+  will-change: auto; /* Reset will-change for unused elements */
+}
+
+/* Clean up animation memory */
+.italian-animation-cleanup {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Battery Life Optimization */
+@media (prefers-reduced-motion: reduce) {
+  .italian-battery-optimized {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Network Adaptation */
+@media (max-width: 480px) and (prefers-reduced-data: reduce) {
+  .italian-mobile-low-bandwidth {
+    /* Simplified styling for low-end mobile */
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Italian Accessibility Utilities */
+.italian-aria-landmark {
+  role: "main";
+  aria-label: "Contenuto principale";
+}
+
+.italian-aria-navigation {
+  role: "navigation";
+  aria-label: "Navigazione principale";
+}
+
+.italian-aria-search {
+  role: "search";
+  aria-label: "Cerca";
+}
+
+/* Italian Error States */
+.italian-error-state {
+  border-color: hsl(var(--italian-red));
+  background-color: hsl(var(--italian-red) / 0.1);
+  color: hsl(var(--italian-red-dark));
+}
+
+.italian-error-message {
+  color: hsl(var(--italian-red));
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+/* Italian Success States */
+.italian-success-state {
+  border-color: hsl(var(--italian-green));
+  background-color: hsl(var(--italian-green) / 0.1);
+  color: hsl(var(--italian-green-dark));
+}
+
+/* Performance Metrics */
+.italian-performance-metrics {
+  /* Custom properties for performance tracking */
+  --fps-target: 60;
+  --jank-threshold: 16.67; /* 1000ms / 60fps */
+}
+
+/* Layout Shift Prevention */
+.italian-layout-stable {
+  contain-intrinsic-size: 0 300px; /* Prevent CLS */
+}
+
+.italian-reserve-space {
+  min-height: 200px; /* Reserve space for images */
+}
+
+/* Content Visibility Optimization */
+.italian-content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+.italian-content-hidden {
+  content-visibility: hidden;
+}
+
+/* Intersection Observer Optimization */
+.italian-lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.italian-lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Critical Resource Loading */
+.italian-preload-critical {
+  /* Preload critical Italian fonts and assets */
+  font-display: swap;
+  unicode-range: U+000-5FF; /* Basic Latin and Latin-1 Supplement */
+}

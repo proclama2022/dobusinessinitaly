@@ -13,7 +13,6 @@ import {
   faMapMarkerAlt,
   faPhoneAlt,
   faEnvelope,
-  faClock,
   faShareAlt
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -115,76 +114,34 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="section-padding bg-white relative overflow-hidden">
-      {/* Elementi decorativi con la bandiera italiana */}
-      <div className="absolute top-0 inset-x-0 h-2 italian-gradient"></div>
-      <div className="absolute bottom-0 inset-x-0 h-2 italian-gradient"></div>
-      <div className="absolute top-0 left-0 w-2 h-full bg-[#009246]"></div>
-      <div className="absolute top-0 right-0 w-2 h-full bg-[#ce2b37]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in relative">
-          {/* Decorazioni */}
-          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#009246] opacity-30 rounded-full"></div>
-          <div className="absolute -top-10 left-1/3 w-32 h-32 bg-[#00924615] rounded-full filter blur-xl animate-pulse opacity-30"></div>
-          <div className="absolute -top-10 right-1/3 w-32 h-32 bg-[#ce2b3715] rounded-full filter blur-xl animate-pulse opacity-30" style={{ animationDuration: '7s' }}></div>
-          
-          {/* Titolo */}
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 relative inline-flex">
-            <span className="text-[#009246]">Get in </span>
-            <span className="relative pl-2">
-              Touch
-              <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
-            </span>
+          <span className="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Contact Us</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
+            Get in Touch
           </h2>
           
-          <p className="text-neutral-700 max-w-2xl mx-auto text-lg font-light">
+          <p className="text-neutral-600 text-lg max-w-2xl mx-auto leading-relaxed">
             {t('contact.subtitle')}
           </p>
-          
-          {/* Badge decorativo */}
-          <div className="max-w-xs mx-auto mt-8 mb-4 flex items-center justify-center">
-            <span className="h-px w-12 bg-neutral-200"></span>
-            <div className="mx-4 px-4 py-1 rounded-full border border-neutral-200 text-xs text-neutral-500 font-medium">
-              {t('contact.contactInfo')} 
-            </div>
-            <span className="h-px w-12 bg-neutral-200"></span>
-          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <div className="shadow-xl rounded-lg p-8 bg-white border border-neutral-100 relative overflow-hidden">
-              {/* Accenti decorativi */}
-              <div className="absolute top-0 left-0 w-1 h-8 bg-[#009246]"></div>
-              <div className="absolute top-0 right-0 w-1 h-8 bg-[#ce2b37]"></div>
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#00924608] rounded-full"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#ce2b3708] rounded-full"></div>
+            <div className="bg-white p-10 rounded shadow-lg border border-neutral-100 relative overflow-hidden">
               
-              <h3 className="text-2xl font-heading font-semibold mb-4 relative inline-block">
-                <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#009246]">
-                  {t('contact.form.title')}
-                </span>
+              <h3 className="text-3xl font-bold text-neutral-900 mb-6">
+                {t('contact.form.title')}
               </h3>
               
               {/* Badge per consulenza gratuita */}
-              <div className="mb-6 flex flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-3">
-                <div className="flex items-center gap-2 bg-gradient-to-r from-[#009246] to-[#00b157] text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                  </svg>
-                  FREE 30min
+              <div className="mb-8 flex flex-wrap gap-3">
+                <div className="px-4 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide rounded-full border border-primary/20">
+                  FREE 30min Consultation
                 </div>
-                <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
-                  </svg>
-                  48-72h Response
-                </div>
-                <div className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full text-xs lg:text-sm font-medium shadow-md">
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                  </svg>
-                  English Call
+                <div className="px-4 py-1 bg-neutral-100 text-neutral-600 text-xs font-bold uppercase tracking-wide rounded-full border border-neutral-200">
+                  48h Response Time
                 </div>
               </div>
               
@@ -198,18 +155,18 @@ const ContactSection = () => {
                       control={form.control}
                       name="name"
                       render={({ field }) => (
-                        <FormItem className="transition-all duration-300 group">
-                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
-                            {t('contact.form.name')} <span className="text-[#ce2b37]">*</span>
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                            {t('contact.form.name')} <span className="text-destructive">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input 
-                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary placeholder-neutral-300 text-lg bg-transparent transition-colors duration-300" 
                               placeholder="John Doe"
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                          <FormMessage className="text-destructive text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -217,18 +174,18 @@ const ContactSection = () => {
                       control={form.control}
                       name="company"
                       render={({ field }) => (
-                        <FormItem className="transition-all duration-300 group">
-                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
                             {t('contact.form.company')}
                           </FormLabel>
                           <FormControl>
                             <Input 
-                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary placeholder-neutral-300 text-lg bg-transparent transition-colors duration-300" 
                               placeholder="Your Company"
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                          <FormMessage className="text-destructive text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -239,19 +196,19 @@ const ContactSection = () => {
                       control={form.control}
                       name="email"
                       render={({ field }) => (
-                        <FormItem className="transition-all duration-300 group">
-                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
-                            {t('contact.form.email')} <span className="text-[#ce2b37]">*</span>
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                            {t('contact.form.email')} <span className="text-destructive">*</span>
                           </FormLabel>
                           <FormControl>
                             <Input 
-                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary placeholder-neutral-300 text-lg bg-transparent transition-colors duration-300" 
                               type="email" 
-                              placeholder="your.email@example.com"
+                              placeholder="your@email.com"
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                          <FormMessage className="text-destructive text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -259,19 +216,19 @@ const ContactSection = () => {
                       control={form.control}
                       name="phone"
                       render={({ field }) => (
-                        <FormItem className="transition-all duration-300 group">
-                          <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
+                        <FormItem>
+                          <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
                             {t('contact.form.phone')}
                           </FormLabel>
                           <FormControl>
                             <Input 
-                              className="border-neutral-200 focus:border-primary shadow-sm rounded-md" 
+                              className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary placeholder-neutral-300 text-lg bg-transparent transition-colors duration-300" 
                               type="tel" 
-                              placeholder="+1 (234) 567-8910"
+                              placeholder="+1 234 567 890"
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                          <FormMessage className="text-destructive text-xs font-medium" />
                         </FormItem>
                       )}
                     />
@@ -281,13 +238,13 @@ const ContactSection = () => {
                     control={form.control}
                     name="service"
                     render={({ field }) => (
-                      <FormItem className="transition-all duration-300 group">
-                        <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
-                          {t('contact.form.service')} <span className="text-[#ce2b37]" >*</span>
+                      <FormItem>
+                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                          {t('contact.form.service')} <span className="text-destructive">*</span>
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="border-neutral-200 focus:border-primary shadow-sm rounded-md">
+                            <SelectTrigger className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary text-lg bg-transparent shadow-none">
                               <SelectValue placeholder={t('contact.form.selectServicePlaceholder')} />
                             </SelectTrigger>
                           </FormControl>
@@ -305,7 +262,7 @@ const ContactSection = () => {
                             <SelectItem value="agriculture">{t('services.items.agriculture.title')}</SelectItem>
                           </SelectContent>
                         </Select>
-                        <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                        <FormMessage className="text-destructive text-xs font-medium" />
                       </FormItem>
                     )}
                   />
@@ -314,19 +271,19 @@ const ContactSection = () => {
                     control={form.control}
                     name="message"
                     render={({ field }) => (
-                      <FormItem className="transition-all duration-300 group">
-                        <FormLabel className="text-neutral-700 group-focus-within:text-primary transition-colors duration-300">
-                          {t('contact.form.message')} <span className="text-[#ce2b37]">*</span>
+                      <FormItem>
+                        <FormLabel className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                          {t('contact.form.message')} <span className="text-destructive">*</span>
                         </FormLabel>
                         <FormControl>
                           <Textarea 
-                            className="border-neutral-200 focus:border-primary shadow-sm rounded-md min-h-[120px]" 
-                            rows={5} 
-                            placeholder="How can we help you? Please provide details about your request..."
+                            className="border-0 border-b border-neutral-300 rounded-none px-0 focus:ring-0 focus:border-primary placeholder-neutral-300 text-lg bg-transparent shadow-none min-h-[100px] resize-y" 
+                            rows={4} 
+                            placeholder="How can we help you?"
                             {...field} 
                           />
                         </FormControl>
-                        <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                        <FormMessage className="text-destructive text-xs font-medium" />
                       </FormItem>
                     )}
                   />
@@ -335,7 +292,7 @@ const ContactSection = () => {
                     control={form.control}
                     name="privacy"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 bg-neutral-50 rounded-md border border-neutral-100">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-2">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
@@ -344,33 +301,24 @@ const ContactSection = () => {
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm text-neutral-600 font-normal">
-                            {t('contact.form.privacyConsent')} <a href="#" className="text-primary font-medium hover:text-[#ce2b37] transition-colors underline">{t('contact.form.privacyPolicy')}</a>.
+                          <FormLabel className="text-sm text-neutral-500 font-normal">
+                            {t('contact.form.privacyConsent')} <a href="#" className="text-primary hover:underline font-medium">{t('contact.form.privacyPolicy')}</a>.
                           </FormLabel>
-                          <FormMessage className="text-[#ce2b37] text-xs font-medium" />
+                          <FormMessage className="text-destructive text-xs font-medium" />
                         </div>
                       </FormItem>
                     )}
                   />
                   
-                  <div className="pt-4">
+                  <div className="pt-6">
                     <button
                       type="submit"
-                      className="relative overflow-hidden group px-8 py-4 sm:py-3.5 rounded-lg bg-[#009246] text-white font-medium shadow-md hover:shadow-lg transition duration-300 disabled:opacity-70 active:scale-[0.98] touch-manipulation min-h-[52px] sm:min-h-[48px] w-full sm:w-auto flex items-center justify-center focus:ring-2 focus:ring-[#009246]/50 outline-none"
+                      className="btn-primary w-full sm:w-auto"
                       disabled={isPending}
-                      style={{
-                        WebkitFontSmoothing: 'antialiased',
-                        WebkitTapHighlightColor: 'transparent',
-                        WebkitTouchCallout: 'none',
-                        WebkitUserSelect: 'none',
-                        userSelect: 'none',
-                        touchAction: 'manipulation'
-                      }}
                     >
-                      <span className="absolute inset-0 w-0 bg-[#ce2b37] transition-all duration-300 ease-out group-hover:w-full"></span>
                       <span className="relative flex items-center justify-center gap-2">
                         {isPending ? t('contact.form.sending') : t('contact.form.send')}
-                        <FontAwesomeIcon icon={faPaperPlane} className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
+                        <FontAwesomeIcon icon={faPaperPlane} className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
                       </span>
                     </button>
                   </div>
@@ -379,120 +327,93 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <div className="bg-white p-8 rounded-lg h-full shadow-xl border border-neutral-100 relative overflow-hidden">
-              {/* Accenti decorativi */}
-              <div className="absolute top-0 left-0 w-1 h-8 bg-[#ce2b37]"></div>
-              <div className="absolute top-0 right-0 w-1 h-8 bg-[#009246]"></div>
-              <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#00924608] rounded-full"></div>
-              
-              {/* Immagine dell'ufficio in posizione superiore */}
-              <div className="mb-8 overflow-hidden rounded-lg shadow-md group relative">
+          <div className="animate-slide-up h-full" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-neutral-50 p-10 rounded h-full border border-neutral-200 relative overflow-hidden">
+              {/* Image */}
+              <div className="mb-10 overflow-hidden rounded shadow-lg group relative h-64">
                 <OptimizedImage 
                   src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1280&q=80" 
                   alt={t('contact.info.officeImageAlt')}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   width={1280}
                   height={384}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  srcSet="
-                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=640&q=70 640w,
-                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=960&q=75 960w,
-                    https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1280&q=80 1280w
-                  "
-                  quality={80}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white text-sm font-medium">{t('contact.info.address.value')}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                   <p className="font-bold text-sm uppercase tracking-widest mb-1">Headquarters</p>
+                   <p className="text-2xl font-bold">Milan, Italy</p>
                 </div>
               </div>
               
               <div className="mb-8">
-                <h3 className="text-2xl font-heading font-semibold mb-6 relative inline-block">
-                  <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-[#ce2b37]">
-                    {t('contact.info.title')}
-                  </span>
+                <h3 className="text-2xl font-bold text-neutral-900 mb-6">
+                  {t('contact.info.title')}
                 </h3>
                 
-                <div className="space-y-5">
-                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <FontAwesomeIcon icon={faMapMarkerAlt} className="text-lg sm:text-base" />
-                      </div>
+                <div className="space-y-8">
+                  <div className="flex items-start group">
+                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} className="text-lg" />
                     </div>
-                    <div className="ml-4 flex-1">
-                      <h4 className="font-semibold text-neutral-800">{t('contact.info.address.label')}</h4>
-                      <p className="text-neutral-600 mt-1 text-sm leading-relaxed">{t('contact.info.address.value')}</p>
+                    <div className="ml-6">
+                      <h4 className="font-bold text-sm uppercase tracking-wide text-neutral-900 mb-2">{t('contact.info.address.label')}</h4>
+                      <p className="text-neutral-600 text-lg leading-relaxed">{t('contact.info.address.value')}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <FontAwesomeIcon icon={faPhoneAlt} className="text-lg sm:text-base" />
-                      </div>
+                  <div className="flex items-start group">
+                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                      <FontAwesomeIcon icon={faPhoneAlt} className="text-lg" />
                     </div>
-                    <div className="ml-4 flex-1">
-                      <h4 className="font-semibold text-neutral-800">{t('contact.info.phone.label')}</h4>
-                      <p className="text-neutral-600 mt-1">
-                        <a href="tel:+39095643533" className="hover:text-[#009246] transition-colors active:text-[#009246] text-sm leading-relaxed inline-block min-h-[24px]">
+                    <div className="ml-6">
+                      <h4 className="font-bold text-sm uppercase tracking-wide text-neutral-900 mb-2">{t('contact.info.phone.label')}</h4>
+                      <p className="text-neutral-600 text-lg">
+                        <a href="tel:+39095643533" className="hover:text-primary transition-colors">
                           {t('contact.info.phone.value')}
                         </a>
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <FontAwesomeIcon icon={faEnvelope} className="text-lg sm:text-base" />
-                      </div>
+                  <div className="flex items-start group">
+                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                      <FontAwesomeIcon icon={faEnvelope} className="text-lg" />
                     </div>
-                    <div className="ml-4 flex-1">
-                      <h4 className="font-semibold text-neutral-800">{t('contact.info.email.label')}</h4>
-                      <p className="text-neutral-600 mt-1">
-                        <a href="mailto:amministrazione@proclama.co" className="hover:text-[#009246] transition-colors active:text-[#009246] text-sm leading-relaxed inline-block min-h-[24px] break-all">
+                    <div className="ml-6">
+                      <h4 className="font-bold text-sm uppercase tracking-wide text-neutral-900 mb-2">{t('contact.info.email.label')}</h4>
+                      <p className="text-neutral-600 text-lg">
+                        <a href="mailto:amministrazione@proclama.co" className="hover:text-primary transition-colors break-all">
                           {t('contact.info.email.value')}
                         </a>
                       </p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start p-4 sm:p-3 rounded-lg transition-all duration-300 hover:bg-neutral-50 group active:bg-neutral-100 touch-manipulation cursor-pointer">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#00924615] flex items-center justify-center transition-all duration-300 group-hover:bg-[#009246] group-hover:text-white active:scale-95">
-                        <FontAwesomeIcon icon={faClock} className="text-lg sm:text-base" />
-                      </div>
-                    </div>
-                    <div className="ml-4 flex-1">
-                      <h4 className="font-semibold text-neutral-800">{t('contact.info.hours.label')}</h4>
-                      <p className="text-neutral-600 mt-1 text-sm leading-relaxed">{t('contact.info.hours.value')}</p>
-                    </div>
-                  </div>
                 </div>
               </div>
               
-              <div>
-                <h3 className="text-lg font-heading font-semibold mb-4 relative inline-flex items-center">
-                  <FontAwesomeIcon icon={faShareAlt} className="text-[#ce2b37] mr-2" />
-                  <span>{t('contact.info.social')}</span>
+              <div className="pt-8 border-t border-neutral-200">
+                <h3 className="font-bold text-sm uppercase tracking-wide text-neutral-500 mb-4 flex items-center">
+                  <FontAwesomeIcon icon={faShareAlt} className="mr-2" />
+                  {t('contact.info.social')}
                 </h3>
                 
-                <div className="flex space-x-3 sm:space-x-4">
-                  <a href="https://www.linkedin.com/company/partitaiva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#0077B5] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="LinkedIn">
-                    <FontAwesomeIcon icon={faLinkedinIn} className="text-lg sm:text-base" />
-                  </a>
-                  <a href="https://www.tiktok.com/@partitaiva.it" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="TikTok">
-                    <FontAwesomeIcon icon={faTiktok} className="text-lg sm:text-base" />
-                  </a>
-                  <a href="https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="YouTube">
-                    <FontAwesomeIcon icon={faYoutube} className="text-lg sm:text-base" />
-                  </a>
-                  <a href="https://www.instagram.com/partitaiva.it/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-neutral-100 text-neutral-600 flex items-center justify-center hover:bg-[#E1306C] hover:text-white transition-all duration-300 active:scale-95 touch-manipulation focus:ring-2 focus:ring-neutral-300 outline-none" aria-label="Instagram">
-                    <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-base" />
-                  </a>
+                <div className="flex space-x-4">
+                  {[
+                    { icon: faLinkedinIn, url: "https://www.linkedin.com/company/partitaiva", color: "hover:bg-[#0077B5]" },
+                    { icon: faTiktok, url: "https://www.tiktok.com/@partitaiva.it", color: "hover:bg-black" },
+                    { icon: faYoutube, url: "https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg", color: "hover:bg-[#FF0000]" },
+                    { icon: faInstagram, url: "https://www.instagram.com/partitaiva.it/", color: "hover:bg-[#E1306C]" }
+                  ].map((social, idx) => (
+                    <a 
+                      key={idx}
+                      href={social.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className={`w-10 h-10 rounded-full bg-white border border-neutral-200 text-neutral-600 flex items-center justify-center ${social.color} hover:text-white transition-all duration-300 hover:border-transparent shadow-sm hover:shadow-md`}
+                    >
+                      <FontAwesomeIcon icon={social.icon} className="text-sm" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

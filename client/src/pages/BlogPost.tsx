@@ -197,6 +197,15 @@ const BlogPost = () => {
 
 
 
+  // Validazione lingua prima del controllo errori
+  if (postData?.data?.meta && postData.data.meta.lang && postData.data.meta.lang !== currentLanguage) {
+    // L'articolo esiste ma è in una lingua diversa - redirect permanente
+    const correctPath = `/${postData.data.meta.lang}/blog/${postData.data.meta.slug}`;
+    console.log(`[BlogPost] Language mismatch! Article is in '${postData.data.meta.lang}' but URL is '${currentLanguage}'. Redirecting to: ${correctPath}`);
+    window.location.replace(correctPath);
+    return null;
+  }
+
   if (error || !postData?.data) {
     // Smart Redirect: Se il post non esiste nella lingua corrente, controlla se esiste in altre lingue
     if (allLangPostsData?.data) {
@@ -204,7 +213,7 @@ const BlogPost = () => {
       const foundPost = allLangPostsData.data.find(p => p.slug === slug);
 
       // Se trovato e la lingua è diversa, reindirizza
-      if (foundPost && foundPost.lang !== currentLanguage) {
+      if (foundPost && foundPost.lang && foundPost.lang !== currentLanguage) {
         const newPath = `/${foundPost.lang}/blog/${foundPost.slug}`;
         console.log(`[BlogPost] Redirecting to correct language: ${newPath}`);
         window.location.replace(newPath);

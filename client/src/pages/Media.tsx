@@ -39,7 +39,6 @@ const Media = () => {
           width={1920}
           height={1080}
           sizes="100vw"
-          quality={85}
         />
         
         {/* Contenuto Hero */}

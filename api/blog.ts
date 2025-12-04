@@ -23,6 +23,7 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  lang?: string;
   leadMagnet?: {
     title: string;
     description: string;
@@ -162,6 +163,7 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             excerpt: data.excerpt?.trim() || '',
             coverImage: (coverImageValue && typeof coverImageValue === 'string') ? coverImageValue.trim() : '',
             author: data.author?.trim() || 'Redazione',
+            lang: data.lang || targetLanguage,
           };
           
           const leadMagnet = parseLeadMagnet(data);
@@ -219,7 +221,7 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
         slug = filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
       }
 
-      const meta = sanitizeMeta(slug, data);
+      const meta = sanitizeMeta(slug, data, targetLanguage);
       const leadMagnet = parseLeadMagnet(data);
       if (leadMagnet) meta.leadMagnet = leadMagnet;
       posts.push(meta);
@@ -247,7 +249,7 @@ async function getPostFromBlob(slug: string, lang?: string) {
     const { data, content } = matter(fileContent);
     if (!data.title?.trim() || !data.date) return null;
     
-    const meta = sanitizeMeta(slug, data);
+    const meta = sanitizeMeta(slug, data, lang || 'it');
     meta.leadMagnet = parseLeadMagnet(data);
     return { meta, content };
   } catch (e) {
@@ -384,6 +386,7 @@ author: "${author}"
             excerpt: data.excerpt?.trim() || '',
             coverImage: data.coverImage?.trim() || '',
             author: data.author?.trim() || 'Redazione',
+            lang: data.lang || currentLanguage,
             leadMagnet: parseLeadMagnet(data),
           };
           console.log(`[Blog API] Successfully fetched language-specific post: ${languageSpecificFile}`);
@@ -418,6 +421,7 @@ author: "${author}"
             excerpt: data.excerpt?.trim() || '',
             coverImage: data.coverImage?.trim() || '',
             author: data.author?.trim() || 'Redazione',
+            lang: data.lang || currentLanguage,
             leadMagnet: parseLeadMagnet(data),
           };
           console.log(`[Blog API] Successfully fetched post via mapping: ${slug}`);
@@ -465,6 +469,7 @@ author: "${author}"
           excerpt: data.excerpt?.trim() || '',
           coverImage: data.coverImage?.trim() || '',
           author: data.author?.trim() || 'Redazione',
+          lang: data.lang || 'it',
           leadMagnet: parseLeadMagnet(data),
         };
         console.log(`[Blog API] Successfully fetched post: ${slug}`);
@@ -517,7 +522,7 @@ function normalizeField(value: unknown, fallback: string, opts?: { field?: strin
   return trimmed;
 }
 
-function sanitizeMeta(defaultSlug: string, data: any) {
+function sanitizeMeta(defaultSlug: string, data: any, defaultLang: string = 'it') {
   const safeSlug = (typeof data?.slug === 'string' && data.slug.trim() && data.slug.trim().toLowerCase() !== 'undefined')
     ? data.slug.trim()
     : defaultSlug;
@@ -530,5 +535,6 @@ function sanitizeMeta(defaultSlug: string, data: any) {
     excerpt: typeof data?.excerpt === 'string' ? data.excerpt.trim() : '',
     coverImage: normalizeField(data?.coverImage, '/images/default-blog-cover.webp', { field: 'coverImage', slug: safeSlug }), // Fallback image
     author: normalizeField(data?.author, 'YourBusinessInItaly', { field: 'author', slug: safeSlug }),
+    lang: data?.lang || defaultLang,
   } as BlogPostMeta;
 }

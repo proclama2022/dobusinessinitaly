@@ -7,6 +7,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import RelatedServices from '@/components/RelatedServices';
 import RelatedGuides from '@/components/RelatedGuides';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const OpenCompanyItaly = () => {
   const { t, i18n } = useTranslation();
@@ -170,35 +172,43 @@ const OpenCompanyItaly = () => {
         }}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#009246] to-[#38a169] text-white py-20">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Hero Section - Minimalist Style */}
+      <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white py-24">
+        {/* Background Image */}
+        <OptimizedImage
+          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="Open Company in Italy"
+          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          priority={true}
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 bg-neutral-900/70 z-[2]"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
+              {t('landingPages.openCompanyItaly.title')}
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
               {t('landingPages.openCompanyItaly.heroTitle')}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
+            <p className="text-xl md:text-2xl mb-10 text-neutral-300 leading-relaxed max-w-2xl mx-auto">
               {t('landingPages.openCompanyItaly.heroSubtitle')}
             </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
-              <p className="text-lg mb-4">
-                {t('landingPages.openCompanyItaly.heroSubtitle')}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={getLocalizedPath('/contact')}
-                  className="inline-block px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-                >
-                  {t('landingPages.openCompanyItaly.heroCta')}
-                </Link>
-                <Link
-                  href="#process"
-                  className="inline-block px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors"
-                >
-                  {t('navigation.learnMore')}
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href={getLocalizedPath('/contact')}
+                className="btn-primary text-lg py-4 px-8"
+              >
+                {t('landingPages.openCompanyItaly.heroCta')}
+              </Link>
+              <Link
+                href="#process"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/10 transition-colors text-lg"
+              >
+                {t('navigation.learnMore')}
+              </Link>
             </div>
           </div>
         </div>
@@ -218,23 +228,23 @@ const OpenCompanyItaly = () => {
       </section>
 
       {/* Overview */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
                 {landingPageData?.overviewTitle || t('landingPages.openCompanyItaly.title')}
               </h2>
               {landingPageData?.overviewDescription && (
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                   {landingPageData.overviewDescription}
                 </p>
               )}
               {landingPageData?.overviewCta && (
-                <div className="mt-6">
+                <div className="mt-8">
                   <Link
                     href={getLocalizedPath('/contact')}
-                    className="inline-block px-6 py-3 bg-[#009246] text-white font-semibold rounded-lg hover:bg-[#007a33] transition-colors"
+                    className="btn-primary"
                   >
                     {landingPageData.overviewCta}
                   </Link>
@@ -247,29 +257,32 @@ const OpenCompanyItaly = () => {
 
       {/* Company Types Section */}
       {companyTypes.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-20 bg-neutral-50">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4 text-gray-800">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
                   {landingPageData?.companyTypesTitle}
                 </h2>
                 {landingPageData?.companyTypesSubtitle && (
-                  <p className="text-lg text-gray-600">
+                  <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                     {landingPageData.companyTypesSubtitle}
                   </p>
                 )}
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {companyTypes.map((item: any, index: number) => (
-                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-bold mb-3 text-[#009246]">{item.title}</h3>
-                    <p className="text-gray-600 mb-3">{item.description}</p>
+                  <div key={index} className="bg-white rounded border border-neutral-200 p-6 hover:shadow-md transition-shadow">
+                    <h3 className="text-xl font-bold mb-3 text-primary">{item.title}</h3>
+                    <p className="text-neutral-600 mb-4">{item.description}</p>
                     {Array.isArray(item.features) && item.features.length > 0 && (
-                      <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
+                      <ul className="text-neutral-600 space-y-2 text-sm">
                         {item.features.map((f: string, i: number) => (
-                          <li key={i}>{f}</li>
+                          <li key={i} className="flex items-start">
+                            <FontAwesomeIcon icon={faCheck} className="text-primary text-xs mt-1.5 mr-2" />
+                            {f}
+                          </li>
                         ))}
                       </ul>
                     )}
@@ -282,27 +295,27 @@ const OpenCompanyItaly = () => {
       )}
 
       {/* Process Section */}
-      <section id="process" className="py-16 bg-white">
+      <section id="process" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
                 {t('landingPages.openCompanyItaly.processTitle')}
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                 {t('landingPages.openCompanyItaly.processSubtitle')}
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {processSteps.map((step: any, index: number) => (
-                <div key={index} className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-12 h-12 bg-[#009246] text-white rounded-full flex items-center justify-center flex-shrink-0">
+                <div key={index} className="flex flex-col md:flex-row items-start gap-6 p-6 bg-neutral-50 rounded border border-neutral-100">
+                  <div className="w-12 h-12 bg-primary text-white rounded flex items-center justify-center flex-shrink-0">
                     <span className="font-bold">{step.step}</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-neutral-900">{step.title}</h3>
+                    <p className="text-neutral-600">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -312,25 +325,25 @@ const OpenCompanyItaly = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
                 {landingPageData?.faqTitle}
               </h2>
               {landingPageData?.faqSubtitle && (
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
                   {landingPageData.faqSubtitle}
                 </p>
               )}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqItems.map((faq: any, index: number) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-xl font-bold mb-3 text-[#009246]">{faq.question}</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
+                <div key={index} className="bg-white rounded border border-neutral-200 p-6">
+                  <h3 className="text-lg font-bold mb-3 text-neutral-900">{faq.question}</h3>
+                  <p className="text-neutral-600">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -345,25 +358,25 @@ const OpenCompanyItaly = () => {
       <RelatedGuides context="openCompanyItaly" />
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#009246] to-[#38a169] text-white">
+      <section className="py-20 bg-neutral-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {landingPageData?.ctaTitle}
             </h2>
             {landingPageData?.ctaDescription && (
-              <p className="text-xl mb-8 text-white/90">
+              <p className="text-xl mb-10 text-neutral-300">
                 {landingPageData.ctaDescription}
               </p>
             )}
             <Link
               href={getLocalizedPath('/contact')}
-              className="inline-block px-8 py-4 bg-white text-[#009246] font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg text-lg"
+              className="btn-primary text-lg py-4 px-8"
             >
               {landingPageData?.ctaButton || t('navigation.learnMore')}
             </Link>
             {landingPageData?.ctaNote && (
-              <p className="mt-4 text-white/80">
+              <p className="mt-6 text-neutral-400">
                 {landingPageData.ctaNote}
               </p>
             )}

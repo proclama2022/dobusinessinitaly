@@ -1,0 +1,286 @@
+/* Italian Color Palette Extension - Mediterranean Elegance */
+/* Expanding the Italian theme with sophisticated Mediterranean tones */
+
+:root {
+  /* Core Italian Colors (preserved from original) */
+  --italian-green: 142 43% 35%;
+  --italian-green-light: 142 43% 45%;
+  --italian-green-dark: 142 43% 25%;
+  --italian-red: 0 79% 48%;
+  --italian-red-light: 0 79% 58%;
+  --italian-red-dark: 0 79% 38%;
+  --italian-white: 0 0% 100%;
+
+  /* Mediterranean Color Expansion */
+
+  /* Tuscan Earth Tones */
+  --tuscan-terracotta: 15 65% 58%;
+  --tuscan-terracotta-light: 15 65% 68%;
+  --tuscan-terracotta-dark: 15 65% 48%;
+  --tuscan-umber: 25 35% 32%;
+  --tuscan-umber-light: 25 35% 42%;
+  --tuscan-umber-dark: 25 35% 22%;
+
+  /* Mediterranean Blues */
+  --mediterranean-blue: 200 75% 45%;
+  --mediterranean-blue-light: 200 75% 55%;
+  --mediterranean-blue-dark: 200 75% 35%;
+  --amalfi-coast: 188 68% 50%;
+  --amalfi-coast-light: 188 68% 60%;
+  --amalfi-coast-dark: 188 68% 40%;
+  --sicilian-sea: 195 60% 40%;
+  --sicilian-sea-light: 195 60% 50%;
+  --sicilian-sea-dark: 195 60% 30%;
+
+  /* Italian Stone & Marble */
+  --roman-marble: 45 15% 85%;
+  --roman-marble-light: 45 15% 90%;
+  --roman-marble-dark: 45 15% 80%;
+  --travertine: 30 20% 75%;
+  --travertine-light: 30 20% 82%;
+  --travertine-dark: 30 20% 68%;
+  --siena-stone: 35 25% 65%;
+  --siena-stone-light: 35 25% 72%;
+  --siena-stone-dark: 35 25% 58%;
+
+  /* Italian Agriculture & Nature */
+  --olive-grove: 60 45% 35%;
+  --olive-grove-light: 60 45% 45%;
+  --olive-grove-dark: 60 45% 25%;
+  --cypress-tree: 120 25% 20%;
+  --cypress-tree-light: 120 25% 30%;
+  --cypress-tree-dark: 120 25% 15%;
+  --lavender-field: 270 20% 65%;
+  --lavender-field-light: 270 20% 75%;
+  --lavender-field-dark: 270 20% 55%;
+  --sunflower-field: 45 85% 55%;
+  --sunflower-field-light: 45 85% 65%;
+  --sunflower-field-dark: 45 85% 45%;
+
+  /* Italian Wine & Cuisine */
+  --chianti-wine: 350 65% 45%;
+  --chianti-wine-light: 350 65% 55%;
+  --chianti-wine-dark: 350 65% 35%;
+  --espresso-dark: 25 50% 20%;
+  --espresso-medium: 25 50% 30%;
+  --espresso-light: 25 50% 40%;
+  --lemon-zest: 45 100% 60%;
+  --lemon-zest-light: 45 100% 70%;
+  --lemon-zest-dark: 45 100% 50%;
+
+  /* Metallic Accents - Italian Luxury */
+  --venetian-gold: 40 80% 55%;
+  --venetian-gold-light: 40 80% 65%;
+  --venetian-gold-dark: 40 80% 45%;
+  --florentine-bronze: 25 50% 45%;
+  --florentine-bronze-light: 25 50% 55%;
+  --florentine-bronze-dark: 25 50% 35%;
+  --milanese-silver: 210 15% 75%;
+  --milanese-silver-light: 210 15% 85%;
+  --milanese-silver-dark: 210 15% 65%;
+
+  /* Advanced Gradients */
+  --gradient-tuscan-sunset: linear-gradient(135deg, hsl(var(--tuscan-terracotta)) 0%, hsl(var(--lemon-zest)) 50%, hsl(var(--mediterranean-blue)) 100%);
+  --gradient-mediterranean-dawn: linear-gradient(135deg, hsl(var(--sicilian-sea-dark)) 0%, hsl(var(--lavender-field)) 50%, hsl(var(--sunflower-field)) 100%);
+  --gradient-roman-architect: linear-gradient(135deg, hsl(var(--travertine)) 0%, hsl(var(--roman-marble)) 50%, hsl(var(--venetian-gold)) 100%);
+  --gradient-italian-elegance: linear-gradient(135deg, hsl(var(--italian-green)) 0%, hsl(var(--italian-white)) 25%, hsl(var(--italian-red)) 50%, hsl(var(--tuscan-terracotta)) 75%, hsl(var(--mediterranean-blue)) 100%);
+  --gradient-chianti-sunset: linear-gradient(135deg, hsl(var(--chianti-wine)) 0%, hsl(var(--tuscan-terracotta)) 50%, hsl(var(--espresso-dark)) 100%);
+  --gradient-cyprus-olive: linear-gradient(135deg, hsl(var(--cypress-tree)) 0%, hsl(var(--olive-grove)) 50%, hsl(var(--italian-green)) 100%);
+  --gradient-florentine-luxury: linear-gradient(135deg, hsl(var(--florentine-bronze)) 0%, hsl(var(--venetian-gold)) 50%, hsl(var(--milanese-silver)) 100%);
+}
+
+/* Dark Mode Italian Colors */
+.dark {
+  /* Dark mode preserves core Italian colors with adjusted values */
+  --tuscan-terracotta: 15 65% 50%;
+  --tuscan-terracotta-light: 15 65% 60%;
+  --tuscan-terracotta-dark: 15 65% 40%;
+  --tuscan-umber: 25 35% 28%;
+  --tuscan-umber-light: 25 35% 38%;
+  --tuscan-umber-dark: 25 35% 18%;
+
+  --mediterranean-blue: 200 75% 40%;
+  --mediterranean-blue-light: 200 75% 50%;
+  --mediterranean-blue-dark: 200 75% 30%;
+  --amalfi-coast: 188 68% 45%;
+  --amalfi-coast-light: 188 68% 55%;
+  --amalfi-coast-dark: 188 68% 35%;
+
+  --roman-marble: 45 15% 80%;
+  --roman-marble-light: 45 15% 85%;
+  --roman-marble-dark: 45 15% 75%;
+  --travertine: 30 20% 70%;
+  --travertine-light: 30 20% 77%;
+  --travertine-dark: 30 20% 63%;
+
+  --olive-grove: 60 45% 30%;
+  --olive-grove-light: 60 45% 40%;
+  --olive-grove-dark: 60 45% 20%;
+
+  --espresso-dark: 25 50% 18%;
+  --espresso-medium: 25 50% 28%;
+  --espresso-light: 25 50% 38%;
+
+  --venetian-gold: 40 80% 50%;
+  --venetian-gold-light: 40 80% 60%;
+  --venetian-gold-dark: 40 80% 40%;
+}
+
+/* Italian Color Utility Classes */
+
+/* Core Italian Colors */
+.bg-italian-green { background-color: hsl(var(--italian-green)); }
+.bg-italian-green-light { background-color: hsl(var(--italian-green-light)); }
+.bg-italian-green-dark { background-color: hsl(var(--italian-green-dark)); }
+.bg-italian-red { background-color: hsl(var(--italian-red)); }
+.bg-italian-red-light { background-color: hsl(var(--italian-red-light)); }
+.bg-italian-red-dark { background-color: hsl(var(--italian-red-dark)); }
+
+.text-italian-green { color: hsl(var(--italian-green)); }
+.text-italian-green-light { color: hsl(var(--italian-green-light)); }
+.text-italian-green-dark { color: hsl(var(--italian-green-dark)); }
+.text-italian-red { color: hsl(var(--italian-red)); }
+.text-italian-red-light { color: hsl(var(--italian-red-light)); }
+.text-italian-red-dark { color: hsl(var(--italian-red-dark)); }
+
+/* Tuscan Earth Tones */
+.bg-tuscan-terracotta { background-color: hsl(var(--tuscan-terracotta)); }
+.bg-tuscan-umber { background-color: hsl(var(--tuscan-umber)); }
+.text-tuscan-terracotta { color: hsl(var(--tuscan-terracotta)); }
+.text-tuscan-umber { color: hsl(var(--tuscan-umber)); }
+
+/* Mediterranean Blues */
+.bg-mediterranean-blue { background-color: hsl(var(--mediterranean-blue)); }
+.bg-amalfi-coast { background-color: hsl(var(--amalfi-coast)); }
+.bg-sicilian-sea { background-color: hsl(var(--sicilian-sea)); }
+.text-mediterranean-blue { color: hsl(var(--mediterranean-blue)); }
+.text-amalfi-coast { color: hsl(var(--amalfi-coast)); }
+.text-sicilian-sea { color: hsl(var(--sicilian-sea)); }
+
+/* Italian Stone & Marble */
+.bg-roman-marble { background-color: hsl(var(--roman-marble)); }
+.bg-travertine { background-color: hsl(var(--travertine)); }
+.bg-siena-stone { background-color: hsl(var(--siena-stone)); }
+.text-roman-marble { color: hsl(var(--roman-marble)); }
+.text-travertine { color: hsl(var(--travertine)); }
+.text-siena-stone { color: hsl(var(--siena-stone)); }
+
+/* Italian Nature */
+.bg-olive-grove { background-color: hsl(var(--olive-grove)); }
+.bg-cypress-tree { background-color: hsl(var(--cypress-tree)); }
+.bg-lavender-field { background-color: hsl(var(--lavender-field)); }
+.bg-sunflower-field { background-color: hsl(var(--sunflower-field)); }
+.text-olive-grove { color: hsl(var(--olive-grove)); }
+.text-cypress-tree { color: hsl(var(--cypress-tree)); }
+.text-lavender-field { color: hsl(var(--lavender-field)); }
+.text-sunflower-field { color: hsl(var(--sunflower-field)); }
+
+/* Italian Cuisine */
+.bg-chianti-wine { background-color: hsl(var(--chianti-wine)); }
+.bg-espresso-dark { background-color: hsl(var(--espresso-dark)); }
+.bg-espresso-medium { background-color: hsl(var(--espresso-medium)); }
+.bg-lemon-zest { background-color: hsl(var(--lemon-zest)); }
+.text-chianti-wine { color: hsl(var(--chianti-wine)); }
+.text-espresso-dark { color: hsl(var(--espresso-dark)); }
+.text-espresso-medium { color: hsl(var(--espresso-medium)); }
+.text-lemon-zest { color: hsl(var(--lemon-zest)); }
+
+/* Metallic Accents */
+.bg-venetian-gold { background-color: hsl(var(--venetian-gold)); }
+.bg-florentine-bronze { background-color: hsl(var(--florentine-bronze)); }
+.bg-milanese-silver { background-color: hsl(var(--milanese-silver)); }
+.text-venetian-gold { color: hsl(var(--venetian-gold)); }
+.text-florentine-bronze { color: hsl(var(--florentine-bronze)); }
+.text-milanese-silver { color: hsl(var(--milanese-silver)); }
+
+/* Italian Gradients */
+.gradient-tuscan-sunset { background: var(--gradient-tuscan-sunset); }
+.gradient-mediterranean-dawn { background: var(--gradient-mediterranean-dawn); }
+.gradient-roman-architect { background: var(--gradient-roman-architect); }
+.gradient-italian-elegance { background: var(--gradient-italian-elegance); }
+.gradient-chianti-sunset { background: var(--gradient-chianti-sunset); }
+.gradient-cyprus-olive { background: var(--gradient-cyprus-olive); }
+.gradient-florentine-luxury { background: var(--gradient-florentine-luxury); }
+
+/* Italian Text Gradients */
+.text-gradient-tuscan-sunset {
+  background: var(--gradient-tuscan-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.text-gradient-mediterranean-dawn {
+  background: var(--gradient-mediterranean-dawn);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.text-gradient-roman-architect {
+  background: var(--gradient-roman-architect);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.text-gradient-italian-elegance {
+  background: var(--gradient-italian-elegance);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.text-gradient-chianti-sunset {
+  background: var(--gradient-chianti-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Italian Border Colors */
+.border-tuscan-terracotta { border-color: hsl(var(--tuscan-terracotta)); }
+.border-mediterranean-blue { border-color: hsl(var(--mediterranean-blue)); }
+.border-roman-marble { border-color: hsl(var(--roman-marble)); }
+.border-olive-grove { border-color: hsl(var(--olive-grove)); }
+.border-chianti-wine { border-color: hsl(var(--chianti-wine)); }
+.border-venetian-gold { border-color: hsl(var(--venetian-gold)); }
+
+/* Accessibility & High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --tuscan-terracotta: 15 70% 50%;
+    --mediterranean-blue: 200 80% 40%;
+    --olive-grove: 60 50% 30%;
+    --chianti-wine: 350 70% 40%;
+    --venetian-gold: 40 85% 50%;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .gradient-tuscan-sunset,
+  .gradient-mediterranean-dawn,
+  .gradient-roman-architect,
+  .gradient-italian-elegance,
+  .gradient-chianti-sunset,
+  .gradient-cyprus-olive,
+  .gradient-florentine-luxury {
+    background: none !important;
+  }
+
+  .text-gradient-tuscan-sunset,
+  .text-gradient-mediterranean-dawn,
+  .text-gradient-roman-architect,
+  .text-gradient-italian-elegance,
+  .text-gradient-chianti-sunset,
+  .text-gradient-cyprus-olive {
+    -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+  }
+}

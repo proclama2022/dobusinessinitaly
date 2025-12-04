@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { apiRequest } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const NewsletterSection = () => {
   const { t } = useTranslation();
@@ -38,40 +40,54 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="section-padding bg-neutral-100 relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto card p-8 md:p-12">
-          <div className="relative z-10">
-            <div className="text-center mb-8 animate-fade-in">
-              <h2 className="section-title mb-4">
+    <section className="section-padding relative overflow-hidden bg-neutral-900">
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded p-8 md:p-12 shadow-2xl overflow-hidden">
+            
+            <div className="relative z-10 text-center mb-10">
+              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+                <FontAwesomeIcon icon={faEnvelope} className="text-white text-2xl" />
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {t('newsletter.title')}
               </h2>
-              <p className="text-neutral-700 max-w-2xl mx-auto">
+              <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
                 {t('newsletter.subtitle')}
               </p>
             </div>
             
-            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto animate-slide-up">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-grow">
+            <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
+              <div className="relative group">
+                <div className="relative flex flex-col md:flex-row gap-0 bg-white rounded overflow-hidden">
                   <input 
                     type="email" 
                     placeholder={t('newsletter.placeholder')}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-md focus:outline-none border border-neutral-300 focus:border-primary transition-colors shadow-sm" 
+                    className="flex-grow px-6 py-4 bg-transparent focus:outline-none text-neutral-900 placeholder-neutral-500" 
                     required
                   />
+                  <button 
+                    type="submit" 
+                    className="px-8 py-4 bg-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-primary-light transition-colors duration-300 flex items-center justify-center gap-2 md:w-auto w-full"
+                    disabled={isPending}
+                  >
+                    {isPending ? (
+                      <span className="animate-pulse">Subscribing...</span>
+                    ) : (
+                      <>
+                        {t('newsletter.subscribe')}
+                        <FontAwesomeIcon icon={faPaperPlane} className="text-xs" />
+                      </>
+                    )}
+                  </button>
                 </div>
-                <button 
-                  type="submit" 
-                  className="btn-primary disabled:opacity-70"
-                  disabled={isPending}
-                >
-                  {isPending ? t('newsletter.subscribing') : t('newsletter.subscribe')}
-                </button>
               </div>
-              <div className="mt-4 text-center text-neutral-600 text-sm">
+              
+              <div className="mt-6 text-center text-gray-400 text-xs">
                 <p>{t('newsletter.privacy')}</p>
               </div>
             </form>
