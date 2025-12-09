@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
-import { useLocalizedPath } from '@/components/LocalizedRouter';
-import OptimizedImage from './OptimizedImage';
+import { useLocalizedPath } from './LocalizedRouter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faGlobe,
@@ -9,28 +8,7 @@ import {
   faHandshake,
   faBolt
 } from '@fortawesome/free-solid-svg-icons';
-
-type FeatureProps = {
-  icon: any; // Icona FontAwesome
-  title: string;
-  description: string;
-};
-
-const Feature = ({ icon, title, description }: FeatureProps) => {
-  return (
-    <div className="flex">
-      <div className="flex-shrink-0 mt-1">
-        <span className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white">
-          <FontAwesomeIcon icon={icon} />
-        </span>
-      </div>
-      <div className="ml-4">
-        <h3 className="text-xl font-heading font-medium text-neutral-800">{title}</h3>
-        <p className="mt-1 text-neutral-600">{description}</p>
-      </div>
-    </div>
-  );
-};
+import OptimizedImage from './OptimizedImage';
 
 const WhyChooseUs = () => {
   const { t } = useTranslation();
@@ -60,61 +38,70 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-neutral-100">
+    <section className="py-20 md:py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1">
-            <h2 className="section-title mb-6">{t('whyChooseUs.title')}</h2>
-            
-            <div className="space-y-6">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          
+          {/* Left Column: Content */}
+          <div className="w-full lg:w-1/2">
+            <div className="space-y-12">
               {features.map((feature, index) => (
-                <Feature
-                  key={index}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                />
+                <div key={index} className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-italian-green/10 flex items-center justify-center text-italian-green group-hover:bg-italian-green group-hover:text-white transition-all duration-300">
+                    <FontAwesomeIcon icon={feature.icon} className="text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-italian-green transition-colors font-[Playfair_Display]">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-[Lora]">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
-            
-            <Link href={getLocalizedPath('/contact')} className="btn-primary inline-block mt-8">
-              {t('whyChooseUs.ctaButton')}
-            </Link>
-          </div>
-          
-          <div className="order-1 lg:order-2">
-            <div className="relative">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
-                alt="Team di commercialisti esperti che assistono stranieri nell'apertura di società in Italia con consulenza fiscale specializzata"
-                className="rounded-lg shadow-xl w-full h-[500px]"
-                width={1000}
-                height={500}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                srcSet="
-                  https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=640&q=75 640w,
-                  https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80 1000w,
-                  https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80 1600w
-                "
-                quality={85}
-              />
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-md border border-neutral-200 hidden md:block">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=300&q=75"
-                  alt="Consulenza fiscale specializzata per stranieri che vogliono aprire partita IVA in Italia"
-                  className="w-48 h-48 rounded"
-                  width={300}
-                  height={300}
-                  sizes="192px"
-                  srcSet="
-                    https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=192&q=70 192w,
-                    https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=384&q=75 384w
-                  "
-                  quality={85}
-                />
-              </div>
+
+            <div className="mt-12 pl-[4.5rem]">
+              <Link href={getLocalizedPath('/contact')}>
+                <button className="bg-italian-green text-white font-bold text-sm uppercase tracking-widest py-4 px-10 rounded-sm hover:bg-italian-green-dark transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                  {t('whyChooseUs.ctaButton')}
+                </button>
+              </Link>
             </div>
           </div>
+
+          {/* Right Column: Image & Quote */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative rounded-sm overflow-hidden shadow-2xl border-8 border-white">
+              <div className="aspect-[4/5] relative bg-gray-100">
+                 {/* Replaced Placeholder with Real Image */}
+                 <OptimizedImage 
+                    src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+                    alt="Business Meeting in Italy"
+                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    width={800}
+                    height={1000}
+                 />
+                 {/* Overlay gradient for depth */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent opacity-60"></div>
+              </div>
+            </div>
+
+            {/* Floating Quote Card */}
+            <div className="absolute -bottom-10 -left-10 md:-left-20 bg-white p-8 rounded-sm shadow-xl max-w-sm border-l-4 border-italian-green z-10 hidden md:block">
+              <p className="font-[Playfair_Display] text-lg text-navy italic mb-4 leading-relaxed">
+                "{t('whyChooseUs.quote.text')}"
+              </p>
+              <p className="text-italian-green text-xs font-bold uppercase tracking-widest">
+                {t('whyChooseUs.quote.author')}
+              </p>
+            </div>
+            
+            {/* Decorative background element */}
+            <div className="absolute -top-10 -right-10 w-64 h-64 bg-italian-green/5 rounded-full z-[-1] blur-3xl"></div>
+          </div>
+
         </div>
       </div>
     </section>

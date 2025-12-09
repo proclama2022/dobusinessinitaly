@@ -72,6 +72,10 @@
   "whyChooseUs": {
     "title": "Pourquoi Nous Choisir",
     "ctaButton": "Parler à un Expert",
+    "quote": {
+      "text": "L'excellence n'est pas un acte, mais une habitude.",
+      "author": "Aristote"
+    },
     "mainImageAlt": "Réunion d'affaires avec clients internationaux",
     "smallImageAlt": "Graphiques comptables",
     "features": {
@@ -333,6 +337,8 @@
     "subtitle": "Derniers articles et nouvelles du monde fiscal et commercial italien.",
     "viewAll": "Tous les articles",
     "readMore": "Lire l'article",
+    "share": "Partager :",
+    "followLinkedIn": "Suivre sur LinkedIn",
     "posts": [
       {
         "date": "12 Mai 2023",
@@ -397,6 +403,7 @@
       "phone": "Téléphone",
       "service": "Service d'Intérêt",
       "servicePlaceholder": "Sélectionner un service",
+      "selectServicePlaceholder": "Sélectionner un service",
       "services": {
         "formation": "Constitution de Société en Italie",
         "accounting": "Comptabilité et Bilan",
@@ -445,6 +452,7 @@
     },
     "map": {
       "title": "Où nous sommes",
+      "subtitle": "Retrouvez-nous à Catane, au cœur de la Sicile",
       "titleAlt": "Carte de notre bureau"
     },
     "social": {
@@ -1082,5 +1090,37 @@
       "metaTitle": "Expertise Comptable pour Expatriés en Italie | Services Fiscaux Internationaux",
       "metaDescription": "Experts en fiscalité pour expatriés en Italie. Nous assistons les travailleurs internationaux avec la planification fiscale, les déclarations et la conformité. Consultation gratuite."
     }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Réponses aux questions les plus courantes sur nos services pour les étrangers qui veulent faire des affaires en Italie",
+    "notFound": "Vous ne trouvez pas la réponse que vous cherchez?",
+    "ctaButton": "Contactez-nous pour une Consultation Gratuite",
+    "items": [
+      {
+        "question": "Combien coûte l'ouverture d'une société en Italie pour les étrangers?",
+        "answer": "Les coûts pour ouvrir une société en Italie varient de 1 500€ à 3 000€ pour une SRL, incluant notaire, Chambre de Commerce et conseil initial. Pour un numéro de TVA, les coûts sont beaucoup plus faibles (300-800€). Nous offrons des devis gratuits personnalisés selon vos besoins spécifiques."
+      },
+      {
+        "question": "Puis-je ouvrir un numéro de TVA en Italie si je suis étranger?",
+        "answer": "Oui, les citoyens de l'UE peuvent ouvrir librement un numéro de TVA en Italie. Les citoyens non-UE ont besoin d'un permis de séjour pour travail indépendant. Nous vous assistons dans tout le processus bureaucratique, de la demande de documents à la présentation des dossiers."
+      },
+      {
+        "question": "Qu'est-ce que le régime forfaitaire et qui peut y accéder?",
+        "answer": "Le régime forfaitaire est un régime fiscal avantageux avec un taux d'imposition de 5% (5 premières années) ou 15% pour des revenus annuels jusqu'à 85 000€. Il est idéal pour les freelances et petites entreprises. Aucune TVA n'est appliquée et la comptabilité est simplifiée. Parfait pour ceux qui commencent une activité en Italie."
+      },
+      {
+        "question": "Offrez-vous des conseils en anglais?",
+        "answer": "Oui, nous offrons principalement des conseils en anglais et, grâce à notre expertise dans les technologies IA, nous pouvons communiquer efficacement dans la langue maternelle du client. Notre équipe a une expérience spécifique avec les clients internationaux."
+      },
+      {
+        "question": "Combien de temps faut-il pour ouvrir une société?",
+        "answer": "Pour une SRL, il faut généralement 15-30 jours ouvrables à partir du moment où nous avons toute la documentation. Pour un numéro de TVA, les délais sont beaucoup plus rapides: 3-7 jours. Les délais peuvent varier selon la complexité du cas et la nationalité du demandeur."
+      },
+      {
+        "question": "Quels documents sont nécessaires pour ouvrir une entreprise en Italie?",
+        "answer": "Pour les citoyens de l'UE: pièce d'identité valide et code fiscal. Pour les citoyens non-UE: passeport, permis de séjour (ou demande), code fiscal. Pour les sociétés, les statuts, actes constitutifs et documentation spécifique sont également requis, que nous vous aiderons à préparer."
+      }
+    ]
   }
 }

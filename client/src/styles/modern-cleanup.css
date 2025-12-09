@@ -1,0 +1,82 @@
+/* Modern Cleanup - Enforcing Base Palette */
+:root {
+  /* Define Base Palette Variables (since they might not be defined elsewhere) */
+  --italian-green: 142 100% 29%; /* #009246 */
+  --italian-green-light: 147 100% 35%; /* #00b050 */
+  --italian-green-dark: 142 100% 20%; /* #006430 */
+  
+  --italian-red: 356 66% 49%; /* #ce2b37 */
+  --italian-red-light: 355 71% 59%; /* #e04d58 */
+  --italian-red-dark: 355 71% 36%; /* #9e1b25 */
+  
+  --navy: 222 47% 11%; /* #0f172a */
+  --navy-light: 222 33% 18%; /* #1e293b */
+  --navy-dark: 222 47% 5%; /* #020617 */
+
+  /* Re-map "extra" Italian colors to Base Palette to ensure consistency */
+  
+  /* Map Terracotta/Earth tones to Italian Red or Navy */
+  --tuscan-terracotta: var(--italian-red);
+  --tuscan-terracotta-light: var(--italian-red-light);
+  --tuscan-terracotta-dark: var(--italian-red-dark);
+  
+  --tuscan-umber: var(--navy);
+  --tuscan-umber-light: var(--navy-light);
+  --tuscan-umber-dark: var(--navy-dark);
+
+  /* Map Blues to Navy */
+  --mediterranean-blue: var(--navy);
+  --mediterranean-blue-light: var(--navy-light);
+  --mediterranean-blue-dark: var(--navy-dark);
+  
+  --amalfi-coast: var(--navy-light);
+  --sicilian-sea: var(--navy);
+
+  /* Map Stone/Marbles to Neutrals/Backgrounds */
+  --roman-marble: 210 40% 96.1%; /* Matches --muted */
+  --roman-marble-light: 0 0% 100%; /* White */
+  --roman-marble-dark: 214.3 31.8% 91.4%; /* Matches --border */
+  
+  --travertine: 210 40% 96.1%;
+  --siena-stone: 214.3 31.8% 91.4%;
+
+  /* Map Nature/Greens to Italian Green */
+  --olive-grove: var(--italian-green);
+  --cypress-tree: var(--italian-green-dark);
+  --lavender-field: var(--navy-light); /* No purple, map to navy */
+  --sunflower-field: var(--italian-green-light); /* No yellow */
+
+  /* Map Wines to Red */
+  --chianti-wine: var(--italian-red-dark);
+  --espresso-dark: var(--navy-dark);
+  --lemon-zest: var(--italian-green-light); /* No yellow */
+
+  /* Map Metallics to Base Colors (No Gold/Silver/Bronze) */
+  --venetian-gold: var(--italian-green); 
+  --venetian-gold-light: var(--italian-green-light);
+  --venetian-gold-dark: var(--italian-green-dark);
+  
+  --florentine-bronze: var(--navy);
+  --milanese-silver: 210 40% 96.1%; /* Muted gray */
+
+  /* Override Gradients to be subtler or use base colors */
+  --gradient-tuscan-sunset: linear-gradient(135deg, hsl(var(--italian-red)) 0%, hsl(var(--navy)) 100%);
+  --gradient-mediterranean-dawn: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(var(--italian-green)) 100%);
+  --gradient-roman-architect: linear-gradient(135deg, hsl(var(--muted)) 0%, #ffffff 100%);
+  --gradient-italian-elegance: linear-gradient(135deg, hsl(var(--italian-green)) 0%, #ffffff 50%, hsl(var(--italian-red)) 100%);
+  
+  /* Modern Clean Variables */
+  --shadow-subtle: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-hover: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
+  --radius-modern: 0.5rem;
+}
+
+/* Enforce clean backgrounds */
+.bg-tuscan-terracotta, .bg-chianti-wine { background-color: hsl(var(--italian-red)); }
+.bg-mediterranean-blue, .bg-sicilian-sea { background-color: hsl(var(--navy)); }
+.bg-venetian-gold { background-color: hsl(var(--italian-green)); }
+
+/* Enforce clean text */
+.text-tuscan-terracotta { color: hsl(var(--italian-red)); }
+.text-mediterranean-blue { color: hsl(var(--navy)); }
+.text-venetian-gold { color: hsl(var(--italian-green)); }

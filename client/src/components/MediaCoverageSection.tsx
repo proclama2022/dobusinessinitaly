@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import {
   faTrophy,
   faBook,
@@ -13,7 +11,6 @@ import {
   faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 
-// Tipo per gli elementi media (articoli, profili, menzioni)
 type MediaItemProps = {
   title: string;
   date: string;
@@ -21,10 +18,9 @@ type MediaItemProps = {
   excerpt: string;
   link: string;
   category: string;
-  icon: any; // Icona FontAwesome
+  icon: any;
 };
 
-// Componente per un singolo elemento media
 const MediaItem = ({
   title,
   date,
@@ -42,76 +38,55 @@ const MediaItem = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.6, delay: 0.1 }}
-      className="group relative h-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5 }}
+      className="group h-full"
     >
-      <div className="h-full flex flex-col bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden relative">
-
-        {/* Overlay gradiente italiano all'hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-[#009246]/5 via-white/50 to-[#ce2b37]/5 transition-opacity duration-700 pointer-events-none z-10"></div>
-
-        <div className="p-8 pb-4 flex-grow relative z-20">
-          <div className="flex items-center justify-between mb-6">
-            <motion.div
-              className="w-14 h-14 bg-neutral-100 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[#009246]/10 group-hover:to-[#ce2b37]/10 transition-all duration-700"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <FontAwesomeIcon icon={icon} className="text-primary text-xl group-hover:text-[#009246] transition-colors duration-500" />
-            </motion.div>
-            <motion.div
-              className="px-4 py-1 bg-neutral-100 text-xs font-semibold tracking-wide text-neutral-600 uppercase rounded-full group-hover:bg-gradient-to-r group-hover:from-[#009246]/10 group-hover:to-[#ce2b37]/10 transition-all duration-500"
-              whileHover={{ scale: 1.05 }}
-            >
-              {category}
-            </motion.div>
+      <div className="h-full flex flex-col bg-white rounded-sm border border-gray-100 hover:border-italian-green/20 shadow-sm hover:shadow-md transition-all duration-300 p-8">
+        
+        <div className="flex items-center justify-between mb-6">
+          <div className="w-12 h-12 bg-italian-green/5 rounded-full flex items-center justify-center text-italian-green">
+            <FontAwesomeIcon icon={icon} className="text-lg" />
           </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-3 text-sm">
-              <span className="font-semibold text-primary group-hover:text-[#009246] transition-colors duration-300">{source}</span>
-              <span className="text-neutral-500 italic">{date}</span>
-            </div>
-
-            <motion.h3
-              className="text-xl font-bold mb-4 line-clamp-2 text-neutral-900 leading-tight group-hover:text-primary transition-colors duration-300"
-              itemProp="headline"
-              whileHover={{ x: 5 }}
-            >
-              {title}
-            </motion.h3>
-
-            <p className="text-neutral-600 text-base mb-4 line-clamp-3 leading-relaxed">
-              {excerpt}
-            </p>
-          </div>
+          <span className="px-3 py-1 bg-gray-100 text-xs font-bold tracking-wide text-gray-500 uppercase rounded-sm">
+            {category}
+          </span>
         </div>
 
-        <div className="px-8 pb-8 mt-auto relative z-20">
+        <div className="flex-grow">
+          <div className="flex items-center justify-between mb-3 text-xs uppercase tracking-wider">
+            <span className="font-bold text-navy">{source}</span>
+            <span className="text-gray-400">{date}</span>
+          </div>
+
+          <h3 className="text-lg font-bold mb-4 text-navy leading-tight group-hover:text-italian-green transition-colors">
+            {title}
+          </h3>
+
+          <p className="text-gray-600 text-sm mb-6 leading-relaxed line-clamp-3">
+            {excerpt}
+          </p>
+        </div>
+
+        <div className="pt-6 border-t border-gray-50 mt-auto">
           {link !== '#' ? (
-            <motion.a
+            <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-primary font-semibold text-sm hover:text-[#009246] transition-colors duration-300"
-              whileHover={{ x: 5 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center text-navy font-bold text-xs uppercase tracking-widest hover:text-italian-green transition-colors"
             >
-              <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2 text-xs" />
-              Leggi di più
-            </motion.a>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2" />
+              Read More
+            </a>
           ) : (
-            <div className="inline-flex items-center text-neutral-500 font-medium text-sm">
-              <FontAwesomeIcon icon={faInfoCircle} className="mr-2 text-xs" />
-              Dettagli disponibili
+            <div className="inline-flex items-center text-gray-400 font-bold text-xs uppercase tracking-widest">
+              <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
+              Info Available
             </div>
           )}
         </div>
-
-        {/* Bordi decorativi animati */}
-        <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#009246] to-[#ce2b37] group-hover:w-full transition-all duration-700"></div>
-        <div className="absolute top-0 right-0 w-1 h-0 bg-gradient-to-b from-[#009246] to-[#ce2b37] group-hover:h-full transition-all duration-700 delay-100"></div>
       </div>
     </motion.div>
   );
@@ -122,7 +97,6 @@ interface MediaCoverageSectionProps {
   showTitle?: boolean;
 }
 
-// Componente per statistiche animate
 const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -130,34 +104,27 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
   });
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <motion.div
-        className="text-3xl md:text-4xl font-bold text-primary mb-2"
-        whileHover={{ scale: 1.1 }}
-      >
-        {inView && (
+    <div ref={ref} className="text-center">
+      <div className="text-3xl md:text-4xl font-bold text-navy mb-2">
+        {inView ? (
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5 }}
           >
             {target}{suffix}
           </motion.span>
+        ) : (
+          <span>0{suffix}</span>
         )}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
 const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSectionProps) => {
   const { t } = useTranslation();
   
-  // Media items con categorie e icone
   const mediaItems: MediaItemProps[] = [
     {
       title: '100 Best in Class 2024 - Innovazione Digitale nei servizi professionali',
@@ -165,7 +132,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       source: 'Forbes Italia / TeamSystem',
       excerpt: "Riconoscimento per l'eccellenza nell'innovazione digitale nei servizi professionali. Proclama SPA è stata premiata tra i migliori studi italiani per innovazione digitale, confermando il nostro impegno verso un servizio clienti moderno ed efficiente.",
       link: 'https://www.forbes.it/100-best-in-class-2023',
-      category: 'Premio',
+      category: 'Award',
       icon: faTrophy
     },
     {
@@ -174,16 +141,16 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       source: 'Amazon - Pubblicazioni di Giovanni Emmi',
       excerpt: "Libro che esplora come l'intelligenza artificiale stia trasformando la professione del commercialista. 'Essere un commercialista innovativo significa essere un pilastro per la continuità e il progresso delle aziende clienti, un punto di riferimento per il futuro, mantenendo sempre un'alta etica professionale.'",
       link: 'https://amzn.eu/d/4GNuret',
-      category: 'Pubblicazione',
+      category: 'Book',
       icon: faBook
     },
     {
       title: 'Premio "Professionista Digitale dell\'anno 2014"',
       date: '2014',
-      source: 'Politecnico di Milano - Osservatorio Professionisti e Innovazione Digitale',
+      source: 'Politecnico di Milano',
       excerpt: "Nel 2014 lo Studio Emmi, oggi Proclama SPA, si è distinto in Italia per capacità innovativa a livello organizzativo e di business con l'utilizzo delle tecnologie digitali. In particolare per il progetto partitaiva.it, pioniere nella trasformazione digitale dello studio professionale.",
       link: 'https://www.osservatori.net/it/eventi/on-demand/convegni',
-      category: 'Riconoscimento',
+      category: 'Recognition',
       icon: faMedal
     },
     {
@@ -192,7 +159,7 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
       source: 'Progetti digitali di Proclama SPA',
       excerpt: "Portale che semplifica e riorganizza gli studi dei commercialisti e le aree amministrative e contabili delle PMI. Un progetto all'avanguardia che utilizza l'intelligenza artificiale per ottimizzare i processi amministrativi e contabili.",
       link: 'https://www.partitaiva.it',
-      category: 'Innovazione',
+      category: 'Innovation',
       icon: faRocket
     },
   ];
@@ -200,108 +167,50 @@ const MediaCoverageSection = ({ maxItems, showTitle = true }: MediaCoverageSecti
   const displayItems = maxItems ? mediaItems.slice(0, maxItems) : mediaItems;
 
   return (
-    <section className="section-padding bg-neutral-50 relative overflow-hidden">
-      {/* Pattern di sfondo decorativo */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23009246' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}
-      />
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-16 md:py-24 bg-white border-t border-gray-100">
+      <div className="container mx-auto px-4">
         {showTitle && (
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <motion.span
-              className="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
+          <div className="text-center mb-16">
+            <span className="text-italian-green font-bold tracking-widest text-xs uppercase mb-3 block">
               Press & Awards
-            </motion.span>
-            <motion.h2
-              className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6"
-              whileHover={{ scale: 1.02 }}
-            >
-              {t('media.title', 'Parlano di Noi')}
-            </motion.h2>
-            <motion.div
-              className="w-20 h-1 mx-auto mb-6 italian-gradient rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: "5rem" }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            />
-            <motion.p
-              className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+              {t('media.title', 'As Seen In')}
+            </h2>
+            <div className="w-16 h-1 bg-italian-green mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed text-sm">
               {t('media.subtitle', 'Riconoscimenti, pubblicazioni e menzioni che testimoniano la nostra eccellenza e innovazione nel settore dei servizi professionali.')}
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         )}
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {displayItems.map((item, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              <MediaItem {...item} />
-            </motion.div>
+            <MediaItem key={index} {...item} />
           ))}
-        </motion.div>
+        </div>
 
-        {/* Sezione statistiche animata */}
-        <motion.div
-          className="border-t border-neutral-200 pt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
+        {/* Stats */}
+        <div className="border-t border-gray-100 pt-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <motion.div className="text-center group" whileHover={{ scale: 1.05 }}>
+            <div className="group">
               <AnimatedCounter target={10} suffix="+" />
-              <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Anni di esperienza</div>
-            </motion.div>
-            <motion.div className="text-center group" whileHover={{ scale: 1.05 }}>
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mt-2 text-center">Years Experience</div>
+            </div>
+            <div className="group">
               <AnimatedCounter target={3} />
-              <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Premi nazionali</div>
-            </motion.div>
-            <motion.div className="text-center group" whileHover={{ scale: 1.05 }}>
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mt-2 text-center">National Awards</div>
+            </div>
+            <div className="group">
               <AnimatedCounter target={1} />
-              <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Libro pubblicato</div>
-            </motion.div>
-            <motion.div className="text-center group" whileHover={{ scale: 1.05 }}>
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mt-2 text-center">Books Published</div>
+            </div>
+            <div className="group">
               <AnimatedCounter target={100} suffix="%" />
-              <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Innovazione digitale</div>
-            </motion.div>
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mt-2 text-center">Digital Innovation</div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

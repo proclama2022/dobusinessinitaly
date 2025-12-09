@@ -183,6 +183,10 @@
   "whyChooseUs": {
     "title": "Perché Scegliere Noi",
     "ctaButton": "Parla con un Esperto",
+    "quote": {
+      "text": "L'eccellenza non è un atto, ma un'abitudine.",
+      "author": "Aristotele"
+    },
     "mainImageAlt": "Incontro business clienti internazionali",
     "smallImageAlt": "Grafici contabilità",
     "features": {
@@ -494,6 +498,7 @@
     },
     "map": {
       "title": "La nostra sede",
+      "subtitle": "Ci trovi a Catania, nel cuore della Sicilia",
       "titleAlt": "Mappa ufficio Proclama SPA"
     }
   },
@@ -596,6 +601,8 @@
     "description": "Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell'internazionalizzazione delle imprese.",
     "viewAll": "Visualizza Tutti",
     "readMore": "Leggi di più",
+    "share": "Condividi:",
+    "followLinkedIn": "Segui su LinkedIn",
     "backToBlog": "Torna al Blog",
     "relatedPosts": "Articoli correlati",
     "noArticles": "Nessun articolo disponibile al momento.",
@@ -1016,5 +1023,37 @@
         }
       ]
     }
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "subtitle": "Le risposte alle domande più comuni sui nostri servizi per stranieri che vogliono fare business in Italia",
+    "notFound": "Non trovi la risposta che cerchi?",
+    "ctaButton": "Contattaci per una Consulenza Gratuita",
+    "items": [
+      {
+        "question": "Quanto costa aprire una società in Italia per stranieri?",
+        "answer": "I costi per aprire una società in Italia variano da 1.500€ a 3.000€ per una SRL, includendo notaio, Camera di Commercio, e consulenza iniziale. Per una partita IVA i costi sono molto più contenuti (300-800€). Offriamo preventivi gratuiti personalizzati in base alle vostre esigenze specifiche."
+      },
+      {
+        "question": "Posso aprire partita IVA in Italia se sono straniero?",
+        "answer": "Sì, i cittadini UE possono aprire partita IVA liberamente in Italia. I cittadini extra-UE necessitano di permesso di soggiorno per lavoro autonomo. Vi assistiamo in tutto il processo burocratico, dalla richiesta dei documenti alla presentazione delle pratiche."
+      },
+      {
+        "question": "Cos'è il regime forfettario e chi può accedervi?",
+        "answer": "Il regime forfettario è un regime fiscale agevolato con tassa al 5% (primi 5 anni) o 15% per fatturati fino a 85.000€ annui. È ideale per freelance e piccole imprese. Non si applica IVA e la contabilità è semplificata. Perfetto per chi inizia un'attività in Italia."
+      },
+      {
+        "question": "Offrite consulenza in inglese?",
+        "answer": "Sì, offriamo consulenza principalmente in inglese e, grazie alle nostre competenze nelle tecnologie AI, possiamo comunicare efficacemente nella lingua madre del cliente. Il nostro team ha esperienza specifica con clienti internazionali."
+      },
+      {
+        "question": "Quanto tempo ci vuole per aprire una società?",
+        "answer": "Per una SRL servono generalmente 15-30 giorni lavorativi dal momento in cui abbiamo tutta la documentazione. Per una partita IVA i tempi sono molto più rapidi: 3-7 giorni. I tempi possono variare in base alla complessità del caso e alla nazionalità del richiedente."
+      },
+      {
+        "question": "Che documenti servono per aprire un'attività in Italia?",
+        "answer": "Per cittadini UE: documento d'identità valido e codice fiscale. Per cittadini extra-UE: passaporto, permesso di soggiorno (o richiesta), codice fiscale. Per le società servono anche statuti, atti costitutivi e documentazione specifica che vi aiuteremo a preparare."
+      }
+    ]
   }
 }

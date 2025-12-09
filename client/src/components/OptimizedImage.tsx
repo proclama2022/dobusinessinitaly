@@ -34,6 +34,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isInView, setIsInView] = useState(priority);
+  const [retryCount, setRetryCount] = useState(0);
   const imgRef = useRef<HTMLImageElement>(null);
 
   // Intersection Observer per lazy loading
@@ -62,14 +63,48 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return () => observer.disconnect();
   }, [priority]);
 
+  // Log when image is about to be loaded
+  useEffect(() => {
+    if (isInView || priority) {
+      console.log('📤 Attempting to load image:', src);
+    }
+  }, [isInView, priority, src]);
+
   const handleLoad = () => {
+    console.log('🖼️ Image loaded successfully:', src);
     setIsLoaded(true);
     onLoad?.();
   };
 
   const handleError = () => {
-    setHasError(true);
-    onError?.();
+    console.error('🚨 Image failed to load:', src);
+    console.error('📊 Image info:', {
+      src,
+      width,
+      height,
+      priority,
+      retryCount
+    });
+
+    // Check if it's a 404 or network error
+    if (imgRef.current) {
+      console.error('❌ Natural width:', imgRef.current.naturalWidth);
+      console.error('❌ Natural height:', imgRef.current.naturalHeight);
+    }
+
+    // Retry once for network errors (but not for missing files)
+    if (retryCount < 1 && !src.includes('default-blog-cover')) {
+      console.log('🔄 Retrying image load...');
+      setRetryCount(prev => prev + 1);
+      setTimeout(() => {
+        if (imgRef.current) {
+          imgRef.current.src = src + '?retry=' + Date.now();
+        }
+      }, 1000);
+    } else {
+      setHasError(true);
+      onError?.();
+    }
   };
 
   // Placeholder shimmer mentre carica

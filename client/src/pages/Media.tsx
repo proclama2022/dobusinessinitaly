@@ -29,12 +29,14 @@ const Media = () => {
 
       {/* Hero Section */}
       <section className="relative isolate h-[500px] md:h-[600px] overflow-hidden">
-        {/* Background con immagine e overlay sfumato */}
-        <div className="absolute inset-0 bg-black opacity-60 z-[2]"></div>
+        {/* Background con immagine e overlay sfumato - Aumentato contrasto */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-black/95 z-[2]"></div>
+        {/* Overlay aggiuntivo per maggiore contrasto */}
+        <div className="absolute inset-0 bg-black/50 z-[3]"></div>
         <OptimizedImage
           src="https://images.unsplash.com/photo-1504711434969-e33886168f5c"
           alt="Media coverage e riconoscimenti"
-          className="absolute inset-0 w-full h-full scale-105 animate-slow-zoom z-[1]"
+          className="absolute inset-0 w-full h-full scale-105 animate-slow-zoom z-[1] blur-sm"
           priority={true}
           width={1920}
           height={1080}
@@ -42,13 +44,13 @@ const Media = () => {
         />
         
         {/* Contenuto Hero */}
-        <div className="absolute inset-0 z-[3] flex items-center">
+        <div className="absolute inset-0 z-[10] flex items-center">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center text-white">
-              <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-heading font-bold mb-6 leading-tight text-white drop-shadow-lg">
                 {t('media.heroTitle', 'Parlano di Noi')}
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+              <p className="text-xl md:text-2xl mb-8 text-white/95 leading-relaxed drop-shadow-md">
                 {t('media.heroSubtitle', 'Riconoscimenti, pubblicazioni e menzioni nella stampa specializzata che testimoniano la nostra eccellenza nei servizi professionali.')}
               </p>
               <div className="flex items-center justify-center gap-4">

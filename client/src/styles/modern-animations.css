@@ -1,0 +1,93 @@
+/* Modern Animations & Interactions */
+
+/* Smooth Transitions Global */
+.transition-modern {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effects */
+.hover-lift-modern {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.hover-glow-green:hover {
+  box-shadow: 0 0 20px rgba(0, 146, 70, 0.2);
+}
+
+.hover-glow-red:hover {
+  box-shadow: 0 0 20px rgba(206, 43, 55, 0.2);
+}
+
+/* Button Modernization */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-modern::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-modern:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Card Modernization */
+.card-modern {
+  background: white;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: var(--radius-modern);
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-modern:hover {
+  border-color: rgba(0, 146, 70, 0.2); /* Subtle Green Border on hover */
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Scroll Animations */
+@keyframes fadeInUpModern {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUpModern 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Text Gradients (using base colors only) */
+.text-gradient-base {
+  background: linear-gradient(135deg, hsl(var(--italian-green)), hsl(var(--navy)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+

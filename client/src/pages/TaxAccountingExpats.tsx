@@ -143,26 +143,29 @@ const TaxAccountingExpats = () => {
 
       {/* Hero Section - Minimalist Style */}
       <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white py-24">
-        {/* Background Image */}
+        {/* Background Image con blur */}
         <OptimizedImage
           src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="Tax Accounting for Expats"
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          className="absolute inset-0 w-full h-full object-cover z-[1] blur-sm"
           priority={true}
           width={1920}
           height={1080}
         />
-        <div className="absolute inset-0 bg-neutral-900/70 z-[2]"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        {/* Overlay scuro con gradiente per contrasto */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-neutral-900/95 z-[2]"></div>
+        {/* Overlay aggiuntivo per maggiore contrasto */}
+        <div className="absolute inset-0 bg-black/50 z-[3]"></div>
+        <div className="container mx-auto px-4 relative z-[10]">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6">
               <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
               {t('landingPages.taxAccountingExpats.title')}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
               {t('landingPages.taxAccountingExpats.heroTitle')}
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-neutral-300 leading-relaxed">
+            <p className="text-xl md:text-2xl mb-10 text-white/95 leading-relaxed drop-shadow-md">
               {t('landingPages.taxAccountingExpats.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

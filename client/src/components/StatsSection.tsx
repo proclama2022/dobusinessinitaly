@@ -15,7 +15,7 @@ type StatItemProps = {
   title: string;
   description: string;
   index: number;
-  icon: any; // Icona FontAwesome
+  icon: any;
 };
 
 const StatItem = ({ value, suffix, title, description, index, icon }: StatItemProps) => {
@@ -62,21 +62,21 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
   };
 
   return (
-    <div className="group relative p-8 text-center bg-white border border-neutral-100 rounded shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-500">
-      
-      <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-500">
-        <FontAwesomeIcon icon={icon} className="text-primary text-2xl group-hover:scale-110 transition-transform duration-500" />
+    <div className="group p-8 text-center bg-white rounded-sm border border-gray-100 hover:border-italian-green/30 shadow-sm hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+      {/* Decorative top accent */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-italian-green to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+      <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-gray-50 group-hover:bg-italian-green text-italian-green group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+        <FontAwesomeIcon icon={icon} className="text-2xl transition-colors duration-300" />
       </div>
       
-      <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-        <span ref={countRef}>{count}</span>{suffix}
+      <div className="text-4xl md:text-5xl font-bold text-navy mb-2 tracking-tight font-[Playfair_Display]">
+        <span ref={countRef}>{count}</span><span className="text-italian-green text-3xl align-top ml-1">{suffix}</span>
       </div>
       
-      <h3 className="text-lg font-semibold text-neutral-900 uppercase tracking-wide mb-3">{title}</h3>
+      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 pb-4 border-b border-gray-100 group-hover:border-italian-green/20 transition-colors">{title}</h3>
       
-      <div className="w-12 h-px bg-neutral-200 mx-auto mb-4 group-hover:bg-primary/50 transition-colors duration-500"></div>
-      
-      <p className="text-neutral-600 text-sm leading-relaxed">{description}</p>
+      <p className="text-gray-600 text-sm leading-relaxed font-[Lora]">{description}</p>
     </div>
   );
 };
@@ -117,7 +117,7 @@ const StatsSection = () => {
     },
     {
       value: 50,
-      suffix: 'M+',
+      suffix: 'M',
       title: t('stats.volume.title'),
       description: t('stats.volume.description'),
       icon: faEuroSign
@@ -125,16 +125,16 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 md:py-32 bg-gray-50 relative">
+      <div className="container mx-auto px-4">
         <div className={cn("text-center mb-16 transition-all duration-700", isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')}>
-          <span className="text-primary font-semibold tracking-widest text-sm uppercase mb-2 block">Trusted by Leaders</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+          <span className="text-italian-green font-bold tracking-widest text-xs uppercase mb-3 block">Trusted by Leaders</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 font-[Playfair_Display]">
             {t('stats.title')}
           </h2>
-          <p className="text-neutral-600 text-lg max-w-3xl mx-auto">
-            {t('stats.subtitle')}
+          <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto italic font-[Lora]">
+            "{t('stats.subtitle')}"
           </p>
         </div>
         

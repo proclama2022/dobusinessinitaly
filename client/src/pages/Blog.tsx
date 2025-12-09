@@ -8,6 +8,13 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import OptimizedImage from '@/components/OptimizedImage';
 
+const handleImageError = (event?: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const target = event?.currentTarget;
+  if (!target) return;
+  target.onerror = null;
+  target.src = '/images/default-blog-cover.webp';
+};
+
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
   slug: string;
@@ -61,13 +68,25 @@ const BlogPostCard = ({
         </div>
 
         {/* Immagine articolo con attributi SEO migliorati */}
-        <OptimizedImage
-          src={imgSrc || '/images/default-blog-cover.webp'}
-          alt={`${title} - Yourbusinessinitaly.com`}
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-          width={600}
-          height={400}
-        />
+        {imgSrc && imgSrc.trim() && imgSrc !== '/images/default-blog-cover.webp' ? (
+          <OptimizedImage
+            src={imgSrc}
+            alt={`${title} - Yourbusinessinitaly.com`}
+            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            width={600}
+            height={400}
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-italian-green/10 via-neutral-100 to-italian-red/10 flex items-center justify-center">
+            <div className="text-center p-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-italian-green/20 rounded-full flex items-center justify-center">
+                <i className="fas fa-file-alt text-2xl text-italian-green"></i>
+              </div>
+              <p className="text-neutral-500 text-sm font-[Montserrat]">{category}</p>
+            </div>
+          </div>
+        )}
 
         {/* Linee decorative */}
         <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
@@ -113,12 +132,24 @@ const CategoryBadge = ({
   onClick: (name: string) => void;
 }) => {
   return (
-    <div
-      className={`px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ${isActive ? 'bg-gradient-to-r from-[#009246] to-[#ce2b37] text-white' : 'bg-white hover:bg-neutral-100 text-neutral-600'}`}
+    <button
+      className={`
+        px-5 py-2.5 rounded-sm cursor-pointer 
+        transition-all duration-300 ease-out
+        font-[Montserrat] text-sm font-semibold
+        transform hover:scale-105 active:scale-95
+        ${isActive 
+          ? 'bg-italian-green text-white shadow-lg shadow-italian-green/30 border-2 border-italian-green' 
+          : 'bg-white text-navy hover:bg-italian-green/5 hover:text-italian-green border-2 border-neutral-200 hover:border-italian-green/30 shadow-sm hover:shadow-md'
+        }
+      `}
       onClick={() => onClick(name)}
     >
-      {name}
-    </div>
+      <span className="relative z-10">{name}</span>
+      {isActive && (
+        <span className="absolute inset-0 bg-italian-green/20 blur-sm rounded-sm"></span>
+      )}
+    </button>
   );
 };
 
@@ -137,14 +168,16 @@ const Blog = () => {
     queryFn: async () => {
       console.log(`[Blog] Fetching posts for language: ${currentLang}`);
       const response = await apiRequest<{ success: boolean, data: BlogPostMeta[] }>(
-        `/api/blog${currentLang === 'it' ? '' : ('?lang=' + currentLang)}`,
+        `/api/blog?lang=${currentLang}`,
         { method: 'GET' }
       );
       console.log(`[Blog] Received ${response.data?.length || 0} posts from API`);
+      console.log(`[Blog] First 3 posts:`, response.data?.slice(0, 3).map(p => ({ title: p.title, lang: p.lang })));
       return response;
     },
     refetchOnWindowFocus: false,
-    staleTime: 1000, // Reduce stale time to ensure fresh data
+    staleTime: 0, // Force fresh data every time
+    cacheTime: 0, // Don't cache
   });
 
   // Ensure we have accurate data and UI translations when language changes
@@ -435,14 +468,26 @@ const Blog = () => {
                 </div>
 
                 {/* Immagine */}
-                <OptimizedImage
-                  src={featuredPost?.coverImage || '/images/default-blog-cover.webp'}
-                  alt={featuredPost?.title || ''}
-                  className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  width={1200}
-                  height={400}
-                  priority={true}
-                />
+                {featuredPost?.coverImage && featuredPost.coverImage.trim() && featuredPost.coverImage !== '/images/default-blog-cover.webp' ? (
+                  <OptimizedImage
+                    src={featuredPost.coverImage}
+                    alt={featuredPost.title || 'Featured article'}
+                    className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    width={1200}
+                    height={400}
+                    priority={true}
+                    onError={handleImageError}
+                  />
+                ) : (
+                  <div className="w-full h-[400px] bg-gradient-to-br from-italian-green/10 via-neutral-100 to-italian-red/10 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <div className="w-20 h-20 mx-auto mb-4 bg-italian-green/20 rounded-full flex items-center justify-center">
+                        <i className="fas fa-star text-3xl text-italian-green"></i>
+                      </div>
+                      <p className="text-neutral-500 text-sm font-[Montserrat]">{featuredPost?.category || 'Featured'}</p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Bordi decorativi */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
@@ -477,9 +522,15 @@ const Blog = () => {
 
       {/* Categorie e filtri */}
       {!isLoading && !error && (
-        <section className="py-12 bg-neutral-50">
+        <section className="py-16 bg-white border-y border-neutral-100">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="text-center mb-8">
+              <h3 className="text-lg font-[Montserrat] font-bold text-navy uppercase tracking-wider mb-2">
+                {t('blog.filterByCategory', 'Filtra per categoria')}
+              </h3>
+              <div className="w-16 h-0.5 bg-italian-green mx-auto"></div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
               {categories.map((category, index) => (
                 <CategoryBadge
                   key={index}

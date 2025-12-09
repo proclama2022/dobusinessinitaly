@@ -92,15 +92,55 @@ function getAllPosts(language?: string): BlogPostMeta[] {
     // Filtra i file per lingua
     let relevantFiles: string[];
     if (targetLanguage === 'it') {
-      // Per l'italiano, prendi solo i file senza suffisso di lingua
-      relevantFiles = files.filter(file => !file.match(/\.[a-z]{2}\.mdx$/));
+      // Per l'italiano, prendi solo i file senza suffisso di lingua E che hanno lang='it' o nessun lang nel frontmatter
+      const filesWithoutSuffix = files.filter(file => !file.match(/\.[a-z]{2}\.mdx$/));
+      const italianFiles: string[] = [];
+      
+      for (const file of filesWithoutSuffix) {
+        try {
+          const filePath = path.join(BLOG_DIR, file);
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const { data } = matter(fileContent);
+          const fileLang = (data.lang || '').toLowerCase();
+          // Includi solo se non ha lang o se lang è 'it'
+          if (!fileLang || fileLang === 'it') {
+            italianFiles.push(file);
+          }
+        } catch (e) {
+          // Ignora errori di lettura
+        }
+      }
+      
+      relevantFiles = italianFiles;
     } else {
-      // Per altre lingue, prendi solo i file con il suffisso corretto
-      relevantFiles = files.filter(file => file.endsWith(`.${targetLanguage}.mdx`));
+      // Per altre lingue, prendi i file con il suffisso corretto OPPURE quelli con lang nel frontmatter
+      // Prima prendi quelli con suffisso
+      const filesWithSuffix = files.filter(file => file.endsWith(`.${targetLanguage}.mdx`));
+      
+      // Poi controlla i file senza suffisso per vedere se hanno lang nel frontmatter
+      const filesWithoutSuffix = files.filter(file => !file.match(/\.[a-z]{2}\.mdx$/));
+      const filesWithLangInFrontmatter: string[] = [];
+      
+      for (const file of filesWithoutSuffix) {
+        try {
+          const filePath = path.join(BLOG_DIR, file);
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const { data } = matter(fileContent);
+          const fileLang = (data.lang || '').toLowerCase();
+          if (fileLang === targetLanguage) {
+            filesWithLangInFrontmatter.push(file);
+          }
+        } catch (e) {
+          // Ignora errori di lettura
+        }
+      }
+      
+      // Combina entrambi i tipi di file
+      relevantFiles = [...filesWithSuffix, ...filesWithLangInFrontmatter];
     }
 
     console.log(`[Blog API] Found ${relevantFiles.length} files for language ${targetLanguage}:`, relevantFiles);
-    console.log(`[Blog API] Looking for files ending with .${targetLanguage}.mdx`);
+    console.log(`[Blog API] Looking for files ending with .${targetLanguage}.mdx or with lang=${targetLanguage} in frontmatter`);
     const allFiles = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.mdx'));
     const enFiles = allFiles.filter(file => file.endsWith('.en.mdx'));
     console.log(`[Blog API] Total .en.mdx files found: ${enFiles.length}`, enFiles);
@@ -155,15 +195,44 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             console.log(`[Blog API] coverImage found for ${filename}:`, coverImageValue);
           }
           
+          // CONTROLLO FINALE: Verifica che la lingua del post corrisponda alla lingua richiesta
+          const postLang = (data.lang || '').toLowerCase();
+          const fileLangFromName = filename.match(/\.([a-z]{2})\.mdx$/) ? filename.match(/\.([a-z]{2})\.mdx$/)?.[1]?.toLowerCase() : null;
+          
+          // Determina la lingua effettiva del post
+          const effectiveLang = postLang || fileLangFromName || (targetLanguage === 'it' ? 'it' : null);
+          
+          // Se la lingua effettiva non corrisponde alla lingua richiesta, escludi il post
+          if (effectiveLang && effectiveLang !== targetLanguage) {
+            console.log(`[Blog API] ⚠️ SKIPPING file ${filename} - lang mismatch: effectiveLang=${effectiveLang}, targetLanguage=${targetLanguage}`);
+            return null;
+          }
+          
+          // Se siamo in modalità italiano e il post ha una lingua esplicita diversa, escludilo
+          if (targetLanguage === 'it' && postLang && postLang !== 'it') {
+            console.log(`[Blog API] ⚠️ SKIPPING file ${filename} - has explicit lang=${postLang} but target is 'it'`);
+            return null;
+          }
+          
+          // Fallback per coverImage se mancante o vuoto
+          let finalCoverImage = '';
+          if (coverImageValue && typeof coverImageValue === 'string' && coverImageValue.trim()) {
+            finalCoverImage = coverImageValue.trim();
+          } else {
+            // Usa un'immagine di default
+            finalCoverImage = '/images/default-blog-cover.webp';
+            console.warn(`[Blog API] Missing coverImage for ${filename}, using default`);
+          }
+          
           const blogPost: BlogPostMeta = {
             slug,
             title: data.title,
             date: data.date,
             category: data.category?.trim() || 'Generale',
             excerpt: data.excerpt?.trim() || '',
-            coverImage: (coverImageValue && typeof coverImageValue === 'string') ? coverImageValue.trim() : '',
+            coverImage: finalCoverImage,
             author: data.author?.trim() || 'Redazione',
-            lang: data.lang || targetLanguage,
+            lang: effectiveLang || targetLanguage,
           };
           
           const leadMagnet = parseLeadMagnet(data);
@@ -202,9 +271,15 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
     // Filtra per lingua
     const filename = b.pathname;
     const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
-    const fileLanguage = langMatch?.[1] || 'it';
-    const shouldInclude = targetLanguage === 'it' ? !langMatch : fileLanguage === targetLanguage;
-    if (!shouldInclude) continue;
+    const fileLanguage = langMatch?.[1] || null;
+    
+    // Per l'italiano, includi solo file senza suffisso
+    // Per altre lingue, includi solo file con il suffisso corretto
+    const shouldIncludeByFilename = targetLanguage === 'it' 
+      ? !langMatch  // Italiano: solo file senza suffisso
+      : fileLanguage === targetLanguage;  // Altre lingue: solo file con suffisso corretto
+    
+    if (!shouldIncludeByFilename) continue;
 
     try {
       const res = await fetch(b.downloadUrl);
@@ -212,6 +287,22 @@ async function getAllPostsFromBlob(language?: string): Promise<BlogPostMeta[]> {
       const fileContent = await res.text();
       const { data } = matter(fileContent);
       if (!data.title?.trim() || !data.date) continue;
+      
+      // CONTROLLO FINALE: Verifica che la lingua del post corrisponda alla lingua richiesta
+      const postLang = (data.lang || '').toLowerCase();
+      const effectiveLang = postLang || fileLanguage || (targetLanguage === 'it' ? 'it' : null);
+      
+      // Se la lingua effettiva non corrisponde alla lingua richiesta, escludi il post
+      if (effectiveLang && effectiveLang !== targetLanguage) {
+        console.log(`[Blog API] ⚠️ SKIPPING blob ${filename} - lang mismatch: effectiveLang=${effectiveLang}, targetLanguage=${targetLanguage}`);
+        continue;
+      }
+      
+      // Se siamo in modalità italiano e il post ha una lingua esplicita diversa, escludilo
+      if (targetLanguage === 'it' && postLang && postLang !== 'it') {
+        console.log(`[Blog API] ⚠️ SKIPPING blob ${filename} - has explicit lang=${postLang} but target is 'it'`);
+        continue;
+      }
       
       // Usa lo slug dal frontmatter se disponibile, altrimenti genera dal filename
       let slug;

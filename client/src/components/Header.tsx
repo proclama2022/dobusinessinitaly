@@ -4,6 +4,11 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import OptimizedImage from './OptimizedImage';
 import { supportedLanguages } from '@/lib/languages';
+import { cn } from '@/lib/utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
 // Using responsive logos: mobile (square) and desktop (3:1 ratio) with aggressive cache busting
 const timestamp = Date.now();
 const logoDesktop = `/images/logonew.png?v=${timestamp}&t=${timestamp}`;
@@ -45,304 +50,197 @@ const Header = () => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [mobileMenuOpen]);
 
-  // Focus trap dentro il menu mobile quando aperto
-  useEffect(() => {
-    if (!mobileMenuOpen) return;
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    setServicesDropdownOpen(false);
+  };
 
-    const container = mobileMenuRef.current;
-    if (!container) return;
-
-    const focusableSelectors = [
-      'a[href]',
-      'button:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      'input:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])'
-    ].join(',');
-
-    const getFocusable = () => Array.from(container.querySelectorAll<HTMLElement>(focusableSelectors));
-
-    // Focus al primo elemento utile
-    const focusables = getFocusable();
-    const first = focusables[0];
-    first?.focus();
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return;
-      const items = getFocusable();
-      if (items.length === 0) return;
-      const firstEl = items[0];
-      const lastEl = items[items.length - 1];
-      const active = document.activeElement as HTMLElement | null;
-
-      if (e.shiftKey) {
-        // Shift+Tab su primo: vai all'ultimo
-        if (active === firstEl || !container.contains(active)) {
-          e.preventDefault();
-          lastEl.focus();
-        }
-      } else {
-        // Tab su ultimo: torna al primo
-        if (active === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [mobileMenuOpen]);
-
-  // Funzione per generare un percorso con il prefisso lingua corrente
   const getLocalizedPath = (path: string) => {
-    // Se il percorso è '/', reindirizza alla home page con solo il prefisso lingua
-    if (path === '/') {
-      return `/${i18n.language}`;
-    }
-    // Altrimenti aggiungi il prefisso lingua al percorso
-    return `/${i18n.language}${path}`;
+    const currentLang = i18n.language;
+    if (path === '/') return `/${currentLang}/`;
+    return `/${currentLang}${path}`;
   };
 
-  // Estrai il percorso e la lingua corrente dall'URL
-  const extractPathInfo = () => {
-    const segments = location.split('/');
-    if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
-      // URL è del tipo /{lang}/{path}
-      const pathWithoutLang = '/' + segments.slice(2).join('/');
-      return {
-        lang: segments[1],
-        path: pathWithoutLang === '/' ? '' : pathWithoutLang
-      };
-    }
-    // URL non ha prefisso lingua
-    return {
-      lang: '',
-      path: location
-    };
-  };
-
-  const { path } = extractPathInfo();
-
-  // Verifica se il link è attivo
-  const isActiveLink = (routePath: string) => {
-    if (routePath === '/') {
-      // Per la home page, controlla se siamo alla root con o senza prefisso lingua
-      return path === '' || path === '/';
-    }
-    // Per altre pagine, confronta il percorso senza prefisso
-    return path === routePath;
-  };
-
-  const navigationLinks = [
-    { path: '/', label: t('navigation.home') },
-    {
+  const menuItems = [
+    { label: t('navigation.home'), path: '/' },
+    { label: t('navigation.about'), path: '/about' },
+    { 
+      label: t('navigation.services'), 
       path: '/services',
-      label: t('navigation.services'),
-      dropdown: [
-        { path: '/services/open-company-italy', label: 'Open a Company in Italy' },
-        { path: '/services/open-vat-number-italy', label: 'Open a VAT Number in Italy' },
-        { path: '/services/tax-accounting-expats', label: 'Tax Accounting for Expats' }
-      ]
+      hasDropdown: true 
     },
-    { path: '/about', label: t('navigation.about') },
-    { path: '/blog', label: t('navigation.blog') },
-    { path: '/media', label: t('navigation.media') },
-    { path: '/social', label: t('navigation.social') },
-    { path: '/contact', label: t('navigation.contact') }
+    { label: t('navigation.blog'), path: '/blog' },
+    { label: t('navigation.contact'), path: '/contact' },
+  ];
+
+  const services = [
+    { title: t('services.items.formation.title'), path: '/services/open-company-italy' },
+    { title: t('services.items.accounting.title'), path: '/services/tax-accounting-expats' },
+    { title: t('services.items.partita_iva.title'), path: '/services/open-vat-number-italy' },
+    { title: t('services.items.regime_forfettario.title'), path: '/services' }, // TODO: Add specific page
+    { title: t('services.items.relocation.title'), path: '/services' },
   ];
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <Link 
-              href={getLocalizedPath('/')} 
-              className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
-              aria-label="Torna alla homepage"
-              onClick={(e: React.MouseEvent) => {
-                e.preventDefault();
-                const homePath = getLocalizedPath('/');
-                console.log('Logo clicked! Navigating to:', homePath);
-                navigate(homePath);
-              }}
-            >
-              {/* Logo Mobile - visible on small screens */}
-              <OptimizedImage
-                src={logoMobile}
-                alt="YBI - Yourbusinessinitaly.com"
-                className="block sm:hidden w-14 h-14 object-contain cursor-pointer"
-                width={56}
-                height={56}
-                priority={true}
-                style={{
-                  objectFit: 'contain',
-                  filter: 'contrast(1.2) brightness(1.1)'
-                }}
-              />
-              {/* Logo Desktop - visible on larger screens */}
-              <OptimizedImage
-                src={logoDesktop}
-                alt="Yourbusinessinitaly.com - Commercialista per stranieri in Italia"
-                className="hidden sm:block w-28 md:w-40 lg:w-52 max-h-20 h-auto object-contain cursor-pointer"
-                width={208}
-                height={75}
-                priority={true}
-                style={{
-                  objectFit: 'contain',
-                  filter: 'contrast(1.2) brightness(1.1)'
-                }}
-              />
-            </Link>
-          </div>
+        <div className="flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link href={getLocalizedPath('/')} className="flex-shrink-0 z-50 relative group" onClick={closeMenu}>
+             <div className="relative">
+                <OptimizedImage
+                  src={logoDesktop}
+                  alt="Your Business in Italy"
+                  className="h-auto max-h-14 md:max-h-16 object-contain transition-all duration-300 w-36 md:w-48"
+                  priority={true}
+                  width={176}
+                  height={59}
+                />
+             </div>
+          </Link>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMobileMenu}
-              className="text-neutral-700 hover:text-primary focus:outline-none touch-manipulation p-4 -m-2 min-h-[48px] min-w-[48px] active:scale-95 transition-transform duration-150 focus:ring-2 focus:ring-primary/30 rounded-lg"
-              aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu"
-              style={{
-                WebkitFontSmoothing: 'antialiased',
-                MozOsxFontSmoothing: 'grayscale',
-                textRendering: 'auto',
-                WebkitTapHighlightColor: 'transparent',
-                WebkitTouchCallout: 'none',
-                WebkitUserSelect: 'none',
-                userSelect: 'none',
-                touchAction: 'manipulation',
-                transform: 'translateZ(0)',
-                WebkitTransform: 'translateZ(0)'
-              }}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Desktop menu */}
-          <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            {navigationLinks.map((link) => (
-              <div key={link.path} className="relative">
-                {link.dropdown ? (
-                  <>
-                    <button
-                      onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                      className={`font-medium ${isActiveLink(link.path)
-                        ? 'text-primary border-b-2 border-primary'
-                        : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-3 py-3 text-sm lg:text-base flex items-center min-h-[48px] transition-colors duration-200 touch-manipulation focus:ring-2 focus:ring-primary/30 rounded-lg outline-none`}
-                    >
-                      {link.label}
-                      <svg className={`w-3 h-3 ml-1 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    {servicesDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-neutral-200 py-2 z-50">
-                        {link.dropdown.map((dropdownItem) => (
-                          <Link
-                            key={dropdownItem.path}
-                            href={getLocalizedPath(dropdownItem.path)}
-                            className="block px-4 py-3 text-sm text-neutral-800 hover:bg-neutral-50 transition-colors duration-200 touch-manipulation min-h-[44px] flex items-center"
-                            onClick={() => setServicesDropdownOpen(false)}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        ))}
-                      </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            {menuItems.map((item, index) => (
+              <div key={index} className="relative group">
+                <Link href={item.hasDropdown ? getLocalizedPath('/services') : getLocalizedPath(item.path)}>
+                  <span 
+                    className={cn(
+                      "text-xs xl:text-sm font-[Montserrat] font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 py-2 inline-flex items-center gap-1 group",
+                      location === getLocalizedPath(item.path) 
+                        ? "text-italian-green" 
+                        : "text-navy hover:text-italian-green"
                     )}
-                  </>
-                ) : (
-                  <Link
-                    href={getLocalizedPath(link.path)}
-                    className={`font-medium ${isActiveLink(link.path)
-                      ? 'text-primary border-b-2 border-primary'
-                      : 'text-neutral-700 hover:text-primary hover:border-b-2 hover:border-primary'} px-3 py-3 text-sm lg:text-base min-h-[48px] flex items-center transition-colors duration-200 touch-manipulation focus:ring-2 focus:ring-primary/30 rounded-lg outline-none`}
                   >
-                    {link.label}
-                  </Link>
+                    {item.label}
+                    {item.hasDropdown && (
+                      <FontAwesomeIcon icon={faChevronDown as IconProp} className="text-[10px] opacity-50 group-hover:opacity-100 transition-opacity ml-1" />
+                    )}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-italian-green transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </Link>
+
+                {/* Dropdown Menu */}
+                {item.hasDropdown && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                    <div className="bg-white rounded-sm shadow-xl border border-neutral-100 p-2 min-w-[260px]">
+                      {services.map((service, idx) => (
+                        <Link key={idx} href={getLocalizedPath(service.path)}>
+                          <div className="block px-4 py-3 text-sm text-neutral-700 hover:bg-[#f8f9fa] hover:text-italian-green transition-colors rounded-sm cursor-pointer group/item">
+                             <div className="flex items-center justify-between">
+                               <span>{service.title}</span>
+                               <FontAwesomeIcon icon={faChevronRight as IconProp} className="text-[10px] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all" />
+                             </div>
+                          </div>
+                        </Link>
+                      ))}
+                      <div className="border-t border-neutral-100 mt-2 pt-2">
+                         <Link href={getLocalizedPath('/services')}>
+                            <div className="block px-4 py-2 text-xs font-bold text-center text-italian-green uppercase tracking-wider hover:underline cursor-pointer">
+                              {t('services.cta.viewAll')}
+                            </div>
+                         </Link>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
             ))}
-
-            <div className="ml-2 lg:ml-4">
-              <LanguageSelector />
-            </div>
           </nav>
+
+          {/* Right Side Actions */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSelector />
+            
+            <Link href={getLocalizedPath('/contact')}>
+              <button className="text-xs font-[Montserrat] font-bold uppercase tracking-wider bg-italian-green text-white py-2 px-6 rounded-sm hover:bg-italian-green-dark transition-colors shadow-sm whitespace-nowrap">
+                {t('common.contactUs')}
+              </button>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex items-center gap-4 z-50">
+             <LanguageSelector />
+            <button
+              onClick={toggleMobileMenu}
+              className="p-2 text-navy focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <FontAwesomeIcon icon={(mobileMenuOpen ? faTimes : faBars) as IconProp} className="text-2xl" />
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Backdrop mobile */}
-        {mobileMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black/30 md:hidden z-40"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={cn(
+          "fixed inset-0 bg-white/98 backdrop-blur-xl z-40 lg:hidden transition-all duration-300 flex flex-col pt-24 px-6 overflow-y-auto",
+          mobileMenuOpen ? "opacity-100 visible translate-x-0" : "opacity-0 invisible translate-x-full"
         )}
-
-        {/* Mobile menu */}
-        <div
-          id="mobile-menu"
-          className={`md:hidden fixed left-0 right-0 top-[72px] bg-white border-t border-neutral-200 shadow-lg ${mobileMenuOpen ? 'block' : 'hidden'} z-50 max-h-[calc(100vh-72px)] overflow-y-auto touch-pan-y`}
-          role="navigation"
-          aria-label="Menu principale mobile"
-          ref={mobileMenuRef}
-          tabIndex={-1}
-        >
-          <nav className="flex flex-col space-y-2 p-4">
-            {navigationLinks.map((link) => (
-              <div key={link.path}>
-                {link.dropdown ? (
-                  <div className="space-y-2">
-                    <Link
-                      href={getLocalizedPath(link.path)}
-                      className={`font-medium ${isActiveLink(link.path)
-                        ? 'text-primary bg-primary/5'
-                        : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'} block py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[48px] flex items-center justify-between outline-none focus:ring-2 focus:ring-primary/30`}
-                      onClick={() => setMobileMenuOpen(false)}
+      >
+        <nav className="flex flex-col space-y-6">
+          {menuItems.map((item, index) => (
+            <div key={index} className="border-b border-neutral-100 last:border-0 pb-4 last:pb-0">
+              {item.hasDropdown ? (
+                <div>
+                    <button
+                      onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                    className="flex items-center justify-between w-full text-xl font-[Playfair_Display] font-bold text-navy"
                     >
-                      <span>{link.label}</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                    <div className="ml-4 space-y-2 pl-2 border-l-2 border-neutral-200">
-                      {link.dropdown.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.path}
-                          href={getLocalizedPath(dropdownItem.path)}
-                          className="block text-sm text-neutral-600 hover:text-primary hover:bg-neutral-50 py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[44px] flex items-center outline-none focus:ring-2 focus:ring-primary/30"
-                          onClick={() => setMobileMenuOpen(false)}
+                    {item.label}
+                    <FontAwesomeIcon
+                      icon={faChevronDown as IconProp}
+                      className={cn("text-sm transition-transform duration-300", servicesDropdownOpen ? "rotate-180" : "")}
+                    />
+                    </button>
+                  <div 
+                    className={cn(
+                      "mt-4 space-y-3 pl-4 overflow-hidden transition-all duration-300",
+                      servicesDropdownOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                    )}
+                    >
+                    {services.map((service, idx) => (
+                      <Link key={idx} href={getLocalizedPath(service.path)}>
+                        <span 
+                          className="block text-gray-600 hover:text-italian-green py-2 text-base font-[Lora]"
+                          onClick={closeMenu}
                         >
-                          {dropdownItem.label}
+                          {service.title}
+                        </span>
                         </Link>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <Link
-                    key={link.path}
-                    href={getLocalizedPath(link.path)}
-                    className={`font-medium ${isActiveLink(link.path)
-                      ? 'text-primary bg-primary/5'
-                      : 'text-neutral-700 hover:text-primary hover:bg-neutral-50'} block py-3 px-4 rounded-lg touch-manipulation active:bg-neutral-100 transition-colors duration-200 min-h-[48px] flex items-center outline-none focus:ring-2 focus:ring-primary/30`}
-                    onClick={() => setMobileMenuOpen(false)}
+                <Link href={getLocalizedPath(item.path)}>
+                  <span 
+                    className={cn(
+                      "block text-xl font-[Playfair_Display] font-bold transition-colors",
+                      location === getLocalizedPath(item.path) ? "text-italian-green" : "text-navy"
+                    )}
+                    onClick={closeMenu}
                   >
-                    {link.label}
+                    {item.label}
+                  </span>
                   </Link>
                 )}
               </div>
             ))}
-            <div className="pt-2 pb-4">
-              <LanguageSelector isMobile={true} />
-            </div>
-          </nav>
-        </div>
+          
+          <div className="pt-8">
+            <Link href={getLocalizedPath('/contact')}>
+              <button 
+                className="w-full btn-primary text-center justify-center py-4 text-lg"
+                onClick={closeMenu}
+              >
+                {t('common.contactUs')}
+              </button>
+            </Link>
+          </div>
+        </nav>
       </div>
     </header>
   );

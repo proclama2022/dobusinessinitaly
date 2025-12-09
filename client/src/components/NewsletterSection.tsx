@@ -76,7 +76,7 @@ const NewsletterSection = () => {
                     disabled={isPending}
                   >
                     {isPending ? (
-                      <span className="animate-pulse">Subscribing...</span>
+                      <span className="animate-pulse">{t('newsletter.subscribing', 'Subscribing...')}</span>
                     ) : (
                       <>
                         {t('newsletter.subscribe')}

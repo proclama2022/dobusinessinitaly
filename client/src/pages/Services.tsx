@@ -251,14 +251,17 @@ const Services = () => {
       />
       {/* Header hero con introduzione */}
       <section className="relative py-32 overflow-hidden bg-neutral-900">
-        {/* Background con immagine e overlay sfumato */}
-        <div className="absolute inset-0 bg-neutral-900/80 z-[2]"></div>
+        {/* Background con immagine e blur per contrasto */}
         <OptimizedImage
           src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
           alt={t('services.backgroundAlt')}
-          className="absolute inset-0 w-full h-full object-cover z-[1] scale-105 animate-slow-zoom"
+          className="absolute inset-0 w-full h-full object-cover z-[1] scale-105 animate-slow-zoom blur-sm"
           priority={true}
         />
+        {/* Overlay scuro con gradiente per contrasto */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-neutral-900/95 z-[2]"></div>
+        {/* Overlay aggiuntivo per maggiore contrasto */}
+        <div className="absolute inset-0 bg-black/50 z-[3]"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -269,15 +272,15 @@ const Services = () => {
             </div>
 
             {/* Titolo principale */}
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-primary">{t('services.titlePrefix')} </span>
-              <span className="relative pl-4">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white animate-fade-in drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
+              <span className="text-italian-green drop-shadow-md">{t('services.titlePrefix')} </span>
+              <span className="relative pl-4 drop-shadow-md">
                 {t('services.titleMain')}
               </span>
             </h1>
 
             {/* Sottotitolo con introduzione */}
-            <p className="text-xl text-neutral-300 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-white/95 mb-8 animate-fade-in drop-shadow-lg" style={{ animationDelay: '0.4s' }}>
               {t('services.description')}
             </p>
 

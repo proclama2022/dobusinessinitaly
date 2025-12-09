@@ -1,0 +1,82 @@
+/* Modern Italian Theme - Flag Colors */
+
+:root {
+  /* Primary Colors */
+  --primary: 142 100% 29%; /* Italian Green #009246 */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 356 66% 49%; /* Italian Red #ce2b37 - Use sparingly for accents */
+  --secondary-foreground: 0 0% 100%;
+
+  /* Neutral Scale */
+  --background: 0 0% 100%; /* Pure White */
+  --foreground: 222 47% 11%; /* Deep Navy/Black for high contrast text */
+  
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  
+  --radius: 0.25rem;
+}
+
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  
+  --primary: 142 70% 40%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 356 70% 60%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Utility Classes for the new theme */
+.text-italian-green {
+  color: #009246;
+}
+
+.text-italian-red {
+  color: #ce2b37;
+}
+
+.bg-italian-green {
+  background-color: #009246;
+}
+
+.bg-italian-red {
+  background-color: #ce2b37;
+}
+
+.border-italian-green {
+  border-color: #009246;
+}

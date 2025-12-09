@@ -72,6 +72,10 @@
   "whyChooseUs": {
     "title": "Warum Uns Wählen",
     "ctaButton": "Mit einem Experten sprechen",
+    "quote": {
+      "text": "Exzellenz ist keine Handlung, sondern eine Gewohnheit.",
+      "author": "Aristoteles"
+    },
     "mainImageAlt": "Geschäftsbesprechung mit internationalen Kunden",
     "smallImageAlt": "Buchhaltungsdiagramme",
     "features": {
@@ -334,6 +338,8 @@
     "subtitle": "Neueste Artikel und Nachrichten aus der italienischen Steuer- und Wirtschaftswelt.",
     "viewAll": "Alle Artikel",
     "readMore": "Artikel lesen",
+    "share": "Teilen:",
+    "followLinkedIn": "Auf LinkedIn folgen",
     "posts": [
       {
         "date": "12. Mai 2023",
@@ -383,6 +389,7 @@
       "phone": "Telefon",
       "service": "Interessierter Dienst",
       "servicePlaceholder": "Dienst auswählen",
+      "selectServicePlaceholder": "Dienst auswählen",
       "services": {
         "formation": "Unternehmensgründung in Italien",
         "accounting": "Buchhaltung und Jahresabschlüsse",
@@ -431,6 +438,7 @@
     },
     "map": {
       "title": "Wo wir sind",
+      "subtitle": "Finden Sie uns in Catania, im Herzen Siziliens",
       "titleAlt": "Karte unseres Büros"
     },
     "social": {
@@ -899,5 +907,37 @@
         }
       ]
     }
+  },
+  "faq": {
+    "title": "Häufig Gestellte Fragen",
+    "subtitle": "Antworten auf die häufigsten Fragen zu unseren Dienstleistungen für Ausländer, die in Italien Geschäfte machen möchten",
+    "notFound": "Finden Sie nicht die Antwort, die Sie suchen?",
+    "ctaButton": "Kontaktieren Sie uns für eine Kostenlose Beratung",
+    "items": [
+      {
+        "question": "Wie viel kostet es, eine Gesellschaft in Italien für Ausländer zu gründen?",
+        "answer": "Die Kosten für die Gründung einer Gesellschaft in Italien liegen zwischen 1.500€ und 3.000€ für eine SRL, einschließlich Notar, Handelskammer und Erstberatung. Für eine Umsatzsteuer-ID sind die Kosten viel niedriger (300-800€). Wir bieten kostenlose, personalisierte Angebote basierend auf Ihren spezifischen Bedürfnissen."
+      },
+      {
+        "question": "Kann ich eine Umsatzsteuer-ID in Italien eröffnen, wenn ich Ausländer bin?",
+        "answer": "Ja, EU-Bürger können in Italien frei eine Umsatzsteuer-ID eröffnen. Nicht-EU-Bürger benötigen eine Aufenthaltserlaubnis für selbstständige Tätigkeit. Wir unterstützen Sie im gesamten bürokratischen Prozess, von der Dokumentenanfrage bis zur Einreichung der Anträge."
+      },
+      {
+        "question": "Was ist das Pauschalsystem und wer kann darauf zugreifen?",
+        "answer": "Das Pauschalsystem ist ein begünstigtes Steuersystem mit einem Steuersatz von 5% (erste 5 Jahre) oder 15% für jährliche Umsätze bis zu 85.000€. Es ist ideal für Freiberufler und kleine Unternehmen. Es wird keine Mehrwertsteuer angewendet und die Buchhaltung ist vereinfacht. Perfekt für diejenigen, die in Italien ein Geschäft beginnen."
+      },
+      {
+        "question": "Bieten Sie Beratung auf Englisch an?",
+        "answer": "Ja, wir bieten hauptsächlich Beratung auf Englisch an und können dank unserer Expertise in KI-Technologien effektiv in der Muttersprache des Kunden kommunizieren. Unser Team hat spezifische Erfahrung mit internationalen Kunden."
+      },
+      {
+        "question": "Wie lange dauert es, eine Gesellschaft zu gründen?",
+        "answer": "Für eine SRL dauert es in der Regel 15-30 Werktage ab dem Zeitpunkt, an dem wir alle Dokumente haben. Für eine Umsatzsteuer-ID sind die Zeiten viel schneller: 3-7 Tage. Die Zeiten können je nach Komplexität des Falls und der Nationalität des Antragstellers variieren."
+      },
+      {
+        "question": "Welche Dokumente werden benötigt, um ein Geschäft in Italien zu eröffnen?",
+        "answer": "Für EU-Bürger: gültiger Ausweis und Steuernummer. Für Nicht-EU-Bürger: Reisepass, Aufenthaltserlaubnis (oder Antrag), Steuernummer. Für Gesellschaften sind auch Satzungen, Gründungsurkunden und spezifische Dokumentation erforderlich, die wir Ihnen bei der Vorbereitung helfen werden."
+      }
+    ]
   }
 }

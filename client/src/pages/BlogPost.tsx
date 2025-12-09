@@ -13,6 +13,10 @@ import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import { authorProfile } from '@/data/author';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faTwitter, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faHandshake, faArrowLeft, faUserCircle, faFolderOpen, faArrowRight, faUser, faCalendar, faHeadset } from '@fortawesome/free-solid-svg-icons';
 
 // Interfaccia per i metadati del blog post
 interface BlogPostMeta {
@@ -37,6 +41,17 @@ interface BlogPostData {
   meta: BlogPostMeta;
   content: string;
 }
+
+const FALLBACK_COVER =
+  'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1920&q=80';
+const DEFAULT_COVER = '/images/default-blog-cover.webp';
+
+const handleImageError = (event?: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const target = event?.currentTarget;
+  if (!target) return;
+  target.onerror = null;
+  target.src = FALLBACK_COVER;
+};
 
 // Componente per il post correlato
 const RelatedPostCard = ({
@@ -71,6 +86,7 @@ const RelatedPostCard = ({
             ${imgSrc}?auto=format&fit=crop&w=960&q=75 960w,
             ${imgSrc}?auto=format&fit=crop&w=1280&q=80 1280w
           ` : undefined}
+          onError={handleImageError}
         />
 
         {/* Linee decorative */}
@@ -93,7 +109,7 @@ const RelatedPostCard = ({
         {/* Pulsante leggi di più */}
         <Link href={getLocalizedPath(`/blog/${slug}`)} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
           Leggi l'articolo
-          <i className="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+          <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300" />
         </Link>
       </div>
     </article>
@@ -232,7 +248,7 @@ const BlogPost = () => {
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non esiste o è stato rimosso.</p>
           <Link href={getLocalizedPath('/blog')} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
             Torna al blog
-            <i className="fas fa-arrow-left ml-2"></i>
+            <FontAwesomeIcon icon={faArrowLeft} className="ml-2" />
           </Link>
         </div>
       </section>
@@ -247,7 +263,7 @@ const BlogPost = () => {
           <p className="text-neutral-600 mb-8">L'articolo che stai cercando non ha metadati validi.</p>
           <Link href={getLocalizedPath('/blog')} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg">
             Torna al blog
-            <i className="fas fa-arrow-left ml-2"></i>
+            <FontAwesomeIcon icon={faArrowLeft} className="ml-2" />
           </Link>
         </div>
       </section>
@@ -423,16 +439,29 @@ const BlogPost = () => {
       <section className="relative h-[500px] overflow-hidden">
         {/* Immagine di sfondo con overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 z-10"></div>
           <OptimizedImage
-            src={meta.coverImage}
+            src={
+              meta.coverImage && meta.coverImage.trim()
+                ? meta.coverImage
+                : DEFAULT_COVER
+            }
             alt={`${meta.title} - Yourbusinessinitaly.com`}
             className="w-full h-full object-cover"
             width={1920}
             height={1080}
             sizes="100vw"
             priority={true}
+            style={{
+              transition: 'opacity 0.3s ease-in-out',
+              filter: 'brightness(0.95) contrast(1.05)'
+            }}
           />
+
+          {/* Overlay più leggero per non nascondere completamente l'immagine */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60 z-10"></div>
+
+          {/* Fallback gradient se l'immagine non carica */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-gray-900/30 to-emerald-900/20 z-0"></div>
         </div>
 
         {/* Contenuto */}
@@ -452,11 +481,11 @@ const BlogPost = () => {
           {/* Metadata */}
           <div className="flex items-center text-white/80 text-sm">
             <span className="inline-flex items-center mr-6">
-              <i className="fas fa-user mr-2"></i>
+              <FontAwesomeIcon icon={faUser} className="mr-2" />
               {meta.author}
             </span>
             <span className="inline-flex items-center">
-              <i className="fas fa-calendar mr-2"></i>
+              <FontAwesomeIcon icon={faCalendar} className="mr-2" />
               {meta.date}
             </span>
           </div>
@@ -502,20 +531,55 @@ const BlogPost = () => {
               <div className="mt-12">
                 <div className="border-t border-neutral-200 pt-6">
                   <div className="flex flex-wrap items-center gap-6">
-                    <h4 className="text-neutral-700 font-medium">Condividi:</h4>
+                    <h4 className="text-neutral-700 font-medium">{t('blog.share')}</h4>
                     <div className="flex space-x-6">
-                      <a href="#" className="w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
-                        <i className="fab fa-facebook-f text-lg"></i>
-                      </a>
-                      <a href="#" className="w-12 h-12 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
-                        <i className="fab fa-twitter text-lg"></i>
-                      </a>
-                      <a href="#" className="w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
-                        <i className="fab fa-linkedin-in text-lg"></i>
-                      </a>
-                      <a href="#" className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg">
-                        <i className="fab fa-whatsapp text-lg"></i>
-                      </a>
+                      {(() => {
+                        const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+                        const encodedUrl = encodeURIComponent(currentUrl);
+                        const encodedTitle = encodeURIComponent(postData?.data?.meta?.title || '');
+                        const encodedText = encodeURIComponent(meta?.excerpt || '');
+                        
+                        return (
+                          <>
+                            <a 
+                              href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg"
+                              aria-label="Share on Facebook"
+                            >
+                              <FontAwesomeIcon icon={faFacebookF as IconProp} className="text-lg" />
+                            </a>
+                            <a
+                              href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-12 h-12 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg"
+                              aria-label="Share on Twitter"
+                            >
+                              <FontAwesomeIcon icon={faTwitter as IconProp} className="text-lg" />
+                            </a>
+                            <a
+                              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg"
+                              aria-label="Share on LinkedIn"
+                            >
+                              <FontAwesomeIcon icon={faLinkedinIn as IconProp} className="text-lg" />
+                            </a>
+                            <a
+                              href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 hover:scale-110 transition-all duration-200 shadow-md hover:shadow-lg"
+                              aria-label="Share on WhatsApp"
+                            >
+                              <FontAwesomeIcon icon={faWhatsapp as IconProp} className="text-lg" />
+                            </a>
+                          </>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -524,7 +588,7 @@ const BlogPost = () => {
               {/* Contact CTA instead of download lead magnet */}
               <div className="max-w-2xl mx-auto mt-12 p-8 bg-gradient-to-br from-[#009246] to-[#38a169] rounded-xl text-white shadow">
                 <h3 className="text-2xl font-heading font-bold mb-3">
-                  <i className="fas fa-handshake mr-2"></i>
+                  <FontAwesomeIcon icon={faHandshake} className="mr-2" />
                   {t('blog.contactCta.title', 'Need help on this topic?')}
                 </h3>
                 <p className="text-white/90 mb-6">
@@ -541,7 +605,7 @@ const BlogPost = () => {
               {/* Autore */}
               <div className="bg-neutral-50 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-heading font-bold mb-4 text-[#009246]">
-                  <i className="fas fa-user-circle mr-2"></i>
+                  <FontAwesomeIcon icon={faUserCircle} className="mr-2" />
                   Autore
                 </h3>
                 <div className="flex items-center">
@@ -559,8 +623,8 @@ const BlogPost = () => {
                     <p className="text-sm text-neutral-600">{resolvedAuthorTitle}</p>
                     <div className="mt-2">
                       <a href={authorLinkedIn} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#0A66C2] hover:underline text-sm">
-                        <i className="fab fa-linkedin-in mr-1"></i>
-                        Follow on LinkedIn
+                        <FontAwesomeIcon icon={faLinkedinIn as IconProp} className="mr-1" />
+                        {t('blog.followLinkedIn')}
                       </a>
                     </div>
                   </div>
@@ -570,7 +634,7 @@ const BlogPost = () => {
               {/* Categorie */}
               <div className="bg-neutral-50 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-heading font-bold mb-4 text-[#009246]">
-                  <i className="fas fa-folder-open mr-2"></i>
+                  <FontAwesomeIcon icon={faFolderOpen} className="mr-2" />
                   Categorie
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -586,7 +650,7 @@ const BlogPost = () => {
               {/* CTA */}
               <div className="bg-gradient-to-br from-[#009246] to-[#38a169] rounded-xl p-6 text-white mb-8">
                 <h3 className="text-xl font-heading font-bold mb-3">
-                  <i className="fas fa-headset mr-2"></i>
+                  <FontAwesomeIcon icon={faHeadset} className="mr-2" />
                   Consulenza Gratuita
                 </h3>
                 <p className="text-white/90 mb-4 text-sm">
@@ -647,8 +711,8 @@ const BlogPost = () => {
                       </Link>
                       <span className="text-neutral-300">•</span>
                       <a href={authorLinkedIn} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#0A66C2] hover:underline">
-                        <i className="fab fa-linkedin-in mr-1"></i>
-                        {currentLanguage === 'it' ? 'Segui su LinkedIn' : currentLanguage === 'fr' ? 'Suivre sur LinkedIn' : currentLanguage === 'de' ? 'Auf LinkedIn folgen' : currentLanguage === 'es' ? 'Seguir en LinkedIn' : 'Follow on LinkedIn'}
+                        <FontAwesomeIcon icon={faLinkedinIn as IconProp} className="mr-1" />
+                        {t('blog.followLinkedIn')}
                       </a>
                     </div>
                   </div>

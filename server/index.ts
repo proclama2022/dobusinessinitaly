@@ -68,6 +68,23 @@ if (!process.env.ADMIN_PASSWORD) {
     throw err;
   });
 
+  // Serve static files from public/ directory (for both dev and prod)
+  // This must come BEFORE vite middleware to properly serve images
+  app.use(express.static('public', {
+    maxAge: '1d',
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.webp')) {
+        res.setHeader('Content-Type', 'image/webp');
+      } else if (filePath.endsWith('.png')) {
+        res.setHeader('Content-Type', 'image/png');
+      } else if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
+        res.setHeader('Content-Type', 'image/jpeg');
+      } else if (filePath.endsWith('.avif')) {
+        res.setHeader('Content-Type', 'image/avif');
+      }
+    }
+  }));
+
   if (process.env.NODE_ENV === 'development') {
     const vite = await import('vite');
     const viteDevMiddleware = await vite.createServer({

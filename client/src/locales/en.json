@@ -74,6 +74,10 @@
   "whyChooseUs": {
     "title": "Why Choose Us",
     "ctaButton": "Talk to an Expert",
+    "quote": {
+      "text": "Excellence is not an act, but a habit.",
+      "author": "Aristotle"
+    },
     "mainImageAlt": "Business meeting international clients",
     "smallImageAlt": "Accounting charts",
     "features": {
@@ -340,6 +344,8 @@
     "subtitle": "Latest articles and news from the Italian fiscal and commercial world.",
     "viewAll": "All articles",
     "readMore": "Read article",
+    "share": "Share:",
+    "followLinkedIn": "Follow on LinkedIn",
     "featuredArticle": "Featured",
     "featured": "Article",
     "posts": [
@@ -406,6 +412,7 @@
       "phone": "Phone",
       "service": "Service of Interest",
       "servicePlaceholder": "Select a service",
+      "selectServicePlaceholder": "Select a service",
       "services": {
         "formation": "Company Formation in Italy",
         "accounting": "Accounting and Financial Statements",
@@ -454,6 +461,7 @@
     },
     "map": {
       "title": "Where We Are",
+      "subtitle": "Find us in Catania, in the heart of Sicily",
       "titleAlt": "Map of our office"
     },
     "social": {
@@ -1020,5 +1028,37 @@
         }
       ]
     }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about our services for foreigners who want to do business in Italy",
+    "notFound": "Can't find the answer you're looking for?",
+    "ctaButton": "Contact Us for a Free Consultation",
+    "items": [
+      {
+        "question": "How much does it cost to open a company in Italy for foreigners?",
+        "answer": "The costs to open a company in Italy range from €1,500 to €3,000 for an SRL, including notary, Chamber of Commerce, and initial consulting. For a VAT number, costs are much lower (€300-800). We offer free personalized quotes based on your specific needs."
+      },
+      {
+        "question": "Can I open a VAT number in Italy if I'm a foreigner?",
+        "answer": "Yes, EU citizens can freely open a VAT number in Italy. Non-EU citizens need a residence permit for self-employment. We assist you throughout the entire bureaucratic process, from document requests to filing applications."
+      },
+      {
+        "question": "What is the flat-rate scheme and who can access it?",
+        "answer": "The flat-rate scheme is a tax regime with a 5% tax rate (first 5 years) or 15% for annual revenues up to €85,000. It's ideal for freelancers and small businesses. No VAT applies and accounting is simplified. Perfect for those starting a business in Italy."
+      },
+      {
+        "question": "Do you offer consulting in English?",
+        "answer": "Yes, we primarily offer consulting in English and, thanks to our expertise in AI technologies, we can communicate effectively in the client's native language. Our team has specific experience with international clients."
+      },
+      {
+        "question": "How long does it take to open a company?",
+        "answer": "For an SRL, it generally takes 15-30 business days from when we have all the documentation. For a VAT number, times are much faster: 3-7 days. Times may vary based on the complexity of the case and the applicant's nationality."
+      },
+      {
+        "question": "What documents are needed to open a business in Italy?",
+        "answer": "For EU citizens: valid ID and tax code. For non-EU citizens: passport, residence permit (or application), tax code. For companies, articles of incorporation, corporate deeds, and specific documentation are also required, which we will help you prepare."
+      }
+    ]
   }
 }

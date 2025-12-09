@@ -155,28 +155,31 @@ const PillarBusinessItaly = () => {
 
       {/* Custom Header for Pillar Page - Minimalist Style */}
       <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white py-20">
-        {/* Background Image */}
+        {/* Background Image con blur */}
         <OptimizedImage
           src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="Start Business in Italy"
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          className="absolute inset-0 w-full h-full object-cover z-[1] blur-sm"
           priority={true}
           width={1920}
           height={1080}
         />
-        <div className="absolute inset-0 bg-neutral-900/70 z-[2]"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+        {/* Overlay scuro con gradiente per contrasto */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-neutral-900/95 z-[2]"></div>
+        {/* Overlay aggiuntivo per maggiore contrasto */}
+        <div className="absolute inset-0 bg-black/50 z-[3]"></div>
+        <div className="container mx-auto px-4 text-center relative z-[10]">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6">
             <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
             {isEnglish ? "Complete Guide 2025" : "Guida Completa 2025"}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white drop-shadow-lg">
             {isEnglish ? "How to Start a Business in Italy 2025" : "Come Aprire un'Attività in Italia 2025"}
           </h1>
-          <p className="text-xl md:text-2xl mb-6 text-neutral-300">
+          <p className="text-xl md:text-2xl mb-6 text-white/95 drop-shadow-md">
             {isEnglish ? "Complete Guide for Foreign Entrepreneurs" : "Guida Completa per Imprenditori Stranieri"}
           </p>
-          <p className="text-lg mb-10 max-w-3xl mx-auto text-neutral-400">
+          <p className="text-lg mb-10 max-w-3xl mx-auto text-white/90 drop-shadow-sm">
             {isEnglish ?
               "Your comprehensive guide to starting a business in Italy. From choosing the right business structure to navigating Italian bureaucracy, we've got you covered." :
               "La tua guida completa per aprire un'attività in Italia. Dalla scelta della struttura aziendale alla navigazione della burocrazia italiana, ti copriamo noi."}

@@ -84,17 +84,9 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                     return false;
                 }
 
-                // Estrae la lingua dal filename (formato: nomefile.[LANG].mdx)
-                const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
-                const fileLanguage = langMatch?.[1] || 'it';
-
-                // Logica di filtraggio
-                const shouldInclude = targetLanguage === 'it'
-                    ? !langMatch  // Accetta file senza suffisso di lingua per italiano
-                    : fileLanguage === targetLanguage;
-
-                console.log(`[Blog] File: ${filename}, LangMatch: ${langMatch}, Detected Lang: ${fileLanguage}, Target Lang: ${targetLanguage}, Include: ${shouldInclude}`);
-                return shouldInclude;
+                // Per il filtro iniziale, accetta tutti i file MDX validi
+                // Il filtro per lingua verrà fatto dopo aver letto il frontmatter
+                return true;
             })
             .map((filename: string) => {
                 try {
@@ -116,21 +108,49 @@ function getAllPosts(language?: string): BlogPostMeta[] {
                         return null;
                     }
 
+                    // CONTROLLO FINALE: Verifica che la lingua del post corrisponda alla lingua richiesta
+                    const postLang = (data.lang || '').toLowerCase();
                     const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
-                    const fileLanguage = langMatch?.[1] || 'it'; // Extract language from filename
+                    const fileLangFromName = langMatch?.[1]?.toLowerCase() || null;
+                    
+                    // Determina la lingua effettiva del post
+                    const effectiveLang = postLang || fileLangFromName || (targetLanguage === 'it' ? 'it' : null);
+                    
+                    // Se la lingua effettiva non corrisponde alla lingua richiesta, escludi il post
+                    if (effectiveLang && effectiveLang !== targetLanguage) {
+                        console.log(`[Blog] ⚠️ SKIPPING file ${filename} - lang mismatch: effectiveLang=${effectiveLang}, targetLanguage=${targetLanguage}`);
+                        return null;
+                    }
+                    
+                    // Se siamo in modalità italiano e il post ha una lingua esplicita diversa, escludilo
+                    if (targetLanguage === 'it' && postLang && postLang !== 'it') {
+                        console.log(`[Blog] ⚠️ SKIPPING file ${filename} - has explicit lang=${postLang} but target is 'it'`);
+                        return null;
+                    }
+                    
+                    const fileLanguage = effectiveLang || targetLanguage;
 
                     console.log(`[Blog] Successfully parsed: ${filename}`);
+                    // Fallback per coverImage se mancante o vuoto
+                    let finalCoverImage = '';
+                    if (data.coverImage && typeof data.coverImage === 'string' && data.coverImage.trim()) {
+                        finalCoverImage = data.coverImage.trim();
+                    } else {
+                        finalCoverImage = '/images/default-blog-cover.webp';
+                        console.warn(`[Blog] Missing coverImage for ${filename}, using default`);
+                    }
+                    
                     const blogPost: BlogPostMeta = {
                         slug,
                         title: data.title,
                         date: data.date,
                         category: data.category?.trim() || 'Generale',
                         excerpt: data.excerpt?.trim() || '',
-                        coverImage: data.coverImage?.trim() || '',
+                        coverImage: finalCoverImage,
                         author: data.author?.trim() || 'Redazione',
                         authorImage: data.authorImage?.trim?.() || data.authorImage || undefined,
                         authorTitle: data.authorTitle?.trim?.() || data.authorTitle || undefined,
-                        lang: fileLanguage // Assign the extracted language
+                        lang: fileLanguage // Usa lang dal frontmatter o dal filename
                     };
                     
                     if (data.leadMagnet) {

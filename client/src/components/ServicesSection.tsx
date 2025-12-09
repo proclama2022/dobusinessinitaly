@@ -32,25 +32,29 @@ type ServiceCardProps = {
 const ServiceCard = ({ icon, title, description, linkText }: ServiceCardProps) => {
   const { getLocalizedPath } = useLocalizedPath();
   return (
-    <div className="group relative bg-white p-8 rounded border border-neutral-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <div className="group relative bg-white p-8 border border-gray-100 hover:border-italian-green shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col rounded-sm overflow-hidden">
+      {/* Top accent */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gray-50 group-hover:bg-italian-green transition-colors duration-300"></div>
       
-      <div className="relative z-10">
-        <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors duration-500">
-          <FontAwesomeIcon icon={icon} className="text-primary text-2xl group-hover:scale-110 transition-transform duration-500" />
+      <div className="flex-grow">
+        <div className="w-14 h-14 mb-6 flex items-center justify-center bg-gray-50 text-italian-green rounded-full group-hover:bg-italian-green group-hover:text-white transition-all duration-300 transform group-hover:scale-110 shadow-sm">
+          <FontAwesomeIcon icon={icon} className="text-xl" />
         </div>
 
-        <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl font-bold text-navy mb-4 group-hover:text-italian-green transition-colors duration-300 font-[Playfair_Display]">
           {title}
         </h3>
 
-        <p className="text-neutral-600 mb-6 leading-relaxed">
+        <p className="text-gray-600 mb-6 leading-relaxed text-sm font-[Lora]">
           {description}
         </p>
+      </div>
 
-        <Link href={getLocalizedPath('/contact')} className="text-primary font-semibold text-sm uppercase tracking-wider inline-flex items-center group/link">
+      <div className="mt-auto pt-6 border-t border-gray-50">
+        <Link href={getLocalizedPath('/contact')} className="text-navy font-bold text-xs uppercase tracking-widest inline-flex items-center group/link hover:text-italian-green transition-colors">
           {linkText}
-          <span className="ml-2 w-5 h-5 rounded-full border border-primary/30 flex items-center justify-center group-hover/link:bg-primary group-hover/link:text-white transition-all duration-300">
-            <FontAwesomeIcon icon={faArrowRight} className="text-[10px] transform group-hover/link:-rotate-45 transition-transform duration-300" />
+          <span className="ml-2 transition-transform duration-300 group-hover/link:translate-x-1 text-italian-green">
+            <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
           </span>
         </Link>
       </div>
@@ -156,48 +160,45 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="section-padding relative overflow-hidden bg-neutral-50">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 md:py-32 relative overflow-hidden bg-white">
+      {/* Background pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] bg-[radial-gradient(#009246_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 relative">
           
-          <div className="relative inline-block animate-fade-in">
-             <span className="text-primary font-semibold tracking-widest text-sm uppercase mb-2 block">Our Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block text-neutral-900">
-              <span className="relative z-10">Services for Foreigners in Italy</span>
+          <div className="relative inline-block">
+             <span className="text-italian-green font-bold tracking-widest text-xs uppercase mb-3 block">Our Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-navy font-[Playfair_Display]">
+              Services for Foreigners in Italy
             </h2>
           </div>
 
-          <p className="text-neutral-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            {t('services.subtitle')}
+          <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
+
+          <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed italic font-[Lora]">
+            "{t('services.subtitle')}"
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {services.map((service, index) => (
-            <div
+            <ServiceCard
               key={index}
-              className="animate-slide-up"
-              style={{
-                animationDelay: `${0.1 + index * 0.1}s`,
-              }}
-            >
-              <ServiceCard
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                linkText={service.linkText}
-              />
-            </div>
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              linkText={service.linkText}
+            />
           ))}
         </div>
 
-        {/* View All Button */}
         <div className="text-center mt-16">
-          <Link href={getLocalizedPath('/services')} className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-neutral-900 rounded hover:bg-primary shadow-lg hover:shadow-primary/40 overflow-hidden">
-             <span className="relative flex items-center gap-3">
+          <Link href={getLocalizedPath('/services')}>
+            <button className="bg-italian-green text-white font-bold text-sm uppercase tracking-widest py-4 px-10 rounded-sm hover:bg-italian-green-dark transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2 transform hover:-translate-y-1">
               {t('services.cta.viewAll')}
-              <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+            </button>
           </Link>
         </div>
       </div>

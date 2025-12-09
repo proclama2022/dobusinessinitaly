@@ -26,37 +26,82 @@ export default {
     extend: {
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
-        'open-sans': ['Open Sans', 'sans-serif'],
-        'sans': ['Montserrat', 'Open Sans', 'system-ui', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'sans': ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
+        'serif': ['Lora', 'serif'],
+        'playfair': ['Playfair Display', 'serif'],
       },
       typography: {
         DEFAULT: {
           css: {
-            color: '#1f2937',
+            color: '#334155', // Slate 700
             maxWidth: '68ch',
-            fontFamily: '"Open Sans", sans-serif',
+            fontFamily: '"Inter", sans-serif',
             a: {
-              color: 'hsl(var(--primary))',
+              color: '#009246', // Italian Green
               textDecoration: 'none',
-              fontWeight: '600',
-              '&:hover': { color: 'hsl(var(--primary-dark))' },
+              borderBottom: '1px solid transparent',
+              transition: 'all 0.3s ease',
+              '&:hover': { 
+                color: '#007036', 
+                borderBottomColor: '#007036'
+              },
             },
-            h1: { color: '#111827', fontWeight: '800', fontFamily: 'Montserrat, sans-serif' },
-            h2: { color: '#111827', fontWeight: '700', fontFamily: 'Montserrat, sans-serif' },
-            h3: { color: '#111827', fontWeight: '600', fontFamily: 'Montserrat, sans-serif' },
-            p: { color: '#374151', lineHeight: '1.7' },
-            li: { color: '#374151' },
-            blockquote: { color: '#111827', fontStyle: 'italic', borderLeftColor: 'hsl(var(--primary))' },
-            strong: { color: '#111827' },
+            h1: { 
+              color: '#0f172a', 
+              fontWeight: '700', 
+              fontFamily: '"Montserrat", sans-serif',
+              letterSpacing: '-0.02em',
+            },
+            h2: { 
+              color: '#0f172a', 
+              fontWeight: '600', 
+              fontFamily: '"Montserrat", sans-serif',
+              marginTop: '2em',
+            },
+            h3: { 
+              color: '#0f172a', 
+              fontWeight: '600',
+              fontFamily: '"Montserrat", sans-serif',
+            },
+            p: { 
+              color: '#475569', 
+              lineHeight: '1.8',
+              fontSize: '1rem',
+            },
+            li: { color: '#475569' },
+            blockquote: { 
+              color: '#334155', 
+              fontStyle: 'italic', 
+              borderLeftColor: '#009246', // Green accent
+              backgroundColor: '#f8fafc',
+              padding: '1rem 1.5rem',
+            },
+            strong: { color: '#0f172a', fontWeight: '600' },
           },
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0.5rem",
+        md: "0.375rem",
+        sm: "0.25rem",
       },
       colors: {
+        'italian-green': {
+          DEFAULT: '#009246',
+          light: '#00b050',
+          dark: '#006430',
+        },
+        'italian-red': {
+          DEFAULT: '#ce2b37',
+          light: '#e04d58',
+          dark: '#9e1b25',
+        },
+        'navy': { // Keep for text contrast
+          DEFAULT: '#0f172a',
+          light: '#1e293b',
+          dark: '#020617',
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -70,14 +115,10 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          light: "hsl(var(--primary-light))",
-          dark: "hsl(var(--primary-dark))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          light: "hsl(var(--secondary-light))",
-          dark: "hsl(var(--secondary-dark))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",

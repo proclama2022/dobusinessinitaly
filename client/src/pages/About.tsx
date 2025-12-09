@@ -9,6 +9,9 @@ import SEOHead from '@/components/SEOHead';
 import { authorProfile } from '@/data/author';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import TeamMemberImage from '@/components/TeamMemberImage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -18,6 +21,7 @@ const TeamMemberCard = ({
   specialty,
   isFounder = false,
   isCEO = false,
+  socials = {} // Add socials prop
 }: {
   image: string;
   name: string;
@@ -25,61 +29,73 @@ const TeamMemberCard = ({
   specialty?: string;
   isFounder?: boolean;
   isCEO?: boolean;
+  socials?: { linkedin?: string; twitter?: string; email?: string };
 }) => {
   const { t } = useTranslation();
   return (
-    <div className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl bg-white transition-all duration-500 transform hover:-translate-y-2">
+    <div className="group relative overflow-hidden rounded-sm shadow-md hover:shadow-xl bg-white transition-all duration-500 transform hover:-translate-y-2 border border-neutral-100 flex flex-col h-full">
       {/* Badge per founder/CEO */}
       {(isFounder || isCEO) && (
         <div className="absolute top-4 right-4 z-10">
-          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${isFounder && isCEO ? 'bg-gradient-to-r from-[#009246] to-[#ce2b37]' : isFounder ? 'bg-[#009246]' : 'bg-[#ce2b37]'} text-white`}>
+          <span className={`inline-flex items-center px-3 py-1 rounded-sm text-xs font-[Montserrat] font-bold uppercase tracking-wider ${isFounder && isCEO ? 'bg-italian-green text-white' : isFounder ? 'bg-italian-green' : 'bg-italian-red'} text-white shadow-sm`}>
             {isFounder && isCEO ? 'Founder & CEO' : isFounder ? 'Founder' : 'CEO'}
           </span>
         </div>
       )}
 
       {/* Contenitore immagine */}
-      <div className="relative overflow-hidden h-72">
-        {/* Overlay con gradiente italiano al hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
-
+      <div className="relative overflow-hidden h-80 grayscale group-hover:grayscale-0 transition-all duration-700 flex-shrink-0">
         {/* Immagine ottimizzata */}
         <TeamMemberImage
           src={image}
           alt={name}
           name={name}
           width={480}
-          height={288}
-          className="w-full h-full"
+          height={320}
+          className="w-full h-full object-cover"
         />
 
-        {/* Linee decorative */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+        {/* Overlay gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6">
+           {/* Social Icons Overlay (Visible on Hover) */}
+           <div className="flex space-x-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+              {socials?.linkedin && (
+                <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-navy hover:text-italian-green hover:bg-gray-100 transition-colors shadow-lg" aria-label="LinkedIn">
+                  <FontAwesomeIcon icon={faLinkedinIn} />
+                </a>
+              )}
+              {socials?.email && (
+                <a href={`mailto:${socials.email}`} className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-navy hover:text-italian-green hover:bg-gray-100 transition-colors shadow-lg" aria-label="Email">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+              )}
+           </div>
+        </div>
       </div>
 
       {/* Contenuto testuale */}
-      <div className="p-6 text-center relative">
-        {/* Elemento grafico decorativo */}
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-[#009246] to-[#ce2b37]"></div>
+      <div className="p-6 text-center relative flex-grow flex flex-col justify-between bg-white">
+        <div>
+          {/* Elemento grafico decorativo */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-italian-green"></div>
 
-        {/* Nome e ruolo */}
-        <h3 className="text-xl font-heading font-bold text-neutral-800 mb-1 group-hover:italic-text-gradient transition-colors duration-300">{name}</h3>
-        <p className="text-[#009246] font-medium text-sm mb-3">{t(role)}</p>
+          {/* Nome e ruolo */}
+          <h3 className="text-xl font-[Playfair_Display] font-bold text-neutral-900 mb-1 group-hover:text-italian-green transition-colors duration-300">{name}</h3>
+          <p className="text-italian-green font-[Montserrat] text-xs uppercase tracking-widest mb-4">{t(role)}</p>
 
-        {/* Specializzazione (opzionale) */}
-        {specialty && (
-          <p className="text-neutral-600 text-sm italic">{t(specialty)}</p>
-        )}
-
-        {/* Social icons */}
-        <div className="mt-4 flex justify-center space-x-3">
-          <a href="#" className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600 hover:bg-[#0077B5] hover:text-white transition-all duration-300">
-            <i className="fab fa-linkedin-in text-sm"></i>
-          </a>
-          <a href="#" className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
-            <i className="fas fa-envelope text-sm"></i>
-          </a>
+          {/* Specializzazione (opzionale) */}
+          {specialty && (
+            <p className="text-neutral-600 text-sm font-[Lora] italic mb-4">{t(specialty)}</p>
+          )}
+        </div>
+        
+        {/* Mobile Socials (Always visible on mobile if needed, or fallback) */}
+        <div className="pt-4 border-t border-gray-100 lg:hidden flex justify-center space-x-4">
+            {socials?.linkedin && (
+                <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-italian-green" aria-label="LinkedIn">
+                  <FontAwesomeIcon icon={faLinkedinIn} />
+                </a>
+              )}
         </div>
       </div>
     </div>
@@ -89,18 +105,11 @@ const TeamMemberCard = ({
 // Componente per le statistiche aziendali con animazione
 const StatItem = ({ number, label, icon }: { number: string; label: string; icon: string }) => {
   return (
-    <div className="relative p-6 bg-white rounded-lg shadow-md border border-neutral-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group flex flex-col items-center text-center">
-      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center z-10">
-        <i className={`${icon} text-[#009246] group-hover:text-[#ce2b37] transition-colors duration-300 text-xl`}></i>
-      </div>
-
-      <div className="pt-8">
-        <div className="text-4xl font-bold text-neutral-800 mb-2 relative">
+    <div className="relative p-6 bg-white rounded-sm border-l-4 border-italian-green shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col items-center text-center">
+      <div className="text-4xl font-[Playfair_Display] font-bold text-navy mb-2 relative">
           {number}
-          <span className="absolute -bottom-1 left-0 right-0 h-0.5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 bg-gradient-to-r from-[#009246] to-[#ce2b37]"></span>
-        </div>
-        <p className="text-neutral-600">{label}</p>
       </div>
+      <p className="text-neutral-600 font-[Montserrat] text-xs uppercase tracking-wider">{label}</p>
     </div>
   );
 };
@@ -126,6 +135,7 @@ const About = () => {
     isFounder?: boolean;
     isCEO?: boolean;
     image: string;
+    socials?: { linkedin?: string; twitter?: string; email?: string }; // Added type definition
   }[]>([]);
 
   useEffect(() => {
@@ -135,6 +145,11 @@ const About = () => {
         const members = (data as any[]).map(entry => ({
           ...entry,
           image: '/images/team/' + encodeURIComponent(entry.filename),
+          // Mock socials if not present in JSON, ideally this comes from JSON
+          socials: {
+             linkedin: "https://linkedin.com",
+             email: "info@yourbusinessinitaly.com"
+          }
         }));
         setTeamMembers(members);
       })
@@ -176,70 +191,48 @@ const About = () => {
           'x-default': 'https://yourbusinessinitaly.com/it/about'
         }}
       />
-      {/* Hero section con intestazione */}
-      <section className="relative py-32 overflow-hidden">
-        {/* Sfondo con overlay verde-rosso */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00924630] to-[#ce2b3730]">
+      
+      {/* Hero section */}
+      <section className="relative py-32 overflow-hidden bg-navy">
           {/* Immagine di sfondo */}
-          <div className="absolute inset-0 opacity-20 bg-cover bg-center"
-            style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")',
-              backgroundBlendMode: 'overlay'
-            }}
-          ></div>
-
-          {/* Pattern di sfondo e decorazioni */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
-          ></div>
-
-          {/* Punti decorativi simili all'immagine di riferimento */}
-          <div className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 2px)',
-              backgroundSize: '40px 40px'
-            }}
-          ></div>
+        <div className="absolute inset-0 opacity-20">
+            <ResponsiveImage
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+              alt="Background"
+              className="w-full h-full object-cover"
+              width={1920}
+              height={1080}
+            />
         </div>
-
-        {/* Bordi decorativi */}
-        <div className="absolute top-0 left-0 w-1 h-full bg-[#009246]"></div>
-        <div className="absolute top-0 right-0 w-1 h-full bg-[#ce2b37]"></div>
-
-        {/* Cerchi decorativi */}
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00924610] rounded-full filter blur-3xl"></div>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#ce2b3710] rounded-full filter blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-transparent"></div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white bg-opacity-80 text-[#009246] text-sm font-medium mb-6 animate-fade-in shadow-sm border border-[#00924630]">
-              <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
-              {t('about.badge') || 'La nostra azienda'}
+            <div className="inline-block mb-6">
+              <span className="py-2 px-4 border border-italian-green/50 text-italian-green font-[Montserrat] text-xs uppercase tracking-[0.2em] bg-navy/50 backdrop-blur-sm">
+                {t('about.badge') || 'Our Company'}
+              </span>
             </div>
 
             {/* Titolo principale */}
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in text-white" style={{ animationDelay: '0.2s', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-              <span className="text-[#009246] bg-white bg-opacity-80 px-2 py-1 rounded-tl-md rounded-br-md">{t('about.titlePrefix')} </span>
-              <span className="relative text-white ml-2">
+            <h1 className="text-5xl md:text-6xl font-[Playfair_Display] font-bold mb-8 text-white leading-tight">
+              <span className="text-italian-green block text-2xl font-[Montserrat] uppercase tracking-widest mb-2 font-normal">{t('about.titlePrefix')} </span>
                 {t('about.titleMain')}
-                <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
-              </span>
             </h1>
 
             {/* Sottotitolo */}
-            <p className="text-xl text-white bg-black bg-opacity-20 p-4 rounded-md mb-8 animate-fade-in max-w-2xl" style={{ animationDelay: '0.4s', textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
+            <p className="text-xl text-[#e6e2dd] mb-10 max-w-2xl font-[Lora] leading-relaxed border-l-2 border-italian-green pl-6">
               {t('about.longDescription') || 'Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale. Competenze, meritocrazia, pari opportunità sono la nostra mission.'}
             </p>
 
             {/* Call to action */}
-            <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <Link href={getLocalizedPath('/contact')} className="px-6 py-3 rounded-md bg-[#009246] text-white font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+            <div className="flex flex-wrap gap-4">
+              <Link href={getLocalizedPath('/contact')} className="btn-luxury">
                 {t('about.contactButton')}
               </Link>
-              <a href="#team" className="px-6 py-3 rounded-md bg-white text-neutral-800 font-medium border border-neutral-200 hover:border-neutral-300 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <a href="#team" className="btn-outline border-white text-white hover:bg-white hover:text-navy">
                 {t('about.teamButton')}
-                <i className="fas fa-arrow-down text-sm"></i>
               </a>
             </div>
           </div>
@@ -251,17 +244,13 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             {/* Badge e titolo */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-10 border-b border-neutral-100">
               <div>
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-4 shadow-sm border border-[#00924630]">
-                  <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
+                <span className="text-italian-green font-[Montserrat] font-semibold tracking-[0.2em] text-xs uppercase mb-2 block">
                   {t('about.stpSection.badge')}
-                </div>
-                <h2 className="text-3xl font-heading font-bold relative inline-flex">
-                  <span className="text-[#009246]">{t('about.stpSection.title')} </span>
-                  <span className="relative pl-4">
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#ce2b37]"></span>
                   </span>
+                <h2 className="text-3xl font-[Playfair_Display] font-bold text-navy">
+                  {t('about.stpSection.title')}
                 </h2>
               </div>
 
@@ -269,7 +258,7 @@ const About = () => {
                 href={t('about.stpSection.verifyUrl')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1 mt-4 md:mt-0"
+                className="inline-flex items-center text-italian-green font-[Montserrat] font-bold text-sm uppercase tracking-wide hover:underline mt-4 md:mt-0"
               >
                 <i className="fas fa-check-circle mr-2"></i>
                 {t('about.stpSection.verifyLink')}
@@ -277,49 +266,38 @@ const About = () => {
             </div>
 
             {/* Contenuto principale */}
-            <div className="bg-white rounded-xl p-6 shadow-md border border-neutral-100 hover:shadow-lg transition-all duration-300">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Colonna sinistra */}
                 <div>
-                  <p className="text-neutral-700 leading-relaxed">
+                <p className="text-neutral-700 leading-relaxed font-[Lora] text-lg mb-6">
                     {t('about.stpSection.description')}
                   </p>
 
-                  <div className="mt-4 flex items-center text-sm text-neutral-600">
-                    <i className="fas fa-info-circle text-[#009246] mr-2"></i>
+                <div className="flex items-center text-sm text-neutral-500 font-[Montserrat]">
+                    <i className="fas fa-info-circle text-italian-green mr-2"></i>
                     <p>{t('about.stpSection.verifyDescription')}</p>
                   </div>
                 </div>
 
                 {/* Colonna destra */}
-                <div className="bg-neutral-50 rounded-lg p-4 border border-neutral-100 relative">
-                  <div className="absolute -top-3 -right-3 w-16 h-16 bg-[#00924610] rounded-full z-0"></div>
-
-                  <h3 className="text-lg font-heading font-semibold mb-3 text-[#009246] flex items-center">
-                    <i className="fas fa-user-tie mr-2"></i>
+              <div className="bg-[#f8f9fa] p-8 border-l-4 border-italian-green">
+                <h3 className="text-xl font-[Playfair_Display] font-bold mb-4 text-navy">
                     {t('about.stpSection.accountantTitle')}
                   </h3>
 
-                  <p className="text-neutral-700 text-sm mb-3">
-                    {t('about.stpSection.accountantDescription')}
+                <p className="text-neutral-600 text-sm mb-6 font-[Lora] italic">
+                  "{t('about.stpSection.accountantDescription')}"
                   </p>
 
-                  <div className="border-t border-neutral-200 pt-3 mt-3">
-                    <details className="text-sm">
-                      <summary className="font-heading font-semibold text-neutral-800 cursor-pointer hover:text-[#009246]">
+                <div className="pt-4 border-t border-neutral-200">
+                  <h4 className="font-[Montserrat] font-bold text-xs uppercase tracking-widest text-italian-green mb-3">
                         {t('about.stpSection.pathTitle')}
-                      </summary>
-                      <ul className="list-disc pl-5 mt-2 space-y-1 text-neutral-700">
+                  </h4>
+                  <ul className="space-y-2 text-neutral-700 font-[Lora] text-sm list-disc pl-5">
                         {(t('about.stpSection.pathSteps', { returnObjects: true }) as string[]).map((step: string, index: number) => (
-                          <li key={index} className="leading-relaxed">{step}</li>
+                      <li key={index}>{step}</li>
                         ))}
                       </ul>
-
-                      <p className="text-neutral-700 italic border-l-4 border-[#009246] pl-3 py-1 bg-white text-xs mt-3">
-                        {t('about.stpSection.conclusion')}
-                      </p>
-                    </details>
-                  </div>
                 </div>
               </div>
             </div>
@@ -328,27 +306,24 @@ const About = () => {
       </section>
 
       {/* Sezione introduttiva con concetto */}
-      <section className="section-padding bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
+      <section className="section-padding bg-[#f8f9fa] relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Contenuto testuale */}
-            <div className="animate-fade-in">
-              <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-                <span className="relative">
+            <div>
+              <h2 className="text-4xl font-[Playfair_Display] font-bold mb-8 text-navy">
                   {t('about.paradigmTitle')}
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 italian-gradient"></span>
-                </span>
               </h2>
 
-              <p className="text-neutral-700 mb-6 text-lg leading-relaxed">
+              <p className="text-neutral-700 mb-6 text-lg leading-relaxed font-[Lora]">
                 {t('about.paradigmDescription1')}
               </p>
 
-              <p className="text-neutral-700 mb-8 leading-relaxed">
+              <p className="text-neutral-700 mb-10 leading-relaxed font-[Lora]">
                 {t('about.paradigmDescription2')}
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 gap-6 mb-10">
                 {stats.map((stat, index) => (
                   <StatItem
                     key={index}
@@ -359,65 +334,51 @@ const About = () => {
                 ))}
               </div>
 
-              <p className="text-neutral-700 italic border-l-4 border-[#009246] pl-4 py-2 bg-neutral-50">
-                {t('about.diversityQuote')}
-              </p>
+              <blockquote className="text-xl font-[Playfair_Display] italic text-navy border-l-4 border-italian-green pl-6 py-2">
+                "{t('about.diversityQuote')}"
+              </blockquote>
             </div>
 
             {/* Immagine con decorazioni */}
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="rounded-xl overflow-hidden shadow-xl border border-neutral-100 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
+            <div className="relative">
+              <div className="rounded-sm overflow-hidden shadow-2xl border-8 border-white relative z-10">
                 <ResponsiveImage
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
                   alt={t('about.teamImage')}
-                  className="w-full h-auto"
+                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000"
                   width={1600}
                   height={900}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
                   quality={85}
-                  priority={true}
-                  placeholder="blur"
                 />
               </div>
 
               {/* Elementi decorativi intorno all'immagine */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#00924610] rounded-full z-0 animate-pulse" style={{ animationDuration: '4s' }}></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#ce2b3710] rounded-full z-0 animate-pulse" style={{ animationDuration: '6s' }}></div>
-              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-12 h-12 border-4 border-[#009246] rounded-lg z-0 animate-spin-slow"></div>
-              <div className="absolute -bottom-2 left-1/4 w-16 h-1 bg-[#ce2b37] z-20"></div>
+              <div className="absolute -top-6 -right-6 w-full h-full border-2 border-italian-green z-0"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-italian-green/20 rounded-full z-0"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Sezione Team */}
-      <section id="team" className="section-padding bg-gradient-to-b from-neutral-50 to-white">
+      <section id="team" className="section-padding bg-white">
         <div className="container mx-auto px-4">
           {/* Header della sezione */}
-          <div className="text-center mb-16 relative">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#ce2b3715] text-[#ce2b37] text-sm font-medium mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#ce2b37] mr-2"></span>
+          <div className="text-center mb-20 relative">
+            <span className="text-italian-green font-[Montserrat] font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">
               {t('about.teamSection.badge')}
-            </div>
-
-            <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-              <span className="text-[#ce2b37]">{t('about.teamSection.titlePrefix')} </span>
-              <span className="relative pl-4">
-                {t('about.teamSection.titleMain')}
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246]"></span>
               </span>
+
+            <h2 className="text-4xl md:text-5xl font-[Playfair_Display] font-bold mb-6 text-navy">
+              {t('about.teamSection.titlePrefix')} <span className="italic text-italian-green">{t('about.teamSection.titleMain')}</span>
             </h2>
 
-            <p className="text-neutral-600 max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
+
+            <p className="text-neutral-600 max-w-2xl mx-auto font-[Lora] text-lg">
               {t('about.teamSection.description')}
             </p>
-
-            {/* Elemento decorativo */}
-            <div className="flex justify-center mt-8 mb-4">
-              <div className="w-16 h-1 bg-neutral-200 rounded-full relative">
-                <div className="absolute top-0 left-0 h-full w-8 bg-gradient-to-r from-[#009246] to-[#ce2b37] animate-gradient-x rounded-full"></div>
-              </div>
-            </div>
           </div>
 
           {/* Grid di team members */}
@@ -435,6 +396,7 @@ const About = () => {
                   specialty={t(member.specialty || "")}
                   isFounder={member.isFounder}
                   isCEO={member.isCEO}
+                  socials={member.socials}
                 />
               </div>
             ))}
@@ -443,31 +405,27 @@ const About = () => {
       </section>
 
       {/* Sezione valori */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-navy text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-heading font-bold mb-8 relative inline-flex">
-              <span className="text-[#009246]">{t('about.valuesSection.title')} </span>
-              <span className="relative pl-4">
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#ce2b37]"></span>
-              </span>
+            <h2 className="text-3xl font-[Playfair_Display] font-bold mb-12">
+              <span className="text-italian-green">{t('about.valuesSection.title')} </span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Mappa dinamicamente i valori tradotti */}
               {(t('about.valuesSection.values', { returnObjects: true }) as Array<{ title: string; description: string }>).map((value, index) => (
                 <div 
                   key={index}
-                  className="relative p-6 bg-white rounded-lg border border-neutral-100 shadow-md hover:shadow-lg transition-all duration-300 group"
+                  className="relative p-8 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-italian-green transition-all duration-300 group rounded-sm text-left"
                 >
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#009246] text-white flex items-center justify-center">
-                    {/* Icone statiche basate sul valore - modificabili in base al contenuto */}
+                  <div className="text-3xl text-italian-green mb-6">
                     <i className={index === 0 ? "fas fa-user-tie" : index === 1 ? "fas fa-lightbulb" : "fas fa-balance-scale"}></i>
                   </div>
-                  <h3 className="text-xl font-heading font-semibold mt-6 mb-3 group-hover:text-[#009246] transition-colors">
+                  <h3 className="text-xl font-[Playfair_Display] font-bold mb-4 text-white">
                     {value.title}
                   </h3>
-                  <p className="text-neutral-600 text-sm">
+                  <p className="text-neutral-400 text-sm font-[Lora] leading-relaxed group-hover:text-neutral-300">
                     {value.description}
                   </p>
                 </div>

@@ -72,6 +72,10 @@
   "whyChooseUs": {
     "title": "Por Qué Elegirnos",
     "ctaButton": "Habla con un Experto",
+    "quote": {
+      "text": "La excelencia no es un acto, sino un hábito.",
+      "author": "Aristóteles"
+    },
     "mainImageAlt": "Reunión de negocios con clientes internacionales",
     "smallImageAlt": "Gráficos contables",
     "features": {
@@ -333,6 +337,8 @@
     "subtitle": "Últimos artículos y novedades del mundo fiscal y comercial italiano.",
     "viewAll": "Todos los artículos",
     "readMore": "Leer el artículo",
+    "share": "Compartir:",
+    "followLinkedIn": "Seguir en LinkedIn",
     "posts": [
       {
         "date": "12 Mayo 2023",
@@ -382,6 +388,7 @@
       "phone": "Teléfono",
       "service": "Servicio de Interés",
       "servicePlaceholder": "Selecciona un servicio",
+      "selectServicePlaceholder": "Selecciona un servicio",
       "services": {
         "formation": "Constitución de Sociedades en Italia",
         "accounting": "Contabilidad y Balance",
@@ -430,6 +437,7 @@
     },
     "map": {
       "title": "Dónde Estamos",
+      "subtitle": "Encuéntranos en Catania, en el corazón de Sicilia",
       "titleAlt": "Mapa de nuestra oficina"
     },
     "social": {
@@ -991,5 +999,37 @@
       "metaTitle": "Asesoría Contable para Expatriados en Italia | Servicios Fiscales Internacionales",
       "metaDescription": "Expertos en fiscalidad para expatriados en Italia. Asistimos a trabajadores internacionales con planificación fiscal, declaraciones y cumplimiento. Consulta gratuita."
     }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Respuestas a las preguntas más comunes sobre nuestros servicios para extranjeros que quieren hacer negocios en Italia",
+    "notFound": "¿No encuentras la respuesta que buscas?",
+    "ctaButton": "Contáctanos para una Consulta Gratuita",
+    "items": [
+      {
+        "question": "¿Cuánto cuesta abrir una sociedad en Italia para extranjeros?",
+        "answer": "Los costos para abrir una sociedad en Italia oscilan entre 1.500€ y 3.000€ para una SRL, incluyendo notario, Cámara de Comercio y consultoría inicial. Para un NIF de IVA, los costos son mucho más bajos (300-800€). Ofrecemos presupuestos gratuitos personalizados según sus necesidades específicas."
+      },
+      {
+        "question": "¿Puedo abrir un NIF de IVA en Italia si soy extranjero?",
+        "answer": "Sí, los ciudadanos de la UE pueden abrir libremente un NIF de IVA en Italia. Los ciudadanos no comunitarios necesitan un permiso de residencia para trabajo autónomo. Le asistimos en todo el proceso burocrático, desde la solicitud de documentos hasta la presentación de trámites."
+      },
+      {
+        "question": "¿Qué es el régimen de estimación objetiva y quién puede acceder?",
+        "answer": "El régimen de estimación objetiva es un régimen fiscal con un tipo impositivo del 5% (primeros 5 años) o 15% para facturación anual de hasta 85.000€. Es ideal para autónomos y pequeñas empresas. No se aplica IVA y la contabilidad es simplificada. Perfecto para quienes inician una actividad en Italia."
+      },
+      {
+        "question": "¿Ofrecen consultoría en inglés?",
+        "answer": "Sí, ofrecemos consultoría principalmente en inglés y, gracias a nuestra experiencia en tecnologías de IA, podemos comunicarnos eficazmente en el idioma nativo del cliente. Nuestro equipo tiene experiencia específica con clientes internacionales."
+      },
+      {
+        "question": "¿Cuánto tiempo se tarda en abrir una sociedad?",
+        "answer": "Para una SRL generalmente se necesitan 15-30 días hábiles desde el momento en que tenemos toda la documentación. Para un NIF de IVA, los tiempos son mucho más rápidos: 3-7 días. Los tiempos pueden variar según la complejidad del caso y la nacionalidad del solicitante."
+      },
+      {
+        "question": "¿Qué documentos se necesitan para abrir un negocio en Italia?",
+        "answer": "Para ciudadanos de la UE: documento de identidad válido y código fiscal. Para ciudadanos no comunitarios: pasaporte, permiso de residencia (o solicitud), código fiscal. Para las sociedades también se requieren estatutos, actas constitutivas y documentación específica, que le ayudaremos a preparar."
+      }
+    ]
   }
 }
