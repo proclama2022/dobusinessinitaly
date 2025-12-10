@@ -89,6 +89,9 @@ export default defineConfig({
           'query': ['@tanstack/react-query'],
           'helmet': ['react-helmet-async'],
           'toast': ['sonner'],
+
+          // Markdown rendering - separato per code splitting
+          'markdown': ['react-markdown', 'remark-gfm', 'rehype-raw', 'rehype-sanitize'],
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',

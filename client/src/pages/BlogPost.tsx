@@ -7,10 +7,7 @@ import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import rehypeSanitize from 'rehype-sanitize';
-import remarkGfm from 'remark-gfm';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import { authorProfile } from '@/data/author';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -518,12 +515,7 @@ const BlogPost = () => {
                 <meta itemProp="datePublished" content={formattedDate} />
                 <meta itemProp="image" content={meta.coverImage} />
                 <div itemProp="articleBody" className="article-content">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
-                  >
-                    {content}
-                  </ReactMarkdown>
+                  <MarkdownRenderer content={content} />
                 </div>
               </article>
 
