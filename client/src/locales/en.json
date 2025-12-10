@@ -457,6 +457,9 @@
         "value": "Monday - Friday: 9:00 - 18:00",
         "label": "Opening Hours"
       },
+      "contact": {
+        "label": "Direct Contact"
+      },
       "officeImageAlt": "Our office"
     },
     "map": {

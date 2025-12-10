@@ -448,6 +448,9 @@
         "value": "Lundi - Vendredi: 9:00 - 18:00",
         "label": "Heures d'Ouverture"
       },
+      "contact": {
+        "label": "Contact Direct"
+      },
       "officeImageAlt": "Notre bureau"
     },
     "map": {

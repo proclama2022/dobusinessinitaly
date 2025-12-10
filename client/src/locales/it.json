@@ -493,6 +493,9 @@
         "label": "Orari",
         "value": "Lun-Ven: 9:00-18:00"
       },
+      "contact": {
+        "label": "Contatto Diretto"
+      },
       "social": "Seguici sui social",
       "officeImageAlt": "Ufficio Proclama SPA"
     },

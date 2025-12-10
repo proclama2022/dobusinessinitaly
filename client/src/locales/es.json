@@ -433,6 +433,9 @@
         "value": "Lunes - Viernes: 9:00 - 18:00",
         "label": "Horario de Atención"
       },
+      "contact": {
+        "label": "Contacto Directo"
+      },
       "officeImageAlt": "Nuestra oficina"
     },
     "map": {
