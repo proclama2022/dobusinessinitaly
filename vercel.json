@@ -2675,7 +2675,7 @@
       "destination": "/it/blog/aprire-partita-iva-freelance-italia-2025"
     },
     {
-      "source": "/(.*)",
+      "source": "/:path((?!assets|images|api|_next|.*\\.[a-zA-Z0-9]+$).*)",
       "destination": "/index.html"
     }
   ],
@@ -2719,10 +2719,6 @@
     { "source": "/en/blog/italy-tax-residency-expats-2025-complete-guide.en-en", "destination": "/it/blog/residenza-fiscale-italia-espatriati-2025-guida-completa", "permanent": true },
     { "source": "/en/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025.es-es", "destination": "/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025", "permanent": true },
     { "source": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet.en-en", "destination": "/en/blog/residence-fiscale-italie-expatries-2025-guide-complet", "permanent": true },
-    { "source": "/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025", "destination": "/de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden", "permanent": true },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/de/blog/unternehmensgruendung-italien-deutsche-leitfaden-2025", "destination": "/de/blog/unternehmensgruendung-italien-auslaender-2025-leitfaden", "permanent": true }
   ]
 }
