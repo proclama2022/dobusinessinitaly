@@ -416,7 +416,7 @@
       "title": "Kontaktinformationen",
       "address": {
         "title": "Adresse",
-        "value": "Catania, Viale Africa 31",
+        "value": "Catania, Viale Africa, 31/E",
         "label": "Adresse"
       },
       "phone": {
@@ -461,7 +461,7 @@
     "summaryText": "Personenbezogene Daten werden für folgende Zwecke verarbeitet und unter Verwendung folgender Dienste:",
     "contactTitle": "Kontaktinformationen",
     "owner": "Verantwortlicher für die Datenverarbeitung",
-    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - USt-IdNr. und Steuernr. 04048370870",
+    "ownerAddress": "Proclama SPA - Viale Africa, 31/E - Catania - USt-IdNr. und Steuernr. 04048370870",
     "ownerEmail": "E-Mail-Adresse des Verantwortlichen: amministrazione@proclama.co",
     "fullPolicyTitle": "Vollständige Richtlinie",
     "dataTypesTitle": "Arten der gesammelten Daten",
@@ -488,7 +488,7 @@
     "retentionExample1": "Personenbezogene Daten, die für Zwecke im Zusammenhang mit der Erfüllung eines Vertrags zwischen dem Verantwortlichen und dem Nutzer gesammelt werden, werden bis zur vollständigen Erfüllung dieses Vertrags aufbewahrt.",
     "retentionExample2": "Personenbezogene Daten, die für Zwecke im Zusammenhang mit dem berechtigten Interesse des Verantwortlichen gesammelt werden, werden bis zur Befriedigung dieses Interesses aufbewahrt. Der Nutzer kann weitere Informationen über das vom Verantwortlichen verfolgte berechtigte Interesse in den entsprechenden Abschnitten dieses Dokuments erhalten oder den Verantwortlichen kontaktieren.",
     "ownerTitle": "Verantwortlicher für die Datenverarbeitung",
-    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - USt-IdNr. und Steuernr. 04048370870<br />E-Mail-Adresse des Verantwortlichen: amministrazione@proclama.co",
+    "ownerDetails": "Proclama SPA - Viale Africa, 31/E - Catania - USt-IdNr. und Steuernr. 04048370870<br />E-Mail-Adresse des Verantwortlichen: amministrazione@proclama.co",
     "dataTypesCollectedTitle": "Arten der gesammelten Daten",
     "dataTypesCollectedText1": "Zu den von dieser Anwendung gesammelten personenbezogenen Daten, eigenständig oder über Dritte, gehören: Daten, die während der Nutzung des Dienstes übermittelt werden; Nutzungsdaten; USt-IdNr.; PLZ; Stadt; Firmenname; Land; Geburtsdatum; E-Mail; Name; geografische Position; Nachname; Telefonnummer; Benutzername.",
     "dataTypesCollectedText2": "Vollständige Details zu jeder Art von gesammelten personenbezogenen Daten werden in den entsprechenden Abschnitten dieser Datenschutzrichtlinie oder durch spezifische Informationstexte bereitgestellt, die vor der Sammlung der Daten selbst angezeigt werden. Personenbezogene Daten können vom Nutzer frei bereitgestellt oder, im Fall von Nutzungsdaten, automatisch während der Nutzung dieser Anwendung gesammelt werden.",

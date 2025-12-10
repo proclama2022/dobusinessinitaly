@@ -7,6 +7,7 @@ import { apiRequest } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
 import OptimizedImage from '@/components/OptimizedImage';
+import { companyData } from '@/data/company';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPaperPlane,
@@ -363,7 +364,7 @@ const ContactSection = () => {
                       <a href="tel:+39095643533" className="hover:text-italian-green transition-colors">{t('contact.info.phone.value')}</a>
                     </p>
                     <p className="text-lg text-navy">
-                      <a href="mailto:amministrazione@proclama.co" className="hover:text-italian-green transition-colors">amministrazione@proclama.co</a>
+                      <a href={`mailto:${companyData.contact.email}`} className="hover:text-italian-green transition-colors">{companyData.contact.email}</a>
                     </p>
                   </div>
                 </div>

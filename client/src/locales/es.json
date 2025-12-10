@@ -415,7 +415,7 @@
       "title": "Información de Contacto",
       "address": {
         "title": "Dirección",
-        "value": "Catania, Viale Africa 31",
+        "value": "Catania, Viale Africa, 31/E",
         "label": "Dirección"
       },
       "phone": {
@@ -460,7 +460,7 @@
     "summaryText": "Datos Personales tratados para las siguientes finalidades y utilizando los siguientes servicios:",
     "contactTitle": "Información de contacto",
     "owner": "Responsable del Tratamiento de los Datos",
-    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA y C.Fisc. 04048370870",
+    "ownerAddress": "Proclama SPA - Viale Africa, 31/E - Catania - P.IVA y C.Fisc. 04048370870",
     "ownerEmail": "Dirección de correo electrónico del Responsable: amministrazione@proclama.co",
     "fullPolicyTitle": "Política completa",
     "dataTypesTitle": "Tipos de Datos recogidos",
@@ -487,7 +487,7 @@
     "retentionExample1": "Los Datos Personales recogidos para fines relacionados con la ejecución de un contrato entre el Responsable y el Usuario serán retenidos hasta que se complete la ejecución de dicho contrato.",
     "retentionExample2": "Los Datos Personales recogidos para finalidades reconducibles al interés legítimo del Responsable serán retenidos hasta la satisfacción de dicho interés. El Usuario puede obtener información adicional sobre el interés legítimo perseguido por el Responsable en las secciones correspondientes de este documento o contactando al Responsable.",
     "ownerTitle": "Responsable del Tratamiento de los Datos",
-    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA y C.Fisc. 04048370870<br />Dirección de correo electrónico del Responsable: amministrazione@proclama.co",
+    "ownerDetails": "Proclama SPA - Viale Africa, 31/E - Catania - P.IVA y C.Fisc. 04048370870<br />Dirección de correo electrónico del Responsable: amministrazione@proclama.co",
     "dataTypesCollectedTitle": "Tipos de Datos recogidos",
     "dataTypesCollectedText1": "Entre los Datos Personales recogidos por esta Aplicación, de forma autónoma o a través de terceros, se encuentran: Datos comunicados durante el uso del servicio; Datos de uso; Partita IVA; Código postal; ciudad; razón social; país; fecha de nacimiento; email; nombre; posición geográfica; apellido; número de teléfono; nombre de usuario.",
     "dataTypesCollectedText2": "Los detalles completos sobre cada tipo de Datos Personales recogidos se proporcionan en las secciones dedicadas de esta política de privacidad o mediante textos informativos específicos mostrados antes de la recogida de los Datos mismos. Los Datos Personales pueden ser proporcionados libremente por el Usuario o, en el caso de Datos de Uso, recogidos automáticamente durante el uso de esta Aplicación.",

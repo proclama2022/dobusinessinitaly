@@ -57,7 +57,7 @@
     "summaryText": "Dati Personali trattati per le seguenti finalità e utilizzando i seguenti servizi:",
     "contactTitle": "Informazioni di contatto",
     "owner": "Titolare del Trattamento dei Dati",
-    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA e C.Fisc. 04048370870",
+    "ownerAddress": "Proclama SPA - Viale Africa, 31/E - Catania - P.IVA e C.Fisc. 04048370870",
     "ownerEmail": "Indirizzo email del Titolare: amministrazione@proclama.co",
     "fullPolicyTitle": "Policy completa",
     "dataTypesTitle": "Tipologie di Dati raccolti",
@@ -84,7 +84,7 @@
     "retentionExample1": "I Dati Personali raccolti per scopi collegati all'esecuzione di un contratto tra il Titolare e l'Utente saranno trattenuti sino a quando sia completata l'esecuzione di tale contratto.",
     "retentionExample2": "I Dati Personali raccolti per finalità riconducibili all'interesse legittimo del Titolare saranno trattenuti sino al soddisfacimento di tale interesse. L'Utente può ottenere ulteriori informazioni in merito all'interesse legittimo perseguito dal Titolare nelle relative sezioni di questo documento o contattando il Titolare.",
     "ownerTitle": "Titolare del Trattamento dei Dati",
-    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - P.IVA e C.Fisc. 04048370870<br />Indirizzo email del Titolare: amministrazione@proclama.co",
+    "ownerDetails": "Proclama SPA - Viale Africa, 31/E - Catania - P.IVA e C.Fisc. 04048370870<br />Indirizzo email del Titolare: amministrazione@proclama.co",
     "dataTypesCollectedTitle": "Tipologie di Dati raccolti",
     "dataTypesCollectedText1": "Fra i Dati Personali raccolti da questa Applicazione, in modo autonomo o tramite terze parti, ci sono: Dati comunicati durante l'utilizzo del servizio; Dati di utilizzo; Partita IVA; CAP; città; ragione sociale; nazione; data di nascita; email; nome; posizione geografica; cognome; numero di telefono; username.",
     "dataTypesCollectedText2": "Dettagli completi su ciascuna tipologia di Dati Personali raccolti sono forniti nelle sezioni dedicate di questa privacy policy o mediante specifici testi informativi visualizzati prima della raccolta dei Dati stessi. I Dati Personali possono essere liberamente forniti dall'Utente o, nel caso di Dati di Utilizzo, raccolti automaticamente durante l'uso di questa Applicazione.",
@@ -479,7 +479,7 @@
       "title": "Informazioni di contatto",
       "address": {
         "label": "Indirizzo",
-        "value": "Via Gabriele D'Annunzio, 56, Catania"
+        "value": "Viale Africa, 31/E, Catania"
       },
       "phone": {
         "label": "Telefono",

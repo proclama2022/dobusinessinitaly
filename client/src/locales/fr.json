@@ -430,7 +430,7 @@
       "title": "Informations de Contact",
       "address": {
         "title": "Adresse",
-        "value": "Catania, Viale Africa 31",
+        "value": "Catania, Viale Africa, 31/E",
         "label": "Adresse"
       },
       "phone": {
@@ -475,7 +475,7 @@
     "summaryText": "Données Personnelles traitées aux fins suivantes et en utilisant les services suivants:",
     "contactTitle": "Informations de contact",
     "owner": "Responsable du Traitement des Données",
-    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - N° TVA et Code Fiscal 04048370870",
+    "ownerAddress": "Proclama SPA - Viale Africa, 31/E - Catania - N° TVA et Code Fiscal 04048370870",
     "ownerEmail": "Adresse email du Responsable: amministrazione@proclama.co",
     "fullPolicyTitle": "Politique complète",
     "dataTypesTitle": "Types de Données collectées",
@@ -502,7 +502,7 @@
     "retentionExample1": "Les Données Personnelles collectées à des fins liées à l'exécution d'un contrat entre le Responsable et l'Utilisateur seront conservées jusqu'à ce que l'exécution de ce contrat soit terminée.",
     "retentionExample2": "Les Données Personnelles collectées à des fins liées à l'intérêt légitime du Responsable seront conservées jusqu'à la satisfaction de cet intérêt. L'Utilisateur peut obtenir des informations supplémentaires concernant l'intérêt légitime poursuivi par le Responsable dans les sections pertinentes de ce document ou en contactant le Responsable.",
     "ownerTitle": "Responsable du Traitement des Données",
-    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - N° TVA et Code Fiscal 04048370870<br />Adresse email du Responsable: amministrazione@proclama.co",
+    "ownerDetails": "Proclama SPA - Viale Africa, 31/E - Catania - N° TVA et Code Fiscal 04048370870<br />Adresse email du Responsable: amministrazione@proclama.co",
     "dataTypesCollectedTitle": "Types de Données collectées",
     "dataTypesCollectedText1": "Parmi les Données Personnelles collectées par cette Application, de manière autonome ou par l'intermédiaire de tiers, figurent: Données communiquées lors de l'utilisation du service; Données d'utilisation; Numéro de TVA; Code postal; ville; raison sociale; pays; date de naissance; email; nom; position géographique; nom de famille; numéro de téléphone; nom d'utilisateur.",
     "dataTypesCollectedText2": "Des détails complets sur chaque type de Données Personnelles collectées sont fournis dans les sections dédiées de cette politique de confidentialité ou au moyen de textes d'explication spécifiques affichés avant la collecte des Données elles-mêmes. Les Données Personnelles peuvent être librement fournies par l'Utilisateur ou, dans le cas des Données d'Utilisation, collectées automatiquement lors de l'utilisation de cette Application.",

@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import NextGenImage from './NextGenImage';
 import { useLocalizedPath } from './LocalizedRouter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { companyData } from '@/data/company';
 import {
   faLinkedinIn,
   faLinkedin,
@@ -121,25 +122,25 @@ const Footer = () => {
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="text-sm" />
                 </div>
                 <span className="text-neutral-400 text-sm leading-relaxed font-[Lora]">
-                  Via Etnea 290,<br />
-                  95131 Catania (CT),<br />
-                  Italy
+                  {companyData.address.street},<br />
+                  {companyData.address.postalCode} {companyData.address.city} ({companyData.address.region}),<br />
+                  {companyData.address.country}
                 </span>
               </li>
               <li className="flex items-start">
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1 mr-4 text-italian-green">
                   <FontAwesomeIcon icon={faPhoneAlt} className="text-sm" />
                 </div>
-                <a href="tel:+39095643533" className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 font-[Montserrat]">
-                  +39 095 643533
+                <a href={`tel:${companyData.contact.phone.replace(/\s/g, '')}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 font-[Montserrat]">
+                  {companyData.contact.phone}
                 </a>
               </li>
               <li className="flex items-start">
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1 mr-4 text-italian-green">
                   <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
                 </div>
-                <a href="mailto:amministrazione@proclama.co" className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 break-all font-[Montserrat]">
-                  amministrazione@proclama.co
+                <a href={`mailto:${companyData.contact.email}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 break-all font-[Montserrat]">
+                  {companyData.contact.email}
                 </a>
               </li>
             </ul>
@@ -165,7 +166,7 @@ const Footer = () => {
 
             <div className="p-6 bg-white/5 border border-white/10 rounded-sm">
               <p className="text-xs text-neutral-400 mb-2">Partita IVA / VAT Number:</p>
-              <p className="text-white font-mono tracking-wider">IT05912380875</p>
+              <p className="text-white font-mono tracking-wider">{companyData.vatNumber}</p>
             </div>
           </div>
         </div>

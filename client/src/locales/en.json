@@ -439,7 +439,7 @@
       "title": "Contact Information",
       "address": {
         "title": "Address",
-        "value": "Catania, Viale Africa 31",
+        "value": "Catania, Viale Africa, 31/E",
         "label": "Address"
       },
       "phone": {
@@ -484,7 +484,7 @@
     "summaryText": "Personal Data processed for the following purposes and using the following services:",
     "contactTitle": "Contact Information",
     "owner": "Data Controller",
-    "ownerAddress": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - VAT and Tax Code 04048370870",
+    "ownerAddress": "Proclama SPA - Viale Africa, 31/E - Catania - VAT and Tax Code 04048370870",
     "ownerEmail": "Data Controller email: amministrazione@proclama.co",
     "fullPolicyTitle": "Complete Policy",
     "dataTypesTitle": "Types of Data Collected",
@@ -511,7 +511,7 @@
     "retentionExample1": "Personal Data collected for purposes related to the performance of a contract between the Owner and the User shall be retained until such contract has been fully performed.",
     "retentionExample2": "Personal Data collected for purposes related to the legitimate interests of the Owner shall be retained as long as needed to fulfill such purposes. Users may find specific information regarding the legitimate interests pursued by the Owner within the relevant sections of this document or by contacting the Owner.",
     "ownerTitle": "Data Controller",
-    "ownerDetails": "Proclama SPA - Via Gabriele D'Annunzio, 56 - Catania - VAT and Tax Code 04048370870<br />Data Controller email: amministrazione@proclama.co",
+    "ownerDetails": "Proclama SPA - Viale Africa, 31/E - Catania - VAT and Tax Code 04048370870<br />Data Controller email: amministrazione@proclama.co",
     "dataTypesCollectedTitle": "Types of Data Collected",
     "dataTypesCollectedText1": "Among the Personal Data collected by this Application, either independently or through third parties, are: Data communicated during service use; Usage Data; VAT number; ZIP code; city; company name; country; date of birth; email; name; geographic position; surname; phone number; username.",
     "dataTypesCollectedText2": "Complete details on each type of Personal Data collected are provided in the dedicated sections of this privacy policy or by means of specific explanation texts displayed prior to the Data collection itself. Personal Data may be freely provided by the User, or, in case of Usage Data, collected automatically when using this Application.",

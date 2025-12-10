@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { companyData } from '@/data/company';
 
 interface SEOHeadProps {
   title: string;
@@ -51,12 +52,12 @@ const SEOHead = ({
   const defaultStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Yourbusinessinitaly.com',
+    name: companyData.name,
     url: siteUrl,
     description: 'Servizi professionali per fare business in Italia',
     publisher: {
       '@type': 'Organization',
-      name: 'Yourbusinessinitaly.com',
+      name: companyData.name,
       logo: {
         '@type': 'ImageObject',
         url: 'https://yourbusinessinitaly.com/images/logonew.png',
@@ -65,31 +66,31 @@ const SEOHead = ({
       }
     },
     sameAs: [
-      'https://www.linkedin.com/company/partitaiva',
-      'https://www.instagram.com/partitaiva.it/',
-      'https://www.tiktok.com/@partitaiva.it',
-      'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg'
-    ]
+      companyData.social.linkedin,
+      companyData.social.instagram,
+      companyData.social.tiktok,
+      companyData.social.youtube
+    ].filter(Boolean)
   };
 
   // Schema markup per l'organizzazione
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Yourbusinessinitaly.com',
+    name: companyData.name,
     url: siteUrl,
     logo: 'https://yourbusinessinitaly.com/images/logonew.png',
     sameAs: [
-      'https://www.linkedin.com/company/partitaiva',
-      'https://www.instagram.com/partitaiva.it/',
-      'https://www.tiktok.com/@partitaiva.it',
-      'https://www.youtube.com/channel/UCggYXro7p7chs4MvrMcLSvg'
-    ],
+      companyData.social.linkedin,
+      companyData.social.instagram,
+      companyData.social.tiktok,
+      companyData.social.youtube
+    ].filter(Boolean),
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+39 095643533',
+      telephone: companyData.contact.phone,
       contactType: 'customer service',
-      areaServed: 'IT',
+      areaServed: companyData.address.countryCode,
       availableLanguage: ['it', 'en', 'fr', 'de', 'es']
     }
   };
@@ -98,8 +99,8 @@ const SEOHead = ({
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Yourbusinessinitaly.com',
-    alternateName: 'Proclama SPA',
+    name: companyData.name,
+    alternateName: companyData.alternateName,
     description: 'Commercialista specializzato per stranieri in Italia. Apertura società, partita IVA, regime forfettario. Consulenza fiscale in inglese.',
     url: siteUrl,
     logo: {
@@ -111,19 +112,19 @@ const SEOHead = ({
     image: 'https://yourbusinessinitaly.com/images/logonew.png',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Via Gabriele D\'Annunzio, 56',
-      addressLocality: 'Catania',
-      addressRegion: 'Sicilia',
-      postalCode: '95128',
-      addressCountry: 'IT'
+      streetAddress: companyData.address.street,
+      addressLocality: companyData.address.city,
+      addressRegion: companyData.address.region,
+      postalCode: companyData.address.postalCode,
+      addressCountry: companyData.address.countryCode
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 37.5079,
-      longitude: 15.0830
+      latitude: companyData.geo.latitude,
+      longitude: companyData.geo.longitude
     },
-    telephone: '+39 095643533',
-    email: 'amministrazione@proclama.co',
+    telephone: companyData.contact.phone,
+    email: companyData.contact.email,
     priceRange: '€€',
     serviceType: [
       'Commercialista per stranieri',
@@ -313,20 +314,20 @@ const SEOHead = ({
     name: 'Yourbusinessinitaly.com',
     description: 'Expert business consulting and tax advisory services for foreigners establishing companies in Italy',
     url: 'https://yourbusinessinitaly.com',
-    telephone: '+39 095643533',
-    email: 'info@yourbusinessinitaly.com',
+    telephone: companyData.contact.phone,
+    email: companyData.contact.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Via Gabriele D\'Annunzio, 56',
-      addressLocality: 'Catania',
-      addressRegion: 'Sicilia',
-      postalCode: '95128',
-      addressCountry: 'IT'
+      streetAddress: companyData.address.street,
+      addressLocality: companyData.address.city,
+      addressRegion: companyData.address.region,
+      postalCode: companyData.address.postalCode,
+      addressCountry: companyData.address.countryCode
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 37.5079,
-      longitude: 15.0830
+      latitude: companyData.geo.latitude,
+      longitude: companyData.geo.longitude
     },
     priceRange: '€€',
     openingHours: 'Mo-Fr 09:00-18:00',
