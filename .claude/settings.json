@@ -1,0 +1,71 @@
+{
+  "permissions": {
+    "tools": {
+      "WebSearch": {
+        "default": "allow",
+        "description": "Ricerca web per normative e fonti ufficiali"
+      },
+      "ReadFile": {
+        "default": "allow",
+        "description": "Lettura file per analisi contenuti esistenti"
+      },
+      "WriteFile": {
+        "default": "ask",
+        "description": "Scrittura file per creazione articoli",
+        "restrictions": {
+          "allowed_extensions": [".md", ".mdx", ".json", ".yaml", ".yml"],
+          "allowed_directories": ["content/blog/", "client/src/", ".claude/"]
+        }
+      },
+      "CodebaseSearch": {
+        "default": "allow",
+        "description": "Ricerca nel codebase per contenuti correlati"
+      },
+      "Bash": {
+        "default": "ask",
+        "description": "Esecuzione comandi terminal per operazioni di sistema",
+        "restrictions": {
+          "allowed_commands": ["ls", "grep", "find", "mkdir", "cp", "mv"]
+        }
+      }
+    },
+    "subagents": {
+      "ArticleWriterAgent": {
+        "tools": ["WebSearch", "ReadFile", "WriteFile", "CodebaseSearch"],
+        "permissions": "full"
+      },
+      "MultilingualAgent": {
+        "tools": ["WebSearch", "ReadFile", "WriteFile", "CodebaseSearch"],
+        "permissions": "full"
+      },
+      "SEOOptimizerAgent": {
+        "tools": ["WebSearch", "ReadFile", "WriteFile", "CodebaseSearch"],
+        "permissions": "full"
+      },
+      "ResearchAgent": {
+        "tools": ["WebSearch", "ReadFile", "CodebaseSearch"],
+        "permissions": "read_only"
+      }
+    }
+  },
+  "project_settings": {
+    "name": "DoBusinessNetwork",
+    "description": "Sito multilingue per imprenditori stranieri in Italia",
+    "languages": ["it", "en", "fr", "de", "es"],
+    "content_types": ["blog", "guides", "legal", "fiscal"],
+    "target_audience": "imprenditori stranieri"
+  },
+  "workflow_settings": {
+    "default_workflow": "article_creation",
+    "quality_checks": {
+      "enabled": true,
+      "required_accuracy": 95,
+      "required_completeness": 90
+    },
+    "automation": {
+      "auto_translate": true,
+      "auto_seo_optimize": true,
+      "auto_quality_check": true
+    }
+  }
+}

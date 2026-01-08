@@ -1,0 +1,165 @@
+{
+  "auto_activation_rules": {
+    "ResearchAgent": {
+      "triggers": {
+        "keywords": [
+          "normative", "leggi", "decreti", "circolari", "regolamenti",
+          "regime forfettario", "flat tax", "regime impatriati", "vantaggi fiscali",
+          "SRL", "società", "costituzione", "amministratori", "capitale sociale",
+          "partita IVA", "numero IVA", "fatturazione", "fattura elettronica",
+          "INPS", "contributi", "gestione separata", "previdenza",
+          "stranieri", "extracomunitari", "cittadini UE", "permesso soggiorno",
+          "nulla osta", "visa", "residenza", "domicilio fiscale",
+          "2025", "aggiornato", "nuovo", "recente", "ultime novità"
+        ],
+        "phrases": [
+          "normative aggiornate",
+          "requisiti per stranieri",
+          "procedure burocratiche",
+          "calcoli fiscali",
+          "obblighi previdenziali",
+          "scadenze fiscali",
+          "modifiche legislative"
+        ],
+        "confidence_threshold": 0.8,
+        "min_keyword_matches": 2
+      },
+      "output_requirements": {
+        "sources_required": true,
+        "calculations_required": true,
+        "procedures_required": true,
+        "min_word_count": 500
+      }
+    },
+    "ArticleWriterAgent": {
+      "triggers": {
+        "keywords": [
+          "scrivere", "creare", "redigere", "comporre", "elaborare",
+          "articolo", "guida", "manuale", "tutorial", "istruzioni",
+          "spiegare", "descrivere", "illustrare", "chiarire",
+          "esempi", "casi pratici", "simulazioni", "scenari",
+          "completo", "dettagliato", "approfondito", "esaustivo",
+          "step by step", "procedura", "istruzioni", "checklist"
+        ],
+        "phrases": [
+          "scrivere un articolo",
+          "creare una guida",
+          "come spiegare",
+          "tutorial completo",
+          "manuale dettagliato",
+          "esempi pratici",
+          "casi reali"
+        ],
+        "confidence_threshold": 0.9,
+        "min_keyword_matches": 2
+      },
+      "output_requirements": {
+        "mdx_format": true,
+        "frontmatter_required": true,
+        "min_word_count": 2000,
+        "sections_required": ["introduzione", "contenuto_tecnico", "esempi", "faq", "conclusioni"],
+        "cta_required": true
+      }
+    },
+    "SEOOptimizerAgent": {
+      "triggers": {
+        "keywords": [
+          "SEO", "ottimizzare", "posizionamento", "ranking",
+          "keyword", "meta tags", "schema markup", "meta description",
+          "performance", "visibilità", "Google", "ricerca organica",
+          "ottimizzazione", "migliorare", "potenziare", "aumentare"
+        ],
+        "phrases": [
+          "ottimizzare per SEO",
+          "migliorare posizionamento",
+          "aumentare visibilità",
+          "keyword research",
+          "meta tags ottimizzati",
+          "schema markup"
+        ],
+        "confidence_threshold": 0.85,
+        "min_keyword_matches": 2,
+        "prerequisites": ["content_ready"]
+      },
+      "output_requirements": {
+        "meta_tags_optimized": true,
+        "schema_markup_required": true,
+        "keyword_density": "1-2%",
+        "internal_links_required": true,
+        "images_optimized": true
+      }
+    },
+    "MultilingualAgent": {
+      "triggers": {
+        "keywords": [
+          "tradurre", "localizzare", "adattare", "convertire",
+          "inglese", "francese", "tedesco", "spagnolo",
+          "EN", "FR", "DE", "ES", "multilingue", "internazionale",
+          "mercato internazionale", "esportare", "versione",
+          "localizzazione", "culturale", "adattamento"
+        ],
+        "phrases": [
+          "tradurre in",
+          "versione inglese",
+          "versione francese",
+          "localizzazione culturale",
+          "mercato internazionale",
+          "adattare per"
+        ],
+        "confidence_threshold": 0.8,
+        "min_keyword_matches": 2,
+        "prerequisites": ["source_content_ready"]
+      },
+      "output_requirements": {
+        "languages": ["en", "fr", "de", "es"],
+        "cultural_adaptation": true,
+        "localized_keywords": true,
+        "localized_meta_tags": true,
+        "localized_cta": true
+      }
+    }
+  },
+  "workflow_rules": {
+    "sequential_activation": {
+      "enabled": true,
+      "order": ["ResearchAgent", "ArticleWriterAgent", "SEOOptimizerAgent", "MultilingualAgent"],
+      "conditional": {
+        "ArticleWriterAgent": "requires ResearchAgent_output",
+        "SEOOptimizerAgent": "requires ArticleWriterAgent_output",
+        "MultilingualAgent": "requires SEOOptimizerAgent_output"
+      }
+    },
+    "parallel_activation": {
+      "enabled": false,
+      "allowed_combinations": []
+    },
+    "fallback_rules": {
+      "no_agent_match": "use_main_claude",
+      "agent_failure": "try_alternative_agent",
+      "quality_check_fail": "retry_with_improved_prompt"
+    }
+  },
+  "quality_checks": {
+    "pre_activation": {
+      "check_input_relevance": true,
+      "check_agent_availability": true,
+      "check_tool_permissions": true
+    },
+    "post_activation": {
+      "check_output_completeness": true,
+      "check_output_quality": true,
+      "check_format_compliance": true
+    },
+    "thresholds": {
+      "min_confidence": 0.7,
+      "min_quality_score": 0.8,
+      "max_processing_time": 600
+    }
+  },
+  "learning_parameters": {
+    "feedback_collection": true,
+    "performance_tracking": true,
+    "rule_optimization": true,
+    "update_frequency": "weekly"
+  }
+}
