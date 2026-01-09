@@ -4,7 +4,18 @@ import matter from 'gray-matter'
 
 const baseUrl = 'https://yourbusinessinitaly.com'
 const languages = ['it', 'en', 'de', 'fr', 'es']
-const sections = ['', '/services', '/about', '/blog', '/contact', '/media']
+const sections = [
+  '',
+  '/services',
+  '/services/open-company-italy',
+  '/services/open-vat-number-italy',
+  '/services/tax-accounting-expats',
+  '/pillar/how-to-start-business-in-italy-2025',
+  '/about',
+  '/blog',
+  '/contact',
+  '/media'
+]
 const DEFAULT_LANG = 'en'
 
 const normalizePath = (pathValue: string) => {

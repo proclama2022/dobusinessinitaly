@@ -85,7 +85,7 @@ const readBlogPosts = (): { [language: string]: BlogPost[] } => {
     }
 
     const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file =>
-      file.endsWith('.mdx') || file.endsWith('.md')
+      file.endsWith('.mdx') || (file.endsWith('.md') && !file.endsWith('-transformed.md'))
     );
 
     files.forEach(filename => {
@@ -267,7 +267,7 @@ export const generateMainSitemap = () => {
   // Leggi i file per identificare i gruppi di articoli correlati
   try {
     const files = fs.readdirSync(BLOG_CONTENT_PATH).filter(file =>
-      file.endsWith('.mdx') || file.endsWith('.md')
+      file.endsWith('.mdx') || (file.endsWith('.md') && !file.endsWith('-transformed.md'))
     );
 
     files.forEach(filename => {
