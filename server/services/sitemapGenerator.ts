@@ -10,6 +10,18 @@ const __dirname = dirname(__filename);
 const SITEMAP_PATH = path.join(__dirname, '../../client/public');
 const DIST_SITEMAP_PATH = path.join(__dirname, '../../dist/public');
 const BLOG_CONTENT_PATH = path.join(__dirname, '../../content/blog');
+const SITE_URL = 'https://yourbusinessinitaly.com';
+const DEFAULT_LANG = 'en';
+
+const normalizePathSegment = (pathValue: string) => pathValue.replace(/^\/+/, '').replace(/\/+$/, '');
+const buildLocalizedUrl = (language: string, pathNoLang: string) => {
+  const normalized = normalizePathSegment(pathNoLang);
+  const suffix = normalized ? `/${normalized}` : '';
+  if (language === DEFAULT_LANG) {
+    return `${SITE_URL}${suffix || '/'}`;
+  }
+  return `${SITE_URL}/${language}${suffix}`;
+};
 
 interface BlogPost {
   slug: string;
@@ -149,9 +161,9 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
     const alternates: { [key: string]: string } = {};
     const languages = ['it', 'en', 'de', 'fr', 'es'];
     languages.forEach(lang => {
-      alternates[lang] = `https://yourbusinessinitaly.com/${lang}${pathNoLang ? `/${pathNoLang}` : '/'}`;
+      alternates[lang] = buildLocalizedUrl(lang, pathNoLang);
     });
-    alternates['x-default'] = `https://yourbusinessinitaly.com/it${pathNoLang ? `/${pathNoLang}` : '/'}`;
+    alternates['x-default'] = buildLocalizedUrl(DEFAULT_LANG, pathNoLang);
     return alternates;
   };
 
@@ -169,7 +181,7 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
   ];
 
   const sitemapEntries: SitemapEntry[] = staticPages.map(page => ({
-    loc: `https://yourbusinessinitaly.com/${language}${page.path ? `/${page.path}` : '/'}`,
+    loc: buildLocalizedUrl(language, page.path),
     lastmod: today,
     changefreq: page.changefreq,
     priority: page.priority,
@@ -209,12 +221,12 @@ export const generateSitemap = (language: string, posts?: BlogPost[]) => {
     const alternates: { [key: string]: string } = {};
     if (articleGroups[baseSlug]) {
       Object.entries(articleGroups[baseSlug]).forEach(([lang, variantPost]) => {
-        alternates[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${variantPost.slug}`;
+        alternates[lang] = buildLocalizedUrl(lang, `blog/${variantPost.slug}`);
       });
     }
 
     sitemapEntries.push({
-      loc: `https://yourbusinessinitaly.com/${language}/blog/${post.slug}`,
+      loc: buildLocalizedUrl(language, `blog/${post.slug}`),
       lastmod: post.lastmod,
       changefreq,
       priority,
@@ -318,20 +330,19 @@ export const generateMainSitemap = () => {
   const today = new Date().toISOString().split('T')[0];
 
   const buildAlternatesPath = (pathNoLang: string) => {
-    const path = pathNoLang ? `/${pathNoLang}` : '/';
     return {
-      it: `https://yourbusinessinitaly.com/it${path}`,
-      en: `https://yourbusinessinitaly.com/en${path}`,
-      de: `https://yourbusinessinitaly.com/de${path}`,
-      fr: `https://yourbusinessinitaly.com/fr${path}`,
-      es: `https://yourbusinessinitaly.com/es${path}`,
-      'x-default': `https://yourbusinessinitaly.com/it${path}`
+      it: buildLocalizedUrl('it', pathNoLang),
+      en: buildLocalizedUrl('en', pathNoLang),
+      de: buildLocalizedUrl('de', pathNoLang),
+      fr: buildLocalizedUrl('fr', pathNoLang),
+      es: buildLocalizedUrl('es', pathNoLang),
+      'x-default': buildLocalizedUrl(DEFAULT_LANG, pathNoLang)
     };
   };
 
   const sitemapEntries: SitemapEntry[] = [
     {
-      loc: `https://yourbusinessinitaly.com/it/`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, ''),
       lastmod: today,
       changefreq: 'daily',
       priority: '1.0',
@@ -339,35 +350,35 @@ export const generateMainSitemap = () => {
     },
     // Pagine principali con hreflang
     {
-      loc: `https://yourbusinessinitaly.com/it/blog`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'blog'),
       lastmod: today,
       changefreq: 'hourly',
       priority: '0.95',
       alternates: buildAlternatesPath('blog')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/services`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'services'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.9',
       alternates: buildAlternatesPath('services')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/about`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'about'),
       lastmod: today,
       changefreq: 'monthly',
       priority: '0.7',
       alternates: buildAlternatesPath('about')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/contact`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'contact'),
       lastmod: today,
       changefreq: 'monthly',
       priority: '0.7',
       alternates: buildAlternatesPath('contact')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/media`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'media'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.75',
@@ -375,7 +386,7 @@ export const generateMainSitemap = () => {
     },
     // Pillar page
     {
-      loc: `https://yourbusinessinitaly.com/it/pillar/how-to-start-business-in-italy-2025`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'pillar/how-to-start-business-in-italy-2025'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.95',
@@ -383,21 +394,21 @@ export const generateMainSitemap = () => {
     },
     // Service landing pages
     {
-      loc: `https://yourbusinessinitaly.com/it/services/open-company-italy`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'services/open-company-italy'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.9',
       alternates: buildAlternatesPath('services/open-company-italy')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/services/open-vat-number-italy`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'services/open-vat-number-italy'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.9',
       alternates: buildAlternatesPath('services/open-vat-number-italy')
     },
     {
-      loc: `https://yourbusinessinitaly.com/it/services/tax-accounting-expats`,
+      loc: buildLocalizedUrl(DEFAULT_LANG, 'services/tax-accounting-expats'),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.9',
@@ -416,7 +427,7 @@ export const generateMainSitemap = () => {
         latestDate = post.lastmod;
       }
 
-      availableLanguages[lang] = `https://yourbusinessinitaly.com/${lang}/blog/${post.slug}`;
+      availableLanguages[lang] = buildLocalizedUrl(lang, `blog/${post.slug}`);
     });
 
     // Aggiungi l'articolo principale (versione italiana se disponibile, altrimenti la prima disponibile)
@@ -433,7 +444,7 @@ export const generateMainSitemap = () => {
     }
     
     if (mainPost) {
-      const mainUrl = `https://yourbusinessinitaly.com/${mainLang}/blog/${mainPost.slug}`;
+      const mainUrl = buildLocalizedUrl(mainLang, `blog/${mainPost.slug}`);
 
       // Determina la frequenza e priorità basata sulla data dell'articolo
       const articleDate = new Date(mainPost.date);

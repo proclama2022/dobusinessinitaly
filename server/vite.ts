@@ -168,12 +168,29 @@ function isValidSPARoute(url: string): boolean {
 
 function buildHeadTags(url: string): string {
   const baseUrl = 'https://yourbusinessinitaly.com';
-  const cleanUrl = url.split('?')[0];
+  const defaultLang = 'en';
+  const normalizePath = (pathValue: string) => pathValue.replace(/\/+$/, '') || '/';
+  const cleanUrl = normalizePath(url.split('?')[0]);
   const match = cleanUrl.match(/^\/(it|en|de|fr|es)(\/.+)?$/);
-  const lang = match ? match[1] : 'it';
-  const canonical = cleanUrl === '/' ? baseUrl : `${baseUrl}${cleanUrl}`;
+  const lang = match ? match[1] : defaultLang;
   const routes = ['', '/services', '/about', '/blog', '/contact', '/media', '/privacy-policy', '/cookie-policy', '/social'];
   const isBase = routes.some(r => cleanUrl === `/${lang}${r}` || cleanUrl === '/' || cleanUrl === r);
+
+  const stripDefaultLang = (pathValue: string) => {
+    if (pathValue === `/${defaultLang}`) return '/';
+    if (pathValue.startsWith(`/${defaultLang}/`)) return pathValue.slice(defaultLang.length + 1);
+    return pathValue;
+  };
+
+  const buildLocalizedPath = (language: string, pathValue: string) => {
+    const normalized = normalizePath(pathValue);
+    if (language === defaultLang) return normalized;
+    return normalized === '/' ? `/${language}` : `/${language}${normalized}`;
+  };
+
+  const baseSuffix = normalizePath(cleanUrl.replace(/^\/(it|en|de|fr|es)(?=\/|$)/, '') || '/');
+  const canonicalPath = normalizePath(stripDefaultLang(cleanUrl));
+  const canonical = `${baseUrl}${canonicalPath === '/' ? '' : canonicalPath}`;
 
   const blogMatch = cleanUrl.match(/^\/(it|en|de|fr|es)\/blog\/([^/]+)$/);
   if (blogMatch) {
@@ -185,7 +202,7 @@ function buildHeadTags(url: string): string {
         const fileContents = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf8');
         const { data } = matter(fileContents);
         const langMatch = filename.match(/\.([a-z]{2})\.mdx$/);
-        const fileLanguage = langMatch?.[1] || 'it';
+        const fileLanguage = langMatch?.[1] || defaultLang;
         const fileSlug = data.slug || filename.replace(/(\.([a-z]{2}))?\.mdx$/, '');
         const baseSlug = fileSlug.replace(/-(it|en|de|fr|es)$/, '');
         const requestedBase = slug.replace(/-(it|en|de|fr|es)$/, '');
@@ -197,16 +214,22 @@ function buildHeadTags(url: string): string {
     const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
     const alt = ['it','en','de','fr','es']
       .filter(l => variants[l])
-      .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}/blog/${variants[l]}" />`)
+      .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}${buildLocalizedPath(l, `/blog/${variants[l]}`) === '/' ? '' : buildLocalizedPath(l, `/blog/${variants[l]}`)}" />`)
       .join('');
-    const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}/it/blog/${variants['it'] ?? slug}" />`;
+    const xdefSlug = variants[defaultLang] ?? variants['it'] ?? slug;
+    const xdefPath = buildLocalizedPath(defaultLang, `/blog/${xdefSlug}`);
+    const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}${xdefPath === '/' ? '' : xdefPath}" />`;
     return `${canonicalTag}${alt}${xdef}`;
   }
 
   const alt = ['it','en','de','fr','es']
-    .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}${isBase && cleanUrl !== '/' ? cleanUrl.replace(/^\/[a-z]{2}/, '') : ''}" />`)
+    .map(l => {
+      const hrefPath = buildLocalizedPath(l, isBase ? baseSuffix : cleanUrl);
+      return `<link rel="alternate" hreflang="${l}" href="${baseUrl}${hrefPath === '/' ? '' : hrefPath}" />`;
+    })
     .join('');
-  const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}/it${isBase && cleanUrl !== '/' ? cleanUrl.replace(/^\/[a-z]{2}/, '') : ''}" />`;
+  const xdefPath = buildLocalizedPath(defaultLang, isBase ? baseSuffix : cleanUrl);
+  const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}${xdefPath === '/' ? '' : xdefPath}" />`;
   const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
   return `${canonicalTag}${isBase ? alt + xdef : ''}`;
 }

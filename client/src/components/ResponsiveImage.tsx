@@ -288,7 +288,8 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
             willChange: 'opacity'
           }}
           // SEO e accessibilità
-          fetchPriority={priority ? 'high' : 'auto'}
+          // @ts-ignore: React types don't yet support fetchpriority
+          fetchpriority={priority ? 'high' : 'auto'}
           role="img"
         />
 

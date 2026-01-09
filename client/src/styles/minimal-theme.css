@@ -2,16 +2,20 @@
 
 :root {
   /* Primary Colors */
-  --primary: 142 100% 29%; /* Italian Green #009246 */
+  --primary: 142 100% 29%;
+  /* Italian Green #009246 */
   --primary-foreground: 0 0% 100%;
-  
-  --secondary: 356 66% 49%; /* Italian Red #ce2b37 - Use sparingly for accents */
+
+  --secondary: 356 66% 49%;
+  /* Italian Red #ce2b37 - Use sparingly for accents */
   --secondary-foreground: 0 0% 100%;
 
   /* Neutral Scale */
-  --background: 0 0% 100%; /* Pure White */
-  --foreground: 222 47% 11%; /* Deep Navy/Black for high contrast text */
-  
+  --background: 0 0% 100%;
+  /* Pure White */
+  --foreground: 222 47% 11%;
+  /* Deep Navy/Black for high contrast text */
+
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
 
@@ -23,17 +27,28 @@
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  
+
   --radius: 0.25rem;
+
+  /* Neutral Scale */
+  --neutral-100: 210 40% 98%;
+  --neutral-200: 210 40% 96.1%;
+  --neutral-300: 214.3 31.8% 91.4%;
+  --neutral-400: 215.4 16.3% 85%;
+  --neutral-500: 215.4 16.3% 70%;
+  --neutral-600: 215.4 16.3% 46.9%;
+  --neutral-700: 215.4 16.3% 30%;
+  --neutral-800: 222 47% 11%;
+  --neutral-900: 222 47% 5%;
 }
 
 .dark {
   --background: 222 47% 11%;
   --foreground: 210 40% 98%;
-  
+
   --primary: 142 70% 40%;
   --primary-foreground: 0 0% 100%;
-  
+
   --secondary: 356 70% 60%;
   --secondary-foreground: 0 0% 100%;
 
@@ -42,22 +57,38 @@
 
   --card: 222 47% 11%;
   --card-foreground: 210 40% 98%;
-  
+
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
-  
+
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
+
+  /* Dark mode neutral scale - Reversed */
+  --neutral-100: 222 47% 5%;
+  --neutral-200: 222 47% 11%;
+  --neutral-300: 215.4 16.3% 30%;
+  --neutral-400: 215.4 16.3% 46.9%;
+  --neutral-500: 215.4 16.3% 70%;
+  --neutral-600: 215.4 16.3% 85%;
+  --neutral-700: 214.3 31.8% 91.4%;
+  --neutral-800: 210 40% 96.1%;
+  --neutral-900: 210 40% 98%;
 }
 
 /* Typography Overrides */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
   letter-spacing: -0.02em;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Outfit, sans-serif;
 }
 
 /* Utility Classes for the new theme */

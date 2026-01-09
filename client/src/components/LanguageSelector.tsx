@@ -2,8 +2,8 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from '@tanstack/react-query';
-import { supportedLanguages } from '@/lib/languages';
 import OptimizedImage from './OptimizedImage';
+import { buildLocalizedPath, stripLanguagePrefix } from '@/lib/languagePaths';
 
 type LanguageSelectorProps = {
   isMobile?: boolean;
@@ -25,13 +25,8 @@ const LanguageSelector = ({ isMobile = false }: LanguageSelectorProps) => {
     await queryClient.invalidateQueries({ queryKey: ['/api/blog'] });
 
     // Update URL
-    const segments = location.split('/');
-    if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
-      segments[1] = langCode;
-      setLocation(segments.join('/'));
-    } else {
-      setLocation(`/${langCode}${location === '/' ? '' : location}`);
-    }
+    const { cleanPath } = stripLanguagePrefix(location);
+    setLocation(buildLocalizedPath(cleanPath, langCode));
   }, [i18n, queryClient, location, setLocation]);
 
   const languages = [

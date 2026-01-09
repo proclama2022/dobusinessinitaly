@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const BASE = 'http://localhost:3000'
+const BASE = (process.env.BASE_URL || 'http://localhost:3000').replace(/\/+$/, '')
 
 const normalize = (u: string) => u.replace(/\/+$/, '')
 
@@ -31,6 +31,7 @@ type UrlAudit = {
   status: number
   contentType: string | null
   robotsHeader: string | null
+  redirectLocation: string | null
   canonical: string | null
   robotsMeta: string | null
   alternates: string[]
@@ -43,11 +44,13 @@ const auditUrl = async (url: string): Promise<UrlAudit> => {
   let status = 0
   let contentType: string | null = null
   let robotsHeader: string | null = null
+  let redirectLocation: string | null = null
   try {
     const head = await fetch(url, { method: 'HEAD' })
     status = head.status
     contentType = head.headers.get('content-type')
     robotsHeader = head.headers.get('x-robots-tag')
+    redirectLocation = head.headers.get('location')
   } catch { }
 
   let html = ''
@@ -65,7 +68,7 @@ const auditUrl = async (url: string): Promise<UrlAudit> => {
   const canonicalMismatch = canonical ? normalize(canonical) !== normalize(url) : false
   const hasHtml = contentType ? /text\/html|application\/xhtml\+xml/i.test(contentType) : false
 
-  return { url, status, contentType, robotsHeader, canonical, robotsMeta, alternates, soft404, canonicalMismatch, hasHtml }
+  return { url, status, contentType, robotsHeader, redirectLocation, canonical, robotsMeta, alternates, soft404, canonicalMismatch, hasHtml }
 }
 
 const run = async () => {
@@ -85,6 +88,7 @@ const run = async () => {
   const issues = results.filter(r => r.status !== 200 || r.soft404 || r.canonicalMismatch || (r.robotsHeader && /noindex/i.test(r.robotsHeader)) || (r.robotsMeta && /noindex/i.test(r.robotsMeta)))
   const byType = {
     non200: results.filter(r => r.status !== 200).map(r => r.url),
+    non200Details: results.filter(r => r.status !== 200).map(r => ({ url: r.url, status: r.status, redirect: r.redirectLocation })),
     soft404: results.filter(r => r.soft404).map(r => r.url),
     canonicalMismatch: results.filter(r => r.canonicalMismatch).map(r => ({ url: r.url, canonical: r.canonical })),
     robotsNoindexHeader: results.filter(r => r.robotsHeader && /noindex/i.test(r.robotsHeader as string)).map(r => r.url),

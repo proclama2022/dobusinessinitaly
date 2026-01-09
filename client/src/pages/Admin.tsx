@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import OptimizedImage from '@/components/OptimizedImage';
 
-const PASSWORD = 'supersegreta';
-
 const AdminPage = () => {
   const [input, setInput] = useState('');
   const [authenticated, setAuthenticated] = useState(() => {
-    return localStorage.getItem('admin-auth') === PASSWORD;
+    return !!localStorage.getItem('admin-auth');
+  });
+  const [password, setPassword] = useState(() => {
+    return localStorage.getItem('admin-auth') || '';
   });
   const [error, setError] = useState('');
 
@@ -30,18 +31,20 @@ const AdminPage = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input === PASSWORD) {
-      localStorage.setItem('admin-auth', PASSWORD);
+    if (input.trim()) {
+      localStorage.setItem('admin-auth', input);
+      setPassword(input);
       setAuthenticated(true);
       setError('');
     } else {
-      setError('Password errata');
+      setError('Inserisci una password');
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem('admin-auth');
     setAuthenticated(false);
+    setPassword('');
     setInput('');
   };
 
@@ -66,7 +69,7 @@ const AdminPage = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${PASSWORD}`,
+          'Authorization': `Bearer ${password}`,
         },
         body: JSON.stringify({
           meta: {
@@ -107,7 +110,7 @@ const AdminPage = () => {
       const res = await fetch('/api/upload', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${PASSWORD}`,
+          'Authorization': `Bearer ${password}`,
         },
         body: formData,
       });
@@ -151,7 +154,7 @@ const AdminPage = () => {
     try {
       const res = await fetch(`/api/blog/${slug}`, {
         method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${PASSWORD}` }
+        headers: { 'Authorization': `Bearer ${password}` }
       });
       const data = await res.json();
       if (data.success) {

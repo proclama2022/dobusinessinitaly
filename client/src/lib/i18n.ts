@@ -36,7 +36,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'it',
-    lng: 'it', // Set default language to Italian
+    lng: 'en', // Set default language to English
     debug: false,
     // Do not return empty strings or nulls from translations so defaultValue fallback works
     returnEmptyString: false,

@@ -15,6 +15,7 @@ import OpenVATNumberItaly from '@/pages/OpenVATNumberItaly';
 import TaxAccountingExpats from '@/pages/TaxAccountingExpats';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { buildLocalizedPath, DEFAULT_LANGUAGE, stripLanguagePrefix } from '@/lib/languagePaths';
 
 // Lingue supportate
 export const supportedLanguages = ['it', 'en', 'fr', 'de', 'es'];
@@ -23,22 +24,8 @@ export const supportedLanguages = ['it', 'en', 'fr', 'de', 'es'];
  * Estrattore di prefisso lingua dall'URL
  */
 const extractLanguageFromPath = (path: string) => {
-  const segments = path.split('/');
-  
-  // Se il primo segmento è un codice lingua valido
-  if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
-    return {
-      lang: segments[1],
-      // Rimuove il prefisso della lingua dal percorso
-      path: '/' + segments.slice(2).join('/')
-    };
-  }
-  
-  // Nessun prefisso linguistico trovato
-  return {
-    lang: null,
-    path
-  };
+  const { lang, cleanPath } = stripLanguagePrefix(path);
+  return { lang, path: cleanPath };
 };
 
 /**
@@ -57,7 +44,7 @@ export const useLocalizedPath = () => {
     const { path: cleanPath } = extractLanguageFromPath(targetPath);
     
     // Aggiungi il prefisso della lingua corrente
-    return `/${i18n.language}${cleanPath === '/' ? '' : cleanPath}`;
+    return buildLocalizedPath(cleanPath, i18n.language);
   };
   
   return {
@@ -84,8 +71,10 @@ export const LocalizedRouter = () => {
       if (lang && supportedLanguages.includes(lang)) {
         await i18n.changeLanguage(lang);
       } else if (location === '/' || !lang) {
-        // Reindirizza alla home con la lingua corrente se non c'è un prefisso
-        setLocation(`/${i18n.language}`);
+        const target = buildLocalizedPath('/', i18n.language);
+        if (target !== '/' || i18n.language !== DEFAULT_LANGUAGE) {
+          setLocation(target);
+        }
       }
       setInitialized(true);
     };
@@ -157,7 +146,10 @@ export const LocalizedRouter = () => {
           
           {/* Fallback alla root per reindirizzare */}
           <Route path="/" component={() => {
-            setLocation(`/${i18n.language}`);
+            const target = buildLocalizedPath('/', i18n.language);
+            if (target !== '/') {
+              setLocation(target);
+            }
             return null;
           }} />
           

@@ -20,14 +20,14 @@ export const authorProfile: AuthorProfile = {
   affiliation: 'Proclama STP S.p.A. tra Professionisti',
   urlByLang: {
     it: 'https://yourbusinessinitaly.com/it/about',
-    en: 'https://yourbusinessinitaly.com/en/about',
+    en: 'https://yourbusinessinitaly.com/about',
     fr: 'https://yourbusinessinitaly.com/fr/about',
     de: 'https://yourbusinessinitaly.com/de/about',
     es: 'https://yourbusinessinitaly.com/es/about'
   },
   sameAs: [
-    'https://yourbusinessinitaly.com/en/about',
-    'https://yourbusinessinitaly.com/en/media',
+    'https://yourbusinessinitaly.com/about',
+    'https://yourbusinessinitaly.com/media',
     'https://www.linkedin.com/in/studioemmicommercialista/',
     'https://www.linkedin.com/company/partitaiva'
     // Add LinkedIn/Twitter when provided

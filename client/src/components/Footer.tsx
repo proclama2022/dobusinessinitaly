@@ -65,7 +65,7 @@ const Footer = () => {
                 objectFit="contain"
               />
             </div>
-            <p className="text-neutral-400 mb-8 font-[Lora] leading-relaxed max-w-xs border-l-2 border-italian-green pl-4">
+            <p className="text-neutral-400 mb-8 font-outfit leading-relaxed max-w-xs border-l-2 border-italian-green pl-4">
               {t('footer.tagline')}
             </p>
             
@@ -92,7 +92,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-lg font-[Playfair_Display] font-bold mb-8 relative inline-block">
+            <h3 className="text-lg font-instrument font-bold mb-8 relative inline-block">
               Quick Links
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-italian-green"></span>
             </h3>
@@ -100,7 +100,7 @@ const Footer = () => {
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
                   <Link href={getLocalizedPath(link.path)}>
-                    <span className="text-neutral-400 hover:text-italian-green transition-colors flex items-center group cursor-pointer font-[Montserrat] text-sm tracking-wide">
+                    <span className="text-neutral-400 hover:text-italian-green transition-colors flex items-center group cursor-pointer font-outfit text-sm tracking-wide">
                       <FontAwesomeIcon icon={faArrowRight} className="text-[10px] mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-italian-green" />
                       {link.label}
                     </span>
@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <h3 className="text-lg font-[Playfair_Display] font-bold mb-8 relative inline-block">
+            <h3 className="text-lg font-instrument font-bold mb-8 relative inline-block">
               Contact Us
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-italian-green"></span>
             </h3>
@@ -121,7 +121,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1 mr-4 text-italian-green">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="text-sm" />
                 </div>
-                <span className="text-neutral-400 text-sm leading-relaxed font-[Lora]">
+                <span className="text-neutral-400 text-sm leading-relaxed font-outfit">
                   {companyData.address.street},<br />
                   {companyData.address.postalCode} {companyData.address.city} ({companyData.address.region}),<br />
                   {companyData.address.country}
@@ -131,7 +131,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1 mr-4 text-italian-green">
                   <FontAwesomeIcon icon={faPhoneAlt} className="text-sm" />
                 </div>
-                <a href={`tel:${companyData.contact.phone.replace(/\s/g, '')}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 font-[Montserrat]">
+                <a href={`tel:${companyData.contact.phone.replace(/\s/g, '')}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 font-outfit">
                   {companyData.contact.phone}
                 </a>
               </li>
@@ -139,7 +139,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 mt-1 mr-4 text-italian-green">
                   <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
                 </div>
-                <a href={`mailto:${companyData.contact.email}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 break-all font-[Montserrat]">
+                <a href={`mailto:${companyData.contact.email}`} className="text-neutral-400 hover:text-italian-green transition-colors text-sm mt-1.5 break-all font-outfit">
                   {companyData.contact.email}
                 </a>
               </li>
@@ -148,7 +148,7 @@ const Footer = () => {
 
           {/* Legal / Newsletter */}
           <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <h3 className="text-lg font-[Playfair_Display] font-bold mb-8 relative inline-block">
+            <h3 className="text-lg font-instrument font-bold mb-8 relative inline-block">
               Legal Info
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-italian-green"></span>
             </h3>
@@ -156,7 +156,7 @@ const Footer = () => {
               {legalLinks.map((link, idx) => (
                 <li key={idx}>
                   <Link href={getLocalizedPath(link.path)}>
-                    <span className="text-neutral-400 hover:text-italian-green transition-colors text-sm cursor-pointer font-[Montserrat]">
+                    <span className="text-neutral-400 hover:text-italian-green transition-colors text-sm cursor-pointer font-outfit">
                       {link.label}
                 </span>
                   </Link>
@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 font-[Montserrat]">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 font-outfit">
           <p>&copy; {currentYear} Studio Emmi. All rights reserved.</p>
           <p className="mt-2 md:mt-0 flex items-center">
             Designed with <span className="text-italian-red mx-1">❤️</span> in Sicily

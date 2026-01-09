@@ -82,16 +82,16 @@ class NanoBananaDirect:
         
         # Template ottimizzato per Nano Banana
         enhanced = f"""
-Professional business image: {prompt}
+Professional business photography: {prompt}
 
-Style: Clean, modern, professional photography
-Quality: High resolution, sharp, detailed
-Colors: Professional blue (#1e40af), gray (#6b7280), white
-Typography: Clear, readable text if needed
-Composition: Balanced, corporate-friendly
-Lighting: Natural, professional
-Format: Square, optimized for web and social media
-Target: Italian professionals and entrepreneurs
+Style: High-end editorial, clean, modern, professional.
+IMPORTANT: ABSOLUTELY NO TEXT, NO LABELS, NO LETTERS, NO WORDS, NO TITLES in the image.
+The image should be purely visual and symbolic.
+Colors: Professional blue (#1e40af), gray (#6b7280), silver, white.
+Lighting: Professional studio lighting or natural soft light.
+Composition: Minimalist, balanced, corporate.
+Format: Square, high resolution.
+Target: European entrepreneurs and investors.
 """
         return enhanced.strip()
     

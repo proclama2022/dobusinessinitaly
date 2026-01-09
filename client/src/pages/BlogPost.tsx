@@ -5,11 +5,13 @@ import { Link, useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import SEOHead from '@/components/SEOHead';
-import OptimizedImage from '@/components/OptimizedImage';
+import NextGenImage from '@/components/NextGenImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
+import OptimizedImage from '@/components/OptimizedImage';
 import { authorProfile } from '@/data/author';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -19,14 +21,22 @@ import { faHandshake, faArrowLeft, faUserCircle, faFolderOpen, faArrowRight, faU
 interface BlogPostMeta {
   slug: string;
   title: string;
+  description?: string;
+  excerpt: string;
+  metaTitle?: string;
+  metaDescription?: string;
   date: string;
   category: string;
-  excerpt: string;
   coverImage: string;
   author: string;
   authorImage?: string;
   authorTitle?: string;
   lang?: string;
+  keywords?: string[];
+  schemaMarkup?: {
+    '@type'?: string;
+    [key: string]: any;
+  };
   leadMagnet?: {
     title: string;
     description: string;
@@ -43,11 +53,138 @@ const FALLBACK_COVER =
   'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1920&q=80';
 const DEFAULT_COVER = '/images/default-blog-cover.webp';
 
+/**
+ * Estrae le FAQ dal contenuto MDX.
+ * Le FAQ devono essere formattate così:
+ * ## FAQ
+ * ### Domanda 1?
+ * Risposta 1...
+ * ### Domanda 2?
+ * Risposta 2...
+ */
+const extractFAQs = (content: string): Array<{ question: string; answer: string }> | null => {
+  // Trova la sezione FAQ (## FAQ o ### FAQ)
+  const faqSectionRegex = /#{2,3}\s*(?:FAQ|Domande Frequenti|Frequently Asked Questions)\s*\n([\s\S]*?)(?=\n#{1,3}\s|[^\n]*$)/i;
+  const faqMatch = content.match(faqSectionRegex);
+
+  if (!faqMatch) return null;
+
+  const faqContent = faqMatch[1];
+
+  // Estrai domande e risposte (### Domanda? seguito dal testo)
+  const faqPairs: Array<{ question: string; answer: string }> = [];
+  const faqItemRegex = /###\s+([^\n]+)\n([\s\S]*?)(?=\n###|\n#{2,}|\s*$)/g;
+  let match;
+
+  while ((match = faqItemRegex.exec(faqContent)) !== null) {
+    const question = match[1].trim();
+    const answer = match[2].trim();
+
+    if (question && answer) {
+      faqPairs.push({ question, answer });
+    }
+  }
+
+  return faqPairs.length > 0 ? faqPairs : null;
+};
+
 const handleImageError = (event?: React.SyntheticEvent<HTMLImageElement, Event>) => {
   const target = event?.currentTarget;
   if (!target) return;
   target.onerror = null;
   target.src = FALLBACK_COVER;
+};
+
+/**
+ * Calcola il punteggio di similarità tra due articoli basato su keywords
+ * Score: 0-100, dove 100 = massima similarità
+ */
+const calculateSimilarityScore = (
+  currentPost: BlogPostMeta,
+  candidatePost: BlogPostMeta
+): number => {
+  let score = 0;
+
+  // 1. Stessa categoria (+30 punti)
+  if (currentPost.category === candidatePost.category) {
+    score += 30;
+  }
+
+  // 2. Keywords comuni (+50 punti massimi)
+  const currentKeywords = new Set(currentPost.keywords || []);
+  const candidateKeywords = new Set(candidatePost.keywords || []);
+
+  if (currentKeywords.size > 0 && candidateKeywords.size > 0) {
+    const intersection = new Set([...currentKeywords].filter(k => candidateKeywords.has(k)));
+    const union = new Set([...currentKeywords, ...candidateKeywords]);
+    const jaccardSimilarity = intersection.size / union.size; // 0-1
+    score += jaccardSimilarity * 50;
+  }
+
+  // 3. Stessa lingua (+20 punti)
+  if (currentPost.lang === candidatePost.lang) {
+    score += 20;
+  }
+
+  return Math.min(score, 100);
+};
+
+/**
+ * Estrae gli steps procedurali dal contenuto per generare HowTo schema
+ * Cerca pattern come "1. Titolo", "2. Titolo", "Passo 1", "Step 1", ecc.
+ */
+const extractHowToSteps = (content: string): Array<{ name: string; text: string }> | null => {
+  const stepPatterns = [
+    // Pattern per "1. Titolo" o "1) Titolo"
+    /^\d+\.\s+(.+)$/gm,
+    // Pattern per "**1. Titolo**" (bold)
+    /^\*\*\d+\.\s+(.+)\*\*$/gm,
+    // Pattern per "### 1. Titolo" (heading)
+    /^###\s*\d+\.\s+(.+)$/gm,
+    // Pattern per "Step 1:" o "Passo 1:"
+    /^(?:Step|Passo)\s+\d+:\s*(.+)$/gmi,
+  ];
+
+  const steps: Array<{ name: string; text: string }> = [];
+  const seenSteps = new Set<string>();
+
+  for (const pattern of stepPatterns) {
+    const matches = content.matchAll(pattern);
+
+    for (const match of matches) {
+      const stepName = match[1]?.trim();
+      if (stepName && !seenSteps.has(stepName)) {
+        seenSteps.add(stepName);
+
+        // Estrai il testo dopo lo step (fino al prossimo step o heading)
+        const stepIndex = match.index!;
+        const afterStep = content.slice(stepIndex + match[0].length);
+
+        // Trova la fine del testo (prossimo step, heading, o fine contenuto)
+        const nextStepMatch = afterStep.match(/^\d+\./m);
+        const nextHeadingMatch = afterStep.match(/^#{1,3}\s/m);
+        const endPos = Math.min(
+          nextStepMatch?.index ?? Infinity,
+          nextHeadingMatch?.index ?? Infinity,
+          500 // Max 500 caratteri per step
+        );
+
+        const stepText = afterStep.slice(0, endPos).trim().substring(0, 200);
+
+        steps.push({
+          name: stepName,
+          text: stepText || stepName
+        });
+
+        // Limita a 10 steps
+        if (steps.length >= 10) break;
+      }
+    }
+
+    if (steps.length >= 3) break; // Trovato abbastanza steps
+  }
+
+  return steps.length >= 3 ? steps : null;
 };
 
 // Componente per il post correlato
@@ -71,18 +208,13 @@ const RelatedPostCard = ({
         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
 
         {/* Immagine articolo */}
-        <OptimizedImage
+        <NextGenImage
           src={imgSrc.includes('unsplash.com') ? `${imgSrc}?auto=format&fit=crop&w=1280&q=80` : imgSrc}
           alt={title}
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
           width={1280}
           height={480}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          srcSet={imgSrc.includes('unsplash.com') ? `
-            ${imgSrc}?auto=format&fit=crop&w=640&q=70 640w,
-            ${imgSrc}?auto=format&fit=crop&w=960&q=75 960w,
-            ${imgSrc}?auto=format&fit=crop&w=1280&q=80 1280w
-          ` : undefined}
           onError={handleImageError}
         />
 
@@ -175,24 +307,23 @@ const BlogPost = () => {
     }
   }, [postData]);
 
-  // Ottieni post correlati con strategia migliorata per SEO
-  const relatedPosts = postsData?.data
+  // Ottieni post correlati con algoritmo basato su similarità
+  const relatedPosts = postsData?.data && postData?.data?.meta
     ? (() => {
-      // Prima cerca post nella stessa categoria
-      const sameCategoryPosts = postsData.data
-        .filter(post => post.category === postData?.data?.meta?.category && post.slug !== slug);
+      const currentPost = postData.data.meta;
 
-      // Se abbiamo abbastanza post nella stessa categoria, usiamo quelli
-      if (sameCategoryPosts.length >= 3) {
-        return sameCategoryPosts.slice(0, 3);
-      }
+      // Calcola score di similarità per tutti gli altri articoli
+      const scoredPosts = postsData.data
+        .filter(post => post.slug !== slug) // Escludi l'articolo corrente
+        .map(post => ({
+          post,
+          score: calculateSimilarityScore(currentPost, post)
+        }))
+        .filter(item => item.score > 20) // Mantieni solo articoli con score > 20
+        .sort((a, b) => b.score - a.score); // Ordina per score decrescente
 
-      // Altrimenti, aggiungiamo altri post recenti di categorie diverse
-      const otherPosts = postsData.data
-        .filter(post => post.category !== postData?.data?.meta?.category && post.slug !== slug)
-        .slice(0, 3 - sameCategoryPosts.length);
-
-      return [...sameCategoryPosts, ...otherPosts];
+      // Prendi i top 3 articoli più simili
+      return scoredPosts.slice(0, 3).map(item => item.post);
     })()
     : [];
 
@@ -213,7 +344,7 @@ const BlogPost = () => {
   // Validazione lingua prima del controllo errori
   if (postData?.data?.meta && postData.data.meta.lang && postData.data.meta.lang !== currentLanguage) {
     // L'articolo esiste ma è in una lingua diversa - redirect permanente
-    const correctPath = `/${postData.data.meta.lang}/blog/${postData.data.meta.slug}`;
+    const correctPath = buildLocalizedPath(`/blog/${postData.data.meta.slug}`, postData.data.meta.lang);
     console.log(`[BlogPost] Language mismatch! Article is in '${postData.data.meta.lang}' but URL is '${currentLanguage}'. Redirecting to: ${correctPath}`);
     window.location.replace(correctPath);
     return null;
@@ -227,7 +358,7 @@ const BlogPost = () => {
 
       // Se trovato e la lingua è diversa, reindirizza
       if (foundPost && foundPost.lang && foundPost.lang !== currentLanguage) {
-        const newPath = `/${foundPost.lang}/blog/${foundPost.slug}`;
+        const newPath = buildLocalizedPath(`/blog/${foundPost.slug}`, foundPost.lang);
         console.log(`[BlogPost] Redirecting to correct language: ${newPath}`);
         window.location.replace(newPath);
         return null;
@@ -268,7 +399,10 @@ const BlogPost = () => {
   }
 
   const { meta, content } = postData.data;
-  const langPrefix = `/${currentLanguage}`;
+  const baseUrl = 'https://yourbusinessinitaly.com';
+  const toAbsoluteUrl = (path: string) => `${baseUrl}${path === '/' ? '' : path}`;
+  const canonicalPath = buildLocalizedPath(`/blog/${meta.slug}`, currentLanguage);
+  const canonicalUrl = toAbsoluteUrl(canonicalPath);
 
   // Localized author title from profile (fallback to meta or IT)
   const resolvedAuthorTitle = authorProfile.titles[currentLanguage] || meta.authorTitle || authorProfile.titles.it;
@@ -298,7 +432,7 @@ const BlogPost = () => {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: meta.title,
-    description: meta.excerpt,
+    description: meta.metaDescription || meta.description || meta.excerpt,
     image: meta.coverImage,
     datePublished: meta.date,
     dateModified: meta.date,
@@ -316,71 +450,78 @@ const BlogPost = () => {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://yourbusinessinitaly.com${langPrefix}/blog/${meta.slug}`
+      '@id': canonicalUrl
     },
-    articleSection: meta.category
+    articleSection: meta.category,
+    keywords: meta.keywords
   };
 
-  // FAQ Schema per articoli di tipo guida
-  const faqStructuredData = meta.category === 'guide' ? {
+  // FAQ Schema per articoli di tipo guida - estrae le FAQ dal contenuto MDX
+  const extractedFAQs = postData?.data?.content ? extractFAQs(postData.data.content) : null;
+  const faqStructuredData = extractedFAQs && extractedFAQs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Quanto costa aprire un\'attività in Italia da straniero?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'I costi variano da 150-300€ per una ditta individuale fino a 2.500-3.000€ per una SRL, includendo spese notarili, imposte e onorari professionali.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Quanto tempo ci vuole per aprire un\'attività?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Il processo richiede generalmente 4-6 settimane se tutta la documentazione è preparata correttamente, incluse traduzioni e legalizzazioni.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Posso aprire partita IVA se sono cittadino extra-UE?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Sì, ma devi ottenere un permesso di soggiorno per lavoro autonomo e dimostrare capacità economica di almeno 23.532€ annui.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Quali sono i vantaggi del regime forfettario?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Il regime forfettario offre aliquote agevolate (5% o 15%), esenzione da IVA e IRAP, e una contabilità semplificata ideale per nuovi freelance.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Come si calcolano i contributi INPS per i freelance?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'I contributi INPS si calcolano al 26,23% del reddito imponibile, con pagamento in due rate annuali (40% entro il 30 giugno/20 luglio e 60% entro il 30 novembre).'
-        }
+    mainEntity: extractedFAQs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
       }
-    ]
+    }))
   } : null;
+
+  // HowTo Schema per guide procedurali - genera automaticamente se non presente nel frontmatter
+  const howToStructuredData = (() => {
+    // Se c'è già uno schema HowTo nel frontmatter, usalo
+    if (meta.schemaMarkup?.['@type'] === 'HowTo') {
+      return {
+        '@context': 'https://schema.org',
+        ...meta.schemaMarkup
+      };
+    }
+
+    // Altrimenti, prova a estrarre gli steps dal contenuto
+    if (meta.category?.toLowerCase().includes('guide') && postData?.data?.content) {
+      const steps = extractHowToSteps(postData.data.content);
+      if (steps && steps.length >= 3) {
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: meta.title,
+          description: meta.metaDescription || meta.description || meta.excerpt,
+          image: meta.coverImage,
+          step: steps.map((step, index) => ({
+            '@type': 'HowToStep',
+            position: index + 1,
+            name: step.name,
+            text: step.text
+          }))
+        };
+      }
+    }
+
+    return null;
+  })();
 
   // Genera hreflang alternates per SEO internazionale
   const baseSlug = meta.slug.replace(/-(it|en|de|fr|es)$/, '');
   const hreflangAlternates: Record<string, string> = (() => {
+    const defaultLang = 'en';
     const map: Record<string, string> = {};
     const variants = (allLangPostsData?.data || []).filter(p => p.slug.replace(/-(it|en|de|fr|es)$/, '') === baseSlug);
     const langs = ['it', 'en', 'fr', 'de', 'es'];
     langs.forEach(l => {
       const v = variants.find(p => p.lang === l);
-      if (v) map[l] = `https://yourbusinessinitaly.com/${l}/blog/${v.slug}`;
+      if (v) map[l] = toAbsoluteUrl(buildLocalizedPath(`/blog/${v.slug}`, l));
     });
-    if (!map['it']) map['it'] = `https://yourbusinessinitaly.com/it/blog/${meta.slug}`;
-    map['x-default'] = map['it'];
+    if (!map[currentLanguage]) {
+      map[currentLanguage] = toAbsoluteUrl(buildLocalizedPath(`/blog/${meta.slug}`, currentLanguage));
+    }
+    const xDefault = map[defaultLang] || map[currentLanguage];
+    if (xDefault) {
+      map['x-default'] = xDefault;
+    }
     return map;
   })();
 
@@ -396,19 +537,19 @@ const BlogPost = () => {
         '@type': 'ListItem',
         position: 1,
         name: t('navigation.home', 'Home'),
-        item: `https://yourbusinessinitaly.com/${currentLanguage}`
+        item: toAbsoluteUrl(buildLocalizedPath('/', currentLanguage))
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: t('navigation.blog', 'Blog'),
-        item: `https://yourbusinessinitaly.com/${currentLanguage}/blog`
+        item: toAbsoluteUrl(buildLocalizedPath('/blog', currentLanguage))
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: meta.title,
-        item: `https://yourbusinessinitaly.com${langPrefix}/blog/${meta.slug}`
+        item: canonicalUrl
       }
     ]
   };
@@ -416,19 +557,19 @@ const BlogPost = () => {
   return (
     <>
       <SEOHead
-        title={`${meta.title} - Yourbusinessinitaly.com`}
-        description={meta.excerpt}
-        canonicalUrl={`${langPrefix}/blog/${meta.slug}`}
+        title={meta.metaTitle || `${meta.title} - Yourbusinessinitaly.com`}
+        description={meta.metaDescription || meta.description || meta.excerpt}
+        canonicalUrl={canonicalPath}
         ogImage={meta.coverImage}
         ogType="article"
         twitterCard="summary_large_image"
         lang={currentLanguage}
-        keywords={`${meta.category}, blog, articoli, fiscale, legale, business, italia`}
+        keywords={meta.keywords?.join(', ') || `${meta.category}, blog, articoli, fiscale, legale, business, italia`}
         author={meta.author}
         publishedTime={formattedDate}
         modifiedTime={formattedDate}
         articleSection={meta.category}
-        structuredData={[articleStructuredData, faqStructuredData, authorPersonStructuredData, breadcrumbStructuredData].filter(Boolean)}
+        structuredData={[articleStructuredData, faqStructuredData, howToStructuredData, authorPersonStructuredData, breadcrumbStructuredData].filter(Boolean)}
         alternates={hreflangAlternates}
       />
 
@@ -436,7 +577,7 @@ const BlogPost = () => {
       <section className="relative h-[500px] overflow-hidden">
         {/* Immagine di sfondo con overlay */}
         <div className="absolute inset-0">
-          <OptimizedImage
+          <NextGenImage
             src={
               meta.coverImage && meta.coverImage.trim()
                 ? meta.coverImage
@@ -530,10 +671,10 @@ const BlogPost = () => {
                         const encodedUrl = encodeURIComponent(currentUrl);
                         const encodedTitle = encodeURIComponent(postData?.data?.meta?.title || '');
                         const encodedText = encodeURIComponent(meta?.excerpt || '');
-                        
+
                         return (
                           <>
-                            <a 
+                            <a
                               href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
                               target="_blank"
                               rel="noopener noreferrer"

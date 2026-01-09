@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import { buildLocalizedPath } from "@/lib/languagePaths";
 
 export default function NotFound() {
   const { t, i18n } = useTranslation();
@@ -49,8 +50,8 @@ export default function NotFound() {
 
           <div className="mt-6 flex gap-2 flex-wrap">
             <Button variant="default" onClick={() => navigate("/")}>{t("common.home", "Home")}</Button>
-            <Button variant="secondary" onClick={() => navigate(`/${i18n.language}/blog`)}>{t("common.blog", "Blog")}</Button>
-            <Button variant="outline" onClick={() => navigate(`/${i18n.language}/contact`)}>{t("common.contactUs", "Contact Us")}</Button>
+            <Button variant="secondary" onClick={() => navigate(buildLocalizedPath('/blog', i18n.language))}>{t("common.blog", "Blog")}</Button>
+            <Button variant="outline" onClick={() => navigate(buildLocalizedPath('/contact', i18n.language))}>{t("common.contactUs", "Contact Us")}</Button>
           </div>
         </CardContent>
       </Card>

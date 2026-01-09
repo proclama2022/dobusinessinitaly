@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
 import { supportedLanguages } from '@/lib/languages';
+import { buildLocalizedPath, DEFAULT_LANGUAGE, stripLanguagePrefix } from '@/lib/languagePaths';
 export { supportedLanguages };
 
 /**
@@ -12,22 +13,8 @@ export function extractLanguageFromPath(path: string): {
   lang: string | null;
   newPath: string;
 } {
-  // Esempio: /en/home -> ['', 'en', 'home']
-  const segments = path.split('/');
-  
-  // Se il primo segmento dopo la radice è un codice lingua valido
-  if (segments.length > 1 && supportedLanguages.includes(segments[1])) {
-    return {
-      lang: segments[1],
-      // Rimuove il prefisso della lingua dal percorso
-      newPath: '/' + segments.slice(2).join('/')
-    };
-  }
-  
-  return {
-    lang: null,
-    newPath: path
-  };
+  const { lang, cleanPath } = stripLanguagePrefix(path);
+  return { lang, newPath: cleanPath };
 }
 
 /**
@@ -47,11 +34,13 @@ export function useLanguagePrefix() {
     }
   }, [lang, i18n]);
   
-  // Se l'URL non contiene un prefisso linguistico o se siamo alla root, aggiungilo
+  // Se l'URL non contiene un prefisso linguistico e la lingua non e' quella di default, aggiungilo
   useEffect(() => {
-    if (!lang) {
-      const newPath = location === '/' ? `/${i18n.language}` : `/${i18n.language}${location}`;
-      setLocation(newPath);
+    if (!lang && i18n.language !== DEFAULT_LANGUAGE) {
+      const target = buildLocalizedPath(location, i18n.language);
+      if (target !== location) {
+        setLocation(target);
+      }
     }
   }, [location, lang, i18n.language, setLocation]);
   
@@ -61,18 +50,14 @@ export function useLanguagePrefix() {
     const { newPath: cleanPath } = extractLanguageFromPath(path);
     
     // Aggiungi il prefisso della lingua corrente
-    if (cleanPath === '/') {
-      return `/${i18n.language}`;
-    }
-    
-    return `/${i18n.language}${cleanPath}`;
+    return buildLocalizedPath(cleanPath, i18n.language);
   };
   
   // Funzione per cambiare lingua e aggiornare l'URL
   const changeLanguage = (newLang: string) => {
     const { newPath: cleanPath } = extractLanguageFromPath(location);
     i18n.changeLanguage(newLang);
-    setLocation(`/${newLang}${cleanPath === '/' ? '' : cleanPath}`);
+    setLocation(buildLocalizedPath(cleanPath, newLang));
   };
   
   return {

@@ -14,7 +14,9 @@ const FAQSection = () => {
   const { getLocalizedPath } = useLocalizedPath();
 
   // Get FAQ data from translations
-  const faqItems = (t('faq.items', { returnObjects: true }) as FAQItem[]) || [];
+  const rawFaqItems = t('faq.items', { returnObjects: true });
+  const faqItems = Array.isArray(rawFaqItems) ? (rawFaqItems as FAQItem[]) : [];
+  
   const faqTitle = t('faq.title', 'Frequently Asked Questions');
   const faqSubtitle = t('faq.subtitle', 'Answers to the most common questions');
   const faqNotFound = t('faq.notFound', "Can't find the answer you're looking for?");

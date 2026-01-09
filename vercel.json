@@ -2680,6 +2680,8 @@
     }
   ],
   "redirects": [
+    { "source": "/en", "destination": "/", "permanent": true },
+    { "source": "/en/(.*)", "destination": "/$1", "permanent": true },
     { "source": "/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr", "destination": "/fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia", "permanent": true },
     { "source": "/es/blog/aprire-partita-iva-freelance-italia-2025.es-es", "destination": "/es/blog/aprire-partita-iva-freelance-italia-2025", "permanent": true },
     { "source": "/de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025.de-de", "destination": "/de/blog/italien-5-prozent-steuern-leitfaden-auslaender-2025", "permanent": true },
@@ -2709,7 +2711,6 @@
     { "source": "/en/blog/italy-income-tax-rates-2025-expats", "destination": "/it/blog/aliquote-imposta-reddito-italia-2025-espatriati", "permanent": true },
     { "source": "/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025", "destination": "/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025", "permanent": true },
     { "source": "/como-abrir-negocio-italia-extranjero-guia-completa-2025", "destination": "/es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025", "permanent": true },
-    { "source": "/services/open-vat-number-italy", "destination": "/it/services/open-vat-number-italy", "permanent": true },
     { "source": "/en/blog/opening-bank-account-italy-foreigner-2025-guide.en-en", "destination": "/en/blog/opening-bank-account-italy-foreigner-2025-guide", "permanent": true },
     { "source": "/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025.fr-fr", "destination": "/fr/blog/comment-ouvrir-entreprise-italie-etranger-guide-complet-2025", "permanent": true },
     { "source": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet.fr-fr", "destination": "/fr/blog/residence-fiscale-italie-expatries-2025-guide-complet", "permanent": true },

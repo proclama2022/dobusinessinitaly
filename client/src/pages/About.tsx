@@ -12,6 +12,7 @@ import TeamMemberImage from '@/components/TeamMemberImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 // Componente per la card del membro del team
 const TeamMemberCard = ({
@@ -37,7 +38,7 @@ const TeamMemberCard = ({
       {/* Badge per founder/CEO */}
       {(isFounder || isCEO) && (
         <div className="absolute top-4 right-4 z-10">
-          <span className={`inline-flex items-center px-3 py-1 rounded-sm text-xs font-[Montserrat] font-bold uppercase tracking-wider ${isFounder && isCEO ? 'bg-italian-green text-white' : isFounder ? 'bg-italian-green' : 'bg-italian-red'} text-white shadow-sm`}>
+          <span className={`inline-flex items-center px-3 py-1 rounded-sm text-xs font-outfit font-bold uppercase tracking-wider ${isFounder && isCEO ? 'bg-italian-green text-white' : isFounder ? 'bg-italian-green' : 'bg-italian-red'} text-white shadow-sm`}>
             {isFounder && isCEO ? 'Founder & CEO' : isFounder ? 'Founder' : 'CEO'}
           </span>
         </div>
@@ -80,12 +81,12 @@ const TeamMemberCard = ({
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-italian-green"></div>
 
           {/* Nome e ruolo */}
-          <h3 className="text-xl font-[Playfair_Display] font-bold text-neutral-900 mb-1 group-hover:text-italian-green transition-colors duration-300">{name}</h3>
-          <p className="text-italian-green font-[Montserrat] text-xs uppercase tracking-widest mb-4">{t(role)}</p>
+          <h3 className="text-xl font-instrument font-bold text-neutral-900 mb-1 group-hover:text-italian-green transition-colors duration-300">{name}</h3>
+          <p className="text-italian-green font-outfit text-xs uppercase tracking-widest mb-4">{t(role)}</p>
 
           {/* Specializzazione (opzionale) */}
           {specialty && (
-            <p className="text-neutral-600 text-sm font-[Lora] italic mb-4">{t(specialty)}</p>
+            <p className="text-neutral-600 text-sm font-outfit italic mb-4">{t(specialty)}</p>
           )}
         </div>
         
@@ -106,10 +107,10 @@ const TeamMemberCard = ({
 const StatItem = ({ number, label, icon }: { number: string; label: string; icon: string }) => {
   return (
     <div className="relative p-6 bg-white rounded-sm border-l-4 border-italian-green shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col items-center text-center">
-      <div className="text-4xl font-[Playfair_Display] font-bold text-navy mb-2 relative">
+      <div className="text-4xl font-instrument font-bold text-navy mb-2 relative">
           {number}
       </div>
-      <p className="text-neutral-600 font-[Montserrat] text-xs uppercase tracking-wider">{label}</p>
+      <p className="text-neutral-600 font-outfit text-xs uppercase tracking-wider">{label}</p>
     </div>
   );
 };
@@ -169,7 +170,7 @@ const About = () => {
       <SEOHead
         title={`${t('navigation.about')} - Yourbusinessinitaly.com`}
         description={t('about.longDescription') || 'La nostra azienda e il nostro team di professionisti. Competenze, meritocrazia, pari opportunità sono la nostra mission.'}
-        canonicalUrl={`/${currentLang}/about`}
+        canonicalUrl={buildLocalizedPath('/about', currentLang)}
         keywords="about, team, commercialista, consulenza fiscale, Italia, yourbusinessinitaly"
         lang={currentLang}
         structuredData={{
@@ -184,11 +185,11 @@ const About = () => {
         }}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/about',
-          en: 'https://yourbusinessinitaly.com/en/about',
+          en: 'https://yourbusinessinitaly.com/about',
           fr: 'https://yourbusinessinitaly.com/fr/about',
           de: 'https://yourbusinessinitaly.com/de/about',
           es: 'https://yourbusinessinitaly.com/es/about',
-          'x-default': 'https://yourbusinessinitaly.com/it/about'
+          'x-default': 'https://yourbusinessinitaly.com/about'
         }}
       />
       
@@ -210,19 +211,19 @@ const About = () => {
           <div className="max-w-4xl">
             {/* Badge */}
             <div className="inline-block mb-6">
-              <span className="py-2 px-4 border border-italian-green/50 text-italian-green font-[Montserrat] text-xs uppercase tracking-[0.2em] bg-navy/50 backdrop-blur-sm">
+              <span className="py-2 px-4 border border-italian-green/50 text-italian-green font-outfit text-xs uppercase tracking-[0.2em] bg-navy/50 backdrop-blur-sm">
                 {t('about.badge') || 'Our Company'}
               </span>
             </div>
 
             {/* Titolo principale */}
-            <h1 className="text-5xl md:text-6xl font-[Playfair_Display] font-bold mb-8 text-white leading-tight">
-              <span className="text-italian-green block text-2xl font-[Montserrat] uppercase tracking-widest mb-2 font-normal">{t('about.titlePrefix')} </span>
+            <h1 className="text-5xl md:text-6xl font-instrument font-bold mb-8 text-white leading-tight">
+              <span className="text-italian-green block text-2xl font-outfit uppercase tracking-widest mb-2 font-normal">{t('about.titlePrefix')} </span>
                 {t('about.titleMain')}
             </h1>
 
             {/* Sottotitolo */}
-            <p className="text-xl text-[#e6e2dd] mb-10 max-w-2xl font-[Lora] leading-relaxed border-l-2 border-italian-green pl-6">
+            <p className="text-xl text-[#e6e2dd] mb-10 max-w-2xl font-outfit leading-relaxed border-l-2 border-italian-green pl-6">
               {t('about.longDescription') || 'Una realtà giovane e dinamica che vuole sovvertire il paradigma dello studio professionale tradizionale. Competenze, meritocrazia, pari opportunità sono la nostra mission.'}
             </p>
 
@@ -246,10 +247,10 @@ const About = () => {
             {/* Badge e titolo */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-10 border-b border-neutral-100">
               <div>
-                <span className="text-italian-green font-[Montserrat] font-semibold tracking-[0.2em] text-xs uppercase mb-2 block">
+                <span className="text-italian-green font-outfit font-semibold tracking-[0.2em] text-xs uppercase mb-2 block">
                   {t('about.stpSection.badge')}
                   </span>
-                <h2 className="text-3xl font-[Playfair_Display] font-bold text-navy">
+                <h2 className="text-3xl font-instrument font-bold text-navy">
                   {t('about.stpSection.title')}
                 </h2>
               </div>
@@ -258,7 +259,7 @@ const About = () => {
                 href={t('about.stpSection.verifyUrl')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-italian-green font-[Montserrat] font-bold text-sm uppercase tracking-wide hover:underline mt-4 md:mt-0"
+                className="inline-flex items-center text-italian-green font-outfit font-bold text-sm uppercase tracking-wide hover:underline mt-4 md:mt-0"
               >
                 <i className="fas fa-check-circle mr-2"></i>
                 {t('about.stpSection.verifyLink')}
@@ -269,11 +270,11 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Colonna sinistra */}
                 <div>
-                <p className="text-neutral-700 leading-relaxed font-[Lora] text-lg mb-6">
+                <p className="text-neutral-700 leading-relaxed font-outfit text-lg mb-6">
                     {t('about.stpSection.description')}
                   </p>
 
-                <div className="flex items-center text-sm text-neutral-500 font-[Montserrat]">
+                <div className="flex items-center text-sm text-neutral-500 font-outfit">
                     <i className="fas fa-info-circle text-italian-green mr-2"></i>
                     <p>{t('about.stpSection.verifyDescription')}</p>
                   </div>
@@ -281,19 +282,19 @@ const About = () => {
 
                 {/* Colonna destra */}
               <div className="bg-[#f8f9fa] p-8 border-l-4 border-italian-green">
-                <h3 className="text-xl font-[Playfair_Display] font-bold mb-4 text-navy">
+                <h3 className="text-xl font-instrument font-bold mb-4 text-navy">
                     {t('about.stpSection.accountantTitle')}
                   </h3>
 
-                <p className="text-neutral-600 text-sm mb-6 font-[Lora] italic">
+                <p className="text-neutral-600 text-sm mb-6 font-outfit italic">
                   "{t('about.stpSection.accountantDescription')}"
                   </p>
 
                 <div className="pt-4 border-t border-neutral-200">
-                  <h4 className="font-[Montserrat] font-bold text-xs uppercase tracking-widest text-italian-green mb-3">
+                  <h4 className="font-outfit font-bold text-xs uppercase tracking-widest text-italian-green mb-3">
                         {t('about.stpSection.pathTitle')}
                   </h4>
-                  <ul className="space-y-2 text-neutral-700 font-[Lora] text-sm list-disc pl-5">
+                  <ul className="space-y-2 text-neutral-700 font-outfit text-sm list-disc pl-5">
                         {(t('about.stpSection.pathSteps', { returnObjects: true }) as string[]).map((step: string, index: number) => (
                       <li key={index}>{step}</li>
                         ))}
@@ -311,15 +312,15 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Contenuto testuale */}
             <div>
-              <h2 className="text-4xl font-[Playfair_Display] font-bold mb-8 text-navy">
+              <h2 className="text-4xl font-instrument font-bold mb-8 text-navy">
                   {t('about.paradigmTitle')}
               </h2>
 
-              <p className="text-neutral-700 mb-6 text-lg leading-relaxed font-[Lora]">
+              <p className="text-neutral-700 mb-6 text-lg leading-relaxed font-outfit">
                 {t('about.paradigmDescription1')}
               </p>
 
-              <p className="text-neutral-700 mb-10 leading-relaxed font-[Lora]">
+              <p className="text-neutral-700 mb-10 leading-relaxed font-outfit">
                 {t('about.paradigmDescription2')}
               </p>
 
@@ -334,7 +335,7 @@ const About = () => {
                 ))}
               </div>
 
-              <blockquote className="text-xl font-[Playfair_Display] italic text-navy border-l-4 border-italian-green pl-6 py-2">
+              <blockquote className="text-xl font-instrument italic text-navy border-l-4 border-italian-green pl-6 py-2">
                 "{t('about.diversityQuote')}"
               </blockquote>
             </div>
@@ -366,17 +367,17 @@ const About = () => {
         <div className="container mx-auto px-4">
           {/* Header della sezione */}
           <div className="text-center mb-20 relative">
-            <span className="text-italian-green font-[Montserrat] font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">
+            <span className="text-italian-green font-outfit font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">
               {t('about.teamSection.badge')}
               </span>
 
-            <h2 className="text-4xl md:text-5xl font-[Playfair_Display] font-bold mb-6 text-navy">
+            <h2 className="text-4xl md:text-5xl font-instrument font-bold mb-6 text-navy">
               {t('about.teamSection.titlePrefix')} <span className="italic text-italian-green">{t('about.teamSection.titleMain')}</span>
             </h2>
 
             <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
 
-            <p className="text-neutral-600 max-w-2xl mx-auto font-[Lora] text-lg">
+            <p className="text-neutral-600 max-w-2xl mx-auto font-outfit text-lg">
               {t('about.teamSection.description')}
             </p>
           </div>
@@ -408,7 +409,7 @@ const About = () => {
       <section className="section-padding bg-navy text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-[Playfair_Display] font-bold mb-12">
+            <h2 className="text-3xl font-instrument font-bold mb-12">
               <span className="text-italian-green">{t('about.valuesSection.title')} </span>
             </h2>
 
@@ -422,10 +423,10 @@ const About = () => {
                   <div className="text-3xl text-italian-green mb-6">
                     <i className={index === 0 ? "fas fa-user-tie" : index === 1 ? "fas fa-lightbulb" : "fas fa-balance-scale"}></i>
                   </div>
-                  <h3 className="text-xl font-[Playfair_Display] font-bold mb-4 text-white">
+                  <h3 className="text-xl font-instrument font-bold mb-4 text-white">
                     {value.title}
                   </h3>
-                  <p className="text-neutral-400 text-sm font-[Lora] leading-relaxed group-hover:text-neutral-300">
+                  <p className="text-neutral-400 text-sm font-outfit leading-relaxed group-hover:text-neutral-300">
                     {value.description}
                   </p>
                 </div>

@@ -4,15 +4,19 @@ import OptimizedImage from '../components/OptimizedImage';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const PillarBusinessItaly = () => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const isEnglish = lang === 'en';
+  const baseUrl = 'https://yourbusinessinitaly.com';
+  const canonicalPath = buildLocalizedPath('/pillar/how-to-start-business-in-italy-2025', lang);
+  const canonicalUrl = `${baseUrl}${canonicalPath === '/' ? '' : canonicalPath}`;
 
   const breadcrumbs = [
-    { label: isEnglish ? 'Home' : 'Home', path: `/${lang}` },
-    { label: isEnglish ? 'How to Start a Business in Italy 2025' : 'Come Aprire Attività in Italia 2025', path: `/${lang}/pillar/how-to-start-business-in-italy-2025`, isLast: true }
+    { label: isEnglish ? 'Home' : 'Home', path: buildLocalizedPath('/', lang) },
+    { label: isEnglish ? 'How to Start a Business in Italy 2025' : 'Come Aprire Attività in Italia 2025', path: canonicalPath, isLast: true }
   ];
 
   const structuredData = {
@@ -21,7 +25,7 @@ const PillarBusinessItaly = () => {
       // Main Article Schema
       {
         '@type': 'TechArticle',
-        '@id': `https://yourbusinessinitaly.com/${lang}/pillar/how-to-start-business-in-italy-2025#article`,
+        '@id': `${canonicalUrl}#article`,
         'headline': isEnglish ? 'How to Start a Business in Italy 2025 - Complete Guide for Foreigners' : 'Come Aprire un\'Attività in Italia 2025 - Guida Completa per Stranieri',
         'description': isEnglish ? 'Complete step-by-step guide to start a business in Italy for foreigners in 2025. Learn about company formation, VAT registration, taxes, and legal requirements.' : 'Guida completa passo dopo passo per aprire un\'attività in Italia per stranieri nel 2025. Scopri come costituire società, aprire partita IVA, tasse e requisiti legali.',
         'image': 'https://yourbusinessinitaly.com/images/logo.png',
@@ -75,7 +79,7 @@ const PillarBusinessItaly = () => {
       // FAQ Schema
       {
         '@type': 'FAQPage',
-        '@id': `https://yourbusinessinitaly.com/${lang}/pillar/how-to-start-business-in-italy-2025#faq`,
+        '@id': `${canonicalUrl}#faq`,
         'mainEntity': [
           {
             '@type': 'Question',
@@ -145,7 +149,7 @@ const PillarBusinessItaly = () => {
         title={isEnglish ? "Start a Business in Italy 2025: Complete Guide for Foreigners" : "Aprire Attività in Italia 2025: Guida Completa per Stranieri"}
         description={isEnglish ? "Step-by-step guide to start a business in Italy in 2025. Learn about company formation, VAT registration, taxes, and legal requirements for foreigners." : "Guida passo dopo passo per aprire un'attività in Italia nel 2025. Costituzione società, partita IVA, tasse e requisiti legali per stranieri."}
         keywords="start business Italy, company formation Italy, open business Italy foreigner, Italian business registration, aprire attività Italia straniero"
-        canonicalUrl={`/${lang}/pillar/how-to-start-business-in-italy-2025`}
+        canonicalUrl={canonicalPath}
         ogType="article"
         structuredData={structuredData}
         lang={lang}
@@ -185,10 +189,10 @@ const PillarBusinessItaly = () => {
               "La tua guida completa per aprire un'attività in Italia. Dalla scelta della struttura aziendale alla navigazione della burocrazia italiana, ti copriamo noi."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${lang}/services/open-company-italy`} className="btn-primary text-lg py-4 px-8">
+            <Link href={buildLocalizedPath('/services/open-company-italy', lang)} className="btn-primary text-lg py-4 px-8">
               {isEnglish ? "Get Started Today" : "Inizia Oggi"}
             </Link>
-            <Link href={`/${lang}/contact`} className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/10 transition-colors">
+            <Link href={buildLocalizedPath('/contact', lang)} className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/30 text-white font-medium rounded hover:bg-white/10 transition-colors">
               {isEnglish ? "Download Free Guide" : "Scarica Guida Gratuita"}
             </Link>
           </div>
@@ -202,19 +206,19 @@ const PillarBusinessItaly = () => {
             {isEnglish ? "Quick Navigation" : "Navigazione Rapida"}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Link href={`/${lang}/services/open-company-italy`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
+            <Link href={buildLocalizedPath('/services/open-company-italy', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
               <h3 className="font-semibold text-primary mb-2">{isEnglish ? "Open Company" : "Apri Società"}</h3>
               <p className="text-sm text-neutral-600">{isEnglish ? "SRL formation guide" : "Guida costituzione SRL"}</p>
             </Link>
-            <Link href={`/${lang}/services/open-vat-number-italy`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
+            <Link href={buildLocalizedPath('/services/open-vat-number-italy', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
               <h3 className="font-semibold text-primary mb-2">{isEnglish ? "VAT Number" : "Partita IVA"}</h3>
               <p className="text-sm text-neutral-600">{isEnglish ? "Partita IVA registration" : "Registrazione Partita IVA"}</p>
             </Link>
-            <Link href={`/${lang}/services/tax-accounting-expats`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
+            <Link href={buildLocalizedPath('/services/tax-accounting-expats', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
               <h3 className="font-semibold text-primary mb-2">{isEnglish ? "Tax & Accounting" : "Tasse & Contabilità"}</h3>
               <p className="text-sm text-neutral-600">{isEnglish ? "Tax services for expats" : "Servizi fiscali per stranieri"}</p>
             </Link>
-            <Link href={`/${lang}/blog`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
+            <Link href={buildLocalizedPath('/blog', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors group">
               <h3 className="font-semibold text-primary mb-2">{isEnglish ? "All Articles" : "Tutti gli Articoli"}</h3>
               <p className="text-sm text-neutral-600">{isEnglish ? "Browse all guides" : "Sfoglia tutte le guide"}</p>
             </Link>
@@ -255,7 +259,7 @@ const PillarBusinessItaly = () => {
                 </div>
               </div>
               <div className="mt-6">
-                <Link href={`/${lang}/services/open-company-italy`} className="text-primary hover:text-primary-dark font-semibold">
+                <Link href={buildLocalizedPath('/services/open-company-italy', lang)} className="text-primary hover:text-primary-dark font-semibold">
                   {isEnglish ? "→ Learn more about company formation" : "→ Scopri di più sulla costituzione di società"}
                 </Link>
               </div>
@@ -283,7 +287,7 @@ const PillarBusinessItaly = () => {
                 </ul>
               </div>
               <div className="mt-6">
-                <Link href={`/${lang}/services/open-vat-number-italy`} className="text-primary hover:text-primary-dark font-semibold">
+                <Link href={buildLocalizedPath('/services/open-vat-number-italy', lang)} className="text-primary hover:text-primary-dark font-semibold">
                   {isEnglish ? "→ Get your VAT number now" : "→ Ottieni la tua partita IVA ora"}
                 </Link>
               </div>
@@ -348,7 +352,7 @@ const PillarBusinessItaly = () => {
                 </div>
               </div>
               <div className="mt-6">
-                <Link href={`/${lang}/services/tax-accounting-expats`} className="text-primary hover:text-primary-dark font-semibold">
+                <Link href={buildLocalizedPath('/services/tax-accounting-expats', lang)} className="text-primary hover:text-primary-dark font-semibold">
                   {isEnglish ? "→ Get professional tax advice" : "→ Ottieni consulenza fiscale professionale"}
                 </Link>
               </div>
@@ -360,23 +364,23 @@ const PillarBusinessItaly = () => {
                 {isEnglish ? "Related Articles" : "Articoli Correlati"}
               </h2>
               <div className="space-y-4">
-                <Link href={`/${lang}/blog/how-to-open-business-italy-foreigner-complete-guide-2025`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
+                <Link href={buildLocalizedPath('/blog/how-to-open-business-italy-foreigner-complete-guide-2025', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
                   <h3 className="font-semibold text-neutral-900 mb-1">{isEnglish ? "How to Open a Business in Italy - Complete Guide 2025" : "Come Aprire un'Attività in Italia - Guida Completa 2025"}</h3>
                   <p className="text-neutral-600 text-sm">{isEnglish ? "Step-by-step guide for foreign entrepreneurs" : "Guida passo-passo per imprenditori stranieri"}</p>
                 </Link>
-                <Link href={`/${lang}/blog/aprire-partita-iva-freelance-italia-2025`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
+                <Link href={buildLocalizedPath('/blog/aprire-partita-iva-freelance-italia-2025', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
                   <h3 className="font-semibold text-neutral-900 mb-1">{isEnglish ? "How to Open Freelance VAT Number in Italy 2025" : "Come Aprire Partita IVA Freelance Italia 2025"}</h3>
                   <p className="text-neutral-600 text-sm">{isEnglish ? "Complete guide to VAT registration for freelancers" : "Guida completa alla registrazione IVA per freelance"}</p>
                 </Link>
-                <Link href={`/${lang}/blog/regime-forfettario-italia-2025-guida-completa`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
+                <Link href={buildLocalizedPath('/blog/regime-forfettario-italia-2025-guida-completa', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
                   <h3 className="font-semibold text-neutral-900 mb-1">{isEnglish ? "Italian Flat Tax Regime 2025: Complete Guide" : "Regime Forfettario Italia 2025: Guida Completa"}</h3>
                   <p className="text-neutral-600 text-sm">{isEnglish ? "Everything about the simplified tax regime for freelancers" : "Tutto sul regime fiscale semplificato per freelance"}</p>
                 </Link>
-                <Link href={`/${lang}/blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
+                <Link href={buildLocalizedPath('/blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
                   <h3 className="font-semibold text-neutral-900 mb-1">{isEnglish ? "SRL Taxes and Costs in Italy 2025" : "Tasse e Costi SRL Italia 2025"}</h3>
                   <p className="text-neutral-600 text-sm">{isEnglish ? "Complete guide to SRL taxation and business costs" : "Guida completa alla tassazione SRL e costi aziendali"}</p>
                 </Link>
-                <Link href={`/${lang}/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia`} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
+                <Link href={buildLocalizedPath('/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia', lang)} className="block p-4 border border-neutral-200 rounded hover:border-primary hover:bg-primary/5 transition-colors">
                   <h3 className="font-semibold text-neutral-900 mb-1">{isEnglish ? "Italian Tax Benefits for Foreign Entrepreneurs 2025" : "Regime Impatriati 2025 - Vantaggi Fiscali per Stranieri"}</h3>
                   <p className="text-neutral-600 text-sm">{isEnglish ? "Tax incentives and benefits for foreign professionals" : "Incentivi fiscali e benefici per professionisti stranieri"}</p>
                 </Link>
@@ -396,7 +400,7 @@ const PillarBusinessItaly = () => {
                   "Our experts can guide you through the entire process. Get a free consultation!" :
                   "I nostri esperti possono guidarti attraverso l'intero processo. Ottieni una consulenza gratuita!"}
               </p>
-              <Link href={`/${lang}/contact`} className="block w-full btn-primary text-center">
+              <Link href={buildLocalizedPath('/contact', lang)} className="block w-full btn-primary text-center">
                 {isEnglish ? "Contact Us" : "Contattaci"}
               </Link>
             </div>
@@ -411,7 +415,7 @@ const PillarBusinessItaly = () => {
                   "Download our complete guide with all the information you need to start your business in Italy." :
                   "Scarica la nostra guida completa con tutte le informazioni necessarie per iniziare la tua attività in Italia."}
               </p>
-              <Link href={`/${lang}/contact`} className="block w-full bg-secondary text-white text-center py-3 px-4 rounded hover:bg-secondary-light transition-colors font-medium">
+              <Link href={buildLocalizedPath('/contact', lang)} className="block w-full bg-secondary text-white text-center py-3 px-4 rounded hover:bg-secondary-light transition-colors font-medium">
                 {isEnglish ? "Download Now" : "Scarica Ora"}
               </Link>
             </div>

@@ -1,5 +1,9 @@
 # Redirect per risolvere Soft 404 - Aggiornato 27/09/2025
 
+# Redirect default EN senza prefisso
+/en / 301
+/en/* /:splat 301
+
 # Redirect URL con doppio suffisso (lingua-lingua)
 /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia.fr-fr /fr/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
 /es/blog/aprire-partita-iva-freelance-italia-2025.es-es /es/blog/aprire-partita-iva-freelance-italia-2025 301
@@ -49,14 +53,11 @@
 /como-abrir-negocio-italia-extranjero-guia-completa-2025 /es/blog/como-abrir-negocio-italia-extranjero-guia-completa-2025 301
 
 # Redirect per pagine services senza prefisso lingua
-/services/open-vat-number-italy /it/services/open-vat-number-italy 301
 
 # Redirect per URL vecchi senza prefisso lingua (da Search Console)
 /servizi /it/services 301
 /servizi-privati /it/services 301
 /nuovo-servizio /it/services 301
-/services /it/services 301
-/blog /it/blog 301
 /blog/aprire-partita-iva-freelance-italia-2025 /it/blog/aprire-partita-iva-freelance-italia-2025 301
 /blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia /it/blog/regime-impatriati-2025-vantaggi-fiscali-per-imprenditori-stranieri-in-italia 301
 /blog/tasse-di-una-srl-guida-2025-per-nuovi-imprenditori-stranieri /it/blog/impuestos-srl-guia-2025-emprendedores-extranjeros 301

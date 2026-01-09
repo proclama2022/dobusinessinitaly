@@ -70,13 +70,13 @@ const StatItem = ({ value, suffix, title, description, index, icon }: StatItemPr
         <FontAwesomeIcon icon={icon} className="text-2xl transition-colors duration-300" />
       </div>
       
-      <div className="text-4xl md:text-5xl font-bold text-navy mb-2 tracking-tight font-[Playfair_Display]">
+      <div className="text-4xl md:text-5xl font-bold text-navy mb-2 tracking-tight font-instrument">
         <span ref={countRef}>{count}</span><span className="text-italian-green text-3xl align-top ml-1">{suffix}</span>
       </div>
       
       <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 pb-4 border-b border-gray-100 group-hover:border-italian-green/20 transition-colors">{title}</h3>
       
-      <p className="text-gray-600 text-sm leading-relaxed font-[Lora]">{description}</p>
+      <p className="text-gray-600 text-sm leading-relaxed font-outfit">{description}</p>
     </div>
   );
 };
@@ -129,11 +129,11 @@ const StatsSection = () => {
       <div className="container mx-auto px-4">
         <div className={cn("text-center mb-16 transition-all duration-700", isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')}>
           <span className="text-italian-green font-bold tracking-widest text-xs uppercase mb-3 block">Trusted by Leaders</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 font-[Playfair_Display]">
+          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 font-instrument">
             {t('stats.title')}
           </h2>
           <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto italic font-[Lora]">
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto italic font-outfit">
             "{t('stats.subtitle')}"
           </p>
         </div>

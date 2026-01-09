@@ -1,21 +1,24 @@
 /* Italian Typography System - Refined Italian Elegance */
 /* Font selection inspired by Italian luxury and craftsmanship */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Outfit:wght@100..900&display=swap');
 
 /* Italian Typography Font Families */
 :root {
-  /* Primary Display Font - Playfair Display */
-  --font-display: 'Playfair Display', Georgia, serif;
+  /* Primary Display Font - Instrument Serif */
+  --font-display: 'Instrument Serif', Georgia, serif;
 
-  /* Body Font - Lora */
-  --font-body: 'Lora', Georgia, serif;
+  /* Body Font - Plus Jakarta Sans */
+  --font-body: Outfit, system-ui, sans-serif;
 
-  /* Alternative Serif - Libre Baskerville */
-  --font-serif: 'Libre Baskerville', Georgia, serif;
+  /* UI/Headline Sans - Outfit */
+  --font-ui: 'Outfit', sans-serif;
+
+  /* Alternative Serif */
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
   /* Fallback Sans System */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: Outfit, system-ui, -apple-system, sans-serif;
 }
 
 /* Fluid Typography Scale - Italian Golden Ratio Proportions */
@@ -24,10 +27,7 @@
   --fluid-min-width: 20;
   --fluid-max-width: 96;
   --fluid-screen: 100vw;
-  --fluid-bp: calc(
-    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
-    (var(--fluid-max-width) - var(--fluid-min-width))
-  );
+  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
 }
 
 /* Italian Display Typography */
@@ -199,7 +199,7 @@
 
 /* Italian Navigation Typography */
 .italian-nav {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.025em;
@@ -208,6 +208,7 @@
 }
 
 .italian-nav--main {
+  font-family: var(--font-ui);
   font-size: clamp(0.875rem, 1.25vw, 1rem);
   font-weight: 600;
   text-transform: uppercase;
@@ -216,7 +217,7 @@
 
 /* Italian Button Typography */
 .italian-button {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-weight: 600;
   font-size: clamp(0.875rem, 1.25vw, 1rem);
   letter-spacing: 0.05em;
@@ -331,6 +332,7 @@
 
 /* Print Styles */
 @media print {
+
   .italian-display,
   .italian-body,
   .italian-accent {

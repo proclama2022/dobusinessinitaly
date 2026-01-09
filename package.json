@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "tsx scripts/generate-sitemaps.js",
     "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/api",
+    "build": "npm run optimize-images && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/api",
     "postbuild": "tsx scripts/postbuild-head.ts",
     "start": "NODE_ENV=production node dist/api/index.js",
     "check": "tsc",
@@ -17,7 +17,8 @@
     "check:covers": "tsx scripts/check-duplicate-covers.ts",
     "optimize-images": "node scripts/generate-webp-avif.cjs",
     "monitor-images": "node scripts/monitor-image-performance.cjs",
-    "build:images": "npm run optimize-images && npm run monitor-images"
+    "build:images": "npm run optimize-images && npm run monitor-images",
+    "generate-meta-tags": "tsx scripts/generate-meta-tags.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

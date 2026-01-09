@@ -5,6 +5,7 @@ import { Link } from 'wouter';
 import OptimizedImage from '@/components/OptimizedImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 interface BlogPostMeta {
   slug: string;
@@ -54,7 +55,7 @@ export default function RelatedGuides({ context }: { context: Context }) {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {posts.map((p) => (
-              <Link key={p.slug} href={`/${i18n.language}/blog/${p.slug}`} className="group block bg-white rounded border border-neutral-200 overflow-hidden hover:shadow-md transition-shadow">
+              <Link key={p.slug} href={buildLocalizedPath(`/blog/${p.slug}`, i18n.language)} className="group block bg-white rounded border border-neutral-200 overflow-hidden hover:shadow-md transition-shadow">
                 {/* Cover Image */}
                 {p.coverImage && (
                   <div className="aspect-video overflow-hidden bg-neutral-100">
@@ -87,4 +88,3 @@ export default function RelatedGuides({ context }: { context: Context }) {
     </section>
   );
 }
-

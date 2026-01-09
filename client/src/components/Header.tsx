@@ -5,6 +5,7 @@ import LanguageSelector from './LanguageSelector';
 import OptimizedImage from './OptimizedImage';
 import { supportedLanguages } from '@/lib/languages';
 import { cn } from '@/lib/utils';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -55,11 +56,7 @@ const Header = () => {
     setServicesDropdownOpen(false);
   };
 
-  const getLocalizedPath = (path: string) => {
-    const currentLang = i18n.language;
-    if (path === '/') return `/${currentLang}/`;
-    return `/${currentLang}${path}`;
-  };
+  const getLocalizedPath = (path: string) => buildLocalizedPath(path, i18n.language);
 
   const menuItems = [
     { label: t('navigation.home'), path: '/' },
@@ -74,6 +71,7 @@ const Header = () => {
   ];
 
   const services = [
+    { title: "🇮🇹 Start Business Guide 2025 (Pillar)", path: '/pillar/how-to-start-business-in-italy-2025' },
     { title: t('services.items.formation.title'), path: '/services/open-company-italy' },
     { title: t('services.items.accounting.title'), path: '/services/tax-accounting-expats' },
     { title: t('services.items.partita_iva.title'), path: '/services/open-vat-number-italy' },
@@ -107,7 +105,7 @@ const Header = () => {
                 <Link href={item.hasDropdown ? getLocalizedPath('/services') : getLocalizedPath(item.path)}>
                   <span 
                     className={cn(
-                      "text-xs xl:text-sm font-[Montserrat] font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 py-2 inline-flex items-center gap-1 group",
+                      "text-xs xl:text-sm font-outfit font-bold uppercase tracking-wider cursor-pointer transition-colors duration-200 py-2 inline-flex items-center gap-1 group",
                       location === getLocalizedPath(item.path) 
                         ? "text-italian-green" 
                         : "text-navy hover:text-italian-green"
@@ -154,7 +152,7 @@ const Header = () => {
             <LanguageSelector />
             
             <Link href={getLocalizedPath('/contact')}>
-              <button className="text-xs font-[Montserrat] font-bold uppercase tracking-wider bg-italian-green text-white py-2 px-6 rounded-sm hover:bg-italian-green-dark transition-colors shadow-sm whitespace-nowrap">
+              <button className="text-xs font-outfit font-bold uppercase tracking-wider bg-italian-green text-white py-2 px-6 rounded-sm hover:bg-italian-green-dark transition-colors shadow-sm whitespace-nowrap">
                 {t('common.contactUs')}
               </button>
             </Link>
@@ -188,7 +186,7 @@ const Header = () => {
                 <div>
                     <button
                       onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                    className="flex items-center justify-between w-full text-xl font-[Playfair_Display] font-bold text-navy"
+                    className="flex items-center justify-between w-full text-xl font-instrument font-bold text-navy"
                     >
                     {item.label}
                     <FontAwesomeIcon
@@ -205,7 +203,7 @@ const Header = () => {
                     {services.map((service, idx) => (
                       <Link key={idx} href={getLocalizedPath(service.path)}>
                         <span 
-                          className="block text-gray-600 hover:text-italian-green py-2 text-base font-[Lora]"
+                          className="block text-gray-600 hover:text-italian-green py-2 text-base font-outfit"
                           onClick={closeMenu}
                         >
                           {service.title}
@@ -218,7 +216,7 @@ const Header = () => {
                 <Link href={getLocalizedPath(item.path)}>
                   <span 
                     className={cn(
-                      "block text-xl font-[Playfair_Display] font-bold transition-colors",
+                      "block text-xl font-instrument font-bold transition-colors",
                       location === getLocalizedPath(item.path) ? "text-italian-green" : "text-navy"
                     )}
                     onClick={closeMenu}

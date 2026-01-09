@@ -13,6 +13,7 @@ interface NextGenImageProps {
   onError?: () => void;
   style?: React.CSSProperties;
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
+  category?: string;
 }
 
 /**
@@ -31,7 +32,8 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
   onLoad,
   onError,
   style,
-  objectFit = 'contain'
+  objectFit = 'contain',
+  category
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -41,7 +43,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
   // Genera URL ottimizzati per Unsplash e immagini locali
   const generateOptimizedUrls = (originalSrc: string, targetWidth?: number) => {
     if (!originalSrc.includes('unsplash.com')) {
-      const baseUrl = originalSrc.replace(/\.(png|jpe?g)$/i, '');
+      const baseUrl = src.replace(/\.(png|jpe?g|webp|avif)$/i, '');
       return {
         avif: `${baseUrl}.avif`,
         webp: `${baseUrl}.webp`,
@@ -71,7 +73,7 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
       if (format === 'jpeg') {
         return src;
       }
-      const baseUrl = src.replace(/\.(png|jpe?g)$/i, '');
+      const baseUrl = src.replace(/\.(png|jpe?g|webp|avif)$/i, '');
       return `${baseUrl}.${format}`;
     }
 
@@ -153,22 +155,34 @@ const NextGenImage: React.FC<NextGenImageProps> = ({
     );
   }
 
-  // Errore caricamento
   if (hasError) {
+    // Definizione dei fallback per categoria
+    const categoryFallbacks: Record<string, string> = {
+      tax: '/images/articles/ideogram_italia-tasse_20251103_180047.webp',
+      fiscal: '/images/articles/ideogram_italia-tasse_20251103_180047.webp',
+      business: '/images/articles/ideogram_business-italy_20251103_175520.webp',
+      guide: '/images/articles/ideogram_business-italy_20251103_175520.webp',
+      legal: '/images/articles/ideogram_italia-srl_20251103_175950.webp',
+      startup: '/images/articles/ideogram_italia-startup_20251103_180024.webp',
+      incorporation: '/images/articles/ideogram_italia-srl_20251103_175950.webp',
+    };
+
+    const fallbackSrc = category && categoryFallbacks[category.toLowerCase()]
+      ? categoryFallbacks[category.toLowerCase()]
+      : '/images/articles/ideogram_italia-fiscal_20251103_180007.webp';
+
     return (
-      <div
-        className={`bg-gray-200 flex items-center justify-center text-gray-500 text-sm ${className}`}
-        style={{
-          width: width || '100%',
-          height: height || 'auto',
-          aspectRatio: width && height ? `${width}/${height}` : undefined
-        }}
-        role="img"
-        aria-label={`Errore caricamento: ${alt}`}
-      >
-        <div className="text-center">
-          <i className="fas fa-exclamation-triangle text-2xl mb-2" aria-hidden="true"></i>
-          <p className="text-xs">Immagine non disponibile</p>
+      <div className={`relative overflow-hidden group ${className}`} style={{ width: width || '100%', height: height || 'auto', aspectRatio: width && height ? `${width}/${height}` : undefined }}>
+        <img
+          src={fallbackSrc}
+          alt={alt}
+          className={`w-full h-full object-cover transition-all duration-700 opacity-60 grayscale-[0.5] group-hover:grayscale-0 group-hover:opacity-100`}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/40 to-transparent mix-blend-multiply"></div>
+        <div className="absolute bottom-4 left-4 right-4 z-10">
+          <p className="text-[10px] uppercase tracking-wider font-bold text-white/80">
+            DoBusiness Network
+          </p>
         </div>
       </div>
     );

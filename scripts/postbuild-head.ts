@@ -5,6 +5,23 @@ import matter from 'gray-matter'
 const baseUrl = 'https://yourbusinessinitaly.com'
 const languages = ['it', 'en', 'de', 'fr', 'es']
 const sections = ['', '/services', '/about', '/blog', '/contact', '/media']
+const DEFAULT_LANG = 'en'
+
+const normalizePath = (pathValue: string) => {
+  const withLeading = pathValue.startsWith('/') ? pathValue : `/${pathValue}`
+  const trimmed = withLeading.replace(/\/+$/, '')
+  return trimmed === '' ? '/' : trimmed
+}
+
+const buildLocalizedPath = (lang: string, pathValue: string) => {
+  const normalized = normalizePath(pathValue)
+  if (lang === DEFAULT_LANG) return normalized
+  return normalized === '/' ? `/${lang}` : `/${lang}${normalized}`
+}
+
+const stripLangPrefix = (pathValue: string) => normalizePath(pathValue.replace(/^\/(it|en|de|fr|es)(?=\/|$)/, '') || '/')
+
+const toAbsoluteUrl = (pathValue: string) => `${baseUrl}${pathValue === '/' ? '' : pathValue}`
 
 // Helper to ensure directory exists
 function ensureDir(p: string) {
@@ -24,18 +41,19 @@ function escapeHtml(str: string) {
 
 // Build head tags for main static routes (generic)
 function buildHead(route: string) {
-  const canonical = `${baseUrl}${route || '/'}`
-  const isLang = /^\/(it|en|de|fr|es)(\/.*)?$/.test(route)
-  const baseSuffix = route.replace(/^\/[a-z]{2}/, '') || ''
-  
+  const cleanRoute = normalizePath(route || '/')
+  const baseSuffix = stripLangPrefix(cleanRoute)
+  const canonicalPath = normalizePath(cleanRoute.replace(/^\/it(?=\/|$)/, '') || '/')
+  const canonical = toAbsoluteUrl(canonicalPath)
+
   // Create hreflang for main pages
   const alternates = languages
-    .map(l => `<link rel="alternate" hreflang="${l}" href="${baseUrl}/${l}${baseSuffix}" />`)
+    .map(l => `<link rel="alternate" hreflang="${l}" href="${toAbsoluteUrl(buildLocalizedPath(l, baseSuffix))}" />`)
     .join('')
-  
-  const xdef = `<link rel="alternate" hreflang="x-default" href="${baseUrl}/it${baseSuffix}" />`
+
+  const xdef = `<link rel="alternate" hreflang="x-default" href="${toAbsoluteUrl(buildLocalizedPath(DEFAULT_LANG, baseSuffix))}" />`
   const canonicalTag = `<link rel="canonical" href="${canonical}" />`
-  
+
   return canonicalTag + alternates + xdef
 }
 
@@ -47,7 +65,7 @@ function buildBlogHead(post: any, allPosts: any[]) {
   const finalTitle = metaTitle || title
   const finalDesc = metaDescription || description
   const imageUrl = coverImage ? `${baseUrl}${coverImage}` : `${baseUrl}/images/og-image.jpg`
-  const currentUrl = `${baseUrl}/${lang}/blog/${slug}`
+  const currentUrl = toAbsoluteUrl(buildLocalizedPath(lang, `/blog/${slug}`))
 
   // Find translations of this post (same base slug logic or manual linking?)
   // Assuming the project uses a naming convention or 'slug' field effectively. 
@@ -77,7 +95,7 @@ function buildBlogHead(post: any, allPosts: any[]) {
 
   if (siblings.length > 0) {
     alternates = siblings.map(s => 
-      `<link rel="alternate" hreflang="${s.lang}" href="${baseUrl}/${s.lang}/blog/${s.slug}" />`
+      `<link rel="alternate" hreflang="${s.lang}" href="${toAbsoluteUrl(buildLocalizedPath(s.lang, `/blog/${s.slug}`))}" />`
     ).join('')
     // Add self
     alternates += `<link rel="alternate" hreflang="${lang}" href="${currentUrl}" />`
@@ -146,8 +164,9 @@ function main() {
   // 1. Genera pagine base (Home, About, etc.)
   for (const lang of languages) {
     for (const sec of sections) {
-      const route = `/${lang}${sec}`.replace(/\/$/, '') || `/${lang}`
-      const outDir = path.join(dist, lang, sec.replace(/^\//, ''))
+      const route = buildLocalizedPath(lang, sec)
+      const sectionDir = sec.replace(/^\//, '')
+      const outDir = lang === DEFAULT_LANG ? path.join(dist, sectionDir) : path.join(dist, lang, sectionDir)
       ensureDir(outDir)
       
       const outFile = path.join(outDir, 'index.html')
@@ -172,7 +191,7 @@ function main() {
     const { lang, slug } = post
     if (!lang || !slug) continue
 
-    const outDir = path.join(dist, lang, 'blog', slug)
+    const outDir = lang === DEFAULT_LANG ? path.join(dist, 'blog', slug) : path.join(dist, lang, 'blog', slug)
     ensureDir(outDir)
     
     const outFile = path.join(outDir, 'index.html')
@@ -188,5 +207,3 @@ function main() {
 }
 
 main()
-
-

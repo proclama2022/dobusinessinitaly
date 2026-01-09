@@ -6,6 +6,7 @@ import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
 import ResponsiveImage from '@/components/ResponsiveImage';
 import OptimizedImage from '@/components/OptimizedImage';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalculator,
@@ -219,16 +220,16 @@ const Services = () => {
       <SEOHead
         title={`${t('services.title')} - Yourbusinessinitaly.com`}
         description={t('services.description')}
-        canonicalUrl={`/${currentLang}/services`}
+        canonicalUrl={buildLocalizedPath('/services', currentLang)}
         keywords="servizi, consulenza fiscale, contabilità, apertura società, partita IVA, expat"
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/services',
-          en: 'https://yourbusinessinitaly.com/en/services',
+          en: 'https://yourbusinessinitaly.com/services',
           fr: 'https://yourbusinessinitaly.com/fr/services',
           de: 'https://yourbusinessinitaly.com/de/services',
           es: 'https://yourbusinessinitaly.com/es/services',
-          'x-default': 'https://yourbusinessinitaly.com/it/services'
+          'x-default': 'https://yourbusinessinitaly.com/services'
         }}
         structuredData={[{
           '@context': 'https://schema.org',

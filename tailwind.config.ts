@@ -25,11 +25,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        'montserrat': ['Montserrat', 'sans-serif'],
-        'inter': ['Inter', 'sans-serif'],
-        'sans': ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
-        'serif': ['Lora', 'serif'],
-        'playfair': ['Playfair Display', 'serif'],
+        'outfit': ['Outfit', 'system-ui', 'sans-serif'],
+        'instrument': ['Instrument Serif', 'Georgia', 'serif'],
+        'sans': ['Outfit', 'system-ui', 'sans-serif'],
+        'serif': ['Instrument Serif', 'Georgia', 'serif'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       typography: {
         DEFAULT: {
@@ -42,37 +42,37 @@ export default {
               textDecoration: 'none',
               borderBottom: '1px solid transparent',
               transition: 'all 0.3s ease',
-              '&:hover': { 
-                color: '#007036', 
+              '&:hover': {
+                color: '#007036',
                 borderBottomColor: '#007036'
               },
             },
-            h1: { 
-              color: '#0f172a', 
-              fontWeight: '700', 
+            h1: {
+              color: '#0f172a',
+              fontWeight: '700',
               fontFamily: '"Montserrat", sans-serif',
               letterSpacing: '-0.02em',
             },
-            h2: { 
-              color: '#0f172a', 
-              fontWeight: '600', 
+            h2: {
+              color: '#0f172a',
+              fontWeight: '600',
               fontFamily: '"Montserrat", sans-serif',
               marginTop: '2em',
             },
-            h3: { 
-              color: '#0f172a', 
+            h3: {
+              color: '#0f172a',
               fontWeight: '600',
               fontFamily: '"Montserrat", sans-serif',
             },
-            p: { 
-              color: '#475569', 
+            p: {
+              color: '#475569',
               lineHeight: '1.8',
               fontSize: '1rem',
             },
             li: { color: '#475569' },
-            blockquote: { 
-              color: '#334155', 
-              fontStyle: 'italic', 
+            blockquote: {
+              color: '#334155',
+              fontStyle: 'italic',
               borderLeftColor: '#009246', // Green accent
               backgroundColor: '#f8fafc',
               padding: '1rem 1.5rem',
@@ -88,16 +88,25 @@ export default {
       },
       colors: {
         'italian-green': {
-          DEFAULT: '#009246',
+          DEFAULT: '#004225', // Racing Green (Premium, Darker)
+          bright: '#009246',  // Original Flag Green (for accents)
           light: '#00b050',
-          dark: '#006430',
+          dark: '#002a17',
+        },
+        'cream': {
+          DEFAULT: '#F9F7F2', // Warm background
+          dark: '#E6E2D6',
+        },
+        'gold': {
+          DEFAULT: '#D4AF37', // Luxury accents
+          light: '#F4D06F',
         },
         'italian-red': {
           DEFAULT: '#ce2b37',
           light: '#e04d58',
           dark: '#9e1b25',
         },
-        'navy': { // Keep for text contrast
+        'navy': {
           DEFAULT: '#0f172a',
           light: '#1e293b',
           dark: '#020617',

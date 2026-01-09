@@ -9,6 +9,7 @@ import RelatedGuides from '@/components/RelatedGuides';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faChevronDown, faCheck, faStar } from '@fortawesome/free-solid-svg-icons';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const TaxAccountingExpats = () => {
   const { t, i18n } = useTranslation();
@@ -125,18 +126,18 @@ const TaxAccountingExpats = () => {
         title={seoTitle}
         description={seoDescription}
         keywords="tax accounting Italy, expat tax services, Italian tax returns, double taxation Italy, tax compliance expats, international tax planning, Italian tax advisor, expat tax help"
-        canonicalUrl={`/${currentLang}/services/tax-accounting-expats`}
+        canonicalUrl={buildLocalizedPath('/services/tax-accounting-expats', currentLang)}
         ogImage="https://images.unsplash.com/photo-1554224154-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ogType="website"
         twitterCard="summary_large_image"
         structuredData={[serviceStructuredData, faqStructuredData, breadcrumbStructuredData]}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/services/tax-accounting-expats',
-          'en': 'https://yourbusinessinitaly.com/en/services/tax-accounting-expats',
+          'en': 'https://yourbusinessinitaly.com/services/tax-accounting-expats',
           'fr': 'https://yourbusinessinitaly.com/fr/services/tax-accounting-expats',
           'de': 'https://yourbusinessinitaly.com/de/services/tax-accounting-expats',
           'es': 'https://yourbusinessinitaly.com/es/services/tax-accounting-expats',
-          'x-default': 'https://yourbusinessinitaly.com/en/services/tax-accounting-expats'
+          'x-default': 'https://yourbusinessinitaly.com/services/tax-accounting-expats'
         }}
         lang={currentLang}
       />

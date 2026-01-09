@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SEOHead from '@/components/SEOHead';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const CookiePolicy = () => {
   const { t, i18n } = useTranslation();
@@ -16,15 +17,15 @@ const CookiePolicy = () => {
       <SEOHead 
         title={`${t('cookies.policy.title')} - Yourbusinessinitaly.com`}
         description={t('cookies.policy.intro')}
-        canonicalUrl={`/${currentLang}/cookie-policy`}
+        canonicalUrl={buildLocalizedPath('/cookie-policy', currentLang)}
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/cookie-policy',
-          en: 'https://yourbusinessinitaly.com/en/cookie-policy',
+          en: 'https://yourbusinessinitaly.com/cookie-policy',
           fr: 'https://yourbusinessinitaly.com/fr/cookie-policy',
           de: 'https://yourbusinessinitaly.com/de/cookie-policy',
           es: 'https://yourbusinessinitaly.com/es/cookie-policy',
-          'x-default': 'https://yourbusinessinitaly.com/it/cookie-policy'
+          'x-default': 'https://yourbusinessinitaly.com/cookie-policy'
         }}
       />
       

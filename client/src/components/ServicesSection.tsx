@@ -6,57 +6,95 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faBuilding,
   faCalculator,
-  faFileInvoiceDollar,
-  faChartLine,
-  faUsers,
-  faBalanceScale,
+  faPassport,
   faUserTie,
-  faSuitcaseRolling,
-  faHandHoldingUsd,
-  faLeaf,
-  faIdCard,
-  faPercentage,
-  faRocket,
-  faLaptopCode,
-  faChartPie,
-  faArrowRight
+  faArrowRight,
+  faLandmark
 } from '@fortawesome/free-solid-svg-icons';
+import { cn } from '@/lib/utils';
 
-type ServiceCardProps = {
+type BentoCardProps = {
   icon: IconDefinition;
   title: string;
   description: string;
-  linkText: string;
+  linkTo: string;
+  className?: string;
+  variant?: 'default' | 'dark' | 'light' | 'image';
+  bgImage?: string;
 };
 
-const ServiceCard = ({ icon, title, description, linkText }: ServiceCardProps) => {
+const BentoCard = ({ icon, title, description, linkTo, className, variant = 'default', bgImage }: BentoCardProps) => {
   const { getLocalizedPath } = useLocalizedPath();
+  
+  const bgClasses = {
+    default: 'bg-white border-neutral-100 hover:border-gold/50',
+    dark: 'bg-navy text-white border-navy',
+    light: 'bg-cream border-cream hover:border-gold/50',
+    image: 'text-white border-none'
+  };
+
+  const textClasses = {
+    default: 'text-gray-600',
+    dark: 'text-gray-300',
+    light: 'text-gray-700',
+    image: 'text-gray-100'
+  };
+
+  const titleClasses = {
+    default: 'text-navy',
+    dark: 'text-white',
+    light: 'text-navy',
+    image: 'text-white'
+  };
+
   return (
-    <div className="group relative bg-white p-8 border border-gray-100 hover:border-italian-green shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col rounded-sm overflow-hidden">
-      {/* Top accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gray-50 group-hover:bg-italian-green transition-colors duration-300"></div>
-      
-      <div className="flex-grow">
-        <div className="w-14 h-14 mb-6 flex items-center justify-center bg-gray-50 text-italian-green rounded-full group-hover:bg-italian-green group-hover:text-white transition-all duration-300 transform group-hover:scale-110 shadow-sm">
-          <FontAwesomeIcon icon={icon} className="text-xl" />
+    <div className={cn(
+      "group relative p-8 transition-all duration-500 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-2xl border",
+      bgClasses[variant],
+      className
+    )}>
+      {/* Image Background for 'image' variant */}
+      {variant === 'image' && bgImage && (
+        <>
+          <div className="absolute inset-0 z-0">
+            <img src={bgImage} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+          <div className="absolute inset-0 z-[1] bg-gradient-to-t from-navy/90 via-navy/60 to-transparent"></div>
+        </>
+      )}
+
+      {/* Hover Gradient Overlay for non-image variants */}
+      {variant !== 'image' && (
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-transparent to-black/5 transition-opacity duration-500 pointer-events-none"></div>
+      )}
+
+      <div className="relative z-10 flex flex-col h-full">
+        <div className={cn(
+          "w-12 h-12 mb-6 flex items-center justify-center rounded-lg text-xl transition-all duration-300",
+          variant === 'dark' || variant === 'image' ? 'bg-white/10 text-gold backdrop-blur-md' : 'bg-navy/5 text-italian-green'
+        )}>
+          <FontAwesomeIcon icon={icon} />
         </div>
 
-        <h3 className="text-xl font-bold text-navy mb-4 group-hover:text-italian-green transition-colors duration-300 font-[Playfair_Display]">
+        <h3 className={cn("text-2xl font-bold mb-3 font-instrument", titleClasses[variant])}>
           {title}
         </h3>
 
-        <p className="text-gray-600 mb-6 leading-relaxed text-sm font-[Lora]">
+        <p className={cn("mb-8 leading-relaxed flex-grow font-light", textClasses[variant])}>
           {description}
         </p>
-      </div>
 
-      <div className="mt-auto pt-6 border-t border-gray-50">
-        <Link href={getLocalizedPath('/contact')} className="text-navy font-bold text-xs uppercase tracking-widest inline-flex items-center group/link hover:text-italian-green transition-colors">
-          {linkText}
-          <span className="ml-2 transition-transform duration-300 group-hover/link:translate-x-1 text-italian-green">
-            <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
-          </span>
-        </Link>
+        <div className="mt-auto">
+          <Link href={getLocalizedPath(linkTo)}>
+            <span className={cn(
+              "inline-flex items-center text-sm font-bold uppercase tracking-widest transition-all group-hover:translate-x-2",
+              variant === 'dark' || variant === 'image' ? 'text-white hover:text-gold' : 'text-italian-green hover:text-italian-green-dark'
+            )}>
+              Discover More
+              <FontAwesomeIcon icon={faArrowRight} className="ml-2 text-xs" />
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -66,141 +104,97 @@ const ServicesSection = () => {
   const { t } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
 
-  const services = [
-    {
-      icon: faBuilding,
-      title: t('services.items.formation.title'),
-      description: t('services.items.formation.description'),
-      linkText: t('services.items.formation.link')
-    },
-    {
-      icon: faCalculator,
-      title: t('services.items.accounting.title'),
-      description: t('services.items.accounting.description'),
-      linkText: t('services.items.accounting.link')
-    },
-    {
-      icon: faFileInvoiceDollar,
-      title: t('services.items.tax.title'),
-      description: t('services.items.tax.description'),
-      linkText: t('services.items.tax.link')
-    },
-    {
-      icon: faChartLine,
-      title: t('services.items.planning.title'),
-      description: t('services.items.planning.description'),
-      linkText: t('services.items.planning.link')
-    },
-    {
-      icon: faUsers,
-      title: t('services.items.payroll.title'),
-      description: t('services.items.payroll.description'),
-      linkText: t('services.items.payroll.link')
-    },
-    {
-      icon: faBalanceScale,
-      title: t('services.items.legal.title'),
-      description: t('services.items.legal.description'),
-      linkText: t('services.items.legal.link')
-    },
-    {
-      icon: faUserTie,
-      title: t('services.items.freelancer.title'),
-      description: t('services.items.freelancer.description'),
-      linkText: t('services.items.freelancer.link')
-    },
-    {
-      icon: faSuitcaseRolling,
-      title: t('services.items.relocation.title'),
-      description: t('services.items.relocation.description'),
-      linkText: t('services.items.relocation.link')
-    },
-    {
-      icon: faHandHoldingUsd,
-      title: t('services.items.facilitated_finance.title'),
-      description: t('services.items.facilitated_finance.description'),
-      linkText: t('services.items.facilitated_finance.link')
-    },
-    {
-      icon: faLeaf,
-      title: t('services.items.agriculture.title'),
-      description: t('services.items.agriculture.description'),
-      linkText: t('services.items.agriculture.link')
-    },
-    {
-      icon: faIdCard,
-      title: t('services.items.partita_iva.title'),
-      description: t('services.items.partita_iva.description'),
-      linkText: t('services.items.partita_iva.link')
-    },
-    {
-      icon: faPercentage,
-      title: t('services.items.regime_forfettario.title'),
-      description: t('services.items.regime_forfettario.description'),
-      linkText: t('services.items.regime_forfettario.link')
-    },
-    {
-      icon: faRocket,
-      title: t('services.items.srl_semplificata.title'),
-      description: t('services.items.srl_semplificata.description'),
-      linkText: t('services.items.srl_semplificata.link')
-    },
-    {
-      icon: faLaptopCode,
-      title: t('services.items.digitalizzazione.title'),
-      description: t('services.items.digitalizzazione.description'),
-      linkText: t('services.items.digitalizzazione.link')
-    },
-    {
-      icon: faChartPie,
-      title: t('services.items.controllo_gestione.title'),
-      description: t('services.items.controllo_gestione.description'),
-      linkText: t('services.items.controllo_gestione.link')
-    }
-  ];
-
   return (
-    <section id="services" className="py-20 md:py-32 relative overflow-hidden bg-white">
-      {/* Background pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] bg-[radial-gradient(#009246_1px,transparent_1px)] [background-size:20px_20px]"></div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 relative">
-          
-          <div className="relative inline-block">
-             <span className="text-italian-green font-bold tracking-widest text-xs uppercase mb-3 block">Our Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-navy font-[Playfair_Display]">
-              Services for Foreigners in Italy
+    <section id="services" className="py-24 bg-white relative">
+      <div className="container mx-auto px-4">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+              Tailored Solutions
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-navy font-instrument leading-tight">
+              Comprehensive Services for <br/>
+              <span className="text-italian-green italic">Global Business</span>
             </h2>
           </div>
-
-          <div className="w-24 h-1 bg-italian-green mx-auto mb-8"></div>
-
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed italic font-[Lora]">
-            "{t('services.subtitle')}"
-          </p>
+          <div className="mb-2">
+            <Link href={getLocalizedPath('/services')}>
+              <button className="hidden md:inline-flex items-center gap-2 px-6 py-3 border border-navy text-navy font-bold text-sm uppercase tracking-wider hover:bg-navy hover:text-white transition-all rounded-sm">
+                View All Services
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              linkText={service.linkText}
-            />
-          ))}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(280px,auto)]">
+          
+          {/* 1. Main Feature - Company Formation (Span 2 cols, 2 rows) */}
+          <BentoCard
+            icon={faBuilding}
+            title={t('services.items.formation.title')}
+            description={t('services.items.formation.description')}
+            linkTo="/services/open-company-italy"
+            className="md:col-span-2 md:row-span-2 min-h-[400px]"
+            variant="image"
+            bgImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600"
+          />
+
+          {/* 2. Tax & Accounting (Dark variant) */}
+          <BentoCard
+            icon={faCalculator}
+            title={t('services.items.accounting.title')}
+            description={t('services.items.accounting.description')}
+            linkTo="/services/tax-accounting-expats"
+            className="md:col-span-1 md:row-span-1"
+            variant="dark"
+          />
+
+          {/* 3. Relocation (Cream variant) */}
+          <BentoCard
+            icon={faPassport}
+            title={t('services.items.relocation.title')}
+            description={t('services.items.relocation.description')}
+            linkTo="/services"
+            className="md:col-span-1 md:row-span-1"
+            variant="light"
+          />
+
+          {/* 4. Freelancer (Default variant) */}
+          <BentoCard
+            icon={faUserTie}
+            title={t('services.items.freelancer.title')}
+            description={t('services.items.freelancer.description')}
+            linkTo="/services"
+            className="md:col-span-1 md:row-span-1"
+            variant="default"
+          />
+
+          {/* 5. Special Tax Regimes (Dark Green / Image) */}
+          <BentoCard
+            icon={faLandmark}
+            title={t('services.items.regime_forfettario.title')}
+            description="Access the 5% flat tax regime and optimize your fiscal position in Italy."
+            linkTo="/services"
+            className="md:col-span-2 md:row-span-1 bg-italian-green text-white border-none"
+            variant="dark"
+          />
+
         </div>
 
-        <div className="text-center mt-16">
+        {/* Mobile View All Button */}
+        <div className="mt-12 text-center md:hidden">
           <Link href={getLocalizedPath('/services')}>
-            <button className="bg-italian-green text-white font-bold text-sm uppercase tracking-widest py-4 px-10 rounded-sm hover:bg-italian-green-dark transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2 transform hover:-translate-y-1">
-              {t('services.cta.viewAll')}
-              <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+            <button className="inline-flex items-center gap-2 px-8 py-4 bg-navy text-white font-bold text-sm uppercase tracking-wider hover:bg-italian-green transition-all rounded-sm shadow-lg">
+              View All Services
+              <FontAwesomeIcon icon={faArrowRight} />
             </button>
           </Link>
         </div>
+
       </div>
     </section>
   );

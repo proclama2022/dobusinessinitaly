@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PrivacyPolicyContent from '@/components/PrivacyPolicyContent';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const PrivacyPolicy = () => {
   const { t, i18n } = useTranslation();
@@ -18,16 +19,16 @@ const PrivacyPolicy = () => {
       <SEOHead
         title={`${t('privacy.title')} - Yourbusinessinitaly.com`}
         description={t('privacy.intro')}
-        canonicalUrl={`/${currentLang}/privacy-policy`}
+        canonicalUrl={buildLocalizedPath('/privacy-policy', currentLang)}
         keywords="privacy policy, privacy, protezione dati, GDPR, dati personali"
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/privacy-policy',
-          en: 'https://yourbusinessinitaly.com/en/privacy-policy',
+          en: 'https://yourbusinessinitaly.com/privacy-policy',
           fr: 'https://yourbusinessinitaly.com/fr/privacy-policy',
           de: 'https://yourbusinessinitaly.com/de/privacy-policy',
           es: 'https://yourbusinessinitaly.com/es/privacy-policy',
-          'x-default': 'https://yourbusinessinitaly.com/it/privacy-policy'
+          'x-default': 'https://yourbusinessinitaly.com/privacy-policy'
         }}
       />
 

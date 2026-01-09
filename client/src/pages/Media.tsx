@@ -4,6 +4,7 @@ import ContactSection from '@/components/ContactSection';
 import SEOHead from '@/components/SEOHead';
 import OptimizedImage from '@/components/OptimizedImage';
 import { useTranslation } from 'react-i18next';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const Media = () => {
   const { t, i18n } = useTranslation();
@@ -14,16 +15,16 @@ const Media = () => {
       <SEOHead
         title={t('media.pageTitle', 'Parlano di Noi - Yourbusinessinitaly.com')}
         description={t('media.pageDescription', 'Scopri cosa dicono di Yourbusinessinitaly.com la stampa e i media specializzati nel settore economico-finanziario.')}
-        canonicalUrl={`/${currentLang}/media`}
+        canonicalUrl={buildLocalizedPath('/media', currentLang)}
         keywords="media, rassegna stampa, yourbusinessinitaly, citazioni stampa, interviste, riconoscimenti, premi, forbes"
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/media',
-          en: 'https://yourbusinessinitaly.com/en/media',
+          en: 'https://yourbusinessinitaly.com/media',
           fr: 'https://yourbusinessinitaly.com/fr/media',
           de: 'https://yourbusinessinitaly.com/de/media',
           es: 'https://yourbusinessinitaly.com/es/media',
-          'x-default': 'https://yourbusinessinitaly.com/it/media'
+          'x-default': 'https://yourbusinessinitaly.com/media'
         }}
       />
 

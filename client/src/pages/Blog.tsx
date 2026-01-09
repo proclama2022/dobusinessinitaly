@@ -7,6 +7,7 @@ import SEOHead from '@/components/SEOHead';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { useLocalizedPath } from '@/components/LocalizedRouter';
 import OptimizedImage from '@/components/OptimizedImage';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const handleImageError = (event?: React.SyntheticEvent<HTMLImageElement, Event>) => {
   const target = event?.currentTarget;
@@ -24,6 +25,7 @@ interface BlogPostMeta {
   excerpt: string;
   coverImage: string;
   author: string;
+  lang?: string;
 }
 
 // Componente per un articolo del blog
@@ -47,74 +49,56 @@ const BlogPostCard = ({
   const { t } = useTranslation();
   const { getLocalizedPath } = useLocalizedPath();
   return (
-    <article className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 bg-white animate-slide-up" style={{ animationDelay: `${animationDelay}s` }}>
+    <article className="group relative overflow-hidden rounded-lg shadow-sm hover:shadow-xl transition-all duration-500 bg-white italian-hover-lift animate-italian-fade-in-up" style={{ animationDelay: `${animationDelay}s` }}>
       {/* Contenitore immagine */}
       <div className="relative overflow-hidden h-56">
-        {/* Overlay con gradiente italiano al hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
-
         {/* Badge categoria */}
-        <div className="absolute top-3 right-3 z-10">
-          <span className="px-3 py-1 bg-white/90 text-xs font-medium text-[#009246] rounded-full shadow-sm">
+        <div className="absolute top-4 right-4 z-10">
+          <span className="px-3 py-1 bg-white/95 text-[10px] font-bold uppercase tracking-wider text-italian-green rounded-sm shadow-sm">
             {category}
           </span>
         </div>
 
-        {/* Data */}
-        <div className="absolute top-3 left-3 z-10">
-          <span className="px-3 py-1 bg-[#ce2b37] text-xs font-medium text-white rounded-full shadow-sm">
-            {date && !isNaN(new Date(date).getTime()) ? new Date(date).toLocaleDateString() : ''}
-          </span>
-        </div>
-
-        {/* Immagine articolo con attributi SEO migliorati */}
+        {/* Immagine articolo */}
         {imgSrc && imgSrc.trim() && imgSrc !== '/images/default-blog-cover.webp' ? (
           <OptimizedImage
             src={imgSrc}
-            alt={`${title} - Yourbusinessinitaly.com`}
+            alt={`${title}`}
             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
             width={600}
             height={400}
-            onError={handleImageError}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-italian-green/10 via-neutral-100 to-italian-red/10 flex items-center justify-center">
+          <div className="w-full h-full bg-cream flex items-center justify-center">
             <div className="text-center p-8">
-              <div className="w-16 h-16 mx-auto mb-4 bg-italian-green/20 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-italian-green/10 rounded-full flex items-center justify-center">
                 <i className="fas fa-file-alt text-2xl text-italian-green"></i>
               </div>
-              <p className="text-neutral-500 text-sm font-[Montserrat]">{category}</p>
             </div>
           </div>
         )}
-
-        {/* Linee decorative */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
       </div>
 
       {/* Contenuto testuale */}
-      <div className="p-6 relative">
-        {/* Decorazione */}
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-[#009246] to-[#ce2b37]"></div>
+      <div className="p-8">
+        <div className="text-xs text-neutral-400 font-medium mb-3">
+          {date && !isNaN(new Date(date).getTime()) ? new Date(date).toLocaleDateString() : ''}
+        </div>
 
         {/* Titolo articolo */}
-        <h3 className="text-xl font-heading font-bold text-neutral-800 mb-3 group-hover:text-[#009246] transition-colors duration-300 line-clamp-2">
+        <h3 className="text-xl font-instrument font-bold text-navy mb-4 group-hover:text-italian-green transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
 
         {/* Estratto articolo */}
-        <p className="text-neutral-600 mb-5 text-sm line-clamp-3">
+        <p className="text-neutral-500 mb-6 text-sm line-clamp-3 leading-relaxed font-light">
           {excerpt}
         </p>
 
         {/* Pulsante leggi di più */}
-        <Link href={getLocalizedPath(`/blog/${slug}`)} className="group-hover:text-[#009246] inline-flex items-center text-sm font-medium relative transition-colors">
-          <span className="relative">
-            {t('blog.readMore')}
-            <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#009246] to-[#ce2b37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-          </span>
-          <i className="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+        <Link href={getLocalizedPath(`/blog/${slug}`)} className="text-italian-green inline-flex items-center text-xs font-bold uppercase tracking-widest hover:translate-x-1 transition-transform">
+          {t('blog.readMore')}
+          <i className="fas fa-arrow-right ml-2"></i>
         </Link>
       </div>
     </article>
@@ -136,10 +120,10 @@ const CategoryBadge = ({
       className={`
         px-5 py-2.5 rounded-sm cursor-pointer 
         transition-all duration-300 ease-out
-        font-[Montserrat] text-sm font-semibold
+        font-outfit text-sm font-semibold
         transform hover:scale-105 active:scale-95
-        ${isActive 
-          ? 'bg-italian-green text-white shadow-lg shadow-italian-green/30 border-2 border-italian-green' 
+        ${isActive
+          ? 'bg-italian-green text-white shadow-lg shadow-italian-green/30 border-2 border-italian-green'
           : 'bg-white text-navy hover:bg-italian-green/5 hover:text-italian-green border-2 border-neutral-200 hover:border-italian-green/30 shadow-sm hover:shadow-md'
         }
       `}
@@ -163,7 +147,7 @@ const Blog = () => {
   // Fetch dei post del blog dall'API, filtrando per lingua
   const queryClient = useQueryClient();
 
-  const { data: postsData, isLoading, error } = useQuery({
+  const { data: postsData, isLoading, error } = useQuery<{ success: boolean, data: BlogPostMeta[] }>({
     queryKey: ['/api/blog', currentLang],
     queryFn: async () => {
       console.log(`[Blog] Fetching posts for language: ${currentLang}`);
@@ -172,12 +156,10 @@ const Blog = () => {
         { method: 'GET' }
       );
       console.log(`[Blog] Received ${response.data?.length || 0} posts from API`);
-      console.log(`[Blog] First 3 posts:`, response.data?.slice(0, 3).map(p => ({ title: p.title, lang: p.lang })));
       return response;
     },
     refetchOnWindowFocus: false,
-    staleTime: 0, // Force fresh data every time
-    cacheTime: 0, // Don't cache
+    staleTime: 300000, // 5 minutes
   });
 
   // Ensure we have accurate data and UI translations when language changes
@@ -324,75 +306,77 @@ const Blog = () => {
       <SEOHead
         title={`${t('navigation.blog')} - Yourbusinessinitaly.com`}
         description={t('blog.description') || 'Articoli, approfondimenti e notizie sul mondo fiscale, legale e dell\'internazionalizzazione delle imprese.'}
-        canonicalUrl={`/${currentLang}/blog`}
+        canonicalUrl={buildLocalizedPath('/blog', currentLang)}
         keywords="blog, articoli, fiscale, legale, business, italia, internazionalizzazione, imprese"
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/blog',
-          en: 'https://yourbusinessinitaly.com/en/blog',
+          en: 'https://yourbusinessinitaly.com/blog',
           fr: 'https://yourbusinessinitaly.com/fr/blog',
           de: 'https://yourbusinessinitaly.com/de/blog',
           es: 'https://yourbusinessinitaly.com/es/blog',
-          'x-default': 'https://yourbusinessinitaly.com/it/blog'
+          'x-default': 'https://yourbusinessinitaly.com/blog'
         }}
         structuredData={[blogStructuredData, blogPostsStructuredData, breadcrumbStructuredData]}
       />
 
-      {/* Hero section con intestazione */}
-      <section className="relative py-32 bg-gradient-to-br from-white via-neutral-50 to-white overflow-hidden">
+      {/* Hero section con intestazione - Dark Version matching other pages */}
+      <section className="relative py-32 bg-navy overflow-hidden">
+        {/* Pattern di sfondo e decorazioni */}
+        <div className="absolute inset-0 z-0">
+          <OptimizedImage
+            src="/images/heronew.png"
+            alt="Blog Hero"
+            className="w-full h-full object-cover opacity-20"
+            priority={true}
+            width={1920}
+            height={400}
+          />
+        </div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-navy/90 via-navy/80 to-navy"></div>
+
         {/* Breadcrumbs */}
         <div className="container mx-auto px-4 mb-8 relative z-20">
           <Breadcrumbs
             items={[
               { label: t('navigation.blog'), path: '/blog', isLast: true }
             ]}
-            className="pt-4"
+            className="pt-4 text-white/70"
           />
         </div>
-        {/* Pattern di sfondo e decorazioni */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23009246\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
-        ></div>
 
-        {/* Bordi decorativi */}
-        <div className="absolute top-0 left-0 w-1 h-full bg-[#009246]"></div>
-        <div className="absolute top-0 right-0 w-1 h-full bg-[#ce2b37]"></div>
-
-        {/* Cerchi decorativi */}
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00924610] rounded-full filter blur-3xl"></div>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#ce2b3710] rounded-full filter blur-3xl"></div>
-
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#00924615] text-[#009246] text-sm font-medium mb-8 animate-fade-in">
-              <span className="w-2 h-2 rounded-full bg-[#009246] mr-2"></span>
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-italian-green/20 text-italian-green-light text-xs font-bold uppercase tracking-widest mb-8 animate-italian-fade-in-scale">
+              <span className="w-2 h-2 rounded-full bg-italian-green mr-2"></span>
               {'Insights & News'}
             </div>
 
             {/* Main title */}
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <span className="text-[#009246]">{t('blog.title')}</span>
-              <span className="absolute -bottom-2 left-0 right-0 h-1 italian-gradient"></span>
+            <h1 className="text-4xl md:text-6xl font-instrument font-bold mb-6 text-white animate-italian-slide-in-down">
+              {t('blog.title')}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl text-neutral-700 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-italian-fade-in-up" style={{ animationDelay: '0.2s' }}>
               {t('blog.subtitle')}
             </p>
 
             {/* Barra di ricerca blog */}
-            <form onSubmit={handleSearch} className="relative max-w-lg mx-auto animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <form onSubmit={handleSearch} className="relative max-w-lg mx-auto animate-italian-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <input
                 type="text"
                 placeholder={t('blog.searchPlaceholder')}
-                className="w-full px-5 py-3 pr-12 rounded-full border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#009246] focus:border-transparent"
+                className="w-full px-6 py-4 pr-12 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-italian-green focus:border-transparent backdrop-blur-md transition-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button
                 type="submit"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-[#009246] transition-colors"
+                className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-italian-green transition-colors"
               >
                 <i className="fas fa-search"></i>
               </button>
@@ -424,19 +408,19 @@ const Blog = () => {
           </div>
         </section>
       ) : (
-        <section className="py-16 bg-white relative overflow-hidden">
+        <section className="py-16 bg-cream relative overflow-hidden">
           <div className="container mx-auto px-4">
             {/* Triangolo decorativo */}
-            <div className="absolute top-0 left-0 border-t-[80px] border-l-[80px] border-t-transparent border-l-[#00924620] opacity-20"></div>
-            <div className="absolute bottom-0 right-0 border-b-[80px] border-r-[80px] border-b-transparent border-r-[#ce2b3720] opacity-20"></div>
+            <div className="absolute top-0 left-0 border-t-[80px] border-l-[80px] border-t-transparent border-l-italian-green/10 opacity-20"></div>
+            <div className="absolute bottom-0 right-0 border-b-[80px] border-r-[80px] border-b-transparent border-r-italian-red/10 opacity-20"></div>
 
             {/* Heading */}
             <div className="text-center mb-16 relative">
-              <h2 className="text-3xl font-heading font-bold mb-6 relative inline-flex">
-                <span className="text-[#ce2b37]">{t('blog.featuredArticle')} </span>
-                <span className="relative pl-4">
+              <h2 className="text-3xl md:text-4xl font-instrument font-bold mb-6 relative inline-flex items-center gap-4">
+                <span className="text-italian-red uppercase tracking-widest text-xs font-bold">{t('blog.featuredArticle')} </span>
+                <span className="relative">
                   {t('blog.featured')}
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#009246]"></span>
+                  <span className="absolute -bottom-2 left-0 right-0 h-1 bg-italian-green rounded-full"></span>
                 </span>
               </h2>
 
@@ -451,68 +435,50 @@ const Blog = () => {
             {/* Featured article */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Immagine in evidenza */}
-              <div className="relative group overflow-hidden rounded-xl shadow-lg">
-                {/* Overlay con effetto hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-[#009246] via-white to-[#ce2b37] transition-opacity duration-500 z-10"></div>
-
-                {/* Badge categoria e data */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-block px-3 py-1 bg-[#ce2b37] text-white text-sm font-medium rounded-full">
-                    {featuredPost?.date}
-                  </span>
-                </div>
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="inline-block px-3 py-1 bg-white text-[#009246] text-sm font-medium rounded-full shadow-sm">
-                    {featuredPost?.category}
-                  </span>
-                </div>
-
+              <div className="relative group overflow-hidden rounded-lg shadow-lg">
                 {/* Immagine */}
                 {featuredPost?.coverImage && featuredPost.coverImage.trim() && featuredPost.coverImage !== '/images/default-blog-cover.webp' ? (
                   <OptimizedImage
                     src={featuredPost.coverImage}
                     alt={featuredPost.title || 'Featured article'}
-                    className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-[450px] object-cover transform group-hover:scale-105 transition-transform duration-1000"
                     width={1200}
-                    height={400}
+                    height={450}
                     priority={true}
-                    onError={handleImageError}
                   />
                 ) : (
-                  <div className="w-full h-[400px] bg-gradient-to-br from-italian-green/10 via-neutral-100 to-italian-red/10 flex items-center justify-center">
+                  <div className="w-full h-[450px] bg-white flex items-center justify-center">
                     <div className="text-center p-8">
-                      <div className="w-20 h-20 mx-auto mb-4 bg-italian-green/20 rounded-full flex items-center justify-center">
+                      <div className="w-20 h-20 mx-auto mb-4 bg-italian-green/10 rounded-full flex items-center justify-center">
                         <i className="fas fa-star text-3xl text-italian-green"></i>
                       </div>
-                      <p className="text-neutral-500 text-sm font-[Montserrat]">{featuredPost?.category || 'Featured'}</p>
                     </div>
                   </div>
                 )}
-
-                {/* Bordi decorativi */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#009246] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#ce2b37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
               </div>
 
               {/* Contenuto dell'articolo in evidenza */}
-              <div className="animate-slide-up">
-                <h3 className="text-3xl font-heading font-bold mb-4 text-neutral-800 hover:text-[#009246] transition-colors duration-300">
+              <div className="animate-italian-fade-in-up">
+                <nav className="flex items-center space-x-2 text-sm text-neutral-500 mb-8">
+                  <Link href="/" className="hover:text-navy transition-colors">Home</Link>
+                  <span className="text-neutral-400">/</span>
+                  <span className="text-navy">Blog</span>
+                </nav>
+
+                <h3 className="text-3xl md:text-4xl font-instrument font-bold mb-6 text-navy hover:text-italian-green transition-colors duration-300">
                   {featuredPost?.title}
                 </h3>
 
-                <p className="text-neutral-600 mb-6 text-lg leading-relaxed">
+                <p className="text-neutral-500 mb-8 text-lg leading-relaxed font-light">
                   {featuredPost?.excerpt}
                 </p>
 
-                {/* Autore */}
-                <p className="text-neutral-500 mb-6 text-sm">
-                  <i className="fas fa-user mr-2"></i> {featuredPost?.author}
-                </p>
-
                 {/* CTA */}
-                <Link href={getLocalizedPath(`/blog/${featuredPost?.slug}`)} className="inline-flex items-center px-6 py-3 bg-[#009246] text-white font-medium rounded-md shadow-md hover:bg-opacity-90 transition-all hover:shadow-lg transform hover:-translate-y-1">
-                  {t('blog.readMore')}
-                  <i className="fas fa-arrow-right ml-2 text-sm"></i>
+                <Link href={getLocalizedPath(`/blog/${featuredPost?.slug}`)}>
+                  <button className="italian-button bg-navy text-white font-bold text-xs py-4 px-10 rounded-sm shadow-md hover:bg-navy-light transition-all transform hover:-translate-y-1">
+                    {t('blog.readMore')}
+                    <i className="fas fa-arrow-right ml-3"></i>
+                  </button>
                 </Link>
               </div>
             </div>
@@ -525,7 +491,7 @@ const Blog = () => {
         <section className="py-16 bg-white border-y border-neutral-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-8">
-              <h3 className="text-lg font-[Montserrat] font-bold text-navy uppercase tracking-wider mb-2">
+              <h3 className="text-lg font-outfit font-bold text-navy uppercase tracking-wider mb-2">
                 {t('blog.filterByCategory', 'Filtra per categoria')}
               </h3>
               <div className="w-16 h-0.5 bg-italian-green mx-auto"></div>
@@ -546,7 +512,7 @@ const Blog = () => {
 
       {/* Griglia articoli */}
       {!isLoading && !error && filteredPosts.length > 0 && (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-cream">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.slice(1).map((post, index) => (

@@ -12,6 +12,7 @@ import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const linkedinProfileUrl = 'https://www.linkedin.com/in/studioemmicommercialista/';
 const linkedinActivityUrl = `${linkedinProfileUrl}recent-activity/`;
@@ -156,16 +157,16 @@ const Social = () => {
       <SEOHead
         title={t('socialPage.title', 'Social & Video - Yourbusinessinitaly.com')}
         description={t('socialPage.description', 'Approfondimenti e contenuti social per conoscerci meglio: segui i post LinkedIn di Giovanni Emmi e scopri i video più utili del nostro canale YouTube.')}
-        canonicalUrl={`/${currentLang}/social`}
+        canonicalUrl={buildLocalizedPath('/social', currentLang)}
         keywords="social, linkedin, youtube, partitaiva, yourbusinessinitaly"
         lang={currentLang}
         alternates={{
           it: 'https://yourbusinessinitaly.com/it/social',
-          en: 'https://yourbusinessinitaly.com/en/social',
+          en: 'https://yourbusinessinitaly.com/social',
           fr: 'https://yourbusinessinitaly.com/fr/social',
           de: 'https://yourbusinessinitaly.com/de/social',
           es: 'https://yourbusinessinitaly.com/es/social',
-          'x-default': 'https://yourbusinessinitaly.com/it/social'
+          'x-default': 'https://yourbusinessinitaly.com/social'
         }}
       />
 

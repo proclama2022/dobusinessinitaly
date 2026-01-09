@@ -41,8 +41,12 @@ const SEOHead = ({
   const siteUrl = 'https://yourbusinessinitaly.com';
   
   // Normalizza URL Canonico
-  const normalizedCanonicalUrl = canonicalUrl ? canonicalUrl.replace(/\/+$/, '') : undefined;
-  const finalCanonicalUrl = normalizedCanonicalUrl ? `${siteUrl}${normalizedCanonicalUrl}` : undefined;
+  const normalizedCanonicalUrl = canonicalUrl
+    ? canonicalUrl === '/' ? '/' : canonicalUrl.replace(/\/+$/, '')
+    : undefined;
+  const finalCanonicalUrl = normalizedCanonicalUrl
+    ? `${siteUrl}${normalizedCanonicalUrl === '/' ? '' : normalizedCanonicalUrl}`
+    : undefined;
   
   // Heuristica per capire se siamo in Home
   const isHome = !canonicalUrl || /^\/(it|en|de|fr|es)?\/?$/.test(canonicalUrl);
@@ -193,4 +197,3 @@ const SEOHead = ({
 };
 
 export default SEOHead;
-

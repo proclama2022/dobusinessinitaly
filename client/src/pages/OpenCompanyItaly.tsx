@@ -9,6 +9,7 @@ import RelatedServices from '@/components/RelatedServices';
 import RelatedGuides from '@/components/RelatedGuides';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { buildLocalizedPath } from '@/lib/languagePaths';
 
 const OpenCompanyItaly = () => {
   const { t, i18n } = useTranslation();
@@ -73,7 +74,7 @@ const OpenCompanyItaly = () => {
     },
     availableChannel: {
       '@type': 'ServiceChannel',
-      serviceUrl: 'https://yourbusinessinitaly.com/en/services/open-company-italy'
+      serviceUrl: 'https://yourbusinessinitaly.com/services/open-company-italy'
     }
   };
 
@@ -156,7 +157,7 @@ const OpenCompanyItaly = () => {
         title={seoTitle}
         description={seoDescription}
         keywords="open company Italy, company formation Italy, start business Italy, foreign entrepreneur Italy, SRL Italy, business setup Italy"
-        canonicalUrl={`/${currentLang}/services/open-company-italy`}
+        canonicalUrl={buildLocalizedPath('/services/open-company-italy', currentLang)}
         ogImage="/images/open-company-italy-og.jpg"
         ogType="website"
         twitterCard="summary_large_image"
@@ -164,11 +165,11 @@ const OpenCompanyItaly = () => {
         structuredData={[serviceStructuredData, faqStructuredData, breadcrumbStructuredData]}
         alternates={{
           'it': 'https://yourbusinessinitaly.com/it/services/open-company-italy',
-          'en': 'https://yourbusinessinitaly.com/en/services/open-company-italy',
+          'en': 'https://yourbusinessinitaly.com/services/open-company-italy',
           'fr': 'https://yourbusinessinitaly.com/fr/services/open-company-italy',
           'de': 'https://yourbusinessinitaly.com/de/services/open-company-italy',
           'es': 'https://yourbusinessinitaly.com/es/services/open-company-italy',
-          'x-default': 'https://yourbusinessinitaly.com/en/services/open-company-italy'
+          'x-default': 'https://yourbusinessinitaly.com/services/open-company-italy'
         }}
       />
 

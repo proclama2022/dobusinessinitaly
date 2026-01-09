@@ -20,11 +20,11 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline active:no-underline",
         
         // Italian Design System Variants - Updated to Base Palette
-        luxury: "bg-navy text-white font-[Montserrat] font-bold uppercase text-xs border-b-2 border-italian-green hover:bg-navy-light shadow-sm hover:shadow-md",
-        editorial: "bg-transparent border border-neutral-300 text-neutral-800 hover:border-navy hover:bg-neutral-50 font-[Lora] rounded-none uppercase tracking-widest text-[10px]",
-        italian: "bg-italian-green text-white font-[Montserrat] font-bold tracking-wider uppercase text-xs shadow-sm hover:bg-italian-green-dark hover:shadow-md",
-        "outline-italian": "bg-transparent text-italian-green border border-italian-green hover:bg-italian-green hover:text-white font-[Montserrat] font-semibold tracking-wider uppercase text-xs",
-        architectural: "bg-navy text-white font-[Montserrat] rounded-none border-l-4 border-italian-red hover:bg-navy-light hover:pl-6 transition-all",
+        luxury: "bg-navy text-white font-outfit font-bold uppercase text-xs border-b-2 border-italian-green hover:bg-navy-light shadow-sm hover:shadow-md",
+        editorial: "bg-transparent border border-neutral-300 text-neutral-800 hover:border-navy hover:bg-neutral-50 font-outfit rounded-none uppercase tracking-widest text-[10px]",
+        italian: "bg-italian-green text-white font-outfit font-bold tracking-wider uppercase text-xs shadow-sm hover:bg-italian-green-dark hover:shadow-md",
+        "outline-italian": "bg-transparent text-italian-green border border-italian-green hover:bg-italian-green hover:text-white font-outfit font-semibold tracking-wider uppercase text-xs",
+        architectural: "bg-navy text-white font-outfit rounded-none border-l-4 border-italian-red hover:bg-navy-light hover:pl-6 transition-all",
       },
       size: {
         default: "h-9 px-6 py-2 min-h-[36px] min-w-[36px]",
