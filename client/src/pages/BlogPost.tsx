@@ -37,11 +37,6 @@ interface BlogPostMeta {
     '@type'?: string;
     [key: string]: any;
   };
-  leadMagnet?: {
-    title: string;
-    description: string;
-    type: string;
-  };
 }
 
 interface BlogPostData {
@@ -425,7 +420,6 @@ const BlogPost = () => {
 
   // Debug: log metadata per vedere cosa arriva dall'API
   console.log('[BlogPost] Meta data received:', meta);
-  console.log('[BlogPost] leadMagnet data:', meta?.leadMagnet);
 
   // Prepara i dati strutturati per l'articolo
   const articleStructuredData = {

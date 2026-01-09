@@ -11,7 +11,6 @@ import matter from "gray-matter";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { sendEmail } from './services/emailService';
-import { getItalianBusinessGuideContent } from './guides/italian-business-guide.js';
 import { generateArticleTranslations } from "./services/translationService";
 import { list as listBlobs, del as delBlob } from '@vercel/blob';
 import { z } from "zod";
@@ -35,11 +34,6 @@ interface BlogPostMeta {
   authorImage?: string;
   authorTitle?: string;
   lang: string; // Add language property
-  leadMagnet?: {
-    title: string;
-    description: string;
-    type: string;
-  };
 }
 
 /**
@@ -153,14 +147,6 @@ function getAllPosts(language?: string): BlogPostMeta[] {
             lang: fileLanguage // Usa lang dal frontmatter o dal filename
           };
 
-          if (data.leadMagnet) {
-            blogPost.leadMagnet = {
-              title: data.leadMagnet.title || '',
-              description: data.leadMagnet.description || '',
-              type: data.leadMagnet.type || ''
-            };
-          }
-
           return blogPost;
         } catch (error) {
           console.error('[Blog] Errore elaborazione file:', filename, error);
@@ -243,14 +229,6 @@ function getAllPostsForAllLanguages(): BlogPostMeta[] {
             lang: fileLanguage // Assign the extracted language
           };
 
-          if (data.leadMagnet) {
-            blogPost.leadMagnet = {
-              title: data.leadMagnet.title || '',
-              description: data.leadMagnet.description || '',
-              type: data.leadMagnet.type || ''
-            };
-          }
-
           return blogPost;
         } catch (error) {
           console.error('[Blog] Errore elaborazione file:', filename, error);
@@ -322,12 +300,7 @@ function getPostBySlug(slug: string, lang?: string): { meta: BlogPostMeta, conte
             author: data.author || 'Admin',
             authorImage: data.authorImage || undefined,
             authorTitle: data.authorTitle || undefined,
-            lang: fileLanguage,
-            leadMagnet: data.leadMagnet ? {
-              title: data.leadMagnet.title || '',
-              description: data.leadMagnet.description || '',
-              type: data.leadMagnet.type || ''
-            } : undefined
+            lang: fileLanguage
           };
 
           return { meta, content };
@@ -500,37 +473,6 @@ function simpleAdminAuth(req: Request, res: Response, next: NextFunction) {
     return res.status(401).json({ success: false, message: 'Non autorizzato' });
   }
   next();
-}
-
-// Configurazione delle guide disponibili
-const LEAD_MAGNETS: Record<string, any> = {
-  'italian-business-guide': {
-    title: 'Guida Completa: Come Aprire un\'Attività in Italia da Straniero',
-    emailSubjects: {
-      it: '📩 La tua guida completa per aprire un\'attività in Italia',
-      en: '📩 Your complete guide to starting a business in Italy',
-      de: '📩 Ihr kompletter Leitfaden zur Unternehmensgründung in Italien',
-      fr: '📩 Votre guide complet pour créer une entreprise en Italie',
-      es: '📩 Tu guía completa para abrir un negocio en Italia'
-    }
-  }
-  // Qui si possono aggiungere altre guide
-};
-
-function getLeadMagnetEmailContent(guideType: string, language: string): string {
-  const guide = LEAD_MAGNETS[guideType];
-  if (!guide) return '';
-
-  // Ottieni il contenuto completo della guida in base al tipo
-  switch (guideType) {
-    case 'italian-business-guide':
-      return getItalianBusinessGuideContent(language);
-    // Qui si possono aggiungere altre guide:
-    // case 'tax-optimization-guide':
-    //   return getTaxOptimizationGuideContent(language);
-    default:
-      return '';
-  }
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -921,92 +863,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     // Nessun contenuto, per evitare CORS/cache o errori sul client
     return res.status(204).end();
-  });
-
-  // API per download guide (utilizza webhook Make.com)
-  app.post('/api/download-guide', async (req: Request, res: Response) => {
-    try {
-      const { email, guideType = 'italian-business-guide', language = 'it', blogUrl, blogTitle } = req.body;
-
-      if (!email) {
-        return res.status(400).json({
-          success: false,
-          message: 'Email richiesta'
-        });
-      }
-
-      // Verifica che la guida esista
-      const guide = LEAD_MAGNETS[guideType];
-      if (!guide) {
-        return res.status(400).json({
-          success: false,
-          message: 'Tipo di guida non valido'
-        });
-      }
-
-      // Salva l'email nel sistema newsletter (opzionale)
-      try {
-        await storage.createNewsletterSubscriber({ email });
-      } catch (error) {
-        // Continua anche se l'email è già presente
-        console.log('Email già presente o errore newsletter:', error);
-      }
-
-      // Invia i dati al webhook di Make.com per l'automazione
-      try {
-        const webhookUrl = 'https://hook.eu1.make.com/3rs9qd9jthmclmyy82akkiv4og0ria64';
-
-        const webhookPayload = {
-          email: email,
-          guideType: guideType,
-          language: language,
-          guideTitle: guide.title,
-          emailSubject: guide.emailSubjects[language] || guide.emailSubjects['it'],
-          blogUrl: blogUrl || '',
-          blogTitle: blogTitle || '',
-          timestamp: new Date().toISOString(),
-          source: 'yourbusinessinitaly.com',
-          form_type: 'lead_magnet_download'
-        };
-
-        console.log('📤 Invio dati al webhook Make.com per la guida:', guideType);
-
-        const webhookResponse = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(webhookPayload)
-        });
-
-        if (webhookResponse.ok) {
-          console.log('✅ Dati inviati con successo al webhook Make.com');
-          console.log('📧 Richiesta guida inviata per:', email, '- Guida:', guideType, '- Lingua:', language);
-        } else {
-          console.error('❌ Errore risposta webhook:', webhookResponse.status, webhookResponse.statusText);
-          throw new Error(`Webhook fallito con status: ${webhookResponse.status}`);
-        }
-
-      } catch (webhookError) {
-        console.error('Errore invio dati al webhook:', webhookError);
-        return res.status(500).json({
-          success: false,
-          message: 'Errore nell\'elaborazione della richiesta. Riprova più tardi.'
-        });
-      }
-
-      res.status(200).json({
-        success: true,
-        message: 'Guida inviata con successo! Controlla la tua email.'
-      });
-
-    } catch (error: any) {
-      console.error('Errore API download guide:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Errore interno del server'
-      });
-    }
   });
 
   // Rotte esplicite per servire sitemap come XML, bypassando eventuali fallback SPA
