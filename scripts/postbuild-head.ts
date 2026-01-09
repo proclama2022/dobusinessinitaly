@@ -40,11 +40,10 @@ function escapeHtml(str: string) {
 }
 
 // Build head tags for main static routes (generic)
-function buildHead(route: string) {
+function buildHead(route: string, lang: string) {
   const cleanRoute = normalizePath(route || '/')
   const baseSuffix = stripLangPrefix(cleanRoute)
-  const canonicalPath = normalizePath(cleanRoute.replace(/^\/it(?=\/|$)/, '') || '/')
-  const canonical = toAbsoluteUrl(canonicalPath)
+  const canonical = toAbsoluteUrl(buildLocalizedPath(lang, baseSuffix))
 
   // Create hreflang for main pages
   const alternates = languages
@@ -82,7 +81,8 @@ function buildBlogHead(post: any, allPosts: any[]) {
   // If we can't be 100% sure, we omit hreflang for *other* languages to avoid SEO errors, 
   // but we MUST have self-referencing canonical.
   
-  let alternates = ''
+  const alternatesMap = new Map<string, string>()
+  alternatesMap.set(lang, currentUrl)
   // Try to find same filenames with different lang extensions if they exist?
   // The current structure seems to be `filename.lang.mdx` OR `filename.mdx` (default it).
   // Let's try to find siblings.
@@ -94,12 +94,15 @@ function buildBlogHead(post: any, allPosts: any[]) {
   })
 
   if (siblings.length > 0) {
-    alternates = siblings.map(s => 
-      `<link rel="alternate" hreflang="${s.lang}" href="${toAbsoluteUrl(buildLocalizedPath(s.lang, `/blog/${s.slug}`))}" />`
-    ).join('')
-    // Add self
-    alternates += `<link rel="alternate" hreflang="${lang}" href="${currentUrl}" />`
+    siblings.forEach(s => {
+      alternatesMap.set(s.lang, toAbsoluteUrl(buildLocalizedPath(s.lang, `/blog/${s.slug}`)))
+    })
   }
+
+  const alternates = Array.from(alternatesMap.entries())
+    .map(([altLang, href]) => `<link rel="alternate" hreflang="${altLang}" href="${href}" />`)
+    .join('')
+  const xdef = `<link rel="alternate" hreflang="x-default" href="${toAbsoluteUrl(buildLocalizedPath(DEFAULT_LANG, `/blog/${slug}`))}" />`
 
   const canonicalTag = `<link rel="canonical" href="${currentUrl}" />`
   
@@ -117,7 +120,7 @@ function buildBlogHead(post: any, allPosts: any[]) {
     ${author ? `<meta name="author" content="${escapeHtml(author)}" />` : ''}
   `
 
-  return metaTags + canonicalTag + alternates
+  return metaTags + canonicalTag + alternates + xdef
 }
 
 function injectHead(html: string, headContent: string) {
@@ -140,8 +143,13 @@ function getAllPosts() {
   return files.map(f => {
     const content = fs.readFileSync(path.join(blogDir, f), 'utf-8')
     const { data } = matter(content)
+    const langFromFile = f.match(/\.([a-z]{2})\.mdx$/)?.[1]
+    const lang = (data.lang || langFromFile || 'it').toLowerCase()
+    const slug = data.slug || f.replace(/(\.[a-z]{2})?\.mdx$/, '')
     return {
       ...data,
+      lang,
+      slug,
       filename: f
     }
   }).filter(p => p.slug && p.lang) // Ensure valid post
@@ -171,7 +179,7 @@ function main() {
       
       const outFile = path.join(outDir, 'index.html')
       // Inject generic head logic
-      const headTags = buildHead(route)
+      const headTags = buildHead(route, lang)
       // Add a title fallback if needed
       const pageTitle = sec ? `${sec.replace('/', '')} | YourBusinessInItaly` : 'YourBusinessInItaly'
       const titleTag = `<title>${pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)}</title>`

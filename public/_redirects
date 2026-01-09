@@ -28,9 +28,8 @@
 /impots-5-pourcent-italie-guide-expat-2025 /fr/blog/impots-5-pourcent-italie-guide-expat-2025 301
 
 # Redirect per italian-tax-code (senza prefisso lingua o /blog/) - IMPORTANTE per SEO
-/blog/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
-/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
-/de/blog/italian-tax-code-foreigners-complete-guide-2025 /en/blog/italian-tax-code-foreigners-complete-guide-2025 301
+/italian-tax-code-foreigners-complete-guide-2025 /blog/italian-tax-code-foreigners-complete-guide-2025 301
+/de/blog/italian-tax-code-foreigners-complete-guide-2025 /blog/italian-tax-code-foreigners-complete-guide-2025 301
 
 # Redirect per pagine tedesche (correzione path senza prefisso lingua)
 /blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 /de/blog/wie-auslaender-unternehmen-italien-eroeffnet-leitfaden-2025 301
