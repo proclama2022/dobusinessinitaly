@@ -25,11 +25,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        'outfit': ['Outfit', 'system-ui', 'sans-serif'],
-        'instrument': ['Instrument Serif', 'Georgia', 'serif'],
-        'sans': ['Outfit', 'system-ui', 'sans-serif'],
-        'serif': ['Instrument Serif', 'Georgia', 'serif'],
+        // Anti-Slop Font System - Distinctive & Human
+        'display': ['Playfair Display', 'Georgia', 'serif'],        // Editorial luxury for H1
+        'headline': ['Syne', 'system-ui', 'sans-serif'],           // Bold geometric for H2-H3
+        'body': ['Source Serif 4', 'Georgia', 'serif'],             // Readable for paragraphs
+        'accent': ['Cormorant', 'Georgia', 'serif'],                // Elegant Italian accents
         'mono': ['ui-monospace', 'SFMono-Regular', 'monospace'],
+        // Legacy aliases (transitioning)
+        'outfit': ['Syne', 'system-ui', 'sans-serif'],              // Outfit → Syne
+        'instrument': ['Playfair Display', 'Georgia', 'serif'],     // Keep compatibility
+        'sans': ['Syne', 'system-ui', 'sans-serif'],                // Default sans → Syne
+        'serif': ['Source Serif 4', 'Georgia', 'serif'],            // Default serif → Source Serif
       },
       typography: {
         DEFAULT: {

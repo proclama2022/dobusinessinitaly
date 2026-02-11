@@ -1,0 +1,399 @@
+/* Anti-Slop Design System - Award-Winning Patterns */
+
+/* ============================================
+   GRAIN OVERLAY - Organic Texture
+   ============================================ */
+.grain-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ============================================
+   MESH GRADIENTS - Not Flat Backgrounds
+   ============================================ */
+.mesh-gradient-italian {
+  background:
+    radial-gradient(ellipse at 20% 0%, hsla(142, 43%, 35%, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, hsla(0, 79%, 48%, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 40% 80%, hsla(40, 80%, 55%, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 90%, hsla(200, 75%, 45%, 0.1) 0%, transparent 40%);
+}
+
+.mesh-gradient-dark {
+  background:
+    radial-gradient(ellipse at 0% 0%, hsla(142, 43%, 25%, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, hsla(0, 79%, 38%, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, hsla(40, 80%, 45%, 0.1) 0%, transparent 60%);
+}
+
+/* ============================================
+   CUSTOM CURSOR - Tactile Feedback
+   ============================================ */
+.cursor-custom {
+  cursor: none;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--italian-green));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot--hover {
+  width: 40px;
+  height: 40px;
+  background: hsl(var(--italian-green) / 0.3);
+  border: 2px solid hsl(var(--italian-green));
+}
+
+.cursor-dot--click {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* ============================================
+   ANTI-SYMMETRIC LAYOUT HELPERS
+   ============================================ */
+.layout-shift-left {
+  transform: translateX(-5vw);
+}
+
+.layout-shift-right {
+  transform: translateX(5vw);
+}
+
+.layout-rotate-1 {
+  transform: rotate(-1deg);
+}
+
+.layout-rotate-2 {
+  transform: rotate(1.5deg);
+}
+
+/* Break the grid */
+.grid-break-left {
+  margin-left: -2rem;
+  padding-left: 2rem;
+}
+
+.grid-break-right {
+  margin-right: -2rem;
+  padding-right: 2rem;
+}
+
+/* Overlap elements */
+.overlap-top {
+  margin-top: -4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.overlap-bottom {
+  margin-bottom: -2rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* Diagonal sections */
+.diagonal-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.diagonal-both {
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+/* ============================================
+   MIXED BORDER RADIUS - Not Uniform
+   ============================================ */
+.radius-sharp-left {
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.radius-sharp-top {
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.radius-organic {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.radius-blob-1 {
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+
+.radius-blob-2 {
+  border-radius: 38% 62% 55% 45% / 52% 48% 52% 48%;
+}
+
+/* ============================================
+   TEXT REVEAL ANIMATIONS (GSAP-ready classes)
+   ============================================ */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.char.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word-inner {
+  display: inline-block;
+  transform: translateY(100%);
+}
+
+.word-inner.revealed {
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   MAGNETIC BUTTONS
+   ============================================ */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic--active {
+  transition: transform 0.15s ease-out;
+}
+
+/* ============================================
+   SCROLL-TRIGGERED REVEAL CLASSES
+   ============================================ */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.stagger-children.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children.revealed > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children.revealed > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children.revealed > *:nth-child(4) { transition-delay: 0.2s; }
+.stagger-children.revealed > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children.revealed > *:nth-child(6) { transition-delay: 0.3s; }
+
+.stagger-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   PARALLAX LAYERS
+   ============================================ */
+.parallax-slow {
+  will-change: transform;
+}
+
+.parallax-medium {
+  will-change: transform;
+}
+
+.parallax-fast {
+  will-change: transform;
+}
+
+/* ============================================
+   HOVER LIFT WITH SHADOW
+   ============================================ */
+.hover-lift-dramatic {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+}
+
+.hover-lift-dramatic:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 146, 70, 0.1);
+}
+
+/* ============================================
+   ITALIAN LUXURY BUTTON STYLES
+   ============================================ */
+.btn-luxury-primary {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--italian-green));
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-luxury-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-luxury-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-luxury-outline {
+  position: relative;
+  background: transparent;
+  border: 1px solid currentColor;
+  overflow: hidden;
+}
+
+.btn-luxury-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-luxury-outline:hover {
+  color: white;
+}
+
+.btn-luxury-outline:hover::before {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   GLASSMORPHISM CARDS
+   ============================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-up,
+  .reveal-scale,
+  .reveal-left,
+  .stagger-children > *,
+  .char,
+  .word-inner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hover-lift-dramatic:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   MOBILE TOUCH OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+
+  .hover-lift-dramatic:hover {
+    transform: none !important;
+  }
+
+  .magnetic {
+    transition: none !important;
+  }
+}
