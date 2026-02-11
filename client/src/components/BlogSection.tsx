@@ -196,10 +196,34 @@ const BlogSection = () => {
     };
   }, [postsData]);
 
-  if (isLoading) return null;
+  // Loading state
+  if (isLoading) {
+    return (
+      <section className="py-28 md:py-32 bg-cream">
+        <div className="container mx-auto px-4">
+          <div className="text-center py-20">
+            <div className="animate-pulse text-navy/40">Loading articles...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const posts = postsData?.data || [];
-  if (posts.length === 0) return null;
+  
+  // Empty state - still show section with message
+  if (posts.length === 0) {
+    return (
+      <section className="py-28 md:py-32 bg-cream relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center py-20">
+            <h2 className="text-3xl font-display font-bold text-navy mb-4">Latest Insights</h2>
+            <p className="text-navy/60">Check back soon for new articles.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const featuredPost = posts[0];
   const recentPosts = posts.slice(1, 4);
